@@ -1,0 +1,19 @@
+---
+import ArticleLayout from '../../../../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout
+  title="Overcoming Challenges: Achieving Endless 3D Printing with OctoPrint Modifications"
+  description="A project note on modifying an OctoPrint workflow for continuous 3D printing."
+  date="December 4, 2023"
+  category="Technical note / additive manufacturing"
+  canonicalPath="/2023/12/04/ai-overcoming-challenges-achieving-endless-3d-printing-with-octoprint-modifications/"
+>
+  <p>Welcome back to my blog, where I share my latest adventures in 3D printing. This project focused on modifying a 3D printer for continuous printing using OctoPrint.</p>
+  <p><strong>The goal:</strong> Adjust the OctoPrint settings and automation so the printer could start a new job immediately after finishing the previous one.</p>
+  <p><strong>The challenge:</strong> Initial attempts either failed to start the next print or introduced calibration issues. Resolving those failures required troubleshooting both the automation and the printer state between jobs.</p>
+  <p><strong>The process:</strong> After reviewing community guidance, I adjusted the OctoPrint code and fine-tuned the printer settings. The main issue was the transition phase between prints.</p>
+  <p><strong>The breakthrough:</strong> Modifying the end G-code to reset the printer state, then adding a short delay before the next job, produced a reliable transition.</p>
+  <p><strong>The result:</strong> After several trials, the printer began completing jobs consecutively without manual intervention.</p>
+  <p><strong>The takeaway:</strong> The project reinforced the importance of patient, evidence-driven troubleshooting: identify the failing transition, test one change at a time, and adapt the workflow to observed behavior.</p>
+</ArticleLayout>

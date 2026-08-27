@@ -1,0 +1,569 @@
+---
+import { getCollection } from 'astro:content';
+import { resume } from '../data/resume';
+
+// Keep the small hero rail data-driven so a role or employer update stays local.
+const currentFocus = {
+  role: resume.experience[0].role,
+  organization: resume.experience[0].organization,
+};
+const selectedExperience = resume.experience.slice(0, 3);
+const workLabels = ['Propulsion hardware', 'Propulsion test', 'Thermal / CFD'];
+const researchEntries = (await getCollection('research'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const aerospaceResearch = [
+  {
+    type: 'Technical article',
+    title: 'Mastering Computational Fluid Dynamics (CFD) for Aerospace Engineering',
+    summary: 'A practical treatment of the Navier-Stokes foundation, modeling workflow, and aerospace applications of CFD.',
+    href: '/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/',
+  },
+  {
+    type: 'Research note',
+    title: 'Deciphering the Thunderous Echoes of Rocketry',
+    summary: 'An examination of rocket-launch acoustics and what measured acoustic environments mean for vehicle, facility, and payload design.',
+    href: '/2023/12/18/deciphering-the-thunderous-echoes-of-rocketry-a-study-in-acoustic-dynamics/',
+  },
+] as const;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#f2f0eb" />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        let saved = null;
+        try {
+          saved = localStorage.getItem('alex-theme');
+        } catch {}
+        root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : system;
+      })();
+    </script>
+    <title>Alex Blythe — Aerospace Engineering &amp; Research</title>
+    <meta name="description" content="Alex Blythe works across propulsion hardware, space systems, engineering analysis, test, verification, technical software, and independent research." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://alex-blythe.com/" />
+    <link rel="icon" type="image/jpeg" href="/alex-blythe-headshot.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Alex Blythe — Aerospace Engineering &amp; Research" />
+    <meta property="og:description" content="Aerospace hardware, space systems, and the research behind them." />
+    <meta property="og:url" content="https://alex-blythe.com/" />
+    <meta property="og:image" content="https://alex-blythe.com/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Alex Blythe home">
+          <span class="brand-mark" aria-hidden="true">AB</span>
+          <span>Alex Blythe</span>
+        </a>
+        <span class="brand-context">Aerospace engineering / research</span>
+        <nav aria-label="Primary navigation">
+          <a href="#engineering">Engineering</a>
+          <a href="#research">Research</a>
+          <a href="#road-to-type-2">Road to Type 2</a>
+          <a href="#resume">Resume</a>
+        </nav>
+        <a class="header-link" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-text">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Aerospace / mechanical engineering</p>
+            <h1>Aerospace hardware, space systems, and the research behind them.</h1>
+            <p class="hero-lede">Alex Blythe works across propulsion hardware, thermal and fluid analysis, test, verification, technical software, and independent research.</p>
+            <div class="hero-actions">
+              <a class="button button-dark" href="#engineering">Explore the work <span aria-hidden="true">↓</span></a>
+              <a class="text-link" href="#road-to-type-2">Read the research direction <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <aside class="hero-rail" aria-label="Current focus">
+            <div class="rail-profile">
+              <img src="/alex-blythe-headshot.jpg" alt="Alex Blythe" width="78" height="78" loading="eager" decoding="async" />
+              <div>
+                <div class="rail-label">Current role</div>
+                <p class="rail-title">{currentFocus.role}</p>
+                <p class="rail-org">{currentFocus.organization}</p>
+              </div>
+            </div>
+            <div class="rail-rule"></div>
+            <dl class="rail-list">
+              <div><dt>Domains</dt><dd>Space systems<br />Propulsion hardware<br />Independent research</dd></div>
+              <div><dt>Approach</dt><dd>Design → analysis → test → verification</dd></div>
+            </dl>
+          </aside>
+        </div>
+        <div class="hero-foot">
+          <span>01 — Overview</span>
+          <span>Selected work, research, and writing</span>
+          <span class="hero-foot-arrow" aria-hidden="true">↓</span>
+        </div>
+      </section>
+
+      <section class="signal-strip" aria-label="Professional focus areas">
+        <div><span class="signal-index">01</span><strong>Design & analysis</strong><small>Thermal, fluid, structural</small></div>
+        <div><span class="signal-index">02</span><strong>Test & verification</strong><small>Instrumentation, readiness, evidence</small></div>
+        <div><span class="signal-index">03</span><strong>Research & writing</strong><small>Independent technical work</small></div>
+      </section>
+
+      <section class="section" id="engineering">
+        <div class="section-intro">
+          <div><p class="eyebrow">02 — Engineering</p><h2>Propulsion, thermal analysis, and test across the engineering lifecycle.</h2></div>
+          <p>Alex's work spans mechanical and structural analysis, propulsion hardware, aeroheating and thermal-load modeling, CFD, instrumentation, test readiness, configuration control, and technical tool development.</p>
+        </div>
+        <div class="work-list">
+          {selectedExperience.map((entry, index) => (
+            <article class="work-row">
+              <div class="work-number">0{index + 1}</div>
+              <div class="work-main">
+                <p class="work-kicker">{entry.period}</p>
+                <h3>{entry.role}</h3>
+                <p class="work-org">{entry.organization}</p>
+                <p class="work-detail">{entry.detail}</p>
+              </div>
+              <div class="work-side"><span>{workLabels[index]}</span><span class="arrow" aria-hidden="true">↗</span></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section section-dark" id="research">
+        <div class="section-intro section-intro-dark">
+          <div><p class="eyebrow">03 — Research</p><h2>Independent aerospace research with technical notes alongside it.</h2></div>
+          <p>Aerospace research anchors this work, from theoretical propulsion and launch environments to CFD and analytical methods. Notes on AI systems remain a separate technical stream.</p>
+        </div>
+        <div class="research-grid">
+          <article class="research-feature">
+            <div class="feature-top"><span>Independent paper</span><span>Space propulsion</span></div>
+            <h3><a href="/research/bifrost-drive.pdf">Bifrost Drive <span aria-hidden="true">↗</span></a></h3>
+            <p>A theoretical propulsion study examining whether energy collected by a Dyson swarm could power a directed laser system to accelerate a solar sail to relativistic velocities.</p>
+            <p class="feature-support">The work focuses on mathematical modeling and the mission implications of interstellar propulsion.</p>
+            <div class="feature-footer"><span>Independent research</span><span>Theoretical propulsion</span></div>
+          </article>
+          <div class="research-list research-primary-list">
+            {aerospaceResearch.map((entry) => (
+              <article class="research-row">
+                <div><span class="research-type">{entry.type}</span><h3><a href={entry.href}>{entry.title}</a></h3><p class="research-summary">{entry.summary}</p></div>
+                <div class="research-meta"><span>Aerospace</span><span aria-hidden="true">↗</span></div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div class="secondary-research">
+          <div><span class="secondary-label">Secondary technical notes</span><p>Shorter notes on AI systems, OCR, verification, and local tooling sit alongside the primary aerospace research.</p></div>
+          <div class="research-list">
+            {researchEntries.map((entry) => (
+              <article class="research-row">
+                <div><span class="research-type">{entry.data.type}</span><h3>{entry.data.title}</h3></div>
+                <div class="research-meta"><span>{entry.data.draft ? 'Draft' : 'Published'}</span><span>{entry.data.readingTime}</span><span aria-hidden="true">↗</span></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section type-section" id="road-to-type-2">
+        <div class="type-grid">
+          <div class="type-index"><span>04</span><span>Flagship research</span></div>
+          <div class="type-copy">
+            <p class="eyebrow">Road to Type 2</p>
+            <h2>An engineering examination of humanity's path toward a Kardashev Type II civilization.</h2>
+            <p class="type-lede"><em>Road to Type 2</em> explores the propulsion, energy, space infrastructure, resource utilization, settlement, and industrial capabilities required to expand human civilization through the Solar System and ultimately harness energy on a stellar scale.</p>
+            <div class="type-meta"><div><span>Status</span><strong>In development</strong></div><div><span>Scope</span><strong>Solar System to stellar scale</strong></div><div><span>Format</span><strong>Manuscript + research notes</strong></div></div>
+            <a class="button button-dark" href="#research">Read related research <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="type-diagram" aria-label="Road to Type 2 research structure">
+            <div class="diagram-line"></div>
+            <div class="diagram-node"><span>01</span><strong>Thesis</strong><small>Kardashev Type II</small></div>
+            <div class="diagram-node"><span>02</span><strong>Systems</strong><small>Propulsion / energy</small></div>
+            <div class="diagram-node"><span>03</span><strong>Scope</strong><small>Solar System → stellar scale</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section resume-section" id="resume">
+        <div class="section-intro">
+          <div><p class="eyebrow">05 — Resume</p><h2>Experience across analysis, test, hardware, and systems engineering.</h2></div>
+          <p>Work spanning propulsion hardware, environmental and dynamic testing, aeroheating and thermal analysis, CFD, modeling and simulation, instrumentation, verification, and technical software.</p>
+        </div>
+        <div class="resume-grid">
+          <div><span class="resume-label">Education</span>{resume.education.map((item) => <p><strong>{item.degree}</strong><br /><span>{item.school} · {item.date}</span></p>)}</div>
+          <div><span class="resume-label">Technical domains</span><div class="skill-list">{resume.skills.slice(0, 6).map((skill) => <span>{skill}</span>)}</div></div>
+          <div><span class="resume-label">Experience</span><p><strong>Analysis, test, and hardware engineering</strong><br /><span>Propulsion, thermal/fluid systems, environmental testing, modeling, verification, and technical workflow design</span></p></div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div><p class="eyebrow">06 — Contact</p><h2>Interested in the research? Get in touch.</h2></div>
+        <div class="contact-side"><p>I welcome conversations about aerospace engineering, propulsion, space systems, and independent research.</p><a class="button button-light" href="mailto:blythe.ar@gmail.com?subject=Alex%20Blythe%20research">Email Alex <span aria-hidden="true">↗</span></a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>Alex Blythe / Aerospace engineering & research</span><span>Space systems · Propulsion · Independent research</span></footer>
+    <script is:inline>
+      (() => {
+        const key = 'alex-theme';
+        const root = document.documentElement;
+        const toggle = document.querySelector('[data-theme-toggle]');
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const systemTheme = () => (media.matches ? 'dark' : 'light');
+        const savedTheme = () => {
+          try {
+            const saved = localStorage.getItem(key);
+            return saved === 'dark' || saved === 'light' ? saved : null;
+          } catch {
+            return null;
+          }
+        };
+        const applyTheme = (theme) => {
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme;
+          const meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#14191B' : '#f2f0eb');
+          if (!toggle) return;
+          const dark = theme === 'dark';
+          toggle.setAttribute('aria-pressed', String(dark));
+          toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+          const icon = toggle.querySelector('.theme-toggle-icon');
+          const label = toggle.querySelector('.theme-toggle-text');
+          if (icon) icon.textContent = dark ? '☼' : '☾';
+          if (label) label.textContent = dark ? 'Light' : 'Dark';
+        };
+        applyTheme(root.dataset.theme || savedTheme() || systemTheme());
+        toggle?.addEventListener('click', () => {
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          try { localStorage.setItem(key, next); } catch {}
+          applyTheme(next);
+        });
+        const onSystemChange = () => {
+          if (!savedTheme()) applyTheme(systemTheme());
+        };
+        if (media.addEventListener) media.addEventListener('change', onSystemChange);
+        else media.addListener(onSystemChange);
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { overflow-x: hidden; scroll-behavior: smooth; background: var(--theme-page); }
+  :global(body) { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--theme-page); color: var(--theme-text); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  :global(a) { color: inherit; text-decoration: none; }
+  :global(:focus-visible) { outline: 2px solid #c45932; outline-offset: 4px; }
+  .skip-link { position: fixed; top: 12px; left: 12px; z-index: 20; padding: 8px 12px; transform: translateY(-160%); background: #1a252a; color: #fff; font-size: .8rem; }
+  .skip-link:focus { transform: none; }
+  .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(26, 37, 42, .14); background: rgba(242, 240, 235, .92); backdrop-filter: blur(16px); }
+  .header-inner { width: min(1180px, calc(100% - 48px)); min-height: 76px; display: flex; align-items: center; gap: 24px; margin-inline: auto; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; font-size: .96rem; font-weight: 750; letter-spacing: -.02em; white-space: nowrap; }
+  .brand-mark { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid #1a252a; border-radius: 50%; color: #1a252a; font-family: Georgia, serif; font-size: .66rem; }
+  .brand-context { color: #6c7475; font-family: "SFMono-Regular", Consolas, monospace; font-size: .64rem; letter-spacing: .07em; text-transform: uppercase; }
+  nav { display: flex; gap: 22px; margin-left: auto; }
+  nav a, .header-link { color: #596466; font-size: .78rem; }
+  nav a:hover, .header-link:hover { color: #c45932; }
+  .header-link { color: #1a252a; font-weight: 700; }
+  .hero { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: clamp(42px, 5vw, 72px) 0 24px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: clamp(48px, 7vw, 96px); align-items: start; }
+  .eyebrow, .rail-label, .work-kicker, .research-type, .resume-label { margin: 0 0 16px; color: #c45932; font-family: "SFMono-Regular", Consolas, monospace; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  h1, h2, h3, p { margin: 0; }
+  h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.04em; }
+  h1 { max-width: 800px; font-size: clamp(2.75rem, 5vw, 4.75rem); line-height: .98; }
+  .hero-lede { max-width: 610px; margin-top: 30px; color: #4f5b5d; font-size: clamp(1.08rem, 1.6vw, 1.3rem); line-height: 1.55; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 38px; }
+  .button { display: inline-flex; min-height: 45px; align-items: center; justify-content: center; gap: 18px; padding: 0 17px; border: 1px solid transparent; font-size: .76rem; font-weight: 750; letter-spacing: .02em; transition: transform .18s ease, background .18s ease; }
+  .button:hover { transform: translateY(-2px); }
+  .button-dark { background: #1a252a; color: #f2f0eb; }
+  .button-light { background: #f2f0eb; color: #1a252a; }
+  .text-link { color: #c45932; font-size: .78rem; font-weight: 750; }
+  .text-link:hover { color: #8d3d20; }
+  .hero-rail { align-self: start; margin-top: clamp(24px, 4vw, 56px); border-top: 1px solid #aeb4b0; }
+  .rail-profile { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 14px; align-items: center; padding: 16px 0 18px; }
+  .rail-profile img { display: block; width: 78px; height: 78px; border: 1px solid #aeb4b0; border-radius: 4px; object-fit: cover; }
+  .rail-label { margin-top: 0; color: #6c7475; }
+  .rail-title { font-family: Georgia, serif; font-size: 1.28rem; line-height: 1.15; }
+  .rail-org { margin-top: 7px; color: #6c7475; font-size: .82rem; }
+  .rail-rule { height: 1px; margin: 26px 0 18px; background: #d1d3cd; }
+  .rail-list { margin: 0; }
+  .rail-list div { display: grid; grid-template-columns: 72px 1fr; gap: 10px; padding: 11px 0; border-bottom: 1px solid #d1d3cd; font-size: .74rem; }
+  .rail-list dt { color: #7a8282; font-family: "SFMono-Regular", Consolas, monospace; font-size: .63rem; text-transform: uppercase; }
+  .rail-list dd { margin: 0; color: #354144; }
+  .hero-foot { display: grid; grid-template-columns: 1fr 1fr auto; gap: 24px; margin-top: clamp(48px, 6vw, 72px); padding-top: 16px; border-top: 1px solid #aeb4b0; color: #7a8282; font-family: "SFMono-Regular", Consolas, monospace; font-size: .64rem; letter-spacing: .04em; text-transform: uppercase; }
+  .hero-foot-arrow { color: #c45932; font-size: 1rem; text-align: right; }
+  .signal-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid #d1d3cd; background: #e9e7e1; }
+  .signal-strip > div { display: grid; grid-template-columns: 38px 1fr; gap: 8px 14px; padding: 28px max(24px, calc((100vw - 1180px) / 2)); }
+  .signal-strip > div + div { border-left: 1px solid #d1d3cd; }
+  .signal-index { grid-row: span 2; color: #c45932; font-family: "SFMono-Regular", Consolas, monospace; font-size: .68rem; }
+  .signal-strip strong { font-size: .82rem; }
+  .signal-strip small { color: #687274; font-size: .72rem; }
+  .section { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: clamp(92px, 12vw, 160px) 0; }
+  .section-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .55fr); gap: 50px; align-items: end; margin-bottom: 54px; }
+  h2 { max-width: 780px; font-size: clamp(2.4rem, 5vw, 5.2rem); line-height: .98; }
+  .section-intro > p { max-width: 380px; color: #657072; font-size: .95rem; }
+  .work-list { border-top: 1px solid #aeb4b0; }
+  .work-row { display: grid; grid-template-columns: 68px minmax(0, 1fr) 150px; gap: 24px; padding: 27px 0; border-bottom: 1px solid #d1d3cd; }
+  .work-number { color: #c45932; font-family: "SFMono-Regular", Consolas, monospace; font-size: .68rem; }
+  .work-kicker { margin-bottom: 9px; color: #7a8282; }
+  .work-main h3 { font-family: Georgia, serif; font-size: clamp(1.38rem, 2.5vw, 2.1rem); font-weight: 400; letter-spacing: -.025em; }
+  .work-org { margin-top: 5px; color: #c45932; font-size: .78rem; }
+  .work-detail { max-width: 630px; margin-top: 13px; color: #657072; font-size: .86rem; }
+  .work-side { display: flex; justify-content: space-between; align-items: start; color: #7a8282; font-family: "SFMono-Regular", Consolas, monospace; font-size: .65rem; text-transform: uppercase; }
+  .work-side .arrow { color: #c45932; font-size: 1rem; }
+  .content-note { max-width: 650px; margin-top: 24px; color: #7a8282; font-size: .76rem; }
+  .section-dark { width: 100%; padding-inline: max(24px, calc((100vw - 1180px) / 2)); background: #1a252a; color: #eef0ea; }
+  .section-intro-dark { width: min(1180px, 100%); margin-inline: auto; }
+  .section-dark .section-intro > p { color: #b4bfbc; }
+  .section-dark .eyebrow { color: #df835d; }
+  .research-grid { width: min(1180px, 100%); display: grid; grid-template-columns: 1.08fr 1fr; gap: 12px; margin: 0 auto; }
+  .research-feature { display: flex; min-height: 360px; flex-direction: column; padding: clamp(28px, 4vw, 48px); background: #c45932; color: #fff8f1; }
+  .feature-top { display: flex; justify-content: space-between; color: #f9c9b1; font-family: "SFMono-Regular", Consolas, monospace; font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; }
+  .research-feature h3 { max-width: 430px; margin-top: auto; font-family: Georgia, serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 400; letter-spacing: -.05em; line-height: .9; }
+  .research-feature h3 a:hover { color: #ffe3d5; }
+  .research-feature h3 a span { font-family: "SFMono-Regular", Consolas, monospace; font-size: .3em; letter-spacing: 0; vertical-align: middle; }
+  .research-feature > p { max-width: 430px; margin-top: 20px; color: #ffe3d5; font-size: .9rem; }
+  .research-feature > .feature-support { margin-top: 12px; color: #f9c9b1; font-size: .78rem; }
+  .feature-footer { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-top: 34px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.32); color: #f9c9b1; font-family: "SFMono-Regular", Consolas, monospace; font-size: .63rem; text-transform: uppercase; }
+  .feature-footer a { color: #fff8f1; }
+  .research-list { border-top: 1px solid #536064; }
+  .research-row { display: flex; min-height: 120px; flex-direction: column; justify-content: space-between; gap: 17px; padding: 20px 0; border-bottom: 1px solid #536064; }
+  .research-type { margin: 0 0 8px; color: #df835d; font-size: .62rem; }
+  .research-row h3 { max-width: 480px; font-family: Georgia, serif; font-size: 1.38rem; font-weight: 400; line-height: 1.1; }
+  .research-row h3 a:hover { color: #df835d; }
+  .research-summary { max-width: 500px; margin-top: 10px; color: #b4bfbc; font-size: .78rem; }
+  .research-meta { display: flex; gap: 18px; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; text-transform: uppercase; }
+  .research-meta span:last-child { margin-left: auto; color: #df835d; font-size: .95rem; }
+  .secondary-research { width: min(1180px, 100%); display: grid; grid-template-columns: minmax(220px, .7fr) 1fr; gap: 42px; margin: 58px auto 0; padding-top: 26px; border-top: 1px solid #536064; }
+  .secondary-label { display: block; margin-bottom: 12px; color: #df835d; font-family: "SFMono-Regular", Consolas, monospace; font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .secondary-research > div:first-child p { max-width: 300px; color: #9daaa6; font-size: .82rem; }
+  .type-section { width: 100%; background: #d8ded8; }
+  .type-grid { width: min(1180px, calc(100% - 48px)); display: grid; grid-template-columns: 110px minmax(0, 1fr) 260px; gap: 42px; margin: 0 auto; }
+  .type-index { display: flex; flex-direction: column; justify-content: space-between; color: #667171; font-family: "SFMono-Regular", Consolas, monospace; font-size: .65rem; letter-spacing: .07em; text-transform: uppercase; }
+  .type-index span:first-child { color: #c45932; font-size: 1.1rem; }
+  .type-copy h2 { max-width: 690px; }
+  .type-lede { max-width: 600px; margin-top: 24px; color: #516062; font-size: 1.04rem; }
+  .type-meta { display: flex; flex-wrap: wrap; gap: 30px; margin: 34px 0; }
+  .type-meta div { display: grid; gap: 4px; }
+  .type-meta span { color: #727e7e; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; text-transform: uppercase; }
+  .type-meta strong { font-size: .78rem; }
+  .type-diagram { position: relative; display: grid; align-content: center; gap: 35px; }
+  .diagram-line { position: absolute; top: 30px; bottom: 30px; left: 16px; width: 1px; background: #aeb8ae; }
+  .diagram-node { position: relative; display: grid; grid-template-columns: 32px 1fr; gap: 0 14px; align-items: center; }
+  .diagram-node > span { z-index: 1; display: grid; width: 32px; height: 32px; place-items: center; border: 1px solid #c45932; border-radius: 50%; background: #d8ded8; color: #c45932; font-family: "SFMono-Regular", Consolas, monospace; font-size: .63rem; }
+  .diagram-node strong { font-family: Georgia, serif; font-size: 1.08rem; font-weight: 400; }
+  .diagram-node small { grid-column: 2; color: #667171; font-size: .7rem; }
+  .resume-grid { display: grid; grid-template-columns: 1.1fr 1fr .8fr; gap: 22px; border-top: 1px solid #aeb4b0; }
+  .resume-grid > div { min-height: 170px; padding: 22px 0; border-bottom: 1px solid #d1d3cd; }
+  .resume-label { display: block; margin-bottom: 22px; color: #7a8282; }
+  .resume-grid p { color: #657072; font-size: .83rem; }
+  .resume-grid p + p { margin-top: 17px; }
+  .resume-grid strong { color: #1a252a; font-size: .86rem; }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-list span { padding: 7px 9px; border: 1px solid #aeb4b0; color: #516062; font-family: "SFMono-Regular", Consolas, monospace; font-size: .63rem; }
+  .contact-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .48fr); gap: 50px; padding: clamp(70px, 10vw, 120px) max(24px, calc((100vw - 1180px) / 2)); background: #c45932; color: #fff8f1; }
+  .contact-section .eyebrow { color: #f9c9b1; }
+  .contact-section h2 { max-width: 740px; font-size: clamp(2.5rem, 5vw, 5.3rem); }
+  .contact-side { display: flex; flex-direction: column; justify-content: space-between; align-items: start; gap: 35px; color: #ffe3d5; font-size: .9rem; }
+  .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px max(24px, calc((100vw - 1180px) / 2)); background: #1a252a; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
+  @media (max-width: 1100px) {
+    .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: clamp(40px, 5vw, 64px); }
+    h1 { font-size: clamp(2.75rem, 5.5vw, 4.25rem); }
+  }
+  @media (max-width: 860px) {
+    .brand-context, .header-link { display: none; }
+    nav { gap: 14px; }
+    .hero-grid, .section-intro, .research-grid, .type-grid, .contact-section, .secondary-research { grid-template-columns: 1fr; }
+    .hero-grid { gap: 36px; }
+    h1 { font-size: clamp(2.75rem, 7vw, 3.5rem); }
+    .hero-rail { max-width: 500px; margin-top: 0; }
+    .hero-foot { margin-top: 48px; }
+    .type-diagram { max-width: 360px; margin-top: 10px; }
+    .signal-strip > div { padding-inline: 24px; }
+  }
+  @media (max-width: 620px) {
+    .header-inner, .hero, .section, .type-grid { width: min(100% - 32px, 1180px); }
+    .hero { padding: clamp(34px, 10vw, 52px) 0 20px; }
+    .hero-grid { gap: 28px; }
+    .site-header nav { overflow-x: auto; max-width: 62vw; padding-bottom: 2px; }
+    nav a { white-space: nowrap; font-size: .7rem; }
+    h1 { font-size: clamp(2.375rem, 12vw, 3.25rem); line-height: 1; }
+    .hero-lede { margin-top: 22px; }
+    .hero-actions { margin-top: 28px; }
+    .rail-profile { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
+    .rail-profile img { width: 72px; height: 72px; }
+    .hero-foot { grid-template-columns: 1fr auto; margin-top: 40px; }
+    .hero-foot span:nth-child(2) { display: none; }
+    .signal-strip { grid-template-columns: 1fr; }
+    .signal-strip > div { grid-template-columns: 38px 1fr; padding: 19px 16px; }
+    .signal-strip > div + div { border-top: 1px solid #d1d3cd; border-left: 0; }
+    .work-row { grid-template-columns: 32px 1fr; gap: 12px; }
+    .work-side { grid-column: 2; }
+    .feature-footer { align-items: start; flex-direction: column; }
+    .secondary-research { grid-template-columns: 1fr; gap: 28px; }
+    .type-meta { gap: 18px; }
+    .resume-grid { grid-template-columns: 1fr; }
+    .site-footer { align-items: start; flex-direction: column; }
+  }
+
+  /* Theme tokens keep the approved light design intact while adding a restrained dark edition. */
+  :global(:root) {
+    --theme-page: #f2f0eb;
+    --theme-surface: #e9e7e1;
+    --theme-surface-alt: #d8ded8;
+    --theme-text: #1a252a;
+    --theme-muted: #657072;
+    --theme-faint: #7a8282;
+    --theme-border: #aeb4b0;
+    --theme-border-subtle: #d1d3cd;
+    --theme-research: #1a252a;
+    --theme-research-text: #eef0ea;
+    --theme-accent: #c45932;
+    --theme-accent-surface: #c45932;
+    --theme-accent-hover: #8d3d20;
+    --theme-on-accent: #fff8f1;
+    --theme-on-accent-soft: #ffe3d5;
+    --theme-control-bg: rgba(242, 240, 235, .86);
+  }
+  :global(html[data-theme='dark']) {
+    color-scheme: dark;
+    --theme-page: #14191b;
+    --theme-surface: #1c2427;
+    --theme-surface-alt: #202a2b;
+    --theme-text: #eae7df;
+    --theme-muted: #aeb8b7;
+    --theme-faint: #909b99;
+    --theme-border: #465256;
+    --theme-border-subtle: #303b3f;
+    --theme-research: #0e1416;
+    --theme-research-text: #eae7df;
+    --theme-accent: #df7955;
+    --theme-accent-surface: #a03f24;
+    --theme-accent-hover: #f0a080;
+    --theme-on-accent: #fff3e9;
+    --theme-on-accent-soft: #ffd0bc;
+    --theme-control-bg: rgba(20, 25, 27, .9);
+  }
+  .theme-toggle {
+    display: inline-flex;
+    min-height: 32px;
+    align-items: center;
+    gap: 7px;
+    padding: 0 9px;
+    border: 1px solid #aeb4b0;
+    border-radius: 999px;
+    background: rgba(242, 240, 235, .55);
+    color: #596466;
+    cursor: pointer;
+    font: inherit;
+    font-size: .68rem;
+    letter-spacing: .04em;
+  }
+  .theme-toggle:hover { border-color: #c45932; color: #c45932; }
+  .theme-toggle:focus-visible { outline: 2px solid #c45932; outline-offset: 3px; }
+  .theme-toggle-icon { font-size: 1rem; line-height: 1; }
+  :global(html[data-theme='dark'] body) { background: var(--theme-page); color: var(--theme-text); }
+  :global(html[data-theme='dark']) .site-header { border-bottom-color: var(--theme-border-subtle); background: rgba(20, 25, 27, .92); }
+  :global(html[data-theme='dark']) .brand-mark { border-color: var(--theme-text); color: var(--theme-text); }
+  :global(html[data-theme='dark']) .brand-context,
+  :global(html[data-theme='dark']) nav a,
+  :global(html[data-theme='dark']) .rail-label,
+  :global(html[data-theme='dark']) .rail-org,
+  :global(html[data-theme='dark']) .work-kicker,
+  :global(html[data-theme='dark']) .work-side,
+  :global(html[data-theme='dark']) .hero-foot,
+  :global(html[data-theme='dark']) .section-intro > p,
+  :global(html[data-theme='dark']) .resume-grid p { color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .brand,
+  :global(html[data-theme='dark']) h1,
+  :global(html[data-theme='dark']) h2,
+  :global(html[data-theme='dark']) h3,
+  :global(html[data-theme='dark']) .rail-title,
+  :global(html[data-theme='dark']) .signal-strip strong,
+  :global(html[data-theme='dark']) .resume-grid strong { color: var(--theme-text); }
+  :global(html[data-theme='dark']) .header-link { color: var(--theme-text); }
+  :global(html[data-theme='dark']) .header-link:hover,
+  :global(html[data-theme='dark']) nav a:hover { color: var(--theme-accent); }
+  :global(html[data-theme='dark']) .hero-lede,
+  :global(html[data-theme='dark']) .rail-list dd,
+  :global(html[data-theme='dark']) .work-detail,
+  :global(html[data-theme='dark']) .content-note,
+  :global(html[data-theme='dark']) .resume-grid p,
+  :global(html[data-theme='dark']) .type-lede { color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .eyebrow,
+  :global(html[data-theme='dark']) .text-link,
+  :global(html[data-theme='dark']) .work-number,
+  :global(html[data-theme='dark']) .work-org,
+  :global(html[data-theme='dark']) .hero-foot-arrow,
+  :global(html[data-theme='dark']) .signal-index,
+  :global(html[data-theme='dark']) .work-side .arrow,
+  :global(html[data-theme='dark']) .type-index span:first-child,
+  :global(html[data-theme='dark']) .type-meta span,
+  :global(html[data-theme='dark']) .resume-label { color: var(--theme-accent); }
+  :global(html[data-theme='dark']) .text-link:hover { color: var(--theme-accent-hover); }
+  :global(html[data-theme='dark']) .hero-rail,
+  :global(html[data-theme='dark']) .hero-foot,
+  :global(html[data-theme='dark']) .work-list,
+  :global(html[data-theme='dark']) .resume-grid,
+  :global(html[data-theme='dark']) .rail-profile img { border-color: var(--theme-border); }
+  :global(html[data-theme='dark']) .rail-rule,
+  :global(html[data-theme='dark']) .rail-list div,
+  :global(html[data-theme='dark']) .work-row,
+  :global(html[data-theme='dark']) .resume-grid > div { border-color: var(--theme-border-subtle); }
+  :global(html[data-theme='dark']) .signal-strip { border-color: var(--theme-border-subtle); background: var(--theme-surface); }
+  :global(html[data-theme='dark']) .signal-strip > div + div { border-color: var(--theme-border-subtle); }
+  :global(html[data-theme='dark']) .signal-strip small { color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .button-dark { background: var(--theme-text); color: var(--theme-page); }
+  :global(html[data-theme='dark']) .button-light { background: var(--theme-page); color: var(--theme-text); }
+  :global(html[data-theme='dark']) .section-dark { border-block: 1px solid var(--theme-border-subtle); background: var(--theme-research); color: var(--theme-research-text); }
+  :global(html[data-theme='dark']) .section-dark .section-intro > p,
+  :global(html[data-theme='dark']) .research-summary { color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .research-list,
+  :global(html[data-theme='dark']) .research-row,
+  :global(html[data-theme='dark']) .secondary-research { border-color: var(--theme-border); }
+  :global(html[data-theme='dark']) .research-type,
+  :global(html[data-theme='dark']) .research-meta span:last-child,
+  :global(html[data-theme='dark']) .secondary-label { color: var(--theme-accent); }
+  :global(html[data-theme='dark']) .research-meta,
+  :global(html[data-theme='dark']) .secondary-research > div:first-child p { color: var(--theme-faint); }
+  :global(html[data-theme='dark']) .research-row h3 a:hover { color: var(--theme-accent-hover); }
+  :global(html[data-theme='dark']) .type-section { background: var(--theme-surface-alt); }
+  :global(html[data-theme='dark']) .type-index,
+  :global(html[data-theme='dark']) .diagram-node small { color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .diagram-line { background: var(--theme-border); }
+  :global(html[data-theme='dark']) .diagram-node > span { border-color: var(--theme-accent); background: var(--theme-surface-alt); color: var(--theme-accent); }
+  :global(html[data-theme='dark']) .skill-list span { border-color: var(--theme-border); color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .contact-section,
+  :global(html[data-theme='dark']) .research-feature { background: var(--theme-accent-surface); color: var(--theme-on-accent); }
+  :global(html[data-theme='dark']) .contact-section .eyebrow,
+  :global(html[data-theme='dark']) .contact-side,
+  :global(html[data-theme='dark']) .research-feature > p { color: var(--theme-on-accent-soft); }
+  :global(html[data-theme='dark']) .feature-top,
+  :global(html[data-theme='dark']) .feature-footer,
+  :global(html[data-theme='dark']) .research-feature > .feature-support { color: var(--theme-on-accent-soft); }
+  :global(html[data-theme='dark']) .research-feature h3 a:hover { color: var(--theme-on-accent); }
+  :global(html[data-theme='dark']) .site-footer { background: var(--theme-research); color: var(--theme-faint); }
+  :global(html[data-theme='dark']) .theme-toggle { border-color: var(--theme-border); background: var(--theme-control-bg); color: var(--theme-muted); }
+  :global(html[data-theme='dark']) .theme-toggle:hover { border-color: var(--theme-accent); color: var(--theme-accent-hover); }
+  @media (max-width: 860px) {
+    .theme-toggle { margin-left: auto; }
+  }
+  @media (max-width: 620px) {
+    .header-inner { min-height: 0; flex-wrap: wrap; gap: 10px; padding: 12px 0 10px; }
+    .site-header nav { order: 3; width: 100%; max-width: none; justify-content: space-between; gap: 10px; margin-left: 0; overflow: visible; }
+    .theme-toggle { width: 32px; flex: 0 0 32px; justify-content: center; padding: 0; }
+    .theme-toggle-text { display: none; }
+  }
+</style>

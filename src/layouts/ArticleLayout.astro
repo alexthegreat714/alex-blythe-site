@@ -1,0 +1,133 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  canonicalPath: string;
+}
+
+const { title, description, date, category, canonicalPath } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#f2f0eb" />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        let saved = null;
+        try { saved = localStorage.getItem('alex-theme'); } catch {}
+        root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : system;
+      })();
+    </script>
+    <title>{title} — Alex Blythe</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/jpeg" href="/alex-blythe-headshot.jpg" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={`${title} — Alex Blythe`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://alex-blythe.com/og.jpg" />
+  </head>
+  <body>
+    <a class="skip-link" href="#article">Skip to article</a>
+    <header>
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Alex Blythe home"><span class="mark" aria-hidden="true">AB</span><span>Alex Blythe</span></a>
+        <nav aria-label="Primary navigation">
+          <a href="/#engineering">Engineering</a>
+          <a href="/#research">Research</a>
+          <a href="/#road-to-type-2">Road to Type 2</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"><span aria-hidden="true">☾</span></button>
+      </div>
+    </header>
+    <main id="article">
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">{category}</p>
+          <h1>{title}</h1>
+          <p class="date">{date}</p>
+          <p class="description">{description}</p>
+        </header>
+        <div class="article-body"><slot /></div>
+        <footer class="article-footer"><a href="/#research">← Back to research</a></footer>
+      </article>
+    </main>
+    <footer class="site-footer"><span>Alex Blythe / Aerospace engineering &amp; research</span><span>Space systems · Propulsion · Independent research</span></footer>
+    <script is:inline>
+      (() => {
+        const key = 'alex-theme';
+        const root = document.documentElement;
+        const toggle = document.querySelector('[data-theme-toggle]');
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const saved = () => { try { const value = localStorage.getItem(key); return value === 'dark' || value === 'light' ? value : null; } catch { return null; } };
+        const apply = (theme) => {
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme;
+          const dark = theme === 'dark';
+          const meta = document.querySelector('meta[name="theme-color"]');
+          meta?.setAttribute('content', dark ? '#14191b' : '#f2f0eb');
+          toggle?.setAttribute('aria-pressed', String(dark));
+          toggle?.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+          if (toggle) toggle.firstElementChild.textContent = dark ? '☼' : '☾';
+        };
+        apply(root.dataset.theme || saved() || (media.matches ? 'dark' : 'light'));
+        toggle?.addEventListener('click', () => { const next = root.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem(key, next); } catch {} apply(next); });
+        const followSystem = () => { if (!saved()) apply(media.matches ? 'dark' : 'light'); };
+        media.addEventListener?.('change', followSystem);
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(:root) { --page: #f2f0eb; --surface: #e9e7e1; --text: #1a252a; --muted: #657072; --border: #aeb4b0; --subtle: #d1d3cd; --accent: #c45932; }
+  :global(html[data-theme='dark']) { color-scheme: dark; --page: #14191b; --surface: #1c2427; --text: #eae7df; --muted: #aeb8b7; --border: #465256; --subtle: #303b3f; --accent: #df7955; }
+  :global(*) { box-sizing: border-box; }
+  :global(html) { overflow-x: hidden; background: var(--page); scroll-behavior: smooth; }
+  :global(body) { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--page); color: var(--text); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  :global(a) { color: inherit; text-decoration: none; }
+  :global(:focus-visible) { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .skip-link { position: fixed; top: 12px; left: 12px; z-index: 20; padding: 8px 12px; transform: translateY(-160%); background: var(--text); color: var(--page); font-size: .8rem; }
+  .skip-link:focus { transform: none; }
+  body > header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--subtle); background: color-mix(in srgb, var(--page) 92%, transparent); backdrop-filter: blur(16px); }
+  .header-inner { width: min(1060px, calc(100% - 48px)); min-height: 76px; display: flex; align-items: center; gap: 24px; margin: auto; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; font-size: .96rem; font-weight: 750; white-space: nowrap; }
+  .mark { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid var(--text); border-radius: 50%; font-family: Georgia, serif; font-size: .66rem; }
+  nav { display: flex; gap: 22px; margin-left: auto; }
+  nav a { color: var(--muted); font-size: .78rem; }
+  nav a:hover { color: var(--accent); }
+  .theme-toggle { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
+  main { width: min(760px, calc(100% - 48px)); margin: auto; padding: clamp(68px, 9vw, 112px) 0; }
+  .article-header { padding-bottom: 38px; border-bottom: 1px solid var(--border); }
+  .eyebrow, .date { margin: 0; color: var(--accent); font-family: "SFMono-Regular", Consolas, monospace; font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  h1 { margin: 18px 0 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.55rem, 6vw, 5.1rem); font-weight: 400; letter-spacing: -.045em; line-height: .98; }
+  .date { margin-top: 24px; color: var(--muted); }
+  .description { max-width: 650px; margin: 22px 0 0; color: var(--muted); font-size: 1.08rem; }
+  .article-body { padding-top: 42px; }
+  :global(.article-body p), :global(.article-body ul) { margin: 0 0 1.25rem; }
+  :global(.article-body h2) { margin: 3.2rem 0 1rem; font-family: Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.08; }
+  :global(.article-body strong) { color: var(--text); }
+  :global(.article-body a) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  :global(.article-body li + li) { margin-top: .55rem; }
+  .article-footer { margin-top: 54px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--accent); font-weight: 700; }
+  .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px max(24px, calc((100vw - 1060px) / 2)); background: #1a252a; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
+  :global(html[data-theme='dark']) .site-footer { background: #0e1416; }
+  @media (max-width: 700px) {
+    .header-inner, main { width: calc(100% - 32px); }
+    .header-inner { gap: 12px; }
+    nav { max-width: calc(100vw - 138px); gap: 15px; overflow-x: auto; }
+    nav a { white-space: nowrap; font-size: .7rem; }
+    .site-footer { align-items: start; flex-direction: column; }
+  }
+</style>
