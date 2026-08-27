@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { resume } from '../data/resume';
+import { softwareProjects } from '../data/software';
 
 // Keep the small hero rail data-driven so a role or employer update stays local.
 const currentFocus = {
@@ -69,6 +70,7 @@ const aerospaceResearch = [
         <nav aria-label="Primary navigation">
           <a href="#engineering">Engineering</a>
           <a href="#research">Research</a>
+          <a href="/software/">Software &amp; Tools</a>
           <a href="#road-to-type-2">Road to Type 2</a>
           <a href="#resume">Resume</a>
         </nav>
@@ -169,17 +171,38 @@ const aerospaceResearch = [
           <div class="research-list">
             {researchEntries.map((entry) => (
               <article class="research-row">
-                <div><span class="research-type">{entry.data.type}</span><h3>{entry.data.title}</h3></div>
-                <div class="research-meta"><span>{entry.data.draft ? 'Draft' : 'Published'}</span><span>{entry.data.readingTime}</span><span aria-hidden="true">↗</span></div>
+                <div><span class="research-type">{entry.data.type}</span><h3>{entry.data.draft ? entry.data.title : <a href={`/research/${entry.id}/`}>{entry.data.title}</a>}</h3></div>
+                <div class="research-meta"><span>{entry.data.draft ? 'Draft' : 'Published'}</span><span>{entry.data.readingTime}</span><span aria-hidden="true">{entry.data.draft ? '—' : '↗'}</span></div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
+      <section class="section software-section" id="software">
+        <div class="section-intro">
+          <div><p class="eyebrow">04 — Software &amp; Tools</p><h2>Engineering software, local AI systems, and experimental tools.</h2></div>
+          <p>Independent software projects focused on engineering workflow, local AI, verification, and bounded automation.</p>
+        </div>
+        <div class="software-list">
+          {softwareProjects.map((project, index) => (
+            <article class="software-row">
+              <span class="software-number">0{index + 1}</span>
+              <div class="software-main">
+                <span class="software-meta">{project.category}</span>
+                <h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3>
+                <p>{project.summary}</p>
+              </div>
+              <div class="software-side"><span>{project.status}</span><span>{project.version ?? project.year}</span><a href={`/software/${project.slug}/`}>View project <span aria-hidden="true">→</span></a></div>
+            </article>
+          ))}
+        </div>
+        <div class="software-actions"><a class="button button-dark" href="/software/">View all software &amp; tools <span aria-hidden="true">→</span></a><span>Engineering reasoning · Repeatability · Verification</span></div>
+      </section>
+
       <section class="section type-section" id="road-to-type-2">
         <div class="type-grid">
-          <div class="type-index"><span>04</span><span>Flagship research</span></div>
+          <div class="type-index"><span>05</span><span>Flagship research</span></div>
           <div class="type-copy">
             <p class="eyebrow">Road to Type 2</p>
             <h2>An engineering examination of humanity's path toward a Kardashev Type II civilization.</h2>
@@ -198,7 +221,7 @@ const aerospaceResearch = [
 
       <section class="section resume-section" id="resume">
         <div class="section-intro">
-          <div><p class="eyebrow">05 — Resume</p><h2>Experience across analysis, test, hardware, and systems engineering.</h2></div>
+          <div><p class="eyebrow">06 — Resume</p><h2>Experience across analysis, test, hardware, and systems engineering.</h2></div>
           <p>Work spanning propulsion hardware, environmental and dynamic testing, aeroheating and thermal analysis, CFD, modeling and simulation, instrumentation, verification, and technical software.</p>
         </div>
         <div class="resume-grid">
@@ -209,7 +232,7 @@ const aerospaceResearch = [
       </section>
 
       <section class="contact-section" id="contact">
-        <div><p class="eyebrow">06 — Contact</p><h2>Interested in the research? Get in touch.</h2></div>
+        <div><p class="eyebrow">07 — Contact</p><h2>Interested in the research? Get in touch.</h2></div>
         <div class="contact-side"><p>I welcome conversations about aerospace engineering, propulsion, space systems, and independent research.</p><a class="button button-light" href="mailto:blythe.ar@gmail.com?subject=Alex%20Blythe%20research">Email Alex <span aria-hidden="true">↗</span></a></div>
       </section>
     </main>
@@ -349,6 +372,18 @@ const aerospaceResearch = [
   .secondary-research { width: min(1180px, 100%); display: grid; grid-template-columns: minmax(220px, .7fr) 1fr; gap: 42px; margin: 58px auto 0; padding-top: 26px; border-top: 1px solid #536064; }
   .secondary-label { display: block; margin-bottom: 12px; color: #df835d; font-family: "SFMono-Regular", Consolas, monospace; font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
   .secondary-research > div:first-child p { max-width: 300px; color: #9daaa6; font-size: .82rem; }
+  .software-section { background: var(--theme-page); }
+  .software-list { border-top: 1px solid #aeb4b0; }
+  .software-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) minmax(170px, .35fr); gap: 28px; padding: 29px 0; border-bottom: 1px solid #d1d3cd; }
+  .software-number, .software-meta { color: #c45932; font-family: "SFMono-Regular", Consolas, monospace; font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; }
+  .software-main h3 { margin-top: 8px; font-family: Georgia, serif; font-size: clamp(1.65rem, 3vw, 2.5rem); font-weight: 400; letter-spacing: -.03em; line-height: 1; }
+  .software-main h3 a:hover { color: #c45932; }
+  .software-main p { max-width: 680px; margin-top: 14px; color: #657072; font-size: .87rem; }
+  .software-side { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: #7a8282; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; text-transform: uppercase; }
+  .software-side a { margin-top: auto; color: #c45932; font-weight: 700; }
+  .software-side a:hover { color: #8d3d20; }
+  .software-actions { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 32px; }
+  .software-actions > span { color: #7a8282; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
   .type-section { width: 100%; background: #d8ded8; }
   .type-grid { width: min(1180px, calc(100% - 48px)); display: grid; grid-template-columns: 110px minmax(0, 1fr) 260px; gap: 42px; margin: 0 auto; }
   .type-index { display: flex; flex-direction: column; justify-content: space-between; color: #667171; font-family: "SFMono-Regular", Consolas, monospace; font-size: .65rem; letter-spacing: .07em; text-transform: uppercase; }
@@ -379,6 +414,9 @@ const aerospaceResearch = [
   .contact-side { display: flex; flex-direction: column; justify-content: space-between; align-items: start; gap: 35px; color: #ffe3d5; font-size: .9rem; }
   .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px max(24px, calc((100vw - 1180px) / 2)); background: #1a252a; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
   @media (max-width: 1100px) {
+    .brand-context { display: none; }
+    .header-inner { gap: 15px; }
+    nav { gap: 14px; }
     .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: clamp(40px, 5vw, 64px); }
     h1 { font-size: clamp(2.75rem, 5.5vw, 4.25rem); }
   }
@@ -411,6 +449,10 @@ const aerospaceResearch = [
     .signal-strip > div + div { border-top: 1px solid #d1d3cd; border-left: 0; }
     .work-row { grid-template-columns: 32px 1fr; gap: 12px; }
     .work-side { grid-column: 2; }
+    .software-row { grid-template-columns: 32px 1fr; gap: 12px; }
+    .software-side { grid-column: 2; display: grid; grid-template-columns: 1fr auto; }
+    .software-side a { grid-column: 1 / -1; margin-top: 6px; }
+    .software-actions { align-items: flex-start; flex-direction: column; }
     .feature-footer { align-items: start; flex-direction: column; }
     .secondary-research { grid-template-columns: 1fr; gap: 28px; }
     .type-meta { gap: 18px; }
@@ -483,6 +525,8 @@ const aerospaceResearch = [
   :global(html[data-theme='dark']) .rail-org,
   :global(html[data-theme='dark']) .work-kicker,
   :global(html[data-theme='dark']) .work-side,
+  :global(html[data-theme='dark']) .software-side,
+  :global(html[data-theme='dark']) .software-actions > span,
   :global(html[data-theme='dark']) .hero-foot,
   :global(html[data-theme='dark']) .section-intro > p,
   :global(html[data-theme='dark']) .resume-grid p { color: var(--theme-muted); }
@@ -499,12 +543,15 @@ const aerospaceResearch = [
   :global(html[data-theme='dark']) .hero-lede,
   :global(html[data-theme='dark']) .rail-list dd,
   :global(html[data-theme='dark']) .work-detail,
+  :global(html[data-theme='dark']) .software-main p,
   :global(html[data-theme='dark']) .content-note,
   :global(html[data-theme='dark']) .resume-grid p,
   :global(html[data-theme='dark']) .type-lede { color: var(--theme-muted); }
   :global(html[data-theme='dark']) .eyebrow,
   :global(html[data-theme='dark']) .text-link,
   :global(html[data-theme='dark']) .work-number,
+  :global(html[data-theme='dark']) .software-number,
+  :global(html[data-theme='dark']) .software-meta,
   :global(html[data-theme='dark']) .work-org,
   :global(html[data-theme='dark']) .hero-foot-arrow,
   :global(html[data-theme='dark']) .signal-index,
@@ -516,11 +563,13 @@ const aerospaceResearch = [
   :global(html[data-theme='dark']) .hero-rail,
   :global(html[data-theme='dark']) .hero-foot,
   :global(html[data-theme='dark']) .work-list,
+  :global(html[data-theme='dark']) .software-list,
   :global(html[data-theme='dark']) .resume-grid,
   :global(html[data-theme='dark']) .rail-profile img { border-color: var(--theme-border); }
   :global(html[data-theme='dark']) .rail-rule,
   :global(html[data-theme='dark']) .rail-list div,
   :global(html[data-theme='dark']) .work-row,
+  :global(html[data-theme='dark']) .software-row,
   :global(html[data-theme='dark']) .resume-grid > div { border-color: var(--theme-border-subtle); }
   :global(html[data-theme='dark']) .signal-strip { border-color: var(--theme-border-subtle); background: var(--theme-surface); }
   :global(html[data-theme='dark']) .signal-strip > div + div { border-color: var(--theme-border-subtle); }
@@ -539,6 +588,9 @@ const aerospaceResearch = [
   :global(html[data-theme='dark']) .research-meta,
   :global(html[data-theme='dark']) .secondary-research > div:first-child p { color: var(--theme-faint); }
   :global(html[data-theme='dark']) .research-row h3 a:hover { color: var(--theme-accent-hover); }
+  :global(html[data-theme='dark']) .software-main h3 a:hover,
+  :global(html[data-theme='dark']) .software-side a { color: var(--theme-accent); }
+  :global(html[data-theme='dark']) .software-side a:hover { color: var(--theme-accent-hover); }
   :global(html[data-theme='dark']) .type-section { background: var(--theme-surface-alt); }
   :global(html[data-theme='dark']) .type-index,
   :global(html[data-theme='dark']) .diagram-node small { color: var(--theme-muted); }
@@ -562,7 +614,8 @@ const aerospaceResearch = [
   }
   @media (max-width: 620px) {
     .header-inner { min-height: 0; flex-wrap: wrap; gap: 10px; padding: 12px 0 10px; }
-    .site-header nav { order: 3; width: 100%; max-width: none; justify-content: space-between; gap: 10px; margin-left: 0; overflow: visible; }
+    .site-header nav { order: 3; width: 100%; max-width: none; justify-content: flex-start; gap: 18px; margin-left: 0; overflow-x: auto; scrollbar-width: none; }
+    .site-header nav::-webkit-scrollbar { display: none; }
     .theme-toggle { width: 32px; flex: 0 0 32px; justify-content: center; padding: 0; }
     .theme-toggle-text { display: none; }
   }

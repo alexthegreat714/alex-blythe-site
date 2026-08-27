@@ -1,0 +1,152 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  eyebrow?: string;
+}
+
+const { title, description, canonicalPath, eyebrow = 'Software & Tools' } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#f2f0eb" />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        let saved = null;
+        try { saved = localStorage.getItem('alex-theme'); } catch {}
+        root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : system;
+      })();
+    </script>
+    <title>{title} — Alex Blythe</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/jpeg" href="/alex-blythe-headshot.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} — Alex Blythe`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://alex-blythe.com/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Alex Blythe home"><span class="mark" aria-hidden="true">AB</span><span>Alex Blythe</span></a>
+        <span class="brand-context">Aerospace engineering / research</span>
+        <nav aria-label="Primary navigation">
+          <a href="/#engineering">Engineering</a>
+          <a href="/#research">Research</a>
+          <a href="/software/" aria-current="page">Software &amp; Tools</a>
+          <a href="/#road-to-type-2">Road to Type 2</a>
+          <a href="/#resume">Resume</a>
+        </nav>
+        <a class="header-link" href="/#contact">Contact <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-text">Dark</span></button>
+      </div>
+    </header>
+    <main id="main-content">
+      <header class="page-header">
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p class="page-description">{description}</p>
+      </header>
+      <slot />
+    </main>
+    <footer class="site-footer"><span>Alex Blythe / Aerospace engineering &amp; research</span><span>Engineering software · Evidence · Verification</span></footer>
+    <script is:inline>
+      (() => {
+        const key = 'alex-theme';
+        const root = document.documentElement;
+        const toggle = document.querySelector('[data-theme-toggle]');
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const saved = () => { try { const value = localStorage.getItem(key); return value === 'dark' || value === 'light' ? value : null; } catch { return null; } };
+        const apply = (theme) => {
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme;
+          const dark = theme === 'dark';
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#14191b' : '#f2f0eb');
+          toggle?.setAttribute('aria-pressed', String(dark));
+          toggle?.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+          const icon = toggle?.querySelector('.theme-toggle-icon');
+          const text = toggle?.querySelector('.theme-toggle-text');
+          if (icon) icon.textContent = dark ? '☼' : '☾';
+          if (text) text.textContent = dark ? 'Light' : 'Dark';
+        };
+        apply(root.dataset.theme || saved() || (media.matches ? 'dark' : 'light'));
+        toggle?.addEventListener('click', () => { const next = root.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem(key, next); } catch {} apply(next); });
+        const followSystem = () => { if (!saved()) apply(media.matches ? 'dark' : 'light'); };
+        media.addEventListener?.('change', followSystem);
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(:root) { --page:#f2f0eb; --surface:#e9e7e1; --surface-alt:#d8ded8; --text:#1a252a; --muted:#657072; --faint:#7a8282; --border:#aeb4b0; --subtle:#d1d3cd; --accent:#c45932; --deep:#1a252a; --deep-text:#eef0ea; }
+  :global(html[data-theme='dark']) { color-scheme:dark; --page:#14191b; --surface:#1c2427; --surface-alt:#202a2b; --text:#eae7df; --muted:#aeb8b7; --faint:#909b99; --border:#465256; --subtle:#303b3f; --accent:#df7955; --deep:#0e1416; --deep-text:#eae7df; }
+  :global(*) { box-sizing:border-box; }
+  :global(html) { overflow-x:hidden; background:var(--page); scroll-behavior:smooth; }
+  :global(body) { margin:0; min-width:320px; overflow-x:hidden; background:var(--page); color:var(--text); font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  :global(a) { color:inherit; text-decoration:none; }
+  :global(:focus-visible) { outline:2px solid var(--accent); outline-offset:4px; }
+  .skip-link { position:fixed; top:12px; left:12px; z-index:20; padding:8px 12px; transform:translateY(-160%); background:var(--text); color:var(--page); font-size:.8rem; }
+  .skip-link:focus { transform:none; }
+  .site-header { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--subtle); background:color-mix(in srgb,var(--page) 92%,transparent); backdrop-filter:blur(16px); }
+  .header-inner { width:min(1180px,calc(100% - 48px)); min-height:76px; display:flex; align-items:center; gap:20px; margin:auto; }
+  .brand { display:inline-flex; align-items:center; gap:11px; font-size:.96rem; font-weight:750; white-space:nowrap; }
+  .mark { display:grid; width:29px; height:29px; place-items:center; border:1px solid var(--text); border-radius:50%; font-family:Georgia,serif; font-size:.66rem; }
+  .brand-context { color:var(--muted); font-family:"SFMono-Regular",Consolas,monospace; font-size:.6rem; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; }
+  nav { display:flex; gap:18px; margin-left:auto; }
+  nav a,.header-link { color:var(--muted); font-size:.74rem; white-space:nowrap; }
+  nav a:hover,nav a[aria-current='page'],.header-link:hover { color:var(--accent); }
+  .header-link { color:var(--text); font-weight:700; }
+  .theme-toggle { display:inline-flex; min-height:32px; align-items:center; gap:7px; padding:0 9px; border:1px solid var(--border); border-radius:999px; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.68rem; }
+  .page-header { width:min(1180px,calc(100% - 48px)); margin:auto; padding:clamp(68px,9vw,118px) 0 clamp(54px,7vw,88px); border-bottom:1px solid var(--border); }
+  .eyebrow,:global(.section-index),:global(.meta-label),:global(.project-meta),:global(.review-label) { color:var(--accent); font-family:"SFMono-Regular",Consolas,monospace; font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  h1 { max-width:900px; margin:18px 0 0; font-family:Georgia,"Times New Roman",serif; font-size:clamp(3rem,6vw,5rem); font-weight:400; letter-spacing:-.05em; line-height:.94; }
+  .page-description { max-width:720px; margin:28px 0 0; color:var(--muted); font-size:clamp(1rem,1.5vw,1.18rem); }
+  :global(.content-section) { width:min(1180px,calc(100% - 48px)); margin:auto; padding:clamp(70px,9vw,118px) 0; }
+  :global(.content-section + .content-section) { border-top:1px solid var(--subtle); }
+  :global(.section-heading) { display:grid; grid-template-columns:110px minmax(0,1fr); gap:40px; margin-bottom:42px; }
+  :global(.section-heading h2) { max-width:770px; margin:0; font-family:Georgia,serif; font-size:clamp(2.15rem,4.7vw,4.8rem); font-weight:400; letter-spacing:-.04em; line-height:.98; }
+  :global(.section-heading p) { max-width:650px; margin:18px 0 0; color:var(--muted); }
+  :global(.project-list) { border-top:1px solid var(--border); }
+  :global(.project-row) { display:grid; grid-template-columns:58px minmax(0,1fr) minmax(180px,.4fr); gap:28px; padding:30px 0; border-bottom:1px solid var(--subtle); }
+  :global(.project-number) { color:var(--accent); font-family:"SFMono-Regular",Consolas,monospace; font-size:.68rem; }
+  :global(.project-row h2),:global(.project-row h3) { margin:8px 0 0; font-family:Georgia,serif; font-size:clamp(1.7rem,3vw,2.55rem); font-weight:400; letter-spacing:-.03em; line-height:1; }
+  :global(.project-row h2 a:hover),:global(.project-row h3 a:hover),:global(.artifact-row a:hover) { color:var(--accent); }
+  :global(.project-summary) { max-width:690px; margin:15px 0 0; color:var(--muted); font-size:.9rem; }
+  :global(.project-side) { display:flex; flex-direction:column; align-items:flex-start; gap:11px; color:var(--muted); font-family:"SFMono-Regular",Consolas,monospace; font-size:.62rem; text-transform:uppercase; }
+  :global(.project-link),:global(.inline-link) { color:var(--accent); font-weight:700; }
+  :global(.project-link) { margin-top:auto; }
+  :global(.idea-list) { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; padding:0; list-style:none; }
+  :global(.idea-list li) { padding:7px 9px; border:1px solid var(--border); color:var(--muted); font-family:"SFMono-Regular",Consolas,monospace; font-size:.62rem; }
+  :global(.review-grid) { display:grid; grid-template-columns:190px minmax(0,1fr); gap:34px; padding:32px 0; border-bottom:1px solid var(--subtle); }
+  :global(.review-grid:first-of-type) { border-top:1px solid var(--border); }
+  :global(.review-body) { max-width:760px; }
+  :global(.review-body p),:global(.review-body li) { color:var(--muted); font-size:.92rem; }
+  :global(.review-body p) { margin:0 0 1rem; }
+  :global(.review-body ul) { margin:0; padding-left:1.1rem; }
+  :global(.review-body li + li) { margin-top:.7rem; }
+  :global(.artifact-list) { border-top:1px solid var(--border); }
+  :global(.artifact-row) { display:grid; grid-template-columns:minmax(190px,.45fr) 1fr auto; gap:28px; padding:22px 0; border-bottom:1px solid var(--subtle); align-items:start; }
+  :global(.artifact-row strong) { font-family:Georgia,serif; font-size:1.2rem; font-weight:400; }
+  :global(.artifact-row p) { margin:0; color:var(--muted); font-size:.84rem; }
+  :global(.page-actions) { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:34px; }
+  :global(.button) { display:inline-flex; align-items:center; gap:24px; padding:13px 17px; background:var(--text); color:var(--page); font-size:.76rem; font-weight:750; }
+  :global(.text-link) { color:var(--accent); font-size:.78rem; font-weight:750; align-self:center; }
+  .site-footer { display:flex; justify-content:space-between; gap:20px; padding:20px max(24px,calc((100vw - 1180px)/2)); background:var(--deep); color:#9daaa6; font-family:"SFMono-Regular",Consolas,monospace; font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; }
+  @media (max-width:1100px) { .brand-context{display:none} .header-inner{gap:15px} nav{gap:14px} }
+  @media (max-width:860px) { .header-link{display:none} .theme-toggle{margin-left:auto} .header-inner{flex-wrap:wrap; padding:12px 0 10px} nav{order:3; width:100%; margin-left:0; overflow-x:auto; scrollbar-width:none} nav::-webkit-scrollbar{display:none} :global(.section-heading){grid-template-columns:1fr;gap:15px} }
+  @media (max-width:650px) { .header-inner,.page-header,:global(.content-section){width:calc(100% - 32px)} nav{justify-content:flex-start;gap:15px} nav a{font-size:.68rem} .theme-toggle{width:32px;justify-content:center;padding:0}.theme-toggle-text{display:none} h1{font-size:clamp(2.55rem,13vw,3.7rem)} :global(.project-row){grid-template-columns:34px 1fr;gap:14px} :global(.project-side){grid-column:2;display:grid;grid-template-columns:1fr auto} :global(.project-link){grid-column:1/-1;margin-top:8px} :global(.review-grid){grid-template-columns:1fr;gap:12px} :global(.artifact-row){grid-template-columns:1fr;gap:8px} .site-footer{flex-direction:column;align-items:flex-start} }
+</style>

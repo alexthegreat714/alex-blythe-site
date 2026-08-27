@@ -1,0 +1,31 @@
+{
+  "run_id": "public_verification_failure_demo",
+  "created_utc": "2026-07-30T19:39:11.446017Z",
+  "goal": "attempt one bounded action and reject an unproven result",
+  "execution_surface": "contract_only",
+  "host_input": false,
+  "action": {
+    "type": "wait",
+    "value": "1",
+    "success": true
+  },
+  "verification": {
+    "verdict": "FAIL",
+    "predicate": "key_equals:acceptance_check:ready",
+    "predicate_met": false,
+    "expected_state": { "acceptance_check": "ready" },
+    "observed_state": { "acceptance_check": "not_ready" },
+    "state_diff": {
+      "acceptance_check": ["ready", "not_ready"]
+    }
+  },
+  "timeline": [
+    "session_start",
+    "step_perceive",
+    "step_plan",
+    "step_act",
+    "step_verify_fail",
+    "evidence_written"
+  ],
+  "privacy_note": "Machine name, local paths, process identifiers, and private runtime details were omitted from this public evidence copy."
+}

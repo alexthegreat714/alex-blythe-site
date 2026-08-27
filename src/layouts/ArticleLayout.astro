@@ -45,9 +45,11 @@ const canonical = new URL(canonicalPath, Astro.site);
         <nav aria-label="Primary navigation">
           <a href="/#engineering">Engineering</a>
           <a href="/#research">Research</a>
+          <a href="/software/">Software &amp; Tools</a>
           <a href="/#road-to-type-2">Road to Type 2</a>
-          <a href="/#contact">Contact</a>
+          <a href="/#resume">Resume</a>
         </nav>
+        <a class="header-link" href="/#contact">Contact <span aria-hidden="true">↗</span></a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"><span aria-hidden="true">☾</span></button>
       </div>
     </header>
@@ -107,6 +109,8 @@ const canonical = new URL(canonicalPath, Astro.site);
   nav { display: flex; gap: 22px; margin-left: auto; }
   nav a { color: var(--muted); font-size: .78rem; }
   nav a:hover { color: var(--accent); }
+  .header-link { color: var(--text); font-size: .78rem; font-weight: 700; white-space: nowrap; }
+  .header-link:hover { color: var(--accent); }
   .theme-toggle { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
   main { width: min(760px, calc(100% - 48px)); margin: auto; padding: clamp(68px, 9vw, 112px) 0; }
   .article-header { padding-bottom: 38px; border-bottom: 1px solid var(--border); }
@@ -126,7 +130,9 @@ const canonical = new URL(canonicalPath, Astro.site);
   @media (max-width: 700px) {
     .header-inner, main { width: calc(100% - 32px); }
     .header-inner { gap: 12px; }
-    nav { max-width: calc(100vw - 138px); gap: 15px; overflow-x: auto; }
+    .header-link { display: none; }
+    nav { max-width: calc(100vw - 138px); gap: 15px; overflow-x: auto; scrollbar-width: none; }
+    nav::-webkit-scrollbar { display: none; }
     nav a { white-space: nowrap; font-size: .7rem; }
     .site-footer { align-items: start; flex-direction: column; }
   }

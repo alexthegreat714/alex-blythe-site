@@ -1,0 +1,76 @@
+---
+import SoftwareLayout from '../../layouts/SoftwareLayout.astro';
+import { softwareProjects } from '../../data/software';
+
+const aero = softwareProjects[0];
+const automationProjects = softwareProjects.slice(1);
+---
+
+<SoftwareLayout
+  title="Engineering software, local AI systems, and experimental tools."
+  description="Independent software projects focused on engineering workflow, local AI, verification, and bounded automation."
+  canonicalPath="/software/"
+  eyebrow="Software & Tools / Technical index"
+>
+  <section class="content-section" aria-labelledby="featured-heading">
+    <div class="section-heading">
+      <span class="section-index">01 / Featured tools</span>
+      <div><h2 id="featured-heading">Software built around inspectable engineering work.</h2><p>These projects support technical reasoning, repeatable execution, evidence capture, and honest failure states. Maturity and limitations are shown alongside capability.</p></div>
+    </div>
+    <div class="project-list">
+      {softwareProjects.map((project, index) => (
+        <article class="project-row">
+          <span class="project-number">0{index + 1}</span>
+          <div>
+            <span class="project-meta">{project.category}</span>
+            <h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3>
+            <p class="project-summary">{project.summary}</p>
+            <ul class="idea-list">{project.keyIdeas.slice(0, 3).map((idea) => <li>{idea}</li>)}</ul>
+          </div>
+          <div class="project-side"><span>{project.status}</span><span>{project.version ?? project.year}</span><a class="project-link" href={`/software/${project.slug}/`}>View technical review <span aria-hidden="true">→</span></a></div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="engineering-software-heading">
+    <div class="section-heading">
+      <span class="section-index">02 / Engineering software</span>
+      <div><h2 id="engineering-software-heading">Aero connects software work directly to engineering practice.</h2><p>{aero.purpose}</p><div class="page-actions"><a class="button" href="/software/aero/">Review Aero <span aria-hidden="true">→</span></a><a class="text-link" href="/#engineering">Engineering background <span aria-hidden="true">↗</span></a></div></div>
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="local-ai-heading">
+    <div class="section-heading">
+      <span class="section-index">03 / Local AI & automation</span>
+      <div><h2 id="local-ai-heading">Bounded execution and evidence-aware extraction.</h2><p>ForgeClaw and OCR97 focus on the parts of automation that are easy to hide: authority, uncertainty, evidence quality, verification, and failure.</p></div>
+    </div>
+    <div class="project-list">
+      {automationProjects.map((project, index) => (
+        <article class="project-row">
+          <span class="project-number">0{index + 1}</span>
+          <div><span class="project-meta">{project.category}</span><h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3><p class="project-summary">{project.purpose}</p></div>
+          <div class="project-side"><span>{project.status}</span><a class="project-link" href={`/software/${project.slug}/`}>Boundaries & evidence <span aria-hidden="true">→</span></a></div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="notes-heading">
+    <div class="section-heading">
+      <span class="section-index">04 / Research notes & architecture</span>
+      <div><h2 id="notes-heading">The reasoning behind the systems.</h2><p>Selected notes connect implementation decisions to engineering concerns: defined authority, observable execution, independent acceptance, and evidence that survives failure.</p></div>
+    </div>
+    <div class="artifact-list">
+      <article class="artifact-row"><strong><a href="/research/separating-intent-execution-verification/">Separating Intent, Execution, and Verification</a></strong><p>Why bounded agent workflows should define authority before acting and make acceptance a separate decision.</p><a class="inline-link" href="/research/separating-intent-execution-verification/" aria-label="Read Separating Intent, Execution, and Verification">Read ↗</a></article>
+      <article class="artifact-row"><strong><a href="/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/">Computational Fluid Dynamics for Aerospace Engineering</a></strong><p>A practical technical foundation for the analysis domain that Aero is being built to support.</p><a class="inline-link" href="/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/" aria-label="Read the CFD article">Read ↗</a></article>
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="github-heading">
+    <div class="section-heading">
+      <span class="section-index">05 / GitHub</span>
+      <div><h2 id="github-heading">Public source and project records.</h2><p>ForgeClaw and OCR97 were originally published through Precision Arts Lab. That attribution is secondary here to their role in Alex's independent technical work.</p><div class="page-actions"><a class="button" href="https://github.com/PrecisionArtsLab">Precision Arts Lab on GitHub <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/PrecisionArtsLab/ForgeClaw">ForgeClaw repository ↗</a><a class="text-link" href="https://github.com/PrecisionArtsLab/ocr97">OCR97 repository ↗</a></div></div>
+    </div>
+  </section>
+</SoftwareLayout>
