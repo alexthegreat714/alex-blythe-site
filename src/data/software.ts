@@ -113,11 +113,11 @@ export const softwareProjects: SoftwareProject[] = [
     ],
     artifacts: [
       { label: 'Repository', description: 'Public source, safety model, lifecycle controller, and examples.', href: 'https://github.com/PrecisionArtsLab/ForgeClaw' },
-      { label: 'Architecture note', description: 'Why intent, execution, and verification carry different authority.', href: '/research/separating-intent-execution-verification/' },
+      { label: 'Architecture note', description: 'Why intent, execution, and verification carry different authority.', href: '/software/notes/separating-intent-execution-verification/' },
       { label: 'Verification evidence', description: 'Inspectable pass/fail records designed to preserve the reason a result was accepted or rejected.' },
     ],
     repository: 'https://github.com/PrecisionArtsLab/ForgeClaw',
-    relatedResearch: { label: 'Separating Intent, Execution, and Verification', href: '/research/separating-intent-execution-verification/' },
+    relatedResearch: { label: 'Separating Intent, Execution, and Verification', href: '/software/notes/separating-intent-execution-verification/' },
   },
   {
     slug: 'ocr97',

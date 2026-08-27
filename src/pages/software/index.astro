@@ -1,9 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import SoftwareLayout from '../../layouts/SoftwareLayout.astro';
 import { softwareProjects } from '../../data/software';
 
 const aero = softwareProjects[0];
 const automationProjects = softwareProjects.slice(1);
+const softwareNotes = (await getCollection('research'))
+  .filter((entry) => entry.data.relatedSoftware.length > 0)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <SoftwareLayout
@@ -56,14 +60,19 @@ const automationProjects = softwareProjects.slice(1);
     </div>
   </section>
 
-  <section class="content-section" aria-labelledby="notes-heading">
+  <section class="content-section" id="notes" aria-labelledby="notes-heading">
     <div class="section-heading">
       <span class="section-index">04 / Research notes & architecture</span>
       <div><h2 id="notes-heading">The reasoning behind the systems.</h2><p>Selected notes connect implementation decisions to engineering concerns: defined authority, observable execution, independent acceptance, and evidence that survives failure.</p></div>
     </div>
     <div class="artifact-list">
-      <article class="artifact-row"><strong><a href="/research/separating-intent-execution-verification/">Separating Intent, Execution, and Verification</a></strong><p>Why bounded agent workflows should define authority before acting and make acceptance a separate decision.</p><a class="inline-link" href="/research/separating-intent-execution-verification/" aria-label="Read Separating Intent, Execution, and Verification">Read ↗</a></article>
-      <article class="artifact-row"><strong><a href="/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/">Computational Fluid Dynamics for Aerospace Engineering</a></strong><p>A practical technical foundation for the analysis domain that Aero is being built to support.</p><a class="inline-link" href="/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/" aria-label="Read the CFD article">Read ↗</a></article>
+      {softwareNotes.map((entry) => (
+        <article class="artifact-row">
+          <strong>{entry.data.draft ? entry.data.title : <a href={`/software/notes/${entry.id}/`}>{entry.data.title}</a>}</strong>
+          <p>{entry.data.summary}</p>
+          {entry.data.draft ? <span class="project-meta">Draft</span> : <a class="inline-link" href={`/software/notes/${entry.id}/`} aria-label={`Read ${entry.data.title}`}>Read ↗</a>}
+        </article>
+      ))}
     </div>
   </section>
 

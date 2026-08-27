@@ -1,5 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
 import { resume } from '../data/resume';
 import { softwareProjects } from '../data/software';
 
@@ -10,9 +9,6 @@ const currentFocus = {
 };
 const selectedExperience = resume.experience.slice(0, 3);
 const workLabels = ['Propulsion hardware', 'Propulsion test', 'Thermal / CFD'];
-const researchEntries = (await getCollection('research'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
 const aerospaceResearch = [
   {
     type: 'Technical article',
@@ -146,8 +142,8 @@ const aerospaceResearch = [
 
       <section class="section section-dark" id="research">
         <div class="section-intro section-intro-dark">
-          <div><p class="eyebrow">03 — Research</p><h2>Independent aerospace research with technical notes alongside it.</h2></div>
-          <p>Aerospace research anchors this work, from theoretical propulsion and launch environments to CFD and analytical methods. Notes on AI systems remain a separate technical stream.</p>
+          <div><p class="eyebrow">03 — Research</p><h2>Independent aerospace research across propulsion, launch environments, and analytical methods.</h2></div>
+          <p>Work spans theoretical propulsion, CFD, rocket acoustics, and the technical foundations of long-horizon space systems.</p>
         </div>
         <div class="research-grid">
           <article class="research-feature">
@@ -162,17 +158,6 @@ const aerospaceResearch = [
               <article class="research-row">
                 <div><span class="research-type">{entry.type}</span><h3><a href={entry.href}>{entry.title}</a></h3><p class="research-summary">{entry.summary}</p></div>
                 <div class="research-meta"><span>Aerospace</span><span aria-hidden="true">↗</span></div>
-              </article>
-            ))}
-          </div>
-        </div>
-        <div class="secondary-research">
-          <div><span class="secondary-label">Secondary technical notes</span><p>Shorter notes on AI systems, OCR, verification, and local tooling sit alongside the primary aerospace research.</p></div>
-          <div class="research-list">
-            {researchEntries.map((entry) => (
-              <article class="research-row">
-                <div><span class="research-type">{entry.data.type}</span><h3>{entry.data.draft ? entry.data.title : <a href={`/research/${entry.id}/`}>{entry.data.title}</a>}</h3></div>
-                <div class="research-meta"><span>{entry.data.draft ? 'Draft' : 'Published'}</span><span>{entry.data.readingTime}</span><span aria-hidden="true">{entry.data.draft ? '—' : '↗'}</span></div>
               </article>
             ))}
           </div>
@@ -232,8 +217,8 @@ const aerospaceResearch = [
       </section>
 
       <section class="contact-section" id="contact">
-        <div><p class="eyebrow">07 — Contact</p><h2>Interested in the research? Get in touch.</h2></div>
-        <div class="contact-side"><p>I welcome conversations about aerospace engineering, propulsion, space systems, and independent research.</p><a class="button button-light" href="mailto:blythe.ar@gmail.com?subject=Alex%20Blythe%20research">Email Alex <span aria-hidden="true">↗</span></a></div>
+        <div><p class="eyebrow">07 — Contact</p><h2>Interested in the work? Get in touch.</h2></div>
+        <div class="contact-side"><p>I welcome conversations about aerospace engineering, propulsion, space systems, and independent research.</p><a class="button button-light" href="mailto:blythe.ar@gmail.com?subject=Alex%20Blythe%20inquiry">Email Alex <span aria-hidden="true">↗</span></a></div>
       </section>
     </main>
 
@@ -369,9 +354,6 @@ const aerospaceResearch = [
   .research-summary { max-width: 500px; margin-top: 10px; color: #b4bfbc; font-size: .78rem; }
   .research-meta { display: flex; gap: 18px; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; text-transform: uppercase; }
   .research-meta span:last-child { margin-left: auto; color: #df835d; font-size: .95rem; }
-  .secondary-research { width: min(1180px, 100%); display: grid; grid-template-columns: minmax(220px, .7fr) 1fr; gap: 42px; margin: 58px auto 0; padding-top: 26px; border-top: 1px solid #536064; }
-  .secondary-label { display: block; margin-bottom: 12px; color: #df835d; font-family: "SFMono-Regular", Consolas, monospace; font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-  .secondary-research > div:first-child p { max-width: 300px; color: #9daaa6; font-size: .82rem; }
   .software-section { background: var(--theme-page); }
   .software-list { border-top: 1px solid #aeb4b0; }
   .software-row { display: grid; grid-template-columns: 58px minmax(0, 1fr) minmax(170px, .35fr); gap: 28px; padding: 29px 0; border-bottom: 1px solid #d1d3cd; }
@@ -423,7 +405,7 @@ const aerospaceResearch = [
   @media (max-width: 860px) {
     .brand-context, .header-link { display: none; }
     nav { gap: 14px; }
-    .hero-grid, .section-intro, .research-grid, .type-grid, .contact-section, .secondary-research { grid-template-columns: 1fr; }
+    .hero-grid, .section-intro, .research-grid, .type-grid, .contact-section { grid-template-columns: 1fr; }
     .hero-grid { gap: 36px; }
     h1 { font-size: clamp(2.75rem, 7vw, 3.5rem); }
     .hero-rail { max-width: 500px; margin-top: 0; }
@@ -454,7 +436,6 @@ const aerospaceResearch = [
     .software-side a { grid-column: 1 / -1; margin-top: 6px; }
     .software-actions { align-items: flex-start; flex-direction: column; }
     .feature-footer { align-items: start; flex-direction: column; }
-    .secondary-research { grid-template-columns: 1fr; gap: 28px; }
     .type-meta { gap: 18px; }
     .resume-grid { grid-template-columns: 1fr; }
     .site-footer { align-items: start; flex-direction: column; }
@@ -580,13 +561,10 @@ const aerospaceResearch = [
   :global(html[data-theme='dark']) .section-dark .section-intro > p,
   :global(html[data-theme='dark']) .research-summary { color: var(--theme-muted); }
   :global(html[data-theme='dark']) .research-list,
-  :global(html[data-theme='dark']) .research-row,
-  :global(html[data-theme='dark']) .secondary-research { border-color: var(--theme-border); }
+  :global(html[data-theme='dark']) .research-row { border-color: var(--theme-border); }
   :global(html[data-theme='dark']) .research-type,
-  :global(html[data-theme='dark']) .research-meta span:last-child,
-  :global(html[data-theme='dark']) .secondary-label { color: var(--theme-accent); }
-  :global(html[data-theme='dark']) .research-meta,
-  :global(html[data-theme='dark']) .secondary-research > div:first-child p { color: var(--theme-faint); }
+  :global(html[data-theme='dark']) .research-meta span:last-child { color: var(--theme-accent); }
+  :global(html[data-theme='dark']) .research-meta { color: var(--theme-faint); }
   :global(html[data-theme='dark']) .research-row h3 a:hover { color: var(--theme-accent-hover); }
   :global(html[data-theme='dark']) .software-main h3 a:hover,
   :global(html[data-theme='dark']) .software-side a { color: var(--theme-accent); }

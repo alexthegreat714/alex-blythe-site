@@ -1,0 +1,17 @@
+---
+const destination = '/software/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, follow" />
+    <meta http-equiv="refresh" content={`0; url=${destination}`} />
+    <link rel="canonical" href="https://alex-blythe.com/software/" />
+    <title>Software &amp; Tools — Alex Blythe</title>
+    <script is:inline define:vars={{ destination }}>window.location.replace(destination);</script>
+  </head>
+  <body><p>This page has moved to <a href={destination}>Software &amp; Tools</a>.</p></body>
+</html>
