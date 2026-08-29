@@ -74,9 +74,8 @@ def main() -> int:
 
     args.output.mkdir(parents=True, exist_ok=True)
     result_out = args.output / "engineering-result.json"
-    result_out.write_text(
-        json.dumps(curated, indent=2, sort_keys=True, allow_nan=False) + "\n",
-        encoding="utf-8",
+    result_out.write_bytes(
+        (json.dumps(curated, indent=2, sort_keys=True, allow_nan=False) + "\n").encode("utf-8")
     )
     shutil.copyfile(args.stl, args.output / "nozzle.stl")
     files = ("engineering-result.json", "pressure-surface.json", "nozzle.stl")
@@ -85,8 +84,8 @@ def main() -> int:
         "algorithm": "SHA-256",
         "files": {name: sha256(args.output / name) for name in files},
     }
-    (args.output / "checksums.json").write_text(
-        json.dumps(checksums, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    (args.output / "checksums.json").write_bytes(
+        (json.dumps(checksums, indent=2, sort_keys=True) + "\n").encode("utf-8")
     )
     print(json.dumps({
         "resultBytes": result_out.stat().st_size,
