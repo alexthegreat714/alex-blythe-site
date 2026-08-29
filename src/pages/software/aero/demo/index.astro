@@ -1,0 +1,1081 @@
+---
+import SoftwareLayout from '../../../../layouts/SoftwareLayout.astro';
+import {
+  evidence, monitors, artifacts, resultFields, demoRoot, telemetry,
+  publicCadArtifact, publicPressureField,
+} from '../../../../lib/aero/nozzle-precursor';
+import { sections, firstOrder, mathml } from '../../../../lib/aero/notebook';
+import { PROVENANCE_LABEL, STATUS_LABEL } from '../../../../lib/aero/case';
+
+const runMode = 'RECORDED';
+const solver = 'OpenFOAM / rhoSimpleFoam';
+
+// Runtime is shown only when it was actually measured for the phase.
+const solverRuntime = evidence.execution.solverSeconds;
+const totalRuntime = evidence.execution.totalSeconds;
+const fmtRuntime = (v: number | null) => (typeof v === 'number' ? `${v.toFixed(2)} s` : 'NOT RECORDED');
+
+const statusClass = (s: string) =>
+  s === 'PASS' || s === 'READY' ? 'ok' : s === 'FAIL' || s === 'NOT_READY' ? 'bad' : 'unknown';
+
+const clientState = {
+  runId: 'aero-wall-refinement-v6',
+  mode: runMode,
+  artifacts,
+  resultFields: resultFields.map((f) => ({ field: f.field, label: f.label })),
+  publicCadArtifact,
+  publicPressureField,
+  telemetry: `${demoRoot}/telemetry.json`,
+  recordedTelemetry: telemetry,
+  localApi: 'http://127.0.0.1:5213',
+};
+---
+
+<SoftwareLayout
+  title="Aero / Engineering workbench"
+  description="An interactive engineering workbench over a recorded OpenFOAM run: notebook, model viewport, conversation, and the evidence that decides what the result establishes."
+  canonicalPath="/software/aero/demo/"
+  eyebrow="Aero / Engineering workbench"
+>
+  <section class="wb-intro content-section">
+    <p class="section-index">Engineering case / Recorded evidence + local execution</p>
+    <h2 id="wb-title">A converged answer is the start of the engineering argument, not the end.</h2>
+    <p class="hero-lede">
+      The initial state is the retained Level 4 wall-resolved OpenFOAM result. On a loopback preview, the same panes can submit
+      a bounded mass-flow run or the fixed parametric nozzle workflow to the isolated local workers after explicit approval.
+    </p>
+  </section>
+
+  <div class="workbench" id="workbench" data-state={JSON.stringify(clientState)}>
+    <header class="wb-bar">
+      <span class="wb-brand">AERO</span>
+      <span class="wb-title">Engineering workbench</span>
+      <span class="wb-meta">
+          <span class="wb-mode" id="run-mode" data-mode={runMode}>{runMode} RUN</span>
+          <span class="wb-status" id="run-status">{evidence.execution.status}</span>
+        <span class="wb-solver">{solver}</span>
+      </span>
+    </header>
+
+    <!-- mobile tab bar; hidden on desktop -->
+    <nav class="wb-tabs" aria-label="Workbench sections">
+      <button type="button" class="wb-tab is-active" data-tab="notebook" aria-selected="true">Notebook</button>
+      <button type="button" class="wb-tab" data-tab="viewport" aria-selected="false">Model</button>
+      <button type="button" class="wb-tab" data-tab="evidence" aria-selected="false">Evidence</button>
+      <button type="button" class="wb-tab" data-tab="chat" aria-selected="false">Chat</button>
+    </nav>
+
+    <div class="wb-grid">
+      <!-- ============================= NOTEBOOK ============================ -->
+      <section class="wb-pane wb-notebook is-active" data-pane="notebook" aria-labelledby="nb-h">
+        <h3 class="wb-pane-title" id="nb-h">Engineering notebook</h3>
+        <div class="nb-scroll">
+          {sections.map((s) => (
+            <section class="nb-section" id={`nb-${s.id}`} tabindex="-1">
+              <h4><span class="nb-index">{s.index}</span> {s.title}</h4>
+
+              {s.body?.map((p) => <p>{p}</p>)}
+
+              {s.values && (
+                <dl class="nb-values">
+                  {s.values.map((v) => (
+                    <div class="nb-value">
+                      <dt>{v.label}</dt>
+                      <dd>
+                        <span class="nb-num">{v.value}{v.units ? ` ${v.units}` : ''}</span>
+                        <span class="prov" data-prov={v.source}>{PROVENANCE_LABEL[v.source]}</span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+
+              {s.equations?.map((eq) => (
+                <figure class="eqn">
+                  <figcaption>{eq.title}</figcaption>
+                  <div class="eqn-math" set:html={mathml(eq)} />
+                  <dl class="eqn-symbols">
+                    {eq.symbols.map((sym) => (
+                      <div>
+                        <dt>{sym.symbol}</dt>
+                        <dd>{sym.meaning}{sym.units ? ` (${sym.units})` : ''}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p class="eqn-meaning">{eq.meaning}</p>
+                  <span class="prov" data-prov={eq.source}>{PROVENANCE_LABEL[eq.source]}</span>
+                </figure>
+              ))}
+
+              {s.id === 'first-order' && (
+                <div class="fo">
+                  {s.notEstablished && <p class="nb-note">{s.notEstablished}</p>}
+                  <ol class="fo-chain">
+                    <li>
+                      <span class="fo-step">Inputs</span>
+                      <ul>
+                        {firstOrder.inputs.map((i) => (
+                          <li>{i.label}: <b>{i.value}</b> <span class="prov" data-prov={i.source}>{PROVENANCE_LABEL[i.source]}</span></li>
+                        ))}
+                      </ul>
+                    </li>
+                    <li>
+                      <span class="fo-step">Equation</span>
+                      {firstOrder.equation && <div class="eqn-math" set:html={mathml(firstOrder.equation)} />}
+                    </li>
+                    <li>
+                      <span class="fo-step">Analytical estimate</span>
+                      <p class="fo-missing">{firstOrder.estimate ? `${firstOrder.estimate.value}${firstOrder.estimate.units ? ` ${firstOrder.estimate.units}` : ''}` : 'NOT YET ESTABLISHED'}</p>
+                    </li>
+                    <li>
+                      <span class="fo-step">Expected trend</span>
+                      <p>{firstOrder.expectedTrend}</p>
+                    </li>
+                    <li>
+                      <span class="fo-step">Numerical result</span>
+                      <p class={firstOrder.numericalResult ? '' : 'fo-missing'}>{firstOrder.numericalResult ? `${firstOrder.numericalResult.label}: ${firstOrder.numericalResult.value}` : 'NOT YET ESTABLISHED'}</p>
+                    </li>
+                    <li>
+                      <span class="fo-step">Comparison</span>
+                      <p class="fo-missing">{firstOrder.comparison ? firstOrder.comparison.value : 'NOT YET ESTABLISHED'}</p>
+                    </li>
+                  </ol>
+                </div>
+              )}
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================= VIEWPORT ============================ -->
+      <section class="wb-pane wb-viewport" data-pane="viewport" aria-labelledby="vp-h">
+        <div class="vp-head">
+          <h3 class="wb-pane-title" id="vp-h">Engineering viewport</h3>
+          <div class="vp-modes" role="group" aria-label="Viewport stage">
+            <button type="button" class="vp-mode is-active" data-mode="geometry">Geometry</button>
+            <button type="button" class="vp-mode" data-mode="mesh">Mesh</button>
+            <button type="button" class="vp-mode" data-mode="result">Result</button>
+          </div>
+        </div>
+
+        <div class="vp-stage" id="vp-stage" tabindex="0" role="img"
+             aria-label="Engineering model viewport. Use arrow keys to pan, plus and minus to zoom.">
+          <img id="vp-image" src={artifacts.geometry} alt="Wall-resolved axisymmetric nozzle geometry" draggable="false" />
+          <div id="vp-scientific" class="vp-scientific" hidden aria-label="Interactive OpenFOAM pressure field"></div>
+          <div id="vp-legend" class="vp-legend" hidden>
+            <span id="vp-legend-max"></span><span class="vp-legend-bar" aria-hidden="true"></span><span id="vp-legend-min"></span>
+            <b>Pressure / Pa</b><small>SOLVER OUTPUT</small>
+          </div>
+        </div>
+
+        <div class="vp-controls">
+          <button type="button" data-vp="zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" data-vp="zoom-out" aria-label="Zoom out">−</button>
+          <button type="button" data-vp="reset">Reset view</button>
+          <button type="button" data-vp="mesh">Show mesh</button>
+          <span class="vp-hint" id="vp-hint">Geometry — drag to pan, scroll to zoom</span>
+        </div>
+
+        <div class="vp-fields">
+          <span class="vp-fields-label">Result fields</span>
+          {resultFields.length === 0 ? (
+            <p class="vp-none">
+              NOT YET ESTABLISHED — no static scalar field is presented. After an approved local run,
+              the actual OpenFOAM pressure artifact is loaded here as SOLVER OUTPUT.
+            </p>
+          ) : (
+            <div class="vp-field-buttons">
+              {resultFields.map((f) => (
+                <button type="button" class="vp-field" data-field={f.field}>{f.label}</button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <details class="vp-monitors">
+          <summary>Final engineering monitors ({monitors.length})</summary>
+          <dl>
+            {monitors.map((m) => (
+              <div>
+                <dt>{m.label}</dt>
+                <dd>{m.value}{m.units ? ` ${m.units}` : ''}</dd>
+              </div>
+            ))}
+          </dl>
+          <span class="prov" data-prov="SOLVER_OUTPUT">{PROVENANCE_LABEL.SOLVER_OUTPUT}</span>
+        </details>
+        <section class="telemetry" aria-labelledby="telemetry-h">
+          <h4 id="telemetry-h">Real solver telemetry</h4>
+          <div class="telemetry-grid">
+            <figure data-chart="residuals"><figcaption>Residual convergence</figcaption><div class="chart-body"></div></figure>
+            <figure data-chart="mass"><figcaption>Mass conservation</figcaption><div class="chart-body"></div></figure>
+            <figure data-chart="energy"><figcaption>Energy conservation</figcaption><div class="chart-body"></div></figure>
+            <figure data-chart="monitor"><figcaption>Outlet mass-flow monitor</figcaption><div class="chart-body"></div></figure>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============================== CHAT =============================== -->
+      <section class="wb-pane wb-chat" data-pane="chat" aria-labelledby="ch-h">
+        <h3 class="wb-pane-title" id="ch-h">Aero</h3>
+        <div class="ch-log" id="ch-log" aria-live="polite">
+          <p class="ch-turn ch-aero">
+            <b>Aero</b> The retained Level 4 run passed its required numerical gates, and the frozen
+            Levels 2 / 3 / 4 family passed the predeclared 2% pressure-drop mesh-independence gate.
+            Validation and intended-use fidelity remain not established, so this is not yet design-ready.
+          </p>
+        </div>
+        <div class="ch-prompts">
+          <button type="button" class="ch-prompt" data-q="mesh">Show me the mesh</button>
+          <button type="button" class="ch-prompt" data-q="validation">Why isn't this validated?</button>
+          <button type="button" class="ch-prompt" data-q="independence">How was mesh independence established?</button>
+          <button type="button" class="ch-prompt" data-q="continuity">What governs mass conservation?</button>
+          <button type="button" class="ch-prompt" data-q="next">What would you do next?</button>
+        </div>
+        <form class="local-run" id="local-run" hidden>
+          <p><b>Local bounded execution</b> The token remains in this page's memory and is never written to storage.</p>
+          <label>Local Aero token <input id="local-token" type="password" autocomplete="off" /></label>
+          <label>Engineering request <textarea id="local-message" maxlength="500" rows="5">Generate an axisymmetric nozzle with inlet radius 20 mm, throat radius 8 mm, exit radius 24 mm, converging length 45 mm, diverging length 110 mm, mesh size 5 mm, and mass flow 0.010 kg/s</textarea></label>
+          <button type="submit">Prepare proposal</button>
+          <button type="button" id="mesh-study-preset">Prepare 5 / 4 / 3 mm mesh study</button>
+          <button type="button" id="wall-study-preset">Prepare wall-resolved mesh study</button>
+          <div id="local-proposal" class="local-proposal" hidden></div>
+          <ol id="run-events" class="run-events" aria-live="polite"></ol>
+        </form>
+        <p class="ch-note">
+          Explanations stay tied to structured case and evidence state. A local request can only become
+          an allowlisted mass-flow run, fixed axisymmetric-nozzle schema, or reviewed mesh study; it cannot create
+          commands, paths, arbitrary CAD code, solver dictionaries, or container settings.
+        </p>
+      </section>
+    </div>
+
+    <!-- =========================== EVIDENCE RAIL ========================== -->
+    <section class="wb-pane wb-evidence" data-pane="evidence" aria-labelledby="ev-h">
+      <h3 class="wb-pane-title" id="ev-h">Engineering evidence</h3>
+
+      <div class="ev-cols">
+        <div class="ev-col">
+          <h4>Execution</h4>
+          <div class="ev-row"><span>Status</span><b id="ev-execution-status" class={statusClass(evidence.execution.status)}>{evidence.execution.status}</b></div>
+          <div class="ev-row"><span>Solver runtime</span><b id="ev-solver-runtime" class="unknown">{fmtRuntime(solverRuntime)}</b></div>
+          <div class="ev-row"><span>Request to result</span><b id="ev-total-runtime" class={totalRuntime ? '' : 'unknown'}>{fmtRuntime(totalRuntime)}</b></div>
+        </div>
+
+        <div class="ev-col">
+          <h4>Numerical evidence</h4>
+          {evidence.numerical.gates.map((gate) => (
+            <button type="button" class="ev-row ev-clickable" data-gate={gate.id} aria-expanded="false">
+              <span>{gate.label}</span>
+              <b class={statusClass(gate.status)}>{STATUS_LABEL[gate.status]}</b>
+            </button>
+          ))}
+          <div class="ev-row ev-agg">
+            <span>Numerical acceptability</span>
+            <b id="ev-numerical-status" class={statusClass(evidence.numerical.status)}>{STATUS_LABEL[evidence.numerical.status]}</b>
+          </div>
+        </div>
+
+        <div class="ev-col">
+          <h4>Design readiness</h4>
+          {evidence.readiness.gates.map((gate) => (
+            <button type="button" class="ev-row ev-clickable" data-gate={gate.id} aria-expanded="false">
+              <span>{gate.label}</span>
+              <b class={statusClass(gate.status)}>{STATUS_LABEL[gate.status]}</b>
+            </button>
+          ))}
+          <div class="ev-row ev-agg">
+            <span>Overall design readiness</span>
+            <b id="ev-readiness-status" class={statusClass(evidence.readiness.status)}>{STATUS_LABEL[evidence.readiness.status]}</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="ev-detail" id="ev-detail" hidden>
+        <button type="button" class="ev-close" aria-label="Close detail">×</button>
+        <div id="ev-detail-body"></div>
+      </div>
+    </section>
+  </div>
+
+  <script
+    id="ev-data"
+    type="application/json"
+    is:inline
+    set:html={JSON.stringify({
+      numerical: evidence.numerical.gates,
+      readiness: evidence.readiness.gates,
+      provLabels: PROVENANCE_LABEL,
+      statusLabels: STATUS_LABEL,
+    })}
+  />
+
+  <script>
+    // ---------------------------------------------------------------
+    // Workbench client. Small, dependency-free, and strictly bounded:
+    // chat replies may only request actions on a fixed allowlist, and
+    // every action is validated before it touches viewport state.
+    // ---------------------------------------------------------------
+    const root = document.getElementById('workbench');
+    if (root) {
+      const cfg = JSON.parse(root.dataset.state || '{}');
+      const evData = JSON.parse(document.getElementById('ev-data')?.textContent || '{}');
+
+      const ACTIONS = new Set([
+        'SHOW_NOTEBOOK_SECTION', 'SET_VIEWPORT_MODE', 'SET_RESULT_FIELD', 'TOGGLE_MESH',
+        'RESET_CAMERA', 'SELECT_RUN', 'COMPARE_RUNS', 'EXPLAIN_GATE',
+        'PROPOSE_PARAMETER_CHANGE', 'PROPOSE_GEOMETRY', 'REQUEST_RUN', 'REQUEST_MESH_STUDY',
+        'REQUEST_WALL_RESOLVED_MESH_STUDY',
+      ]);
+      const MODES = new Set(['geometry', 'mesh', 'result']);
+      const FIELDS = new Set(['pressure', 'velocity', 'mach', 'temperature']);
+
+      /** Reject anything not on the allowlist or malformed. No eval, ever. */
+      function validate(raw) {
+        if (!raw || typeof raw !== 'object') return null;
+        if (typeof raw.action !== 'string' || !ACTIONS.has(raw.action)) return null;
+        if (raw.action === 'SET_VIEWPORT_MODE' && !MODES.has(raw.mode)) return null;
+        if (raw.action === 'SET_RESULT_FIELD' && !FIELDS.has(raw.field)) return null;
+        if (raw.action === 'SHOW_NOTEBOOK_SECTION' && typeof raw.section !== 'string') return null;
+        if (raw.action === 'EXPLAIN_GATE' && typeof raw.gateId !== 'string') return null;
+        return raw;
+      }
+
+      const state = {
+        mode: 'geometry', field: null, meshVisible: false,
+        camera: { zoom: 1, panX: 0, panY: 0 }, runId: cfg.runId,
+      };
+
+      const img = document.getElementById('vp-image');
+      const stage = document.getElementById('vp-stage');
+      const hint = document.getElementById('vp-hint');
+      const scientific = document.getElementById('vp-scientific');
+      const legend = document.getElementById('vp-legend');
+      let scientificViewer = null;
+      let meshShown = false;
+      let activeScientificMode = null;
+      let liveCadArtifact = cfg.publicCadArtifact || null;
+      let livePressureField = cfg.publicPressureField || null;
+
+      function artifactRequest(href, token) {
+        const isPublicDemo = typeof href === 'string' && href.startsWith('/demos/aero/');
+        return {
+          url: isPublicDemo ? href : `${cfg.localApi}${href}`,
+          options: isPublicDemo ? {} : { headers: { 'X-Aero-Token': token } },
+        };
+      }
+
+      function drawChart(kind, telemetry) {
+        const body = document.querySelector(`[data-chart="${kind}"] .chart-body`);
+        if (!body) return;
+        let named = {};
+        let transform = (value) => value;
+        if (kind === 'residuals') {
+          named = telemetry?.residuals || {};
+          transform = (value) => Math.log10(Math.max(Number(value), 1e-16));
+        }
+        if (kind === 'mass') named = { imbalance: (telemetry?.massConservation || []).map((p) => ({ sample: p.sample, value: p.fraction })) };
+        if (kind === 'energy') named = { imbalance: (telemetry?.energyConservation || []).map((p) => ({ sample: p.sample, value: p.fraction })) };
+        if (kind === 'monitor') named = telemetry?.monitors || {};
+        const series = Object.entries(named)
+          .map(([name, points]) => ({ name, points: (points || []).filter((p) => Number.isFinite(Number(p.value))) }))
+          .filter((entry) => entry.points.length);
+        body.replaceChildren();
+        if (!series.length) {
+          const missing = document.createElement('p');
+          missing.className = 'chart-missing';
+          missing.textContent = 'NOT EVALUATED — no real series was reported';
+          body.appendChild(missing);
+          return;
+        }
+        const all = series.flatMap((entry) => entry.points.map((point) => transform(Number(point.value))));
+        const low = Math.min(...all), high = Math.max(...all);
+        const span = high - low || 1;
+        const maxSamples = Math.max(...series.map((entry) => entry.points.length));
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 300 92');
+        svg.setAttribute('role', 'img');
+        svg.setAttribute('aria-label', `${kind} telemetry, ${maxSamples} real samples`);
+        const colors = ['#d7653f', '#6d9b91', '#d8cda9', '#8795a1'];
+        series.forEach((entry, index) => {
+          const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+          const points = entry.points.map((point, pointIndex) => {
+            const x = entry.points.length === 1 ? 150 : 5 + (pointIndex / (entry.points.length - 1)) * 290;
+            const y = 87 - ((transform(Number(point.value)) - low) / span) * 82;
+            return `${x},${y}`;
+          }).join(' ');
+          polyline.setAttribute('points', points);
+          polyline.setAttribute('fill', 'none');
+          polyline.setAttribute('stroke', colors[index % colors.length]);
+          polyline.setAttribute('stroke-width', '1.5');
+          svg.appendChild(polyline);
+        });
+        body.appendChild(svg);
+        const meta = document.createElement('small');
+        meta.textContent = `${maxSamples} real sample${maxSamples === 1 ? '' : 's'}${kind === 'residuals' ? ' / log₁₀ scale' : ''}`;
+        body.appendChild(meta);
+      }
+
+      function drawTelemetry(telemetry) {
+        ['residuals', 'mass', 'energy', 'monitor'].forEach((kind) => drawChart(kind, telemetry));
+      }
+
+      async function showPressureField(field, token) {
+        if (!field?.href || !scientific) return;
+        const request = artifactRequest(field.href, token);
+        const response = await fetch(request.url, request.options);
+        if (!response.ok) throw new Error(`pressure surface unavailable (${response.status})`);
+        const surface = await response.json();
+        scientificViewer?.dispose();
+        scientific.hidden = false;
+        if (img) img.hidden = true;
+        const { mountPressureViewer } = await import('../../../../lib/aero/pressure-viewer');
+        scientificViewer = mountPressureViewer(scientific, surface);
+        activeScientificMode = 'result';
+        scientificViewer.setMeshVisible(meshShown);
+        if (legend) legend.hidden = false;
+        const max = document.getElementById('vp-legend-max');
+        const min = document.getElementById('vp-legend-min');
+        if (max) max.textContent = Number(surface.range[1]).toFixed(2);
+        if (min) min.textContent = Number(surface.range[0]).toFixed(2);
+        state.mode = 'result';
+        state.field = 'pressure';
+        const unavailable = document.querySelector('.vp-none');
+        if (unavailable) unavailable.hidden = true;
+        const fieldArea = document.querySelector('.vp-fields');
+        if (fieldArea && !fieldArea.querySelector('[data-field="pressure"]')) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'vp-field is-active';
+          button.dataset.field = 'pressure';
+          button.textContent = 'Pressure / Pa';
+          button.addEventListener('click', () => showPressureField(field, token));
+          fieldArea.appendChild(button);
+        }
+        document.querySelectorAll('.vp-mode').forEach((b) => b.classList.toggle('is-active', b.dataset.mode === 'result'));
+        if (hint) hint.textContent = 'Pressure / Pa — rotate, pan, zoom; values are solver output';
+      }
+
+      async function showCadGeometry(artifact, token) {
+        if (!artifact?.href || !scientific) return;
+        const request = artifactRequest(artifact.href, token);
+        const response = await fetch(request.url, request.options);
+        if (!response.ok) throw new Error(`generated CAD unavailable (${response.status})`);
+        const payload = await response.arrayBuffer();
+        scientificViewer?.dispose();
+        scientific.hidden = false;
+        if (img) img.hidden = true;
+        if (legend) legend.hidden = true;
+        const { mountCadViewer } = await import('../../../../lib/aero/cad-viewer');
+        scientificViewer = mountCadViewer(scientific, payload);
+        scientificViewer.setMeshVisible(meshShown);
+        activeScientificMode = 'geometry';
+        state.mode = 'geometry';
+        state.field = null;
+        document.querySelectorAll('.vp-mode').forEach((b) =>
+          b.classList.toggle('is-active', b.dataset.mode === 'geometry'));
+        if (hint) hint.textContent = 'Approved CadQuery geometry — rotate, pan, zoom; PARAMETRIC GENERATED';
+      }
+
+      drawTelemetry(cfg.recordedTelemetry || {});
+
+      function applyCamera() {
+        if (!img) return;
+        const c = state.camera;
+        img.style.transform = `translate(${c.panX}px, ${c.panY}px) scale(${c.zoom})`;
+      }
+
+      function setMode(mode) {
+        if (!MODES.has(mode)) return;
+        if (mode === 'geometry' && liveCadArtifact) {
+          showCadGeometry(liveCadArtifact, localToken?.value || '').catch((error) => appendAero(error.message));
+          return;
+        }
+        if (mode === 'result' && livePressureField) {
+          showPressureField(livePressureField, localToken?.value || '').catch((error) => appendAero(error.message));
+          return;
+        }
+        if (mode === 'mesh' && livePressureField) {
+          showPressureField(livePressureField, localToken?.value || '').then(() => {
+            meshShown = true;
+            scientificViewer?.setMeshVisible(true);
+            activeScientificMode = 'mesh';
+            state.mode = 'mesh';
+            if (legend) legend.hidden = true;
+            document.querySelectorAll('.vp-mode').forEach((b) =>
+              b.classList.toggle('is-active', b.dataset.mode === 'mesh'));
+            if (hint) hint.textContent = 'Exterior CFD surface mesh — rotate, pan, zoom; 12,600 volume cells recorded in evidence';
+          }).catch((error) => appendAero(error.message));
+          return;
+        }
+        state.mode = mode;
+        const useScientific = mode === activeScientificMode && scientificViewer;
+        if (scientific) scientific.hidden = !useScientific;
+        if (legend) legend.hidden = !useScientific;
+        if (img) img.hidden = Boolean(useScientific);
+        const src = cfg.artifacts?.[mode];
+        if (img && src && !useScientific) {
+          img.src = src;
+          img.alt = `Wall-resolved axisymmetric nozzle ${mode}`;
+        }
+        document.querySelectorAll('.vp-mode').forEach((b) =>
+          b.classList.toggle('is-active', b.dataset.mode === mode));
+        if (hint) hint.textContent = `${mode[0].toUpperCase()}${mode.slice(1)} — drag to pan, scroll to zoom`;
+      }
+
+      function resetCamera() {
+        state.camera = { zoom: 1, panX: 0, panY: 0 };
+        applyCamera();
+      }
+
+      function showSection(id) {
+        const el = document.getElementById(`nb-${id}`);
+        if (!el) return;
+        showTab('notebook');
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.add('nb-flash');
+        setTimeout(() => el.classList.remove('nb-flash'), 1600);
+        el.focus({ preventScroll: true });
+      }
+
+      function apply(action) {
+        const a = validate(action);
+        if (!a) return;
+        switch (a.action) {
+          case 'SET_VIEWPORT_MODE': setMode(a.mode); showTab('viewport'); break;
+          case 'RESET_CAMERA': resetCamera(); break;
+          case 'SHOW_NOTEBOOK_SECTION': showSection(a.section); break;
+          case 'EXPLAIN_GATE': openGate(a.gateId); break;
+          default: break; // recognised but not yet wired
+        }
+      }
+
+      // ---- viewport interaction
+      document.querySelectorAll('.vp-mode').forEach((btn) =>
+        btn.addEventListener('click', () => setMode(btn.dataset.mode)));
+      document.querySelectorAll('[data-field="pressure"]').forEach((btn) =>
+        btn.addEventListener('click', () => setMode('result')));
+      document.querySelectorAll('[data-vp]').forEach((btn) =>
+        btn.addEventListener('click', () => {
+          const k = btn.dataset.vp;
+          if (k === 'zoom-in') state.camera.zoom = Math.min(6, state.camera.zoom * 1.25);
+          if (k === 'zoom-out') state.camera.zoom = Math.max(0.4, state.camera.zoom / 1.25);
+          if (k === 'reset') {
+            if (scientificViewer && state.mode === activeScientificMode) scientificViewer.resetCamera();
+            return resetCamera();
+          }
+          if (k === 'mesh') {
+            meshShown = !meshShown;
+            scientificViewer?.setMeshVisible(meshShown);
+            btn.textContent = meshShown ? 'Hide mesh' : 'Show mesh';
+            return;
+          }
+          applyCamera();
+        }));
+
+      let dragging = false, lastX = 0, lastY = 0;
+      stage?.addEventListener('pointerdown', (e) => {
+        if (scientificViewer && state.mode === activeScientificMode) return;
+        dragging = true; lastX = e.clientX; lastY = e.clientY;
+        stage.setPointerCapture(e.pointerId);
+      });
+      stage?.addEventListener('pointermove', (e) => {
+        if (scientificViewer && state.mode === activeScientificMode) return;
+        if (!dragging) return;
+        state.camera.panX += e.clientX - lastX;
+        state.camera.panY += e.clientY - lastY;
+        lastX = e.clientX; lastY = e.clientY;
+        applyCamera();
+      });
+      stage?.addEventListener('pointerup', () => { dragging = false; });
+      stage?.addEventListener('wheel', (e) => {
+        if (scientificViewer && state.mode === activeScientificMode) return;
+        e.preventDefault();
+        const f = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+        state.camera.zoom = Math.min(6, Math.max(0.4, state.camera.zoom * f));
+        applyCamera();
+      }, { passive: false });
+      stage?.addEventListener('keydown', (e) => {
+        if (scientificViewer && state.mode === activeScientificMode) return;
+        const step = 24;
+        if (e.key === 'ArrowLeft') state.camera.panX += step;
+        else if (e.key === 'ArrowRight') state.camera.panX -= step;
+        else if (e.key === 'ArrowUp') state.camera.panY += step;
+        else if (e.key === 'ArrowDown') state.camera.panY -= step;
+        else if (e.key === '+' || e.key === '=') state.camera.zoom = Math.min(6, state.camera.zoom * 1.2);
+        else if (e.key === '-') state.camera.zoom = Math.max(0.4, state.camera.zoom / 1.2);
+        else if (e.key === '0') return resetCamera();
+        else return;
+        e.preventDefault();
+        applyCamera();
+      });
+
+      // ---- evidence detail
+      let allGates = [...(evData.numerical || []), ...(evData.readiness || [])];
+      const detail = document.getElementById('ev-detail');
+      const detailBody = document.getElementById('ev-detail-body');
+
+      function openGate(id) {
+        const gate = allGates.find((g) => g.id === id);
+        if (!gate || !detail || !detailBody) return;
+        const rows = [];
+        rows.push(`<h4>${gate.label} — <span class="${
+          gate.status === 'PASS' ? 'ok' : gate.status === 'FAIL' ? 'bad' : 'unknown'
+        }">${(evData.statusLabels || {})[gate.status] || gate.status}</span></h4>`);
+        if (gate.value !== null && gate.value !== undefined)
+          rows.push(`<div class="ev-kv"><span>Measured value</span><b>${gate.value}${gate.units ? ' ' + gate.units : ''}</b></div>`);
+        if (gate.limit !== null && gate.limit !== undefined)
+          rows.push(`<div class="ev-kv"><span>Acceptance limit</span><b>${gate.limit}${gate.units ? ' ' + gate.units : ''}</b></div>`);
+        rows.push(`<div class="ev-kv"><span>Required</span><b>${gate.required ? 'yes' : 'no'}</b></div>`);
+        rows.push(`<div class="ev-kv"><span>Provenance</span><b>${(evData.provLabels || {})[gate.source] || gate.source}</b></div>`);
+        rows.push(`<p class="ev-reason">${gate.reason}</p>`);
+        detailBody.innerHTML = rows.join('');
+        detail.hidden = false;
+        showTab('evidence');
+        detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      document.querySelectorAll('[data-gate]').forEach((btn) =>
+        btn.addEventListener('click', () => openGate(btn.dataset.gate)));
+      detail?.querySelector('.ev-close')?.addEventListener('click', () => { detail.hidden = true; });
+
+      // ---- chat (curated; each reply may request allowlisted actions only)
+      const REPLIES = {
+        mesh: {
+          text: 'Switching to the actual exterior surface mesh from the 12,600-cell Level 4 structured wedge. The wireframe is derived from the retained OpenFOAM VTK artifact.',
+          actions: [{ action: 'SET_VIEWPORT_MODE', mode: 'mesh' }],
+        },
+        validation: {
+          text: 'Because no validation reference is attached to this case. There is no experiment, analytical solution, published benchmark or trusted-solver comparison recorded against it, so there is nothing to be right or wrong against. Converging is not evidence of correctness.',
+          actions: [{ action: 'EXPLAIN_GATE', gateId: 'validation_reference' }],
+        },
+        independence: {
+          text: 'All three retained levels were numerically acceptable. Pressure drop changed 1.5153% from Level 2 to 3 and 0.0191% from Level 3 to 4, so the worst adjacent change remained below the predeclared 2% threshold.',
+          actions: [{ action: 'EXPLAIN_GATE', gateId: 'mesh_independence' }],
+        },
+        continuity: {
+          text: 'Steady mass continuity, ṁ = ρAV, with the differential statement ∇·(ρu) = 0 for a steady solve. Scrolling the notebook to the governing physics.',
+          actions: [{ action: 'SHOW_NOTEBOOK_SECTION', section: 'physics' }],
+        },
+        next: {
+          text: 'Next, attach an external validation reference, establish wall-resolution suitability, and substantiate the model-fidelity claim for the intended engineering use. Mesh independence alone does not establish design readiness.',
+          actions: [{ action: 'SHOW_NOTEBOOK_SECTION', section: 'interpretation' }],
+        },
+      };
+
+      const log = document.getElementById('ch-log');
+      document.querySelectorAll('.ch-prompt').forEach((btn) =>
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.q;
+          const reply = REPLIES[key];
+          if (!reply || !log) return;
+          const q = document.createElement('p');
+          q.className = 'ch-turn ch-user';
+          q.innerHTML = `<b>You</b> ${btn.textContent}`;
+          log.appendChild(q);
+          const a = document.createElement('p');
+          a.className = 'ch-turn ch-aero';
+          a.innerHTML = `<b>Aero</b> ${reply.text}`;
+          log.appendChild(a);
+          log.scrollTop = log.scrollHeight;
+          (reply.actions || []).forEach(apply);
+        }));
+
+      // ---- authenticated loopback execution
+      const localForm = document.getElementById('local-run');
+      const localToken = document.getElementById('local-token');
+      const localMessage = document.getElementById('local-message');
+      const meshStudyPreset = document.getElementById('mesh-study-preset');
+      const wallStudyPreset = document.getElementById('wall-study-preset');
+      const proposalBox = document.getElementById('local-proposal');
+      const eventsList = document.getElementById('run-events');
+      const sessionBytes = crypto.getRandomValues(new Uint8Array(8));
+      const sessionId = `sess-${Array.from(sessionBytes, (byte) => byte.toString(16).padStart(2, '0')).join('')}`;
+
+      function statusClassName(status) {
+        return status === 'PASS' || status === 'READY' || status === 'COMPLETE'
+          ? 'ok' : status === 'FAIL' || status === 'NOT_READY' || status === 'FAILED' ? 'bad' : 'unknown';
+      }
+
+      function setStatusText(element, status) {
+        if (!element) return;
+        element.textContent = String(status || 'NOT ESTABLISHED').replaceAll('_', ' ');
+        element.classList.remove('ok', 'bad', 'unknown');
+        element.classList.add(statusClassName(status));
+      }
+
+      async function localRequest(path, options = {}) {
+        const token = localToken?.value || '';
+        const response = await fetch(`${cfg.localApi}${path}`, {
+          ...options,
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Aero-Token': token,
+            ...(options.headers || {}),
+          },
+        });
+        const body = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(body.reason || body.error || `request failed (${response.status})`);
+        return body;
+      }
+
+      function appendAero(text) {
+        if (!log) return;
+        const turn = document.createElement('p');
+        turn.className = 'ch-turn ch-aero';
+        const who = document.createElement('b');
+        who.textContent = 'Aero';
+        turn.append(who, document.createTextNode(` ${text}`));
+        log.appendChild(turn);
+        log.scrollTop = log.scrollHeight;
+      }
+
+      function updateEvidence(result) {
+        if (!result) return;
+        setStatusText(document.getElementById('ev-execution-status'), result.execution?.status);
+        setStatusText(document.getElementById('ev-numerical-status'), result.numerical?.status);
+        setStatusText(document.getElementById('ev-readiness-status'), result.readiness?.status);
+        const solverTime = document.getElementById('ev-solver-runtime');
+        const totalTime = document.getElementById('ev-total-runtime');
+        if (solverTime) solverTime.textContent = result.execution?.runtime_display?.solver || 'NOT RECORDED';
+        if (totalTime) totalTime.textContent = result.execution?.runtime_display?.total || 'NOT RECORDED';
+        evData.numerical = result.numerical?.gates || [];
+        evData.readiness = result.readiness?.gates || [];
+        allGates = [...evData.numerical, ...evData.readiness];
+        allGates.forEach((gate) => {
+          const button = document.querySelector(`[data-gate="${gate.id}"]`);
+          const status = button?.querySelector('b');
+          setStatusText(status, gate.status);
+        });
+      }
+
+      function renderEvents(run) {
+        if (!eventsList) return;
+        eventsList.replaceChildren();
+        (run.events || []).forEach((event) => {
+          const item = document.createElement('li');
+          const stateLabel = document.createElement('b');
+          stateLabel.textContent = event.status.replaceAll('_', ' ');
+          item.append(stateLabel, document.createTextNode(` — ${event.reason}`));
+          eventsList.appendChild(item);
+        });
+        const status = document.getElementById('run-status');
+        setStatusText(status, run.status);
+        const mode = document.getElementById('run-mode');
+        if (mode) mode.textContent = 'LIVE LOCAL RUN';
+      }
+
+      async function pollRun(jobId) {
+        while (true) {
+          const body = await localRequest(`/tools/aero/workbench/run/${jobId}`);
+          const run = body.run;
+          renderEvents(run);
+          drawTelemetry(run.telemetry || {});
+          if (['COMPLETE', 'FAILED', 'TIMED_OUT', 'CANCELLED'].includes(run.status)) {
+            if (run.result) {
+              updateEvidence(run.result);
+              const pressure = (run.result.resultFields || []).find((field) => field.field === 'p' && field.href);
+              liveCadArtifact = (run.result.artifacts || []).find(
+                (artifact) => artifact.type === 'geometry' && artifact.publicFormat === 'stl' && artifact.href,
+              );
+              livePressureField = pressure || null;
+              if (pressure) {
+                await showPressureField(pressure, localToken?.value || '');
+                showTab('viewport');
+              }
+              const mesh = run.result.geometryManifest?.checks;
+              const geometryNote = mesh
+                ? ` Generated geometry validated with ${mesh.meshNodes} nodes and ${mesh.meshVolumeElements} volume elements; use Geometry to inspect the real STL.`
+                : '';
+              const study = run.result.meshStudy;
+              const studyNote = study?.levels?.length
+                ? ` Mesh study: ${study.levels.map((level) => `${level.level}: ${level.cellCount} cells, ${level.metricValue} Pa`).join('; ')}.`
+                : '';
+              appendAero(`Evidence finalized. Numerical acceptability: ${run.result.numerical.status}. Design readiness: ${run.result.readiness.status}.${geometryNote}${studyNote}`);
+            } else {
+              appendAero(`Run ended ${run.status}. ${run.failure || 'No EngineeringResult was finalized.'}`);
+            }
+            return;
+          }
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      }
+
+      function showProposal(proposal) {
+        if (!proposalBox) return;
+        proposalBox.replaceChildren();
+        const heading = document.createElement('h4');
+        heading.textContent = 'Immutable proposed configuration';
+        const pre = document.createElement('pre');
+        pre.textContent = JSON.stringify(proposal.immutable_configuration, null, 2);
+        const criteriaHeading = document.createElement('h4');
+        criteriaHeading.textContent = 'Criteria fixed before solving';
+        const criteria = document.createElement('ul');
+        proposal.predeclared_criteria.forEach((gate) => {
+          const item = document.createElement('li');
+          item.textContent = `${gate.id}: required${gate.maximum !== undefined ? ` / maximum ${gate.maximum}` : ''}`;
+          criteria.appendChild(item);
+        });
+        const approve = document.createElement('button');
+        approve.type = 'button';
+        approve.textContent = 'Approve this exact configuration and run';
+        approve.addEventListener('click', async () => {
+          approve.disabled = true;
+          try {
+            const body = await localRequest('/tools/aero/workbench/approve', {
+              method: 'POST',
+              body: JSON.stringify({
+                proposal_id: proposal.proposal_id,
+                fingerprint: proposal.fingerprint,
+                session_id: sessionId,
+                approved: true,
+              }),
+            });
+            appendAero('Approval matched the frozen proposal. The isolated worker has been queued.');
+            await pollRun(body.run.jobId);
+          } catch (error) {
+            appendAero(error instanceof Error ? error.message : String(error));
+            approve.disabled = false;
+          }
+        });
+        proposalBox.append(heading, pre, criteriaHeading, criteria, approve);
+        proposalBox.hidden = false;
+      }
+
+      if (localForm && ['127.0.0.1', 'localhost', '::1'].includes(window.location.hostname)) {
+        localForm.hidden = false;
+        meshStudyPreset?.addEventListener('click', () => {
+          if (localMessage) localMessage.value = 'Run the approved three-level mesh independence study';
+          localMessage?.focus();
+        });
+        wallStudyPreset?.addEventListener('click', () => {
+          if (localMessage) localMessage.value = 'Run the approved wall-resolved mesh study';
+          localMessage?.focus();
+        });
+        localForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (!localToken?.value) return appendAero('Enter the configured local Aero token to use the protected worker.');
+          try {
+            const body = await localRequest('/tools/aero/workbench/chat', {
+              method: 'POST',
+              body: JSON.stringify({ message: localMessage?.value || '', session_id: sessionId }),
+            });
+            appendAero(body.message);
+            showProposal(body.proposal);
+          } catch (error) {
+            appendAero(error instanceof Error ? error.message : String(error));
+          }
+        });
+      }
+
+      // ---- responsive tabs
+      function showTab(name) {
+        if (window.matchMedia('(min-width: 981px)').matches) return;
+        document.querySelectorAll('.wb-pane').forEach((p) =>
+          p.classList.toggle('is-active', p.dataset.pane === name));
+        document.querySelectorAll('.wb-tab').forEach((t) => {
+          const on = t.dataset.tab === name;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+      }
+      document.querySelectorAll('.wb-tab').forEach((t) =>
+        t.addEventListener('click', () => showTab(t.dataset.tab)));
+
+      setMode('geometry');
+      applyCamera();
+    }
+  </script>
+
+  <style>
+    .wb-intro { margin-bottom: 1.5rem; }
+
+    .workbench {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .wb-bar {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-alt);
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .wb-brand { font-weight: 700; color: var(--accent); letter-spacing: 0.16em; }
+    .wb-title { color: var(--muted); }
+    .wb-meta { margin-left: auto; display: flex; gap: 1rem; align-items: baseline; }
+    .wb-mode { border: 1px solid var(--border); padding: 0.1rem 0.45rem; color: var(--muted); }
+    .wb-status { font-weight: 700; color: var(--accent); }
+    .wb-solver { color: var(--faint); }
+
+    .wb-tabs { display: none; }
+
+    .wb-grid { display: grid; grid-template-columns: 38fr 62fr; }
+    .wb-pane { padding: 1rem 1.15rem; min-width: 0; }
+    .wb-pane-title {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--faint); margin: 0 0 0.75rem;
+    }
+    .wb-notebook { border-right: 1px solid var(--border); }
+    .nb-scroll { max-height: 30rem; overflow-y: auto; padding-right: 0.5rem; }
+
+    .nb-section { padding: 0.5rem 0 0.9rem; border-bottom: 1px solid var(--subtle); }
+    .nb-section:focus { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .nb-section h4 { margin: 0 0 0.4rem; font-size: 0.95rem; }
+    .nb-index { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 0.4rem; }
+    .nb-section p { margin: 0 0 0.5rem; font-size: 0.88rem; line-height: 1.55; color: var(--muted); }
+    .nb-flash { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .nb-note { font-style: italic; }
+
+    .nb-values { margin: 0.4rem 0; }
+    .nb-value { display: flex; justify-content: space-between; gap: 1rem; padding: 0.22rem 0; border-bottom: 1px dotted var(--subtle); }
+    .nb-value dt { font-size: 0.82rem; color: var(--muted); }
+    .nb-value dd { margin: 0; font-size: 0.82rem; text-align: right; }
+    .nb-num { font-variant-numeric: tabular-nums; }
+
+    .prov {
+      display: inline-block; margin-left: 0.5rem;
+      font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--faint); border: 1px solid var(--subtle); padding: 0 0.3rem; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .prov[data-prov="AERO_INTERPRETATION"] { border-style: dashed; font-style: italic; }
+
+    .eqn { margin: 0.7rem 0; padding: 0.6rem 0.75rem; background: var(--surface-alt); border-left: 2px solid var(--accent); }
+    .eqn figcaption { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.35rem; }
+    .eqn-math { font-size: 1.1rem; margin: 0.4rem 0; overflow-x: auto; }
+    .eqn-symbols { margin: 0.4rem 0; }
+    .eqn-symbols > div { display: flex; gap: 0.6rem; font-size: 0.78rem; }
+    .eqn-symbols dt { min-width: 3.5rem; font-weight: 600; }
+    .eqn-symbols dd { margin: 0; color: var(--muted); }
+    .eqn-meaning { font-size: 0.82rem !important; margin-top: 0.4rem !important; }
+
+    .fo-chain { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+    .fo-chain > li { margin-bottom: 0.55rem; font-size: 0.84rem; }
+    .fo-step { display: block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+    .fo-missing { color: var(--accent); font-weight: 600; letter-spacing: 0.04em; }
+
+    .vp-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .vp-modes { display: flex; gap: 0.3rem; }
+    .vp-mode, .vp-field, .vp-controls button, .ch-prompt {
+      font: inherit; font-size: 0.74rem; letter-spacing: 0.04em;
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border); padding: 0.25rem 0.6rem; cursor: pointer; border-radius: 2px;
+    }
+    .vp-mode.is-active { color: var(--accent); border-color: var(--accent); }
+    .vp-mode:focus-visible, .vp-field:focus-visible, .ch-prompt:focus-visible,
+    .vp-controls button:focus-visible, .ev-clickable:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+
+    .vp-stage {
+      margin-top: 0.6rem; height: 22rem; background: var(--page);
+      border: 1px solid var(--border); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      cursor: grab; touch-action: none;
+      position: relative;
+    }
+    .vp-stage:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .vp-stage img { max-width: 100%; max-height: 100%; transform-origin: center; will-change: transform; }
+    .vp-scientific { position: absolute; inset: 0; }
+    .vp-scientific canvas { display: block; width: 100%; height: 100%; }
+    .vp-legend {
+      position: absolute; right: 0.7rem; top: 0.7rem; z-index: 2;
+      display: grid; grid-template-columns: auto 0.65rem; grid-template-rows: auto 7rem auto auto auto;
+      gap: 0.15rem 0.4rem; font-size: 0.62rem; color: #eae7df;
+      padding: 0.45rem; background: rgb(17 23 25 / 88%); border: 1px solid #455054;
+    }
+    .vp-legend[hidden], .vp-scientific[hidden] { display: none; }
+    .vp-legend-bar { grid-column: 2; grid-row: 1 / 4; background: linear-gradient(#d7653f, #d9c89d, #4f7f79, #173f4b); }
+    .vp-legend b, .vp-legend small { grid-column: 1 / 3; letter-spacing: 0.06em; }
+
+    .vp-controls { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.5rem; flex-wrap: wrap; }
+    .vp-hint { font-size: 0.7rem; color: var(--faint); }
+    .vp-fields { margin-top: 0.8rem; }
+    .vp-fields-label { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+    .vp-none { font-size: 0.78rem; color: var(--muted); margin: 0.3rem 0 0; line-height: 1.5; }
+    .vp-monitors { margin-top: 0.8rem; font-size: 0.8rem; }
+    .vp-monitors summary { cursor: pointer; color: var(--muted); }
+    .vp-monitors dl { margin: 0.5rem 0 0.3rem; }
+    .vp-monitors > dl > div { display: flex; justify-content: space-between; padding: 0.15rem 0; border-bottom: 1px dotted var(--subtle); }
+    .vp-monitors dt { color: var(--muted); }
+    .vp-monitors dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+    .telemetry { margin-top: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
+    .telemetry h4 { margin: 0 0 0.55rem; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+    .telemetry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
+    .telemetry figure { margin: 0; padding: 0.45rem; border: 1px solid var(--subtle); min-width: 0; }
+    .telemetry figcaption { font-size: 0.68rem; color: var(--muted); }
+    .chart-body svg { display: block; width: 100%; height: 5.5rem; }
+    .chart-body small { display: block; color: var(--faint); font-size: 0.6rem; }
+    .chart-missing { min-height: 5.5rem; display: flex; align-items: center; margin: 0 !important; color: var(--accent) !important; font-size: 0.68rem !important; }
+
+    .wb-chat { grid-column: 1 / -1; border-top: 1px solid var(--border); }
+    .ch-log { max-height: 11rem; overflow-y: auto; }
+    .ch-turn { margin: 0 0 0.5rem; font-size: 0.85rem; line-height: 1.55; }
+    .ch-turn b { display: inline-block; min-width: 3.2rem; color: var(--accent); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .ch-user b { color: var(--muted); }
+    .ch-prompts { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+    .ch-note { font-size: 0.72rem; color: var(--faint); margin: 0.6rem 0 0; line-height: 1.5; }
+    .local-run { margin-top: 0.8rem; padding: 0.75rem; border: 1px solid var(--border); background: var(--surface-alt); }
+    .local-run p { margin: 0 0 0.55rem; font-size: 0.78rem; color: var(--muted); }
+    .local-run label { display: grid; grid-template-columns: 10rem minmax(0, 1fr); align-items: center; gap: 0.6rem; margin: 0.35rem 0; font-size: 0.74rem; color: var(--muted); }
+    .local-run input, .local-run textarea { width: 100%; min-width: 0; box-sizing: border-box; padding: 0.35rem 0.45rem; color: var(--text); background: var(--page); border: 1px solid var(--border); font: inherit; }
+    .local-run textarea { resize: vertical; line-height: 1.4; }
+    .local-run button { margin-top: 0.45rem; padding: 0.35rem 0.6rem; color: var(--text); background: transparent; border: 1px solid var(--accent); font: inherit; cursor: pointer; }
+    .local-proposal { margin-top: 0.7rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
+    .local-proposal h4 { margin: 0.45rem 0 0.25rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .local-proposal pre { max-height: 13rem; overflow: auto; white-space: pre-wrap; font-size: 0.68rem; color: var(--muted); }
+    .local-proposal li, .run-events li { font-size: 0.7rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .run-events { padding-left: 1.2rem; max-height: 10rem; overflow: auto; }
+
+    .wb-evidence { border-top: 1px solid var(--border); background: var(--surface-alt); }
+    .ev-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ev-col h4 { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin: 0 0 0.5rem; }
+    .ev-row {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem;
+      width: 100%; padding: 0.28rem 0; border-bottom: 1px solid var(--subtle);
+      font-size: 0.8rem; text-align: left; background: none; border-left: 0; border-right: 0; border-top: 0;
+      color: var(--muted); font-family: inherit;
+    }
+    .ev-clickable { cursor: pointer; }
+    .ev-clickable:hover { color: var(--text); }
+    .ev-row b { font-size: 0.72rem; letter-spacing: 0.06em; white-space: nowrap; }
+    .ev-agg { border-bottom: 0; margin-top: 0.35rem; padding-top: 0.5rem; border-top: 1px solid var(--border); color: var(--text); }
+    /* status is never communicated by colour alone: the word is always present */
+    .ok { color: #4f9a5f; } .bad { color: #c0563a; } .unknown { color: var(--accent); }
+
+    .ev-detail { margin-top: 1rem; padding: 0.85rem 1rem; border: 1px solid var(--border); background: var(--surface); position: relative; }
+    .ev-detail h4 { margin: 0 0 0.5rem; font-size: 0.9rem; }
+    .ev-kv { display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.2rem 0; border-bottom: 1px dotted var(--subtle); }
+    .ev-reason { font-size: 0.82rem; color: var(--muted); margin: 0.55rem 0 0; line-height: 1.55; }
+    .ev-close { position: absolute; top: 0.4rem; right: 0.55rem; background: none; border: 0; color: var(--faint); font-size: 1.1rem; cursor: pointer; }
+
+    @media (max-width: 980px) {
+      .wb-tabs { display: flex; border-bottom: 1px solid var(--border); }
+      .wb-tab {
+        flex: 1; font: inherit; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+        background: none; border: 0; border-bottom: 2px solid transparent;
+        padding: 0.55rem 0.3rem; color: var(--faint); cursor: pointer;
+      }
+      .wb-tab.is-active { color: var(--accent); border-bottom-color: var(--accent); }
+      .wb-grid { display: block; }
+      .wb-pane { display: none; }
+      .wb-pane.is-active { display: block; }
+      .wb-notebook { border-right: 0; }
+      .ev-cols { grid-template-columns: 1fr; gap: 1rem; }
+      .vp-stage { height: 16rem; }
+      .telemetry-grid { grid-template-columns: 1fr; }
+      .local-run label { grid-template-columns: 1fr; gap: 0.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vp-stage img { will-change: auto; }
+      .nb-flash { transition: none; }
+    }
+  </style>
+</SoftwareLayout>

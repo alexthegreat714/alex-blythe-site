@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-labelledby="title description">
+  <title id="title">Wall-resolved axisymmetric nozzle geometry</title>
+  <desc id="description">A meridional view of the approved converging-diverging nozzle, with a 20 millimetre inlet radius, 8 millimetre throat radius, and 24 millimetre exit radius.</desc>
+  <rect width="1200" height="480" fill="#111719"/>
+  <g fill="none" stroke-linejoin="round">
+    <path d="M110 120 L400 192 L1090 96 L1090 384 L400 288 L110 360 Z" fill="#202b2e" stroke="#d7653f" stroke-width="3"/>
+    <line x1="110" y1="240" x2="1090" y2="240" stroke="#73817f" stroke-width="1" stroke-dasharray="7 8"/>
+    <line x1="400" y1="184" x2="400" y2="296" stroke="#d8cda9" stroke-width="1" stroke-dasharray="4 5"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" letter-spacing="1">
+    <text x="110" y="58" fill="#d8cda9" font-size="18">PARAMETRIC GENERATED / AXISYMMETRIC NOZZLE</text>
+    <text x="110" y="90" fill="#8f9b98" font-size="13">ONE-DEGREE COMPUTATIONAL WEDGE</text>
+    <text x="110" y="420" fill="#8f9b98" font-size="13">INLET R 20 mm</text>
+    <text x="355" y="330" fill="#d8cda9" font-size="13">THROAT R 8 mm</text>
+    <text x="930" y="420" fill="#8f9b98" font-size="13">EXIT R 24 mm</text>
+  </g>
+</svg>
