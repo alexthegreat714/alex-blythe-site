@@ -5,6 +5,9 @@ import {
   publicCadArtifact, publicPressureField,
 } from '../../../../lib/aero/nozzle-precursor';
 import { sections, firstOrder, mathml } from '../../../../lib/aero/notebook';
+import {
+  analysisSteps, firstOrderInputs, firstOrderValues, latexDocument,
+} from '../../../../lib/aero/analysis';
 import { PROVENANCE_LABEL, STATUS_LABEL } from '../../../../lib/aero/case';
 
 const runMode = 'RECORDED';
@@ -27,6 +30,7 @@ const clientState = {
   publicPressureField,
   telemetry: `${demoRoot}/telemetry.json`,
   recordedTelemetry: telemetry,
+  analysis: { inputs: firstOrderInputs, values: firstOrderValues },
   localApi: 'http://127.0.0.1:5213',
 };
 ---
@@ -60,6 +64,7 @@ const clientState = {
     <!-- mobile tab bar; hidden on desktop -->
     <nav class="wb-tabs" aria-label="Workbench sections">
       <button type="button" class="wb-tab is-active" data-tab="notebook" aria-selected="true">Notebook</button>
+      <button type="button" class="wb-tab" data-tab="analysis" aria-selected="false">Math</button>
       <button type="button" class="wb-tab" data-tab="viewport" aria-selected="false">Model</button>
       <button type="button" class="wb-tab" data-tab="evidence" aria-selected="false">Evidence</button>
       <button type="button" class="wb-tab" data-tab="chat" aria-selected="false">Chat</button>
@@ -147,6 +152,98 @@ const clientState = {
         </div>
       </section>
 
+      <!-- ======================= ANALYTICAL WORKSPACE ===================== -->
+      <section class="wb-pane wb-analysis" data-pane="analysis" aria-labelledby="an-h">
+        <div class="an-head">
+          <div>
+            <h3 class="wb-pane-title" id="an-h">Pre-solve analytical workspace</h3>
+            <p>First-principles expectations from case inputs, established before OpenFOAM executes.</p>
+          </div>
+          <div class="an-head-actions">
+            <span class="an-status">ANALYTICAL / PRE-RUN</span>
+            <div class="an-view-switch" role="group" aria-label="Analytical document view">
+              <button type="button" class="is-active" data-analysis-view="render" aria-pressed="true">Rendered</button>
+              <button type="button" data-analysis-view="source" aria-pressed="false">LaTeX source</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="an-shell" data-analysis-panel="render">
+          <nav class="an-index" aria-label="First-order derivation steps">
+            {analysisSteps.map((step, index) => (
+              <button type="button" class={index === 0 ? 'is-active' : ''} data-analysis-target={step.id} aria-current={index === 0 ? 'step' : undefined}>
+                <span>{step.index}</span>{step.title}
+              </button>
+            ))}
+          </nav>
+
+          <article class="an-document" aria-live="polite">
+            <header class="an-document-head">
+              <div>
+                <span>CASE / NOZZLE-WALL-REFINEMENT-V6</span>
+                <h4>First-order flow screening</h4>
+              </div>
+              <span class="prov" data-prov="ANALYTICAL">{PROVENANCE_LABEL.ANALYTICAL}</span>
+            </header>
+
+            <dl class="an-inputs" aria-label="Analytical inputs">
+              <div><dt>ṁ</dt><dd><span data-analysis-input="massFlowKgS">{firstOrderInputs.massFlowKgS.toFixed(3)}</span> kg/s</dd></div>
+              <div><dt>p<sub>ref</sub></dt><dd>{firstOrderInputs.referencePressurePa} Pa</dd></div>
+              <div><dt>T<sub>ref</sub></dt><dd>{firstOrderInputs.referenceTemperatureK} K</dd></div>
+              <div><dt>r<sub>i</sub></dt><dd>{(firstOrderInputs.inletRadiusM * 1000).toFixed(0)} mm</dd></div>
+              <div><dt>R</dt><dd>{firstOrderInputs.gasConstantJkgK} J/(kg K)</dd></div>
+              <div><dt>γ</dt><dd>{firstOrderInputs.heatCapacityRatio}</dd></div>
+            </dl>
+
+            <div class="an-steps">
+              {analysisSteps.map((step) => (
+                <section class="an-step" id={`analysis-${step.id}`} data-analysis-step={step.id} tabindex="-1">
+                  <header><span>{step.index}</span><h5>{step.title}</h5></header>
+                  <div class="an-equation" set:html={step.mathml} />
+                  <code class="an-inline-source">{step.latex}</code>
+                  <p>{step.explanation}</p>
+                  {step.resultKey && (
+                    <div class="an-result">
+                      <span>{step.resultLabel}</span>
+                      <b><span data-analysis-value={step.resultKey}>{
+                        step.resultKey === 'areaM2' ? firstOrderValues.areaM2.toExponential(4)
+                          : step.resultKey === 'densityKgM3' ? firstOrderValues.densityKgM3.toFixed(4)
+                          : step.resultKey === 'velocityMS' ? firstOrderValues.velocityMS.toFixed(3)
+                          : step.resultKey === 'mach' ? firstOrderValues.mach.toFixed(5)
+                          : firstOrderValues.dynamicPressurePa.toFixed(2)
+                      }</span>{step.units ? ` ${step.units}` : ''}</b>
+                    </div>
+                  )}
+                  {step.id === 'mach' && (
+                    <div class="an-result an-result-secondary">
+                      <span>Reference speed of sound</span>
+                      <b><span data-analysis-value="speedOfSoundMS">{firstOrderValues.speedOfSoundMS.toFixed(2)}</span> m/s</b>
+                    </div>
+                  )}
+                </section>
+              ))}
+            </div>
+
+            <aside class="an-trend">
+              <b>Expected before solving</b>
+              <p>At fixed reference state and geometry, V and M scale linearly with ṁ; q scales approximately with ṁ².</p>
+              <p><strong>Independent nozzle pressure drop:</strong> NOT YET ESTABLISHED.</p>
+            </aside>
+
+            <form class="an-question" id="analysis-question">
+              <label for="analysis-query">Ask the derivation</label>
+              <div><input id="analysis-query" type="text" maxlength="160" placeholder="Why is the inlet Mach number small?" /><button type="submit">Find the math</button></div>
+              <small>Questions select the relevant structured derivation; they do not generate equations from solver output.</small>
+            </form>
+          </article>
+        </div>
+
+        <div class="an-source" data-analysis-panel="source" hidden>
+          <div class="an-source-head"><span>first-order-screening.tex</span><span>READ ONLY / GENERATED FROM CASE STATE</span></div>
+          <pre><code>{latexDocument}</code></pre>
+        </div>
+      </section>
+
       <!-- ============================= VIEWPORT ============================ -->
       <section class="wb-pane wb-viewport" data-pane="viewport" aria-labelledby="vp-h">
         <div class="vp-head">
@@ -230,6 +327,7 @@ const clientState = {
           <button type="button" class="ch-prompt" data-q="validation">Why isn't this validated?</button>
           <button type="button" class="ch-prompt" data-q="independence">How was mesh independence established?</button>
           <button type="button" class="ch-prompt" data-q="continuity">What governs mass conservation?</button>
+          <button type="button" class="ch-prompt" data-q="first-order">Show the pre-solve estimate</button>
           <button type="button" class="ch-prompt" data-q="next">What would you do next?</button>
         </div>
         <form class="local-run" id="local-run" hidden>
@@ -322,13 +420,14 @@ const clientState = {
       const evData = JSON.parse(document.getElementById('ev-data')?.textContent || '{}');
 
       const ACTIONS = new Set([
-        'SHOW_NOTEBOOK_SECTION', 'SET_VIEWPORT_MODE', 'SET_RESULT_FIELD', 'TOGGLE_MESH',
+        'SHOW_NOTEBOOK_SECTION', 'SHOW_ANALYSIS_STEP', 'SET_VIEWPORT_MODE', 'SET_RESULT_FIELD', 'TOGGLE_MESH',
         'RESET_CAMERA', 'SELECT_RUN', 'COMPARE_RUNS', 'EXPLAIN_GATE',
         'PROPOSE_PARAMETER_CHANGE', 'PROPOSE_GEOMETRY', 'REQUEST_RUN', 'REQUEST_MESH_STUDY',
         'REQUEST_WALL_RESOLVED_MESH_STUDY',
       ]);
       const MODES = new Set(['geometry', 'mesh', 'result']);
       const FIELDS = new Set(['pressure', 'velocity', 'mach', 'temperature']);
+      const ANALYSIS_STEPS = new Set(['scope', 'area', 'density', 'velocity', 'mach', 'dynamic-pressure', 'limits']);
 
       /** Reject anything not on the allowlist or malformed. No eval, ever. */
       function validate(raw) {
@@ -337,6 +436,7 @@ const clientState = {
         if (raw.action === 'SET_VIEWPORT_MODE' && !MODES.has(raw.mode)) return null;
         if (raw.action === 'SET_RESULT_FIELD' && !FIELDS.has(raw.field)) return null;
         if (raw.action === 'SHOW_NOTEBOOK_SECTION' && typeof raw.section !== 'string') return null;
+        if (raw.action === 'SHOW_ANALYSIS_STEP' && !ANALYSIS_STEPS.has(raw.analysisStep)) return null;
         if (raw.action === 'EXPLAIN_GATE' && typeof raw.gateId !== 'string') return null;
         return raw;
       }
@@ -538,6 +638,78 @@ const clientState = {
         el.focus({ preventScroll: true });
       }
 
+      function calculateAnalysis(massFlowKgS) {
+        const inputs = cfg.analysis?.inputs || {};
+        const areaM2 = Math.PI * Number(inputs.inletRadiusM) ** 2;
+        const densityKgM3 = Number(inputs.referencePressurePa)
+          / (Number(inputs.gasConstantJkgK) * Number(inputs.referenceTemperatureK));
+        const velocityMS = massFlowKgS / (densityKgM3 * areaM2);
+        const speedOfSoundMS = Math.sqrt(
+          Number(inputs.heatCapacityRatio) * Number(inputs.gasConstantJkgK) * Number(inputs.referenceTemperatureK),
+        );
+        return {
+          areaM2, densityKgM3, velocityMS, speedOfSoundMS,
+          mach: velocityMS / speedOfSoundMS,
+          dynamicPressurePa: 0.5 * densityKgM3 * velocityMS ** 2,
+        };
+      }
+
+      function updateAnalysis(massFlowKgS, label = 'CASE INPUT') {
+        if (!Number.isFinite(massFlowKgS) || massFlowKgS <= 0) return;
+        const values = calculateAnalysis(massFlowKgS);
+        const formats = {
+          areaM2: (value) => value.toExponential(4),
+          densityKgM3: (value) => value.toFixed(4),
+          velocityMS: (value) => value.toFixed(3),
+          speedOfSoundMS: (value) => value.toFixed(2),
+          mach: (value) => value.toFixed(5),
+          dynamicPressurePa: (value) => value.toFixed(2),
+        };
+        const input = document.querySelector('[data-analysis-input="massFlowKgS"]');
+        if (input) input.textContent = massFlowKgS.toFixed(3);
+        Object.entries(values).forEach(([key, value]) => {
+          const target = document.querySelector(`[data-analysis-value="${key}"]`);
+          if (target) target.textContent = formats[key]?.(value) || String(value);
+        });
+        const status = document.querySelector('.an-status');
+        if (status) status.textContent = `${label} / ANALYTICAL / PRE-RUN`;
+      }
+
+      function showAnalysisStep(id) {
+        if (!ANALYSIS_STEPS.has(id)) return;
+        showTab('analysis');
+        document.querySelectorAll('[data-analysis-target]').forEach((button) =>
+          {
+            const active = button.dataset.analysisTarget === id;
+            button.classList.toggle('is-active', active);
+            if (active) button.setAttribute('aria-current', 'step');
+            else button.removeAttribute('aria-current');
+          });
+        const step = document.getElementById(`analysis-${id}`);
+        if (!step) return;
+        step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        step.classList.add('an-flash');
+        setTimeout(() => step.classList.remove('an-flash'), 1600);
+        step.focus({ preventScroll: true });
+      }
+
+      document.querySelectorAll('[data-analysis-target]').forEach((button) =>
+        button.addEventListener('click', () => showAnalysisStep(button.dataset.analysisTarget)));
+
+      document.querySelectorAll('[data-analysis-view]').forEach((button) =>
+        button.addEventListener('click', () => {
+          const view = button.dataset.analysisView;
+          document.querySelectorAll('[data-analysis-view]').forEach((candidate) =>
+            {
+              const active = candidate === button;
+              candidate.classList.toggle('is-active', active);
+              candidate.setAttribute('aria-pressed', String(active));
+            });
+          document.querySelectorAll('[data-analysis-panel]').forEach((panel) => {
+            panel.hidden = panel.dataset.analysisPanel !== view;
+          });
+        }));
+
       function apply(action) {
         const a = validate(action);
         if (!a) return;
@@ -545,6 +717,7 @@ const clientState = {
           case 'SET_VIEWPORT_MODE': setMode(a.mode); showTab('viewport'); break;
           case 'RESET_CAMERA': resetCamera(); break;
           case 'SHOW_NOTEBOOK_SECTION': showSection(a.section); break;
+          case 'SHOW_ANALYSIS_STEP': showAnalysisStep(a.analysisStep); break;
           case 'EXPLAIN_GATE': openGate(a.gateId); break;
           default: break; // recognised but not yet wired
         }
@@ -654,8 +827,12 @@ const clientState = {
           actions: [{ action: 'EXPLAIN_GATE', gateId: 'mesh_independence' }],
         },
         continuity: {
-          text: 'Steady mass continuity, ṁ = ρAV, with the differential statement ∇·(ρu) = 0 for a steady solve. Scrolling the notebook to the governing physics.',
-          actions: [{ action: 'SHOW_NOTEBOOK_SECTION', section: 'physics' }],
+          text: 'Steady mass continuity, ṁ = ρAV, sets the independent inlet velocity scale. Opening the pre-solve derivation so the inputs, substitution, and result remain separate from CFD output.',
+          actions: [{ action: 'SHOW_ANALYSIS_STEP', analysisStep: 'velocity' }],
+        },
+        'first-order': {
+          text: 'The pre-solve screen establishes area, ideal-gas reference density, mean inlet velocity, speed of sound, Mach number, and a dynamic-pressure scale from case inputs. It does not claim an analytical nozzle pressure drop.',
+          actions: [{ action: 'SHOW_ANALYSIS_STEP', analysisStep: 'scope' }],
         },
         next: {
           text: 'Next, attach an external validation reference, establish wall-resolution suitability, and substantiate the model-fidelity claim for the intended engineering use. Mesh independence alone does not establish design readiness.',
@@ -664,6 +841,18 @@ const clientState = {
       };
 
       const log = document.getElementById('ch-log');
+
+      function appendUser(text) {
+        if (!log) return;
+        const turn = document.createElement('p');
+        turn.className = 'ch-turn ch-user';
+        const who = document.createElement('b');
+        who.textContent = 'You';
+        turn.append(who, document.createTextNode(` ${text}`));
+        log.appendChild(turn);
+        log.scrollTop = log.scrollHeight;
+      }
+
       document.querySelectorAll('.ch-prompt').forEach((btn) =>
         btn.addEventListener('click', () => {
           const key = btn.dataset.q;
@@ -680,6 +869,34 @@ const clientState = {
           log.scrollTop = log.scrollHeight;
           (reply.actions || []).forEach(apply);
         }));
+
+      const analysisQuestion = document.getElementById('analysis-question');
+      const analysisQuery = document.getElementById('analysis-query');
+      analysisQuestion?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const question = String(analysisQuery?.value || '').trim();
+        if (!question) return;
+        const normalized = question.toLowerCase();
+        let step = 'scope';
+        let answer = 'This derivation is limited to the declared pre-solve screening chain. I opened its scope and authority boundary.';
+        if (/area|radius|diameter/.test(normalized)) {
+          step = 'area'; answer = 'The inlet reference area comes directly from the deterministic 20 mm inlet radius: Aᵢ = πrᵢ².';
+        } else if (/density|ideal gas|rho|pressure.*temperature/.test(normalized)) {
+          step = 'density'; answer = 'Reference density uses the ideal-gas relation at the declared pressure and temperature. It is not the CFD density field.';
+        } else if (/continuity|mass flow|velocity/.test(normalized)) {
+          step = 'velocity'; answer = 'Continuity converts commanded mass flow, reference density, and inlet area into the independent mean-velocity scale.';
+        } else if (/mach|speed of sound|compressib/.test(normalized)) {
+          step = 'mach'; answer = 'The Mach screen divides the independently calculated inlet velocity by the ideal-gas reference speed of sound.';
+        } else if (/dynamic|pressure scale|quadratic/.test(normalized)) {
+          step = 'dynamic-pressure'; answer = 'Dynamic pressure provides an order-of-magnitude scale and shows the quadratic mass-flow trend; it is not the nozzle pressure drop.';
+        } else if (/pressure drop|loss|not established|limit/.test(normalized)) {
+          step = 'limits'; answer = 'An independent nozzle loss relation is not justified by the available inputs, so analytical pressure drop remains NOT YET ESTABLISHED.';
+        }
+        appendUser(question);
+        appendAero(answer);
+        showAnalysisStep(step);
+        if (analysisQuery) analysisQuery.value = '';
+      });
 
       // ---- authenticated loopback execution
       const localForm = document.getElementById('local-run');
@@ -802,12 +1019,22 @@ const clientState = {
       }
 
       function showProposal(proposal) {
-        if (!proposalBox) return;
+        if (!proposalBox || !proposal) return;
+        const configuration = proposal.immutable_configuration || {};
+        const proposedMassFlow = [
+          configuration.mass_flow_kg_s,
+          configuration.massFlowKgS,
+          configuration.mass_flow,
+          configuration.inputs?.mass_flow_kg_s,
+          configuration.parameters?.mass_flow_kg_s,
+          configuration.case?.mass_flow_kg_s,
+        ].map(Number).find((value) => Number.isFinite(value) && value > 0);
+        if (proposedMassFlow) updateAnalysis(proposedMassFlow, 'PROPOSED INPUT');
         proposalBox.replaceChildren();
         const heading = document.createElement('h4');
         heading.textContent = 'Immutable proposed configuration';
         const pre = document.createElement('pre');
-        pre.textContent = JSON.stringify(proposal.immutable_configuration, null, 2);
+        pre.textContent = JSON.stringify(configuration, null, 2);
         const criteriaHeading = document.createElement('h4');
         criteriaHeading.textContent = 'Criteria fixed before solving';
         const criteria = document.createElement('ul');
@@ -861,6 +1088,7 @@ const clientState = {
               body: JSON.stringify({ message: localMessage?.value || '', session_id: sessionId }),
             });
             appendAero(body.message);
+            (body.actions || []).forEach(apply);
             showProposal(body.proposal);
           } catch (error) {
             appendAero(error instanceof Error ? error.message : String(error));
@@ -914,13 +1142,22 @@ const clientState = {
 
     .wb-tabs { display: none; }
 
-    .wb-grid { display: grid; grid-template-columns: 38fr 62fr; }
+    .wb-grid {
+      display: grid;
+      grid-template-columns: 38fr 62fr;
+      grid-template-areas:
+        "notebook viewport"
+        "analysis analysis"
+        "chat chat";
+    }
     .wb-pane { padding: 1rem 1.15rem; min-width: 0; }
     .wb-pane-title {
       font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--faint); margin: 0 0 0.75rem;
     }
-    .wb-notebook { border-right: 1px solid var(--border); }
+    .wb-notebook { grid-area: notebook; border-right: 1px solid var(--border); }
+    .wb-viewport { grid-area: viewport; }
+    .wb-analysis { grid-area: analysis; border-top: 1px solid var(--border); background: var(--surface-alt); }
     .nb-scroll { max-height: 30rem; overflow-y: auto; padding-right: 0.5rem; }
 
     .nb-section { padding: 0.5rem 0 0.9rem; border-bottom: 1px solid var(--subtle); }
@@ -958,6 +1195,62 @@ const clientState = {
     .fo-chain > li { margin-bottom: 0.55rem; font-size: 0.84rem; }
     .fo-step { display: block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
     .fo-missing { color: var(--accent); font-weight: 600; letter-spacing: 0.04em; }
+
+    .an-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 0.8rem; }
+    .an-head p { margin: -0.35rem 0 0; color: var(--muted); font-size: 0.8rem; }
+    .an-head-actions { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; justify-content: flex-end; }
+    .an-status { font-size: 0.62rem; letter-spacing: 0.09em; color: var(--accent); white-space: nowrap; }
+    .an-view-switch { display: flex; }
+    .an-view-switch button, .an-index button, .an-question button {
+      font: inherit; background: transparent; color: var(--muted); border: 1px solid var(--border); cursor: pointer;
+    }
+    .an-view-switch button { padding: 0.25rem 0.5rem; font-size: 0.68rem; }
+    .an-view-switch button + button { border-left: 0; }
+    .an-view-switch button.is-active { color: var(--accent); border-color: var(--accent); }
+    .an-view-switch button:focus-visible, .an-index button:focus-visible, .an-question button:focus-visible,
+    .an-question input:focus-visible, .an-step:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+
+    .an-shell { display: grid; grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); border: 1px solid var(--border); background: var(--surface); min-height: 32rem; }
+    .an-index { padding: 0.65rem; border-right: 1px solid var(--border); }
+    .an-index button { display: grid; grid-template-columns: 1.8rem 1fr; width: 100%; gap: 0.45rem; padding: 0.55rem 0.45rem; border: 0; border-bottom: 1px solid var(--subtle); text-align: left; font-size: 0.72rem; line-height: 1.3; }
+    .an-index button span { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .an-index button.is-active { background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--text); }
+    .an-document { padding: 1rem 1.25rem; max-height: 38rem; overflow: auto; }
+    .an-document-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+    .an-document-head > div > span, .an-source-head { font-size: 0.6rem; letter-spacing: 0.1em; color: var(--faint); }
+    .an-document-head h4 { margin: 0.2rem 0 0; font-family: Georgia, serif; font-size: clamp(1.45rem, 2.7vw, 2.35rem); font-weight: 500; }
+    .an-inputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .an-inputs > div { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.25rem 0.65rem; border-right: 1px solid var(--subtle); font-size: 0.72rem; }
+    .an-inputs > div:nth-child(3n) { border-right: 0; }
+    .an-inputs dt { color: var(--faint); }
+    .an-inputs dd { margin: 0; font-variant-numeric: tabular-nums; }
+    .an-step { padding: 1rem 0; border-bottom: 1px solid var(--subtle); scroll-margin-top: 1rem; }
+    .an-step header { display: flex; align-items: baseline; gap: 0.55rem; }
+    .an-step header span { color: var(--accent); font-size: 0.67rem; }
+    .an-step h5 { margin: 0; font-size: 0.86rem; }
+    .an-step p { margin: 0.55rem 0; color: var(--muted); font-size: 0.8rem; line-height: 1.55; }
+    .an-equation { margin: 0.8rem 0 0.35rem; overflow-x: auto; font-size: 1.15rem; }
+    .an-equation math { min-width: max-content; }
+    .an-inline-source { display: block; width: fit-content; max-width: 100%; overflow-x: auto; padding: 0.2rem 0.35rem; color: var(--faint); background: var(--surface-alt); font-size: 0.68rem; }
+    .an-result { display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0.55rem; border-left: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); font-size: 0.78rem; }
+    .an-result b { font-variant-numeric: tabular-nums; }
+    .an-result-secondary { margin-top: 0.3rem; border-left-color: var(--border); background: transparent; }
+    .an-flash { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+    .an-trend { margin-top: 1rem; padding: 0.8rem; border: 1px solid var(--border); }
+    .an-trend > b { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .an-trend p { margin: 0.35rem 0 0; font-size: 0.78rem; color: var(--muted); }
+    .an-question { margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+    .an-question label { display: block; margin-bottom: 0.35rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .an-question > div { display: grid; grid-template-columns: 1fr auto; }
+    .an-question input { min-width: 0; padding: 0.55rem 0.65rem; color: var(--text); background: var(--page); border: 1px solid var(--border); font: inherit; font-size: 0.78rem; }
+    .an-question button { padding: 0.55rem 0.75rem; border-left: 0; color: var(--accent); font-size: 0.72rem; }
+    .an-question small { display: block; margin-top: 0.35rem; color: var(--faint); font-size: 0.63rem; }
+    .an-source[hidden], .an-shell[hidden] { display: none; }
+    .an-source { border: 1px solid var(--border); background: #111719; color: #eae7df; }
+    .an-source-head { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0.7rem; border-bottom: 1px solid #384246; }
+    .an-source pre { margin: 0; padding: 1rem; max-height: 32rem; overflow: auto; font-size: 0.78rem; line-height: 1.65; tab-size: 2; }
 
     .vp-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .vp-modes { display: flex; gap: 0.3rem; }
@@ -1014,7 +1307,7 @@ const clientState = {
     .chart-body small { display: block; color: var(--faint); font-size: 0.6rem; }
     .chart-missing { min-height: 5.5rem; display: flex; align-items: center; margin: 0 !important; color: var(--accent) !important; font-size: 0.68rem !important; }
 
-    .wb-chat { grid-column: 1 / -1; border-top: 1px solid var(--border); }
+    .wb-chat { grid-area: chat; border-top: 1px solid var(--border); }
     .ch-log { max-height: 11rem; overflow-y: auto; }
     .ch-turn { margin: 0 0 0.5rem; font-size: 0.85rem; line-height: 1.55; }
     .ch-turn b { display: inline-block; min-width: 3.2rem; color: var(--accent); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -1067,6 +1360,15 @@ const clientState = {
       .wb-pane { display: none; }
       .wb-pane.is-active { display: block; }
       .wb-notebook { border-right: 0; }
+      .an-head { display: block; }
+      .an-head-actions { margin-top: 0.65rem; justify-content: space-between; }
+      .an-shell { display: block; }
+      .an-index { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 0.4rem; }
+      .an-index button { flex: 0 0 10rem; border-bottom: 0; border-right: 1px solid var(--subtle); }
+      .an-document { max-height: 34rem; padding: 0.85rem; }
+      .an-inputs { grid-template-columns: 1fr 1fr; }
+      .an-inputs > div, .an-inputs > div:nth-child(3n) { border-right: 1px solid var(--subtle); }
+      .an-inputs > div:nth-child(2n) { border-right: 0; }
       .ev-cols { grid-template-columns: 1fr; gap: 1rem; }
       .vp-stage { height: 16rem; }
       .telemetry-grid { grid-template-columns: 1fr; }

@@ -2,18 +2,17 @@
  * First-order values use case inputs only; they never read CFD output.
  */
 import type { EquationBlock, FirstOrderAnalysis, NotebookSection } from './case';
+import { firstOrderInputs, firstOrderValues } from './analysis';
 
-const MDOT = 0.010;
-const P_REF = 101325;
-const T_REF = 300;
-const R_AIR = 287;
-const GAMMA = 1.4;
-const AREA = Math.PI * 0.02 ** 2;
-const RHO_REF = P_REF / (R_AIR * T_REF);
-const V_REF = MDOT / (RHO_REF * AREA);
-const A_REF = Math.sqrt(GAMMA * R_AIR * T_REF);
-const M_REF = V_REF / A_REF;
-const Q_REF = 0.5 * RHO_REF * V_REF ** 2;
+const MDOT = firstOrderInputs.massFlowKgS;
+const P_REF = firstOrderInputs.referencePressurePa;
+const T_REF = firstOrderInputs.referenceTemperatureK;
+const R_AIR = firstOrderInputs.gasConstantJkgK;
+const AREA = firstOrderValues.areaM2;
+const RHO_REF = firstOrderValues.densityKgM3;
+const V_REF = firstOrderValues.velocityMS;
+const M_REF = firstOrderValues.mach;
+const Q_REF = firstOrderValues.dynamicPressurePa;
 
 const CONTINUITY: EquationBlock = {
   title: 'Steady mass continuity', latex: String.raw`\dot{m} = \rho A V`,

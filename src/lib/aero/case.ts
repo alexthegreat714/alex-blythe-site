@@ -255,6 +255,7 @@ export interface WorkbenchTelemetry {
  *  executed from model output; anything not on this list is discarded. */
 export const WORKBENCH_ACTIONS = [
   'SHOW_NOTEBOOK_SECTION',
+  'SHOW_ANALYSIS_STEP',
   'SET_VIEWPORT_MODE',
   'SET_RESULT_FIELD',
   'TOGGLE_MESH',
@@ -274,6 +275,7 @@ export type WorkbenchActionName = (typeof WORKBENCH_ACTIONS)[number];
 export interface WorkbenchAction {
   action: WorkbenchActionName;
   section?: NotebookSectionId;
+  analysisStep?: 'scope' | 'area' | 'density' | 'velocity' | 'mach' | 'dynamic-pressure' | 'limits';
   mode?: ViewportMode;
   field?: ResultField;
   visible?: boolean;
@@ -312,6 +314,12 @@ export function validateAction(raw: unknown): WorkbenchAction | null {
       const s = candidate.section;
       if (typeof s !== 'string') return null;
       out.section = s as NotebookSectionId;
+      return out;
+    }
+    case 'SHOW_ANALYSIS_STEP': {
+      const step = candidate.analysisStep;
+      if (!['scope', 'area', 'density', 'velocity', 'mach', 'dynamic-pressure', 'limits'].includes(String(step))) return null;
+      out.analysisStep = step as WorkbenchAction['analysisStep'];
       return out;
     }
     case 'SET_VIEWPORT_MODE': {
