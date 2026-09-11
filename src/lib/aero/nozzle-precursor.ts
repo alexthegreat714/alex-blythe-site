@@ -70,11 +70,11 @@ export const monitors: NotebookValue[] = [
 
 export const resultFields: ResultFieldArtifact[] = [{
   field: 'pressure', label: 'Pressure', units: 'Pa',
-  href: `${ROOT}/pressure-surface.json`, range: [100004, 101798], source: 'SOLVER_OUTPUT',
+  href: '/demos/aero/wall-refinement-v6/pressure-surface.json', range: [100004, 101798], source: 'SOLVER_OUTPUT',
 }];
 
 export const publicCadArtifact = {
-  href: `${ROOT}/nozzle.stl`, publicFormat: 'stl', type: 'geometry',
+  href: '/demos/aero/shared/nozzle-cutaway.stl', publicFormat: 'stl', type: 'geometry',
   provenance: 'PARAMETRIC_GENERATED',
 };
 

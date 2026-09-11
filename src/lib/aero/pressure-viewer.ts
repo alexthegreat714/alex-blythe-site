@@ -35,7 +35,7 @@ function scalarColor(value: number, low: number, high: number): THREE.Color {
   return stops[index].clone().lerp(stops[index + 1], scaled - index);
 }
 
-export function mountPressureViewer(container: HTMLElement, surface: PressureSurface): PressureViewer {
+export function mountPressureViewer(container: HTMLElement, surface: PressureSurface, options: { autoRotate?: boolean } = {}): PressureViewer {
   if (surface.schema !== 'aero.scientific.surface.v1' || surface.field !== 'p') {
     throw new Error('Unsupported scientific surface contract');
   }
@@ -87,6 +87,8 @@ export function mountPressureViewer(container: HTMLElement, surface: PressureSur
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.screenSpacePanning = true;
+  controls.autoRotate = Boolean(options.autoRotate);
+  controls.autoRotateSpeed = 0.5;
 
   const resetCamera = () => {
     const box = geometry.boundingBox;

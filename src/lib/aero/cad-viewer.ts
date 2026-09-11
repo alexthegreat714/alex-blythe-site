@@ -8,7 +8,7 @@ export interface CadViewer {
   dispose(): void;
 }
 
-export function mountCadViewer(container: HTMLElement, payload: ArrayBuffer): CadViewer {
+export function mountCadViewer(container: HTMLElement, payload: ArrayBuffer, options: { autoRotate?: boolean } = {}): CadViewer {
   const geometry = new STLLoader().parse(payload);
   if (!geometry.getAttribute('position') || geometry.getAttribute('position').count < 3) {
     geometry.dispose();
@@ -29,11 +29,11 @@ export function mountCadViewer(container: HTMLElement, payload: ArrayBuffer): Ca
 
   const surface = new THREE.Mesh(
     geometry,
-    new THREE.MeshStandardMaterial({ color: '#d8cda9', roughness: 0.8, metalness: 0.03 }),
+    new THREE.MeshStandardMaterial({ color: '#b8c5c9', roughness: 0.34, metalness: 0.62, side: THREE.DoubleSide }),
   );
   const wireframe = new THREE.LineSegments(
     new THREE.WireframeGeometry(geometry),
-    new THREE.LineBasicMaterial({ color: '#d7653f', transparent: true, opacity: 0.2 }),
+    new THREE.LineBasicMaterial({ color: '#d7653f', transparent: true, opacity: 0.46 }),
   );
   wireframe.visible = false;
   scene.add(surface, wireframe);
@@ -46,13 +46,15 @@ export function mountCadViewer(container: HTMLElement, payload: ArrayBuffer): Ca
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.screenSpacePanning = true;
+  controls.autoRotate = Boolean(options.autoRotate);
+  controls.autoRotateSpeed = 0.65;
 
   const resetCamera = () => {
     const sphere = geometry.boundingSphere;
     if (!sphere) return;
     const radius = Math.max(sphere.radius, 1e-3);
     controls.target.copy(sphere.center);
-    camera.position.copy(sphere.center).add(new THREE.Vector3(radius * 1.8, radius * 1.25, radius * 2.1));
+    camera.position.copy(sphere.center).add(new THREE.Vector3(radius * 1.5, radius * 0.72, radius * 2.35));
     camera.near = radius / 100;
     camera.far = radius * 100;
     camera.updateProjectionMatrix();
