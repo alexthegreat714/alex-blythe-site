@@ -43,6 +43,13 @@ const demoCases = [
     disposition: 'Numerically independent at the declared 2% gate; external validation is still required.',
     evidenceHref: '/demos/aero/first-cut-proof/acceptance-summary.json',
     evidenceLabel: 'Open acceptance summary',
+    prompt: 'Walk me through a three-grid mesh-independence study for a compressible nozzle using 5 mm, 4 mm, and 3 mm meshes with a 2% pressure-ratio acceptance limit.',
+    requirements: {
+      goal: 'Establish numerical mesh independence before interpreting the nozzle result',
+      geometry: 'Parametric converging-diverging nozzle / three grid levels',
+      operating: 'Compressible air / steady RANS / matched boundary conditions',
+      evidence: 'Adjacent-grid change ≤ 2%, convergence, conservation, hashed artifacts',
+    },
     stages: [100, 100, 100, 100, 100, 100],
   },
   {
@@ -54,6 +61,13 @@ const demoCases = [
     disposition: 'Execution proof only; the result is not flight-design validation.',
     evidenceHref: '/demos/aero/nozzle-precursor/evidence.json',
     evidenceLabel: 'Open run evidence',
+    prompt: 'Walk me through a first-cut compressible nozzle CFD case with a 20 mm inlet radius, 8 mm throat radius, 24 mm exit radius, 45 mm converging length, 110 mm diverging length, and 0.010 kg/s mass flow.',
+    requirements: {
+      goal: 'Produce a bounded first-cut compressible nozzle result',
+      geometry: '20 / 8 / 24 mm inlet, throat, and exit radii; 45 / 110 mm lengths',
+      operating: 'Air / 0.010 kg/s / steady compressible precursor',
+      evidence: 'Pre-solve screen, mesh checks, convergence, conservation, field artifact',
+    },
     stages: [100, 100, 100, 100, 100, 100],
   },
   {
@@ -65,6 +79,13 @@ const demoCases = [
     disposition: 'Screening only; CFD and experimental correlation are required before design use.',
     evidenceHref: '',
     evidenceLabel: '',
+    prompt: 'Screen a rectangular water-cooling channel for 8 kW heat removal while limiting bulk temperature rise and pressure drop. Tell me what geometry and operating data are still missing before CFD.',
+    requirements: {
+      goal: 'Screen 8 kW heat removal and pressure-drop feasibility',
+      geometry: 'Rectangular channel / dimensions still required',
+      operating: 'Liquid water / heat load known / flow state incomplete',
+      evidence: 'Energy balance and correlation screen defined; CFD and test correlation missing',
+    },
     stages: [100, 100, 35, 0, 0, 0],
   },
 ];
@@ -75,52 +96,84 @@ const demoCases = [
   description="An interactive engineering workbench over a recorded OpenFOAM run: notebook, model viewport, conversation, and the evidence that decides what the result establishes."
   canonicalPath="/software/aero/demo/"
   eyebrow="Aero / Engineering workbench"
+  hideHeader={true}
 >
-  <section class="wb-intro content-section">
-    <p class="section-index" id="wb-mode-label">Engineering case / Recorded evidence + local execution</p>
-    <h2 id="wb-title">A converged answer is the start of the engineering argument, not the end.</h2>
-    <p class="hero-lede" id="wb-mode-description">
-      The initial state is the retained Level 4 wall-resolved OpenFOAM result. On a loopback preview, the same panes can submit
-      a bounded mass-flow run or the fixed parametric nozzle workflow to the isolated local workers after explicit approval.
-    </p>
-  </section>
-
-  <section class="demo-library content-section" data-demo-library aria-labelledby="demo-library-title">
-    <div class="demo-library-head">
-      <div>
-        <p class="section-index">Example library / One workflow, different readiness states</p>
-        <h2 id="demo-library-title">Choose an engineering example.</h2>
-      </div>
-      <p>Every example uses the same requirements-to-evidence pipeline. A stage reaches 100% only when its required inputs or artifacts exist.</p>
-    </div>
-    <nav class="demo-case-tabs" aria-label="Select an Aero demonstration">
-      {demoCases.map((item, index) => (
-        <button type="button" class:list={{ 'is-active': index === 0 }} data-demo-case={item.id} aria-pressed={index === 0 ? 'true' : 'false'}>
-          <span>0{index + 1}</span><strong>{item.title}</strong><small>{item.kind}</small>
-        </button>
-      ))}
-    </nav>
-    <article class="demo-case-summary" aria-live="polite">
-      <div class="demo-case-copy">
-        <span class="demo-case-kind" data-demo-kind>{demoCases[0].kind}</span>
-        <h3 data-demo-title>{demoCases[0].title}</h3>
-        <p class="demo-case-question" data-demo-question>{demoCases[0].question}</p>
-        <p data-demo-summary>{demoCases[0].summary}</p>
-        <div class="demo-case-disposition"><span>Current disposition</span><strong data-demo-disposition>{demoCases[0].disposition}</strong></div>
-        <a data-demo-evidence href={demoCases[0].evidenceHref}>{demoCases[0].evidenceLabel} <span aria-hidden="true">→</span></a>
-      </div>
-      <ol class="demo-stage-grid" aria-label="Selected example pipeline readiness">
+  <section class="guided-demo" data-guided-demo aria-labelledby="guided-demo-title">
+    <header class="guided-topbar">
+      <a class="guided-brand" href="/software/aero/"><span>AERO</span><small>Public demo</small></a>
+      <ol class="guided-stages" aria-label="Aero workflow stages">
         {['Requirements', 'Math', 'CAD', 'Mesh', 'Solve', 'Render'].map((label, index) => (
-          <li data-demo-stage={index}>
-            <span><b>0{index + 1}</b>{label}</span>
-            <div class="demo-progress" role="progressbar" aria-label={`${label} readiness`} aria-valuemin="0" aria-valuemax="100" aria-valuenow={demoCases[0].stages[index]}><i style={`width:${demoCases[0].stages[index]}%`}></i></div>
-            <small>{demoCases[0].stages[index]}%</small>
+          <li class:list={{ 'is-active': index === 0 }} data-guided-stage={index}>
+            <button type="button"><span>0{index + 1}</span><b>{label}</b><small>{index === 0 ? 'Ready for input' : 'Waiting on requirements'}</small><i></i></button>
           </li>
         ))}
       </ol>
-    </article>
-    <p class="demo-library-note">The full interactive record below is the three-grid nozzle case. The other examples expose only the evidence currently cleared for the public demo.</p>
+    </header>
+
+    <div class="guided-body">
+      <aside class="guided-rail" aria-label="Aero tools">
+        <div><strong>Aero</strong><span>Engineering workflow</span></div>
+        <button class="is-active" type="button">Workflow</button>
+        <button type="button" data-open-detail="analysis">Math &amp; LaTeX</button>
+        <button type="button" data-open-detail="geometry">CAD &amp; tolerances</button>
+        <button type="button" data-open-detail="mesh">Mesh &amp; specs</button>
+        <button type="button" data-open-detail="result">Runs &amp; evidence</button>
+        <p><b>Guided demo</b> No VM or solver access</p>
+      </aside>
+
+      <main class="guided-main">
+        <div class="guided-scene-head">
+          <div><span>01 / Define requirements</span><h1 id="guided-demo-title">Start with the engineering question</h1></div>
+          <p>Aero turns the conversation into a reviewable case record before any solver work begins.</p>
+        </div>
+
+        <div class="guided-examples" aria-label="Load a guided example">
+          <span>Try an example</span>
+          {demoCases.map((item, index) => (
+            <button type="button" data-demo-case={item.id} aria-pressed="false"><b>0{index + 1}</b>{item.title}</button>
+          ))}
+          <button type="button" data-new-case>Blank case</button>
+        </div>
+
+        <div class="guided-grid">
+          <section class="guided-conversation" aria-labelledby="guided-conversation-title">
+            <div class="guided-panel-head"><h2 id="guided-conversation-title">Requirements conversation</h2><span>Interactive demo guide</span></div>
+            <div class="guided-log" data-guided-log aria-live="polite">
+              <div class="guided-turn guided-aero"><b>Aero</b><p>Describe the engineering decision you need to make. I’ll separate known inputs, assumptions, missing data, success criteria, and what must remain blocked.</p></div>
+            </div>
+            <div class="guided-questions">
+              <button type="button" data-guided-question="What information do you still need?">What do you still need?</button>
+              <button type="button" data-guided-question="Why is validation separate from convergence?">Why isn’t convergence enough?</button>
+              <button type="button" data-guided-question="Change the throat radius to 10 mm.">Try a design change</button>
+            </div>
+            <form class="guided-composer" data-guided-form>
+              <label for="guided-message">Engineering request or question</label>
+              <div><textarea id="guided-message" data-guided-message rows="3" maxlength="900" placeholder="Example: Walk me through a first-cut compressible nozzle CFD case…"></textarea><button type="submit">Send</button></div>
+              <small>This public demo uses a bounded Aero guide over curated cases. It can explain and revise the case record; it cannot start a private solver.</small>
+            </form>
+          </section>
+
+          <aside class="guided-record" aria-labelledby="guided-record-title">
+            <div class="guided-panel-head"><h2 id="guided-record-title">Requirement record</h2><span data-guided-case-label>New case</span></div>
+            <dl>
+              <div><dt>Engineering goal</dt><dd data-record="goal">Awaiting conversation</dd></div>
+              <div><dt>Geometry</dt><dd data-record="geometry">Awaiting dimensions or CAD</dd></div>
+              <div><dt>Operating state</dt><dd data-record="operating">Awaiting fluid inputs</dd></div>
+              <div><dt>Evidence plan</dt><dd data-record="evidence">Awaiting success criteria</dd></div>
+              <div><dt>Execution gate</dt><dd data-record="gate">Blocked</dd></div>
+            </dl>
+            <div class="guided-readiness"><span><b data-guided-progress-label>Requirements 0%</b><small>Ready for the next stage only at 100%</small></span><div role="progressbar" aria-label="Requirements readiness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-guided-progress><i></i></div></div>
+            <button type="button" class="guided-continue" data-guided-continue disabled>Continue to detailed walkthrough <span>→</span></button>
+          </aside>
+        </div>
+      </main>
+    </div>
     <script id="demo-case-data" type="application/json" is:inline set:html={JSON.stringify(demoCases)} />
+  </section>
+
+  <section class="workbench-intro content-section">
+    <p class="section-index" id="wb-mode-label">Detailed walkthrough / Recorded evidence</p>
+    <div><h2 id="wb-title">Inspect each engineering stage and ask why it passed—or why it remains blocked.</h2><p id="wb-mode-description">The retained nozzle case below exposes the equations, geometry, mesh, solver telemetry, rendered field, and evidence gates behind the short guided experience.</p></div>
   </section>
 
   <div class="workbench" id="workbench" data-state={JSON.stringify(clientState)}>
@@ -1200,6 +1253,157 @@ const demoCases = [
 
   <script is:inline>
     (() => {
+      const root = document.querySelector('[data-guided-demo]');
+      if (!root) return;
+      const cases = JSON.parse(document.getElementById('demo-case-data')?.textContent || '[]');
+      const log = root.querySelector('[data-guided-log]');
+      const form = root.querySelector('[data-guided-form]');
+      const input = root.querySelector('[data-guided-message]');
+      const progress = root.querySelector('[data-guided-progress]');
+      const progressLabel = root.querySelector('[data-guided-progress-label]');
+      const continueButton = root.querySelector('[data-guided-continue]');
+      const caseLabel = root.querySelector('[data-guided-case-label]');
+      const fields = Object.fromEntries([...root.querySelectorAll('[data-record]')].map((node) => [node.dataset.record, node]));
+      const stageNodes = [...root.querySelectorAll('[data-guided-stage]')];
+      let activeCase = null;
+      let current = { goal: '', geometry: '', operating: '', evidence: '' };
+
+      const defaults = {
+        goal: 'Awaiting conversation',
+        geometry: 'Awaiting dimensions or CAD',
+        operating: 'Awaiting fluid inputs',
+        evidence: 'Awaiting success criteria',
+      };
+
+      const appendTurn = (speaker, text) => {
+        const turn = document.createElement('div');
+        turn.className = `guided-turn ${speaker === 'Aero' ? 'guided-aero' : 'guided-user'}`;
+        const label = document.createElement('b');
+        label.textContent = speaker;
+        const copy = document.createElement('p');
+        copy.textContent = text;
+        turn.append(label, copy);
+        log.appendChild(turn);
+        log.scrollTop = log.scrollHeight;
+      };
+
+      const setStages = (values = [0, 0, 0, 0, 0, 0]) => {
+        stageNodes.forEach((node, index) => {
+          const value = Number(values[index] || 0);
+          const small = node.querySelector('small');
+          const bar = node.querySelector('i');
+          node.classList.toggle('is-complete', value === 100);
+          node.classList.toggle('is-partial', value > 0 && value < 100);
+          if (small) small.textContent = value === 100 ? 'Ready' : value > 0 ? `${value}% prepared` : index === 0 ? 'Ready for input' : 'Waiting';
+          if (bar) bar.style.width = `${value}%`;
+        });
+      };
+
+      const renderRecord = () => {
+        const completed = Object.values(current).filter(Boolean).length;
+        const value = completed * 25;
+        Object.entries(defaults).forEach(([key, fallback]) => { fields[key].textContent = current[key] || fallback; });
+        fields.gate.textContent = value === 100 ? 'Ready for guided review' : `Blocked / ${4 - completed} requirement ${4 - completed === 1 ? 'group' : 'groups'} missing`;
+        progress.setAttribute('aria-valuenow', String(value));
+        progress.querySelector('i').style.width = `${value}%`;
+        progressLabel.textContent = `Requirements ${value}%`;
+        continueButton.disabled = value < 100;
+        if (!activeCase) setStages([value, 0, 0, 0, 0, 0]);
+      };
+
+      const answerQuestion = (message) => {
+        const text = message.toLowerCase();
+        if (/what.*need|missing|ready/.test(text)) {
+          const missing = Object.entries(current).filter(([, value]) => !value).map(([key]) => key === 'operating' ? 'operating state' : key);
+          return missing.length ? `The record still needs ${missing.join(', ')}. I will keep downstream stages blocked until those are explicit.` : 'The four requirement groups are captured. The next step is to inspect the assumptions and first-principles screen before accepting CAD or mesh work.';
+        }
+        if (/validat|converg/.test(text)) return 'Convergence shows the numerical procedure settled. Validation asks whether the model agrees with an independent reference. Aero tracks those as separate gates so a stable but wrong answer cannot be presented as design-ready.';
+        if (/mesh/.test(text)) return 'The mesh stage needs geometry topology, boundary names, target refinements, wall treatment, and a declared independence metric. The retained nozzle example compares three grids against a 2% adjacent-grid limit.';
+        if (/equation|math|first.princip|mach|continuity/.test(text)) return 'The Math stage establishes continuity, ideal-gas density, inlet velocity, Mach number, and pressure scale from declared inputs before CFD. Solver output is kept separate from these independent expectations.';
+        if (/can.*run|start.*solver|openfoam/.test(text)) return 'This public demo can prepare and explain the workflow, but it cannot start the private OpenFOAM worker or VM. The execution gate stays visibly blocked outside the protected Aero instance.';
+        return 'I can revise the requirement record, explain a readiness gate, or walk through the retained math, CAD, mesh, solver, and evidence. State the engineering decision or ask about a specific stage.';
+      };
+
+      const applyChange = (message) => {
+        const throat = message.match(/throat(?: radius)?(?: to| =| of)?\s*(\d+(?:\.\d+)?)\s*mm/i);
+        const inlet = message.match(/inlet(?: radius)?(?: to| =| of)?\s*(\d+(?:\.\d+)?)\s*mm/i);
+        const exit = message.match(/exit(?: radius)?(?: to| =| of)?\s*(\d+(?:\.\d+)?)\s*mm/i);
+        const mass = message.match(/(?:mass flow|ṁ)(?: to| =| of)?\s*(\d+(?:\.\d+)?)\s*(?:kg\/s|kg s-1)/i);
+        const changes = [];
+        if (throat) changes.push(`throat radius ${throat[1]} mm`);
+        if (inlet) changes.push(`inlet radius ${inlet[1]} mm`);
+        if (exit) changes.push(`exit radius ${exit[1]} mm`);
+        if (mass) changes.push(`mass flow ${mass[1]} kg/s`);
+        if (!changes.length) return false;
+        current.geometry = [current.geometry || 'Parametric geometry', ...changes.filter((item) => !item.startsWith('mass flow'))].join(' / ');
+        if (mass) current.operating = [current.operating || 'Operating state', ...changes.filter((item) => item.startsWith('mass flow'))].join(' / ');
+        renderRecord();
+        appendTurn('Aero', `I updated ${changes.join(' and ')}. That is a new design revision, so CAD, mesh, solve, and render must be regenerated before their prior evidence can apply.`);
+        setStages([100, 100, 35, 0, 0, 0]);
+        return true;
+      };
+
+      const inferCustom = (message) => {
+        const lower = message.toLowerCase();
+        current.goal = message.split(/[.!?]/)[0].slice(0, 150);
+        if (/nozzle|throat|inlet radius|exit radius/.test(lower)) current.geometry = 'Parametric nozzle described in conversation / dimensions require confirmation';
+        else if (/channel|duct|pipe|cad|geometry/.test(lower)) current.geometry = 'Flow passage described in conversation / dimensions require confirmation';
+        if (/air|water|fluid|mass flow|pressure|temperature|kg\/s|kw/.test(lower)) current.operating = 'Operating information detected / units and boundary conditions require review';
+        if (/percent|%|converg|validation|mesh|success|limit|within/.test(lower)) current.evidence = 'Acceptance intent detected / thresholds require confirmation';
+        renderRecord();
+        const missing = Object.entries(current).filter(([, value]) => !value).map(([key]) => key === 'operating' ? 'operating state' : key);
+        appendTurn('Aero', missing.length ? `I started the case record. Before Math can be released, specify ${missing.join(', ')}. I will treat extracted values as proposed—not confirmed—until you approve them.` : 'I captured all four requirement groups. Review the record, then continue into the detailed walkthrough to inspect assumptions and governing equations.');
+      };
+
+      const submit = (message) => {
+        const value = String(message || '').trim();
+        if (!value) return;
+        appendTurn('You', value);
+        if (applyChange(value)) return;
+        if (/^(what|why|how|can|show|explain|is|are|do)\b/i.test(value) || value.endsWith('?')) appendTurn('Aero', answerQuestion(value));
+        else inferCustom(value);
+      };
+
+      const loadCase = (item) => {
+        activeCase = item;
+        current = { ...item.requirements };
+        caseLabel.textContent = item.title;
+        root.querySelectorAll('[data-demo-case]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.demoCase === item.id)));
+        appendTurn('You', item.prompt);
+        appendTurn('Aero', `I loaded the ${item.title} walkthrough. The requirement record is complete, but each later stage keeps its own evidence gate. ${item.disposition}`);
+        renderRecord();
+        setStages(item.stages);
+        if (input) input.value = '';
+      };
+
+      const openDetail = (mode) => {
+        document.getElementById('workbench')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const tabName = mode === 'analysis' ? 'analysis' : mode === 'result' ? 'evidence' : 'viewport';
+        document.querySelector(`.wb-tab[data-tab="${tabName}"]`)?.click();
+        if (['geometry', 'mesh', 'result'].includes(mode)) document.querySelector(`.vp-mode[data-mode="${mode}"]`)?.click();
+      };
+
+      root.querySelectorAll('[data-demo-case]').forEach((button) => button.addEventListener('click', () => loadCase(cases.find((item) => item.id === button.dataset.demoCase))));
+      root.querySelector('[data-new-case]')?.addEventListener('click', () => {
+        activeCase = null; current = { goal: '', geometry: '', operating: '', evidence: '' };
+        caseLabel.textContent = 'New case'; log.replaceChildren();
+        appendTurn('Aero', 'Describe the engineering decision you need to make. I’ll separate known inputs, assumptions, missing data, success criteria, and what must remain blocked.');
+        renderRecord(); input?.focus();
+      });
+      root.querySelectorAll('[data-guided-question]').forEach((button) => button.addEventListener('click', () => submit(button.dataset.guidedQuestion)));
+      root.querySelectorAll('[data-open-detail]').forEach((button) => button.addEventListener('click', () => openDetail(button.dataset.openDetail)));
+      stageNodes.forEach((node, index) => node.querySelector('button')?.addEventListener('click', () => {
+        if (index === 0) input?.focus();
+        else openDetail(index === 1 ? 'analysis' : index === 2 ? 'geometry' : index === 3 ? 'mesh' : index === 4 ? 'result' : 'result');
+      }));
+      continueButton?.addEventListener('click', () => openDetail('analysis'));
+      form?.addEventListener('submit', (event) => { event.preventDefault(); submit(input?.value); if (input) input.value = ''; });
+      renderRecord();
+    })();
+  </script>
+
+  <script is:inline>
+    (() => {
       const root = document.querySelector('[data-demo-library]');
       if (!root) return;
       const cases = JSON.parse(document.getElementById('demo-case-data')?.textContent || '[]');
@@ -1241,7 +1445,75 @@ const demoCases = [
   </script>
 
   <style>
-    .wb-intro { margin-bottom: 1.5rem; }
+    .guided-demo { width:min(1440px,100%); margin:0 auto 2.5rem; border-bottom:1px solid #29424c; background:#07151e; color:#e8f4f7; }
+    .guided-topbar { position:sticky; top:76px; z-index:7; display:grid; grid-template-columns:190px minmax(0,1fr); border-bottom:1px solid #29424c; background:rgba(7,21,30,.96); backdrop-filter:blur(14px); }
+    .guided-brand { display:flex; flex-direction:column; justify-content:center; padding:.8rem 1rem; border-right:1px solid #29424c; }
+    .guided-brand span { color:#66e3df; font-size:.78rem; font-weight:900; letter-spacing:.16em; }
+    .guided-brand small { margin-top:.18rem; color:#86aeb8; font-size:.7rem; }
+    .guided-stages { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:.4rem; margin:0; padding:.45rem; list-style:none; }
+    .guided-stages button { position:relative; width:100%; min-height:3.7rem; display:grid; grid-template-columns:auto 1fr; gap:.1rem .55rem; padding:.55rem .6rem .7rem; overflow:hidden; border:1px solid #29424c; border-radius:7px; background:#0a1b26; color:#d8e8ec; font:inherit; text-align:left; cursor:pointer; }
+    .guided-stages button > span { grid-row:1/3; display:grid; width:1.45rem; height:1.45rem; place-items:center; border:1px solid #39606b; border-radius:50%; color:#87b0ba; font-size:.65rem; }
+    .guided-stages button b { font-size:.76rem; }
+    .guided-stages button small { overflow:hidden; color:#7997a0; font-size:.6rem; text-overflow:ellipsis; white-space:nowrap; }
+    .guided-stages button i { position:absolute; right:0; bottom:0; left:0; height:3px; width:0; background:#4a91d3; transition:width .3s ease; }
+    .guided-stages .is-active button { border-color:#66e3df; }
+    .guided-stages .is-partial button i { background:#4a91d3; }
+    .guided-stages .is-complete button i { background:#58bd77; }
+    .guided-body { display:grid; grid-template-columns:190px minmax(0,1fr); min-height:650px; }
+    .guided-rail { display:flex; flex-direction:column; gap:.35rem; padding:1rem .75rem; border-right:1px solid #29424c; background:#06111a; }
+    .guided-rail > div { display:flex; flex-direction:column; margin-bottom:.8rem; padding:.25rem .35rem .8rem; border-bottom:1px solid #29424c; }
+    .guided-rail > div strong { font-size:1.1rem; }
+    .guided-rail > div span { color:#7997a0; font-size:.67rem; }
+    .guided-rail button { padding:.7rem .65rem; border:1px solid transparent; border-radius:6px; background:transparent; color:#9db8bf; font:inherit; font-size:.76rem; font-weight:700; text-align:left; cursor:pointer; }
+    .guided-rail button:hover,.guided-rail button:focus-visible,.guided-rail button.is-active { border-color:#3a6470; background:#0b202b; color:#fff; }
+    .guided-rail p { margin:auto 0 0; color:#6f9099; font-size:.65rem; line-height:1.45; }
+    .guided-rail p b { display:block; color:#66e3df; }
+    .guided-main { min-width:0; padding:1rem 1.25rem 1.25rem; }
+    .guided-scene-head { display:flex; justify-content:space-between; gap:2rem; align-items:end; }
+    .guided-scene-head span { color:#66e3df; font-size:.65rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+    .guided-scene-head h1 { margin:.25rem 0 0; font-family:inherit; font-size:clamp(1.35rem,2vw,2rem); font-weight:800; letter-spacing:-.025em; }
+    .guided-scene-head p { max-width:36rem; margin:0; color:#89a8b0; font-size:.76rem; text-align:right; }
+    .guided-examples { display:flex; align-items:center; gap:.45rem; margin-top:1rem; overflow-x:auto; padding-bottom:.25rem; scrollbar-width:thin; }
+    .guided-examples > span { flex:none; color:#6f9099; font-size:.65rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .guided-examples button { flex:none; padding:.45rem .6rem; border:1px solid #29424c; border-radius:999px; background:#091b25; color:#a9c1c7; font:inherit; font-size:.67rem; cursor:pointer; }
+    .guided-examples button b { margin-right:.35rem; color:#66e3df; font-size:.58rem; }
+    .guided-examples button:hover,.guided-examples button[aria-pressed='true'] { border-color:#66e3df; color:#fff; }
+    .guided-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(290px,.72fr); gap:.8rem; margin-top:.65rem; }
+    .guided-conversation,.guided-record { min-width:0; border:1px solid #29424c; border-radius:8px; background:#091923; }
+    .guided-panel-head { display:flex; justify-content:space-between; gap:1rem; padding:.8rem .9rem; border-bottom:1px solid #29424c; }
+    .guided-panel-head h2 { margin:0; font-size:.82rem; }
+    .guided-panel-head span { color:#6f9099; font-size:.62rem; text-transform:uppercase; }
+    .guided-log { height:230px; overflow-y:auto; padding:1rem; }
+    .guided-turn { display:grid; grid-template-columns:3.7rem minmax(0,1fr); gap:.65rem; margin-bottom:.85rem; }
+    .guided-turn b { color:#66e3df; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; }
+    .guided-turn p { max-width:52rem; margin:0; color:#b6cbd0; font-size:.8rem; line-height:1.55; }
+    .guided-user p { justify-self:end; padding:.6rem .75rem; border-radius:8px 8px 2px 8px; background:#12303b; color:#fff; }
+    .guided-user b { color:#8aabb3; }
+    .guided-questions { display:flex; flex-wrap:wrap; gap:.35rem; padding:0 1rem .7rem; }
+    .guided-questions button { padding:.4rem .55rem; border:1px solid #29424c; border-radius:999px; background:transparent; color:#91adb4; font:inherit; font-size:.65rem; cursor:pointer; }
+    .guided-questions button:hover { border-color:#66e3df; color:#fff; }
+    .guided-composer { padding:.8rem; border-top:1px solid #29424c; background:#07141c; }
+    .guided-composer label { display:block; margin-bottom:.35rem; color:#86aeb8; font-size:.64rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .guided-composer > div { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.5rem; }
+    .guided-composer textarea { width:100%; min-height:4.6rem; resize:vertical; padding:.7rem; border:1px solid #33515b; border-radius:6px; background:#061119; color:#f1f7f8; font:inherit; font-size:.8rem; line-height:1.45; }
+    .guided-composer button,.guided-continue { border:1px solid #66e3df; border-radius:6px; background:#66e3df; color:#061119; font:inherit; font-size:.73rem; font-weight:900; cursor:pointer; }
+    .guided-composer button { min-width:5.5rem; padding:.65rem; }
+    .guided-composer small { display:block; margin-top:.45rem; color:#64848d; font-size:.62rem; line-height:1.4; }
+    .guided-record dl { margin:0; padding:.35rem .9rem; }
+    .guided-record dl div { padding:.65rem 0; border-bottom:1px solid #203943; }
+    .guided-record dt { color:#6f9099; font-size:.58rem; letter-spacing:.08em; text-transform:uppercase; }
+    .guided-record dd { margin:.22rem 0 0; color:#d5e5e8; font-size:.75rem; line-height:1.38; }
+    .guided-readiness { padding:.8rem .9rem; }
+    .guided-readiness > span { display:flex; justify-content:space-between; gap:1rem; }
+    .guided-readiness b { color:#66e3df; font-size:.72rem; }
+    .guided-readiness small { color:#64848d; font-size:.58rem; }
+    .guided-readiness [role='progressbar'] { height:7px; margin-top:.6rem; overflow:hidden; border-radius:99px; background:#152d37; }
+    .guided-readiness i { display:block; width:0; height:100%; background:#4a91d3; transition:width .3s ease; }
+    .guided-continue { display:flex; width:calc(100% - 1.8rem); justify-content:space-between; margin:0 .9rem .9rem; padding:.7rem .8rem; }
+    .guided-continue:disabled { border-color:#29424c; background:#10242d; color:#66818a; cursor:not-allowed; }
+    .workbench-intro { display:grid; grid-template-columns:180px minmax(0,1fr); gap:2rem; align-items:start; padding-top:clamp(40px,6vw,72px); padding-bottom:clamp(32px,5vw,58px); }
+    .workbench-intro h2 { max-width:850px; margin:0; font-family:Georgia,serif; font-size:clamp(2rem,4vw,3.7rem); font-weight:400; letter-spacing:-.04em; line-height:1; }
+    .workbench-intro p:not(.section-index) { max-width:760px; margin:1rem 0 0; color:var(--muted); }
 
     .demo-library { margin-bottom: 1.5rem; padding-top: 0; }
     .demo-library-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.7fr); gap:2rem; align-items:end; }
@@ -1276,6 +1548,9 @@ const demoCases = [
     .demo-library-note { margin:.65rem 0 0; color:var(--faint); font-size:.7rem; }
 
     .workbench {
+      width:min(1180px,calc(100% - 48px));
+      margin-left:auto;
+      margin-right:auto;
       border: 1px solid var(--border);
       background: var(--surface);
       border-radius: 4px;
@@ -1506,6 +1781,16 @@ const demoCases = [
     .ev-close { position: absolute; top: 0.4rem; right: 0.55rem; background: none; border: 0; color: var(--faint); font-size: 1.1rem; cursor: pointer; }
 
     @media (max-width: 980px) {
+      .guided-topbar { position:static; grid-template-columns:1fr; }
+      .guided-brand { display:none; }
+      .guided-stages { overflow-x:auto; grid-template-columns:repeat(6,minmax(8rem,1fr)); }
+      .guided-body { grid-template-columns:1fr; }
+      .guided-rail { display:none; }
+      .guided-scene-head { align-items:start; flex-direction:column; gap:.5rem; }
+      .guided-scene-head p { text-align:left; }
+      .guided-grid { grid-template-columns:1fr; }
+      .guided-log { height:210px; }
+      .workbench-intro { grid-template-columns:1fr; gap:.7rem; }
       .demo-library-head,.demo-case-summary { grid-template-columns:1fr; }
       .demo-case-tabs { grid-template-columns:1fr; }
       .demo-case-tabs button { border-right:0; border-bottom:1px solid var(--border); }
@@ -1534,6 +1819,20 @@ const demoCases = [
       .vp-stage { height: 16rem; }
       .telemetry-grid { grid-template-columns: 1fr; }
       .local-run label { grid-template-columns: 1fr; gap: 0.2rem; }
+    }
+
+    @media (max-width: 650px) {
+      .guided-main { padding:.75rem; }
+      .guided-stages { padding:.35rem; }
+      .guided-stages button { min-height:3.3rem; }
+      .guided-examples { align-items:center; flex-direction:row; overflow-x:auto; }
+      .guided-examples > span { width:auto; }
+      .guided-examples button { width:auto; border-radius:999px; text-align:left; }
+      .guided-composer > div { grid-template-columns:1fr; }
+      .guided-composer button { min-height:2.7rem; }
+      .guided-panel-head { align-items:flex-start; flex-direction:column; gap:.2rem; }
+      .guided-readiness > span { align-items:flex-start; flex-direction:column; gap:.2rem; }
+      .workbench { width:calc(100% - 32px); }
     }
 
     @media (prefers-reduced-motion: reduce) {

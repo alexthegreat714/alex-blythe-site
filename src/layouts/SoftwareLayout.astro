@@ -5,6 +5,7 @@ interface Props {
   canonicalPath: string;
   eyebrow?: string;
   compactHeader?: boolean;
+  hideHeader?: boolean;
   primaryAction?: {
     title: string;
     label: string;
@@ -13,7 +14,7 @@ interface Props {
   };
 }
 
-const { title, description, canonicalPath, eyebrow = 'Software & Tools', compactHeader = false, primaryAction } = Astro.props;
+const { title, description, canonicalPath, eyebrow = 'Software & Tools', compactHeader = false, hideHeader = false, primaryAction } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site);
 ---
 
@@ -62,21 +63,23 @@ const canonical = new URL(canonicalPath, Astro.site);
       </div>
     </header>
     <main id="main-content">
-      <header class:list={["page-header", { "page-header-compact": compactHeader }]}>
-        <div class="page-header-copy">
-          <p class="eyebrow">{eyebrow}</p>
-          <h1>{title}</h1>
-          <p class="page-description">{description}</p>
-        </div>
-        {primaryAction && (
-          <aside class="page-primary-action" aria-label="Primary project action">
-            <span>Primary workspace</span>
-            <strong>{primaryAction.title}</strong>
-            {primaryAction.note && <p>{primaryAction.note}</p>}
-            <a href={primaryAction.href}>{primaryAction.label} <span aria-hidden="true">↗</span></a>
-          </aside>
-        )}
-      </header>
+      {!hideHeader && (
+        <header class:list={["page-header", { "page-header-compact": compactHeader }]}>
+          <div class="page-header-copy">
+            <p class="eyebrow">{eyebrow}</p>
+            <h1>{title}</h1>
+            <p class="page-description">{description}</p>
+          </div>
+          {primaryAction && (
+            <aside class="page-primary-action" aria-label="Primary project action">
+              <span>Primary workspace</span>
+              <strong>{primaryAction.title}</strong>
+              {primaryAction.note && <p>{primaryAction.note}</p>}
+              <a href={primaryAction.href}>{primaryAction.label} <span aria-hidden="true">↗</span></a>
+            </aside>
+          )}
+        </header>
+      )}
       <slot />
     </main>
     <footer class="site-footer"><span>Alex Blythe / Aerospace engineering &amp; research</span><span>Engineering software · Evidence · Verification</span></footer>
