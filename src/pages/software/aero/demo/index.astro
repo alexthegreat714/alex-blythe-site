@@ -41,9 +41,9 @@ const demoCases = [
     question: 'Is the reported nozzle result stable as the mesh is refined?',
     summary: 'Three completed grids retain mesh checks, solver telemetry, conservation gates, and hashed result artifacts.',
     disposition: 'Numerically independent at the declared 2% gate; external validation is still required.',
-    evidenceHref: '/demos/aero/first-cut-proof/acceptance-summary.json',
+    evidenceHref: '/demos/aero/wall-refinement-v6/engineering-result.json',
     evidenceLabel: 'Open acceptance summary',
-    prompt: 'Walk me through a three-grid mesh-independence study for a compressible nozzle using 5 mm, 4 mm, and 3 mm meshes with a 2% pressure-ratio acceptance limit.',
+    prompt: 'Walk me through the recorded nozzle mesh study with 6,048, 9,072, and 12,600 cells and a 2% pressure-drop acceptance limit.',
     requirements: {
       goal: 'Establish numerical mesh independence before interpreting the nozzle result',
       geometry: 'Parametric converging-diverging nozzle / three grid levels',
@@ -92,7 +92,7 @@ const demoCases = [
 ---
 
 <SoftwareLayout
-  title="Aero / Engineering workbench"
+  title="Aero / Guided demo"
   description="An interactive engineering workbench over a recorded OpenFOAM run: notebook, model viewport, conversation, and the evidence that decides what the result establishes."
   canonicalPath="/software/aero/demo/"
   eyebrow="Aero / Engineering workbench"
@@ -123,8 +123,8 @@ const demoCases = [
 
       <main class="guided-main">
         <div class="guided-scene-head">
-          <div><span>01 / Define requirements</span><h1 id="guided-demo-title">Start with the engineering question</h1></div>
-          <p>Aero turns the conversation into a reviewable case record before any solver work begins.</p>
+          <div><span>Interactive demo</span><h1 id="guided-demo-title">A CFD case, one step at a time.</h1></div>
+          <p>Choose an example. Press Play. Let Aero guide you.</p>
         </div>
 
         <div class="guided-examples" aria-label="Load a guided example">
@@ -135,6 +135,32 @@ const demoCases = [
           <button type="button" data-new-case>Blank case</button>
         </div>
 
+        <section class="demo-player" aria-label="Guided demo player">
+          <div class="demo-player-head"><span data-tour-counter>6 steps · At your pace</span><span>Scripted Aero guide · Recorded results</span></div>
+          <div class="demo-scene" data-tour-scene>
+            <div class="demo-scene-copy" data-tour-copy>
+              <span data-tour-kicker>Requirements → Math → CAD → Mesh → Solve → Render</span>
+              <h2 data-tour-title>See how Aero turns a question into a CFD workflow.</h2>
+              <p data-tour-summary>Start with the nozzle example, or choose another above.</p>
+            </div>
+            <div class="demo-tour-model" data-tour-model hidden aria-label="Interactive demonstration model"></div>
+            <div class="demo-tour-math" data-tour-math hidden>
+              <math display="block"><mrow><mover><mi>m</mi><mo>˙</mo></mover><mo>=</mo><mi>ρ</mi><mi>A</mi><mi>V</mi></mrow></math>
+              <p>Mass flow = density × area × velocity</p>
+              <p>For this nozzle: 0.010 kg/s → 6.762 m/s at the inlet.</p>
+            </div>
+            <div class="demo-tour-charts" data-tour-charts hidden></div>
+          </div>
+          <div class="demo-narration" aria-live="polite"><b>Aero</b><p data-tour-narration>Press Play and I’ll explain each step. You choose when to continue.</p></div>
+          <div class="demo-player-controls">
+            <button type="button" data-tour-back disabled>← Back</button>
+            <button type="button" data-tour-play>▶ Play demo</button>
+            <button type="button" data-tour-next disabled>Next step →</button>
+          </div>
+        </section>
+
+        <details class="demo-extra" data-tour-questions>
+          <summary>Ask Aero a question or try a change</summary>
         <div class="guided-grid">
           <section class="guided-conversation" aria-labelledby="guided-conversation-title">
             <div class="guided-panel-head"><h2 id="guided-conversation-title">Requirements conversation</h2><span>Interactive demo guide</span></div>
@@ -166,11 +192,14 @@ const demoCases = [
             <button type="button" class="guided-continue" data-guided-continue disabled>Continue to detailed walkthrough <span>→</span></button>
           </aside>
         </div>
+        </details>
       </main>
     </div>
     <script id="demo-case-data" type="application/json" is:inline set:html={JSON.stringify(demoCases)} />
   </section>
 
+  <details class="demo-extra demo-evidence" id="demo-evidence">
+  <summary>Inspect the full math, case data and evidence</summary>
   <section class="workbench-intro content-section">
     <p class="section-index" id="wb-mode-label">Detailed walkthrough / Recorded evidence</p>
     <div><h2 id="wb-title">Inspect each engineering stage and ask why it passed—or why it remains blocked.</h2><p id="wb-mode-description">The retained nozzle case below exposes the equations, geometry, mesh, solver telemetry, rendered field, and evidence gates behind the short guided experience.</p></div>
@@ -522,6 +551,7 @@ const demoCases = [
     </section>
   </div>
 
+  </details>
   <script
     id="ev-data"
     type="application/json"
@@ -1268,6 +1298,53 @@ const demoCases = [
       document.querySelectorAll('.wb-tab').forEach((t) =>
         t.addEventListener('click', () => showTab(t.dataset.tab)));
 
+      let tourViewer = null;
+      let tourRequest = 0;
+      document.addEventListener('aero-demo-step', async (event) => {
+        const requestId = ++tourRequest;
+        const { index, blocked } = event.detail;
+        const model = document.querySelector('[data-tour-model]');
+        const charts = document.querySelector('[data-tour-charts]');
+        tourViewer?.dispose();
+        tourViewer = null;
+        model.replaceChildren();
+        model.hidden = true;
+        charts.hidden = true;
+        charts.replaceChildren();
+        if (blocked) return;
+        if (index === 4) {
+          charts.hidden = false;
+          document.querySelectorAll('.telemetry [data-chart="residuals"], .telemetry [data-chart="mass"]').forEach((chart) => charts.appendChild(chart.cloneNode(true)));
+          return;
+        }
+        if (![2, 3, 5].includes(index)) return;
+        model.hidden = false;
+        model.textContent = 'Loading 3D view…';
+        try {
+          const href = index === 5 ? cfg.publicPressureField.href : cfg.publicCadArtifact.href;
+          const response = await fetch(href);
+          if (!response.ok) throw new Error('The model could not be loaded. Try this step again.');
+          if (index === 5) {
+            const surface = await response.json();
+            const { mountPressureViewer } = await import('../../../../lib/aero/pressure-viewer');
+            if (requestId !== tourRequest) return;
+            tourViewer = mountPressureViewer(model, surface);
+            const label = document.createElement('span');
+            label.className = 'tour-field-label';
+            label.textContent = `Pressure: ${surface.range[0].toLocaleString()}–${surface.range[1].toLocaleString()} Pa · Recorded solver output`;
+            model.appendChild(label);
+          } else {
+            const payload = await response.arrayBuffer();
+            const { mountCadViewer } = await import('../../../../lib/aero/cad-viewer');
+            if (requestId !== tourRequest) return;
+            tourViewer = mountCadViewer(model, payload);
+            tourViewer.setMeshVisible(index === 3);
+          }
+        } catch (error) {
+          if (requestId === tourRequest) model.textContent = '3D view unavailable. Select this step again to retry.';
+        }
+      });
+
       setMode('geometry');
       applyCamera();
     }
@@ -1289,6 +1366,62 @@ const demoCases = [
       const stageNodes = [...root.querySelectorAll('[data-guided-stage]')];
       let activeCase = null;
       let current = { goal: '', geometry: '', operating: '', evidence: '' };
+      let tourIndex = -1;
+      let tourModified = false;
+      const tourNames = ['Requirements', 'Math', 'CAD', 'Mesh', 'Solve', 'Render'];
+      const tourNarratives = [
+        ['Define the question', 'What do we want to learn?', 'First I capture the goal, available geometry, operating conditions, and what would count as a useful answer.'],
+        ['Check the physics', 'Estimate before solving.', 'I use mass conservation to estimate inlet velocity. This gives us a simple reference to compare with the CFD result.'],
+        ['Inspect the nozzle', 'Rotate the model to look inside.', 'Here is the nozzle cutaway. I check dimensions and surfaces before preparing the mesh. Drag to rotate; scroll to zoom.'],
+        ['Prepare the mesh', 'The same nozzle, divided into surface triangles.', 'The lines show this CAD surface’s triangulation. The separate CFD volume mesh is checked for quality and sensitivity to refinement.'],
+        ['Check the solver', 'Recorded convergence history.', 'I watch residuals and mass balance together. These charts replay a completed run; pressing Next does not launch a solver.'],
+        ['Review the result', 'Pressure from the recorded OpenFOAM run.', 'The colors show the solved pressure field on the axisymmetric wedge. Numerical checks passed. Comparison with an independent reference is still needed.'],
+      ];
+      const renderTour = () => {
+        const playing = tourIndex >= 0;
+        const cooling = activeCase?.id === 'cooling-channel';
+        const blocked = playing && tourIndex >= 2 && (cooling || tourModified);
+        const script = playing ? [...tourNarratives[tourIndex]] : ['See how Aero turns a question into a CFD workflow.', 'Choose an example, then press Play.', 'Press Play and I’ll explain each step. You choose when to continue.'];
+        if (playing && tourIndex === 0) script[1] = activeCase?.question || script[1];
+        if (playing && cooling && tourIndex === 1) {
+          script[1] = 'Balance the heat load against coolant flow.';
+          script[2] = 'We know the heat load is 8 kW. To estimate flow, we still need an allowed temperature rise and the coolant properties.';
+        }
+        if (blocked) {
+          script[0] = `${tourNames[tourIndex]} needs more work`;
+          script[1] = cooling ? 'This screening example has no completed CFD run.' : 'Your changes need a new geometry and solver run.';
+          script[2] = cooling ? 'I stop here until channel dimensions, flow conditions, and acceptance limits are supplied. There is no solved model to show for this example.' : 'I saved your proposed change in the record. The earlier nozzle results do not describe that revised design.';
+        }
+        root.querySelector('[data-tour-title]').textContent = script[0];
+        root.querySelector('[data-tour-summary]').textContent = script[1];
+        root.querySelector('[data-tour-narration]').textContent = script[2];
+        root.querySelector('[data-tour-kicker]').textContent = playing ? `${tourNames[tourIndex]} · ${activeCase?.title || 'Nozzle demo'}` : 'Requirements → Math → CAD → Mesh → Solve → Render';
+        root.querySelector('[data-tour-counter]').textContent = playing ? `Step ${tourIndex + 1} of 6${blocked ? ' · Awaiting inputs' : ''}` : '6 steps · At your pace';
+        root.querySelector('[data-tour-back]').disabled = tourIndex <= 0;
+        root.querySelector('[data-tour-next]').disabled = !playing;
+        root.querySelector('[data-tour-next]').textContent = tourIndex === 5 ? 'Finish demo ✓' : 'Next step →';
+        root.querySelector('[data-tour-play]').textContent = playing ? '↺ Restart' : '▶ Play demo';
+        root.querySelector('[data-tour-scene]').dataset.stage = String(tourIndex);
+        stageNodes.forEach((node, index) => {
+          node.classList.toggle('is-active', playing && index === tourIndex);
+          node.classList.toggle('is-complete', playing && index < tourIndex);
+          node.classList.remove('is-partial');
+          node.querySelector('small').textContent = playing && index < tourIndex ? 'Viewed' : playing && index === tourIndex ? 'Now viewing' : 'Preview';
+          node.querySelector('i').style.width = playing && index <= tourIndex ? '100%' : '0%';
+          node.querySelector('button').setAttribute('aria-current', playing && index === tourIndex ? 'step' : 'false');
+        });
+        const math = root.querySelector('[data-tour-math]');
+        math.hidden = !playing || tourIndex !== 1;
+        if (!math.hidden) math.innerHTML = cooling
+          ? '<math display="block"><mrow><mi>Q</mi><mo>=</mo><mover><mi>m</mi><mo>˙</mo></mover><msub><mi>c</mi><mi>p</mi></msub><mi>ΔT</mi></mrow></math><p>Heat load = mass flow × heat capacity × temperature rise</p><p>Known: 8 kW · Needed: coolant state and allowable temperature rise</p>'
+          : '<math display="block"><mrow><mover><mi>m</mi><mo>˙</mo></mover><mo>=</mo><mi>ρ</mi><mi>A</mi><mi>V</mi></mrow></math><p>Mass flow = density × area × velocity</p><p>Recorded baseline: 0.010 kg/s → 6.762 m/s at the inlet</p>';
+        document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: { index: tourIndex, blocked } }));
+      };
+      const advanceTour = (index) => {
+        if (!activeCase) loadCase(cases[0]);
+        tourIndex = Math.max(0, Math.min(5, index));
+        renderTour();
+      };
 
       const defaults = {
         goal: 'Awaiting conversation',
@@ -1362,6 +1495,8 @@ const demoCases = [
         renderRecord();
         appendTurn('Aero', `I updated ${changes.join(' and ')}. That is a new design revision, so CAD, mesh, solve, and render must be regenerated before their prior evidence can apply.`);
         setStages([100, 100, 35, 0, 0, 0]);
+        tourModified = true;
+        renderTour();
         return true;
       };
 
@@ -1388,6 +1523,9 @@ const demoCases = [
 
       const loadCase = (item) => {
         activeCase = item;
+        tourIndex = -1;
+        tourModified = false;
+        log.replaceChildren();
         current = { ...item.requirements };
         caseLabel.textContent = item.title;
         root.querySelectorAll('[data-demo-case]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.demoCase === item.id)));
@@ -1396,9 +1534,11 @@ const demoCases = [
         renderRecord();
         setStages(item.stages);
         if (input) input.value = '';
+        renderTour();
       };
 
       const openDetail = (mode) => {
+        document.getElementById('demo-evidence').open = true;
         document.getElementById('workbench')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         const tabName = mode === 'analysis' ? 'analysis' : mode === 'evidence' ? 'evidence' : 'viewport';
         document.querySelector(`.wb-tab[data-tab="${tabName}"]`)?.click();
@@ -1415,12 +1555,23 @@ const demoCases = [
       root.querySelectorAll('[data-guided-question]').forEach((button) => button.addEventListener('click', () => submit(button.dataset.guidedQuestion)));
       root.querySelectorAll('[data-open-detail]').forEach((button) => button.addEventListener('click', () => openDetail(button.dataset.openDetail)));
       stageNodes.forEach((node, index) => node.querySelector('button')?.addEventListener('click', () => {
-        if (index === 0) input?.focus();
-        else openDetail(index === 1 ? 'analysis' : index === 2 ? 'geometry' : index === 3 ? 'mesh' : index === 4 ? 'evidence' : 'result');
+        advanceTour(index);
       }));
+      root.querySelector('[data-tour-play]').addEventListener('click', () => advanceTour(0));
+      root.querySelector('[data-tour-back]').addEventListener('click', () => advanceTour(tourIndex - 1));
+      root.querySelector('[data-tour-next]').addEventListener('click', () => {
+        if (tourIndex < 5) advanceTour(tourIndex + 1);
+        else {
+          tourIndex = -1;
+          renderTour();
+          root.querySelector('[data-tour-title]').textContent = 'You’ve walked through the CFD pipeline.';
+          root.querySelector('[data-tour-narration]').textContent = 'Try another example, ask a question below, or inspect the detailed evidence.';
+        }
+      });
       continueButton?.addEventListener('click', () => openDetail('analysis'));
       form?.addEventListener('submit', (event) => { event.preventDefault(); submit(input?.value); if (input) input.value = ''; });
       renderRecord();
+      renderTour();
     })();
   </script>
 
@@ -1857,6 +2008,58 @@ const demoCases = [
       .workbench { width:calc(100% - 32px); }
     }
 
+    .guided-rail { display:none; }
+    .guided-body { display:block; min-height:0; }
+    .guided-demo { max-width:1200px; margin-bottom:1rem; }
+    .guided-main { padding:1rem; }
+    .guided-scene-head p { font-size:.875rem; }
+    .guided-topbar { position:static; grid-template-columns:130px minmax(0,1fr); }
+    .guided-brand small,.guided-stages button small { font-size:.75rem; }
+    .guided-stages button b,.guided-examples button { font-size:.875rem; }
+    .guided-examples { flex-wrap:wrap; }
+    .guided-examples [data-new-case] { display:none; }
+    .demo-player { margin-top:.8rem; border:1px solid #29424c; border-radius:10px; overflow:hidden; background:#091923; }
+    .demo-player-head { display:flex; justify-content:space-between; gap:1rem; padding:.65rem 1rem; border-bottom:1px solid #29424c; color:#96b1ba; font-size:.8rem; }
+    .demo-scene { padding:1.25rem; }
+    .demo-scene-copy > span { font-size:.8rem; color:#66e3df; }
+    .demo-scene-copy h2 { font-size:clamp(1.4rem,2.3vw,2rem); line-height:1.2; margin:.45rem 0; }
+    .demo-scene-copy p { font-size:1rem; color:#b6cbd0; margin:.5rem 0; max-width:65ch; }
+    .demo-scene[data-stage='-1'],.demo-scene[data-stage='0'] { min-height:200px; display:flex; align-items:center; }
+    .demo-narration { display:flex; gap:1rem; padding:1rem 1.25rem; border-top:1px solid #29424c; background:#0e2530; }
+    .demo-narration b { color:#66e3df; font-size:.875rem; }
+    .demo-narration p { margin:0; font-size:1rem; line-height:1.5; max-width:80ch; }
+    .demo-player-controls { display:flex; justify-content:center; gap:.7rem; padding:1rem; }
+    .demo-player-controls button { border:1px solid #3b6371; border-radius:6px; background:transparent; color:#c3d9df; padding:.7rem 1rem; font:inherit; font-size:.9rem; cursor:pointer; }
+    .demo-player-controls [data-tour-play] { background:#66e3df; color:#061119; font-weight:800; }
+    .demo-player-controls button:disabled { opacity:.35; cursor:default; }
+    .demo-player-controls button:focus-visible,.demo-extra summary:focus-visible { outline:2px solid #66e3df; outline-offset:3px; }
+    .demo-tour-model { position:relative; height:clamp(200px,26vh,310px); margin-top:.75rem; border:1px solid #29424c; }
+    .demo-tour-model :global(canvas) { display:block; width:100%; height:100%; }
+    .demo-tour-model :global(.tour-field-label) { position:absolute; bottom:.5rem; left:.5rem; padding:.4rem; background:#07151ee8; color:#d4e8ed; font-size:.8rem; }
+    .demo-tour-math { padding:1rem; text-align:center; }
+    .demo-tour-math :global(math) { font-size:2.5rem; }
+    .demo-tour-math :global(p) { color:#b6cbd0; font-size:.9rem; }
+    .demo-tour-charts { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+    .demo-tour-charts :global(svg) { width:100%; max-height:200px; }
+    .demo-tour-charts :global(small) { font-size:.8rem; color:#96b1ba; }
+    .demo-tour-model[hidden],.demo-tour-math[hidden],.demo-tour-charts[hidden] { display:none; }
+    .demo-extra { margin:.8rem auto; border:1px solid #29424c; border-radius:7px; }
+    .demo-extra > summary { padding:.85rem 1rem; cursor:pointer; font-size:.9rem; color:#8db6c4; }
+    .demo-evidence { max-width:1200px; }
+    .demo-evidence .workbench-intro { display:none; }
+    .demo-evidence .workbench { width:100%; margin:0; }
+    .demo-extra .guided-grid { margin:0; }
+    @media (max-width:700px) {
+      .guided-topbar { grid-template-columns:1fr; }
+      .guided-brand { display:none; }
+      .guided-stages { grid-template-columns:repeat(3,1fr); }
+      .guided-scene-head p { display:none; }
+      .demo-player-head { flex-direction:column; gap:.2rem; }
+      .demo-player-controls { gap:.4rem; padding:.7rem; }
+      .demo-player-controls button { padding:.7rem; }
+      .demo-tour-charts { grid-template-columns:1fr; }
+      .demo-narration { flex-direction:column; gap:.4rem; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .vp-stage img { will-change: auto; }
       .nb-flash { transition: none; }
