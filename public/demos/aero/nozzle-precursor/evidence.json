@@ -1,0 +1,65 @@
+{
+  "schema": "aero_public_demo_evidence_v1",
+  "caseId": "aero-nozzle-precursor-v1",
+  "status": "completed",
+  "classification": "numerically_converged",
+  "originalRuntimeSeconds": 7.18,
+  "sourceArtifactHashes": [
+    {
+      "artifact": "spec.json",
+      "algorithm": "SHA-256",
+      "digest": "b071b5763c182e51e63c21b4804cbad67012796cca5f0eb678a31a0077326793"
+    },
+    {
+      "artifact": "telemetry.jsonl",
+      "algorithm": "SHA-256",
+      "digest": "329eddfa371f99790930de466ab414665dc31d5dce81e232283a93d2f49fc15a"
+    },
+    {
+      "artifact": "report.md",
+      "algorithm": "SHA-256",
+      "digest": "a29c2d85d57216f1d19b93e325d612372c90378572c4a5a5069e35171b055dfe"
+    },
+    {
+      "artifact": "aero_result_manifest.json",
+      "algorithm": "SHA-256",
+      "digest": "bfd56160ed1294aefa1b95d97341293d2a10040d0f8e18bf2cfed479b143dc00"
+    }
+  ],
+  "publishedArtifacts": [
+    {
+      "name": "case.json",
+      "role": "Curated case definition"
+    },
+    {
+      "name": "telemetry.json",
+      "role": "Recorded residual and monitor histories"
+    },
+    {
+      "name": "gates.json",
+      "role": "Aero-produced numerical and readiness outcomes"
+    },
+    {
+      "name": "mesh-study.json",
+      "role": "Retained multi-mesh conclusion"
+    },
+    {
+      "name": "geometry.svg",
+      "role": "Geometry derived from the retained block mesh"
+    },
+    {
+      "name": "mesh.svg",
+      "role": "Cell topology derived from the retained block mesh"
+    },
+    {
+      "name": "result.svg",
+      "role": "Final 864-cell Mach field"
+    }
+  ],
+  "curation": {
+    "rawSolverLogPublished": false,
+    "rawPathsPublished": false,
+    "machineMetadataPublished": false,
+    "timestampsPublished": false
+  }
+}

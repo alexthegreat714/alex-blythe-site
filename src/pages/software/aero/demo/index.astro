@@ -33,6 +33,41 @@ const clientState = {
   analysis: { inputs: firstOrderInputs, values: firstOrderValues },
   localApi: 'http://127.0.0.1:5213',
 };
+const demoCases = [
+  {
+    id: 'wall-refinement',
+    title: 'Three-grid nozzle refinement',
+    kind: 'Recorded OpenFOAM family',
+    question: 'Is the reported nozzle result stable as the mesh is refined?',
+    summary: 'Three completed grids retain mesh checks, solver telemetry, conservation gates, and hashed result artifacts.',
+    disposition: 'Numerically independent at the declared 2% gate; external validation is still required.',
+    evidenceHref: '/demos/aero/first-cut-proof/acceptance-summary.json',
+    evidenceLabel: 'Open acceptance summary',
+    stages: [100, 100, 100, 100, 100, 100],
+  },
+  {
+    id: 'nozzle-precursor',
+    title: 'Compressible nozzle precursor',
+    kind: 'Recorded OpenFOAM case',
+    question: 'Can a bounded nozzle case produce a checked first-cut compressible-flow result?',
+    summary: 'A typed case progresses through first-order screening, generated geometry, mesh checks, rhoSimpleFoam, telemetry, and a solved pressure field.',
+    disposition: 'Execution proof only; the result is not flight-design validation.',
+    evidenceHref: '/demos/aero/nozzle-precursor/evidence.json',
+    evidenceLabel: 'Open run evidence',
+    stages: [100, 100, 100, 100, 100, 100],
+  },
+  {
+    id: 'cooling-channel',
+    title: 'Cooling-channel screening',
+    kind: 'Analytical walkthrough',
+    question: 'Can a rectangular water channel remove 8 kW while controlling pressure drop and temperature?',
+    summary: 'Requirements and correlation-based screening are defined. CAD, mesh, CFD execution, and test correlation remain deliberately incomplete.',
+    disposition: 'Screening only; CFD and experimental correlation are required before design use.',
+    evidenceHref: '',
+    evidenceLabel: '',
+    stages: [100, 100, 35, 0, 0, 0],
+  },
+];
 ---
 
 <SoftwareLayout
@@ -48,6 +83,44 @@ const clientState = {
       The initial state is the retained Level 4 wall-resolved OpenFOAM result. On a loopback preview, the same panes can submit
       a bounded mass-flow run or the fixed parametric nozzle workflow to the isolated local workers after explicit approval.
     </p>
+  </section>
+
+  <section class="demo-library content-section" data-demo-library aria-labelledby="demo-library-title">
+    <div class="demo-library-head">
+      <div>
+        <p class="section-index">Example library / One workflow, different readiness states</p>
+        <h2 id="demo-library-title">Choose an engineering example.</h2>
+      </div>
+      <p>Every example uses the same requirements-to-evidence pipeline. A stage reaches 100% only when its required inputs or artifacts exist.</p>
+    </div>
+    <nav class="demo-case-tabs" aria-label="Select an Aero demonstration">
+      {demoCases.map((item, index) => (
+        <button type="button" class:list={{ 'is-active': index === 0 }} data-demo-case={item.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+          <span>0{index + 1}</span><strong>{item.title}</strong><small>{item.kind}</small>
+        </button>
+      ))}
+    </nav>
+    <article class="demo-case-summary" aria-live="polite">
+      <div class="demo-case-copy">
+        <span class="demo-case-kind" data-demo-kind>{demoCases[0].kind}</span>
+        <h3 data-demo-title>{demoCases[0].title}</h3>
+        <p class="demo-case-question" data-demo-question>{demoCases[0].question}</p>
+        <p data-demo-summary>{demoCases[0].summary}</p>
+        <div class="demo-case-disposition"><span>Current disposition</span><strong data-demo-disposition>{demoCases[0].disposition}</strong></div>
+        <a data-demo-evidence href={demoCases[0].evidenceHref}>{demoCases[0].evidenceLabel} <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="demo-stage-grid" aria-label="Selected example pipeline readiness">
+        {['Requirements', 'Math', 'CAD', 'Mesh', 'Solve', 'Render'].map((label, index) => (
+          <li data-demo-stage={index}>
+            <span><b>0{index + 1}</b>{label}</span>
+            <div class="demo-progress" role="progressbar" aria-label={`${label} readiness`} aria-valuemin="0" aria-valuemax="100" aria-valuenow={demoCases[0].stages[index]}><i style={`width:${demoCases[0].stages[index]}%`}></i></div>
+            <small>{demoCases[0].stages[index]}%</small>
+          </li>
+        ))}
+      </ol>
+    </article>
+    <p class="demo-library-note">The full interactive record below is the three-grid nozzle case. The other examples expose only the evidence currently cleared for the public demo.</p>
+    <script id="demo-case-data" type="application/json" is:inline set:html={JSON.stringify(demoCases)} />
   </section>
 
   <div class="workbench" id="workbench" data-state={JSON.stringify(clientState)}>
@@ -1115,8 +1188,82 @@ const clientState = {
     }
   </script>
 
+  <script is:inline>
+    (() => {
+      const root = document.querySelector('[data-demo-library]');
+      if (!root) return;
+      const cases = JSON.parse(document.getElementById('demo-case-data')?.textContent || '[]');
+      const buttons = [...root.querySelectorAll('[data-demo-case]')];
+      const render = (item) => {
+        root.querySelector('[data-demo-kind]').textContent = item.kind;
+        root.querySelector('[data-demo-title]').textContent = item.title;
+        root.querySelector('[data-demo-question]').textContent = item.question;
+        root.querySelector('[data-demo-summary]').textContent = item.summary;
+        root.querySelector('[data-demo-disposition]').textContent = item.disposition;
+        const evidenceLink = root.querySelector('[data-demo-evidence]');
+        evidenceLink.hidden = !item.evidenceHref;
+        if (item.evidenceHref) {
+          evidenceLink.href = item.evidenceHref;
+          evidenceLink.firstChild.textContent = `${item.evidenceLabel} `;
+        }
+        root.querySelectorAll('[data-demo-stage]').forEach((stage, index) => {
+          const value = Number(item.stages[index] || 0);
+          const bar = stage.querySelector('.demo-progress');
+          bar.setAttribute('aria-valuenow', String(value));
+          bar.querySelector('i').style.width = `${value}%`;
+          stage.querySelector('small').textContent = `${value}%`;
+          stage.classList.toggle('is-complete', value === 100);
+          stage.classList.toggle('is-partial', value > 0 && value < 100);
+        });
+      };
+      buttons.forEach((button) => button.addEventListener('click', () => {
+        const item = cases.find((candidate) => candidate.id === button.dataset.demoCase);
+        if (!item) return;
+        buttons.forEach((candidate) => {
+          const active = candidate === button;
+          candidate.classList.toggle('is-active', active);
+          candidate.setAttribute('aria-pressed', String(active));
+        });
+        render(item);
+      }));
+      render(cases[0]);
+    })();
+  </script>
+
   <style>
     .wb-intro { margin-bottom: 1.5rem; }
+
+    .demo-library { margin-bottom: 1.5rem; padding-top: 0; }
+    .demo-library-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.7fr); gap:2rem; align-items:end; }
+    .demo-library-head h2 { margin:.35rem 0 0; }
+    .demo-library-head > p { margin:0; color:var(--muted); font-size:.88rem; line-height:1.55; }
+    .demo-case-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:1.25rem; border:1px solid var(--border); }
+    .demo-case-tabs button { display:grid; grid-template-columns:auto 1fr; gap:.25rem .75rem; padding:1rem; border:0; border-right:1px solid var(--border); background:var(--surface); color:var(--text); font:inherit; text-align:left; cursor:pointer; }
+    .demo-case-tabs button:last-child { border-right:0; }
+    .demo-case-tabs button > span { grid-row:1/3; color:var(--faint); font-size:.68rem; letter-spacing:.08em; }
+    .demo-case-tabs strong { font-size:.86rem; }
+    .demo-case-tabs small { color:var(--muted); font-size:.68rem; }
+    .demo-case-tabs button.is-active { box-shadow:inset 0 3px 0 var(--accent); background:color-mix(in srgb,var(--accent) 8%,var(--surface)); }
+    .demo-case-summary { display:grid; grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr); gap:1.5rem; padding:1.25rem; border:1px solid var(--border); border-top:0; background:var(--surface-alt); }
+    .demo-case-kind { color:var(--accent); font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .demo-case-copy h3 { margin:.55rem 0; font-size:1.4rem; }
+    .demo-case-copy > p { color:var(--muted); font-size:.84rem; line-height:1.55; }
+    .demo-case-question { color:var(--text) !important; font-weight:700; }
+    .demo-case-disposition { margin-top:1rem; padding:.8rem; border-left:3px solid var(--accent); background:color-mix(in srgb,var(--accent) 7%,transparent); }
+    .demo-case-disposition span { display:block; color:var(--faint); font-size:.63rem; letter-spacing:.08em; text-transform:uppercase; }
+    .demo-case-disposition strong { display:block; margin-top:.35rem; font-size:.78rem; line-height:1.45; }
+    .demo-case-copy > a { display:inline-flex; gap:1.5rem; margin-top:1rem; color:var(--accent); font-size:.76rem; font-weight:800; }
+    .demo-case-copy > a[hidden] { display:none; }
+    .demo-stage-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.55rem; margin:0; padding:0; list-style:none; }
+    .demo-stage-grid li { display:flex; min-height:7.1rem; flex-direction:column; padding:.75rem; border:1px solid var(--border); background:var(--surface); }
+    .demo-stage-grid li > span { display:flex; gap:.55rem; align-items:center; font-size:.75rem; font-weight:700; }
+    .demo-stage-grid li > span b { color:var(--faint); font-size:.62rem; }
+    .demo-progress { height:5px; margin-top:auto; overflow:hidden; background:var(--subtle); }
+    .demo-progress i { display:block; height:100%; background:#4a91d3; transition:width .35s ease; }
+    .demo-stage-grid li.is-complete .demo-progress i { background:#4f9a5f; }
+    .demo-stage-grid li.is-partial .demo-progress i { background:var(--accent); }
+    .demo-stage-grid li > small { margin-top:.4rem; color:var(--faint); font-size:.62rem; }
+    .demo-library-note { margin:.65rem 0 0; color:var(--faint); font-size:.7rem; }
 
     .workbench {
       border: 1px solid var(--border);
@@ -1349,6 +1496,10 @@ const clientState = {
     .ev-close { position: absolute; top: 0.4rem; right: 0.55rem; background: none; border: 0; color: var(--faint); font-size: 1.1rem; cursor: pointer; }
 
     @media (max-width: 980px) {
+      .demo-library-head,.demo-case-summary { grid-template-columns:1fr; }
+      .demo-case-tabs { grid-template-columns:1fr; }
+      .demo-case-tabs button { border-right:0; border-bottom:1px solid var(--border); }
+      .demo-case-tabs button:last-child { border-bottom:0; }
       .wb-tabs { display: flex; border-bottom: 1px solid var(--border); }
       .wb-tab {
         flex: 1; font: inherit; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;

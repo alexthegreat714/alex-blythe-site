@@ -39,7 +39,7 @@ const aeroInstances = [
     audience: 'Private',
     status: 'Protected by Aegis sign-in',
     description: 'The existing personal build, including its current conversations, experiments, WVM lane, and local integrations.',
-    href: 'https://aegis.alex-blythe.com/aero/',
+    href: 'https://sky.alex-blythe.com/aero/',
     action: 'Open Aero Lab',
     primary: false,
   },
@@ -50,6 +50,13 @@ const proofStages = [
   { index: '03', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated mesh before execution. This proof used 864, 1,944, and 3,456 cells.' },
   { index: '04', label: 'Solve', title: 'Run and monitor OpenFOAM', detail: 'Each rhoSimpleFoam run retained convergence, conservation, monitor, and cleanup evidence.' },
   { index: '05', label: 'Decide', title: 'Accept only what the evidence supports', detail: 'The grid-change gate passed. Missing reference and fidelity evidence still block design use.' },
+] as const;
+const pipelineFilmStages = [
+  { label: 'Requirements', time: 0, detail: 'Define the question, inputs, limits, and missing evidence.' },
+  { label: 'Math & LaTeX', time: 3.4, detail: 'Compile first-principles expectations before solving.' },
+  { label: 'CAD & tolerances', time: 6.8, detail: 'Inspect geometry, units, interfaces, and variation.' },
+  { label: 'Mesh', time: 10.2, detail: 'Prepare the case and verify mesh quality.' },
+  { label: 'Solve & render', time: 13.6, detail: 'Run OpenFOAM, inspect telemetry, and retain evidence.' },
 ] as const;
 const proofReadiness = [
   { label: 'Linux OpenFOAM execution', status: 'Passed', tone: 'pass' },
@@ -122,6 +129,29 @@ const proofReadiness = [
         </div>
       </div>
 
+      <figure class="pipeline-film" data-pipeline-film>
+        <div class="pipeline-film-screen">
+          <video autoplay muted loop playsinline preload="metadata" poster="/demos/aero/pipeline-film/rev-1.0/01-requirements.png" aria-describedby="pipeline-film-caption">
+            <source src="/demos/aero/pipeline-film/rev-1.0/aero-pipeline-rev-1.0.webm" type="video/webm" />
+            <source src="/demos/aero/pipeline-film/rev-1.0/aero-pipeline-rev-1.0.mp4" type="video/mp4" />
+          </video>
+          <div class="pipeline-film-badge"><span>Live interface capture</span><strong>Aero Rev 1.0</strong></div>
+          <button class="pipeline-film-toggle" type="button" aria-label="Pause pipeline walkthrough">Pause</button>
+        </div>
+        <figcaption id="pipeline-film-caption">
+          <div>
+            <span class="pipeline-film-kicker">How it works / 18 seconds</span>
+            <strong data-film-title>Requirements</strong>
+            <p data-film-detail>Define the question, inputs, limits, and missing evidence.</p>
+          </div>
+          <ol class="pipeline-film-steps" aria-label="Jump to a pipeline stage">
+            {pipelineFilmStages.map((stage, index) => (
+              <li><button type="button" class:list={{ 'is-active': index === 0 }} data-film-time={stage.time}><span>0{index + 1}</span>{stage.label}</button></li>
+            ))}
+          </ol>
+        </figcaption>
+      </figure>
+
       <ol class="proof-timeline" aria-label="Aero CFD proof workflow">
         {proofStages.map((stage) => (
           <li>
@@ -184,6 +214,59 @@ const proofReadiness = [
       </div>
     </section>
   )}
+
+  <script is:inline>
+    (() => {
+      const root = document.querySelector('[data-pipeline-film]');
+      if (!root) return;
+      const video = root.querySelector('video');
+      const toggle = root.querySelector('.pipeline-film-toggle');
+      const title = root.querySelector('[data-film-title]');
+      const detail = root.querySelector('[data-film-detail]');
+      const buttons = [...root.querySelectorAll('[data-film-time]')];
+      const stages = [
+        ['Requirements', 'Define the question, inputs, limits, and missing evidence.'],
+        ['Math & LaTeX', 'Compile first-principles expectations before solving.'],
+        ['CAD & tolerances', 'Inspect geometry, units, interfaces, and variation.'],
+        ['Mesh', 'Prepare the case and verify mesh quality.'],
+        ['Solve & render', 'Run OpenFOAM, inspect telemetry, and retain evidence.'],
+      ];
+      const sync = () => {
+        const current = video.currentTime || 0;
+        let active = 0;
+        buttons.forEach((button, index) => {
+          if (current >= Number(button.dataset.filmTime)) active = index;
+        });
+        buttons.forEach((button, index) => button.classList.toggle('is-active', index === active));
+        title.textContent = stages[active][0];
+        detail.textContent = stages[active][1];
+      };
+      buttons.forEach((button) => button.addEventListener('click', () => {
+        video.currentTime = Number(button.dataset.filmTime);
+        video.play();
+        toggle.textContent = 'Pause';
+        toggle.setAttribute('aria-label', 'Pause pipeline walkthrough');
+        sync();
+      }));
+      toggle.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          toggle.textContent = 'Pause';
+          toggle.setAttribute('aria-label', 'Pause pipeline walkthrough');
+        } else {
+          video.pause();
+          toggle.textContent = 'Play';
+          toggle.setAttribute('aria-label', 'Play pipeline walkthrough');
+        }
+      });
+      video.addEventListener('timeupdate', sync);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.pause();
+        toggle.textContent = 'Play';
+        toggle.setAttribute('aria-label', 'Play pipeline walkthrough');
+      }
+    })();
+  </script>
 
   <section class="content-section" aria-labelledby="project-overview">
     <div class="section-heading">
@@ -250,6 +333,22 @@ const proofReadiness = [
   .proof-kicker { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
   .proof-kicker span { padding:5px 8px; border:1px solid var(--border); color:var(--muted); font-size:.68rem; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
   .proof-kicker span:first-child { border-color:var(--accent); color:var(--accent); }
+  .pipeline-film { margin:32px 0 0; border:1px solid var(--border); background:#07131b; color:#e8f4f7; }
+  .pipeline-film-screen { position:relative; aspect-ratio:16/9; overflow:hidden; background:#061018; }
+  .pipeline-film-screen video { display:block; width:100%; height:100%; object-fit:cover; }
+  .pipeline-film-badge { position:absolute; top:14px; left:14px; display:flex; gap:9px; align-items:center; padding:8px 10px; border:1px solid rgba(95,221,218,.45); background:rgba(4,15,22,.84); backdrop-filter:blur(8px); font-size:.68rem; letter-spacing:.07em; text-transform:uppercase; }
+  .pipeline-film-badge span { color:#86aeb8; }
+  .pipeline-film-badge strong { color:#66e3df; }
+  .pipeline-film-toggle { position:absolute; right:14px; bottom:14px; padding:8px 13px; border:1px solid rgba(255,255,255,.35); background:rgba(4,15,22,.86); color:#fff; font:inherit; font-size:.72rem; font-weight:800; cursor:pointer; }
+  .pipeline-film-toggle:hover,.pipeline-film-toggle:focus-visible { border-color:#66e3df; color:#66e3df; }
+  .pipeline-film figcaption { display:grid; grid-template-columns:minmax(220px,.72fr) minmax(0,1.5fr); gap:28px; padding:20px; border-top:1px solid #25404a; }
+  .pipeline-film-kicker { display:block; color:#66e3df; font-size:.66rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+  .pipeline-film figcaption strong { display:block; margin-top:8px; font-size:1.18rem; }
+  .pipeline-film figcaption p { margin:5px 0 0; color:#9bb6bd; font-size:.82rem; line-height:1.5; }
+  .pipeline-film-steps { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin:0; padding:0; list-style:none; }
+  .pipeline-film-steps button { width:100%; height:100%; padding:10px; border:1px solid #25404a; background:transparent; color:#9bb6bd; font:inherit; font-size:.7rem; text-align:left; cursor:pointer; }
+  .pipeline-film-steps button span { display:block; margin-bottom:7px; color:#66828a; font-size:.62rem; }
+  .pipeline-film-steps button.is-active { border-color:#66e3df; background:rgba(102,227,223,.1); color:#fff; }
   .proof-timeline { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:34px 0 0; padding:0; border-top:1px solid var(--border); list-style:none; }
   .proof-timeline li { position:relative; min-height:245px; padding:22px 20px 24px 0; margin-right:20px; border-bottom:1px solid var(--border); }
   .proof-timeline li::before { content:''; position:absolute; top:-4px; left:0; width:7px; height:7px; border-radius:50%; background:var(--accent); }
@@ -299,6 +398,8 @@ const proofReadiness = [
     .private-actions { width:100%; align-items:stretch; flex-direction:column; }
     .vm-link { justify-content:space-between; }
     .proof-timeline { grid-template-columns:1fr; }
+    .pipeline-film figcaption { grid-template-columns:1fr; }
+    .pipeline-film-steps { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .proof-timeline li { min-height:0; margin:0; padding:20px 0; }
     .proof-timeline strong { margin-top:16px; }
     .proof-results { grid-template-columns:1fr; }

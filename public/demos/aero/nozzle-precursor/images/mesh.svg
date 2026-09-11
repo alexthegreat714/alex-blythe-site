@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">Rectangular duct precursor mesh</title>
+  <desc id="desc">The deterministic single-block mesh contains 72 axial by 12 normal by 1 spanwise cells, for 864 cells total.</desc>
+  <defs><pattern id="grid" width="13" height="14" patternUnits="userSpaceOnUse"><path d="M13 0H0V14" fill="none" stroke="#71807d" stroke-width="0.7"/></pattern></defs>
+  <rect width="1200" height="480" fill="#111719"/>
+  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#dfe2dc;font-size:18px}.meta{fill:#91a09d;font-size:13px;letter-spacing:1px}.edge{fill:none;stroke:#df7955;stroke-width:2;stroke-linejoin:round}.back{fill:#1b2427;stroke:#6d7a78;stroke-width:1}</style>
+  <text x="92" y="54" class="meta">OPENFOAM BLOCKMESH / DETERMINISTIC SINGLE BLOCK</text>
+  <text x="92" y="88" class="label">864 cells</text>
+  <text x="92" y="112" class="meta">72 AXIAL × 12 NORMAL × 1 SPANWISE</text>
+  <polygon class="back" points="150,156 1086,156 1086,324 150,324"/>
+  <polygon points="114,190 1050,190 1050,358 114,358" fill="url(#grid)"/>
+  <path class="edge" d="M114 190H1050V358H114Z M150 156H1086V324 M114 190L150 156 M1050 190L1086 156 M1050 358L1086 324 M114 358L150 324"/>
+  <text x="92" y="408" class="meta">INLET</text>
+  <text x="1032" y="408" class="meta">OUTLET</text>
+  <text x="92" y="452" class="meta">MESH IS CREATED BY THE REVIEWED WORKER CASE-GENERATION PATH</text>
+</svg>

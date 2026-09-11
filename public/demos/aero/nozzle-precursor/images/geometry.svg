@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">Rectangular duct precursor geometry</title>
+  <desc id="desc">A deterministic rectangular computational duct 0.30 metres long, 0.02 metres high, and 0.02 metres deep.</desc>
+  <rect width="1200" height="480" fill="#111719"/>
+  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#dfe2dc;font-size:18px}.meta{fill:#91a09d;font-size:13px;letter-spacing:1px}.dim{fill:#df7955;font-size:14px}.shape{fill:#243033;stroke:#df7955;stroke-width:3;stroke-linejoin:round}.guide{fill:none;stroke:#6d7a78;stroke-width:1;stroke-dasharray:5 7}</style>
+  <text x="92" y="54" class="meta">PARAMETRIC GENERATED / COMPUTATIONAL DOMAIN / METRES</text>
+  <text x="92" y="88" class="label">Straight rectangular duct precursor</text>
+  <path class="shape" d="M150 176 L955 176 L1060 246 L255 246 Z M150 176 L150 304 L255 374 L255 246 M255 374 L1060 374 L1060 246 M150 304 L955 304 L1060 374 M955 176 L955 304"/>
+  <path class="guide" d="M150 404 L955 404 M150 394 L150 414 M955 394 L955 414"/>
+  <text x="520" y="432" class="dim">L = 0.30 m</text>
+  <path class="guide" d="M1090 246 L1090 374 M1080 246 L1100 246 M1080 374 L1100 374"/>
+  <text x="1110" y="315" class="dim">0.02 m</text>
+  <text x="92" y="350" class="meta">INLET</text>
+  <text x="1012" y="216" class="meta">OUTLET</text>
+  <text x="92" y="462" class="meta">ACTUAL WORKER PARAMETERS / WIDTH 0.02 m / NO CONVERGING-DIVERGING PROFILE CLAIMED</text>
+</svg>

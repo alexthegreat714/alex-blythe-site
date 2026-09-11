@@ -1,0 +1,84 @@
+{
+  "schema": "aero_public_demo_case_v1",
+  "id": "aero-nozzle-precursor-v1",
+  "mode": "precomputed",
+  "title": "Compressible nozzle teaching precursor",
+  "classification": "numerically_converged",
+  "designReady": false,
+  "status": "completed",
+  "originalRuntimeSeconds": 7.18,
+  "solver": {
+    "application": "rhoSimpleFoam",
+    "distribution": "OpenFOAM Foundation",
+    "version": "10",
+    "strategy": "Steady-state compressible flow",
+    "completedOuterIterations": 350
+  },
+  "objective": "Demonstrate Aero’s bounded CFD workflow and evidence gates using a simplified compressible-flow case.",
+  "geometry": {
+    "description": "Planar two-dimensional converging-diverging passage; one cell through span with empty side planes.",
+    "lengthM": 0.3,
+    "spanM": 0.012,
+    "halfHeightsM": [
+      0.032,
+      0.018,
+      0.012,
+      0.042,
+      0.052
+    ],
+    "axialStationsM": [
+      0,
+      0.06,
+      0.12,
+      0.22,
+      0.3
+    ]
+  },
+  "physics": {
+    "flowRegime": "compressible_steady",
+    "fluid": "Perfect-gas air",
+    "energyEquation": true,
+    "turbulenceModel": "laminar",
+    "wallThermalModel": "adiabatic",
+    "specificHeatJKgK": 1005
+  },
+  "boundaries": {
+    "inlet": {
+      "type": "Prescribed mass-flow inlet",
+      "massFlowKgS": 0.01,
+      "staticTemperatureK": 300
+    },
+    "outlet": {
+      "type": "Fixed static-pressure outlet",
+      "staticPressurePa": 101325
+    },
+    "wall": "Adiabatic wall",
+    "centerline": "Symmetry plane",
+    "sidePlanes": "Empty"
+  },
+  "mesh": {
+    "cells": 864,
+    "blocks": 4,
+    "axialCells": 108,
+    "transverseCells": 8,
+    "spanwiseCells": 1
+  },
+  "criteria": {
+    "residualMaximum": {
+      "Ux": 0.0001,
+      "Uy": 0.0001,
+      "h": 0.0001,
+      "p": 0.0001
+    },
+    "massImbalanceMaximum": 0.01,
+    "energyImbalanceMaximum": 0.02,
+    "monitorRelativeBandMaximum": 0.01,
+    "monitorWindow": 10
+  },
+  "limitations": [
+    "Prescribed mass-flow inlet and fixed outlet pressure do not demonstrate choking.",
+    "Geometry has no external validation reference.",
+    "Perfect-gas, constant-property, laminar teaching assumptions omit reacting-flow and real-gas physics.",
+    "Mesh independence has not been established."
+  ]
+}

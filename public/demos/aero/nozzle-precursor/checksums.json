@@ -1,0 +1,14 @@
+{
+  "schema": "aero_public_demo_checksums_v1",
+  "algorithm": "SHA-256",
+  "files": {
+    "case.json": "b27efc17a21e9a5b6a8d56213f3594e9f997e41f5797f611d5074e7a2c1dcc95",
+    "telemetry.json": "b0ff3b61fd86ee61dcaccbb35984e0197f4649a4a6cd7b973fc1c42ebd6f7a8a",
+    "gates.json": "1cf06be811715a350b93c85b1dcd9e6168fd0f39b70c28d6a24af32aa26e133c",
+    "mesh-study.json": "48eda44c5f64ded950d3cf9007f76860ecc288480783a55175e468ba71d58d4d",
+    "evidence.json": "c7f5a9b0a108e3eae7b0dd0b99ad71127ac60ca8c798ebaaee980b31a332649c",
+    "images/geometry.svg": "c223ce2967da4db7106280c61f5224543690136cb1520db3e9e7b69f8f7016e7",
+    "images/mesh.svg": "b2e093c1346a7f5e3b65a6db2ef1efb365e5f522075719d38289be8866a9275a",
+    "images/result.svg": "643b3b47487e597e8164ce986a9d2eb9da381566a9bdec9b14eee7078bb67a4c"
+  }
+}

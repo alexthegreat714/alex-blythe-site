@@ -1,0 +1,110 @@
+{
+  "schema": "aero_public_demo_gates_v1",
+  "caseId": "aero-nozzle-precursor-v1",
+  "classification": "numerically_converged",
+  "numericallyConverged": true,
+  "designReady": false,
+  "numerical": {
+    "mesh": {
+      "passed": true,
+      "cells": 864,
+      "maximumAspectRatio": 2.38437,
+      "maximumNonOrthogonality": 15.7086,
+      "maximumSkewness": 0.5117
+    },
+    "residuals": {
+      "Ux": {
+        "passed": true,
+        "maximum": 0.0001,
+        "observed": 0.00000472784,
+        "linearFinal": 7.04969e-9
+      },
+      "Uy": {
+        "passed": true,
+        "maximum": 0.0001,
+        "observed": 0.00000970039,
+        "linearFinal": 1.24973e-8
+      },
+      "h": {
+        "passed": true,
+        "maximum": 0.0001,
+        "observed": 0.00000471754,
+        "linearFinal": 2.49889e-8
+      },
+      "p": {
+        "passed": true,
+        "maximum": 0.0001,
+        "observed": 0.00000828002,
+        "linearFinal": 4.95343e-7
+      }
+    },
+    "massConservation": {
+      "passed": true,
+      "maximum": 0.01,
+      "observed": 6.000000000311312e-7
+    },
+    "energyConservation": {
+      "passed": true,
+      "maximum": 0.02,
+      "observed": 0.00018960357310665455
+    },
+    "monitorStability": {
+      "passed": true,
+      "channels": {
+        "mach": {
+          "maximum": 0.01,
+          "relative_band": 0.000002506742133714728,
+          "required": 10,
+          "samples": 10
+        },
+        "mass_flow": {
+          "maximum": 0.01,
+          "relative_band": 1.0000006094740159e-7,
+          "required": 10,
+          "samples": 10
+        },
+        "pressure_ratio": {
+          "maximum": 0.01,
+          "relative_band": 9.864021503855537e-7,
+          "required": 10,
+          "samples": 10
+        },
+        "temperature": {
+          "maximum": 0.01,
+          "relative_band": 0,
+          "required": 10,
+          "samples": 10
+        }
+      }
+    }
+  },
+  "finalMonitors": {
+    "mach": 0.1994623,
+    "massFlowKgS": 0.009999994,
+    "massImbalance": 6.000000000311312e-7,
+    "pressureDropPa": 53.60000000000582,
+    "pressureRatio": 1.0005289908709598,
+    "outletTemperatureK": 300.0946,
+    "inletVelocityMS": 22.17076,
+    "outletVelocityMS": 13.673786825932977
+  },
+  "readiness": {
+    "validationReference": {
+      "passed": false,
+      "evidence": "Missing"
+    },
+    "modelFidelity": {
+      "passed": false,
+      "evidence": "Simplified steady air nozzle precursor with a prescribed mass-flow inlet, fixed outlet pressure, unvalidated geometry, and no reacting-flow or real-gas physics. It is not yet a choked rocket-nozzle model."
+    },
+    "meshIndependence": {
+      "passed": false,
+      "evidence": "Not established by the retained multi-mesh study."
+    },
+    "blockingGates": [
+      "validation_reference",
+      "model_fidelity_for_declared_use",
+      "mesh_independence"
+    ]
+  }
+}

@@ -1,0 +1,1165 @@
+{
+  "schema": "aero.engineering.result.v1",
+  "evidenceSchema": "aero.cfd.evidence.v1",
+  "case": {
+    "id": "nozzle-precursor",
+    "label": "Converging-diverging nozzle precursor",
+    "solver": "rhoSimpleFoam",
+    "mode": "LIVE"
+  },
+  "inputs": {
+    "massFlowKgS": 0.01
+  },
+  "execution": {
+    "status": "COMPLETE",
+    "runtime": {
+      "recorded": true,
+      "wall_started_at": null,
+      "queue_time_s": 0.0,
+      "setup_time_s": 0.474,
+      "solver_runtime_s": 0.701,
+      "evidence_runtime_s": 0.323,
+      "request_to_result_s": 1.498,
+      "phases_marked": [
+        "evidence_finished",
+        "execution_started",
+        "request_received",
+        "response_ready",
+        "solver_finished",
+        "solver_started"
+      ]
+    },
+    "runtime_display": {
+      "solver": "0.70 s",
+      "total": "1.50 s"
+    }
+  },
+  "numerical": {
+    "status": "NOT_ESTABLISHED",
+    "blocking": [
+      "energy_conservation"
+    ],
+    "gates": [
+      {
+        "id": "run_completed",
+        "status": "PASS",
+        "required": true,
+        "source": "SOLVER_OUTPUT",
+        "reason": "solver workflow completed and wrote its finalization artifacts",
+        "value": null,
+        "limit": null,
+        "units": "",
+        "detail": {
+          "completed": true,
+          "wrote_artifacts": true
+        }
+      },
+      {
+        "id": "mesh_quality",
+        "status": "PASS",
+        "required": true,
+        "source": "SOLVER_OUTPUT",
+        "reason": "mesh metrics within limits and no negative volumes",
+        "value": 1.0,
+        "limit": 0.01,
+        "units": "",
+        "detail": {
+          "min_orthogonal_quality": 1.0,
+          "max_aspect_ratio": 2.5
+        }
+      },
+      {
+        "id": "residual_convergence",
+        "status": "PASS",
+        "required": true,
+        "source": "SOLVER_OUTPUT",
+        "reason": "worst final residual p=9.375e-05 at or below 1e-04",
+        "value": 9.3747553e-05,
+        "limit": 0.0001,
+        "units": "",
+        "detail": {
+          "final_residuals": {
+            "Ux": 4.1667555e-06,
+            "Uy": 2.333878e-05,
+            "h": 2.2527995e-06,
+            "p": 9.3747553e-05
+          }
+        }
+      },
+      {
+        "id": "mass_conservation",
+        "status": "PASS",
+        "required": true,
+        "source": "SOLVER_OUTPUT",
+        "reason": "net mass flux 0.000e+00 kg/s is 0.000% of throughput 1.000e-02 kg/s (limit 1.00%)",
+        "value": 0.0,
+        "limit": 0.01,
+        "units": "fraction",
+        "detail": {
+          "net_mass_flux": 0.0,
+          "throughput": 0.01,
+          "imbalance_fraction": 0.0
+        }
+      },
+      {
+        "id": "energy_conservation",
+        "status": "NOT_EVALUATED",
+        "required": true,
+        "source": "SOLVER_OUTPUT",
+        "reason": "solver output contains no energy balance report for this case",
+        "value": null,
+        "limit": 0.02,
+        "units": "fraction",
+        "detail": {}
+      },
+      {
+        "id": "monitor_stability",
+        "status": "PASS",
+        "required": true,
+        "source": "SOLVER_OUTPUT",
+        "reason": "monitor 'outlet_mass_flow' varied 0.000% over the last 20 samples (limit 1.00%)",
+        "value": 2.000000009355629e-08,
+        "limit": 0.01,
+        "units": "fraction",
+        "detail": {
+          "monitor": "outlet_mass_flow",
+          "window": 20,
+          "min": 0.0099999998,
+          "max": 0.01,
+          "final": 0.01
+        }
+      }
+    ]
+  },
+  "readiness": {
+    "status": "NOT_ESTABLISHED",
+    "blocking": [
+      "validation_reference",
+      "model_fidelity",
+      "mesh_independence"
+    ],
+    "gates": [
+      {
+        "id": "validation_reference",
+        "status": "NOT_EVALUATED",
+        "required": true,
+        "source": "VALIDATION_REFERENCE",
+        "reason": "no validation reference is attached to this case",
+        "value": null,
+        "limit": null,
+        "units": "",
+        "detail": {
+          "expected_reference_types": [
+            "experimental",
+            "analytical",
+            "published_benchmark",
+            "trusted_solver_comparison"
+          ]
+        }
+      },
+      {
+        "id": "model_fidelity",
+        "status": "NOT_EVALUATED",
+        "required": true,
+        "source": "CASE_CONFIGURATION",
+        "reason": "no model fidelity assessment is recorded for this case",
+        "value": null,
+        "limit": null,
+        "units": "",
+        "detail": {
+          "expected_claims": [
+            "turbulence_model_suitability",
+            "compressibility_treatment",
+            "dimensionality",
+            "steady_vs_transient",
+            "material_properties",
+            "boundary_condition_fidelity",
+            "known_omissions"
+          ]
+        }
+      },
+      {
+        "id": "mesh_independence",
+        "status": "NOT_EVALUATED",
+        "required": true,
+        "source": "DERIVED",
+        "reason": "only 0 eligible refinement level(s); at least two are required to demonstrate independence",
+        "value": null,
+        "limit": 0.02,
+        "units": "fraction",
+        "detail": {
+          "eligible_levels": [],
+          "ineligible_runs": [],
+          "comparisons": []
+        }
+      }
+    ]
+  },
+  "interpretation": {
+    "note": "Numerical acceptability concerns the numbers only. Design readiness additionally requires validation, fidelity and mesh independence. A numerically acceptable run is not a validated engineering result.",
+    "source": "AERO_INTERPRETATION"
+  },
+  "telemetrySummary": {
+    "iterations": 25,
+    "cells": 864,
+    "finalResiduals": {
+      "Ux": 4.1667555e-06,
+      "Uy": 2.333878e-05,
+      "h": 2.2527995e-06,
+      "p": 9.3747553e-05
+    },
+    "monitors": {
+      "outlet_mass_flow": 0.01
+    },
+    "monitorSamples": {
+      "outlet_mass_flow": 125
+    },
+    "meshChecked": true,
+    "meshMetrics": {
+      "maxAspectRatio": 2.5,
+      "maxNonOrthogonalityDeg": 0.0,
+      "maxSkewness": 4.1633363e-14
+    }
+  },
+  "telemetry": {
+    "residuals": {
+      "Ux": [
+        {
+          "sample": 1,
+          "value": 1.0
+        },
+        {
+          "sample": 2,
+          "value": 0.33455758
+        },
+        {
+          "sample": 3,
+          "value": 0.95806289
+        },
+        {
+          "sample": 4,
+          "value": 0.86457366
+        },
+        {
+          "sample": 5,
+          "value": 0.70216673
+        },
+        {
+          "sample": 6,
+          "value": 0.9023659
+        },
+        {
+          "sample": 7,
+          "value": 0.59802084
+        },
+        {
+          "sample": 8,
+          "value": 0.65092272
+        },
+        {
+          "sample": 9,
+          "value": 0.76371149
+        },
+        {
+          "sample": 10,
+          "value": 0.18075545
+        },
+        {
+          "sample": 11,
+          "value": 0.64460546
+        },
+        {
+          "sample": 12,
+          "value": 0.59930323
+        },
+        {
+          "sample": 13,
+          "value": 0.17940848
+        },
+        {
+          "sample": 14,
+          "value": 0.45092668
+        },
+        {
+          "sample": 15,
+          "value": 0.26428955
+        },
+        {
+          "sample": 16,
+          "value": 0.17906032
+        },
+        {
+          "sample": 17,
+          "value": 0.33666043
+        },
+        {
+          "sample": 18,
+          "value": 0.19044753
+        },
+        {
+          "sample": 19,
+          "value": 0.18307403
+        },
+        {
+          "sample": 20,
+          "value": 0.18088268
+        },
+        {
+          "sample": 21,
+          "value": 0.10953366
+        },
+        {
+          "sample": 22,
+          "value": 0.13338381
+        },
+        {
+          "sample": 23,
+          "value": 4.8199041e-06
+        },
+        {
+          "sample": 24,
+          "value": 4.4189328e-06
+        },
+        {
+          "sample": 25,
+          "value": 4.1667555e-06
+        }
+      ],
+      "Uy": [
+        {
+          "sample": 1,
+          "value": 0.99999812
+        },
+        {
+          "sample": 2,
+          "value": 0.66358585
+        },
+        {
+          "sample": 3,
+          "value": 0.69032562
+        },
+        {
+          "sample": 4,
+          "value": 0.20485064
+        },
+        {
+          "sample": 5,
+          "value": 0.63715267
+        },
+        {
+          "sample": 6,
+          "value": 0.320535
+        },
+        {
+          "sample": 7,
+          "value": 0.16604553
+        },
+        {
+          "sample": 8,
+          "value": 0.33908678
+        },
+        {
+          "sample": 9,
+          "value": 0.37963306
+        },
+        {
+          "sample": 10,
+          "value": 0.30369936
+        },
+        {
+          "sample": 11,
+          "value": 0.23476263
+        },
+        {
+          "sample": 12,
+          "value": 0.19136091
+        },
+        {
+          "sample": 13,
+          "value": 0.22930955
+        },
+        {
+          "sample": 14,
+          "value": 0.24403813
+        },
+        {
+          "sample": 15,
+          "value": 0.2208934
+        },
+        {
+          "sample": 16,
+          "value": 0.17174765
+        },
+        {
+          "sample": 17,
+          "value": 0.156902
+        },
+        {
+          "sample": 18,
+          "value": 0.17708516
+        },
+        {
+          "sample": 19,
+          "value": 0.18260946
+        },
+        {
+          "sample": 20,
+          "value": 0.16203151
+        },
+        {
+          "sample": 21,
+          "value": 0.13211099
+        },
+        {
+          "sample": 22,
+          "value": 0.12180882
+        },
+        {
+          "sample": 23,
+          "value": 2.8850518e-05
+        },
+        {
+          "sample": 24,
+          "value": 2.4087854e-05
+        },
+        {
+          "sample": 25,
+          "value": 2.333878e-05
+        }
+      ],
+      "h": [
+        {
+          "sample": 1,
+          "value": 0.022767928
+        },
+        {
+          "sample": 2,
+          "value": 1.0
+        },
+        {
+          "sample": 3,
+          "value": 0.27238615
+        },
+        {
+          "sample": 4,
+          "value": 0.78031964
+        },
+        {
+          "sample": 5,
+          "value": 0.20103089
+        },
+        {
+          "sample": 6,
+          "value": 0.16574796
+        },
+        {
+          "sample": 7,
+          "value": 0.30924146
+        },
+        {
+          "sample": 8,
+          "value": 0.24206267
+        },
+        {
+          "sample": 9,
+          "value": 0.29783504
+        },
+        {
+          "sample": 10,
+          "value": 0.24100069
+        },
+        {
+          "sample": 11,
+          "value": 0.1470492
+        },
+        {
+          "sample": 12,
+          "value": 0.2010491
+        },
+        {
+          "sample": 13,
+          "value": 0.20173268
+        },
+        {
+          "sample": 14,
+          "value": 0.13496488
+        },
+        {
+          "sample": 15,
+          "value": 0.13682796
+        },
+        {
+          "sample": 16,
+          "value": 0.1381317
+        },
+        {
+          "sample": 17,
+          "value": 0.12633995
+        },
+        {
+          "sample": 18,
+          "value": 0.11842016
+        },
+        {
+          "sample": 19,
+          "value": 0.099920406
+        },
+        {
+          "sample": 20,
+          "value": 0.090994782
+        },
+        {
+          "sample": 21,
+          "value": 0.093718369
+        },
+        {
+          "sample": 22,
+          "value": 0.089495018
+        },
+        {
+          "sample": 23,
+          "value": 2.5348639e-06
+        },
+        {
+          "sample": 24,
+          "value": 2.3992431e-06
+        },
+        {
+          "sample": 25,
+          "value": 2.2527995e-06
+        }
+      ],
+      "p": [
+        {
+          "sample": 1,
+          "value": 1.0
+        },
+        {
+          "sample": 2,
+          "value": 0.85522931
+        },
+        {
+          "sample": 3,
+          "value": 0.01352621
+        },
+        {
+          "sample": 4,
+          "value": 0.030922021
+        },
+        {
+          "sample": 5,
+          "value": 0.047427075
+        },
+        {
+          "sample": 6,
+          "value": 0.019094494
+        },
+        {
+          "sample": 7,
+          "value": 0.065342213
+        },
+        {
+          "sample": 8,
+          "value": 0.051138884
+        },
+        {
+          "sample": 9,
+          "value": 0.040875189
+        },
+        {
+          "sample": 10,
+          "value": 0.1773146
+        },
+        {
+          "sample": 11,
+          "value": 0.065827874
+        },
+        {
+          "sample": 12,
+          "value": 0.075567754
+        },
+        {
+          "sample": 13,
+          "value": 0.55116308
+        },
+        {
+          "sample": 14,
+          "value": 0.090645772
+        },
+        {
+          "sample": 15,
+          "value": 0.14077319
+        },
+        {
+          "sample": 16,
+          "value": 0.3471099
+        },
+        {
+          "sample": 17,
+          "value": 0.14845402
+        },
+        {
+          "sample": 18,
+          "value": 0.30153617
+        },
+        {
+          "sample": 19,
+          "value": 0.31643348
+        },
+        {
+          "sample": 20,
+          "value": 0.23280544
+        },
+        {
+          "sample": 21,
+          "value": 0.43268634
+        },
+        {
+          "sample": 22,
+          "value": 0.50614419
+        },
+        {
+          "sample": 23,
+          "value": 0.00012534198
+        },
+        {
+          "sample": 24,
+          "value": 0.00011106584
+        },
+        {
+          "sample": 25,
+          "value": 0.00010143095
+        },
+        {
+          "sample": 26,
+          "value": 9.3747553e-05
+        }
+      ]
+    },
+    "massConservation": [
+      {
+        "sample": 1,
+        "imbalance": 0.0,
+        "throughput": 0.01,
+        "fraction": 0.0
+      }
+    ],
+    "energyConservation": [],
+    "monitors": {
+      "outlet_mass_flow": [
+        {
+          "sample": 1,
+          "value": 0.0
+        },
+        {
+          "sample": 2,
+          "value": 0.0099994976
+        },
+        {
+          "sample": 3,
+          "value": 0.0099995263
+        },
+        {
+          "sample": 4,
+          "value": 0.010000311
+        },
+        {
+          "sample": 5,
+          "value": 0.010000314
+        },
+        {
+          "sample": 6,
+          "value": 0.01
+        },
+        {
+          "sample": 7,
+          "value": 0.010000427
+        },
+        {
+          "sample": 8,
+          "value": 0.010001015
+        },
+        {
+          "sample": 9,
+          "value": 0.010000256
+        },
+        {
+          "sample": 10,
+          "value": 0.010000658
+        },
+        {
+          "sample": 11,
+          "value": 0.010000507
+        },
+        {
+          "sample": 12,
+          "value": 0.010000109
+        },
+        {
+          "sample": 13,
+          "value": 0.0099998878
+        },
+        {
+          "sample": 14,
+          "value": 0.0099996896
+        },
+        {
+          "sample": 15,
+          "value": 0.0099999491
+        },
+        {
+          "sample": 16,
+          "value": 0.0099998715
+        },
+        {
+          "sample": 17,
+          "value": 0.0099995593
+        },
+        {
+          "sample": 18,
+          "value": 0.0099997493
+        },
+        {
+          "sample": 19,
+          "value": 0.0099998415
+        },
+        {
+          "sample": 20,
+          "value": 0.0099999203
+        },
+        {
+          "sample": 21,
+          "value": 0.010000009
+        },
+        {
+          "sample": 22,
+          "value": 0.010000045
+        },
+        {
+          "sample": 23,
+          "value": 0.010000886
+        },
+        {
+          "sample": 24,
+          "value": 0.01000005
+        },
+        {
+          "sample": 25,
+          "value": 0.0099999979
+        },
+        {
+          "sample": 26,
+          "value": 0.0099995444
+        },
+        {
+          "sample": 27,
+          "value": 0.010001477
+        },
+        {
+          "sample": 28,
+          "value": 0.010000059
+        },
+        {
+          "sample": 29,
+          "value": 0.010000029
+        },
+        {
+          "sample": 30,
+          "value": 0.010002349
+        },
+        {
+          "sample": 31,
+          "value": 0.010001224
+        },
+        {
+          "sample": 32,
+          "value": 0.0099988006
+        },
+        {
+          "sample": 33,
+          "value": 0.0099999984
+        },
+        {
+          "sample": 34,
+          "value": 0.0099988719
+        },
+        {
+          "sample": 35,
+          "value": 0.010001245
+        },
+        {
+          "sample": 36,
+          "value": 0.0099999918
+        },
+        {
+          "sample": 37,
+          "value": 0.010001242
+        },
+        {
+          "sample": 38,
+          "value": 0.009999639
+        },
+        {
+          "sample": 39,
+          "value": 0.0099983702
+        },
+        {
+          "sample": 40,
+          "value": 0.010000016
+        },
+        {
+          "sample": 41,
+          "value": 0.0099998946
+        },
+        {
+          "sample": 42,
+          "value": 0.010000855
+        },
+        {
+          "sample": 43,
+          "value": 0.0099999852
+        },
+        {
+          "sample": 44,
+          "value": 0.010000603
+        },
+        {
+          "sample": 45,
+          "value": 0.010000417
+        },
+        {
+          "sample": 46,
+          "value": 0.010000438
+        },
+        {
+          "sample": 47,
+          "value": 0.0099994421
+        },
+        {
+          "sample": 48,
+          "value": 0.0099999889
+        },
+        {
+          "sample": 49,
+          "value": 0.0099994007
+        },
+        {
+          "sample": 50,
+          "value": 0.010000544
+        },
+        {
+          "sample": 51,
+          "value": 0.0099999909
+        },
+        {
+          "sample": 52,
+          "value": 0.0099999885
+        },
+        {
+          "sample": 53,
+          "value": 0.0099999921
+        },
+        {
+          "sample": 54,
+          "value": 0.0099999844
+        },
+        {
+          "sample": 55,
+          "value": 0.0099999923
+        },
+        {
+          "sample": 56,
+          "value": 0.01000024
+        },
+        {
+          "sample": 57,
+          "value": 0.01
+        },
+        {
+          "sample": 58,
+          "value": 0.010000005
+        },
+        {
+          "sample": 59,
+          "value": 0.0099999986
+        },
+        {
+          "sample": 60,
+          "value": 0.00999999
+        },
+        {
+          "sample": 61,
+          "value": 0.0099999991
+        },
+        {
+          "sample": 62,
+          "value": 0.0099999966
+        },
+        {
+          "sample": 63,
+          "value": 0.010000075
+        },
+        {
+          "sample": 64,
+          "value": 0.0099999997
+        },
+        {
+          "sample": 65,
+          "value": 0.0099999983
+        },
+        {
+          "sample": 66,
+          "value": 0.010000005
+        },
+        {
+          "sample": 67,
+          "value": 0.010000039
+        },
+        {
+          "sample": 68,
+          "value": 0.0099999995
+        },
+        {
+          "sample": 69,
+          "value": 0.01
+        },
+        {
+          "sample": 70,
+          "value": 0.0099999941
+        },
+        {
+          "sample": 71,
+          "value": 0.010000002
+        },
+        {
+          "sample": 72,
+          "value": 0.010000009
+        },
+        {
+          "sample": 73,
+          "value": 0.0099999998
+        },
+        {
+          "sample": 74,
+          "value": 0.0099999998
+        },
+        {
+          "sample": 75,
+          "value": 0.0099999977
+        },
+        {
+          "sample": 76,
+          "value": 0.01
+        },
+        {
+          "sample": 77,
+          "value": 0.01
+        },
+        {
+          "sample": 78,
+          "value": 0.01
+        },
+        {
+          "sample": 79,
+          "value": 0.010000001
+        },
+        {
+          "sample": 80,
+          "value": 0.0099999999
+        },
+        {
+          "sample": 81,
+          "value": 0.0099999999
+        },
+        {
+          "sample": 82,
+          "value": 0.0099999997
+        },
+        {
+          "sample": 83,
+          "value": 0.0099999998
+        },
+        {
+          "sample": 84,
+          "value": 0.01
+        },
+        {
+          "sample": 85,
+          "value": 0.01
+        },
+        {
+          "sample": 86,
+          "value": 0.01
+        },
+        {
+          "sample": 87,
+          "value": 0.010000005
+        },
+        {
+          "sample": 88,
+          "value": 0.0099999999
+        },
+        {
+          "sample": 89,
+          "value": 0.01
+        },
+        {
+          "sample": 90,
+          "value": 0.01
+        },
+        {
+          "sample": 91,
+          "value": 0.0099999993
+        },
+        {
+          "sample": 92,
+          "value": 0.0099999999
+        },
+        {
+          "sample": 93,
+          "value": 0.01
+        },
+        {
+          "sample": 94,
+          "value": 0.01
+        },
+        {
+          "sample": 95,
+          "value": 0.01
+        },
+        {
+          "sample": 96,
+          "value": 0.010000004
+        },
+        {
+          "sample": 97,
+          "value": 0.01
+        },
+        {
+          "sample": 98,
+          "value": 0.01
+        },
+        {
+          "sample": 99,
+          "value": 0.01
+        },
+        {
+          "sample": 100,
+          "value": 0.01
+        },
+        {
+          "sample": 101,
+          "value": 0.01
+        },
+        {
+          "sample": 102,
+          "value": 0.01
+        },
+        {
+          "sample": 103,
+          "value": 0.01
+        },
+        {
+          "sample": 104,
+          "value": 0.01
+        },
+        {
+          "sample": 105,
+          "value": 0.0099999993
+        },
+        {
+          "sample": 106,
+          "value": 0.01
+        },
+        {
+          "sample": 107,
+          "value": 0.01
+        },
+        {
+          "sample": 108,
+          "value": 0.01
+        },
+        {
+          "sample": 109,
+          "value": 0.01
+        },
+        {
+          "sample": 110,
+          "value": 0.01
+        },
+        {
+          "sample": 111,
+          "value": 0.01
+        },
+        {
+          "sample": 112,
+          "value": 0.01
+        },
+        {
+          "sample": 113,
+          "value": 0.01
+        },
+        {
+          "sample": 114,
+          "value": 0.01
+        },
+        {
+          "sample": 115,
+          "value": 0.01
+        },
+        {
+          "sample": 116,
+          "value": 0.01
+        },
+        {
+          "sample": 117,
+          "value": 0.0099999998
+        },
+        {
+          "sample": 118,
+          "value": 0.01
+        },
+        {
+          "sample": 119,
+          "value": 0.0099999999
+        },
+        {
+          "sample": 120,
+          "value": 0.01
+        },
+        {
+          "sample": 121,
+          "value": 0.01
+        },
+        {
+          "sample": 122,
+          "value": 0.01
+        },
+        {
+          "sample": 123,
+          "value": 0.0099999999
+        },
+        {
+          "sample": 124,
+          "value": 0.01
+        },
+        {
+          "sample": 125,
+          "value": 0.01
+        }
+      ]
+    },
+    "basis": {
+      "residuals": "initial residual parsed from each equation solve",
+      "massConservation": "solver patch-flux balance",
+      "energyConservation": "solver energy-throughput balance",
+      "monitors": "solver function-object output"
+    }
+  },
+  "artifacts": [],
+  "provenance": {
+    "evidence": "SOLVER_OUTPUT",
+    "readiness": "DERIVED",
+    "interpretation": "AERO_INTERPRETATION"
+  }
+}

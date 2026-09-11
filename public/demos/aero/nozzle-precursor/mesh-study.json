@@ -1,0 +1,37 @@
+{
+  "schema": "aero_public_demo_mesh_study_v1",
+  "caseId": "aero-nozzle-precursor-v1",
+  "declaredComparisonTolerancePercent": 2,
+  "classification": "mesh_independence_not_established",
+  "cases": [
+    {
+      "label": "Coarse",
+      "cells": 864,
+      "outerIterations": 350,
+      "residualGatesPassed": true,
+      "eligibleForComparison": true
+    },
+    {
+      "label": "Medium",
+      "cells": 3456,
+      "outerIterations": 1983,
+      "residualGatesPassed": true,
+      "eligibleForComparison": true
+    },
+    {
+      "label": "Fine",
+      "cells": 13824,
+      "outerIterations": 8000,
+      "residualGatesPassed": false,
+      "eligibleForComparison": false
+    }
+  ],
+  "coarseToMedium": {
+    "maximumMachChangePercent": 5.71,
+    "maximumMachPassed": false,
+    "massFlowPassed": true,
+    "pressureRatioPassed": true,
+    "outletTemperaturePassed": true
+  },
+  "conclusion": "Maximum Mach changed 5.71%, above the declared 2% tolerance. The fine mesh failed residual gates and was ineligible. Mesh independence was not demonstrated."
+}

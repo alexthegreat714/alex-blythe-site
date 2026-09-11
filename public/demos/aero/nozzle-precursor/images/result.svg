@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">Local solver result pending</title>
+  <desc id="desc">No static scalar result is claimed. An approved local run loads its actual OpenFOAM pressure field into the scientific viewport.</desc>
+  <rect width="1200" height="480" fill="#111719"/>
+  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#dfe2dc;font-size:20px}.meta{fill:#91a09d;font-size:13px;letter-spacing:1px}.accent{fill:#df7955}.duct{fill:#1b2427;stroke:#6d7a78;stroke-width:2}</style>
+  <text x="92" y="54" class="meta">SCIENTIFIC RESULT VIEW / LOCAL APPROVED EXECUTION</text>
+  <rect x="150" y="175" width="900" height="150" class="duct"/>
+  <line x1="150" y1="250" x2="1050" y2="250" stroke="#6d7a78" stroke-width="1" stroke-dasharray="6 8"/>
+  <text x="600" y="230" text-anchor="middle" class="label">No scalar field loaded</text>
+  <text x="600" y="270" text-anchor="middle" class="meta">REQUEST RUN → APPROVE → OPENFOAM → EVIDENCE → ACTUAL PRESSURE FIELD</text>
+  <circle cx="150" cy="250" r="5" class="accent"/>
+  <text x="92" y="372" class="meta">INLET</text>
+  <text x="1012" y="372" class="meta">OUTLET</text>
+  <text x="92" y="438" class="meta">NOT YET ESTABLISHED / NO STATIC SOLVER OUTPUT PRESENTED</text>
+</svg>
