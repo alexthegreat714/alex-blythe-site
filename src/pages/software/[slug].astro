@@ -17,21 +17,21 @@ const sections = [
 ] as const;
 const aeroInstances = [
   {
-    name: 'Aero Blue',
-    audience: 'Work',
-    status: 'Primary Linux workspace',
+    name: 'Aero',
+    audience: 'Current',
+    status: 'Rev 1.0 · streamlined workspace',
     description: 'The lean, hardware-neutral CFD workspace for requirements, math, CAD, meshing, solving, and evidence review.',
     href: 'https://aegis.alex-blythe.com/aero-blue/',
-    action: 'Launch Aero Blue',
+    action: 'Launch Aero',
     primary: true,
   },
   {
-    name: 'Aero',
-    audience: 'Public',
+    name: 'Aero Demo',
+    audience: 'Demo',
     status: 'Live recorded workbench',
     description: 'A sanitized, bounded CFD demonstration with inspectable evidence and no private data or machine access.',
     href: '/software/aero/demo/',
-    action: 'Open public Aero',
+    action: 'Open Aero Demo',
     primary: false,
   },
   {
@@ -69,7 +69,8 @@ const proofReadiness = [
   canonicalPath={`/software/${project.slug}/`}
   eyebrow={`Project / ${project.category}`}
   primaryAction={project.slug === 'aero' ? {
-    label: 'Launch Aero Blue',
+    title: 'Aero · Rev 1.0',
+    label: 'Launch Aero',
     href: 'https://aegis.alex-blythe.com/aero-blue/',
     note: 'Open the private Linux/OpenFOAM workspace. Aegis will ask you to sign in.',
   } : undefined}
@@ -100,10 +101,10 @@ const proofReadiness = [
       <div class="aegis-access-row">
         <div>
           <strong>One private sign-in, one existing VM.</strong>
-          <p>Aero Lab and Aero Blue use the same Aegis Caddy login. VM work opens the current Aegis VM rather than creating another desktop.</p>
+          <p>Aero and Aero Lab use the existing protected gateways. Aero stays streamlined; Aero Lab retains the personal hardware and Windows integrations.</p>
         </div>
         <div class="private-actions">
-          <a class="vm-link primary" href="https://aegis.alex-blythe.com/aero-workspaces/">See all four live <span aria-hidden="true">↗</span></a>
+          <a class="vm-link primary" href="https://aegis.alex-blythe.com/aero-workspaces/">See all Aero routes <span aria-hidden="true">↗</span></a>
           <a class="vm-link" href="https://aegis.alex-blythe.com/vm/console">Open Aegis VM <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -117,7 +118,7 @@ const proofReadiness = [
         <div>
           <div class="proof-kicker"><span>Proof case</span><span>Rev 1.0</span><span>11 Sep 2026</span></div>
           <h2 id="aero-proof-heading">From one engineering request to a checked OpenFOAM result.</h2>
-          <p>This retained Aero Blue acceptance case proves the working chain—not the physical validity of a flight design. Every number below comes from the live Linux/OpenFOAM run.</p>
+          <p>This retained Aero Rev 1.0 acceptance case proves the working chain—not the physical validity of a flight design. Every number below comes from the live Linux/OpenFOAM run.</p>
         </div>
       </div>
 
@@ -178,7 +179,7 @@ const proofReadiness = [
         </div>
         <div class="proof-actions">
           <a class="button" href="/software/aero/demo/">Walk through the CFD workbench <span aria-hidden="true">→</span></a>
-          <a class="text-link" href="https://aegis.alex-blythe.com/aero-blue/">Open authenticated Aero Blue <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://aegis.alex-blythe.com/aero-blue/">Open Aero Rev 1.0 <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>

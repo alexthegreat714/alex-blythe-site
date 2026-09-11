@@ -2,7 +2,7 @@
   "schema": "aero_blue_public_acceptance_summary_v1",
   "revision": "1.0",
   "generated_at": "2026-09-11T17:46:27Z",
-  "profile": "Aero Blue",
+  "profile": "Aero",
   "case": "Compressible nozzle precursor",
   "runtime": "Linux / OpenFOAM Foundation 10 / rhoSimpleFoam",
   "assessment": "preliminary_first_cut_only",

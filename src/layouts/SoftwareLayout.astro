@@ -5,6 +5,7 @@ interface Props {
   canonicalPath: string;
   eyebrow?: string;
   primaryAction?: {
+    title: string;
     label: string;
     href: string;
     note?: string;
@@ -69,7 +70,7 @@ const canonical = new URL(canonicalPath, Astro.site);
         {primaryAction && (
           <aside class="page-primary-action" aria-label="Primary project action">
             <span>Primary workspace</span>
-            <strong>Aero Blue</strong>
+            <strong>{primaryAction.title}</strong>
             {primaryAction.note && <p>{primaryAction.note}</p>}
             <a href={primaryAction.href}>{primaryAction.label} <span aria-hidden="true">↗</span></a>
           </aside>
