@@ -31,13 +31,13 @@ export const softwareProjects: SoftwareProject[] = [
     category: 'Engineering orchestration / CFD',
     status: 'Active development / experimental',
     year: '2026',
-    summary: 'An experimental engineering agent for planning, teaching, executing, and reviewing CFD workflows across first-order methods, OpenFOAM, and supervised Fluent workflows.',
+    summary: 'A Linux-based engineering assistant that guides requirements, first-principles analysis, CAD, meshing, and OpenFOAM results.',
     purpose: 'Aero connects engineering problem framing, fidelity selection, solver setup, execution evidence, and review without treating an AI-generated answer as computational authority.',
     keyIdeas: [
       'Engineering problem framing and fidelity selection',
       'Geometry, mesh, boundary-condition, and preflight checks',
       'Convergence, conservation, and validation gates',
-      'OpenFOAM and supervised Fluent execution paths',
+      'Linux-native OpenFOAM execution',
       'Python analysis and inspectable run artifacts',
     ],
     problem: [
@@ -57,12 +57,12 @@ export const softwareProjects: SoftwareProject[] = [
     ],
     evidence: [
       'The OpenFOAM path produces case specifications, preflight results, run telemetry, and evidence manifests for review.',
-      'A bounded headless Fluent saved-case run has verified the execution path. That result is classified as a smoke test rather than validated CFD evidence.',
+      'Recorded OpenFOAM examples retain mesh-refinement comparisons, convergence charts, and rendered pressure fields.',
       'Promotion toward engineering evidence requires numerical convergence, conservation checks, and comparison with an appropriate analytical, experimental, or reference basis.',
     ],
     limitations: [
       'The project remains experimental and is not a substitute for engineering judgment or solver expertise.',
-      'The supervised Fluent GUI workflow is not yet dependable enough to describe as a certified end-to-end workflow.',
+      'The public demo replays recorded examples; live solver execution requires access to the protected workspace.',
       'Validation coverage depends on the problem class; completed execution alone does not establish physical accuracy.',
     ],
     artifacts: [
