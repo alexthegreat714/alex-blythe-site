@@ -84,45 +84,9 @@ const proofReadiness = [
   } : undefined}
 >
   {project.slug === 'aero' && (
-    <section class="content-section aero-instance-section" aria-labelledby="aero-instances-heading">
-      <div class="section-heading">
-        <span class="section-index">01 / Aero workspaces</span>
-        <div>
-          <h2 id="aero-instances-heading">Choose where you want to work.</h2>
-          <p>Three clearly separated Aero instances share a product direction while keeping their data and authority boundaries distinct.</p>
-        </div>
-      </div>
-      <nav class="aero-instance-tabs" aria-label="Choose an Aero workspace">
-        {aeroInstances.map((instance, index) => (
-          <a class:list={["aero-instance-tab", { "aero-instance-primary": instance.primary }]} href={instance.href} aria-label={`${instance.action}: ${instance.description}`}>
-            <span class="instance-topline">
-              <span class="instance-index">0{index + 1}</span>
-              <span class="instance-audience">{instance.audience}</span>
-            </span>
-            <strong>{instance.name}</strong>
-            <span class="instance-description">{instance.description}</span>
-            <span class="instance-action">{instance.action} <span aria-hidden="true">↗</span></span>
-            <span class="instance-status">{instance.status}</span>
-          </a>
-        ))}
-      </nav>
-      <div class="aegis-access-row">
-        <div>
-          <strong>One private sign-in, one existing VM.</strong>
-          <p>Aero and Aero Lab use the existing protected gateways. Aero stays streamlined; Aero Lab retains the personal hardware and Windows integrations.</p>
-        </div>
-        <div class="private-actions">
-          <a class="vm-link primary" href="https://aegis.alex-blythe.com/aero-workspaces/">See all Aero routes <span aria-hidden="true">↗</span></a>
-          <a class="vm-link" href="https://aegis.alex-blythe.com/vm/console">Open Aegis VM <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
-  )}
-
-  {project.slug === 'aero' && (
     <section class="content-section aero-proof" aria-labelledby="aero-proof-heading">
       <div class="section-heading proof-heading">
-        <span class="section-index">02 / Proven workflow</span>
+        <span class="section-index">01 / How Aero works</span>
         <div>
           <div class="proof-kicker"><span>Proof case</span><span>Rev 1.0</span><span>11 Sep 2026</span></div>
           <h2 id="aero-proof-heading">From one engineering request to a checked OpenFOAM result.</h2>
@@ -152,6 +116,40 @@ const proofReadiness = [
           </ol>
         </figcaption>
       </figure>
+
+      <section class="aero-instance-section" aria-labelledby="aero-instances-heading">
+        <div class="section-heading">
+          <span class="section-index">02 / Aero workspaces</span>
+          <div>
+            <h2 id="aero-instances-heading">Choose where you want to work.</h2>
+            <p>Three clearly separated Aero instances share a product direction while keeping their data and authority boundaries distinct.</p>
+          </div>
+        </div>
+        <nav class="aero-instance-tabs" aria-label="Choose an Aero workspace">
+          {aeroInstances.map((instance, index) => (
+            <a class:list={["aero-instance-tab", { "aero-instance-primary": instance.primary }]} href={instance.href} aria-label={`${instance.action}: ${instance.description}`}>
+              <span class="instance-topline">
+                <span class="instance-index">0{index + 1}</span>
+                <span class="instance-audience">{instance.audience}</span>
+              </span>
+              <strong>{instance.name}</strong>
+              <span class="instance-description">{instance.description}</span>
+              <span class="instance-action">{instance.action} <span aria-hidden="true">↗</span></span>
+              <span class="instance-status">{instance.status}</span>
+            </a>
+          ))}
+        </nav>
+        <div class="aegis-access-row">
+          <div>
+            <strong>One private sign-in, one existing VM.</strong>
+            <p>Aero and Aero Lab use the existing protected gateways. Aero stays streamlined; Aero Lab retains the personal hardware and Windows integrations.</p>
+          </div>
+          <div class="private-actions">
+            <a class="vm-link primary" href="https://aegis.alex-blythe.com/aero-workspaces/">See all Aero routes <span aria-hidden="true">↗</span></a>
+            <a class="vm-link" href="https://aegis.alex-blythe.com/vm/console">Open Aegis VM <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
 
       <ol class="proof-timeline" aria-label="Aero CFD proof workflow">
         {proofStages.map((stage) => (
