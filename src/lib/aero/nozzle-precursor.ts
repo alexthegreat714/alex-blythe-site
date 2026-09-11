@@ -74,8 +74,13 @@ export const resultFields: ResultFieldArtifact[] = [{
 }];
 
 export const publicCadArtifact = {
-  href: '/demos/aero/wall-refinement-v6/nozzle.stl', publicFormat: 'stl', type: 'geometry',
-  provenance: 'SOLVER_INPUT / geometryManifest',
+  // The public viewer needs the full solid CAD skin. The solver still uses the
+  // hashed axisymmetric wedge in wall-refinement-v6/nozzle.stl; keeping these
+  // artifacts separate prevents a thin solver slice from masquerading as a
+  // user-facing 3D model while preserving the exact run evidence.
+  href: '/demos/aero/shared/nozzle-cutaway.stl', publicFormat: 'stl', type: 'geometry',
+  provenance: 'CAD_VISUALIZATION / current parametric nozzle',
+  solverInputHref: '/demos/aero/wall-refinement-v6/nozzle.stl',
 };
 
 export const publicPressureField = resultFields[0];
