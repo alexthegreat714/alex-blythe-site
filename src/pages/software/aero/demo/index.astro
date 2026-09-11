@@ -1455,7 +1455,11 @@ const demoCases = [
         if (!math.hidden) math.innerHTML = cooling
           ? '<math display="block"><mrow><mi>Q</mi><mo>=</mo><mover><mi>m</mi><mo>˙</mo></mover><msub><mi>c</mi><mi>p</mi></msub><mi>ΔT</mi></mrow></math><p>Heat load = mass flow × heat capacity × temperature rise</p><p>Known: 8 kW · Needed: coolant state and allowable temperature rise</p>'
           : '<math display="block"><mrow><mover><mi>m</mi><mo>˙</mo></mover><mo>=</mo><mi>ρ</mi><mi>A</mi><mi>V</mi></mrow></math><p>Mass flow = density × area × velocity</p><p>Recorded baseline: 0.010 kg/s → 6.762 m/s at the inlet</p>';
-        document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: { index: tourIndex, blocked } }));
+        const stageEvent = { index: tourIndex, blocked };
+        document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: stageEvent }));
+        // The workbench is bundled while the guided player is inline. Replay the
+        // event once on the next turn so a slow module load cannot lose a stage.
+        if (playing) setTimeout(() => document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: stageEvent })), 0);
       };
       const advanceTour = (index) => {
         if (!activeCase) loadCase(cases[0]);
