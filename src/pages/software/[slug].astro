@@ -52,11 +52,12 @@ const proofStages = [
   { index: '05', label: 'Decide', title: 'Accept only what the evidence supports', detail: 'The grid-change gate passed. Missing reference and fidelity evidence still block design use.' },
 ] as const;
 const pipelineFilmStages = [
-  { label: 'Requirements', time: 0, detail: 'Define the question, inputs, limits, and missing evidence.' },
-  { label: 'Math & LaTeX', time: 3.4, detail: 'Compile first-principles expectations before solving.' },
-  { label: 'CAD & tolerances', time: 6.8, detail: 'Inspect geometry, units, interfaces, and variation.' },
-  { label: 'Mesh', time: 10.2, detail: 'Prepare the case and verify mesh quality.' },
-  { label: 'Solve & render', time: 13.6, detail: 'Run OpenFOAM, inspect telemetry, and retain evidence.' },
+  { label: 'Requirements', time: 0, detail: 'Watch a request being typed, then structured by Aero into reviewable requirements.' },
+  { label: 'Math & LaTeX', time: 6.8, detail: 'Read the actual governing equations and convergence criterion before solving.' },
+  { label: 'CAD', time: 11.2, detail: 'Inspect the nozzle geometry, dimensions, units, and topology.' },
+  { label: 'Mesh', time: 15.2, detail: 'See the same nozzle discretized and checked before execution.' },
+  { label: 'Solve', time: 19.2, detail: 'Follow residuals, conservation, and the developing pressure field.' },
+  { label: 'Render', time: 23.6, detail: 'Inspect the solved field beside its evidence and engineering limits.' },
 ] as const;
 const proofReadiness = [
   { label: 'Linux OpenFOAM execution', status: 'Passed', tone: 'pass' },
@@ -131,18 +132,18 @@ const proofReadiness = [
 
       <figure class="pipeline-film" data-pipeline-film>
         <div class="pipeline-film-screen">
-          <video autoplay muted loop playsinline preload="metadata" poster="/demos/aero/pipeline-film/rev-1.0/01-requirements.png" aria-describedby="pipeline-film-caption">
-            <source src="/demos/aero/pipeline-film/rev-1.0/aero-pipeline-rev-1.0.webm" type="video/webm" />
-            <source src="/demos/aero/pipeline-film/rev-1.0/aero-pipeline-rev-1.0.mp4" type="video/mp4" />
+          <video autoplay muted loop playsinline preload="metadata" poster="/demos/aero/pipeline-film/rev-1.1/01-requirements.png" aria-describedby="pipeline-film-caption">
+            <source src="/demos/aero/pipeline-film/rev-1.1/aero-pipeline-rev-1.1.webm" type="video/webm" />
+            <source src="/demos/aero/pipeline-film/rev-1.1/aero-pipeline-rev-1.1.mp4" type="video/mp4" />
           </video>
-          <div class="pipeline-film-badge"><span>Live interface capture</span><strong>Aero Rev 1.0</strong></div>
+          <div class="pipeline-film-badge"><span>Scripted pipeline example</span><strong>Film Rev 1.1</strong></div>
           <button class="pipeline-film-toggle" type="button" aria-label="Pause pipeline walkthrough">Pause</button>
         </div>
         <figcaption id="pipeline-film-caption">
           <div>
-            <span class="pipeline-film-kicker">How it works / 18 seconds</span>
+            <span class="pipeline-film-kicker">How it works / 28 seconds</span>
             <strong data-film-title>Requirements</strong>
-            <p data-film-detail>Define the question, inputs, limits, and missing evidence.</p>
+            <p data-film-detail>Watch a request being typed, then structured by Aero into reviewable requirements.</p>
           </div>
           <ol class="pipeline-film-steps" aria-label="Jump to a pipeline stage">
             {pipelineFilmStages.map((stage, index) => (
@@ -225,11 +226,12 @@ const proofReadiness = [
       const detail = root.querySelector('[data-film-detail]');
       const buttons = [...root.querySelectorAll('[data-film-time]')];
       const stages = [
-        ['Requirements', 'Define the question, inputs, limits, and missing evidence.'],
-        ['Math & LaTeX', 'Compile first-principles expectations before solving.'],
-        ['CAD & tolerances', 'Inspect geometry, units, interfaces, and variation.'],
-        ['Mesh', 'Prepare the case and verify mesh quality.'],
-        ['Solve & render', 'Run OpenFOAM, inspect telemetry, and retain evidence.'],
+        ['Requirements', 'Watch a request being typed, then structured by Aero into reviewable requirements.'],
+        ['Math & LaTeX', 'Read the actual governing equations and convergence criterion before solving.'],
+        ['CAD', 'Inspect the nozzle geometry, dimensions, units, and topology.'],
+        ['Mesh', 'See the same nozzle discretized and checked before execution.'],
+        ['Solve', 'Follow residuals, conservation, and the developing pressure field.'],
+        ['Render', 'Inspect the solved field beside its evidence and engineering limits.'],
       ];
       const sync = () => {
         const current = video.currentTime || 0;
@@ -345,7 +347,7 @@ const proofReadiness = [
   .pipeline-film-kicker { display:block; color:#66e3df; font-size:.66rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
   .pipeline-film figcaption strong { display:block; margin-top:8px; font-size:1.18rem; }
   .pipeline-film figcaption p { margin:5px 0 0; color:#9bb6bd; font-size:.82rem; line-height:1.5; }
-  .pipeline-film-steps { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin:0; padding:0; list-style:none; }
+  .pipeline-film-steps { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:6px; margin:0; padding:0; list-style:none; }
   .pipeline-film-steps button { width:100%; height:100%; padding:10px; border:1px solid #25404a; background:transparent; color:#9bb6bd; font:inherit; font-size:.7rem; text-align:left; cursor:pointer; }
   .pipeline-film-steps button span { display:block; margin-bottom:7px; color:#66828a; font-size:.62rem; }
   .pipeline-film-steps button.is-active { border-color:#66e3df; background:rgba(102,227,223,.1); color:#fff; }

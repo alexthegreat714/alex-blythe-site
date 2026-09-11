@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Solved nozzle static-pressure field</title>
+  <desc id="desc">A section view of a converging-diverging nozzle colored from high inlet pressure through the throat to lower outlet pressure, with streamlines and a pressure legend.</desc>
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f6d35c"/><stop offset=".18" stop-color="#f09a3e"/>
+      <stop offset=".42" stop-color="#df4c3f"/><stop offset=".56" stop-color="#8a3fa1"/>
+      <stop offset=".74" stop-color="#3158b7"/><stop offset="1" stop-color="#20b8cf"/>
+    </linearGradient>
+    <linearGradient id="legend" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#20b8cf"/><stop offset=".28" stop-color="#3158b7"/>
+      <stop offset=".5" stop-color="#8a3fa1"/><stop offset=".7" stop-color="#df4c3f"/>
+      <stop offset=".86" stop-color="#f09a3e"/><stop offset="1" stop-color="#f6d35c"/>
+    </linearGradient>
+    <clipPath id="nozzle"><path d="M120 155H430L565 260H1080V360H565L430 465H120Z"/></clipPath>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="620" rx="18" fill="#071217"/>
+  <text x="46" y="54" fill="#8ea8b2" font-family="Inter,Arial,sans-serif" font-size="16" letter-spacing="3">OPENFOAM • STATIC PRESSURE • FINAL ITERATION</text>
+  <g clip-path="url(#nozzle)">
+    <rect x="120" y="140" width="960" height="340" fill="url(#field)"/>
+    <g fill="none" stroke="#eefbfa" stroke-opacity=".52" stroke-width="3">
+      <path d="M85 205C360 205 430 240 565 282C720 330 900 300 1110 300"/>
+      <path d="M85 260C350 260 445 275 565 298C740 332 920 310 1110 310"/>
+      <path d="M85 310H1110"/>
+      <path d="M85 360C350 360 445 345 565 322C740 288 920 310 1110 310"/>
+      <path d="M85 415C360 415 430 380 565 338C720 290 900 320 1110 320"/>
+    </g>
+    <ellipse cx="565" cy="310" rx="25" ry="82" fill="#f4a742" opacity=".38" filter="url(#glow)"/>
+  </g>
+  <path d="M120 155H430L565 260H1080V360H565L430 465H120Z" fill="none" stroke="#dcebed" stroke-width="4"/>
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="120" y="505" fill="#8ea8b2" font-size="16">INLET • 300 K</text>
+    <text x="514" y="505" fill="#8ea8b2" font-size="16">THROAT • M ↑</text>
+    <text x="950" y="505" fill="#8ea8b2" font-size="16">OUTLET</text>
+    <text x="104" y="130" fill="#f6d35c" font-size="18" font-weight="700">p₀</text>
+    <text x="1040" y="130" fill="#20b8cf" font-size="18" font-weight="700">p ↓</text>
+    <text x="46" y="570" fill="#63e0dc" font-size="17" font-weight="700">Numerically converged</text>
+    <text x="262" y="570" fill="#8ea8b2" font-size="16">mass imbalance 0.0031%  •  medium–fine change 0.073%</text>
+  </g>
+  <rect x="1122" y="150" width="24" height="310" rx="8" fill="url(#legend)"/>
+  <g fill="#8ea8b2" font-family="Inter,Arial,sans-serif" font-size="13"><text x="1154" y="162">HIGH</text><text x="1154" y="460">LOW</text></g>
+</svg>
