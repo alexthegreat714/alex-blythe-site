@@ -1330,15 +1330,16 @@ const demoCases = [
 
       let tourViewer = null;
       let tourRequest = 0;
-      document.addEventListener('aero-demo-step', async (event) => {
+      const renderTourStage = async ({ index, blocked } = {}) => {
         const requestId = ++tourRequest;
-        const { index, blocked } = event.detail;
         const model = document.querySelector('[data-tour-model]');
         const charts = document.querySelector('[data-tour-charts]');
+        if (!model || !charts) return;
         tourViewer?.dispose();
         tourViewer = null;
         model.replaceChildren();
         model.hidden = true;
+        model.removeAttribute('aria-busy');
         charts.hidden = true;
         charts.replaceChildren();
         if (blocked) return;
@@ -1349,6 +1350,7 @@ const demoCases = [
         }
         if (![2, 3, 5].includes(index)) return;
         model.hidden = false;
+        model.setAttribute('aria-busy', 'true');
         model.textContent = 'Loading 3D view…';
         try {
           const href = index === 5 ? cfg.publicPressureField.href : cfg.publicCadArtifact.href;
@@ -1369,11 +1371,25 @@ const demoCases = [
             if (requestId !== tourRequest) return;
             tourViewer = mountCadViewer(model, payload);
             tourViewer.setMeshVisible(index === 3);
+            model.removeAttribute('aria-busy');
           }
         } catch (error) {
-          if (requestId === tourRequest) model.textContent = '3D view unavailable. Select this step again to retry.';
+          if (requestId === tourRequest) {
+            model.removeAttribute('aria-busy');
+            model.textContent = '3D view unavailable. Select this step again to retry.';
+          }
         }
-      });
+      };
+      // The guided player is an inline script while this workbench is a deferred
+      // module. Expose a small hand-off function and a one-item pending queue so
+      // the first stage cannot be lost during page startup.
+      window.__aeroRenderTourStage = renderTourStage;
+      document.addEventListener('aero-demo-step', (event) => { void renderTourStage(event.detail); });
+      if (window.__aeroTourPending) {
+        const pending = window.__aeroTourPending;
+        delete window.__aeroTourPending;
+        void renderTourStage(pending);
+      }
 
       setMode('geometry');
       applyCamera();
@@ -1384,6 +1400,7 @@ const demoCases = [
     (() => {
       const root = document.querySelector('[data-guided-demo]');
       if (!root) return;
+      const currentMode = new URLSearchParams(window.location.search).get('mode') === 'current';
       const cases = JSON.parse(document.getElementById('demo-case-data')?.textContent || '[]');
       const log = root.querySelector('[data-guided-log]');
       const form = root.querySelector('[data-guided-form]');
@@ -1456,10 +1473,19 @@ const demoCases = [
           ? '<math display="block"><mrow><mi>Q</mi><mo>=</mo><mover><mi>m</mi><mo>˙</mo></mover><msub><mi>c</mi><mi>p</mi></msub><mi>ΔT</mi></mrow></math><p>Heat load = mass flow × heat capacity × temperature rise</p><p>Known: 8 kW · Needed: coolant state and allowable temperature rise</p>'
           : '<math display="block"><mrow><mover><mi>m</mi><mo>˙</mo></mover><mo>=</mo><mi>ρ</mi><mi>A</mi><mi>V</mi></mrow></math><p>Mass flow = density × area × velocity</p><p>Recorded baseline: 0.010 kg/s → 6.762 m/s at the inlet</p>';
         const stageEvent = { index: tourIndex, blocked };
-        document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: stageEvent }));
-        // The workbench is bundled while the guided player is inline. Replay the
-        // event once on the next turn so a slow module load cannot lose a stage.
-        if (playing) setTimeout(() => document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: stageEvent })), 0);
+        // The workbench is bundled while the guided player is inline. Hand the
+        // stage to the bundled viewer when it is ready, or retain one pending
+        // stage so startup cannot silently leave the 3D panel blank.
+        const deliverStage = () => {
+          if (typeof window.__aeroRenderTourStage === 'function') {
+            void window.__aeroRenderTourStage(stageEvent);
+          } else {
+            window.__aeroTourPending = stageEvent;
+            document.dispatchEvent(new CustomEvent('aero-demo-step', { detail: stageEvent }));
+          }
+        };
+        deliverStage();
+        if (playing) setTimeout(deliverStage, 0);
       };
       const advanceTour = (index) => {
         if (!activeCase) loadCase(cases[0]);
