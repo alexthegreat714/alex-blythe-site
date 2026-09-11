@@ -77,12 +77,7 @@ const proofReadiness = [
   description={project.summary}
   canonicalPath={`/software/${project.slug}/`}
   eyebrow={`Project / ${project.category}`}
-  primaryAction={project.slug === 'aero' ? {
-    title: 'Aero Current · Rev 1.0',
-    label: 'Open Aero Current',
-    href: '/software/aero/demo/?mode=current',
-    note: 'Open the public engineering front end. VM and private execution access are not included.',
-  } : undefined}
+  compactHeader={project.slug === 'aero'}
 >
   {project.slug === 'aero' && (
     <section class="content-section aero-proof" aria-labelledby="aero-proof-heading">
@@ -90,8 +85,8 @@ const proofReadiness = [
         <span class="section-index">01 / How Aero works</span>
         <div>
           <div class="proof-kicker"><span>Proof case</span><span>Rev 1.0</span><span>11 Sep 2026</span></div>
-          <h2 id="aero-proof-heading">From one engineering request to a checked OpenFOAM result.</h2>
-          <p>This retained Aero Rev 1.0 acceptance case proves the working chain—not the physical validity of a flight design. Every number below comes from the live Linux/OpenFOAM run.</p>
+          <h2 id="aero-proof-heading">See the complete engineering workflow.</h2>
+          <p>Watch one request move through requirements, equations, nozzle CAD, meshing, solution, and reviewable results.</p>
         </div>
       </div>
 
@@ -142,6 +137,14 @@ const proofReadiness = [
           ))}
         </nav>
       </section>
+
+      <div class="section-heading proof-detail-heading">
+        <span class="section-index">03 / Retained proof</span>
+        <div>
+          <h2>What the acceptance case actually established.</h2>
+          <p>This retained Aero Rev 1.0 case proves the working chain—not the physical validity of a flight design. Every number below comes from the live Linux/OpenFOAM run.</p>
+        </div>
+      </div>
 
       <ol class="proof-timeline" aria-label="Aero CFD proof workflow">
         {proofStages.map((stage) => (
@@ -262,7 +265,7 @@ const proofReadiness = [
 
   <section class="content-section" aria-labelledby="project-overview">
     <div class="section-heading">
-      <span class="section-index">{project.slug === 'aero' ? '03' : '01'} / Project</span>
+      <span class="section-index">{project.slug === 'aero' ? '04' : '01'} / Project</span>
       <div>
         <h2 id="project-overview">{project.purpose}</h2>
         <div class="page-actions"><a class="button" href="#technical-review">Technical review <span aria-hidden="true">↓</span></a>{project.slug === 'aero' && <a class="demo-link" href="/software/aero/demo/">Explore engineering demo <span aria-hidden="true">→</span></a>}{project.repository && <a class="text-link" href={project.repository}>Repository <span aria-hidden="true">↗</span></a>}</div>
@@ -273,7 +276,7 @@ const proofReadiness = [
   </section>
 
   <section class="content-section" id="technical-review" aria-labelledby="technical-review-heading">
-    <div class="section-heading"><span class="section-index">{project.slug === 'aero' ? '04' : '02'} / Design review</span><div><h2 id="technical-review-heading">Capability is presented with its evidence and boundary.</h2><p>This record distinguishes what the current project can demonstrate from what remains experimental or unproven.</p></div></div>
+    <div class="section-heading"><span class="section-index">{project.slug === 'aero' ? '05' : '02'} / Design review</span><div><h2 id="technical-review-heading">Capability is presented with its evidence and boundary.</h2><p>This record distinguishes what the current project can demonstrate from what remains experimental or unproven.</p></div></div>
     {sections.map((section) => (
       <section class="review-grid" aria-labelledby={`${project.slug}-${section.label.toLowerCase().replaceAll(' ', '-').replace('/', '-')}`}>
         <h3 class="review-label" id={`${project.slug}-${section.label.toLowerCase().replaceAll(' ', '-').replace('/', '-')}`}>{section.label}</h3>
@@ -283,7 +286,7 @@ const proofReadiness = [
   </section>
 
   <section class="content-section" aria-labelledby="artifacts-heading">
-    <div class="section-heading"><span class="section-index">{project.slug === 'aero' ? '05' : '03'} / Selected artifacts</span><div><h2 id="artifacts-heading">Source, notes, and inspectable records.</h2><p>Selected references connect the project description to its public source, technical notes, and evidence records.</p></div></div>
+    <div class="section-heading"><span class="section-index">{project.slug === 'aero' ? '06' : '03'} / Selected artifacts</span><div><h2 id="artifacts-heading">Source, notes, and inspectable records.</h2><p>Selected references connect the project description to its public source, technical notes, and evidence records.</p></div></div>
     <div class="artifact-list">
       {project.artifacts.map((artifact) => (
         <article class="artifact-row">
@@ -300,7 +303,7 @@ const proofReadiness = [
 <style>
   .demo-link { display:inline-flex; align-items:center; gap:24px; padding:12px 16px; border:1px solid var(--accent); color:var(--accent); font-size:.76rem; font-weight:750; }
   .demo-link:hover { background:var(--accent); color:var(--page); }
-  .aero-instance-section { padding-top:clamp(26px,4vw,52px); }
+  .aero-instance-section { padding-top:clamp(24px,3.5vw,44px); }
   .aero-instance-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:26px; }
   .aero-instance-tab { display:flex; min-height:290px; flex-direction:column; gap:14px; padding:22px; border:1px solid var(--border); color:inherit; background:color-mix(in srgb,var(--surface) 92%,transparent); transition:transform 160ms ease,border-color 160ms ease,background-color 160ms ease,color 160ms ease; }
   .aero-instance-tab:hover,.aero-instance-tab:focus-visible { transform:translateY(-3px); border-color:var(--accent); background:color-mix(in srgb,var(--accent) 8%,var(--surface)); color:var(--accent); }
@@ -321,12 +324,14 @@ const proofReadiness = [
   .vm-link:hover,.vm-link:focus-visible { background:var(--accent); color:var(--page); }
   .vm-link.primary { background:var(--accent); color:var(--page); }
   .vm-link.primary:hover,.vm-link.primary:focus-visible { background:var(--text); border-color:var(--text); }
-  .aero-proof { padding-top:clamp(42px,6vw,78px); }
-  .proof-heading h2 { max-width:850px; }
+  .aero-proof { padding-top:clamp(24px,3.5vw,42px); }
+  .proof-heading { margin-bottom:clamp(18px,2.5vw,28px); }
+  .proof-heading h2 { max-width:850px; font-size:clamp(2rem,3.8vw,3.65rem); }
+  .proof-heading p { margin-top:12px; }
   .proof-kicker { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
   .proof-kicker span { padding:5px 8px; border:1px solid var(--border); color:var(--muted); font-size:.68rem; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
   .proof-kicker span:first-child { border-color:var(--accent); color:var(--accent); }
-  .pipeline-film { margin:32px 0 0; border:1px solid var(--border); background:#07131b; color:#e8f4f7; }
+  .pipeline-film { margin:0; border:1px solid var(--border); background:#07131b; color:#e8f4f7; }
   .pipeline-film-screen { position:relative; aspect-ratio:16/9; overflow:hidden; background:#061018; }
   .pipeline-film-screen video { display:block; width:100%; height:100%; object-fit:cover; }
   .pipeline-film-badge { position:absolute; top:14px; left:14px; display:flex; gap:9px; align-items:center; padding:8px 10px; border:1px solid rgba(95,221,218,.45); background:rgba(4,15,22,.84); backdrop-filter:blur(8px); font-size:.68rem; letter-spacing:.07em; text-transform:uppercase; }
@@ -342,6 +347,8 @@ const proofReadiness = [
   .pipeline-film-steps button { width:100%; height:100%; padding:10px; border:1px solid #25404a; background:transparent; color:#9bb6bd; font:inherit; font-size:.7rem; text-align:left; cursor:pointer; }
   .pipeline-film-steps button span { display:block; margin-bottom:7px; color:#66828a; font-size:.62rem; }
   .pipeline-film-steps button.is-active { border-color:#66e3df; background:rgba(102,227,223,.1); color:#fff; }
+  .proof-detail-heading { margin:clamp(46px,6vw,76px) 0 0; padding-top:clamp(38px,5vw,64px); border-top:1px solid var(--subtle); }
+  .proof-detail-heading h2 { max-width:820px; font-size:clamp(2rem,4vw,4rem); }
   .proof-timeline { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:34px 0 0; padding:0; border-top:1px solid var(--border); list-style:none; }
   .proof-timeline li { position:relative; min-height:245px; padding:22px 20px 24px 0; margin-right:20px; border-bottom:1px solid var(--border); }
   .proof-timeline li::before { content:''; position:absolute; top:-4px; left:0; width:7px; height:7px; border-radius:50%; background:var(--accent); }

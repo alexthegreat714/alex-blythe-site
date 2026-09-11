@@ -4,6 +4,7 @@ interface Props {
   description: string;
   canonicalPath: string;
   eyebrow?: string;
+  compactHeader?: boolean;
   primaryAction?: {
     title: string;
     label: string;
@@ -12,7 +13,7 @@ interface Props {
   };
 }
 
-const { title, description, canonicalPath, eyebrow = 'Software & Tools', primaryAction } = Astro.props;
+const { title, description, canonicalPath, eyebrow = 'Software & Tools', compactHeader = false, primaryAction } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site);
 ---
 
@@ -61,7 +62,7 @@ const canonical = new URL(canonicalPath, Astro.site);
       </div>
     </header>
     <main id="main-content">
-      <header class="page-header">
+      <header class:list={["page-header", { "page-header-compact": compactHeader }]}>
         <div class="page-header-copy">
           <p class="eyebrow">{eyebrow}</p>
           <h1>{title}</h1>
@@ -128,6 +129,9 @@ const canonical = new URL(canonicalPath, Astro.site);
   .header-link { color:var(--text); font-weight:700; }
   .theme-toggle { display:inline-flex; min-height:32px; align-items:center; gap:7px; padding:0 9px; border:1px solid var(--border); border-radius:999px; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.68rem; }
   .page-header { width:min(1180px,calc(100% - 48px)); display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.36fr); align-items:end; gap:clamp(34px,7vw,90px); margin:auto; padding:clamp(54px,7vw,88px) 0 clamp(44px,6vw,70px); border-bottom:1px solid var(--border); }
+  .page-header-compact { grid-template-columns:minmax(0,1fr); padding:clamp(30px,4vw,48px) 0 clamp(26px,3.5vw,40px); }
+  .page-header-compact h1 { margin-top:10px; font-size:clamp(2.8rem,5vw,4.35rem); }
+  .page-header-compact .page-description { max-width:840px; margin-top:16px; }
   .page-header-copy { min-width:0; }
   .eyebrow,:global(.section-index),:global(.meta-label),:global(.project-meta),:global(.review-label) { color:var(--accent); font-family:"SFMono-Regular",Consolas,monospace; font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
   h1 { max-width:900px; margin:18px 0 0; font-family:Georgia,"Times New Roman",serif; font-size:clamp(3rem,6vw,5rem); font-weight:400; letter-spacing:-.05em; line-height:.94; }
