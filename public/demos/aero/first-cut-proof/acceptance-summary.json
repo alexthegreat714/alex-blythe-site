@@ -1,0 +1,58 @@
+{
+  "schema": "aero_blue_public_acceptance_summary_v1",
+  "revision": "1.0",
+  "generated_at": "2026-09-11T17:46:27Z",
+  "profile": "Aero Blue",
+  "case": "Compressible nozzle precursor",
+  "runtime": "Linux / OpenFOAM Foundation 10 / rhoSimpleFoam",
+  "assessment": "preliminary_first_cut_only",
+  "source_acceptance_sha256": "b12b99f253b8af32da6bd5856c4e0c3e8450fcfd2dfd28f2f95923e1a5442e67",
+  "mesh_levels": [
+    {
+      "level": "Coarse",
+      "cells": 864,
+      "run_id": "run_1789148788_037db8e9",
+      "classification": "numerically_converged",
+      "pressure_ratio": 1.0005240562546263,
+      "mass_flow_kg_s": 0.009999804
+    },
+    {
+      "level": "Medium",
+      "cells": 1944,
+      "run_id": "run_1789148791_06d383bf",
+      "classification": "numerically_converged",
+      "pressure_ratio": 1.000893165556378,
+      "mass_flow_kg_s": 0.01000015
+    },
+    {
+      "level": "Fine",
+      "cells": 3456,
+      "run_id": "run_1789148796_59995f0c",
+      "classification": "numerically_converged",
+      "pressure_ratio": 1.001622501850481,
+      "mass_flow_kg_s": 0.009999837
+    }
+  ],
+  "medium_to_fine": {
+    "pressure_ratio_relative_change": 0.0007281548614927803,
+    "mass_flow_relative_change": 0.0000313005101983212,
+    "tolerance": 0.02,
+    "passed": true
+  },
+  "evidence_manifests": {
+    "verified_runs": 3,
+    "files_per_run": 10,
+    "hash_mismatches": 0
+  },
+  "readiness": [
+    { "capability": "Linux OpenFOAM execution", "status": "passed" },
+    { "capability": "Three-level mesh study", "status": "passed" },
+    { "capability": "Independent reference", "status": "required" },
+    { "capability": "First-principles screen", "status": "partial" },
+    { "capability": "Fidelity ladder", "status": "review_required" },
+    { "capability": "Boundary, turbulence and wall review", "status": "passed" },
+    { "capability": "Imported CAD quality", "status": "not_applicable_to_case" },
+    { "capability": "Uncertainty, margin and risk report", "status": "passed" }
+  ],
+  "trust_boundary": "This proves the first-cut workflow and its evidence controls. It is not flight or design-release validation."
+}
