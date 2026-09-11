@@ -77,9 +77,9 @@ const demoCases = [
   eyebrow="Aero / Engineering workbench"
 >
   <section class="wb-intro content-section">
-    <p class="section-index">Engineering case / Recorded evidence + local execution</p>
+    <p class="section-index" id="wb-mode-label">Engineering case / Recorded evidence + local execution</p>
     <h2 id="wb-title">A converged answer is the start of the engineering argument, not the end.</h2>
-    <p class="hero-lede">
+    <p class="hero-lede" id="wb-mode-description">
       The initial state is the retained Level 4 wall-resolved OpenFOAM result. On a loopback preview, the same panes can submit
       a bounded mass-flow run or the fixed parametric nozzle workflow to the isolated local workers after explicit approval.
     </p>
@@ -489,6 +489,16 @@ const demoCases = [
     // ---------------------------------------------------------------
     const root = document.getElementById('workbench');
     if (root) {
+      const currentMode = new URLSearchParams(window.location.search).get('mode') === 'current';
+      if (currentMode) {
+        document.title = 'Aero Current / Public engineering tool suite';
+        const modeLabel = document.getElementById('wb-mode-label');
+        const modeTitle = document.getElementById('wb-title');
+        const modeDescription = document.getElementById('wb-mode-description');
+        if (modeLabel) modeLabel.textContent = 'Aero Current / Public front end / No VM access';
+        if (modeTitle) modeTitle.textContent = 'Use the Aero engineering workspace without opening the execution VM.';
+        if (modeDescription) modeDescription.textContent = 'Define and inspect requirements, first-principles math, CAD, mesh, recorded solver results, and evidence in the browser. The public front end cannot start the private VM or high-fidelity solver routes.';
+      }
       const cfg = JSON.parse(root.dataset.state || '{}');
       const evData = JSON.parse(document.getElementById('ev-data')?.textContent || '{}');
 
@@ -1142,7 +1152,7 @@ const demoCases = [
         proposalBox.hidden = false;
       }
 
-      if (localForm && ['127.0.0.1', 'localhost', '::1'].includes(window.location.hostname)) {
+      if (localForm && !currentMode && ['127.0.0.1', 'localhost', '::1'].includes(window.location.hostname)) {
         localForm.hidden = false;
         meshStudyPreset?.addEventListener('click', () => {
           if (localMessage) localMessage.value = 'Run the approved three-level mesh independence study';
