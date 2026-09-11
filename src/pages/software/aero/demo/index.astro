@@ -586,6 +586,8 @@ const demoCases = [
         if (sceneSummary) sceneSummary.textContent = 'Choose a recorded case or start a requirement record. No VM or solver controls are exposed here.';
         const exampleLabel = publicWorkspace?.querySelector('.guided-examples > span');
         if (exampleLabel) exampleLabel.textContent = 'Choose a case';
+        const examplePicker = publicWorkspace?.querySelector('.guided-examples');
+        if (examplePicker) examplePicker.setAttribute('aria-label', 'Choose a current recorded case');
         const player = publicWorkspace?.querySelector('.demo-player');
         if (player) player.setAttribute('aria-label', 'Current Aero workspace');
         const playerMode = publicWorkspace?.querySelector('.demo-player-head span:last-child');
@@ -596,6 +598,8 @@ const demoCases = [
         if (playerSummary) playerSummary.textContent = 'Choose a case above, then open a stage or ask Aero about the evidence.';
         const narration = publicWorkspace?.querySelector('[data-tour-narration]');
         if (narration) narration.textContent = 'Choose a case, open requirements, or ask Aero a question. This public workspace only exposes recorded evidence.';
+        const conversationMode = publicWorkspace?.querySelector('.guided-panel-head > span');
+        if (conversationMode) conversationMode.textContent = 'Public Aero guide · no solver access';
         const playLabel = publicWorkspace?.querySelector('[data-tour-play]');
         if (playLabel) playLabel.textContent = 'Open requirements';
         const questions = publicWorkspace?.querySelector('[data-tour-questions]');
