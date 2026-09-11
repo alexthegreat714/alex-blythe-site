@@ -117,7 +117,7 @@ const demoCases = [
         <button type="button" data-open-detail="analysis">Math &amp; LaTeX</button>
         <button type="button" data-open-detail="geometry">CAD &amp; tolerances</button>
         <button type="button" data-open-detail="mesh">Mesh &amp; specs</button>
-        <button type="button" data-open-detail="result">Runs &amp; evidence</button>
+        <button type="button" data-open-detail="evidence">Runs &amp; evidence</button>
         <p><b>Guided demo</b> No VM or solver access</p>
       </aside>
 
@@ -381,8 +381,8 @@ const demoCases = [
           </div>
         </div>
 
-        <div class="vp-stage" id="vp-stage" tabindex="0" role="img"
-             aria-label="Engineering model viewport. Use arrow keys to pan, plus and minus to zoom.">
+        <div class="vp-stage" id="vp-stage" tabindex="0" role="group"
+             aria-label="Engineering model viewport. Drag to orbit, right drag to pan, plus and minus to zoom, zero to reset.">
           <img id="vp-image" src={artifacts.geometry} alt="Wall-resolved axisymmetric nozzle geometry" draggable="false" />
           <div id="vp-scientific" class="vp-scientific" hidden aria-label="Interactive OpenFOAM pressure field"></div>
           <div id="vp-legend" class="vp-legend" hidden>
@@ -395,7 +395,7 @@ const demoCases = [
           <button type="button" data-vp="zoom-in" aria-label="Zoom in">+</button>
           <button type="button" data-vp="zoom-out" aria-label="Zoom out">−</button>
           <button type="button" data-vp="reset">Reset view</button>
-          <button type="button" data-vp="mesh">Show mesh</button>
+          <button type="button" data-vp="mesh">Mesh view</button>
           <span class="vp-hint" id="vp-hint">Geometry — drag to pan, scroll to zoom</span>
         </div>
 
@@ -588,8 +588,8 @@ const demoCases = [
       const scientific = document.getElementById('vp-scientific');
       const legend = document.getElementById('vp-legend');
       let scientificViewer = null;
-      let meshShown = false;
       let activeScientificMode = null;
+      let modeRequestId = 0;
       let liveCadArtifact = cfg.publicCadArtifact || null;
       let livePressureField = cfg.publicPressureField || null;
 
@@ -656,26 +656,52 @@ const demoCases = [
         ['residuals', 'mass', 'energy', 'monitor'].forEach((kind) => drawChart(kind, telemetry));
       }
 
-      async function showPressureField(field, token) {
+      function commitViewportMode(mode, hintText) {
+        const isMesh = mode === 'mesh';
+        const isResult = mode === 'result';
+        state.mode = mode;
+        state.field = isResult ? 'pressure' : null;
+        state.meshVisible = isMesh;
+        activeScientificMode = mode;
+        if (scientific) {
+          scientific.dataset.viewMode = mode;
+          scientific.setAttribute('aria-label', isResult
+            ? 'Interactive three-dimensional OpenFOAM pressure result. Drag to orbit, right drag to pan, and scroll to zoom.'
+            : isMesh
+              ? 'Interactive three-dimensional nozzle surface triangulation. Drag to orbit, right drag to pan, and scroll to zoom.'
+              : 'Interactive three-dimensional nozzle geometry. Drag to orbit, right drag to pan, and scroll to zoom.');
+        }
+        if (stage) stage.dataset.viewMode = mode;
+        if (legend) legend.hidden = !isResult;
+        document.querySelectorAll('.vp-mode').forEach((button) => {
+          const active = button.dataset.mode === mode;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+        document.querySelectorAll('.vp-field').forEach((button) =>
+          button.classList.toggle('is-active', isResult && button.dataset.field === 'pressure'));
+        const meshControl = document.querySelector('[data-vp="mesh"]');
+        if (meshControl) meshControl.textContent = isMesh ? 'Geometry view' : 'Mesh view';
+        if (hint && hintText) hint.textContent = hintText;
+      }
+
+      async function showPressureField(field, token, requestId = ++modeRequestId) {
         if (!field?.href || !scientific) return;
         const request = artifactRequest(field.href, token);
         const response = await fetch(request.url, request.options);
         if (!response.ok) throw new Error(`pressure surface unavailable (${response.status})`);
         const surface = await response.json();
+        const { mountPressureViewer } = await import('../../../../lib/aero/pressure-viewer');
+        if (requestId !== modeRequestId) return;
         scientificViewer?.dispose();
         scientific.hidden = false;
         if (img) img.hidden = true;
-        const { mountPressureViewer } = await import('../../../../lib/aero/pressure-viewer');
         scientificViewer = mountPressureViewer(scientific, surface);
-        activeScientificMode = 'result';
-        scientificViewer.setMeshVisible(meshShown);
-        if (legend) legend.hidden = false;
+        scientificViewer.setMeshVisible(false);
         const max = document.getElementById('vp-legend-max');
         const min = document.getElementById('vp-legend-min');
         if (max) max.textContent = Number(surface.range[1]).toFixed(2);
         if (min) min.textContent = Number(surface.range[0]).toFixed(2);
-        state.mode = 'result';
-        state.field = 'pressure';
         const unavailable = document.querySelector('.vp-none');
         if (unavailable) unavailable.hidden = true;
         const fieldArea = document.querySelector('.vp-fields');
@@ -685,32 +711,28 @@ const demoCases = [
           button.className = 'vp-field is-active';
           button.dataset.field = 'pressure';
           button.textContent = 'Pressure / Pa';
-          button.addEventListener('click', () => showPressureField(field, token));
+          button.addEventListener('click', () => setMode('result'));
           fieldArea.appendChild(button);
         }
-        document.querySelectorAll('.vp-mode').forEach((b) => b.classList.toggle('is-active', b.dataset.mode === 'result'));
-        if (hint) hint.textContent = 'Pressure / Pa — rotate, pan, zoom; values are solver output';
+        commitViewportMode('result', 'Pressure / Pa — interactive solver-output surface; drag to orbit, right drag to pan, scroll to zoom');
       }
 
-      async function showCadGeometry(artifact, token) {
+      async function showCadMode(artifact, token, mode, requestId = ++modeRequestId) {
         if (!artifact?.href || !scientific) return;
         const request = artifactRequest(artifact.href, token);
         const response = await fetch(request.url, request.options);
         if (!response.ok) throw new Error(`generated CAD unavailable (${response.status})`);
         const payload = await response.arrayBuffer();
+        const { mountCadViewer } = await import('../../../../lib/aero/cad-viewer');
+        if (requestId !== modeRequestId) return;
         scientificViewer?.dispose();
         scientific.hidden = false;
         if (img) img.hidden = true;
-        if (legend) legend.hidden = true;
-        const { mountCadViewer } = await import('../../../../lib/aero/cad-viewer');
         scientificViewer = mountCadViewer(scientific, payload);
-        scientificViewer.setMeshVisible(meshShown);
-        activeScientificMode = 'geometry';
-        state.mode = 'geometry';
-        state.field = null;
-        document.querySelectorAll('.vp-mode').forEach((b) =>
-          b.classList.toggle('is-active', b.dataset.mode === 'geometry'));
-        if (hint) hint.textContent = 'Approved CadQuery geometry — rotate, pan, zoom; PARAMETRIC GENERATED';
+        scientificViewer.setMeshVisible(mode === 'mesh');
+        commitViewportMode(mode, mode === 'mesh'
+          ? 'Surface triangulation of the same nozzle STL — solver volume-mesh checks are recorded in evidence'
+          : 'Parametric nozzle cutaway STL — drag to orbit, right drag to pan, scroll to zoom');
       }
 
       drawTelemetry(cfg.recordedTelemetry || {});
@@ -721,45 +743,40 @@ const demoCases = [
         img.style.transform = `translate(${c.panX}px, ${c.panY}px) scale(${c.zoom})`;
       }
 
-      function setMode(mode) {
+      async function setMode(mode) {
         if (!MODES.has(mode)) return;
-        if (mode === 'geometry' && liveCadArtifact) {
-          showCadGeometry(liveCadArtifact, localToken?.value || '').catch((error) => appendAero(error.message));
+        const requestId = ++modeRequestId;
+        try {
+          if ((mode === 'geometry' || mode === 'mesh') && liveCadArtifact) {
+            await showCadMode(liveCadArtifact, localToken?.value || '', mode, requestId);
+            return;
+          }
+          if (mode === 'result' && livePressureField) {
+            await showPressureField(livePressureField, localToken?.value || '', requestId);
+            return;
+          }
+        } catch (error) {
+          if (requestId === modeRequestId) appendAero(error.message);
           return;
         }
-        if (mode === 'result' && livePressureField) {
-          showPressureField(livePressureField, localToken?.value || '').catch((error) => appendAero(error.message));
+        const src = cfg.artifacts?.[mode];
+        if (!src) {
+          appendAero(`${mode} is unavailable for this case. The current view is unchanged.`);
           return;
         }
-        if (mode === 'mesh' && livePressureField) {
-          showPressureField(livePressureField, localToken?.value || '').then(() => {
-            meshShown = true;
-            scientificViewer?.setMeshVisible(true);
-            activeScientificMode = 'mesh';
-            state.mode = 'mesh';
-            if (legend) legend.hidden = true;
-            document.querySelectorAll('.vp-mode').forEach((b) =>
-              b.classList.toggle('is-active', b.dataset.mode === 'mesh'));
-            if (hint) hint.textContent = 'Exterior CFD surface mesh — rotate, pan, zoom; 12,600 volume cells recorded in evidence';
-          }).catch((error) => appendAero(error.message));
-          return;
-        }
-        state.mode = mode;
         const useScientific = mode === activeScientificMode && scientificViewer;
         if (scientific) scientific.hidden = !useScientific;
-        if (legend) legend.hidden = !useScientific;
+        if (legend) legend.hidden = mode !== 'result';
         if (img) img.hidden = Boolean(useScientific);
-        const src = cfg.artifacts?.[mode];
         if (img && src && !useScientific) {
           img.src = src;
           img.alt = `Wall-resolved axisymmetric nozzle ${mode}`;
         }
-        document.querySelectorAll('.vp-mode').forEach((b) =>
-          b.classList.toggle('is-active', b.dataset.mode === mode));
-        if (hint) hint.textContent = `${mode[0].toUpperCase()}${mode.slice(1)} — drag to pan, scroll to zoom`;
+        commitViewportMode(mode, `${mode[0].toUpperCase()}${mode.slice(1)} — drag to pan, scroll to zoom`);
       }
 
       function resetCamera() {
+        if (scientificViewer && state.mode === activeScientificMode) scientificViewer.resetCamera();
         state.camera = { zoom: 1, panX: 0, panY: 0 };
         applyCamera();
       }
@@ -867,17 +884,15 @@ const demoCases = [
       document.querySelectorAll('[data-vp]').forEach((btn) =>
         btn.addEventListener('click', () => {
           const k = btn.dataset.vp;
+          if (k === 'zoom-in' && scientificViewer && state.mode === activeScientificMode) return scientificViewer.zoom(1.25);
+          if (k === 'zoom-out' && scientificViewer && state.mode === activeScientificMode) return scientificViewer.zoom(0.8);
           if (k === 'zoom-in') state.camera.zoom = Math.min(6, state.camera.zoom * 1.25);
           if (k === 'zoom-out') state.camera.zoom = Math.max(0.4, state.camera.zoom / 1.25);
           if (k === 'reset') {
-            if (scientificViewer && state.mode === activeScientificMode) scientificViewer.resetCamera();
             return resetCamera();
           }
           if (k === 'mesh') {
-            meshShown = !meshShown;
-            scientificViewer?.setMeshVisible(meshShown);
-            btn.textContent = meshShown ? 'Hide mesh' : 'Show mesh';
-            return;
+            return setMode(state.mode === 'mesh' ? 'geometry' : 'mesh');
           }
           applyCamera();
         }));
@@ -905,7 +920,14 @@ const demoCases = [
         applyCamera();
       }, { passive: false });
       stage?.addEventListener('keydown', (e) => {
-        if (scientificViewer && state.mode === activeScientificMode) return;
+        if (scientificViewer && state.mode === activeScientificMode) {
+          if (e.key === '+' || e.key === '=') scientificViewer.zoom(1.2);
+          else if (e.key === '-') scientificViewer.zoom(1 / 1.2);
+          else if (e.key === '0') resetCamera();
+          else return;
+          e.preventDefault();
+          return;
+        }
         const step = 24;
         if (e.key === 'ArrowLeft') state.camera.panX += step;
         else if (e.key === 'ArrowRight') state.camera.panX -= step;
@@ -951,7 +973,7 @@ const demoCases = [
       // ---- chat (curated; each reply may request allowlisted actions only)
       const REPLIES = {
         mesh: {
-          text: 'Switching to the actual exterior surface mesh from the 12,600-cell Level 4 structured wedge. The wireframe is derived from the retained OpenFOAM VTK artifact.',
+          text: 'Switching to the surface triangulation of the same nozzle STL. This visual overlay is distinct from the retained Level 4 OpenFOAM volume mesh, whose 12,600-cell count is recorded in evidence.',
           actions: [{ action: 'SET_VIEWPORT_MODE', mode: 'mesh' }],
         },
         validation: {
@@ -1133,7 +1155,7 @@ const demoCases = [
               );
               livePressureField = pressure || null;
               if (pressure) {
-                await showPressureField(pressure, localToken?.value || '');
+                await setMode('result');
                 showTab('viewport');
               }
               const mesh = run.result.geometryManifest?.checks;
@@ -1378,7 +1400,7 @@ const demoCases = [
 
       const openDetail = (mode) => {
         document.getElementById('workbench')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        const tabName = mode === 'analysis' ? 'analysis' : mode === 'result' ? 'evidence' : 'viewport';
+        const tabName = mode === 'analysis' ? 'analysis' : mode === 'evidence' ? 'evidence' : 'viewport';
         document.querySelector(`.wb-tab[data-tab="${tabName}"]`)?.click();
         if (['geometry', 'mesh', 'result'].includes(mode)) document.querySelector(`.vp-mode[data-mode="${mode}"]`)?.click();
       };
@@ -1394,7 +1416,7 @@ const demoCases = [
       root.querySelectorAll('[data-open-detail]').forEach((button) => button.addEventListener('click', () => openDetail(button.dataset.openDetail)));
       stageNodes.forEach((node, index) => node.querySelector('button')?.addEventListener('click', () => {
         if (index === 0) input?.focus();
-        else openDetail(index === 1 ? 'analysis' : index === 2 ? 'geometry' : index === 3 ? 'mesh' : index === 4 ? 'result' : 'result');
+        else openDetail(index === 1 ? 'analysis' : index === 2 ? 'geometry' : index === 3 ? 'mesh' : index === 4 ? 'evidence' : 'result');
       }));
       continueButton?.addEventListener('click', () => openDetail('analysis'));
       form?.addEventListener('submit', (event) => { event.preventDefault(); submit(input?.value); if (input) input.value = ''; });

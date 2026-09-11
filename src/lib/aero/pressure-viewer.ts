@@ -17,6 +17,7 @@ export interface PressureSurface {
 
 export interface PressureViewer {
   resetCamera(): void;
+  zoom(factor: number): void;
   setMeshVisible(visible: boolean): void;
   dispose(): void;
 }
@@ -132,6 +133,11 @@ export function mountPressureViewer(container: HTMLElement, surface: PressureSur
 
   return {
     resetCamera,
+    zoom(factor: number) {
+      if (!Number.isFinite(factor) || factor <= 0) return;
+      camera.position.sub(controls.target).multiplyScalar(1 / factor).add(controls.target);
+      controls.update();
+    },
     setMeshVisible(visible: boolean) { wireframe.visible = visible; },
     dispose() {
       cancelAnimationFrame(frame);

@@ -4,6 +4,7 @@ import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 
 export interface CadViewer {
   resetCamera(): void;
+  zoom(factor: number): void;
   setMeshVisible(visible: boolean): void;
   dispose(): void;
 }
@@ -83,6 +84,11 @@ export function mountCadViewer(container: HTMLElement, payload: ArrayBuffer, opt
 
   return {
     resetCamera,
+    zoom(factor: number) {
+      if (!Number.isFinite(factor) || factor <= 0) return;
+      camera.position.sub(controls.target).multiplyScalar(1 / factor).add(controls.target);
+      controls.update();
+    },
     setMeshVisible(visible: boolean) { wireframe.visible = visible; },
     dispose() {
       cancelAnimationFrame(frame);
