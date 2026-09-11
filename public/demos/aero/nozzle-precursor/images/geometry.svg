@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
-  <title id="title">Rectangular duct precursor geometry</title>
-  <desc id="desc">A deterministic rectangular computational duct 0.30 metres long, 0.02 metres high, and 0.02 metres deep.</desc>
-  <rect width="1200" height="480" fill="#111719"/>
-  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#dfe2dc;font-size:18px}.meta{fill:#91a09d;font-size:13px;letter-spacing:1px}.dim{fill:#df7955;font-size:14px}.shape{fill:#243033;stroke:#df7955;stroke-width:3;stroke-linejoin:round}.guide{fill:none;stroke:#6d7a78;stroke-width:1;stroke-dasharray:5 7}</style>
-  <text x="92" y="54" class="meta">PARAMETRIC GENERATED / COMPUTATIONAL DOMAIN / METRES</text>
-  <text x="92" y="88" class="label">Straight rectangular duct precursor</text>
-  <path class="shape" d="M150 176 L955 176 L1060 246 L255 246 Z M150 176 L150 304 L255 374 L255 246 M255 374 L1060 374 L1060 246 M150 304 L955 304 L1060 374 M955 176 L955 304"/>
-  <path class="guide" d="M150 404 L955 404 M150 394 L150 414 M955 394 L955 414"/>
-  <text x="520" y="432" class="dim">L = 0.30 m</text>
-  <path class="guide" d="M1090 246 L1090 374 M1080 246 L1100 246 M1080 374 L1100 374"/>
-  <text x="1110" y="315" class="dim">0.02 m</text>
-  <text x="92" y="350" class="meta">INLET</text>
-  <text x="1012" y="216" class="meta">OUTLET</text>
-  <text x="92" y="462" class="meta">ACTUAL WORKER PARAMETERS / WIDTH 0.02 m / NO CONVERGING-DIVERGING PROFILE CLAIMED</text>
+  <title id="title">Converging-diverging nozzle CAD section</title>
+  <desc id="desc">A dimensioned section of an axisymmetric nozzle with a 20 millimetre inlet radius, 8 millimetre throat radius, and 24 millimetre exit radius.</desc>
+  <defs><linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#314149"/><stop offset="1" stop-color="#182328"/></linearGradient></defs>
+  <rect width="1200" height="480" fill="#0c1519"/>
+  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#e7efef;font-size:18px}.meta{fill:#91a9ae;font-size:12px;letter-spacing:1.2px}.dim{fill:#e7885e;font-size:14px}.edge{fill:url(#body);stroke:#e7885e;stroke-width:3;stroke-linejoin:round}.guide{fill:none;stroke:#668087;stroke-width:1;stroke-dasharray:5 7}.center{stroke:#76d6d2;stroke-width:1;stroke-dasharray:12 8;opacity:.55}</style>
+  <text x="70" y="42" class="meta">PARAMETRIC CAD SECTION / AXISYMMETRIC INTERNAL-FLOW DOMAIN / MILLIMETRES</text>
+  <text x="70" y="75" class="label">Converging–diverging nozzle</text>
+  <path class="edge" d="M135 145H355L535 205L1035 125V355L535 275L355 335H135Z"/>
+  <path d="M135 162H355L535 218L1035 143V337L535 262L355 318H135Z" fill="#081115" stroke="#d5e3e5" stroke-width="2.2"/>
+  <path class="center" d="M90 240H1080"/>
+  <g class="guide"><path d="M135 376H535M135 366V386M535 366V386"/><path d="M535 405H1035M535 395V415M1035 395V415"/><path d="M1080 143V337M1070 143H1090M1070 337H1090"/><path d="M570 218V262M560 218H580M560 262H580"/></g>
+  <text x="278" y="399" class="dim">L converging = 45 mm</text><text x="720" y="429" class="dim">L diverging = 110 mm</text>
+  <text x="1098" y="245" class="dim">R exit 24</text><text x="590" y="246" class="dim">R throat 8</text>
+  <text x="70" y="246" class="meta">INLET · R20</text><text x="1036" y="106" class="meta">OUTLET · R24</text>
+  <text x="70" y="462" class="meta">FLOW PASSAGE SHOWN IN SECTION / CENTERLINE VERIFIED / TOPOLOGY CLOSED</text>
 </svg>

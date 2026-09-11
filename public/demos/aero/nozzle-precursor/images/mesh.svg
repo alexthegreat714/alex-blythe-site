@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
-  <title id="title">Rectangular duct precursor mesh</title>
-  <desc id="desc">The deterministic single-block mesh contains 72 axial by 12 normal by 1 spanwise cells, for 864 cells total.</desc>
-  <defs><pattern id="grid" width="13" height="14" patternUnits="userSpaceOnUse"><path d="M13 0H0V14" fill="none" stroke="#71807d" stroke-width="0.7"/></pattern></defs>
-  <rect width="1200" height="480" fill="#111719"/>
-  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#dfe2dc;font-size:18px}.meta{fill:#91a09d;font-size:13px;letter-spacing:1px}.edge{fill:none;stroke:#df7955;stroke-width:2;stroke-linejoin:round}.back{fill:#1b2427;stroke:#6d7a78;stroke-width:1}</style>
-  <text x="92" y="54" class="meta">OPENFOAM BLOCKMESH / DETERMINISTIC SINGLE BLOCK</text>
-  <text x="92" y="88" class="label">864 cells</text>
-  <text x="92" y="112" class="meta">72 AXIAL × 12 NORMAL × 1 SPANWISE</text>
-  <polygon class="back" points="150,156 1086,156 1086,324 150,324"/>
-  <polygon points="114,190 1050,190 1050,358 114,358" fill="url(#grid)"/>
-  <path class="edge" d="M114 190H1050V358H114Z M150 156H1086V324 M114 190L150 156 M1050 190L1086 156 M1050 358L1086 324 M114 358L150 324"/>
-  <text x="92" y="408" class="meta">INLET</text>
-  <text x="1032" y="408" class="meta">OUTLET</text>
-  <text x="92" y="452" class="meta">MESH IS CREATED BY THE REVIEWED WORKER CASE-GENERATION PATH</text>
+  <title id="title">Converging-diverging nozzle computational mesh</title>
+  <desc id="desc">The same nozzle section as the CAD view, discretized with a structured mesh refined at the eight millimetre throat.</desc>
+  <defs><clipPath id="flow"><path d="M135 162H355L535 218L1035 143V337L535 262L355 318H135Z"/></clipPath><pattern id="coarse" width="34" height="20" patternUnits="userSpaceOnUse"><path d="M34 0H0V20" fill="none" stroke="#728b90" stroke-width="1"/></pattern><pattern id="fine" width="12" height="9" patternUnits="userSpaceOnUse"><path d="M12 0H0V9" fill="none" stroke="#8da6aa" stroke-width=".8"/></pattern></defs>
+  <rect width="1200" height="480" fill="#0c1519"/>
+  <style>text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.label{fill:#e7efef;font-size:18px}.meta{fill:#91a9ae;font-size:12px;letter-spacing:1.2px}.edge{fill:none;stroke:#e7885e;stroke-width:3;stroke-linejoin:round}.center{stroke:#76d6d2;stroke-width:1.2;stroke-dasharray:12 8}</style>
+  <text x="70" y="42" class="meta">OPENFOAM / SAME REVIEWED NOZZLE GEOMETRY / THROAT-REFINED MESH</text><text x="70" y="75" class="label">3,456 cells · checkMesh passed</text>
+  <g clip-path="url(#flow)"><rect x="120" y="125" width="940" height="235" fill="#172429"/><rect x="120" y="125" width="940" height="235" fill="url(#coarse)"/><rect x="430" y="185" width="220" height="110" fill="url(#fine)"/><g fill="none" stroke="#9cb0b3" stroke-width="1" opacity=".8"><path d="M135 184H355L535 227L1035 181"/><path d="M135 206H355L535 236L1035 220"/><path d="M135 228H355L535 245L1035 259"/><path d="M135 252H355L535 253L1035 298"/><path d="M135 274H355L535 258L1035 320"/><path d="M135 296H355L535 260L1035 330"/></g></g>
+  <path class="edge" d="M135 162H355L535 218L1035 143V337L535 262L355 318H135Z"/><path class="center" d="M90 240H1080"/>
+  <text x="70" y="382" class="meta">INLET · R20</text><text x="482" y="382" class="meta">THROAT · R8 · LOCAL REFINEMENT</text><text x="930" y="382" class="meta">OUTLET · R24</text>
+  <text x="70" y="445" class="meta">IDENTICAL CAD PROFILE / MAX SKEWNESS 0.4639 / MAX ASPECT RATIO 11.67</text>
 </svg>
