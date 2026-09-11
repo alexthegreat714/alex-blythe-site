@@ -584,12 +584,18 @@ const demoCases = [
         if (sceneTitle) sceneTitle.textContent = 'Define a case, then inspect every stage.';
         const sceneSummary = publicWorkspace?.querySelector('.guided-scene-head > p');
         if (sceneSummary) sceneSummary.textContent = 'Choose a recorded case or start a requirement record. No VM or solver controls are exposed here.';
+        const exampleLabel = publicWorkspace?.querySelector('.guided-examples > span');
+        if (exampleLabel) exampleLabel.textContent = 'Choose a case';
+        const player = publicWorkspace?.querySelector('.demo-player');
+        if (player) player.setAttribute('aria-label', 'Current Aero workspace');
         const playerMode = publicWorkspace?.querySelector('.demo-player-head span:last-child');
         if (playerMode) playerMode.textContent = 'Current Aero workspace · Recorded evidence';
         const playerTitle = publicWorkspace?.querySelector('[data-tour-title]');
         if (playerTitle) playerTitle.textContent = 'Inspect the current engineering record.';
         const playerSummary = publicWorkspace?.querySelector('[data-tour-summary]');
         if (playerSummary) playerSummary.textContent = 'Choose a case above, then open a stage or ask Aero about the evidence.';
+        const narration = publicWorkspace?.querySelector('[data-tour-narration]');
+        if (narration) narration.textContent = 'Choose a case, open requirements, or ask Aero a question. This public workspace only exposes recorded evidence.';
         const playLabel = publicWorkspace?.querySelector('[data-tour-play]');
         if (playLabel) playLabel.textContent = 'Open requirements';
         const questions = publicWorkspace?.querySelector('[data-tour-questions]');
@@ -1402,6 +1408,11 @@ const demoCases = [
         const cooling = activeCase?.id === 'cooling-channel';
         const blocked = playing && tourIndex >= 2 && (cooling || tourModified);
         const script = playing ? [...tourNarratives[tourIndex]] : ['See how Aero turns a question into a CFD workflow.', 'Choose an example, then press Play.', 'Press Play and I’ll explain each step. You choose when to continue.'];
+        if (!playing && currentMode) {
+          script[0] = 'Current Aero workspace';
+          script[1] = 'Choose a case or start a requirement record.';
+          script[2] = 'The public workspace explains the current evidence and keeps VM-backed execution private.';
+        }
         if (playing && tourIndex === 0) script[1] = activeCase?.question || script[1];
         if (playing && cooling && tourIndex === 1) {
           script[1] = 'Balance the heat load against coolant flow.';
@@ -1417,6 +1428,7 @@ const demoCases = [
         root.querySelector('[data-tour-narration]').textContent = script[2];
         root.querySelector('[data-tour-kicker]').textContent = playing ? `${tourNames[tourIndex]} · ${activeCase?.title || 'Nozzle demo'}` : 'Requirements → Math → CAD → Mesh → Solve → Render';
         root.querySelector('[data-tour-counter]').textContent = playing ? `Step ${tourIndex + 1} of 6${blocked ? ' · Awaiting inputs' : ''}` : '6 steps · At your pace';
+        if (!playing && currentMode) root.querySelector('[data-tour-counter]').textContent = 'Current record · choose a stage';
         root.querySelector('[data-tour-back]').disabled = tourIndex <= 0;
         root.querySelector('[data-tour-next]').disabled = !playing;
         root.querySelector('[data-tour-next]').textContent = tourIndex === 5 ? 'Finish demo ✓' : 'Next step →';
