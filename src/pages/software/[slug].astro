@@ -28,8 +28,8 @@ const aeroInstances = [
   {
     name: 'Aero Current',
     audience: 'Public',
-    status: 'Browser tools · no VM access',
-    description: 'Use the Aero front end for requirements, first-principles math, and recorded CAD, mesh, result, and evidence inspection. VM controls are excluded.',
+    status: 'Current browser workspace · no VM access',
+    description: 'Use the current six-stage Aero workspace for requirements, first-principles math, CAD, mesh, recorded solver results, and evidence review. VM controls are excluded.',
     href: '/software/aero/demo/?mode=current',
     action: 'Open the public tool suite',
     primary: true,
@@ -48,9 +48,10 @@ const aeroInstances = [
 const proofStages = [
   { index: '01', label: 'Chat', title: 'Define the engineering question', detail: 'A plain-language request becomes a typed case specification. Assumptions and missing inputs remain visible.' },
   { index: '02', label: 'Math', title: 'Set expectations before solving', detail: 'First-principles checks and the live LaTeX notebook establish what the solver should be compared against.' },
-  { index: '03', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated mesh before execution. This proof used 864, 1,944, and 3,456 cells.' },
-  { index: '04', label: 'Solve', title: 'Run and monitor OpenFOAM', detail: 'Each rhoSimpleFoam run retained convergence, conservation, monitor, and cleanup evidence.' },
-  { index: '05', label: 'Decide', title: 'Accept only what the evidence supports', detail: 'The grid-change gate passed. Missing reference and fidelity evidence still block design use.' },
+  { index: '03', label: 'CAD', title: 'Inspect the current nozzle geometry', detail: 'The current CadQuery/OpenCascade manifest records the parametric nozzle, topology checks, dimensions, and source fingerprint.' },
+  { index: '04', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated wall-resolved mesh before execution. This proof used 6,048, 9,072, and 12,600 cells.' },
+  { index: '05', label: 'Solve', title: 'Run and monitor OpenFOAM', detail: 'Each rhoSimpleFoam run retained convergence, conservation, monitor, and cleanup evidence.' },
+  { index: '06', label: 'Decide', title: 'Accept only what the evidence supports', detail: 'The grid-change gate passed. Missing reference and fidelity evidence still block design use.' },
 ] as const;
 const pipelineFilmStages = [
   { label: 'Requirements', time: 0, detail: 'Watch a request being typed, then structured by Aero into reviewable requirements.' },
@@ -67,7 +68,7 @@ const proofReadiness = [
   { label: 'First-principles screen', status: 'Partial', tone: 'hold' },
   { label: 'Fidelity ladder', status: 'Review required', tone: 'hold' },
   { label: 'BC, turbulence, wall review', status: 'Passed', tone: 'pass' },
-  { label: 'Imported CAD quality', status: 'N/A for this case', tone: 'neutral' },
+  { label: 'Imported CAD quality', status: 'Passed', tone: 'pass' },
   { label: 'Uncertainty, margin, risk report', status: 'Passed', tone: 'pass' },
 ] as const;
 ---
@@ -161,16 +162,16 @@ const proofReadiness = [
         <div class="proof-table-wrap" tabindex="0" role="region" aria-label="Three-level mesh study results">
           <div class="proof-panel-title"><span>Three-grid study</span><strong>Passed at 2% tolerance</strong></div>
           <table>
-            <thead><tr><th>Grid</th><th>Cells</th><th>Pressure ratio</th><th>Mass flow</th><th>Solver result</th></tr></thead>
+            <thead><tr><th>Grid</th><th>Cells</th><th>Pressure drop</th><th>Mesh study</th><th>Solver result</th></tr></thead>
             <tbody>
-              <tr><th>Coarse</th><td>864</td><td>1.000524</td><td>0.009999804 kg/s</td><td>Converged</td></tr>
-              <tr><th>Medium</th><td>1,944</td><td>1.000893</td><td>0.010000150 kg/s</td><td>Converged</td></tr>
-              <tr><th>Fine</th><td>3,456</td><td>1.001623</td><td>0.009999837 kg/s</td><td>Converged</td></tr>
+              <tr><th>Level 2</th><td>6,048</td><td>446.189 Pa</td><td>Eligible</td><td>Converged</td></tr>
+              <tr><th>Level 3</th><td>9,072</td><td>439.529 Pa</td><td>Eligible</td><td>Converged</td></tr>
+              <tr><th>Level 4</th><td>12,600</td><td>439.613 Pa</td><td>Eligible</td><td>Converged</td></tr>
             </tbody>
           </table>
           <div class="proof-deltas">
-            <div><span>Medium → fine pressure-ratio change</span><strong>0.0728%</strong></div>
-            <div><span>Medium → fine mass-flow change</span><strong>0.00313%</strong></div>
+            <div><span>Level 2 → 3 pressure-drop change</span><strong>1.52%</strong></div>
+            <div><span>Level 3 → 4 pressure-drop change</span><strong>0.0191%</strong></div>
           </div>
         </div>
 

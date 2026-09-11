@@ -53,15 +53,15 @@ const demoCases = [
     stages: [100, 100, 100, 100, 100, 100],
   },
   {
-    id: 'nozzle-precursor',
-    title: 'Compressible nozzle precursor',
-    kind: 'Recorded OpenFOAM case',
-    question: 'Can a bounded nozzle case produce a checked first-cut compressible-flow result?',
-    summary: 'A typed case progresses through first-order screening, generated geometry, mesh checks, rhoSimpleFoam, telemetry, and a solved pressure field.',
-    disposition: 'Execution proof only; the result is not flight-design validation.',
-    evidenceHref: '/demos/aero/nozzle-precursor/evidence.json',
-    evidenceLabel: 'Open run evidence',
-    prompt: 'Walk me through a first-cut compressible nozzle CFD case with a 20 mm inlet radius, 8 mm throat radius, 24 mm exit radius, 45 mm converging length, 110 mm diverging length, and 0.010 kg/s mass flow.',
+    id: 'nozzle-first-cut-current',
+    title: 'First-cut nozzle review',
+    kind: 'Same retained OpenFOAM run / alternate question',
+    question: 'What can the current numerically converged nozzle run establish—and what remains blocked?',
+    summary: 'This view uses the same current wall-resolved nozzle evidence as the mesh-study example, but focuses on the boundary between numerical acceptability and engineering readiness.',
+    disposition: 'Numerical and mesh-independence gates pass; validation and model-fidelity evidence remain open.',
+    evidenceHref: '/demos/aero/wall-refinement-v6/engineering-result.json',
+    evidenceLabel: 'Open current evidence',
+    prompt: 'Review the current wall-resolved nozzle run. Explain what the 6,048 / 9,072 / 12,600-cell study proves and what it does not prove.',
     requirements: {
       goal: 'Produce a bounded first-cut compressible nozzle result',
       geometry: '20 / 8 / 24 mm inlet, throat, and exit radii; 45 / 110 mm lengths',
@@ -574,6 +574,26 @@ const demoCases = [
     if (root) {
       const currentMode = new URLSearchParams(window.location.search).get('mode') === 'current';
       if (currentMode) {
+        const publicWorkspace = document.querySelector('[data-guided-demo]');
+        publicWorkspace?.classList.add('is-current-mode');
+        const brandMode = publicWorkspace?.querySelector('.guided-brand small');
+        if (brandMode) brandMode.textContent = 'Public current workspace';
+        const sceneLabel = publicWorkspace?.querySelector('.guided-scene-head > div > span');
+        if (sceneLabel) sceneLabel.textContent = 'Current browser workspace';
+        const sceneTitle = publicWorkspace?.querySelector('#guided-demo-title');
+        if (sceneTitle) sceneTitle.textContent = 'Define a case, then inspect every stage.';
+        const sceneSummary = publicWorkspace?.querySelector('.guided-scene-head > p');
+        if (sceneSummary) sceneSummary.textContent = 'Choose a recorded case or start a requirement record. No VM or solver controls are exposed here.';
+        const playerMode = publicWorkspace?.querySelector('.demo-player-head span:last-child');
+        if (playerMode) playerMode.textContent = 'Current Aero workspace · Recorded evidence';
+        const playerTitle = publicWorkspace?.querySelector('[data-tour-title]');
+        if (playerTitle) playerTitle.textContent = 'Inspect the current engineering record.';
+        const playerSummary = publicWorkspace?.querySelector('[data-tour-summary]');
+        if (playerSummary) playerSummary.textContent = 'Choose a case above, then open a stage or ask Aero about the evidence.';
+        const playLabel = publicWorkspace?.querySelector('[data-tour-play]');
+        if (playLabel) playLabel.textContent = 'Open requirements';
+        const questions = publicWorkspace?.querySelector('[data-tour-questions]');
+        if (questions) questions.open = true;
         document.title = 'Aero Current / Public engineering tool suite';
         const modeLabel = document.getElementById('wb-mode-label');
         const modeTitle = document.getElementById('wb-title');
@@ -1401,6 +1421,10 @@ const demoCases = [
         root.querySelector('[data-tour-next]').disabled = !playing;
         root.querySelector('[data-tour-next]').textContent = tourIndex === 5 ? 'Finish demo ✓' : 'Next step →';
         root.querySelector('[data-tour-play]').textContent = playing ? '↺ Restart' : '▶ Play demo';
+        if (currentMode) {
+          root.querySelector('[data-tour-play]').textContent = playing ? 'Restart stage' : 'Open requirements';
+          root.querySelector('[data-tour-next]').textContent = tourIndex === 5 ? 'Finish review' : 'Next stage →';
+        }
         root.querySelector('[data-tour-scene]').dataset.stage = String(tourIndex);
         stageNodes.forEach((node, index) => {
           node.classList.toggle('is-active', playing && index === tourIndex);

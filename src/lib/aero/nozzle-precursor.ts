@@ -74,8 +74,8 @@ export const resultFields: ResultFieldArtifact[] = [{
 }];
 
 export const publicCadArtifact = {
-  href: '/demos/aero/shared/nozzle-cutaway.stl', publicFormat: 'stl', type: 'geometry',
-  provenance: 'PARAMETRIC_GENERATED',
+  href: '/demos/aero/wall-refinement-v6/nozzle.stl', publicFormat: 'stl', type: 'geometry',
+  provenance: 'SOLVER_INPUT / geometryManifest',
 };
 
 export const publicPressureField = resultFields[0];
