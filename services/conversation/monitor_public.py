@@ -44,7 +44,9 @@ def notify(event):
     target = ntfy_target()
     if not target:
         return False
-    message = ("Aero public chat recovered; model readiness is healthy."
+    message = ("Aero public chat monitor test: delivery confirmed; service remains healthy."
+               if event == "test" else
+               "Aero public chat recovered; model readiness is healthy."
                if event == "recovered" else
                "Aero public chat has failed three consecutive external readiness checks.")
     request = urllib.request.Request(target, data=message.encode("utf-8"), method="POST",

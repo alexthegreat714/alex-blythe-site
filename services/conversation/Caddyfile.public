@@ -5,7 +5,12 @@
 :5322 {
     @health path /health
     handle @health {
-        reverse_proxy conversation:5320
+        reverse_proxy conversation:5320 {
+            transport http {
+                max_conns_per_host 8
+                response_header_timeout 8s
+            }
+        }
     }
 
     @chat path /chat
@@ -18,6 +23,7 @@
             # browser-supplied X-Aero-Client-IP header for the gateway quota.
             header_up X-Aero-Client-IP {http.request.header.CF-Connecting-IP}
             transport http {
+                max_conns_per_host 8
                 response_header_timeout 120s
             }
         }
