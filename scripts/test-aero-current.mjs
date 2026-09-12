@@ -31,6 +31,7 @@ try{
   await page.screenshot({path:'.qa/current-workspace/01-start.png'});
   if(process.env.AERO_LIVE_TEST==='1'){
     await page.waitForFunction(()=>document.querySelector('[data-model-state]').textContent.includes('ready'));
+    assert.equal(await page.locator('[data-model-state]').getAttribute('data-state'),'ready','Live model status should show the online state');
     assert.equal(await page.locator('[data-settings]').textContent(),'Model settings');
     await page.locator('#message').fill('Help me define a pressure-loss study of an air nozzle. Mass flow is 0.01 kg/s, air at 300 K and 101325 Pa, inlet radius 20 mm. Propose the continuity and ideal-gas equations with assumptions; ask for missing outlet geometry. Do not run a solver.');
     await page.locator('[data-send]').click();
@@ -55,6 +56,7 @@ try{
   await page.route('**/health',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({configured:true,ready:true,model:'QA fixture',mode:'conversation_only',tools:false})}));
   await page.reload();
   await page.waitForFunction(()=>document.querySelector('[data-model-state]').textContent.includes('ready'));
+  assert.equal(await page.locator('[data-model-state]').getAttribute('data-state'),'ready','Healthy gateway should show the online state');
   await page.locator('[data-doc="record"]').click();
   await page.locator('#field-goal').fill('Estimate pressure loss');await page.locator('#field-goal').blur();
   await page.locator('.requirement').first().getByRole('button',{name:'Confirm',exact:true}).click();
