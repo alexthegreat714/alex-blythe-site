@@ -61,17 +61,17 @@ export const aeroCaseSeeds: AeroSeed[] = [
   },
   {
     id:'aiaa-dpw6-case1-precursor-20260912',folder:'AIAA studies',title:'AIAA DPW-6 Case 1 · NACA 0012 precursor',
-    summary:'Actual OpenFOAM run matching Case 1 Mach/Re/AoA, converged in 1,045 iterations. Tutorial mesh and SST model differ from the official grid/reference: not a workshop submission.',
+    summary:'Actual OpenFOAM run nominally matching Case 1 Mach/Re/AoA, converged in 1,045 iterations. Tutorial mesh and SST model differ from the official grid/reference: not a workshop submission.',
     sourceLabel:'AIAA DPW-6 requested test cases',sourceUrl:'https://aiaa-dpw.larc.nasa.gov/Workshop6/DPW6_Test_Cases_2015-10-21.pdf',status:'recorded',
     fields:{
       goal:'Explore the DPW-6 Case 1 flow-condition setup, an actual precursor solve, and the gaps to a defensible workshop verification result.',
       geometry:'NACA 0012 unit-chord geometry from the OpenFOAM Foundation v10 tutorial, not the official NASA grid family.',
       fluid:'Perfect-gas air; compressible steady rhoSimpleFoam with k-omega SST RANS. NASA reference-model comparison requires separate turbulence-model alignment.',
-      conditions:'Mach 0.15, chord Reynolds number 6,000,000, 10° angle of attack; T∞ 300 K, U∞ 52.1596945 m/s, p∞ 180684.56 Pa, dynamic viscosity 1.82e-5 Pa·s.',
+      conditions:'Nominal targets: Mach 0.15, chord Reynolds number 6,000,000, 10° angle of attack; T∞ 300 K, U∞ 52.1596945 m/s, p∞ 180684.56 Pa, dynamic viscosity 1.82e-5 Pa·s. The proof reports the slight actual gas-constant difference.',
       success:'Inspect force and residual histories, then replace the tutorial mesh with an accepted 500-chord grid family, resolve mesh warnings and compare Cp/Cf before validation.',
       reference:'AIAA DPW-6 Case 1 requested conditions and NASA TMR NACA 0012 numerical-analysis grids; current solve is a precursor only.'
     },
-    equations:[{title:'Target Mach and Reynolds number',latex:'M=\\frac{U_\\infty}{\\sqrt{\\gamma RT_\\infty}}=0.15,\\quad Re_c=\\frac{\\rho_\\infty U_\\infty c}{\\mu_\\infty}=6\\times10^6',assumptions:'Perfect-gas air at 300 K, 1 m chord and the stated viscosity.'}],
+    equations:[{title:'Target Mach and Reynolds number',latex:'M=\\frac{U_\\infty}{\\sqrt{\\gamma RT_\\infty}}\\approx0.15,\\quad Re_c=\\frac{\\rho_\\infty U_\\infty c}{\\mu_\\infty}\\approx6\\times10^6',assumptions:'Perfect-gas air at 300 K, 1 m chord and the stated viscosity; exact derived values are in the proof.'}],
     build:{geometry:'Reused the actual NACA 0012 tutorial surface. The official NASA Family I source grid was also imported separately, but the attempted solve on that grid failed and is not used here.',mesh:'16,200-cell tutorial mesh. checkMesh reports 710 high-aspect cells; domain is roughly 50-100 chords rather than the specified 500.',solve:'Set Mach/Re/AoA physical inputs, then ran rhoSimpleFoam. SIMPLE converged in 1,045 iterations, with retained final fields and force coefficients.',results:'Embedded proof reports CL≈1.09034 and CD≈0.013379 with force history, failed-grid logs and explicit gates. This is not a like-for-like NASA/AIAA validated result.'},
     evidence:{label:'Proof document',url:'/demos/aero/aiaa-dpw6-case1-precursor/proof.html',secondary:[{label:'Machine-readable proof',url:'/demos/aero/aiaa-dpw6-case1-precursor/proof.json'},{label:'Mesh log',url:'/demos/aero/aiaa-dpw6-case1-precursor/log.checkMesh'},{label:'Solver log',url:'/demos/aero/aiaa-dpw6-case1-precursor/log.rhoSimpleFoam'}]},
     proofUrl:'/demos/aero/aiaa-dpw6-case1-precursor/proof.html',recordedGates:{mesh:'warning'}

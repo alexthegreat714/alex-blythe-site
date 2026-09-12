@@ -8,7 +8,7 @@
 - Source: [AIAA DPW-6 requested cases, Case 1](https://aiaa-dpw.larc.nasa.gov/Workshop6/DPW6_Test_Cases_2015-10-21.pdf)
 - OpenFOAM v10 tutorial NACA 0012 geometry and 16,200-cell mesh
 - rhoSimpleFoam; compressible steady k-ω SST RANS
-- Mach 0.15; Re_c 6,000,000; 10° angle of attack; 1 m chord
+- Nominal target Mach 0.15; Re_c 6,000,000; 10° angle of attack; 1 m chord
 - T∞ = 300 K; U∞ = 52.1596945 m/s; p∞ = 180,684.56 Pa; μ = 1.82×10⁻⁵ Pa·s
 
 ## Observed evidence
@@ -19,8 +19,8 @@
 - CL = 1.090340
 - CD = 0.013379
 - last-50 CL spread = 0.0588%
-- M = 0.150000
-- Re_c = 6,000,000
+- M = 0.149994
+- Re_c = 5,999,666
 - AoA = 10.0°
 - Final field directory exists in the local retained run.
 
@@ -36,6 +36,7 @@
 
 - The official DPW-6 Case 1 asks for 500-chord farfield and a converged grid sequence. This tutorial-derived mesh extends about 50 chords upstream/transverse and 100 downstream; no grid sequence is complete.
 - k-ω SST is not the NASA SA reference-model setup; point-vortex/farfield treatment is also not matched. CL/CD are therefore not a like-for-like NASA validation comparison.
+- The input pressure and force-reference density were set using a rounded 8314 J/(kmol K) gas constant. Using OpenFOAM's 8314.462618 J/(kmol K) nominal constant yields Mach about 0.149994 and Re_c about 5,999,666; the configured force-reference density differs from the ideal-gas density by about 0.0056%. These are small but explicit input-equivalence differences.
 - checkMesh reports one failed check: 710 high-aspect-ratio cells (maximum 42,738). No negative-volume or non-orthogonality failure was reported.
 - An official NASA Family I grid was imported and patched separately, but its attempted rhoSimpleFoam run failed (wall-model floating-point exception, then nonphysical temperature after a boundary workaround). Failed logs are retained and linked; those grids are not used for the reported coefficients.
 - No Cp/Cf comparison, independent physical reference comparison, or design-release validation was performed.
