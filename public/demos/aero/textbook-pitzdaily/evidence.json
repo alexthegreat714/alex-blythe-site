@@ -1,0 +1,38 @@
+{
+  "schema": "aero.public.recorded_tutorial_run.v1",
+  "case": "OpenFOAM Foundation v10 pitzDaily backward-facing step",
+  "origin": "https://openfoam.org/download/8-source/",
+  "originNote": "The linked OpenFOAM instructions describe the pitzDaily tutorial workflow; this run used the Foundation v10 tutorial files installed in Aero's isolated Linux image.",
+  "executedAt": "2026-09-12",
+  "environment": "isolated Linux container using OpenFOAM Foundation v10",
+  "commands": [
+    "blockMesh -dict $FOAM_TUTORIALS/resources/blockMesh/pitzDaily",
+    "checkMesh",
+    "simpleFoam"
+  ],
+  "mesh": {
+    "cells": 12225,
+    "cellType": "hexahedra",
+    "boundaryPatches": 5,
+    "checkMesh": "Mesh OK"
+  },
+  "solver": {
+    "application": "simpleFoam",
+    "turbulenceModel": "kEpsilon",
+    "inletVelocityMPerS": [10, 0, 0],
+    "kinematicViscosityM2PerS": 0.00001,
+    "completion": "SIMPLE solution converged in 287 iterations",
+    "finalFieldTime": "287"
+  },
+  "evidence": {
+    "log.blockMesh": "829ddb6388a81d454f88b829dfef988b680ddb0faeb4646218d68fa398edfb25",
+    "log.checkMesh": "d65d9f3e8f5fcf97055296b2795ee5b73aab0b5f267e725f96b3ac23407603df",
+    "log.simpleFoam": "711d11169eec7f81948ac1d2c6facf4b2634c2bfd263adc77edb936fbbcba90e"
+  },
+  "limitations": [
+    "Tutorial solver convergence is not experimental validation.",
+    "No mesh-independence study or independent reference comparison was performed here.",
+    "Rendered field visualization is not included in this evidence package.",
+    "The full generated OpenFOAM field directories are retained locally, not exposed to public browsers."
+  ]
+}
