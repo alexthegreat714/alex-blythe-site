@@ -23,6 +23,10 @@ try{
   assert.equal(await page.locator('.document').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(21, 36, 44)','Dark selection persists');
   assert.equal(await page.locator('.stages button').count(),6);
   assert.ok(await page.locator('#message').isVisible());
+  assert.equal(await page.locator('.aero-mark').count(),0,'The empty state has no decorative A');
+  const welcomeTop=await page.locator('.welcome h2').evaluate(el=>el.getBoundingClientRect().top);
+  const messagesTop=await page.locator('.messages').evaluate(el=>el.getBoundingClientRect().top);
+  assert.ok(welcomeTop-messagesTop<35,'Empty-state title begins near the top of the pane');
   assert.ok(await page.locator('#field-goal').isVisible());
   await page.screenshot({path:'.qa/current-workspace/01-start.png'});
   if(process.env.AERO_LIVE_TEST==='1'){
@@ -47,7 +51,7 @@ try{
     console.log('PASS LIVE: gemma3:12b conversation → requirement proposals → rendered LaTeX → follow-up context → refresh persistence.');
   }
   // Explicit stub used only for controlled failure and trust-boundary QA.
-  await page.route('**/health',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({configured:true,model:'QA fixture',mode:'conversation_only',tools:false})}));
+  await page.route('**/health',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({configured:true,ready:true,model:'QA fixture',mode:'conversation_only',tools:false})}));
   await page.reload();
   await page.waitForFunction(()=>document.querySelector('[data-model-state]').textContent.includes('ready'));
   await page.locator('[data-doc="record"]').click();

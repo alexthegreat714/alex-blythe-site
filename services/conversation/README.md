@@ -37,21 +37,62 @@ explains that messages and the requirement record will be sent there.
 - Equations are model proposals, not scientifically verified. The prompt supplies
   reference continuity, ideal-gas, area and sensible-heat formulas. Browser math
   uses KaTeX with trust disabled and bounded expansion. Unsupported/unsafe math
-  is excluded from generated TeX. No TeX engine or shell runs in this service.
+  is excluded from generated TeX. The public gateway now substitutes only four
+  reviewed first-principles formula forms and drops other model-generated LaTeX;
+  the model can still discuss a broader relation in prose. No TeX engine or shell
+  runs in this service.
 - Scientific correctness is not guaranteed by valid JSON, valid LaTeX or a
   successful model call. An initial live test produced an incorrect differential
   continuity expression; this is recorded as a quality failure, not hidden by
   passing UI tests. Reference guidance was added and the mass-flow expression
   was checked in the subsequent focused retest. This is not a general eval.
 
-## Before public exposure
+## Public chat-only beta
 
-User choice is pending: public rate-limited inference or authenticated access.
+The public website uses anonymous, rate-limited **conversation only**. It does
+not inherit the private Aero/Aegis/VM login or grant execution access. The Linux
+deployment in `compose.aero-public-chat.yaml` runs a dedicated Ollama model,
+gateway and Caddy edge; only `127.0.0.1:5322` is published on the host. A
+separate Cloudflare tunnel sends `aero-chat.alex-blythe.com` to that loopback
+edge. No Ollama or gateway port is public. `PUBLIC_AERO_CHAT_URL` is baked into
+the static website at build time and is not a credential.
+
+The edge caps request bodies at 32 KB and replaces `X-Aero-Client-IP` with
+Cloudflare's `CF-Connecting-IP`. The gateway rejects missing/malformed client
+identities, enforces 6 requests per IP and 60 globally per ten minutes, and
+admits one inference at a time. This is a small beta capacity, not a general
+unlimited public model API. The origin header check is additional browser
+friction, not authentication. Do not bypass the Cloudflare tunnel, expose the
+loopback Caddy port on a public interface, or route the personal `/chat` here.
+
+`/health` checks Ollama reachability and that the exact configured model is
+installed. It cannot prove a future inference will succeed; deployment and
+external browser smoke tests cover that. The model's equations and requirement
+values remain reviewable proposals, not validated engineering results.
+
+Host setup and verification:
+
+```powershell
+docker compose -f compose.aero-public-chat.yaml up -d --build
+docker compose -f compose.aero-public-chat.yaml exec -T ollama ollama pull gemma3:12b
+Invoke-RestMethod http://127.0.0.1:5322/health
+python services/conversation/monitor_public.py
+```
+
+The dedicated Cloudflare tunnel config is
+`%USERPROFILE%\.cloudflared\config-aero-public-chat.yml`; its credentials are
+outside Git. The current host's startup task runs `start_public_tunnel.ps1` on
+login. A second task runs `monitor_public.py` every five minutes and sends one
+ntfy alert after three failed external health checks, then one on recovery.
+The monitor checks only readiness metadata and never reads conversations.
+Docker's `restart: unless-stopped` policy keeps the Linux containers running
+while Docker Desktop is available. A powered-off host means public chat is
+unavailable; the static case library remains usable.
+
 Do not route this to the existing personal `/chat`, embed admin credentials, or
-remove Caddy authentication from any private route. Public exposure additionally
-requires a managed process/container, TLS proxy with body/connection limits,
-abuse protection, inference capacity/budget and operational health monitoring.
-This development HTTP server is not by itself a production Internet listener.
+remove Caddy authentication from any private route. The browser deliberately
+uses `credentials: 'omit'`; login-gating chat would require a separate reviewed
+authentication design, not a Caddy Basic Auth toggle.
 
 ## Tests
 

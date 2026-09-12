@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_AERO_CHAT_URL: https://aero-chat.alex-blythe.com
     steps:
       - name: Check out repository
         uses: actions/checkout@v7

@@ -1,0 +1,64 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    gpus: all
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+      OLLAMA_MAX_LOADED_MODELS: "1"
+      OLLAMA_NUM_PARALLEL: "1"
+      OLLAMA_KEEP_ALIVE: 2m
+      OLLAMA_NO_CLOUD: "1"
+    volumes:
+      - aero-public-models:/root/.ollama
+    restart: unless-stopped
+    networks: [model]
+
+  conversation:
+    build:
+      context: .
+      dockerfile: services/conversation/Dockerfile
+    environment:
+      AERO_CHAT_HOST: 0.0.0.0
+      AERO_CHAT_MODEL: gemma3:12b
+      AERO_CHAT_OLLAMA: http://ollama:11434
+      AERO_CHAT_ORIGINS: https://alex-blythe.com,https://www.alex-blythe.com
+      AERO_CHAT_CLIENT_IP_HEADER: X-Aero-Client-IP
+      AERO_CHAT_PER_CLIENT_LIMIT: "6"
+      AERO_CHAT_GLOBAL_LIMIT: "60"
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    pids_limit: 64
+    mem_limit: 512m
+    restart: unless-stopped
+    depends_on: [ollama]
+    networks: [model, edge]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5320/health', timeout=5).close()"]
+      interval: 30s
+      timeout: 7s
+      retries: 3
+
+  edge:
+    image: caddy:2
+    ports:
+      - "127.0.0.1:5322:5322"
+    volumes:
+      - ./services/conversation/Caddyfile.public:/etc/caddy/Caddyfile:ro
+    read_only: true
+    tmpfs:
+      - /data:size=16777216
+      - /config:size=16777216
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 128m
+    restart: unless-stopped
+    depends_on: [conversation]
+    networks: [edge]
+
+volumes:
+  aero-public-models:
+
+networks:
+  model:
+  edge:

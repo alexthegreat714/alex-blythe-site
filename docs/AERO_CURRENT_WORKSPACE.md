@@ -19,8 +19,10 @@ CAD, mesh, solve and results show their prerequisites. They do not inherit the
 demo's recorded results, become green merely because a tab was visited, or launch
 jobs. The private execution workspace remains separately authenticated.
 
-Live model integration has been exercised locally through the new isolated
-conversation gateway. Enabling public inference remains a separate access-policy
-decision. See `services/conversation/README.md` for limits and proof details.
+The public chat-only beta uses a separate Linux Ollama/gateway/Caddy stack and
+dedicated Cloudflare tunnel. It has no tools, RAG, CAD upload, VM, or solver
+access. Public usage is bounded and can be unavailable when the local host is
+off or the one model slot is occupied. See `services/conversation/README.md`
+for deployment, limits, and proof details.
 
 Existing unrelated demo CSS changes and local worker scripts are preserved.

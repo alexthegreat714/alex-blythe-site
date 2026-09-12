@@ -1,0 +1,29 @@
+{
+    admin off
+}
+
+:5322 {
+    @health path /health
+    handle @health {
+        reverse_proxy conversation:5320
+    }
+
+    @chat path /chat
+    handle @chat {
+        request_body {
+            max_size 32KB
+        }
+        reverse_proxy conversation:5320 {
+            # The Cloudflare tunnel supplies CF-Connecting-IP. Never trust a
+            # browser-supplied X-Aero-Client-IP header for the gateway quota.
+            header_up X-Aero-Client-IP {http.request.header.CF-Connecting-IP}
+            transport http {
+                response_header_timeout 120s
+            }
+        }
+    }
+
+    handle {
+        respond 404
+    }
+}
