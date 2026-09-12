@@ -12,9 +12,29 @@ export type AeroSeed = {
   equations: {title: string; latex: string; assumptions: string}[];
   build: {geometry: string; mesh: string; solve: string; results: string};
   evidence?: {label: string; url: string; secondary?: {label: string; url: string}[]};
+  proofUrl?: string;
+  recordedGates?: {mesh?: 'warning'; solve?: 'warning'};
 };
 
 export const aeroCaseSeeds: AeroSeed[] = [
+  {
+    id:'naca-0012-openfoam-tutorial-20260912',folder:'NACA studies',title:'NACA 0012 · OpenFOAM tutorial run',
+    summary:'Actual 16,200-cell rhoSimpleFoam teaching run at 0° and 250 m/s. Solver converged in 1,581 iterations; mesh aspect-ratio check warned. Not NASA validation.',
+    sourceLabel:'OpenFOAM Foundation v10 aerofoilNACA0012 tutorial',
+    sourceUrl:'https://github.com/OpenFOAM/OpenFOAM-10/tree/master/tutorials/compressible/rhoSimpleFoam/aerofoilNACA0012',status:'recorded',
+    fields:{
+      goal:'Inspect a complete local NACA 0012 airfoil tutorial from geometry and mesh through solver convergence and lift/drag histories.',
+      geometry:'OpenFOAM Foundation v10 NACA0012.obj tutorial airfoil; unit chord and one-cell spanwise 2D mesh.',
+      fluid:'Perfect-gas air; steady compressible rhoSimpleFoam with k-omega SST RANS.',
+      conditions:'Tutorial setup: 250 m/s freestream, 0° angle of attack, inlet temperature 298 K, outlet pressure 100 kPa.',
+      success:'Inspect checkMesh warning, solver completion, final fields and force-coefficient history; do not call it NASA or AIAA validation.',
+      reference:'OpenFOAM Foundation v10 aerofoilNACA0012 tutorial; locally executed 12 September 2026.'
+    },
+    equations:[{title:'Force coefficient',latex:'C_L=\\frac{L}{\\tfrac12\\rho_\\infty U_\\infty^2 A_{ref}},\\quad C_D=\\frac{D}{\\tfrac12\\rho_\\infty U_\\infty^2 A_{ref}}',assumptions:'The tutorial uses its own reference density and area; the published coefficients inherit those definitions.'}],
+    build:{geometry:'Copied the installed OpenFOAM Foundation v10 NACA 0012 tutorial geometry.',mesh:'Ran blockMesh, transformPoints, extrudeMesh and checkMesh. 16,200 cells; 710 high-aspect cells caused one failed mesh check.',solve:'rhoSimpleFoam converged in 1,581 SIMPLE iterations. Final field directory and forceCoeffs data exist.',results:'Embedded proof shows CL≈0, CD≈0.00791, force history, source, hashes and all validation caveats.'},
+    evidence:{label:'Proof document',url:'/demos/aero/naca0012-openfoam-tutorial/proof.html',secondary:[{label:'Machine-readable proof',url:'/demos/aero/naca0012-openfoam-tutorial/proof.json'},{label:'Mesh log',url:'/demos/aero/naca0012-openfoam-tutorial/log.checkMesh'},{label:'Solver log',url:'/demos/aero/naca0012-openfoam-tutorial/log.rhoSimpleFoam'}]},
+    proofUrl:'/demos/aero/naca0012-openfoam-tutorial/proof.html',recordedGates:{mesh:'warning'}
+  },
   {
     id: 'naca-0012-tmr', folder: 'NACA studies', title: 'NACA 0012 · NASA TMR validation',
     summary: 'Reference-backed airfoil validation setup. No Aero/OpenFOAM run is recorded for this case yet.',
@@ -40,6 +60,23 @@ export const aeroCaseSeeds: AeroSeed[] = [
     }
   },
   {
+    id:'aiaa-dpw6-case1-precursor-20260912',folder:'AIAA studies',title:'AIAA DPW-6 Case 1 · NACA 0012 precursor',
+    summary:'Actual OpenFOAM run matching Case 1 Mach/Re/AoA, converged in 1,045 iterations. Tutorial mesh and SST model differ from the official grid/reference: not a workshop submission.',
+    sourceLabel:'AIAA DPW-6 requested test cases',sourceUrl:'https://aiaa-dpw.larc.nasa.gov/Workshop6/DPW6_Test_Cases_2015-10-21.pdf',status:'recorded',
+    fields:{
+      goal:'Explore the DPW-6 Case 1 flow-condition setup, an actual precursor solve, and the gaps to a defensible workshop verification result.',
+      geometry:'NACA 0012 unit-chord geometry from the OpenFOAM Foundation v10 tutorial, not the official NASA grid family.',
+      fluid:'Perfect-gas air; compressible steady rhoSimpleFoam with k-omega SST RANS. NASA reference-model comparison requires separate turbulence-model alignment.',
+      conditions:'Mach 0.15, chord Reynolds number 6,000,000, 10° angle of attack; T∞ 300 K, U∞ 52.1596945 m/s, p∞ 180684.56 Pa, dynamic viscosity 1.82e-5 Pa·s.',
+      success:'Inspect force and residual histories, then replace the tutorial mesh with an accepted 500-chord grid family, resolve mesh warnings and compare Cp/Cf before validation.',
+      reference:'AIAA DPW-6 Case 1 requested conditions and NASA TMR NACA 0012 numerical-analysis grids; current solve is a precursor only.'
+    },
+    equations:[{title:'Target Mach and Reynolds number',latex:'M=\\frac{U_\\infty}{\\sqrt{\\gamma RT_\\infty}}=0.15,\\quad Re_c=\\frac{\\rho_\\infty U_\\infty c}{\\mu_\\infty}=6\\times10^6',assumptions:'Perfect-gas air at 300 K, 1 m chord and the stated viscosity.'}],
+    build:{geometry:'Reused the actual NACA 0012 tutorial surface. The official NASA Family I source grid was also imported separately, but the attempted solve on that grid failed and is not used here.',mesh:'16,200-cell tutorial mesh. checkMesh reports 710 high-aspect cells; domain is roughly 50-100 chords rather than the specified 500.',solve:'Set Mach/Re/AoA physical inputs, then ran rhoSimpleFoam. SIMPLE converged in 1,045 iterations, with retained final fields and force coefficients.',results:'Embedded proof reports CL≈1.09034 and CD≈0.013379 with force history, failed-grid logs and explicit gates. This is not a like-for-like NASA/AIAA validated result.'},
+    evidence:{label:'Proof document',url:'/demos/aero/aiaa-dpw6-case1-precursor/proof.html',secondary:[{label:'Machine-readable proof',url:'/demos/aero/aiaa-dpw6-case1-precursor/proof.json'},{label:'Mesh log',url:'/demos/aero/aiaa-dpw6-case1-precursor/log.checkMesh'},{label:'Solver log',url:'/demos/aero/aiaa-dpw6-case1-precursor/log.rhoSimpleFoam'}]},
+    proofUrl:'/demos/aero/aiaa-dpw6-case1-precursor/proof.html',recordedGates:{mesh:'warning'}
+  },
+  {
     id: 'aiaa-dpw6-crm', folder: 'AIAA studies', title: 'AIAA DPW-6 · CRM drag study',
     summary: 'Workshop-aligned CRM wing-body / nacelle-pylon study plan. Geometry, grids, and a local solver run are not yet attached.',
     sourceLabel: 'NASA-hosted AIAA DPW-6 case forms', sourceUrl: 'https://aiaa-dpw.larc.nasa.gov/Workshop6/forms/DataForm.html', status: 'setup',
@@ -62,7 +99,7 @@ export const aeroCaseSeeds: AeroSeed[] = [
   {
     id: 'textbook-pitzdaily-20260912', folder: 'Textbook & verified runs', title: 'Backward-facing step · pitzDaily',
     summary: 'Fresh OpenFOAM Foundation v10 tutorial run: 12,225-cell mesh checked; simpleFoam converged in 287 iterations. Teaching case, not design validation.',
-    sourceLabel: 'OpenFOAM Foundation · pitzDaily tutorial', sourceUrl: 'https://openfoam.org/download/8-source/', status: 'recorded',
+    sourceLabel: 'OpenFOAM Foundation · pitzDaily tutorial', sourceUrl: 'https://openfoam.org/download/10-source/', status: 'recorded',
     fields: {
       goal: 'Inspect a steady backward-facing-step flow setup, mesh check, RANS solve, and convergence evidence.',
       geometry: 'OpenFOAM Foundation pitzDaily backward-facing-step tutorial geometry; two-dimensional domain, spanwise empty patch.',
@@ -78,7 +115,8 @@ export const aeroCaseSeeds: AeroSeed[] = [
       solve:'Ran simpleFoam (steady incompressible k-epsilon RANS). SIMPLE solution converged in 287 iterations; the final field time directory was written.',
       results:'Solver logs and field outputs were retained locally. Public evidence includes the mesh check and terminal solver log; no independent experimental validation or field render is claimed.'
     },
-    evidence: {label:'Run summary & hashes',url:'/demos/aero/textbook-pitzdaily/evidence.json',secondary:[{label:'Mesh check log',url:'/demos/aero/textbook-pitzdaily/log.checkMesh'},{label:'Solver log',url:'/demos/aero/textbook-pitzdaily/log.simpleFoam'}]}
+    evidence: {label:'Proof document',url:'/demos/aero/textbook-pitzdaily/proof.html',secondary:[{label:'Machine-readable proof',url:'/demos/aero/textbook-pitzdaily/proof.json'},{label:'Mesh check log',url:'/demos/aero/textbook-pitzdaily/log.checkMesh'},{label:'Solver log',url:'/demos/aero/textbook-pitzdaily/log.simpleFoam'}]},
+    proofUrl:'/demos/aero/textbook-pitzdaily/proof.html'
   },
   {
     id: 'textbook-nozzle-wall-v6', folder: 'Textbook & verified runs', title: 'Nozzle · wall-refinement proof',
@@ -94,7 +132,8 @@ export const aeroCaseSeeds: AeroSeed[] = [
     },
     equations:[{title:'Mass conservation',latex:'\\dot m_{\\mathrm{in}}-\\dot m_{\\mathrm{out}}\\approx 0',assumptions:'Numerical conservation alone does not validate the physical model.'}],
     build:{geometry:'CadQuery/OpenCascade generated an axisymmetric nozzle wedge with dimension and topology checks.',mesh:'Gmsh generated a wall-resolved mesh; the linked manifest records 25,596 nodes and 12,600 volume elements.',solve:'rhoSimpleFoam completed the retained production proof run. See numerical gates in the linked result.',results:'Open the retained engineering-result JSON and demo visualization. The independent-validation gate remains open.'},
-    evidence:{label:'Engineering result',url:'/demos/aero/wall-refinement-v6/engineering-result.json',secondary:[{label:'Explore visual proof',url:'/software/aero/demo/'}]}
+    evidence:{label:'Proof document',url:'/software/aero/report/',secondary:[{label:'Engineering result',url:'/demos/aero/wall-refinement-v6/engineering-result.json'},{label:'Explore visual proof',url:'/software/aero/demo/'}]},
+    proofUrl:'/software/aero/report/'
   },
   {
     id: 'textbook-nozzle-precursor',folder:'Textbook & verified runs',title:'Nozzle · compressible precursor',
@@ -103,6 +142,7 @@ export const aeroCaseSeeds: AeroSeed[] = [
     fields:{goal:'Explore a bounded compressible-nozzle teaching run from geometry to solver evidence.',geometry:'Planar 2D converging-diverging passage; 0.3 m long, one cell through a 0.012 m span.',fluid:'Perfect-gas air, laminar, adiabatic walls; OpenFOAM rhoSimpleFoam.',conditions:'Mass-flow inlet 0.01 kg/s at 300 K; fixed outlet static pressure 101325 Pa.',success:'Review solver and mesh evidence while recognizing the unresolved energy-conservation and validation gates.',reference:'No independent geometry/experiment reference is attached.'},
     equations:[{title:'Continuity',latex:'\\dot m=\\rho U A',assumptions:'A prescribed mass-flow inlet does not demonstrate choking.'}],
     build:{geometry:'Parametric planar nozzle with documented axial stations and half-heights.',mesh:'Four-block, 864-cell structured precursor mesh; separate three-grid study is retained.',solve:'rhoSimpleFoam executed and wrote final artifacts; the numerical disposition is NOT_ESTABLISHED because the energy gate blocks.',results:'Explore telemetry, mesh study, gate list, and the engineering result. Do not treat completion as validated physics.'},
-    evidence:{label:'Case & settings',url:'/demos/aero/nozzle-precursor/case.json',secondary:[{label:'Mesh study',url:'/demos/aero/nozzle-precursor/mesh-study.json'},{label:'Solver evidence',url:'/demos/aero/nozzle-precursor/engineering-result.json'},{label:'Result view',url:'/demos/aero/nozzle-precursor/images/result.svg'}]}
+    evidence:{label:'Proof document',url:'/demos/aero/nozzle-precursor/proof.html',secondary:[{label:'Case & settings',url:'/demos/aero/nozzle-precursor/case.json'},{label:'Mesh study',url:'/demos/aero/nozzle-precursor/mesh-study.json'},{label:'Solver evidence',url:'/demos/aero/nozzle-precursor/engineering-result.json'},{label:'Result view',url:'/demos/aero/nozzle-precursor/images/result.svg'}]},
+    proofUrl:'/demos/aero/nozzle-precursor/proof.html',recordedGates:{solve:'warning'}
   }
 ];

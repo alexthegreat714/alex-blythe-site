@@ -1,0 +1,157 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-c4cf895ad8fa
+Exec   : rhoSimpleFoam
+Date   : Sep 12 2026
+Time   : 15:55:42
+Host   : "e1b30693e01a"
+PID    : 158
+I/O    : uncollated
+Case   : /work/reports/naca0012_dpw6_case1_20260912/level7
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Using #calcEntry at line 20 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e22bfa1016c0ec699caf02fcded505e94b954355.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Using #codeStream at line 22 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Using #codeStream at line 24 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_589a80ef61e9fc1ebf60b108fdedf9294b6fb881.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Using #codeStream at line 26 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Create mesh for time = 0
+
+
+SIMPLE: Convergence criteria found
+        p: tolerance 1e-06
+        U: tolerance 1e-05
+        "(k|omega|h)": tolerance 1e-05
+
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+--> FOAM Warning : 
+    From function const Foam::HashTable<Foam::List<int>, Foam::word>& Foam::polyBoundaryMesh::groupPatchIDs() const
+    in file meshes/polyMesh/polyBoundaryMesh/polyBoundaryMesh.C at line 503
+    Removing patchGroup 'wall' which clashes with patch 1 of the same name.
+Reading field U
+
+Using #calcEntry at line 20 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/0/U"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/0/U" master-only-reading:0
+Using #codeStream at line 22 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/0/U"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_b60ce9d2a69fb64b906fa20d6d1ac1c771f75d52.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/0/U" master-only-reading:0
+Using #codeStream at line 24 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/0/U"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_b24860389b04b884594f48375338d4c4b7f87a35.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/0/U" master-only-reading:0
+Using #codeStream at line 26 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/0/U"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_745ec2252e2f9d366be55cf61b026fc5a3afbf02.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/0/U" master-only-reading:0
+Reading/calculating face flux field phi
+
+Creating turbulence model
+
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kOmegaSST
+Selecting patchDistMethod meshWave
+RAS
+{
+    model           kOmegaSST;
+    turbulence      on;
+    printCoeffs     on;
+    alphaK1         0.85;
+    alphaK2         1;
+    alphaOmega1     0.5;
+    alphaOmega2     0.856;
+    gamma1          0.5555555556;
+    gamma2          0.44;
+    beta1           0.075;
+    beta2           0.0828;
+    betaStar        0.09;
+    a1              0.31;
+    b1              1;
+    c1              10;
+    F3              false;
+}
+
+Creating thermophysical transport model
+
+Selecting thermophysical transport type RAS
+Selecting default RAS thermophysical transport model unityLewisEddyDiffusivity
+No MRF models present
+
+No fvModels present
+No fvConstraints present
+
+Starting time loop
+
+Time = 1s
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.9999999724, Final residual = 0.0002207495509, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 0.9999999844, Final residual = 0.0002144076981, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.999999971, Final residual = 0.003740114188, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.9999999991, Final residual = 0.001808798971, No Iterations 6
+time step continuity errors : sum local = 8.900905219e-08, global = -2.993978305e-08, cumulative = -2.993978305e-08
+DILUPBiCGStab:  Solving for omega, Initial residual = 1, Final residual = 0.003742741059, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 1, Final residual = 0.02350184143, No Iterations 1
+ExecutionTime = 0.099395 s  ClockTime = 1 s
+
+Time = 2s
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.005975874316, Final residual = 0.0002785581691, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 0.01004920787, Final residual = 0.0006530054861, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.01330050374, Final residual = 0.0008917009485, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2046868731, Final residual = 0.001243809516, No Iterations 1
+time step continuity errors : sum local = 6.43828583e-05, global = -1.078134941e-06, cumulative = -1.108074725e-06
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.01975529317, Final residual = 0.0003451937227, No Iterations 1
+bounding omega, min: -1248195.997 max: 33509479.36 average: 173526.2485
+DILUPBiCGStab:  Solving for k, Initial residual = 0.2920044452, Final residual = 0.008093094374, No Iterations 1
+ExecutionTime = 0.110882 s  ClockTime = 1 s
+
+Time = 3s
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.0001031565862, Final residual = 6.473107987e-06, No Iterations 1
+DILUPBiCGStab:  Solving for Uz, Initial residual = 7.381146079e-05, Final residual = 5.486205665e-06, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 5.301103541e-05, Final residual = 2.732849699e-06, No Iterations 1
+
+
+--> FOAM FATAL ERROR: 
+Negative initial temperature T0: -181.4390974
+
+    From function static Foam::scalar Foam::species::thermo<Thermo, Type>::T(const ThermoType&, Foam::scalar, Foam::scalar, Foam::scalar, FType, dFdTType, LimitType, bool) [with ThermoType = Foam::species::thermo<Foam::hConstThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy>; FType = double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double, double) const; dFdTType = double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double, double) const; LimitType = double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double) const; Thermo = Foam::hConstThermo<Foam::perfectGas<Foam::specie> >; Type = Foam::sensibleEnthalpy; Foam::scalar = double]
+    in file /home/ubuntu/OpenFOAM/OpenFOAM-10/src/thermophysicalModels/specie/lnInclude/thermoI.H at line 299.
+
+FOAM aborting
+
+#0  Foam::error::printStack(Foam::Ostream&) at ??:?
+#1  Foam::error::abort() at ??:?
+#2  double Foam::species::thermo<Foam::hConstThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy>::T<Foam::species::thermo<Foam::hConstThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy>, double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double, double) const, double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double, double) const, double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double) const>(Foam::species::thermo<Foam::hConstThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy> const&, double, double, double, double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double, double) const, double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double, double) const, double (Foam::hConstThermo<Foam::perfectGas<Foam::specie> >::*)(double) const, bool) at ??:?
+#3  Foam::hePsiThermo<Foam::psiThermo::composite, Foam::pureMixture<Foam::constTransport<Foam::species::thermo<Foam::hConstThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy> > > >::calculate() at ??:?
+#4  Foam::hePsiThermo<Foam::psiThermo::composite, Foam::pureMixture<Foam::constTransport<Foam::species::thermo<Foam::hConstThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy> > > >::correct() at ??:?
+#5  ? in "/opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/rhoSimpleFoam"
+#6  __libc_start_main in "/lib/x86_64-linux-gnu/libc.so.6"
+#7  ? in "/opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/rhoSimpleFoam"

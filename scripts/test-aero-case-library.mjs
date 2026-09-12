@@ -11,7 +11,7 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{
   await page.goto(base+'/software/aero/current/');
   await page.locator('[data-library]').click();
-  assert.equal(await page.locator('[data-library-tree] .seed').count(),5);
+  assert.equal(await page.locator('[data-library-tree] .seed').count(),7);
   assert.equal(await page.locator('.library-case .case-open').first().evaluate(el=>getComputedStyle(el).backgroundColor),'rgba(0, 0, 0, 0)','Dynamic library rows must use dark styling');
   assert.match(await page.locator('[data-library-tree]').textContent(),/NACA studies.*AIAA studies.*Textbook & verified runs/s);
   await page.locator('.library-folder').filter({has:page.locator('summary', {hasText:'NACA studies'})}).locator('summary').click();
@@ -30,7 +30,9 @@ try{
   assert.match(await page.locator('[data-stage-evidence]').textContent(),/RECORDED RUN/);
   assert.match(await page.locator('[data-stage-needs]').textContent(),/12,225/);
   await page.locator('[data-stage="5"]').click();
-  assert.equal(await page.locator('[data-stage-label]').nth(5).textContent(),'Recorded evidence');
+  assert.equal(await page.locator('[data-stage-label]').nth(5).textContent(),'Validation open');
+  assert.equal(await page.locator('[data-proof-embed]').isVisible(),true);
+  assert.match(await page.frameLocator('[data-proof-frame]').locator('h1').textContent(),/pitzDaily/);
   const evidence=await (await page.request.get(base+'/demos/aero/textbook-pitzdaily/evidence.json')).json();
   assert.equal(evidence.solver.finalFieldTime,'287');
   await page.locator('[data-stage="0"]').click();
@@ -39,12 +41,13 @@ try{
   assert.match(await page.locator('[data-example-status]').textContent(),/inputs changed/i);
   await page.locator('[data-stage="5"]').click();
   assert.match(await page.locator('[data-stage-evidence]').textContent(),/RERUN REQUIRED/);
+  assert.match(await page.locator('[data-proof-note]').textContent(),/Historical proof only/);
   await page.reload();
   assert.match(await page.locator('[data-example-status]').textContent(),/inputs changed/i);
   await page.locator('[data-new]').click();
   assert.equal(await page.locator('#field-goal').inputValue(),'');
   await page.locator('[data-library]').click();
-  assert.ok(await page.locator('[data-library-tree] .library-case').count()>=8);
+  assert.ok(await page.locator('[data-library-tree] .library-case').count()>=10);
   page.once('dialog',dialog=>dialog.accept('Research'));
   await page.locator('[data-add-folder]').click();
   await page.locator('.library-case.active select').selectOption('Research');
@@ -56,6 +59,55 @@ try{
   await page.locator('[data-library]').click();
   assert.match(await page.locator('.library-folder').filter({has:page.locator('summary',{hasText:'Research'})}).textContent(),/Untitled case/);
   assert.deepEqual(errors,[]);
+  const nacaProof=await (await page.request.get(base+'/demos/aero/naca0012-openfoam-tutorial/proof.json')).json();
+  const aiaaProof=await (await page.request.get(base+'/demos/aero/aiaa-dpw6-case1-precursor/proof.json')).json();
+  assert.equal(nacaProof.observations.iterations,1581);
+  assert.equal(aiaaProof.observations.iterations,1045);
+  assert.equal(aiaaProof.gates.independent_validation,'not established');
+  assert.ok(aiaaProof.sha256['failed-nasa-grid-log.rhoSimpleFoam']);
+  for(const slug of ['naca0012-openfoam-tutorial','aiaa-dpw6-case1-precursor','textbook-pitzdaily']){
+    const proof=await (await page.request.get(base+`/demos/aero/${slug}/proof.json`)).json();
+    assert.equal(proof.observations.solver_converged,true);
+    assert.equal(proof.gates.design_release,'blocked');
+    for(const [name,digest] of Object.entries(proof.sha256)){
+      const bytes=await readFile(new URL(`../public/demos/aero/${slug}/${name}`,import.meta.url));
+      assert.equal(createHash('sha256').update(bytes).digest('hex'),digest,`${slug}/${name} digest`);
+      assert.equal((await page.request.get(base+`/demos/aero/${slug}/${name}`)).status(),200);
+    }
+    assert.equal((await page.request.get(base+`/demos/aero/${slug}/proof.md`)).status(),200);
+  }
+  const examples=await browser.newPage({viewport:{width:1360,height:900}});
+  await examples.goto(base+'/software/aero/current/');
+  await examples.locator('[data-library]').click();
+  await examples.locator('.library-folder').filter({has:examples.locator('summary',{hasText:'NACA studies'})}).locator('summary').click();
+  await examples.getByRole('button',{name:'NACA 0012 · OpenFOAM tutorial run'}).click();
+  await examples.locator('[data-stage="5"]').click();
+  assert.match(await examples.frameLocator('[data-proof-frame]').locator('h1').textContent(),/NACA 0012/);
+  assert.match(await examples.frameLocator('[data-proof-frame]').locator('body').textContent(),/1,581 SIMPLE iterations/);
+  await examples.locator('[data-library]').click();
+  await examples.locator('.library-folder').filter({has:examples.locator('summary',{hasText:'AIAA studies'})}).locator('summary').click();
+  await examples.getByRole('button',{name:'AIAA DPW-6 Case 1 · NACA 0012 precursor'}).click();
+  assert.equal(await examples.locator('[data-stage-label]').nth(3).textContent(),'Mesh warning');
+  assert.equal(await examples.locator('[data-stage-label]').nth(5).textContent(),'Validation open');
+  await examples.locator('[data-stage="5"]').click();
+  await examples.frameLocator('[data-proof-frame]').getByRole('heading',{name:/DPW-6 Case 1/}).waitFor();
+  assert.match(await examples.frameLocator('[data-proof-frame]').locator('h1').textContent(),/DPW-6 Case 1/);
+  assert.match(await examples.frameLocator('[data-proof-frame]').locator('body').textContent(),/not a workshop submission/i);
+  await examples.screenshot({path:'.qa/current-workspace/aiaa-proof-results.png'});
+  await examples.setViewportSize({width:390,height:844});
+  assert.ok(await examples.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Embedded proof must not overflow mobile width');
+  await examples.locator('[data-stage="5"]').click();
+  await examples.waitForTimeout(450);
+  await examples.screenshot({path:'.qa/current-workspace/aiaa-proof-mobile.png'});
+  await examples.setViewportSize({width:1360,height:900});
+  await examples.locator('[data-library]').click();
+  await examples.locator('.library-folder').filter({has:examples.locator('summary',{hasText:'Textbook & verified runs'})}).locator('summary').click();
+  await examples.getByRole('button',{name:'Nozzle · compressible precursor'}).click();
+  assert.equal(await examples.locator('[data-stage-label]').nth(4).textContent(),'Numerical gate open');
+  await examples.locator('[data-stage="5"]').click();
+  await examples.frameLocator('[data-proof-frame]').getByRole('heading',{name:/Compressible nozzle precursor/}).waitFor();
+  assert.match(await examples.frameLocator('[data-proof-frame]').locator('body').textContent(),/Energy gate unresolved/);
+  await examples.close();
   for(const file of ['log.blockMesh','log.checkMesh','log.simpleFoam']){
     const bytes=await readFile(new URL(`../public/demos/aero/textbook-pitzdaily/${file}`,import.meta.url));
     assert.equal(createHash('sha256').update(bytes).digest('hex'),evidence.evidence[file]);

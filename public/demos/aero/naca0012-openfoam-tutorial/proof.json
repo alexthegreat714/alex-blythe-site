@@ -1,0 +1,54 @@
+{
+  "schema": "aero.public.cfd_proof.v1",
+  "title": "NACA 0012 · OpenFOAM tutorial run",
+  "classification": "Recorded teaching run · not NASA validation",
+  "executed_at": "2026-09-12",
+  "runtime": "isolated Linux container; OpenFOAM Foundation v10; CPU",
+  "source": {
+    "label": "OpenFOAM Foundation v10 aerofoilNACA0012 tutorial",
+    "url": "https://github.com/OpenFOAM/OpenFOAM-10/tree/master/tutorials/compressible/rhoSimpleFoam/aerofoilNACA0012"
+  },
+  "setup": [
+    "NACA 0012 tutorial geometry and mesh",
+    "rhoSimpleFoam; compressible steady k-ω SST RANS",
+    "250 m/s inlet speed; 0° angle of attack",
+    "Tutorial air properties and boundary conditions"
+  ],
+  "observations": {
+    "mesh_cells": 16200,
+    "mesh_check": "warning",
+    "high_aspect_ratio": {
+      "maximum": 42738.45121,
+      "affected_cells": 710
+    },
+    "solver_converged": true,
+    "iterations": 1581,
+    "final_field_directory": "1581",
+    "force_coefficients": {
+      "Cm": -1.1016344393e-07,
+      "Cd": 0.0079097431926,
+      "Cl": 2.5115272192e-06,
+      "last50_cl_spread_percent": 18.89471802942107
+    },
+    "derived_condition": null
+  },
+  "gates": {
+    "solver_completion": "pass",
+    "mesh_quality": "warning",
+    "grid_independence": "not established",
+    "independent_validation": "not established",
+    "design_release": "blocked"
+  },
+  "limitations": [
+    "checkMesh reports one failed check: 710 high-aspect-ratio cells (maximum 42,738). No negative-volume or non-orthogonality failure was reported.",
+    "This is not the NASA TMR or AIAA DPW-6 Mach/Reynolds/angle-of-attack condition.",
+    "No grid-independence study, experimental comparison, or Cp/Cf comparison was performed.",
+    "Solver convergence proves numerical completion, not physical validity or design readiness."
+  ],
+  "sha256": {
+    "log.checkMesh": "1a0ded7ba949dc31104a99a51fcd12abe7c15ce8489ff934ed334f698480c51e",
+    "log.rhoSimpleFoam": "9de88027ca4d78c260389c434734876d45618577c76d516150d80663ad8c9997",
+    "forceCoeffs.dat": "62c8c0f5fcc13ad56bf0b480db10916110335364ee723c8517c4cdaa0607db93",
+    "force-history.svg": "ec3e66ed00730cc733d1ea5fc44d90ddc13bb05e62db19a434b5ef6b6a1d7326"
+  }
+}

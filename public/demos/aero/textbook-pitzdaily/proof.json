@@ -1,0 +1,43 @@
+{
+  "schema": "aero.public.cfd_proof.v1",
+  "title": "Backward-facing step · pitzDaily tutorial run",
+  "classification": "Recorded teaching run · not experimental validation",
+  "executed_at": "2026-09-12",
+  "runtime": "isolated Linux container; OpenFOAM Foundation v10; CPU",
+  "source": {
+    "label": "OpenFOAM Foundation v10 pitzDaily tutorial",
+    "url": "https://openfoam.org/download/10-source/"
+  },
+  "setup": [
+    "OpenFOAM Foundation v10 pitzDaily backward-facing-step mesh",
+    "simpleFoam; incompressible steady k-ε RANS",
+    "Uniform inlet velocity 10 m/s; kinematic viscosity 10⁻⁵ m²/s",
+    "Tutorial boundary conditions"
+  ],
+  "observations": {
+    "mesh_cells": 12225,
+    "mesh_check": "pass",
+    "high_aspect_ratio": null,
+    "solver_converged": true,
+    "iterations": 287,
+    "final_field_directory": "287",
+    "force_coefficients": null,
+    "derived_condition": null
+  },
+  "gates": {
+    "solver_completion": "pass",
+    "mesh_quality": "pass",
+    "grid_independence": "not established",
+    "independent_validation": "not established",
+    "design_release": "blocked"
+  },
+  "limitations": [
+    "Mesh and solver completion are documented, but no mesh-independence study was performed.",
+    "No independent experimental validation or design-use claim is made.",
+    "The full OpenFOAM field directories are retained locally, not published to the public browser."
+  ],
+  "sha256": {
+    "log.checkMesh": "d65d9f3e8f5fcf97055296b2795ee5b73aab0b5f267e725f96b3ac23407603df",
+    "log.simpleFoam": "711d11169eec7f81948ac1d2c6facf4b2634c2bfd263adc77edb936fbbcba90e"
+  }
+}

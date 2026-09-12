@@ -31,7 +31,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
         <section data-panel="record"><div class="record-intro"><h3>Define before you solve.</h3><p>Values from the model appear as proposals. Edit or confirm each one to prepare the next step.</p></div><div data-fields></div></section>
         <section data-panel="math" hidden><div class="record-intro"><h3>First principles, in view.</h3><p>Equations and assumptions grow from the conversation. This is rendered LaTeX—not a solver result.</p></div><div data-equations></div></section>
         <section data-panel="source" hidden><label for="tex">Generated from the current record · export for external compilation</label><textarea id="tex" readonly spellcheck="false"></textarea></section>
-        <section class="stage-checklist" data-stage-checklist hidden><small data-stage-name></small><h3 data-stage-title></h3><ul data-stage-needs></ul><div data-stage-evidence></div><p data-stage-caveat>No job has been started. Preparation is not execution or validation.</p><a href="https://aegis.alex-blythe.com/aero-workspaces/">Open authenticated execution workspace ↗</a></section>
+        <section class="stage-checklist" data-stage-checklist hidden><small data-stage-name></small><h3 data-stage-title></h3><section class="proof-embed" data-proof-embed hidden><h4>Run proof · original inputs</h4><p data-proof-note>Recorded evidence applies to the original example only.</p><iframe data-proof-frame title="Recorded CFD run proof document" loading="lazy" sandbox="allow-popups"></iframe></section><ul data-stage-needs></ul><div data-stage-evidence></div><p data-stage-caveat>No job has been started. Preparation is not execution or validation.</p><a href="https://aegis.alex-blythe.com/aero-workspaces/">Open authenticated execution workspace ↗</a></section>
       </div>
       <footer class="document-footer"><div><strong data-readiness>0 / 6 confirmed</strong><span data-readiness-note>Requirements still needed</span></div><button data-math>Review math →</button></footer>
     </section>
@@ -179,17 +179,21 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('[data-readiness-note]').textContent=confirmed===6?'Requirements reviewed · math still needs review':'Requirements still needed';
     root.querySelectorAll<HTMLElement>('[data-stage]').forEach((button,i)=>{
       const recorded=i>1&&evidenceCurrent();
-      const percent=i===0?Math.round(confirmed/6*100):i===1?(session.equations.length?50:0):recorded?100:0;
+      const qualityWarning=recorded&&i===3&&seed?.recordedGates?.mesh==='warning';
+      const solverWarning=recorded&&i===4&&seed?.recordedGates?.solve==='warning';
+      const validationOpen=recorded&&i===5;
+      const percent=i===0?Math.round(confirmed/6*100):i===1?(session.equations.length?50:0):recorded?(qualityWarning||solverWarning?75:validationOpen?60:100):0;
       button.querySelector<HTMLElement>('i')!.style.width=`${percent}%`;
-      button.querySelector<HTMLElement>('[data-stage-label]')!.textContent=i===0?`${percent}% confirmed`:i===1&&percent?'Proposed · review':i>1&&recorded?'Recorded evidence':i>1&&seed?.status==='recorded'?'Rerun needed':i>1?'Not prepared':'Awaiting inputs';
-      button.classList.toggle('historical-run',recorded);
+      button.querySelector<HTMLElement>('[data-stage-label]')!.textContent=i===0?`${percent}% confirmed`:i===1&&percent?'Proposed · review':qualityWarning?'Mesh warning':solverWarning?'Numerical gate open':validationOpen?'Validation open':i>1&&recorded?'Recorded evidence':i>1&&seed?.status==='recorded'?'Rerun needed':i>1?'Not prepared':'Awaiting inputs';
+      button.classList.toggle('historical-run',recorded&&!qualityWarning&&!solverWarning&&!validationOpen);
+      button.classList.toggle('gate-warning',Boolean(qualityWarning||solverWarning||validationOpen));
     });
   }
   function panel(name:string){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
   const needs=[[],[],['A dimensioned geometry or CAD artifact','Units, topology, interfaces and tolerance plan','User-reviewed geometry revision'],['Verified geometry revision','Boundary patches, wall treatment and target resolution','Mesh generation and quality-check artifacts'],['Accepted mesh and reviewed boundary conditions','Solver, convergence limits and monitors','Explicit approval on an authenticated execution route'],['Completed solver run and field artifacts','Conservation and convergence evidence','Independent reference and fidelity assessment']];
   function selectStage(index:number){
     stage=index;root.querySelectorAll('[data-stage]').forEach((el,i)=>el.setAttribute('aria-current',i===index?'step':'false'));
-    if(index<2){panel(index===0?'record':'math');return;}
+    if(index<2){panel(index===0?'record':'math');$('[data-proof-embed]').hidden=true;$<HTMLIFrameElement>('[data-proof-frame]').removeAttribute('src');$('.document-scroll').scrollTop=0;return;}
     root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));
     root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=true);
     $('[data-stage-checklist]').hidden=false;$('[data-stage-name]').textContent=`STAGE 0${index+1}`;
@@ -197,14 +201,20 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('[data-stage-title]').textContent=seed?['','','Geometry & CAD','Mesh construction','Solver setup & run','Results & validation'][index]:'What this stage needs';
     $('[data-stage-needs]').replaceChildren();
     if(seed&&phase){const li=document.createElement('li');li.textContent=seed.build[phase];$('[data-stage-needs]').append(li);}
-    needs[index].forEach(text=>{const li=document.createElement('li');li.textContent=text;$('[data-stage-needs]').append(li);});
+    if(!(index===5&&seed?.proofUrl))needs[index].forEach(text=>{const li=document.createElement('li');li.textContent=text;$('[data-stage-needs]').append(li);});
     const evidence=$('[data-stage-evidence]');evidence.replaceChildren();
+    const proofEmbed=$('[data-proof-embed]');proofEmbed.hidden=!(index===5&&seed?.proofUrl);
+    const proofFrame=$<HTMLIFrameElement>('[data-proof-frame]');
+    if(index===5&&seed?.proofUrl){proofFrame.src=seed.proofUrl;$('[data-proof-note]').textContent=evidenceCurrent()?'This proof documents the unedited recorded inputs and the engineering gates.':'Historical proof only: your edited inputs need a fresh solver run.';}
+    else proofFrame.removeAttribute('src');
     if(seed){
       const badge=document.createElement('strong');badge.className='evidence-badge';badge.textContent=seed.status==='setup'?'NOT RUN IN AERO':evidenceCurrent()?'RECORDED RUN · ORIGINAL INPUTS':'HISTORICAL RUN · RERUN REQUIRED';evidence.append(badge);
       const source=document.createElement('a');source.href=seed.sourceUrl;source.target='_blank';source.rel='noopener noreferrer';source.textContent=`Source: ${seed.sourceLabel} ↗`;evidence.append(source);
       if(seed.evidence){const links=[{label:seed.evidence.label,url:seed.evidence.url},...(seed.evidence.secondary||[])];for(const item of links){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.label+' ↗';evidence.append(a);}}
       $('[data-stage-caveat]').textContent=seed.status==='setup'?'This is a sourced study plan, not a completed simulation. Import geometry, build a mesh, run, and validate before claiming results.':evidenceCurrent()?'These are recorded solver artifacts for the unedited preset. This browser cannot launch a new solver job.':'Inputs changed. Recorded artifacts remain viewable as a historical baseline, but they do not establish the modified case.';
     }else $('[data-stage-caveat]').textContent='No job has been started. Preparation is not execution or validation.';
+    $('.document-scroll').scrollTop=0;
+    if(window.matchMedia('(max-width:700px)').matches)$('.document').scrollIntoView({behavior:'smooth',block:'start'});
   }
   async function connect(){
     const ticket=++serial;connected=false;
@@ -323,7 +333,10 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   [data-theme-toggle][aria-pressed='true'] { border-color:#67d6d0; color:#9ee7e4; background:#1c3c45; }
   [data-library]{border-color:#588c99;background:#203b48;color:#b5edeb;font-weight:700;white-space:nowrap}[data-case-count]{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:50%;background:#376875;color:#e8ffff;font-size:10px;margin-left:4px}
   .stages .historical-run .track i{background:#68bfa9}.example-strip{display:flex;align-items:center;gap:12px;padding:7px 20px;border-bottom:1px solid var(--doc-rule);font-size:10px;color:var(--doc-muted);min-width:0}.example-strip span:nth-child(2){overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.example-strip span:first-child{flex:none;color:var(--doc-accent);font-weight:800}.example-strip a{flex:none;color:var(--doc-accent);margin-left:auto;border-bottom:1px solid}
+  .stages .gate-warning .track i{background:#e8ac67}.stages .gate-warning small{color:#efbf85}
+  @media(max-width:700px){.document{scroll-margin-top:178px}}
   [data-stage-evidence]{margin:20px 0;padding:14px;border:1px solid var(--doc-rule);background:var(--doc-card);border-radius:8px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}[data-stage-evidence]:empty{display:none}[data-stage-evidence] .evidence-badge{font-size:10px;letter-spacing:.06em;color:var(--doc-accent);width:100%}[data-stage-evidence] a{margin:0;font-size:11px}
+  .proof-embed{margin:22px 0;border:1px solid var(--doc-rule);border-radius:8px;overflow:hidden;background:var(--doc-card)}.proof-embed[hidden]{display:none}.proof-embed h4{font-size:14px;margin:14px 15px 3px}.proof-embed p{font-size:11px;margin:0 15px 12px;color:var(--doc-muted)}.proof-embed iframe{display:block;width:100%;height:min(65vh,700px);border:0;background:#101d26}
   .case-library{width:min(620px,96vw);max-height:min(85dvh,850px);padding:0;overflow:auto;border-color:#50717e;background:#152731;color:#e2f1f1}.case-library::backdrop{background:#071217b8}.library-heading{position:sticky;top:0;background:#152731;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid #344c57}.library-heading h2{font-size:19px;margin:4px 0}.library-heading small{font-size:9px;letter-spacing:.13em;color:#82d6d5}.library-heading form{margin:0}.library-heading button{font-size:21px;line-height:1;padding:5px 10px}.case-library>p{margin:14px 22px;color:#a8bdc7;font-size:12px}.library-toolbar{display:flex;align-items:center;justify-content:space-between;padding:0 22px 12px;color:#8da9b6;font-size:10px}.library-toolbar button{font-size:11px}.library-folder{border-top:1px solid #314753}.library-folder summary{padding:13px 22px;cursor:pointer;font-weight:750;color:#c6e8e8;list-style:none}.library-folder summary::-webkit-details-marker{display:none}.library-folder[open] summary{background:#193540}.library-folder>p{margin:8px 22px 20px;font-size:11px}.library-case{padding:10px 22px 12px;border-top:1px solid #273d48;display:grid;gap:4px}.library-case.active{border-left:3px solid #6fd0ca;background:#1d3b45}.library-case.seed{background:#14252f}.library-case .case-open{border:0;background:transparent;text-align:left;padding:2px 0;color:#e9f5f6;font-weight:700}.library-case .case-open:hover{text-decoration:underline}.library-case small{font-size:10px;color:#a3bdc7}.case-controls{display:flex;gap:6px;align-items:center;margin-top:4px}.case-controls button,.case-controls select{font-size:10px;padding:4px 7px;color:#b5cfd8;background:#1b3340;border:1px solid #3a5a68;border-radius:4px}.case-controls select{max-width:190px}
   :global(.library-folder){border-top:1px solid #314753}
   :global(.library-folder summary){padding:13px 22px;cursor:pointer;font-weight:750;color:#c6e8e8;list-style:none}

@@ -1,0 +1,136 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-c4cf895ad8fa
+Exec   : checkMesh
+Date   : Sep 12 2026
+Time   : 15:54:20
+Host   : "1f6f6e2475d1"
+PID    : 158
+I/O    : uncollated
+Case   : /work/reports/naca0012_dpw6_case1_20260912/level7
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Using #calcEntry at line 20 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e22bfa1016c0ec699caf02fcded505e94b954355.so"
+Creating new library in "dynamicCode/_e22bfa1016c0ec699caf02fcded505e94b954355/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e22bfa1016c0ec699caf02fcded505e94b954355.so"
+"/opt/openfoam10/etc/codeTemplates/dynamicCode/codeStreamTemplate.C" "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e22bfa1016c0ec699caf02fcded505e94b954355/codeStreamTemplate.C"
+Invoking "wmake -s libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e22bfa1016c0ec699caf02fcded505e94b954355"
+wmake libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e22bfa1016c0ec699caf02fcded505e94b954355
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e22bfa1016c0ec699caf02fcded505e94b954355/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_e22bfa1016c0ec699caf02fcded505e94b954355.so
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Opening cached dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e22bfa1016c0ec699caf02fcded505e94b954355.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Using #codeStream at line 22 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522.so"
+Creating new library in "dynamicCode/_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522/platforms/linux64GccDPInt32Opt/lib/libcodeStream_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522.so"
+"/opt/openfoam10/etc/codeTemplates/dynamicCode/codeStreamTemplate.C" "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522/codeStreamTemplate.C"
+Invoking "wmake -s libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522"
+wmake libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522.so
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Opening cached dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_aa0d0b4cea1c601b21d3a327257d9e7bb2c43522.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Using #codeStream at line 24 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_589a80ef61e9fc1ebf60b108fdedf9294b6fb881.so"
+Creating new library in "dynamicCode/_589a80ef61e9fc1ebf60b108fdedf9294b6fb881/platforms/linux64GccDPInt32Opt/lib/libcodeStream_589a80ef61e9fc1ebf60b108fdedf9294b6fb881.so"
+"/opt/openfoam10/etc/codeTemplates/dynamicCode/codeStreamTemplate.C" "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_589a80ef61e9fc1ebf60b108fdedf9294b6fb881/codeStreamTemplate.C"
+Invoking "wmake -s libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_589a80ef61e9fc1ebf60b108fdedf9294b6fb881"
+wmake libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_589a80ef61e9fc1ebf60b108fdedf9294b6fb881
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_589a80ef61e9fc1ebf60b108fdedf9294b6fb881/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_589a80ef61e9fc1ebf60b108fdedf9294b6fb881.so
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Opening cached dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_589a80ef61e9fc1ebf60b108fdedf9294b6fb881.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Using #codeStream at line 26 in file "/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible"
+Using #codeStream with "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0.so"
+Creating new library in "dynamicCode/_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0.so"
+"/opt/openfoam10/etc/codeTemplates/dynamicCode/codeStreamTemplate.C" "/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0/codeStreamTemplate.C"
+Invoking "wmake -s libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0"
+wmake libso /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0.so
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Opening cached dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_e8b68d4cdcb7123f785c2b6253e2bf78b4457ea0.so"
+codeStream : dictionary:"/work/reports/naca0012_dpw6_case1_20260912/level7/system/controlDict/functions/forceCoeffsCompressible/forceCoeffsCompressible" master-only-reading:1
+Create polyMesh for time = 0
+
+Time = 0s
+
+Mesh stats
+    points:           7408
+    internal points:  0
+    faces:            14456
+    internal faces:   7048
+    cells:            3584
+    faces per cell:   6
+    boundary patches: 3
+    point zones:      0
+    face zones:       0
+    cell zones:       0
+
+Overall number of cells of each type:
+    hexahedra:     3584
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    0
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Number of regions: 1 (OK).
+
+Checking patch topology for multiply connected surfaces...
+    Patch               Faces    Points   Surface topology                  
+    frontAndBack        7168     7408     ok (non-closed singly connected)  
+    wall                64       128      ok (non-closed singly connected)  
+    freestream          176      352      ok (non-closed singly connected)  
+
+Checking geometry...
+    Overall domain bounding box (-498.6673111 -1 -515.743173) (501 0 515.743173)
+    Mesh has 2 geometric (non-empty/wedge) directions (1 0 1)
+    Mesh has 2 solution (non-empty) directions (1 0 1)
+    All edges aligned with or perpendicular to non-empty directions.
+    Boundary openness (0 8.101677695e-18 -2.371276959e-19) OK.
+ ***High aspect ratio cells found, Max aspect ratio: 20372650.76, number of cells 454
+  <<Writing 454 cells with high aspect ratio to set highAspectRatioCells
+    Minimum face area = 2.741896886e-08. Maximum face area = 36012.81109.  Face area magnitudes OK.
+    Min volume = 2.741896886e-08. Max volume = 36012.81109.  Total volume = 897150.7441.  Cell volumes OK.
+    Mesh non-orthogonality Max: 85.63453493 average: 15.05835434
+   *Number of severely non-orthogonal (> 70 degrees) faces: 166.
+    Non-orthogonality check OK.
+  <<Writing 166 non-orthogonal faces to set nonOrthoFaces
+    Face pyramids OK.
+    Max skewness = 0.5787453862 OK.
+    Coupled point location match (average 0) OK.
+
+Failed 1 mesh checks.
+
+End
+

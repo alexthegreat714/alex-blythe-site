@@ -1,0 +1,67 @@
+{
+  "schema": "aero.public.cfd_proof.v1",
+  "title": "AIAA DPW-6 Case 1 · NACA 0012 precursor",
+  "classification": "Recorded condition-matched precursor · not a workshop submission",
+  "executed_at": "2026-09-12",
+  "runtime": "isolated Linux container; OpenFOAM Foundation v10; CPU",
+  "source": {
+    "label": "AIAA DPW-6 requested cases, Case 1",
+    "url": "https://aiaa-dpw.larc.nasa.gov/Workshop6/DPW6_Test_Cases_2015-10-21.pdf"
+  },
+  "setup": [
+    "OpenFOAM v10 tutorial NACA 0012 geometry and 16,200-cell mesh",
+    "rhoSimpleFoam; compressible steady k-ω SST RANS",
+    "Mach 0.15; Re_c 6,000,000; 10° angle of attack; 1 m chord",
+    "T∞ = 300 K; U∞ = 52.1596945 m/s; p∞ = 180,684.56 Pa; μ = 1.82×10⁻⁵ Pa·s"
+  ],
+  "observations": {
+    "mesh_cells": 16200,
+    "mesh_check": "warning",
+    "high_aspect_ratio": {
+      "maximum": 42738.45121,
+      "affected_cells": 710
+    },
+    "solver_converged": true,
+    "iterations": 1045,
+    "final_field_directory": "1045",
+    "force_coefficients": {
+      "Cm": -0.048606746293,
+      "Cd": 0.013379317533,
+      "Cl": 1.0903395222,
+      "last50_cl_spread_percent": 0.05884694509702362
+    },
+    "derived_condition": {
+      "mach": 0.15000000006206785,
+      "reynolds_chord": 6000000.152408401,
+      "angle_degrees": 10.0,
+      "density_kg_m3": 2.093570597385935,
+      "pressure_pa": 180684.56,
+      "speed_m_s": 52.1596945,
+      "temperature_k": 300.0,
+      "dynamic_viscosity_pa_s": 1.82e-05
+    }
+  },
+  "gates": {
+    "solver_completion": "pass",
+    "mesh_quality": "warning",
+    "grid_independence": "not established",
+    "independent_validation": "not established",
+    "design_release": "blocked"
+  },
+  "limitations": [
+    "The official DPW-6 Case 1 asks for 500-chord farfield and a converged grid sequence. This tutorial-derived mesh extends about 50 chords upstream/transverse and 100 downstream; no grid sequence is complete.",
+    "k-ω SST is not the NASA SA reference-model setup; point-vortex/farfield treatment is also not matched. CL/CD are therefore not a like-for-like NASA validation comparison.",
+    "checkMesh reports one failed check: 710 high-aspect-ratio cells (maximum 42,738). No negative-volume or non-orthogonality failure was reported.",
+    "An official NASA Family I grid was imported and patched separately, but its attempted rhoSimpleFoam run failed (wall-model floating-point exception, then nonphysical temperature after a boundary workaround). Failed logs are retained and linked; those grids are not used for the reported coefficients.",
+    "No Cp/Cf comparison, independent physical reference comparison, or design-release validation was performed."
+  ],
+  "sha256": {
+    "log.checkMesh": "7ae40720d030884e491f5896e02325d35768f2f23ac07b3a8bdcbebcfc670c4e",
+    "log.rhoSimpleFoam": "df6642a8df48f7207d648c1f799a5f3872cc645efc14fdc47913dc8bf08e65f0",
+    "forceCoeffs.dat": "a70bd483b94fa9d974f1613254388c6ff00fea59a180c3d6d73202f89776e2c8",
+    "force-history.svg": "5d96dc686ad46b1dd7872d52701720dd31d0ff19505add86c512d3c7b1a4ab87",
+    "failed-nasa-grid-log.checkMesh": "fe91264a535c0ba8d58e7e81af0d19504ec1233e24508908cdfd0680e7efc08b",
+    "failed-nasa-grid-log.rhoSimpleFoam": "ed0c711a372d1743b6d452f1b4808d00d9505aad881caf882ff4ec0f7477df92",
+    "failed-nasa-grid-log.rhoSimpleFoam.fixedOmega": "86027e0bb68823da06aba2fd4c9859cff4ce48c2773b5bfbd787a8e9531d680d"
+  }
+}
