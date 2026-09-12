@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Aero structural proof — Rev 1.0</title><style>body{max-width:1100px;margin:40px auto;padding:24px;background:#10191e;color:#d3e6eb;font:16px/1.7 system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}a{color:#63d9d2}</style><a href="/software/aero/current/">Open Aero → Saved cases → Structural studies</a><pre># Aero FEA implementation and acceptance — Rev 1.0
+
+12 September 2026. Seven configurations across three proof studies; 21 real CalculiX solves.
+These are preliminary numerical studies, not experimental validation or design certification.
+
+| Configuration | Coarse / medium / fine elements | Fine peak MPa | Comparison displacement mm | Numerical | Requirements |
+|---|---|---:|---:|---|---|
+| bracket | 3150 / 6138 / 10623 | 29.2343 | 0.284587 | PASS | PASS |
+| tube | 48 / 108 / 192 | 6.10381 | 0.000835022 | NOT_ESTABLISHED | PASS |
+| tube3d | 4532 / 9918 / 17889 | 6.12857 | 0.000834988 | NOT_ESTABLISHED | PASS |
+| port | 9311 / 16988 / 26133 | 71.4077 | 0.000877595 | FAIL | NOT_ESTABLISHED |
+| thermal-free | 442 / 1844 / 3650 | 1.52738e-11 | 0.115 | PASS | PASS |
+| thermal-fixed | 442 / 1844 / 3650 | 80.4992 | 4.49986e-17 | PASS | PASS |
+| thermal-gradient | 442 / 1844 / 3650 | 110.293 | 0.009085 | PASS | FAIL |
+
+## First principles and interpretation
+
+### bracket
+Analytical expectation: 30 MPa, 0.285714 mm. Euler-Bernoulli gross section; hole and fixed-face local effects excluded.
+Measured comparison displacement: 0.284587 mm (transverse tip displacement).
+Medium-to-fine displacement change: 0.0647436%; selected stress change: 0.0573696%.
+Local stress: LOCAL_STRESS_REVIEW_REQUIRED. Disposition: PRELIMINARY_ONLY. Design readiness: NOT_ESTABLISHED.
+
+### tube
+Analytical expectation: 6.10717 MPa, 0.000835065 mm. Lame open-ended tube: sigma_z=0; bore von Mises and radial expansion. No port or end-cap load.
+Measured comparison displacement: 0.000835022 mm (bore radial expansion; 3D least-squares midspan fit removes arbitrary rigid translation).
+Medium-to-fine displacement change: 4.89554e-05%; selected stress change: 0.0297194%.
+Local stress: LOCAL_STRESS_REVIEW_REQUIRED. Disposition: PRELIMINARY_ONLY. Design readiness: NOT_ESTABLISHED.
+
+### tube3d
+Analytical expectation: 6.10717 MPa, 0.000835065 mm. Lame open-ended tube: sigma_z=0; bore von Mises and radial expansion. No port or end-cap load.
+Measured comparison displacement: 0.000834988 mm (bore radial expansion; 3D least-squares midspan fit removes arbitrary rigid translation).
+Medium-to-fine displacement change: 0.0300506%; selected stress change: 0.240446%.
+Local stress: LOCAL_STRESS_REVIEW_REQUIRED. Disposition: PRELIMINARY_ONLY. Design readiness: NOT_ESTABLISHED.
+
+### port
+Analytical expectation: 6.10717 MPa, 0.000835065 mm. Lame open-ended tube: sigma_z=0; bore von Mises and radial expansion. No port or end-cap load.
+Measured comparison displacement: 0.000877595 mm (bore radial expansion; 3D least-squares midspan fit removes arbitrary rigid translation).
+Medium-to-fine displacement change: 8.70769%; selected stress change: 55.856%.
+Local stress: LOCAL_SINGULARITY_SUSPECTED. Disposition: PRELIMINARY_ONLY. Design readiness: NOT_ESTABLISHED.
+
+### thermal-free
+Analytical expectation: 0 MPa, 0.115 mm. Uniaxial thermal strain, axial linear temperature profile; not triaxial constraint.
+Measured comparison displacement: 0.115 mm (axial displacement (not vector magnitude)).
+Medium-to-fine displacement change: 0%; selected stress change: 0.000292769%.
+Local stress: LOCAL_STRESS_REVIEW_REQUIRED. Disposition: PRELIMINARY_ONLY. Design readiness: NOT_ESTABLISHED.
+
+### thermal-fixed
+Analytical expectation: 80.5 MPa, 0 mm. Uniaxial thermal strain, axial linear temperature profile; not triaxial constraint.
+Measured comparison displacement: 4.49986e-17 mm (axial displacement (not vector magnitude)).
+Medium-to-fine displacement change: 0%; selected stress change: 4.99795e-13%.
+Local stress: LOCAL_STRESS_REVIEW_REQUIRED. Disposition: PRELIMINARY_ONLY. Design readiness: NOT_ESTABLISHED.
+
+### thermal-gradient
+Analytical expectation: 104.65 MPa, 0.008625 mm. Uniaxial thermal strain, axial linear temperature profile; not triaxial constraint.
+Measured comparison displacement: 0.009085 mm (axial displacement (not vector magnitude)).
+Medium-to-fine displacement change: 0.00197983%; selected stress change: 0.208803%.
+Local stress: LOCAL_STRESS_REVIEW_REQUIRED. Disposition: REJECT_OR_REDESIGN. Design readiness: NOT_ESTABLISHED.
+
+The side-port case is deliberately NOT accepted: peak stress and displacement do not meet the mesh-sensitivity criteria. It demonstrates escalation and refusal, not a successful manifold design. Its cut-port surfaces are unpressurized and require a revised physical load/support model before design use.
+The gradient thermal case demonstrates numerical PASS with engineering FAIL against a 100 MPa limit. Pressure cases retain missing reaction-equilibrium evidence as NOT_EVALUATED. Free-expansion roundoff stress is not treated as a singularity.
+
+## Software, tooling and security
+
+CalculiX: This is Version 2.20; Gmsh: 4.15.2; CadQuery: 2.7.0; OpenCascade/OCP: 7.8.1.1.
+All solve artifacts were SHA-256 checked before publication. No image, Docker control, host paths, raw host logs or private credentials are projected.
+Worker: 10001:10001, network none, read-only root, dropped capabilities, no-new-privileges, 2 CPU / 2 GiB / 64 PID limits, fixed executables and disposable scratch. Controller timeouts remove only their own named container.
+12 semantic MCP-compatible tools cover classification, fidelity, case proposals, geometry, mesh, preflight, submission, status, results, evidence, comparison and escalation. Human approval is a separate non-MCP endpoint with a different credential.
+FEA reuses the existing engineering workbench and scientific viewport. Public examples are recorded; public chat does not acquire a solver tool. The private gateway and existing-app registration are implemented; production supervision and private-profile deployment/configuration remain operational setup, not something these proof runs establish.
+
+## Capability answers
+
+- A. Analytical instead of FEA: yes, including a solver-free executable analytical path.
+- B. Axisymmetric instead of 3D: yes, demonstrated by the open-ended pressure tube.
+- C. Escalate to 3D: yes; the side port invalidates axisymmetry and requires a new approved candidate.
+- D. Strategy without arbitrary execution authority: yes; strict schemas and fixed worker commands.
+- E. Missing structural evidence as PASS: no; missing required evidence blocks acceptance.
+- F. Numerical versus engineering satisfaction: separate gates; demonstrated by the gradient thermal case.
+- G. Future CFD provenance: strict coupling envelope/validators exist; actual mapping and coupled execution remain disabled.
+- H. Same workbench/evidence philosophy: yes; common saved cases, stages and scientific projection.
+
+## Deferred / not claimed
+
+Beam, shell and plane models are selectable planning recommendations, not executable mesh/solver adapters in this revision. Modal, body-force templates, buckling, nonlinear/contact/transient/plasticity, arbitrary imported CAD/temperature fields, validated CFD field transfer, probe and section planes remain deferred.
+This is a bounded first structural release, not completion of every future mode named in the roadmap.
+
+## Source and verification
+
+Core files: Aero/fea/bounded/{contracts,worker,controller,evidence,tools,routes,server,integration}.py; worker Dockerfiles; test_bounded_fea.py; acceptance and packaging runners; AERO_FEA_PIPELINE.md; existing app/workbench registrations.
+UI files: existing pressure-viewer.ts extended for structural fields; structural-viewer.ts; aero-structural-cases.ts; current.astro; conversation gateway discipline context.
+Hermetic tests are separate from live integration. Existing cooling/study and conversation regressions are also rerun. See test-receipt.json alongside this document for the final counts.
+Primary references: https://www.dhondt.de/ and https://gmsh.info/doc/texinfo/gmsh.html.
+</pre></html>

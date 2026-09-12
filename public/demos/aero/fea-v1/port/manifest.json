@@ -1,0 +1,12 @@
+{
+  "schema": "aero.public.fea.proof.v1",
+  "source": "CALCULIX",
+  "case_fingerprint": "f460b33421cffb276d5cff9985d88a3cc34d09dc2a88b6544f3cd9f28be57bc9",
+  "artifacts": {
+    "result.json": "7c542a742457ed3cf8ed8dc34110acda0e5c887034360c22cdddd97a663f6118",
+    "case.json": "3632aac4e5a48c149042068701d80d4607d6e5009a5cc3ded79d97c36705e18a",
+    "surface.json": "99c1afbff6d9a35650799b9470e7d345f8235ff85d55d247f752e31a75d48174",
+    "geometry.json": "8912ab05a97ce038842c03331b300f4b8e7ef32aa49b4b5b0d3cfda7f967de23",
+    "geometry.stl": "ff1dad650ab678d2cae2767e85b43ca589ed40c37b887e1e2ab48eb7c45cbb4c"
+  }
+}

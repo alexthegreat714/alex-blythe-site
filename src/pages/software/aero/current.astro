@@ -43,6 +43,11 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 </main>
 <script>
   import {aeroCaseSeeds, type AeroSeed} from '../../../data/aero-case-library';
+  import {structuralSeeds} from '../../../data/aero-structural-cases';
+  import {mountStructuralViewer,mountStructuralGeometry} from '../../../lib/aero/structural-viewer';
+  aeroCaseSeeds.push(...structuralSeeds);
+  let disposeStructural:(()=>void)|undefined;
+  let structuralTicket=0;
   import {setupChannelStudy, channelFields, channelEquations, type ChannelState} from '../../../lib/aero/channel-study';
   import katex from 'katex';
   import 'katex/dist/katex.min.css';
@@ -182,6 +187,10 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('#document-title').textContent=activeCase.title;
     const seed=seedFor(activeCase),strip=$('[data-example-strip]');strip.hidden=!seed;
     if(seed){
+      if(seed.discipline==='FEA'&&seed.surfaceUrl&&index===2){
+        const viewport=document.createElement('section');evidence.append(viewport);
+        void mountStructuralGeometry(viewport,seed.surfaceUrl.replace('surface.json','geometry.stl')).then(dispose=>{if(viewTicket!==structuralTicket)dispose();else disposeStructural=dispose;}).catch(()=>{viewport.textContent='Recorded CAD could not load.';});
+      }
       const status=seed.status==='recorded'?(evidenceCurrent()?'Recorded run · original inputs':'Recorded run · inputs changed'):'Study setup · not run';
       $('[data-example-status]').textContent=status;$('[data-example-summary]').textContent=seed.summary;
       const source=$<HTMLAnchorElement>('[data-example-source]');source.textContent=seed.sourceLabel+' ↗';source.href=seed.sourceUrl;
@@ -202,9 +211,10 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
       button.classList.toggle('gate-warning',Boolean(qualityWarning||solverWarning||validationOpen));
     });
   }
-  function panel(name:string){channel?.hide();root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
+  function panel(name:string){structuralTicket++;disposeStructural?.();disposeStructural=undefined;channel?.hide();root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
   const needs=[[],[],['A dimensioned geometry or CAD artifact','Units, topology, interfaces and tolerance plan','User-reviewed geometry revision'],['Verified geometry revision','Boundary patches, wall treatment and target resolution','Mesh generation and quality-check artifacts'],['Accepted mesh and reviewed boundary conditions','Solver, convergence limits and monitors','Explicit approval on an authenticated execution route'],['Completed solver run and field artifacts','Conservation and convergence evidence','Independent reference and fidelity assessment']];
   function selectStage(index:number){
+    const viewTicket=++structuralTicket;disposeStructural?.();disposeStructural=undefined;
     stage=index;root.querySelectorAll('[data-stage]').forEach((el,i)=>el.setAttribute('aria-current',i===index?'step':'false'));
     if(channelActive&&channel){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=true);$('[data-stage-checklist]').hidden=true;root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));channel.show(index);$('.document-scroll').scrollTop=0;return;}
     if(index<2){panel(index===0?'record':'math');$('[data-proof-embed]').hidden=true;$<HTMLIFrameElement>('[data-proof-frame]').removeAttribute('src');$('.document-scroll').scrollTop=0;return;}
@@ -215,13 +225,18 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('[data-stage-title]').textContent=seed?['','','Geometry & CAD','Mesh construction','Solver setup & run','Results & validation'][index]:'What this stage needs';
     $('[data-stage-needs]').replaceChildren();
     if(seed&&phase){const li=document.createElement('li');li.textContent=seed.build[phase];$('[data-stage-needs]').append(li);}
-    if(!(index===5&&seed?.proofUrl))needs[index].forEach(text=>{const li=document.createElement('li');li.textContent=text;$('[data-stage-needs]').append(li);});
+    const stageNeeds=seed?.discipline==='FEA' ? [[],[],['Reviewed parametric solid, dimensions and units','Supports, interfaces and hole/port assumptions'],['Validated geometry and approved dimensional reduction','Quadratic mesh quality and refinement evidence'],['Accepted mesh, linear material, supports and loads','Human approval and CalculiX completion evidence'],['Reaction balance, energy sanity and mesh sensitivity','Separate stress/displacement requirements; review local singularities']][index] : needs[index];
+    if(!(index===5&&seed?.proofUrl))stageNeeds.forEach(text=>{const li=document.createElement('li');li.textContent=text;$('[data-stage-needs]').append(li);});
     const evidence=$('[data-stage-evidence]');evidence.replaceChildren();
     const proofEmbed=$('[data-proof-embed]');proofEmbed.hidden=!(index===5&&seed?.proofUrl);
     const proofFrame=$<HTMLIFrameElement>('[data-proof-frame]');
     if(index===5&&seed?.proofUrl){proofFrame.src=seed.proofUrl;$('[data-proof-note]').textContent=evidenceCurrent()?'This proof documents the unedited recorded inputs and the engineering gates.':'Historical proof only: your edited inputs need a fresh solver run.';}
     else proofFrame.removeAttribute('src');
     if(seed){
+      if(seed.discipline==='FEA'&&seed.surfaceUrl&&index>=3){
+        const viewport=document.createElement('section');evidence.append(viewport);
+        void mountStructuralViewer(viewport,seed.surfaceUrl,index===3).then(dispose=>{if(viewTicket!==structuralTicket)dispose();else disposeStructural=dispose;}).catch(()=>{viewport.textContent='Structural field could not load. The recorded evidence remains available below.';});
+      }
       const badge=document.createElement('strong');badge.className='evidence-badge';badge.textContent=seed.status==='setup'?'NOT RUN IN AERO':evidenceCurrent()?'RECORDED RUN · ORIGINAL INPUTS':'HISTORICAL RUN · RERUN REQUIRED';evidence.append(badge);
       const source=document.createElement('a');source.href=seed.sourceUrl;source.target='_blank';source.rel='noopener noreferrer';source.textContent=`Source: ${seed.sourceLabel} ↗`;evidence.append(source);
       if(seed.evidence){const links=[{label:seed.evidence.label,url:seed.evidence.url},...(seed.evidence.secondary||[])];for(const item of links){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.label+' ↗';evidence.append(a);}}
@@ -248,7 +263,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     turn('user',content);$('[data-welcome]').hidden=true;
     let context=pending.filter(m=>m.role!=='guide').slice(-20);while(context.length>1&&context.reduce((n,m)=>n+m.content.length,0)>20000)context.shift();
     try{
-      const response=await fetch(endpoint.replace(/\/$/,'')+'/chat',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({messages:context,requirements:Object.fromEntries(Object.entries(session.fields).map(([k,f])=>[k,f.value])),...(activeCase.study?{study_inputs:activeCase.study.inputs}:{}),...(activeCase.study?.result?{study_run_id:activeCase.study.runId}:{})})});
+      const response=await fetch(endpoint.replace(/\/$/,'')+'/chat',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({messages:context,requirements:Object.fromEntries(Object.entries(session.fields).map(([k,f])=>[k,f.value])),...(seedFor(activeCase)?.discipline==='FEA'?{discipline:'FEA'}:{}),...(activeCase.study?{study_inputs:activeCase.study.inputs}:{}),...(activeCase.study?.result?{study_run_id:activeCase.study.runId}:{})})});
       const data=await response.json();if(ticket!==serial)return;if(!response.ok||!data.ok)throw Error(data.error||'Model request failed');
       if(typeof data.reply!=='string'||!data.requirements||typeof data.requirements!=='object'||!Array.isArray(data.equations)||data.equations.some(e=>!e||!['title','latex','assumptions'].every(k=>typeof e[k]==='string')))throw Error('Invalid model response. Record unchanged.');
       session.messages=[...pending,{role:'assistant',content:data.reply.slice(0,4000)}].slice(-100);
@@ -276,7 +291,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   function libraryButton(label:string,action:()=>void,className=''){const button=document.createElement('button');button.type='button';button.textContent=label;button.className=className;button.addEventListener('click',action);return button;}
   function renderLibrary(){
     const tree=$('[data-library-tree]');tree.replaceChildren();
-    const folders=[...new Set(['My cases',...customFolders,'NACA studies','AIAA studies','Textbook & verified runs'])];
+    const folders=[...new Set(['My cases',...customFolders,'NACA studies','AIAA studies','Textbook & verified runs','Structural studies'])];
     for(const folder of folders){
       const items=savedCases.filter(entry=>entry.folder===folder),seeds=aeroCaseSeeds.filter(seed=>seed.folder===folder);
       const group=document.createElement('details');group.className='library-folder';group.open=folder==='My cases';
@@ -334,6 +349,8 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   save();renderMessages();renderRecord();void connect();
   if(activeCase.study){channelActive=true;channel.load(activeCase.study);selectStage(0);}
   if(new URLSearchParams(location.search).get('study')==='channel'&&!activeCase.study)$('[data-open-channel]').click();
+  const requestedSeed=structuralSeeds.find(seed=>seed.id===new URLSearchParams(location.search).get('case'));
+  if(requestedSeed)openSeed(requestedSeed);
   window.setInterval(()=>{if(!busy)void connect(false);},60000);
 </script>
 <style>

@@ -3,15 +3,17 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 export interface PressureSurface {
   schema: 'aero.scientific.surface.v1';
-  field: 'p';
+  field: 'p' | 'DISPLACEMENT' | 'VON_MISES' | 'MAX_PRINCIPAL' | 'MIN_PRINCIPAL' | 'TEMPERATURE';
   label: string;
-  units: 'Pa';
+  units: 'Pa' | 'm' | 'K';
   provenance: 'SOLVER_OUTPUT';
   artifactSha256: string;
   positions: number[];
   triangles: number[];
   pointScalars: number[];
   range: [number, number];
+  fields?: Record<string, {units: string; values: number[]; provenance?: string}>;
+  displacements?: number[];
   mesh: { points: number; volumeCells: number; boundaryFaces: number };
 }
 
@@ -19,6 +21,8 @@ export interface PressureViewer {
   resetCamera(): void;
   zoom(factor: number): void;
   setMeshVisible(visible: boolean): void;
+  setDeformationScale(scale: number): void;
+  setField(field: string): {low:number; high:number; units:string};
   dispose(): void;
 }
 
@@ -37,12 +41,13 @@ function scalarColor(value: number, low: number, high: number): THREE.Color {
 }
 
 export function mountPressureViewer(container: HTMLElement, surface: PressureSurface, options: { autoRotate?: boolean; meshOnly?: boolean } = {}): PressureViewer {
-  if (surface.schema !== 'aero.scientific.surface.v1' || surface.field !== 'p') {
+  if (surface.schema !== 'aero.scientific.surface.v1' || !['p','DISPLACEMENT','VON_MISES','MAX_PRINCIPAL','MIN_PRINCIPAL','TEMPERATURE'].includes(surface.field)) {
     throw new Error('Unsupported scientific surface contract');
   }
   if (surface.positions.length !== surface.pointScalars.length * 3) {
     throw new Error('Pressure surface point/scalar counts do not match');
   }
+  if (!surface.positions.every(Number.isFinite) || !surface.pointScalars.every(Number.isFinite) || !surface.triangles.every(i => Number.isInteger(i) && i >= 0 && i < surface.pointScalars.length)) throw new Error('Invalid scientific mesh data');
 
   container.replaceChildren();
   const scene = new THREE.Scene();
@@ -139,6 +144,22 @@ export function mountPressureViewer(container: HTMLElement, surface: PressureSur
       controls.update();
     },
     setMeshVisible(visible: boolean) { wireframe.visible = visible; },
+    setDeformationScale(scale: number) {
+      if (!Number.isFinite(scale) || scale < 0 || scale > 1000) throw new Error('Deformation scale must be 0–1000');
+      if (!surface.displacements || surface.displacements.length !== surface.positions.length || !surface.displacements.every(Number.isFinite)) throw new Error('Measured displacement field unavailable');
+      const coordinates = surface.positions.map((x,i) => x + scale * surface.displacements![i]);
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(coordinates, 3));
+      geometry.computeVertexNormals(); geometry.computeBoundingBox(); geometry.computeBoundingSphere();
+      wireframe.geometry.dispose(); wireframe.geometry = new THREE.WireframeGeometry(geometry);
+    },
+    setField(field: string) {
+      const selected = surface.fields?.[field];
+      if (!selected || selected.values.length !== surface.pointScalars.length || !selected.values.every(Number.isFinite)) throw new Error('Measured field unavailable');
+      const low = Math.min(...selected.values), high = Math.max(...selected.values);
+      const colors = selected.values.flatMap(value => { const c = scalarColor(value,low,high); return [c.r,c.g,c.b]; });
+      geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors,3));
+      return {low,high,units:selected.units};
+    },
     dispose() {
       cancelAnimationFrame(frame);
       observer.disconnect();

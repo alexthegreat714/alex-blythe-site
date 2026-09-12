@@ -2,7 +2,9 @@
 // Only entries with recordedEvidence have retained local solver evidence.
 export type AeroSeed = {
   id: string;
-  folder: 'NACA studies' | 'AIAA studies' | 'Textbook & verified runs';
+  folder: 'NACA studies' | 'AIAA studies' | 'Textbook & verified runs' | 'Structural studies';
+  discipline?: 'FEA';
+  surfaceUrl?: string;
   title: string;
   summary: string;
   sourceLabel: string;
