@@ -1,0 +1,85 @@
+[
+  {
+    "path": "/api/tags",
+    "status": 404
+  },
+  {
+    "path": "/vm/console",
+    "status": 404
+  },
+  {
+    "path": "/ops/privileged/gx10/recover",
+    "status": 404
+  },
+  {
+    "path": "/study/runs/not-an-id",
+    "status": 404
+  },
+  {
+    "path": "/study/anything",
+    "status": 404
+  },
+  {
+    "rejected_body": {
+      "length_mm": 200,
+      "gap_mm": "1; id",
+      "flow_ml_s": 20,
+      "budget_pa": 70
+    },
+    "origin": "https://alex-blythe.com",
+    "status": 400
+  },
+  {
+    "rejected_body": {
+      "length_mm": 200,
+      "gap_mm": 2,
+      "flow_ml_s": 20,
+      "budget_pa": 70,
+      "command": "id"
+    },
+    "origin": "https://alex-blythe.com",
+    "status": 400
+  },
+  {
+    "rejected_body": {
+      "length_mm": 200,
+      "gap_mm": 2,
+      "flow_ml_s": 20,
+      "budget_pa": 70
+    },
+    "origin": "https://invalid.example",
+    "status": 403
+  },
+  {
+    "container": "alex-blythe-site-study-api-1",
+    "image": "sha256:7207bf650ee08f04901aaacfc9a2f01711fbb5014b52c8c3eb217243dc269cfd",
+    "readonly_root": true,
+    "user": "10001:10001",
+    "network": "alex-blythe-site_edge",
+    "memory_bytes": 201326592,
+    "cpu_nanos": 500000000,
+    "pid_limit": 48,
+    "cap_drop": [
+      "ALL"
+    ],
+    "mount_types": [
+      "volume"
+    ]
+  },
+  {
+    "container": "alex-blythe-site-study-worker-1",
+    "image": "sha256:c7312ced5e7cfd2cb23473a1f590edb0477b3c3925efccb181b3482be0764e54",
+    "readonly_root": true,
+    "user": "10001:10001",
+    "network": "none",
+    "memory_bytes": 805306368,
+    "cpu_nanos": 2000000000,
+    "pid_limit": 64,
+    "cap_drop": [
+      "ALL"
+    ],
+    "mount_types": [
+      "volume"
+    ]
+  }
+]

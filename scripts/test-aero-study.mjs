@@ -36,6 +36,8 @@ try{
     await page.locator('.turn.assistant').waitFor({timeout:125000});
     const reply=await page.locator('.turn.assistant').last().textContent();
     assert.ok(reply.length>40);await writeFile(output+'/model-before.txt',reply);
+    assert.match(reply,/invers|one eighth|divid.*eight/i,'The model must explain the checked inverse-cubic trend');
+    assert.ok(!/increases with gap|directly related to the gap|equation_ids/.test(reply),'The observed wrong trend/internal identifier must not return');
     assert.equal((await state()).reviewed,true,'Chat cannot silently rewrite the reviewed solver controls');
   }
   for(const [i,name] of [[2,'03-geometry'],[3,'04-mesh']]){
@@ -54,6 +56,10 @@ try{
   assert.equal((await state()).runId,id,'Refresh must resume the same job');
   await page.waitForFunction(()=>{const l=JSON.parse(localStorage.getItem('aero.current.caseLibrary.v1'));return l.cases.find(c=>c.id===l.activeCaseId).study.result;},null,{timeout:330000});
   const completed=await state();assert.equal(completed.result.source,'LIVE_OPENFOAM');assert.equal(completed.result.checks_passed,true);
+  if(process.env.AERO_STUDY_FLOW==='25'&&process.env.AERO_STUDY_BUDGET==='40'){
+    assert.equal(completed.result.selected_gap_mm,2.5,'Changed conditions must change the selected gap');
+    assert.ok(Math.abs(completed.result.variants[1].pressure_drop_pa/60.06269040045428-1.25)<.01,'Computed nominal pressure must respond to the higher flow');
+  }
   await stage(5);await page.locator('[data-study-viewport] canvas').waitFor();
   assert.ok((await page.locator('[data-study-decision]').textContent()).includes('mm'));
   await page.screenshot({path:output+'/06-result.png'});

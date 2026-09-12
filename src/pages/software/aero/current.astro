@@ -136,7 +136,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   const notice = (text:string) => { $('[data-chat-notice]').textContent=text; };
   function turn(role: string, content: string) {
     const box=document.createElement('article'); box.className=`turn ${role}`;
-    const name=document.createElement('small'); name.textContent=role==='user'?'YOU':role==='guide'?'AERO · EXAMPLE GUIDE':'AERO · MODEL';
+    const name=document.createElement('small'); name.textContent=role==='user'?'YOU':role==='guide'?(activeCase.study?'AERO · STUDY RECORD':'AERO · EXAMPLE GUIDE'):'AERO · MODEL';
     const text=document.createElement('p'); text.textContent=content;
     box.append(name,text); $('[data-messages]').append(box);
   }
@@ -234,7 +234,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     const ticket=++serial;connected=false;
     if(!endpoint){setModelState('Model not connected','offline');$('[data-settings]').textContent='Connect model';if(announce)notice('A live conversation endpoint has not been enabled for this public workspace. You can edit the record; scripted replies will not be substituted.');return;}
     setModelState('Checking model…','checking');
-    try {const url=new URL(endpoint);if(url.protocol!=='https:'&&!(['127.0.0.1','localhost'].includes(url.hostname)&&url.protocol==='http:'))throw Error('Use HTTPS for a remote endpoint.');const response=await fetch(endpoint.replace(/\/$/,'')+'/health',{signal:AbortSignal.timeout(8000),credentials:'omit'});const status=await response.json();if(ticket!==serial)return;if(!response.ok||!status.configured||status.ready!==true||status.tools!==false||status.mode!=='conversation_only')throw Error('Aero chat is temporarily unavailable. Your case stays in this browser.');connected=true;setModelState(`${status.model} · ready`,'ready');$('[data-settings]').textContent='Model settings';if(announce)notice('Connected. Messages go to this conversation-only model. No execution tools are available.');}
+    try {const url=new URL(endpoint);if(url.protocol!=='https:'&&!(['127.0.0.1','localhost'].includes(url.hostname)&&url.protocol==='http:'))throw Error('Use HTTPS for a remote endpoint.');const response=await fetch(endpoint.replace(/\/$/,'')+'/health',{signal:AbortSignal.timeout(8000),credentials:'omit'});const status=await response.json();if(ticket!==serial)return;if(!response.ok||!status.configured||status.ready!==true||status.tools!==false||status.mode!=='conversation_only')throw Error('Aero chat is temporarily unavailable. Your case stays in this browser.');connected=true;setModelState(`${status.model} · ready`,'ready');$('[data-settings]').textContent='Model settings';if(announce)notice('Connected. Chat proposes and explains; reviewed study controls can start the supported solver run.');}
     catch(error){if(ticket!==serial)return;setModelState('Model unavailable','offline');$('[data-settings]').textContent='Connect model';if(announce)notice(error instanceof Error?error.message:'Could not connect.');}
     if(announce)$('[data-connection-result]').textContent=connected?'Connection ready.':$('[data-chat-notice]').textContent;
   }

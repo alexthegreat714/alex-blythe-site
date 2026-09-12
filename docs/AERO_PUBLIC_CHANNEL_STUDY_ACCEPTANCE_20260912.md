@@ -92,6 +92,45 @@ Subsequent recovery/UI hardening does not rewrite that historical provenance.
 The final published browser smoke receipt is recorded separately below after
 deployment, so staged testing is not confused with testing published assets.
 
+## Published-site changed-input proof
+
+GitHub Pages deployment `34715909837` completed successfully for application
+commit `732e779`. With **no staged-asset interception**, headless Chrome loaded
+the public website and used its real model and solver services. Flow was changed
+to **25 mL/s** and budget to **40 Pa**. Run
+`c285c4d248f1f2f8dc00ae43e01fae051e29f2c0f136250a` passed all nine solves in
+**16.12 seconds** on the final self-contained Linux runtime.
+
+| Gap mm | Fresh CFD pressure drop Pa | Budget outcome |
+|---|---:|---|
+| 1.5 | 177.96353 | Exceeds |
+| 2.0 | 75.07837 | Exceeds |
+| 2.5 | 38.44013 | Meets; selected |
+
+The selected gap changed from 2 mm to **2.5 mm**, and nominal pressure rose by
+the expected factor 1.25. The model correctly explained inverse-cubic gap
+scaling before the run and the new 2.5 mm decision afterward. Refresh recovery,
+field switching, proof rendering, downloads, changed-input invalidation and
+responsive layouts all passed again, with no JavaScript exceptions.
+
+- [Published browser receipt](../public/demos/aero/channel-study-v1/public-browser-acceptance.json)
+- [Changed-input proof report](../public/demos/aero/channel-study-v1/changed-inputs-report.html)
+- [Changed-input fields and metrics](../public/demos/aero/channel-study-v1/changed-inputs-result.json)
+- [Changed-input evidence archive](../public/demos/aero/channel-study-v1/changed-inputs-evidence.zip)
+- [Public rejection and isolation checks](../public/demos/aero/channel-study-v1/isolation-acceptance.json)
+
+All 182 changed-input archive hashes matched; the downloaded result/report
+matched the archived copies. Five private/arbitrary public routes returned 404,
+two malformed numerical requests returned 400, and a disallowed origin returned
+403. Container inspection confirmed the configured isolation and resource caps.
+Explicit browser failure fixtures (not real solver results) passed quota-message
+preservation, idempotent retry, offline red bars, input locking, expiry failure
+and new UUID after a terminal failure.
+
+After acceptance, only the six known maintainer test IDs were removed from quota
+bookkeeping. Their evidence was preserved, public limits were unchanged, and no
+visitor run was touched. This leaves capacity available for the owner's first use.
+
 ## Supported claim
 
 **Aero provides a live, reproducible preliminary parallel-plate sizing study with

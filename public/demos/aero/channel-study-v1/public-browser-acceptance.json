@@ -1,0 +1,18 @@
+{
+  "id": "c285c4d248f1f2f8dc00ae43e01fae051e29f2c0f136250a",
+  "inputs": {
+    "length_mm": 200,
+    "gap_mm": 2,
+    "flow_ml_s": 25,
+    "budget_pa": 40
+  },
+  "selected_gap_mm": 2.5,
+  "elapsed_seconds": 16.12,
+  "checks_passed": true,
+  "staged_assets": false,
+  "real_public_model": true,
+  "real_public_solver": true,
+  "refresh_resume": true,
+  "changed_inputs_invalidated": true,
+  "errors": []
+}
