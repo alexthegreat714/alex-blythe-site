@@ -222,13 +222,13 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('.document-scroll').scrollTop=0;
     if(window.matchMedia('(max-width:700px)').matches)$('.document').scrollIntoView({behavior:'smooth',block:'start'});
   }
-  async function connect(){
+  async function connect(announce=true){
     const ticket=++serial;connected=false;
-    if(!endpoint){setModelState('Model not connected','offline');$('[data-settings]').textContent='Connect model';notice('A live conversation endpoint has not been enabled for this public workspace. You can edit the record; scripted replies will not be substituted.');return;}
+    if(!endpoint){setModelState('Model not connected','offline');$('[data-settings]').textContent='Connect model';if(announce)notice('A live conversation endpoint has not been enabled for this public workspace. You can edit the record; scripted replies will not be substituted.');return;}
     setModelState('Checking model…','checking');
-    try {const url=new URL(endpoint);if(url.protocol!=='https:'&&!(['127.0.0.1','localhost'].includes(url.hostname)&&url.protocol==='http:'))throw Error('Use HTTPS for a remote endpoint.');const response=await fetch(endpoint.replace(/\/$/,'')+'/health',{signal:AbortSignal.timeout(8000),credentials:'omit'});const status=await response.json();if(ticket!==serial)return;if(!response.ok||!status.configured||status.ready!==true||status.tools!==false||status.mode!=='conversation_only')throw Error('Aero chat is temporarily unavailable. Your case stays in this browser.');connected=true;setModelState(`${status.model} · ready`,'ready');$('[data-settings]').textContent='Model settings';notice('Connected. Messages go to this conversation-only model. No execution tools are available.');}
-    catch(error){if(ticket!==serial)return;setModelState('Model unavailable','offline');$('[data-settings]').textContent='Connect model';notice(error instanceof Error?error.message:'Could not connect.');}
-    $('[data-connection-result]').textContent=connected?'Connection ready.':$('[data-chat-notice]').textContent;
+    try {const url=new URL(endpoint);if(url.protocol!=='https:'&&!(['127.0.0.1','localhost'].includes(url.hostname)&&url.protocol==='http:'))throw Error('Use HTTPS for a remote endpoint.');const response=await fetch(endpoint.replace(/\/$/,'')+'/health',{signal:AbortSignal.timeout(8000),credentials:'omit'});const status=await response.json();if(ticket!==serial)return;if(!response.ok||!status.configured||status.ready!==true||status.tools!==false||status.mode!=='conversation_only')throw Error('Aero chat is temporarily unavailable. Your case stays in this browser.');connected=true;setModelState(`${status.model} · ready`,'ready');$('[data-settings]').textContent='Model settings';if(announce)notice('Connected. Messages go to this conversation-only model. No execution tools are available.');}
+    catch(error){if(ticket!==serial)return;setModelState('Model unavailable','offline');$('[data-settings]').textContent='Connect model';if(announce)notice(error instanceof Error?error.message:'Could not connect.');}
+    if(announce)$('[data-connection-result]').textContent=connected?'Connection ready.':$('[data-chat-notice]').textContent;
   }
   async function send(){
     if(busy)return;
@@ -307,6 +307,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   splitter.addEventListener('pointerup',()=>dragging=false);splitter.addEventListener('pointercancel',()=>dragging=false);
   splitter.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();resize(split+(event.key==='ArrowLeft'?-2:2));}});
   save();renderMessages();renderRecord();void connect();
+  window.setInterval(()=>{if(!busy)void connect(false);},60000);
 </script>
 <style>
   :global(*){box-sizing:border-box} :global(body){margin:0;background:#10191e;color:#e0ebef;font-family:Inter,system-ui,sans-serif;font-size:14px} :global(button),:global(input),:global(textarea){font:inherit} :global(button){cursor:pointer} :global(button:disabled){opacity:.45;cursor:wait} :global(a){color:inherit;text-decoration:none} :global(:focus-visible){outline:2px solid #67dcda;outline-offset:3px} :global([hidden]){display:none!important}

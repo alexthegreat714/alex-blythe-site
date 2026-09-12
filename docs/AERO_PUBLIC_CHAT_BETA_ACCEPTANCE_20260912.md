@@ -37,9 +37,10 @@ unsafe-TeX handling, and failed-send draft preservation. The empty conversation
 screen now begins at the title; the decorative `A` and extra top spacing are gone.
 The conversation header now includes an accessible availability indicator: amber
 while the gateway is being checked, green when the conversation-only model is
-ready, and red when it is unavailable. This indicator describes the public
-conversation service only; VM and solver state remain behind the authenticated
-private Aegis workspace.
+ready, and red when it is unavailable. It checks on load, after a manual
+connection, and periodically while the page is open. This indicator describes
+the public conversation service only; VM and solver state remain behind the
+authenticated private Aegis workspace.
 
 ## Failures found during acceptance and repairs
 
