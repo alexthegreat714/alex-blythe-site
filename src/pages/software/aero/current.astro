@@ -1,0 +1,177 @@
+---
+const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
+---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Aero · Engineering workspace</title><meta name="description" content="Define an engineering problem with Aero. Review requirements, assumptions and a live LaTeX working document."/><link rel="canonical" href="https://alex-blythe.com/software/aero/current/"/></head>
+<body>
+<main class="app" data-workspace data-endpoint={modelEndpoint}>
+  <header class="appbar"><a href="/software/aero/" class="brand">AERO <span>Engineering workspace</span></a><div class="app-actions"><span data-save>Saved on this browser</span><button data-settings>Connect model</button><button data-export>Export .tex</button><button data-new>New case</button></div></header>
+  <nav class="stages" aria-label="Engineering stages">
+    {['Requirements','Math & LaTeX','CAD & tolerances','Mesh','Solve','Results'].map((label, i) => <button data-stage={i} aria-current={i === 0 ? 'step' : 'false'}><span class="step-number">0{i + 1}</span><span><b>{label}</b><small data-stage-label>Inputs needed</small></span><span class="track"><i></i></span></button>)}
+  </nav>
+  <div class="workspace">
+    <section class="conversation" aria-labelledby="conversation-title">
+      <header class="pane-header"><div><small>YOUR ENGINEERING PARTNER</small><h1 id="conversation-title">What are we designing?</h1></div><span class="model-state" data-model-state>Checking connection…</span></header>
+      <div class="messages" data-messages role="log" aria-live="polite" aria-label="Conversation">
+        <div class="welcome" data-welcome><div class="aero-mark">A</div><h2>Start with the question.<br/>Build the case together.</h2><p>Describe your goal and what you know. Aero will ask for the missing inputs and propose a working document beside the conversation.</p><div class="starters"><button data-prompt="Help me define a pressure-loss study for an air nozzle. I have a STEP file but haven't selected operating conditions or acceptance criteria yet. Ask me the most important first question.">Nozzle pressure loss <span>↗</span></button><button data-prompt="I need a first-cut cooling-channel study for an 8 kW heat load. Help me choose the required coolant data, dimensions and success criteria before any CFD.">Cooling-channel sizing <span>↗</span></button><button data-prompt="Help me scope an internal pipe-flow CFD case. Start by asking about the engineering decision, fluid and available geometry, then develop a first-principles plan.">Internal flow <span>↗</span></button></div></div>
+      </div>
+      <div class="chat-notice" data-chat-notice role="status"></div>
+      <form class="composer" data-chat-form><label class="sr-only" for="message">Message Aero</label><textarea id="message" placeholder="I want to estimate pressure loss through…" rows="3" maxlength="4000"></textarea><div><small>Enter to send · Shift + Enter for a new line</small><button type="submit" data-send>Send ↑</button></div></form>
+      <p class="privacy">Model proposals need your review. This workspace cannot start a VM or solver.</p>
+    </section>
+    <div class="splitter" role="separator" tabindex="0" aria-label="Resize conversation and document" aria-orientation="vertical" aria-valuemin="30" aria-valuemax="65" aria-valuenow="44"></div>
+    <section class="document" aria-labelledby="document-title">
+      <header class="pane-header"><div><small>LIVE WORKING DOCUMENT</small><h2 id="document-title">Untitled engineering case</h2></div><span data-revision>Rev 0</span></header>
+      <div class="document-tabs" role="group" aria-label="Document views"><button data-doc="record" aria-pressed="true">Requirements</button><button data-doc="math" aria-pressed="false">Rendered math</button><button data-doc="source" aria-pressed="false">LaTeX source</button></div>
+      <div class="document-scroll">
+        <section data-panel="record"><div class="record-intro"><h3>Define before you solve.</h3><p>Values from the model appear as proposals. Edit or confirm each one to prepare the next step.</p></div><div data-fields></div></section>
+        <section data-panel="math" hidden><div class="record-intro"><h3>First principles, in view.</h3><p>Equations and assumptions grow from the conversation. This is rendered LaTeX—not a solver result.</p></div><div data-equations></div></section>
+        <section data-panel="source" hidden><label for="tex">Generated from the current record · export for external compilation</label><textarea id="tex" readonly spellcheck="false"></textarea></section>
+        <section class="stage-checklist" data-stage-checklist hidden><small data-stage-name></small><h3 data-stage-title></h3><ul data-stage-needs></ul><p>No job has been started. Preparation is not execution or validation.</p><a href="https://aegis.alex-blythe.com/aero-workspaces/">Open authenticated execution workspace ↗</a></section>
+      </div>
+      <footer class="document-footer"><div><strong data-readiness>0 / 6 confirmed</strong><span data-readiness-note>Requirements still needed</span></div><button data-math>Review math →</button></footer>
+    </section>
+  </div>
+  <dialog data-connection><form method="dialog"><button class="close" aria-label="Close connection settings">×</button></form><h2>Connect a conversation model</h2><p>Aero needs a conversation-only endpoint. It must provide <code>/health</code> and <code>/chat</code>; do not enter a personal agent or Ollama URL here.</p><label for="endpoint">Gateway URL</label><input id="endpoint" type="url" placeholder="https://your-conversation-gateway"/><p class="privacy">Connecting sends messages and your requirement record to that service when you press Send. No keys are stored here. Chat and requirements remain in this browser until cleared.</p><button data-connect>Check connection</button><p data-connection-result role="status"></p></dialog>
+</main>
+<script>
+  import katex from 'katex';
+  import 'katex/dist/katex.min.css';
+  const root = document.querySelector<HTMLElement>('[data-workspace]')!;
+  const $ = <T extends HTMLElement = HTMLElement>(s: string) => root.querySelector<T>(s)!;
+  const labels = {goal:'Engineering goal',geometry:'Geometry & CAD source',fluid:'Fluid & material properties',conditions:'Operating conditions',success:'Success criteria',reference:'Validation reference'};
+  type Key = keyof typeof labels;
+  type Field = {value: string; confirmed: boolean};
+  type Equation = {title:string;latex:string;assumptions:string};
+  type Session = {revision:number;messages:{role:'user'|'assistant';content:string}[];fields:Record<Key,Field>;equations:Equation[]};
+  const blank = ():Session => ({revision:0,messages:[],fields:Object.fromEntries(Object.keys(labels).map(key=>[key,{value:'',confirmed:false}])) as Record<Key,Field>,equations:[]});
+  const storageKey = 'aero.current.workspace.v1';
+  let session = blank();
+  let endpoint = root.dataset.endpoint || (['localhost','127.0.0.1'].includes(location.hostname) ? 'http://127.0.0.1:5320' : '');
+  let connected = false, busy = false, stage = 0;
+  let serial = 0;
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+    if (saved && Array.isArray(saved.messages) && Array.isArray(saved.equations) && Object.keys(labels).every(k=>typeof saved.fields?.[k]?.value === 'string')) {
+      session = saved; session.messages = session.messages.slice(-100);
+    }
+  } catch {}
+  const save = () => { try { localStorage.setItem(storageKey, JSON.stringify(session)); $('[data-save]').textContent='Saved on this browser'; } catch { $('[data-save]').textContent='Browser storage unavailable'; } };
+  const notice = (text:string) => { $('[data-chat-notice]').textContent=text; };
+  function turn(role: string, content: string) {
+    const box=document.createElement('article'); box.className=`turn ${role}`;
+    const name=document.createElement('small'); name.textContent=role==='user'?'YOU':'AERO · MODEL';
+    const text=document.createElement('p'); text.textContent=content;
+    box.append(name,text); $('[data-messages]').append(box);
+  }
+  function renderMessages() {
+    const welcome=$('[data-welcome]');
+    $('[data-messages]').querySelectorAll('.turn').forEach(n=>n.remove());
+    welcome.hidden=Boolean(session.messages.length);
+    session.messages.forEach(m=>turn(m.role,m.content));
+    $('[data-messages]').scrollTop=$('[data-messages]').scrollHeight;
+  }
+  const escapeTex=(s:string)=>s.replace(/[\\{}$&#%_^~]/g,c=>({'\\':'\\textbackslash{}','{':'\\{','}':'\\}','$':'\\$','&':'\\&','#':'\\#','%':'\\%','_':'\\_','^':'\\textasciicircum{}','~':'\\textasciitilde{}'}[c]!));
+  function latex() {
+    return ['\\documentclass{article}','\\usepackage{amsmath}','\\usepackage[margin=1in]{geometry}','\\begin{document}','\\section*{Aero engineering working record}',`Revision ${session.revision}. Proposed analysis; no solver execution or design validation.`,...Object.entries(labels).map(([k,label])=>`\\subsection*{${label}}\n${escapeTex(session.fields[k as Key].value || 'Not specified')}\n\nStatus: ${session.fields[k as Key].confirmed?'User confirmed':'Needs review'}.`),'\\section*{First-principles proposals}',...session.equations.map(e=>`\\subsection*{${escapeTex(e.title)}}\n\\[${e.latex}\\]\n${escapeTex(e.assumptions)}`),'\\end{document}'].join('\n\n');
+  }
+  function renderRecord() {
+    $('[data-fields]').replaceChildren();
+    for(const [key,label] of Object.entries(labels)) {
+      const k=key as Key,field=session.fields[k];
+      const row=document.createElement('div');row.className='requirement';
+      const heading=document.createElement('label');heading.htmlFor=`field-${key}`;heading.textContent=label;
+      const tag=document.createElement('small');tag.textContent=field.confirmed?'Confirmed':field.value?'Proposed · review':'Missing';tag.className=field.confirmed?'confirmed':'proposed';
+      const area=document.createElement('textarea');area.id=`field-${key}`;area.value=field.value;area.rows=2;area.maxLength=1500;area.placeholder='Not specified yet';
+      const button=document.createElement('button');button.textContent=field.confirmed?'Reopen':'Confirm';button.disabled=!field.value.trim();
+      area.addEventListener('change',()=>{field.value=area.value.trim();field.confirmed=false;session.revision++;save();renderRecord();});
+      button.addEventListener('click',()=>{field.confirmed=!field.confirmed;session.revision++;save();renderRecord();});
+      const top=document.createElement('div');top.append(heading,tag);row.append(top,area,button);$('[data-fields]').append(row);
+    }
+    $('[data-equations]').replaceChildren();
+    if(!session.equations.length){const p=document.createElement('p');p.className='empty-math';p.textContent='Equations appear here when the model has enough information to propose them. Start the conversation on the left.';$('[data-equations]').append(p);}
+    for(const equation of session.equations){
+      const card=document.createElement('article');card.className='equation-card';
+      const title=document.createElement('h3');title.textContent=equation.title;
+      const review=document.createElement('small');review.className='equation-review';review.textContent='MODEL PROPOSAL · NOT SCIENTIFICALLY VERIFIED';
+      const math=document.createElement('div');
+      try {katex.render(equation.latex,math,{displayMode:true,throwOnError:true,trust:false,maxExpand:200,maxSize:20});}
+      catch{math.textContent=equation.latex;math.className='math-error';}
+      const assumptions=document.createElement('p');assumptions.textContent=equation.assumptions;
+      card.append(title,review,math,assumptions);$('[data-equations]').append(card);
+    }
+    $<HTMLTextAreaElement>('#tex').value=latex();
+    $('[data-revision]').textContent=`Rev ${session.revision}`;
+    $('#document-title').textContent=session.fields.goal.value.slice(0,75)||'Untitled engineering case';
+    const confirmed=Object.values(session.fields).filter(f=>f.confirmed&&f.value.trim()).length;
+    $('[data-readiness]').textContent=`${confirmed} / 6 confirmed`;
+    $('[data-readiness-note]').textContent=confirmed===6?'Requirements reviewed · math still needs review':'Requirements still needed';
+    root.querySelectorAll<HTMLElement>('[data-stage]').forEach((button,i)=>{
+      const percent=i===0?Math.round(confirmed/6*100):i===1?(session.equations.length?50:0):0;
+      button.querySelector<HTMLElement>('i')!.style.width=`${percent}%`;
+      button.querySelector<HTMLElement>('[data-stage-label]')!.textContent=i===0?`${percent}% confirmed`:i===1&&percent?'Proposed · review':i>1?'Not prepared':'Awaiting inputs';
+    });
+  }
+  function panel(name:string){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
+  const needs=[[],[],['A dimensioned geometry or CAD artifact','Units, topology, interfaces and tolerance plan','User-reviewed geometry revision'],['Verified geometry revision','Boundary patches, wall treatment and target resolution','Mesh generation and quality-check artifacts'],['Accepted mesh and reviewed boundary conditions','Solver, convergence limits and monitors','Explicit approval on an authenticated execution route'],['Completed solver run and field artifacts','Conservation and convergence evidence','Independent reference and fidelity assessment']];
+  function selectStage(index:number){stage=index;root.querySelectorAll('[data-stage]').forEach((el,i)=>el.setAttribute('aria-current',i===index?'step':'false'));if(index<2){panel(index===0?'record':'math');return;}root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=true);$('[data-stage-checklist]').hidden=false;$('[data-stage-name]').textContent=`STAGE 0${index+1}`;$('[data-stage-title]').textContent='What this stage needs';$('[data-stage-needs]').replaceChildren();needs[index].forEach(text=>{const li=document.createElement('li');li.textContent=text;$('[data-stage-needs]').append(li);});}
+  async function connect(){
+    const ticket=++serial;connected=false;
+    if(!endpoint){$('[data-model-state]').textContent='Model not connected';notice('A live conversation endpoint has not been enabled for this public workspace. You can edit the record; scripted replies will not be substituted.');return;}
+    $('[data-model-state]').textContent='Checking model…';
+    try {const url=new URL(endpoint);if(url.protocol!=='https:'&&!(['127.0.0.1','localhost'].includes(url.hostname)&&url.protocol==='http:'))throw Error('Use HTTPS for a remote endpoint.');const response=await fetch(endpoint.replace(/\/$/,'')+'/health',{signal:AbortSignal.timeout(8000),credentials:'omit'});const status=await response.json();if(ticket!==serial)return;if(!response.ok||!status.configured||status.tools!==false||status.mode!=='conversation_only')throw Error('A configured conversation-only gateway is required.');connected=true;$('[data-model-state]').textContent=`${status.model} · ready`;notice('Connected. Messages go to this conversation-only model. No execution tools are available.');}
+    catch(error){if(ticket!==serial)return;$('[data-model-state]').textContent='Model unavailable';notice(error instanceof Error?error.message:'Could not connect.');}
+    $('[data-connection-result]').textContent=connected?'Connection ready.':$('[data-chat-notice]').textContent;
+  }
+  async function send(){
+    if(busy)return;
+    const input=$<HTMLTextAreaElement>('#message'),content=input.value.trim();if(!content)return;
+    if(!connected){notice('Connect a model before sending. Your draft stays here; no scripted answer will be generated.');$<HTMLDialogElement>('[data-connection]').showModal();return;}
+    busy=true;$<HTMLButtonElement>('[data-send]').disabled=true;notice('Aero is developing the requirements and equations…');
+    const ticket=serial, documentRevision=session.revision;
+    const pending=[...session.messages,{role:'user' as const,content}];
+    turn('user',content);$('[data-welcome]').hidden=true;
+    let context=pending.slice(-20);while(context.length>1&&context.reduce((n,m)=>n+m.content.length,0)>20000)context.shift();
+    try{
+      const response=await fetch(endpoint.replace(/\/$/,'')+'/chat',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({messages:context,requirements:Object.fromEntries(Object.entries(session.fields).map(([k,f])=>[k,f.value]))})});
+      const data=await response.json();if(ticket!==serial)return;if(!response.ok||!data.ok)throw Error(data.error||'Model request failed');
+      if(typeof data.reply!=='string'||!data.requirements||typeof data.requirements!=='object'||!Array.isArray(data.equations)||data.equations.some(e=>!e||!['title','latex','assumptions'].every(k=>typeof e[k]==='string')))throw Error('Invalid model response. Record unchanged.');
+      session.messages=[...pending,{role:'assistant',content:data.reply.slice(0,4000)}].slice(-100);
+      const changedDuringRequest=session.revision!==documentRevision;
+      if(!changedDuringRequest){
+        for(const key of Object.keys(labels) as Key[]){const value=data.requirements[key];if(typeof value==='string'&&value.trim()&&value!==session.fields[key].value)session.fields[key]={value:value.slice(0,1500),confirmed:false};}
+        if(data.equations.length)session.equations=data.equations.slice(0,6).map(e=>({title:e.title.slice(0,160),latex:e.latex.slice(0,1500),assumptions:e.assumptions.slice(0,1200)})).filter(e=>{
+          if(/\\(?:input|include|write|openout|read|catcode|def|newcommand|renewcommand|usepackage|documentclass|href|url|html|includegraphics|end\{document)/i.test(e.latex))return false;
+          try{katex.renderToString(e.latex,{throwOnError:true,trust:false,strict:'error',maxExpand:200,maxSize:20});return true;}catch{return false;}
+        });
+      }
+      session.revision++;input.value='';save();renderMessages();renderRecord();notice(changedDuringRequest?'Reply received. Your document was edited during the request, so its newer values were preserved. Ask Aero to review the updated record.':'Working document updated. Review the proposed values and assumptions.');
+    }catch(error){renderMessages();notice(error instanceof Error?error.message:'Request failed. Your message is still in the composer.');}
+    finally{busy=false;$<HTMLButtonElement>('[data-send]').disabled=false;}
+  }
+  $('[data-chat-form]').addEventListener('submit',e=>{e.preventDefault();void send();});
+  $('#message').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();void send();}});
+  root.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach(b=>b.addEventListener('click',()=>{$<HTMLTextAreaElement>('#message').value=b.dataset.prompt!;$('#message').focus();}));
+  root.querySelectorAll<HTMLElement>('[data-stage]').forEach(el=>el.addEventListener('click',()=>selectStage(Number(el.dataset.stage))));
+  root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.addEventListener('click',()=>panel(el.dataset.doc!)));
+  $('[data-math]').addEventListener('click',()=>selectStage(1));
+  $('[data-settings]').addEventListener('click',()=>{$<HTMLInputElement>('#endpoint').value=endpoint;$<HTMLDialogElement>('[data-connection]').showModal();});
+  $('[data-connect]').addEventListener('click',()=>{if(busy)return;endpoint=$<HTMLInputElement>('#endpoint').value.trim().replace(/\/$/,'');void connect();});
+  $('[data-new]').addEventListener('click',()=>{if(busy){notice('Wait for the current model response before starting a new case.');return;}if(session.messages.length&&!confirm('Clear this browser’s current case? Export it first if you need a copy.'))return;session=blank();save();renderMessages();renderRecord();selectStage(0);});
+  $('[data-export]').addEventListener('click',()=>{const blob=new Blob([latex()],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=`aero-working-record-rev-${session.revision}.tex`;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+  const splitter=$('.splitter');let dragging=false,split=44;
+  function resize(value:number){split=Math.max(30,Math.min(65,value));root.style.setProperty('--split',`${split}%`);splitter.setAttribute('aria-valuenow',String(Math.round(split)));}
+  splitter.addEventListener('pointerdown',event=>{dragging=true;splitter.setPointerCapture(event.pointerId);});
+  splitter.addEventListener('pointermove',event=>{if(dragging)resize(event.clientX/innerWidth*100);});
+  splitter.addEventListener('pointerup',()=>dragging=false);splitter.addEventListener('pointercancel',()=>dragging=false);
+  splitter.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();resize(split+(event.key==='ArrowLeft'?-2:2));}});
+  renderMessages();renderRecord();void connect();
+</script>
+<style>
+  :global(*){box-sizing:border-box} :global(body){margin:0;background:#10191e;color:#e0ebef;font-family:Inter,system-ui,sans-serif;font-size:14px} :global(button),:global(input),:global(textarea){font:inherit} :global(button){cursor:pointer} :global(button:disabled){opacity:.45;cursor:wait} :global(a){color:inherit;text-decoration:none} :global(:focus-visible){outline:2px solid #67dcda;outline-offset:3px} :global([hidden]){display:none!important}
+  .app{--split:44%;height:100dvh;display:flex;flex-direction:column;overflow:hidden}.appbar{height:58px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid #2c3c45}.brand{font-size:19px;letter-spacing:.12em;font-weight:800;color:#77d9d7}.brand span{color:#a7b8c3;font-size:12px;font-weight:400;letter-spacing:0;margin-left:16px}.app-actions{display:flex;align-items:center;gap:8px}.app-actions>span{font-size:11px;color:#8ea4b1;margin-right:10px}button{border:1px solid #344a57;background:#192b36;color:#dae7ed;border-radius:6px;padding:8px 12px}.stages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding:12px 18px;background:#101d25;flex-shrink:0}.stages button{position:relative;display:flex;align-items:center;gap:10px;text-align:left;min-width:0;padding:10px 12px 15px;background:transparent}.stages [aria-current=step]{border-color:#60cdcb;background:#183239}.step-number{color:#8dafb8;font-size:11px}.stages b{display:block;font-size:12px;white-space:nowrap}.stages small{font-size:10px;color:#8ba8b7}.track{position:absolute;bottom:0;left:0;right:0;height:3px;background:#233d4c}.track i{display:block;background:#409de2;height:100%;width:0;transition:width .2s}.workspace{display:grid;grid-template-columns:minmax(300px,var(--split)) 6px minmax(340px,1fr);min-height:0;flex:1}.conversation,.document{display:flex;flex-direction:column;min-height:0;min-width:0}.conversation{background:#11212b}.document{background:#f4f5f1;color:#253944}.pane-header{min-height:76px;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #30424e}.pane-header small{font-size:9px;letter-spacing:.12em;color:#6cacb7}.pane-header h1,.pane-header h2{font-size:15px;line-height:1.4;margin:5px 0 0;max-width:500px}.document .pane-header{border-color:#d5dfe0}.document .pane-header small{color:#527481}.model-state{font-size:10px;color:#87c7c9;max-width:160px;text-align:right}.messages{flex:1;overflow:auto;padding:24px;min-height:120px}.welcome{max-width:500px;margin:3vh auto}.aero-mark{display:grid;place-items:center;width:40px;height:40px;border:1px solid #548c96;border-radius:12px;color:#90e3df;font-size:23px}.welcome h2{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.035em;line-height:1.25}.welcome p{color:#a1b8c4;line-height:1.7;font-size:13px;max-width:420px}.starters{display:grid;gap:8px;margin-top:22px}.starters button{text-align:left;padding:12px;background:#172d38}.starters span{float:right;color:#73cdcd}.chat-notice{padding:0 24px 9px;min-height:22px;color:#9fb8c6;font-size:11px;line-height:1.5}.composer{margin:0 20px;padding:12px;border:1px solid #52717e;border-radius:10px;background:#1b303c}.composer textarea{display:block;resize:vertical;min-height:60px;max-height:180px;width:100%;border:0;background:transparent;color:#eef8fc;outline:none;line-height:1.6}.composer>div{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.composer small{font-size:10px;color:#91adbd}.composer button{background:#67d6d0;color:#082830;border:0;font-weight:750}.privacy{font-size:10px;line-height:1.6;color:#8da5b3;margin:10px 22px}.splitter{background:#2b4654;cursor:col-resize;touch-action:none}.splitter:hover{background:#61bfc2}.document-tabs{display:flex;gap:4px;padding:10px 20px;border-bottom:1px solid #d2dcdf}.document-tabs button{background:transparent;color:#49616c;border:0;font-size:12px}.document-tabs [aria-pressed=true]{background:#dceae9;color:#17616a}.document-scroll{overflow:auto;flex:1;padding:24px;min-height:0}.record-intro h3{font-size:20px;letter-spacing:-.025em;margin:0 0 6px}.record-intro p{font-size:12px;color:#677d88;line-height:1.6;margin-bottom:22px}.document-footer{border-top:1px solid #d1dce0;padding:13px 22px;display:flex;align-items:center;justify-content:space-between}.document-footer strong{display:block;font-size:12px}.document-footer span{display:block;font-size:10px;color:#627985;margin-top:4px}.document-footer button{background:#23424d;font-size:12px}#tex{width:100%;min-height:60vh;margin-top:12px;border:1px solid #ccd7da;background:#edf1ef;color:#243b44;font:12px/1.7 Consolas,monospace;padding:16px;resize:vertical}.stage-checklist ul{padding-left:20px;line-height:2;color:#4d6671}.stage-checklist p{font-size:12px;color:#627c88}.stage-checklist a{display:inline-block;margin-top:16px;color:#176b79;border-bottom:1px solid}.stage-checklist small{color:#378591}dialog{width:min(480px,95vw);border:1px solid #425d6b;border-radius:14px;background:#172a35;color:#d5e7ef;padding:28px}dialog::backdrop{background:#0009}dialog p{line-height:1.65;font-size:13px;color:#9eb8c7}dialog label{display:block;margin:20px 0 8px}dialog input{width:100%;background:#0d1d27;color:#e5f0f5;border:1px solid #45616e;padding:12px;border-radius:6px}dialog .close{float:right}dialog .privacy{margin:15px 0} .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  :global(.turn){margin:0 0 22px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}:global(.turn small){color:#74c2c7;font-size:9px;letter-spacing:.1em}:global(.turn p){margin:8px 0;font-size:13px}:global(.turn.user){background:#1b3442;padding:14px;border-radius:10px}:global(.turn.user small){color:#a3bac8}:global(.requirement){border:1px solid #d5dfe0;border-radius:8px;padding:14px;margin:0 0 12px;background:#fff}:global(.requirement>div){display:flex;justify-content:space-between;gap:10px}:global(.requirement label){font-size:12px;font-weight:750}:global(.requirement small){font-size:10px;color:#956c26}:global(.requirement .confirmed){color:#20736b}:global(.requirement textarea){display:block;resize:vertical;width:100%;min-height:50px;margin:12px 0;border:0;background:#f4f7f6;padding:8px;color:#2b4653;line-height:1.5;font-size:12px}:global(.requirement button){font-size:10px;padding:5px 9px;background:#e4eeed;color:#2f696d;border:0}:global(.equation-card){padding:20px;border:1px solid #d6dfe0;border-radius:8px;background:#fff;margin-bottom:16px;overflow:auto}:global(.equation-card h3){font-size:13px;margin:0 0 20px}:global(.equation-card p),:global(.empty-math){color:#637c88;font-size:12px;line-height:1.65}:global(.equation-card .katex-display){overflow:auto;padding:12px 0}:global(.math-error){color:#995b39;font:12px monospace;white-space:pre-wrap}
+  @media(max-width:1000px){.stages{gap:5px;padding:8px}.stages button{padding:8px 7px 12px;gap:6px}.stages b{font-size:10px}.stages small{font-size:9px}.app-actions>span,.brand span{display:none}.pane-header{padding:14px}.workspace{grid-template-columns:minmax(280px,var(--split)) 6px minmax(290px,1fr)}}
+  @media(max-width:700px){.app{height:auto;min-height:100dvh;overflow:visible}.appbar{padding:0 12px}.app-actions{gap:4px}.app-actions button{font-size:10px;padding:7px}.stages{grid-template-columns:repeat(3,minmax(0,1fr));position:sticky;top:0;z-index:3}.stages b{font-size:11px}.workspace{display:flex;flex-direction:column}.splitter{display:none}.conversation{min-height:650px;height:75dvh}.document{min-height:650px;max-height:95dvh}.welcome{margin:0}.messages{padding:18px}.pane-header h1{font-size:14px}.document-scroll{padding:18px}.composer small{font-size:9px}}
+</style>
+</body></html>

@@ -1,0 +1,71 @@
+import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+import { mkdir } from 'node:fs/promises';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const browser=await chromium.launch({headless:true,channel:'chrome'});
+const page=await browser.newPage({viewport:{width:1440,height:950}});
+const errors=[];page.on('pageerror',error=>errors.push(error.message));
+await mkdir('.qa/current-workspace',{recursive:true});
+const base=process.env.AERO_TEST_URL||'http://127.0.0.1:4322';
+try{
+  await page.goto(base+'/software/aero/demo/?mode=current');
+  await page.waitForURL('**/software/aero/current/');
+  assert.equal(await page.locator('.stages button').count(),6);
+  assert.ok(await page.locator('#message').isVisible());
+  assert.ok(await page.locator('#field-goal').isVisible());
+  await page.screenshot({path:'.qa/current-workspace/01-start.png'});
+  if(process.env.AERO_LIVE_TEST==='1'){
+    await page.waitForFunction(()=>document.querySelector('[data-model-state]').textContent.includes('ready'));
+    await page.locator('#message').fill('Help me define a pressure-loss study of an air nozzle. Mass flow is 0.01 kg/s, air at 300 K and 101325 Pa, inlet radius 20 mm. Propose the continuity and ideal-gas equations with assumptions; ask for missing outlet geometry. Do not run a solver.');
+    await page.locator('[data-send]').click();
+    await page.locator('.turn.assistant').waitFor({timeout:125000});
+    assert.ok((await page.locator('#field-geometry').inputValue()).includes('20'));
+    assert.equal(await page.locator('[data-readiness]').textContent(),'0 / 6 confirmed');
+    await page.locator('[data-doc="math"]').click();
+    assert.ok(await page.locator('[data-equations] .katex').count()>0,'Model equations must render as math');
+    assert.ok(await page.evaluate(()=>JSON.parse(localStorage.getItem('aero.current.workspace.v1')).equations.some(e=>e.latex.includes('\\dot{m}')&&e.latex.includes('\\rho'))),'Steady continuity must use the supplied mass-flow reference, not an invented differential expression');
+    await page.screenshot({path:'.qa/current-workspace/02-model-and-math.png'});
+    await page.locator('#message').fill('Keep those inlet conditions. Set outlet radius to 24 mm. Explain why the continuity equation alone does not establish pressure loss, and keep that limit in the working document.');
+    await page.locator('[data-send]').click();
+    await page.waitForFunction(()=>document.querySelectorAll('.turn.assistant').length===2,{},{timeout:125000});
+    await page.locator('[data-doc="record"]').click();
+    assert.match(await page.locator('#field-geometry').inputValue(),/24/);
+    await page.reload();
+    assert.equal(await page.locator('.turn.assistant').count(),2,'Conversation survives refresh');
+    assert.match(await page.locator('#field-geometry').inputValue(),/24/);
+    console.log('PASS LIVE: gemma3:12b conversation → requirement proposals → rendered LaTeX → follow-up context → refresh persistence.');
+  }
+  // Explicit stub used only for controlled failure and trust-boundary QA.
+  await page.route('**/health',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({configured:true,model:'QA fixture',mode:'conversation_only',tools:false})}));
+  await page.reload();
+  await page.waitForFunction(()=>document.querySelector('[data-model-state]').textContent.includes('ready'));
+  await page.locator('[data-doc="record"]').click();
+  await page.locator('#field-goal').fill('Estimate pressure loss');await page.locator('#field-goal').blur();
+  await page.locator('.requirement').first().getByRole('button',{name:'Confirm',exact:true}).click();
+  assert.equal(await page.locator('[data-readiness]').textContent(),'1 / 6 confirmed');
+  await page.route('**/chat',route=>route.fulfill({status:502,contentType:'application/json',body:JSON.stringify({error:'Test upstream failure'})}));
+  await page.locator('#message').fill('Keep my draft after failure');await page.locator('[data-send]').click();
+  await page.waitForFunction(()=>document.querySelector('[data-chat-notice]').textContent.includes('Test upstream failure'));
+  assert.equal(await page.locator('#message').inputValue(),'Keep my draft after failure');
+  assert.equal(await page.locator('#field-goal').inputValue(),'Estimate pressure loss');
+  await page.unroute('**/chat');
+  await page.route('**/chat',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({ok:true,reply:'<img src=x onerror=alert(1)>',requirements:{goal:'A changed goal'},equations:[{title:'Unsafe fixture',latex:'\\input{/secret}',assumptions:'Do not include'}]})}));
+  await page.locator('[data-send]').click();
+  await page.waitForFunction(()=>document.querySelector('#field-goal').value==='A changed goal');
+  assert.equal(await page.locator('[data-readiness]').textContent(),'0 / 6 confirmed','Changed model field must lose confirmation');
+  assert.equal(await page.locator('.messages img').count(),0,'Model output must not become HTML');
+  await page.locator('[data-doc="source"]').click();
+  assert.ok(!(await page.locator('#tex').inputValue()).includes('\\input'),'Unsafe TeX must not be exported');
+  await page.locator('[data-stage="4"]').click();
+  assert.match(await page.locator('[data-stage-checklist]').textContent(),/No job has been started/);
+  for(const width of [900,390]){
+    await page.setViewportSize({width,height:900});
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal overflow');
+    const boxes=await page.locator('.stages button').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().toJSON()));
+    assert.ok(boxes.every(b=>b.x>=0&&b.x+b.width<=width+1),'All six stages fit');
+    await page.screenshot({path:`.qa/current-workspace/width-${width}.png`,fullPage:true});
+  }
+  assert.deepEqual(errors,[]);
+  console.log('PASS UI: legacy redirect, direct composer/document, six-stage layout, confirmed-state invalidation, failed-send preservation, HTML/TeX boundary, blocked solver, tablet/mobile, no JS exceptions.');
+}finally{await browser.close();}

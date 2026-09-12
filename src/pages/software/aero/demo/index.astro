@@ -98,6 +98,9 @@ const demoCases = [
   eyebrow="Aero / Engineering workbench"
   hideHeader={true}
 >
+  <script is:inline>
+    if (new URLSearchParams(location.search).get('mode') === 'current') location.replace('/software/aero/current/');
+  </script>
   <section class="guided-demo" data-guided-demo aria-labelledby="guided-demo-title">
     <header class="guided-topbar">
       <a class="guided-brand" href="/software/aero/"><span>AERO</span><small>Public demo</small></a>

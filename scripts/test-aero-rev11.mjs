@@ -53,7 +53,8 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-tour-model] .tour-field-label')?.textContent.includes('Recorded solver boundary'));
   await page.locator('[data-tour-model] canvas').waitFor();
   await page.goto(`${base}/software/aero/demo/?mode=current`);
-  assert.match(await page.locator('.guided-response-disclosure').textContent(), /Live model chat is not connected/);
+  await page.waitForURL('**/software/aero/current/');
+  assert.ok(await page.locator('#message').isVisible());
   await page.goto(`${base}/software/aero/`);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
