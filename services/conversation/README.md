@@ -37,7 +37,7 @@ explains that messages and the requirement record will be sent there.
 - Equations are model proposals, not scientifically verified. The prompt supplies
   reference continuity, ideal-gas, area and sensible-heat formulas. Browser math
   uses KaTeX with trust disabled and bounded expansion. Unsupported/unsafe math
-  is excluded from generated TeX. The public gateway now substitutes only four
+  is excluded from generated TeX. The public gateway now substitutes only six
   reviewed first-principles formula forms and drops other model-generated LaTeX;
   the model can still discuss a broader relation in prose. No TeX engine or shell
   runs in this service.
@@ -48,6 +48,14 @@ explains that messages and the requirement record will be sent there.
   was checked in the subsequent focused retest. This is not a general eval.
 
 ## Public chat-only beta
+
+Rev 1.2 adds a **separate** bounded numerical study service; the conversation
+model remains tool-free. It can read a validated study brief and a completed
+result through fixed internal routes, explain them and propose document changes.
+It cannot submit a job. See `../study/README.md` for public solver scope, limits
+and the combined Compose command. Use both Compose files when starting the
+current deployment; the chat-only command below describes the original chat
+deployment without the optional study worker.
 
 The public website uses anonymous, rate-limited **conversation only**. It does
 not inherit the private Aero/Aegis/VM login or grant execution access. The Linux

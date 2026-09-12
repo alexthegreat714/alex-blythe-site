@@ -1,0 +1,37 @@
+# Optional public study capability. Runs independently from conversation inference.
+services:
+  study-api:
+    build:
+      context: .
+      dockerfile: services/study/Dockerfile.api
+    volumes: [aero-study-data:/data]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 48
+    mem_limit: 192m
+    cpus: 0.5
+    restart: unless-stopped
+    networks: [edge]
+  study-worker:
+    build:
+      context: .
+      dockerfile: services/study/Dockerfile.worker
+    volumes: [aero-study-data:/data]
+    tmpfs:
+      - /work:uid=10001,gid=10001,size=536870912,noexec,nosuid
+      - /tmp:uid=10001,gid=10001,size=16777216,noexec,nosuid
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    network_mode: none
+    pids_limit: 64
+    mem_limit: 768m
+    memswap_limit: 768m
+    cpus: 2
+    ulimits:
+      nofile: {soft: 256, hard: 256}
+      fsize: {soft: 67108864, hard: 67108864}
+    restart: unless-stopped
+volumes:
+  aero-study-data:

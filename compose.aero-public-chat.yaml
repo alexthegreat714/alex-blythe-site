@@ -25,6 +25,7 @@ services:
       AERO_CHAT_CLIENT_IP_HEADER: X-Aero-Client-IP
       AERO_CHAT_PER_CLIENT_LIMIT: "6"
       AERO_CHAT_GLOBAL_LIMIT: "60"
+      AERO_CHAT_STUDY_API: http://study-api:5323
     read_only: true
     security_opt: [no-new-privileges:true]
     cap_drop: [ALL]

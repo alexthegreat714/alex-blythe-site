@@ -1,4 +1,5 @@
 ---
+import AeroChannelStudy from '../../../components/AeroChannelStudy.astro';
 const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 ---
 <!doctype html>
@@ -20,14 +21,15 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
       </div>
       <div class="chat-notice" data-chat-notice role="status"></div>
       <form class="composer" data-chat-form><label class="sr-only" for="message">Message Aero</label><textarea id="message" placeholder="I want to estimate pressure loss through…" rows="3" maxlength="4000"></textarea><div><small>Enter to send · Shift + Enter for a new line</small><button type="submit" data-send>Send ↑</button></div></form>
-      <p class="privacy">Model proposals need your review. This workspace cannot start a VM or solver.</p>
+      <p class="privacy">Model proposals need your review. The channel study runs a bounded OpenFOAM case when you press Start.</p>
     </section>
     <div class="splitter" role="separator" tabindex="0" aria-label="Resize conversation and document" aria-orientation="vertical" aria-valuemin="30" aria-valuemax="65" aria-valuenow="44"></div>
     <section class="document" aria-labelledby="document-title">
       <header class="pane-header"><div><small>LIVE WORKING DOCUMENT</small><h2 id="document-title">Untitled engineering case</h2></div><span data-revision>Rev 0</span></header>
-      <div class="document-tabs" role="group" aria-label="Document views"><button data-doc="record" aria-pressed="true">Requirements</button><button data-doc="math" aria-pressed="false">Rendered math</button><button data-doc="source" aria-pressed="false">LaTeX source</button></div>
+      <div class="document-tabs" role="group" aria-label="Document views"><button data-doc="record" aria-pressed="true">Requirements</button><button data-doc="math" aria-pressed="false">Rendered math</button><button data-doc="source" aria-pressed="false">LaTeX source</button><button data-open-channel>Live channel study</button></div>
       <div class="example-strip" data-example-strip hidden><span data-example-status></span><span data-example-summary></span><a data-example-source target="_blank" rel="noopener noreferrer">Source ↗</a></div>
       <div class="document-scroll">
+        <AeroChannelStudy />
         <section data-panel="record"><div class="record-intro"><h3>Define before you solve.</h3><p>Values from the model appear as proposals. Edit or confirm each one to prepare the next step.</p></div><div data-fields></div></section>
         <section data-panel="math" hidden><div class="record-intro"><h3>First principles, in view.</h3><p>Equations and assumptions grow from the conversation. This is rendered LaTeX—not a solver result.</p></div><div data-equations></div></section>
         <section data-panel="source" hidden><label for="tex">Generated from the current record · export for external compilation</label><textarea id="tex" readonly spellcheck="false"></textarea></section>
@@ -41,6 +43,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 </main>
 <script>
   import {aeroCaseSeeds, type AeroSeed} from '../../../data/aero-case-library';
+  import {setupChannelStudy, channelFields, channelEquations, type ChannelState} from '../../../lib/aero/channel-study';
   import katex from 'katex';
   import 'katex/dist/katex.min.css';
   const root = document.querySelector<HTMLElement>('[data-workspace]')!;
@@ -50,7 +53,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   type Field = {value: string; confirmed: boolean};
   type Equation = {title:string;latex:string;assumptions:string};
   type Session = {revision:number;messages:{role:'user'|'assistant'|'guide';content:string}[];fields:Record<Key,Field>;equations:Equation[]};
-  type SavedCase = {id:string;title:string;folder:string;session:Session;seedId?:string;baselineInputs?:string;updatedAt:string};
+  type SavedCase = {id:string;title:string;folder:string;session:Session;seedId?:string;baselineInputs?:string;updatedAt:string;study?:ChannelState};
   const blank = ():Session => ({revision:0,messages:[],fields:Object.fromEntries(Object.keys(labels).map(key=>[key,{value:'',confirmed:false}])) as Record<Key,Field>,equations:[]});
   const storageKey = 'aero.current.workspace.v1';
   const libraryKey = 'aero.current.caseLibrary.v1';
@@ -76,6 +79,8 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   let endpoint = root.dataset.endpoint || (['localhost','127.0.0.1'].includes(location.hostname) ? 'http://127.0.0.1:5320' : '');
   let connected = false, busy = false, stage = 0;
   let serial = 0;
+  let channel:ReturnType<typeof setupChannelStudy>|undefined;
+  let channelActive=false;
   const setModelState = (label:string, state:'checking'|'ready'|'offline') => {
     const indicator = $('[data-model-state]');
     indicator.textContent = label;
@@ -115,6 +120,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   function openCase(entry:SavedCase){
     if(busy){notice('Wait for the current model response before switching cases.');return;}
     serial++;activeCase=entry;activeCaseId=entry.id;session=entry.session;
+    channelActive=Boolean(entry.study);channel?.load(entry.study);
     save();renderMessages();renderRecord();selectStage(0);const dialog=$<HTMLDialogElement>('[data-case-library]');if(dialog.open)dialog.close();
     notice(`Opened ${entry.title}. ${seedFor(entry)?.status==='recorded'?'Recorded results describe the original inputs; edits require a rerun.':'Review the setup before any solver run.'}`);
   }
@@ -184,6 +190,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('[data-readiness]').textContent=`${confirmed} / 6 confirmed`;
     $('[data-readiness-note]').textContent=confirmed===6?'Requirements reviewed · math still needs review':'Requirements still needed';
     root.querySelectorAll<HTMLElement>('[data-stage]').forEach((button,i)=>{
+      if(!channelActive)button.querySelector<HTMLElement>('i')!.style.removeProperty('background');
       const recorded=i>1&&evidenceCurrent();
       const qualityWarning=recorded&&i===3&&seed?.recordedGates?.mesh==='warning';
       const solverWarning=recorded&&i===4&&seed?.recordedGates?.solve==='warning';
@@ -195,10 +202,11 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
       button.classList.toggle('gate-warning',Boolean(qualityWarning||solverWarning||validationOpen));
     });
   }
-  function panel(name:string){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
+  function panel(name:string){channel?.hide();root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
   const needs=[[],[],['A dimensioned geometry or CAD artifact','Units, topology, interfaces and tolerance plan','User-reviewed geometry revision'],['Verified geometry revision','Boundary patches, wall treatment and target resolution','Mesh generation and quality-check artifacts'],['Accepted mesh and reviewed boundary conditions','Solver, convergence limits and monitors','Explicit approval on an authenticated execution route'],['Completed solver run and field artifacts','Conservation and convergence evidence','Independent reference and fidelity assessment']];
   function selectStage(index:number){
     stage=index;root.querySelectorAll('[data-stage]').forEach((el,i)=>el.setAttribute('aria-current',i===index?'step':'false'));
+    if(channelActive&&channel){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=true);$('[data-stage-checklist]').hidden=true;root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));channel.show(index);$('.document-scroll').scrollTop=0;return;}
     if(index<2){panel(index===0?'record':'math');$('[data-proof-embed]').hidden=true;$<HTMLIFrameElement>('[data-proof-frame]').removeAttribute('src');$('.document-scroll').scrollTop=0;return;}
     root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));
     root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=true);
@@ -238,9 +246,9 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     const ticket=serial, documentRevision=session.revision;
     const pending=[...session.messages,{role:'user' as const,content}];
     turn('user',content);$('[data-welcome]').hidden=true;
-    let context=pending.slice(-20);while(context.length>1&&context.reduce((n,m)=>n+m.content.length,0)>20000)context.shift();
+    let context=pending.filter(m=>m.role!=='guide').slice(-20);while(context.length>1&&context.reduce((n,m)=>n+m.content.length,0)>20000)context.shift();
     try{
-      const response=await fetch(endpoint.replace(/\/$/,'')+'/chat',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({messages:context,requirements:Object.fromEntries(Object.entries(session.fields).map(([k,f])=>[k,f.value]))})});
+      const response=await fetch(endpoint.replace(/\/$/,'')+'/chat',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({messages:context,requirements:Object.fromEntries(Object.entries(session.fields).map(([k,f])=>[k,f.value])),...(activeCase.study?{study_inputs:activeCase.study.inputs}:{}),...(activeCase.study?.result?{study_run_id:activeCase.study.runId}:{})})});
       const data=await response.json();if(ticket!==serial)return;if(!response.ok||!data.ok)throw Error(data.error||'Model request failed');
       if(typeof data.reply!=='string'||!data.requirements||typeof data.requirements!=='object'||!Array.isArray(data.equations)||data.equations.some(e=>!e||!['title','latex','assumptions'].every(k=>typeof e[k]==='string')))throw Error('Invalid model response. Record unchanged.');
       session.messages=[...pending,{role:'assistant',content:data.reply.slice(0,4000)}].slice(-100);
@@ -252,7 +260,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
           try{katex.renderToString(e.latex,{throwOnError:true,trust:false,strict:'error',maxExpand:200,maxSize:20});return true;}catch{return false;}
         });
       }
-      session.revision++;input.value='';save();renderMessages();renderRecord();notice(changedDuringRequest?'Reply received. Your document was edited during the request, so its newer values were preserved. Ask Aero to review the updated record.':'Working document updated. Review the proposed values and assumptions.');
+      session.revision++;input.value='';save();renderMessages();renderRecord();channel?.refresh();notice(changedDuringRequest?'Reply received. Your document was edited during the request, so its newer values were preserved. Ask Aero to review the updated record.':activeCase.study?'Working document updated. Edit the numerical study controls to apply any proposed changes to the next solver run.':'Working document updated. Review the proposed values and assumptions.');
     }catch(error){renderMessages();notice(error instanceof Error?error.message:'Request failed. Your message is still in the composer.');}
     finally{busy=false;$<HTMLButtonElement>('[data-send]').disabled=false;}
   }
@@ -306,7 +314,26 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   splitter.addEventListener('pointermove',event=>{if(dragging)resize(event.clientX/innerWidth*100);});
   splitter.addEventListener('pointerup',()=>dragging=false);splitter.addEventListener('pointercancel',()=>dragging=false);
   splitter.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();resize(split+(event.key==='ArrowLeft'?-2:2));}});
+  function updateStudy(value:ChannelState,writeRecord:boolean){
+    const oldRun=activeCase.study?.result?.id;activeCase.study=value;
+    if(writeRecord){const fields=channelFields(value.inputs);for(const key of Object.keys(labels) as Key[])session.fields[key]={value:fields[key],confirmed:value.reviewed};session.equations=channelEquations.map(e=>({...e}));session.revision++;renderRecord();}
+    if(value.result&&value.result.id!==oldRun){session.messages.push({role:'guide',content:`OpenFOAM study completed. ${value.result.decision} Open Results to inspect the computed fields, comparison and report.`});renderMessages();}
+    save();
+  }
+  channel=setupChannelStudy($('[data-channel-study]'),root.dataset.endpoint||'http://127.0.0.1:5322',updateStudy,(percents,statuses,tones)=>{
+    const study=channel?.state();$('[data-readiness]').textContent=study?.reviewed?'Study inputs reviewed':'Review study inputs';$('[data-readiness-note]').textContent=study?.result?'Completed result matches these controlled inputs':'4 controlled inputs · document proposals remain separate';
+    root.querySelectorAll<HTMLElement>('[data-stage]').forEach((button,i)=>{const bar=button.querySelector<HTMLElement>('i')!;bar.style.width=`${percents[i]}%`;bar.style.background=({blue:'#409de2',green:'#62c5a1',yellow:'#e8bd54',red:'#e47878'} as Record<string,string>)[tones[i]];button.querySelector<HTMLElement>('[data-stage-label]')!.textContent=statuses[i];});
+  });
+  $('[data-open-channel]').addEventListener('click',()=>{
+    if(busy){notice('Wait for the current response before opening a study.');return;}
+    if(!activeCase.study&&(session.messages.length||Object.values(session.fields).some(f=>f.value)))makeBlankCase();
+    channelActive=true;channel!.load(activeCase.study);activeCase.title='Channel pressure-loss study';updateStudy(channel!.state(),true);
+    if(!session.messages.length){session.messages=[{role:'guide',content:'Define the study using the controls beside this conversation. Ask Aero about the assumptions, equations or mesh plan. Prepare the study, review the stages, then press Start to run OpenFOAM.'}];renderMessages();save();}
+    selectStage(0);
+  });
   save();renderMessages();renderRecord();void connect();
+  if(activeCase.study){channelActive=true;channel.load(activeCase.study);selectStage(0);}
+  if(new URLSearchParams(location.search).get('study')==='channel'&&!activeCase.study)$('[data-open-channel]').click();
   window.setInterval(()=>{if(!busy)void connect(false);},60000);
 </script>
 <style>

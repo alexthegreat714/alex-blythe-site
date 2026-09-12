@@ -29,9 +29,9 @@ export const softwareProjects: SoftwareProject[] = [
     slug: 'aero',
     name: 'Aero',
     category: 'Engineering orchestration / CFD',
-    status: 'Active development / experimental',
+    status: 'Public beta / preliminary analysis',
     year: '2026',
-    summary: 'A Linux-based engineering assistant that guides requirements, first-principles analysis, CAD, meshing, and OpenFOAM results.',
+    summary: 'Turn an engineering question into a reviewable CFD study: requirements, first-principles checks, design comparisons and OpenFOAM evidence.',
     purpose: 'Aero connects engineering problem framing, fidelity selection, solver setup, execution evidence, and review without treating an AI-generated answer as computational authority.',
     keyIdeas: [
       'Engineering problem framing and fidelity selection',
@@ -61,8 +61,8 @@ export const softwareProjects: SoftwareProject[] = [
       'Promotion toward engineering evidence requires numerical convergence, conservation checks, and comparison with an appropriate analytical, experimental, or reference basis.',
     ],
     limitations: [
-      'The project remains experimental and is not a substitute for engineering judgment or solver expertise.',
-      'The public demo replays recorded examples; live solver execution requires access to the protected workspace.',
+      'The public release supports preliminary analysis with explicit physical assumptions and numerical checks.',
+      'Visitors can run a bounded parallel-plate channel study. General CAD uploads and arbitrary solver cases use the private workspace.',
       'Validation coverage depends on the problem class; completed execution alone does not establish physical accuracy.',
     ],
     artifacts: [

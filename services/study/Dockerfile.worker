@@ -1,0 +1,17 @@
+FROM leoyue123/foamagent@sha256:5c8bd752884b95b45c02d74a4b5e449fbf22aea8fa13a0eb1a40be851350ff1e AS source
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y --no-install-recommends python3 libstdc++6 && rm -rf /var/lib/apt/lists/*
+COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/blockMesh /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/blockMesh
+COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/checkMesh /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/checkMesh
+COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/lib /opt/openfoam10/platforms/linux64GccDPInt32Opt/lib
+COPY --from=source /opt/openfoam10/etc /opt/openfoam10/etc
+COPY --from=source /lib/x86_64-linux-gnu/libevent-2.1.so.7 /lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7 /lib/x86_64-linux-gnu/libgmp.so.10 /lib/x86_64-linux-gnu/libhwloc.so.15 /lib/x86_64-linux-gnu/libltdl.so.7 /lib/x86_64-linux-gnu/libmpfr.so.6 /lib/x86_64-linux-gnu/libmpi.so.40 /lib/x86_64-linux-gnu/libopen-pal.so.40 /lib/x86_64-linux-gnu/libopen-rte.so.40 /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libz.so.1 /opt/aero/mpi/
+COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/simpleFoam /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/simpleFoam
+ENV WM_PROJECT_DIR=/opt/openfoam10 WM_PROJECT_VERSION=10 FOAM_ETC=/opt/openfoam10/etc
+ENV PATH=/opt/openfoam10/platforms/linux64GccDPInt32Opt/bin:/usr/local/bin:/usr/bin:/bin
+ENV LD_LIBRARY_PATH=/opt/openfoam10/platforms/linux64GccDPInt32Opt/lib:/opt/openfoam10/platforms/linux64GccDPInt32Opt/lib/openmpi-system:/opt/aero/mpi:/usr/lib/x86_64-linux-gnu
+WORKDIR /srv
+COPY services/study/core.py services/study/worker.py /srv/
+RUN mkdir /data /work && chown 10001:10001 /data /work
+USER 10001:10001
+CMD ["python3", "-u", "worker.py"]

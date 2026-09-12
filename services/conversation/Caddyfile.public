@@ -3,6 +3,20 @@
 }
 
 :5322 {
+    @study path /study/health /study/brief /study/runs /study/runs/*
+    handle @study {
+        request_body {
+            max_size 2KB
+        }
+        reverse_proxy study-api:5323 {
+            header_up X-Aero-Client-IP {http.request.header.CF-Connecting-IP}
+            transport http {
+                max_conns_per_host 8
+                response_header_timeout 12s
+            }
+        }
+    }
+
     @health path /health
     handle @health {
         reverse_proxy conversation:5320 {

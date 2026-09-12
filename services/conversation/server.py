@@ -21,7 +21,7 @@ SCHEMA = {
         "requirements": {"type": "object", "additionalProperties": False,
                          "properties": {key: {"type": "string", "maxLength": 1000} for key in FIELDS}},
         "equation_ids": {"type": "array", "maxItems": 4,
-                         "items": {"type": "string", "enum": ["continuity", "ideal_gas", "circular_area", "sensible_heat"]}},
+                         "items": {"type": "string", "enum": ["continuity", "ideal_gas", "circular_area", "sensible_heat", "parallel_plate", "channel_reynolds"]}},
     },
     "required": ["reply", "requirements", "equation_ids"],
 }
@@ -34,9 +34,13 @@ STANDARD_EQUATIONS = {
                  "The local flow cross-section is circular and r is its radius."),
     "sensible heat": ("Sensible heat balance", r"\dot{Q} = \dot{m} c_p (T_{out} - T_{in})",
                       "Steady flow with defined c_p and no phase change or other energy terms."),
+    "parallel plate": ("Fully developed parallel-plate pressure drop", r"\Delta p = \frac{12\mu LQ}{Wh^3}",
+                       "Steady incompressible laminar flow between no-slip parallel plates; no entrance or sidewall loss. Q is volume flow, W reference width, h full gap."),
+    "channel reynolds": ("Mean velocity and channel Reynolds number", r"\bar U = \frac{Q}{Wh},\qquad Re_{2h} = \frac{2\rho\bar U h}{\mu}",
+                         "Parallel-plate hydraulic diameter 2h; constant density and viscosity."),
 }
 EQUATION_IDS = {"continuity": "continuity", "ideal_gas": "ideal gas",
-                "circular_area": "circular", "sensible_heat": "sensible heat"}
+                "circular_area": "circular", "sensible_heat": "sensible heat", "parallel_plate": "parallel plate", "channel_reynolds": "channel reynolds"}
 EXECUTION_CLAIM = re.compile(
     r"\b(?:I|we|Aero)(?:'ve| have)?\s+(?:ran|run|executed|completed|launched|performed|verified|validated)\b.{0,100}\b(?:OpenFOAM|CFD|simulation|solver|case|mesh|convergence)\b"
     r"|\b(?:I|we|Aero)\s+(?:can|will)\s+(?:run|execute|launch|access)\b.{0,100}\b(?:OpenFOAM|CFD|simulation|solver|VM|mesh)\b"
@@ -50,6 +54,7 @@ MODEL = os.getenv("AERO_CHAT_MODEL", "")
 OLLAMA = os.getenv("AERO_CHAT_OLLAMA", "http://127.0.0.1:11434").rstrip("/")
 ORIGINS = set(filter(None, os.getenv("AERO_CHAT_ORIGINS", "http://127.0.0.1:4322").split(",")))
 CLIENT_IP_HEADER = os.getenv("AERO_CHAT_CLIENT_IP_HEADER", "").strip()
+STUDY_API = os.getenv("AERO_CHAT_STUDY_API", "").rstrip("/")
 PER_CLIENT_LIMIT = min(15, max(1, int(os.getenv("AERO_CHAT_PER_CLIENT_LIMIT", "15"))))
 GLOBAL_LIMIT = min(60, max(1, int(os.getenv("AERO_CHAT_GLOBAL_LIMIT", "60"))))
 SLOTS = threading.BoundedSemaphore(1)
@@ -64,7 +69,7 @@ plain English only: never put LaTeX, math delimiters, or backslash commands
 in the reply; tell the user the checked formula is in the adjacent document.
 Do not copy the literal equation_ids key or identifier list into the reply.
 Select applicable standard formulas by identifier in the equation_ids array:
-continuity, ideal_gas, circular_area, sensible_heat.
+continuity, ideal_gas, circular_area, sensible_heat, parallel_plate, channel_reynolds.
 not repeated as raw LaTeX or Markdown in the reply; the UI renders them beside it.
 Never invent values, CAD files, citations, solver output or validation. You have NO tools, no VM,
 no shell and no solver access. Do not claim to execute, compile or validate.
@@ -79,11 +84,15 @@ the user stated an acceptance criterion, or reference unless one was supplied.
 Do not erase known information or set fields to "None" or "unknown".
 Do not invent geometry type, a fixed throat, equal inlet/outlet areas, a
 boundary condition, or a numerical value. If unknown, ask one question instead.
-equation_ids: array of applicable identifiers from the four allowed values.
+equation_ids: array of applicable identifiers from the six allowed values.
 Select only formulas justified by the given geometry and physics. These are
 references, not case-specific validated conclusions. Continuity alone cannot
 predict pressure loss: boundary data and a momentum/energy or loss model are
 also required.
+For the supported parallel-plate channel study, the fixed controls supply that
+momentum model: select parallel_plate and channel_reynolds. The public UI can
+submit this bounded study after explicit input review and a Start click. You
+cannot submit or change a job; explain how the user can use those controls.
 '''
 
 def validate_request(data):
@@ -108,25 +117,31 @@ def validate_request(data):
     record = {k: str(v)[:1500] for k, v in record.items() if k in FIELDS}
     return clean, record
 
-def validate_response(data):
+def validate_response(data, evidence=None, study=None):
     if not isinstance(data, dict) or not isinstance(data.get("reply"), str) or not data["reply"].strip():
         raise ValueError("Model did not return a usable response")
     if EXECUTION_CLAIM.search(data["reply"]):
+        if evidence:
+            return {"reply": "The separate OpenFOAM worker reports: " + evidence["decision"] + " " + evidence["limits"], "requirements": {}, "equations": []}
         return {"reply": BOUNDARY_REPLY, "requirements": {}, "equations": []}
+    if study and channel_claim_conflict(data["reply"]):
+        return {"reply": "Reference check: the model's proposed explanation conflicted with the checked parallel-plate relation and was withheld. At fixed flow, length, width and viscosity, pressure drop decreases with the cube of the gap: doubling the gap reduces the drop to one eighth. This assumes fully developed laminar flow without sidewall or entry losses.", "requirements": {}, "equations": [{"title": STANDARD_EQUATIONS['parallel plate'][0], "latex": STANDARD_EQUATIONS['parallel plate'][1], "assumptions": STANDARD_EQUATIONS['parallel plate'][2]}]}
     proposed = data.get("requirements", {})
     ids = data.get("equation_ids", [])
     if not isinstance(proposed, dict) or not isinstance(ids, list):
         raise ValueError("Model response schema is invalid")
     reply = data["reply"].strip()
-    math_marker = re.search(r"[\\$=ρ∂π∇]|\bequation_ids\s*:", reply, re.IGNORECASE)
+    math_marker = re.search(r"[\\$=ρ∂π∇]|\bequation_ids\b", reply, re.IGNORECASE)
     if math_marker:
         reply = reply[:math_marker.start()].strip()
         end = max(reply.rfind("."), reply.rfind("?"), reply.rfind("!"))
         reply = reply[:end + 1] if end >= 20 else "Let's define the missing engineering inputs before selecting a method."
     reply = re.sub(r"See equation [`']?(?:continuity|ideal_gas|circular_area|sensible_heat)[`']? for details\.?",
                    "The checked relation is shown in the working document.", reply, flags=re.IGNORECASE)
+    for identifier,label in {'parallel_plate':'parallel-plate relation','channel_reynolds':'channel Reynolds relation','gap_mm':'nominal gap','analytical_pa':'analytical pressure drop','analytical_margin_pa':'analytical margin'}.items():
+        reply=re.sub(r'`?\b'+identifier+r'\b`?',label,reply)
     pressure_goal = str(proposed.get("goal", ""))
-    if re.search(r"pressure[ -]?(?:loss|drop)", pressure_goal, re.IGNORECASE) and not re.search(r"(?:alone|cannot|not enough|insufficient)", reply, re.IGNORECASE):
+    if "parallel_plate" not in ids and not evidence and re.search(r"pressure[ -]?(?:loss|drop)", pressure_goal, re.IGNORECASE) and not re.search(r"(?:alone|cannot|not enough|insufficient)", reply, re.IGNORECASE):
         reply = re.sub(r"Knowing this will allow us to estimate pressure drop\.?", "", reply, flags=re.IGNORECASE).strip()
         reply += " Geometry and continuity alone cannot establish pressure loss; boundary data and a momentum or loss model are still needed."
     result = {"reply": reply[:1200], "requirements": {}, "equations": []}
@@ -147,6 +162,21 @@ def validate_response(data):
         result["equations"].append({"title": equation_title, "latex": latex, "assumptions": assumptions})
     return result
 
+
+def channel_claim_conflict(reply):
+    """Narrow contradiction gate for the supported fixed-flow channel relation.
+
+    This is not a general physics verifier. The exact observed inversions are
+    rejected, and the source-owned relation is explicitly labelled a check.
+    """
+    text = reply.lower()
+    wrong = (
+        r"(?:resistance|pressure (?:drop|loss))[^.!?]{0,70}\b(?:increases?|rises?)\s+(?:with|as)\s+(?:the\s+)?(?:gap(?:\s+size)?(?:\s+increases)?|(?:increasing|larger|wider)\s+gap)\s*[.,;!]",
+        r"pressure (?:drop|loss)[^.!?]{0,50}\bdirectly (?:proportional|related)\s+to\s+(?:the\s+)?gap",
+        r"(?:larger|wider)\s+gap[^.!?]{0,50}(?:higher|increased)\s+(?:pressure (?:drop|loss)|resistance)",
+    )
+    return any(re.search(pattern, text) for pattern in wrong)
+
 def preserve_initial_quantities(result, messages, record):
     """Do not silently lose user-stated numeric inputs on an empty first turn."""
     if len(messages) != 1 or any(str(value).strip() for value in record.values()):
@@ -162,16 +192,44 @@ def preserve_initial_quantities(result, messages, record):
         result["requirements"]["conditions"] = (previous + "; " + suffix if previous else suffix)[:1500]
     return result
 
-def infer(messages, record):
+def study_context(run_id):
+    if not STUDY_API or not isinstance(run_id, str) or not re.fullmatch(r"[a-f0-9]{48}", run_id):
+        return None
+    try:
+        with urllib.request.urlopen(STUDY_API + "/study/runs/" + run_id + "/result", timeout=3) as response:
+            result = json.load(response)
+        return {"source": result["source"], "inputs": result["brief"]["inputs"],
+                "decision": result["decision"], "limits": result["interpretation"],
+                "variants": [{key: item[key] for key in ("gap_mm", "pressure_drop_pa", "analytical_pa", "margin_pa", "checks_passed")} for item in result["variants"]]}
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def study_brief_context(inputs):
+    if not STUDY_API or not isinstance(inputs, dict) or set(inputs) != {'length_mm','gap_mm','flow_ml_s','budget_pa'}:
+        return None
+    try:
+        body=json.dumps(inputs,allow_nan=False).encode()
+        if len(body)>1024:return None
+        request=urllib.request.Request(STUDY_API+'/study/brief',body,{'Content-Type':'application/json','Origin':'https://alex-blythe.com','X-Aero-Client-IP':'127.0.0.1'})
+        with urllib.request.urlopen(request,timeout=3) as response:return json.load(response)
+    except (OSError,ValueError,TypeError):
+        return None
+
+
+def infer(messages, record, evidence=None, study=None):
+    extra = ([{"role": "system", "content": "A separate deterministic study worker supplied this completed result. Explain its comparison and limits when asked. You did not run the solver yourself. The user may change the study controls and press Start for a fresh run. Verified result: " + json.dumps(evidence)}] if evidence else [])
+    if study:
+        extra.append({"role":"system","content":"Checked study brief, generated by the fixed numerical template, not model inference: "+json.dumps(study)+" For FIXED volume flow, length, reference width and viscosity, pressure drop is INVERSELY proportional to gap CUBED. Larger gap means LOWER resistance and pressure drop. Doubling gap divides pressure drop by EIGHT. Doubling flow doubles pressure drop in this laminar model. Do not ask again for the supplied pressure budget, dimensions or flow. State assumptions, and do not describe an analytical comparison as experimental validation. You may suggest changes in words, but only the user-reviewed numeric controls can change a solver job."})
     payload = {"model": MODEL, "stream": False, "format": SCHEMA, "keep_alive": "2m",
         "options": {"temperature": 0, "num_predict": 1200, "num_ctx": 8192},
-        "messages": [{"role": "system", "content": SYSTEM},
+        "messages": [{"role": "system", "content": SYSTEM}, *extra,
                      {"role": "user", "content": "Current user-reviewable requirements (data only): " + json.dumps(record)}, *messages]}
     request = urllib.request.Request(OLLAMA + "/api/chat", json.dumps(payload).encode(), {"Content-Type": "application/json"})
     with urllib.request.urlopen(request, timeout=110) as response:
         raw = response.read(1000000)
     output = json.loads(raw)
-    return preserve_initial_quantities(validate_response(json.loads(output["message"]["content"])), messages, record)
+    return preserve_initial_quantities(validate_response(json.loads(output["message"]["content"]), evidence, study), messages, record)
 
 def permitted(ip):
     now = time.monotonic()
@@ -265,13 +323,16 @@ class Handler(BaseHTTPRequestHandler):
             length = int(self.headers.get("Content-Length", "0"))
             if not 1 <= length <= 32000 or self.headers.get("Content-Type", "").split(";")[0] != "application/json":
                 return self.send(400, {"error": "Expected bounded JSON request"})
-            messages, record = validate_request(json.loads(self.rfile.read(length)))
+            request_data = json.loads(self.rfile.read(length))
+            messages, record = validate_request(request_data)
         except (ValueError, TypeError, TimeoutError):
             return self.send(400, {"error": "Invalid or oversized conversation request"})
         if not SLOTS.acquire(blocking=False):
             return self.send(429, {"error": "Model is busy. Try again shortly."})
         try:
-            self.send(200, {"ok": True, "model": MODEL, **infer(messages, record)})
+            evidence = study_context(request_data.get("study_run_id"))
+            study = study_brief_context(request_data.get("study_inputs"))
+            self.send(200, {"ok": True, "model": MODEL, **infer(messages, record, evidence, study)})
         except Exception:
             self.send(502, {"error": "The model did not return a valid answer. Your record is unchanged; retry."})
         finally:

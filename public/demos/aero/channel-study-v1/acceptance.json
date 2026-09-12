@@ -1,0 +1,161 @@
+[
+  {
+    "label": "default",
+    "inputs": {
+      "length_mm": 200,
+      "gap_mm": 2,
+      "flow_ml_s": 20,
+      "budget_pa": 70
+    },
+    "id": "41d5b7172211272f850b61cfa3a5f1bef7f123a068686f97",
+    "status": {
+      "id": "41d5b7172211272f850b61cfa3a5f1bef7f123a068686f97",
+      "state": "complete",
+      "message": "2 mm is the smallest tested gap meeting the 70 Pa budget within the stated parallel-plate model.",
+      "completed": 9,
+      "total": 9,
+      "progress": 100,
+      "started_at": 1789242158.4744034,
+      "updated_at": 1789242174.4686992,
+      "checks_passed": true,
+      "evidence_sha256": "ebf4191b3ee3f94644027347724738add8f171db2db8239a1a63be415a08d562",
+      "result_sha256": "309f8ee32e00049c00084f7cc941adf5092e4633a14582edd4cfdf9e1ff34db7",
+      "report_sha256": "cd9800e3a8f4ed5f6ea3d30dcb5e43b20e3120d4671146dc4ba2ffb95e2542e9"
+    },
+    "elapsed_seconds": 15.81,
+    "selected_gap_mm": 2.0,
+    "variants": [
+      {
+        "gap_mm": 1.5,
+        "pressure_drop_pa": 142.37082124094852,
+        "analytical_pa": 142.64888888888888,
+        "mesh_change_pct": 0.15138447085724677,
+        "checks_passed": true,
+        "margin_pa": -72.64888888888888
+      },
+      {
+        "gap_mm": 2.0,
+        "pressure_drop_pa": 60.06269040045428,
+        "analytical_pa": 60.179999999999986,
+        "mesh_change_pct": 0.1513848450018997,
+        "checks_passed": true,
+        "margin_pa": 9.820000000000014
+      },
+      {
+        "gap_mm": 2.5,
+        "pressure_drop_pa": 30.752099159775995,
+        "analytical_pa": 30.81215999999999,
+        "mesh_change_pct": 0.1513809862562595,
+        "checks_passed": true,
+        "margin_pa": 39.18784000000001
+      }
+    ],
+    "verified_artifacts": 182
+  },
+  {
+    "label": "minimum",
+    "inputs": {
+      "length_mm": 100,
+      "gap_mm": 1,
+      "flow_ml_s": 1,
+      "budget_pa": 1
+    },
+    "id": "110223d30427e3311f589c6c66d567259f3f1eabbd0adee7",
+    "status": {
+      "id": "110223d30427e3311f589c6c66d567259f3f1eabbd0adee7",
+      "state": "complete",
+      "message": "No tested gap meets the budget with all checks passed. Review the results or change the study inputs.",
+      "completed": 9,
+      "total": 9,
+      "progress": 100,
+      "started_at": 1789242175.4768682,
+      "updated_at": 1789242191.1539254,
+      "checks_passed": true,
+      "evidence_sha256": "780d6242ba094e3ac4226d0b6d33eec6085347e561a3f07653b6f5d933a8e894",
+      "result_sha256": "9cce72d7725d084dfbec1161cd52db34e661081e58be32fb5fbd01cdee18d0af",
+      "report_sha256": "52f1bb46c5f9f404e799c1d674f18bb0147defc24edafde13353f4c70b44448f"
+    },
+    "elapsed_seconds": 15.47,
+    "selected_gap_mm": null,
+    "variants": [
+      {
+        "gap_mm": 0.75,
+        "pressure_drop_pa": 28.475880999564197,
+        "analytical_pa": 28.529777777777774,
+        "mesh_change_pct": 0.1438452303993388,
+        "checks_passed": true,
+        "margin_pa": -27.529777777777774
+      },
+      {
+        "gap_mm": 1.0,
+        "pressure_drop_pa": 12.013054816486962,
+        "analytical_pa": 12.035999999999996,
+        "mesh_change_pct": 0.14543074393833308,
+        "checks_passed": true,
+        "margin_pa": -11.035999999999996
+      },
+      {
+        "gap_mm": 1.25,
+        "pressure_drop_pa": 6.150611094010929,
+        "analytical_pa": 6.162431999999998,
+        "mesh_change_pct": 0.14667037665167332,
+        "checks_passed": true,
+        "margin_pa": -5.162431999999998
+      }
+    ],
+    "verified_artifacts": 182
+  },
+  {
+    "label": "maximum",
+    "inputs": {
+      "length_mm": 500,
+      "gap_mm": 3,
+      "flow_ml_s": 40,
+      "budget_pa": 1000
+    },
+    "id": "ab74403696bedaccc486100b575899aae86375d736ec0e35",
+    "status": {
+      "id": "ab74403696bedaccc486100b575899aae86375d736ec0e35",
+      "state": "complete",
+      "message": "2.25 mm is the smallest tested gap meeting the 1e+03 Pa budget within the stated parallel-plate model.",
+      "completed": 9,
+      "total": 9,
+      "progress": 100,
+      "started_at": 1789242191.162191,
+      "updated_at": 1789242225.2878315,
+      "checks_passed": true,
+      "evidence_sha256": "eea5ff5196384764f88d27b4ca92168e43882fbb530df7299fc7b48454adccd8",
+      "result_sha256": "a55b47effc0731cf58495379edc1b897186fc2d42b74d48e81f902e9ca38d321",
+      "report_sha256": "38371443566dd0a4a471e40c105c6ec416cf4c9dbdb3701f9bc575d010fe7135"
+    },
+    "elapsed_seconds": 33.95,
+    "selected_gap_mm": 2.2500000000000004,
+    "variants": [
+      {
+        "gap_mm": 2.2500000000000004,
+        "pressure_drop_pa": 210.91973490661692,
+        "analytical_pa": 211.3316872427983,
+        "mesh_change_pct": 0.15138466400201636,
+        "checks_passed": true,
+        "margin_pa": 788.6683127572018
+      },
+      {
+        "gap_mm": 3.0,
+        "pressure_drop_pa": 88.98176680549184,
+        "analytical_pa": 89.15555555555555,
+        "mesh_change_pct": 0.15138267578584694,
+        "checks_passed": true,
+        "margin_pa": 910.8444444444444
+      },
+      {
+        "gap_mm": 3.75,
+        "pressure_drop_pa": 45.55867334278483,
+        "analytical_pa": 45.64764444444445,
+        "mesh_change_pct": 0.15136132590502455,
+        "checks_passed": true,
+        "margin_pa": 954.3523555555556
+      }
+    ],
+    "verified_artifacts": 182
+  }
+]
