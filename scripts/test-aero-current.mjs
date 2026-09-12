@@ -11,6 +11,16 @@ const base=process.env.AERO_TEST_URL||'http://127.0.0.1:4322';
 try{
   await page.goto(base+'/software/aero/demo/?mode=current');
   await page.waitForURL('**/software/aero/current/');
+  assert.equal(await page.locator('[data-theme-toggle]').getAttribute('aria-pressed'),'true','Dark must be the default');
+  assert.equal(await page.locator('.document').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(21, 36, 44)');
+  await page.locator('[data-theme-toggle]').click();
+  assert.equal(await page.locator('[data-theme-toggle]').getAttribute('aria-pressed'),'false');
+  assert.equal(await page.locator('.document').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(244, 245, 241)');
+  await page.reload();
+  assert.equal(await page.locator('[data-theme-toggle]').getAttribute('aria-pressed'),'false','Light selection persists');
+  await page.locator('[data-theme-toggle]').click();
+  await page.reload();
+  assert.equal(await page.locator('.document').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(21, 36, 44)','Dark selection persists');
   assert.equal(await page.locator('.stages button').count(),6);
   assert.ok(await page.locator('#message').isVisible());
   assert.ok(await page.locator('#field-goal').isVisible());
@@ -66,6 +76,10 @@ try{
     assert.ok(boxes.every(b=>b.x>=0&&b.x+b.width<=width+1),'All six stages fit');
     await page.screenshot({path:`.qa/current-workspace/width-${width}.png`,fullPage:true});
   }
+  await page.locator('[data-doc="record"]').click();
+  assert.equal(await page.locator('.requirement').first().evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(28, 48, 59)');
+  await page.locator('[data-doc="math"]').click();
+  if (await page.locator('.equation-card').count()) assert.equal(await page.locator('.equation-card').first().evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(28, 48, 59)');
   assert.deepEqual(errors,[]);
-  console.log('PASS UI: legacy redirect, direct composer/document, six-stage layout, confirmed-state invalidation, failed-send preservation, HTML/TeX boundary, blocked solver, tablet/mobile, no JS exceptions.');
+  console.log('PASS UI: default dark, light/dark persistence and card colors, legacy redirect, direct composer/document, six-stage layout, confirmed-state invalidation, failed-send preservation, HTML/TeX boundary, blocked solver, tablet/mobile, no JS exceptions.');
 }finally{await browser.close();}

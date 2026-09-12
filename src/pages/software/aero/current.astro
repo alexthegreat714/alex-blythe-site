@@ -2,10 +2,13 @@
 const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 ---
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Aero · Engineering workspace</title><meta name="description" content="Define an engineering problem with Aero. Review requirements, assumptions and a live LaTeX working document."/><link rel="canonical" href="https://alex-blythe.com/software/aero/current/"/></head>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#10191e"/><script is:inline>
+  try { document.documentElement.dataset.aeroTheme = localStorage.getItem('aero-current-theme') === 'light' ? 'light' : 'dark'; }
+  catch { document.documentElement.dataset.aeroTheme = 'dark'; }
+</script><title>Aero · Engineering workspace</title><meta name="description" content="Define an engineering problem with Aero. Review requirements, assumptions and a live LaTeX working document."/><link rel="canonical" href="https://alex-blythe.com/software/aero/current/"/></head>
 <body>
 <main class="app" data-workspace data-endpoint={modelEndpoint}>
-  <header class="appbar"><a href="/software/aero/" class="brand">AERO <span>Engineering workspace</span></a><div class="app-actions"><span data-save>Saved on this browser</span><button data-settings>Connect model</button><button data-export>Export .tex</button><button data-new>New case</button></div></header>
+  <header class="appbar"><a href="/software/aero/" class="brand">AERO <span>Engineering workspace</span></a><div class="app-actions"><span data-save>Saved on this browser</span><button type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="true" title="Switch to light mode"><span data-theme-icon aria-hidden="true">☾</span> <span class="theme-label" data-theme-label>Dark</span></button><button data-settings>Connect model</button><button data-export>Export .tex</button><button data-new>New case</button></div></header>
   <nav class="stages" aria-label="Engineering stages">
     {['Requirements','Math & LaTeX','CAD & tolerances','Mesh','Solve','Results'].map((label, i) => <button data-stage={i} aria-current={i === 0 ? 'step' : 'false'}><span class="step-number">0{i + 1}</span><span><b>{label}</b><small data-stage-label>Inputs needed</small></span><span class="track"><i></i></span></button>)}
   </nav>
@@ -46,6 +49,24 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   type Session = {revision:number;messages:{role:'user'|'assistant';content:string}[];fields:Record<Key,Field>;equations:Equation[]};
   const blank = ():Session => ({revision:0,messages:[],fields:Object.fromEntries(Object.keys(labels).map(key=>[key,{value:'',confirmed:false}])) as Record<Key,Field>,equations:[]});
   const storageKey = 'aero.current.workspace.v1';
+  const themeKey = 'aero-current-theme';
+  const themeButton = $<HTMLButtonElement>('[data-theme-toggle]');
+  const updateThemeButton = () => {
+    const dark = document.documentElement.dataset.aeroTheme !== 'light';
+    themeButton.setAttribute('aria-pressed', String(dark));
+    themeButton.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    themeButton.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    $('[data-theme-icon]').textContent = dark ? '☾' : '☀';
+    $('[data-theme-label]').textContent = dark ? 'Dark' : 'Light';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#10191e' : '#f4f5f1');
+  };
+  updateThemeButton();
+  themeButton.addEventListener('click', () => {
+    const next = document.documentElement.dataset.aeroTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.aeroTheme = next;
+    try { localStorage.setItem(themeKey, next); } catch {}
+    updateThemeButton();
+  });
   let session = blank();
   let endpoint = root.dataset.endpoint || (['localhost','127.0.0.1'].includes(location.hostname) ? 'http://127.0.0.1:5320' : '');
   let connected = false, busy = false, stage = 0;
@@ -173,5 +194,29 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   :global(.turn){margin:0 0 22px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}:global(.turn small){color:#74c2c7;font-size:9px;letter-spacing:.1em}:global(.turn p){margin:8px 0;font-size:13px}:global(.turn.user){background:#1b3442;padding:14px;border-radius:10px}:global(.turn.user small){color:#a3bac8}:global(.requirement){border:1px solid #d5dfe0;border-radius:8px;padding:14px;margin:0 0 12px;background:#fff}:global(.requirement>div){display:flex;justify-content:space-between;gap:10px}:global(.requirement label){font-size:12px;font-weight:750}:global(.requirement small){font-size:10px;color:#956c26}:global(.requirement .confirmed){color:#20736b}:global(.requirement textarea){display:block;resize:vertical;width:100%;min-height:50px;margin:12px 0;border:0;background:#f4f7f6;padding:8px;color:#2b4653;line-height:1.5;font-size:12px}:global(.requirement button){font-size:10px;padding:5px 9px;background:#e4eeed;color:#2f696d;border:0}:global(.equation-card){padding:20px;border:1px solid #d6dfe0;border-radius:8px;background:#fff;margin-bottom:16px;overflow:auto}:global(.equation-card h3){font-size:13px;margin:0 0 20px}:global(.equation-card p),:global(.empty-math){color:#637c88;font-size:12px;line-height:1.65}:global(.equation-card .katex-display){overflow:auto;padding:12px 0}:global(.math-error){color:#995b39;font:12px monospace;white-space:pre-wrap}
   @media(max-width:1000px){.stages{gap:5px;padding:8px}.stages button{padding:8px 7px 12px;gap:6px}.stages b{font-size:10px}.stages small{font-size:9px}.app-actions>span,.brand span{display:none}.pane-header{padding:14px}.workspace{grid-template-columns:minmax(280px,var(--split)) 6px minmax(290px,1fr)}}
   @media(max-width:700px){.app{height:auto;min-height:100dvh;overflow:visible}.appbar{padding:0 12px}.app-actions{gap:4px}.app-actions button{font-size:10px;padding:7px}.stages{grid-template-columns:repeat(3,minmax(0,1fr));position:sticky;top:0;z-index:3}.stages b{font-size:11px}.workspace{display:flex;flex-direction:column}.splitter{display:none}.conversation{min-height:650px;height:75dvh}.document{min-height:650px;max-height:95dvh}.welcome{margin:0}.messages{padding:18px}.pane-header h1{font-size:14px}.document-scroll{padding:18px}.composer small{font-size:9px}}
+  /* The working document shares the dark canvas by default. Only this pane
+     changes theme; the conversation and stage chrome retain their contrast. */
+  .app { --doc-bg:#15242c; --doc-ink:#e3eff0; --doc-rule:#314651; --doc-muted:#9eb6bf; --doc-accent:#81d7d6; --doc-warning:#eac791; --doc-card:#1c303b; --doc-input:#142731; --doc-selected:#24444d; --doc-button:#2a555d; }
+  :global(html[data-aero-theme='light']) .app { --doc-bg:#f4f5f1; --doc-ink:#253944; --doc-rule:#d5dfe0; --doc-muted:#627985; --doc-accent:#176b79; --doc-warning:#956c26; --doc-card:#fff; --doc-input:#f4f7f6; --doc-selected:#dceae9; --doc-button:#e4eeed; }
+  .document { background:var(--doc-bg); color:var(--doc-ink); }
+  .document .pane-header, .document-tabs, .document-footer { border-color:var(--doc-rule); }
+  .document .pane-header small, .record-intro p, .document-footer span,
+  .stage-checklist p, .stage-checklist ul, .document-tabs button,
+  .stage-checklist small { color:var(--doc-muted); }
+  .document-tabs [aria-pressed=true] { background:var(--doc-selected); color:var(--doc-ink); }
+  .document-footer button { background:var(--doc-button); color:var(--doc-ink); border-color:var(--doc-rule); }
+  .stage-checklist a { color:var(--doc-accent); }
+  #tex { background:var(--doc-input); color:var(--doc-ink); border-color:var(--doc-rule); }
+  .document-scroll { scrollbar-color:var(--doc-rule) var(--doc-bg); }
+  :global(.requirement), :global(.equation-card) { background:var(--doc-card); border-color:var(--doc-rule); color:var(--doc-ink); }
+  :global(.requirement textarea) { background:var(--doc-input); color:var(--doc-ink); }
+  :global(.requirement textarea::placeholder) { color:var(--doc-muted); }
+  :global(.requirement button) { background:var(--doc-button); color:var(--doc-ink); }
+  :global(.requirement small:not(.confirmed)) { color:var(--doc-warning); }
+  :global(.requirement .confirmed) { color:var(--doc-accent); }
+  :global(.equation-card p), :global(.empty-math) { color:var(--doc-muted); }
+  :global(.equation-review) { color:var(--doc-accent); }
+  [data-theme-toggle][aria-pressed='true'] { border-color:#67d6d0; color:#9ee7e4; background:#1c3c45; }
+  @media(max-width:700px) { .app-actions .theme-label { display:none; } [data-theme-toggle] { min-width:31px; } }
 </style>
 </body></html>
