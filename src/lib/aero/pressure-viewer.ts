@@ -36,7 +36,7 @@ function scalarColor(value: number, low: number, high: number): THREE.Color {
   return stops[index].clone().lerp(stops[index + 1], scaled - index);
 }
 
-export function mountPressureViewer(container: HTMLElement, surface: PressureSurface, options: { autoRotate?: boolean } = {}): PressureViewer {
+export function mountPressureViewer(container: HTMLElement, surface: PressureSurface, options: { autoRotate?: boolean; meshOnly?: boolean } = {}): PressureViewer {
   if (surface.schema !== 'aero.scientific.surface.v1' || surface.field !== 'p') {
     throw new Error('Unsupported scientific surface contract');
   }
@@ -70,14 +70,14 @@ export function mountPressureViewer(container: HTMLElement, surface: PressureSur
   const surfaceMesh = new THREE.Mesh(
     geometry,
     new THREE.MeshStandardMaterial({
-      vertexColors: true, roughness: 0.82, metalness: 0.02, side: THREE.DoubleSide,
+      vertexColors: !options.meshOnly, color: options.meshOnly ? '#244650' : '#ffffff', roughness: 0.82, metalness: 0.02, side: THREE.DoubleSide,
     }),
   );
   const wireframe = new THREE.LineSegments(
     new THREE.WireframeGeometry(geometry),
-    new THREE.LineBasicMaterial({ color: '#d9d5cc', transparent: true, opacity: 0.16 }),
+    new THREE.LineBasicMaterial({ color: '#94dadb', transparent: true, opacity: options.meshOnly ? 0.65 : 0.16 }),
   );
-  wireframe.visible = false;
+  wireframe.visible = Boolean(options.meshOnly);
   scene.add(surfaceMesh, wireframe);
   scene.add(new THREE.HemisphereLight('#f0ece1', '#1b2528', 2.2));
   const key = new THREE.DirectionalLight('#ffffff', 1.5);

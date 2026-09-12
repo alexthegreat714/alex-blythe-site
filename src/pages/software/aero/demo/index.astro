@@ -745,7 +745,7 @@ const demoCases = [
         if (hint && hintText) hint.textContent = hintText;
       }
 
-      async function showPressureField(field, token, requestId = ++modeRequestId) {
+      async function showPressureField(field, token, requestId = ++modeRequestId, meshOnly = false) {
         if (!field?.href || !scientific) return;
         const request = artifactRequest(field.href, token);
         const response = await fetch(request.url, request.options);
@@ -756,8 +756,7 @@ const demoCases = [
         scientificViewer?.dispose();
         scientific.hidden = false;
         if (img) img.hidden = true;
-        scientificViewer = mountPressureViewer(scientific, surface);
-        scientificViewer.setMeshVisible(false);
+        scientificViewer = mountPressureViewer(scientific, surface, { meshOnly });
         const max = document.getElementById('vp-legend-max');
         const min = document.getElementById('vp-legend-min');
         if (max) max.textContent = Number(surface.range[1]).toFixed(2);
@@ -774,7 +773,9 @@ const demoCases = [
           button.addEventListener('click', () => setMode('result'));
           fieldArea.appendChild(button);
         }
-        commitViewportMode('result', 'Pressure / Pa — interactive solver-output surface; drag to orbit, right drag to pan, scroll to zoom');
+        commitViewportMode(meshOnly ? 'mesh' : 'result', meshOnly
+          ? 'Recorded solver boundary — one-degree wedge; display triangles tessellate boundary faces, not volume cells'
+          : 'Pressure / Pa — interactive solver-output surface; drag to orbit, right drag to pan, scroll to zoom');
       }
 
       async function showCadMode(artifact, token, mode, requestId = ++modeRequestId) {
@@ -807,6 +808,10 @@ const demoCases = [
         if (!MODES.has(mode)) return;
         const requestId = ++modeRequestId;
         try {
+          if (mode === 'mesh' && livePressureField) {
+            await showPressureField(livePressureField, localToken?.value || '', requestId, true);
+            return;
+          }
           if ((mode === 'geometry' || mode === 'mesh') && liveCadArtifact) {
             await showCadMode(liveCadArtifact, localToken?.value || '', mode, requestId);
             return;
@@ -1353,18 +1358,19 @@ const demoCases = [
         model.setAttribute('aria-busy', 'true');
         model.textContent = 'Loading 3D view…';
         try {
-          const href = index === 5 ? cfg.publicPressureField.href : cfg.publicCadArtifact.href;
+          const href = index === 5 || index === 3 ? cfg.publicPressureField.href : cfg.publicCadArtifact.href;
           const response = await fetch(href);
           if (!response.ok) throw new Error('The model could not be loaded. Try this step again.');
-          if (index === 5) {
+          if (index === 5 || index === 3) {
             const surface = await response.json();
             const { mountPressureViewer } = await import('../../../../lib/aero/pressure-viewer');
             if (requestId !== tourRequest) return;
-            tourViewer = mountPressureViewer(model, surface);
+            tourViewer = mountPressureViewer(model, surface, { meshOnly: index === 3 });
             const label = document.createElement('span');
             label.className = 'tour-field-label';
-            label.textContent = `Pressure: ${surface.range[0].toLocaleString()}–${surface.range[1].toLocaleString()} Pa · Recorded solver output`;
+            label.textContent = index === 3 ? 'Recorded solver boundary · 1° wedge · triangulated boundary faces, not volume-cell edges' : `Pressure: ${surface.range[0].toLocaleString()}–${surface.range[1].toLocaleString()} Pa · Recorded solver output`;
             model.appendChild(label);
+            model.removeAttribute('aria-busy');
           } else {
             const payload = await response.arrayBuffer();
             const { mountCadViewer } = await import('../../../../lib/aero/cad-viewer');
@@ -1420,7 +1426,7 @@ const demoCases = [
         ['Define the question', 'What do we want to learn?', 'First I capture the goal, available geometry, operating conditions, and what would count as a useful answer.'],
         ['Check the physics', 'Estimate before solving.', 'I use mass conservation to estimate inlet velocity. This gives us a simple reference to compare with the CFD result.'],
         ['Inspect the nozzle', 'Rotate the model to look inside.', 'Here is the nozzle cutaway. I check dimensions and surfaces before preparing the mesh. Drag to rotate; scroll to zoom.'],
-        ['Prepare the mesh', 'The same nozzle, divided into surface triangles.', 'The lines show this CAD surface’s triangulation. The separate CFD volume mesh is checked for quality and sensitivity to refinement.'],
+        ['Inspect the solver mesh', 'The recorded one-degree nozzle wedge.', 'This is the solver boundary exported from the 12,600-cell run, not decorative CAD wireframe. Display triangles tessellate boundary faces; the volume-cell quality and refinement checks remain in the evidence.'],
         ['Check the solver', 'Recorded convergence history.', 'I watch residuals and mass balance together. These charts replay a completed run; pressing Next does not launch a solver.'],
         ['Review the result', 'Pressure from the recorded OpenFOAM run.', 'The colors show the solved pressure field on the axisymmetric wedge. Numerical checks passed. Comparison with an independent reference is still needed.'],
       ];
@@ -1485,7 +1491,6 @@ const demoCases = [
           }
         };
         deliverStage();
-        if (playing) setTimeout(deliverStage, 0);
       };
       const advanceTour = (index) => {
         if (!activeCase) loadCase(cases[0]);
@@ -1525,10 +1530,13 @@ const demoCases = [
       };
 
       const renderRecord = () => {
-        const completed = Object.values(current).filter(Boolean).length;
+        // Detected prose is not a verified requirement. Keep incomplete
+        // dimensions and proposed conditions from producing a false 100%.
+        const complete = value => Boolean(value) && !/require[s]? confirmation|require review|require confirmation|missing|awaiting/i.test(value);
+        const completed = Object.values(current).filter(complete).length;
         const value = completed * 25;
         Object.entries(defaults).forEach(([key, fallback]) => { fields[key].textContent = current[key] || fallback; });
-        fields.gate.textContent = value === 100 ? 'Ready for guided review' : `Blocked / ${4 - completed} requirement ${4 - completed === 1 ? 'group' : 'groups'} missing`;
+        fields.gate.textContent = value === 100 ? 'Ready for guided review — not solver approval' : `Blocked / ${4 - completed} requirement ${4 - completed === 1 ? 'group' : 'groups'} missing or unconfirmed`;
         progress.setAttribute('aria-valuenow', String(value));
         progress.querySelector('i').style.width = `${value}%`;
         progressLabel.textContent = `Requirements ${value}%`;
@@ -1618,9 +1626,10 @@ const demoCases = [
       root.querySelectorAll('[data-demo-case]').forEach((button) => button.addEventListener('click', () => loadCase(cases.find((item) => item.id === button.dataset.demoCase))));
       root.querySelector('[data-new-case]')?.addEventListener('click', () => {
         activeCase = null; current = { goal: '', geometry: '', operating: '', evidence: '' };
+        tourIndex = -1; tourModified = true;
         caseLabel.textContent = 'New case'; log.replaceChildren();
         appendTurn('Aero', 'Describe the engineering decision you need to make. I’ll separate known inputs, assumptions, missing data, success criteria, and what must remain blocked.');
-        renderRecord(); input?.focus();
+        renderTour(); renderRecord(); input?.focus();
       });
       root.querySelectorAll('[data-guided-question]').forEach((button) => button.addEventListener('click', () => submit(button.dataset.guidedQuestion)));
       root.querySelectorAll('[data-open-detail]').forEach((button) => button.addEventListener('click', () => openDetail(button.dataset.openDetail)));
@@ -1642,6 +1651,12 @@ const demoCases = [
       form?.addEventListener('submit', (event) => { event.preventDefault(); submit(input?.value); if (input) input.value = ''; });
       renderRecord();
       renderTour();
+      const selected = cases.find(item => item.id === new URLSearchParams(location.search).get('example'));
+      if (selected) loadCase(selected);
+      const disclosure = document.createElement('p');
+      disclosure.className = 'guided-response-disclosure';
+      disclosure.textContent = 'Guided responses are scripted. Live model chat is not connected on this public page. No VM or solver is started here.';
+      form?.prepend(disclosure);
     })();
   </script>
 

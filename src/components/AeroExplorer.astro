@@ -1,0 +1,113 @@
+<section class="explorer" aria-labelledby="explorer-title" data-nozzle-explorer>
+  <header><span class="eyebrow">Try a design decision</span><h2 id="explorer-title">A small change. A visible consequence.</h2><p>Move the throat radius. Inspect the geometry and the continuity estimate before committing to a solver run.</p></header>
+  <div class="experiment">
+    <div class="visual">
+      <div class="modes" role="group" aria-label="Nozzle view"><button data-view="cad" aria-pressed="true">3D geometry</button><button data-view="mesh" aria-pressed="false">Recorded mesh</button><button data-view="result" aria-pressed="false">Recorded pressure</button></div>
+      <div class="viewport" data-nozzle-viewport role="img" aria-label="Interactive three-dimensional nozzle"><p>Loading interactive nozzle…</p></div>
+      <p class="view-caption" data-view-caption>Parametric illustration · drag to orbit · scroll to zoom</p>
+    </div>
+    <div class="controls">
+      <label for="throat-radius">Throat radius <output for="throat-radius" data-radius>8.0 mm</output></label>
+      <input id="throat-radius" type="range" min="6" max="12" step="0.5" value="8" />
+      <div class="range-label"><span>6 mm</span><span>12 mm</span></div>
+      <dl><div><dt>Throat area</dt><dd data-area>201.1 mm²</dd></div><div><dt>Continuity velocity</dt><dd data-velocity>42.27 m/s</dd></div><div><dt>Exit / throat area</dt><dd data-ratio>9.00</dd></div></dl>
+      <p class="equation">ṁ = ρAV &nbsp; · &nbsp; A = πr²</p>
+      <p class="status" data-preview-status role="status">Nominal dimensions selected. Recorded CFD remains a separate result.</p>
+      <button class="reset" data-reset>Reset to nominal</button>
+      <details><summary>Assumptions &amp; provenance</summary><p>Illustrative full-revolution profile: inlet 20 mm, exit 24 mm, converging length 45 mm, diverging length 110 mm. This browser-generated solid is not the hashed solver CAD.</p><p>Continuity screen: 0.01 kg/s air, 101,325 Pa, 300 K, R = 287.05 J/(kg·K), constant density. No compressible expansion, choking, loss or thrust prediction is implied.</p><p>Recorded mesh and pressure come from wall-refinement-v6: a one-degree axisymmetric wedge. Display triangles tessellate its boundary faces; they are not the volume-cell topology.</p></details>
+    </div>
+  </div>
+</section>
+<script>
+  import * as THREE from 'three';
+  import { STLExporter } from 'three/addons/exporters/STLExporter.js';
+  import { mountCadViewer } from '../lib/aero/cad-viewer';
+  import { mountPressureViewer } from '../lib/aero/pressure-viewer';
+  import { nozzleScreen } from '../lib/aero/nozzle-preview';
+  const root = document.querySelector<HTMLElement>('[data-nozzle-explorer]');
+  if (root) {
+    const viewport = root.querySelector<HTMLElement>('[data-nozzle-viewport]')!;
+    const input = root.querySelector<HTMLInputElement>('input')!;
+    const caption = root.querySelector<HTMLElement>('[data-view-caption]')!;
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-view]')];
+    let viewer: ReturnType<typeof mountCadViewer> | null = null;
+    let sequence = 0;
+    let active = 'cad';
+    const write = (selector: string, text: string) => { root.querySelector<HTMLElement>(selector)!.textContent = text; };
+    async function render(mode = 'cad') {
+      const ticket = ++sequence;
+      active = mode;
+      const state = nozzleScreen(Number(input.value));
+      write('[data-radius]', `${state.radiusMm.toFixed(1)} mm`);
+      write('[data-area]', `${state.areaMm2.toFixed(1)} mm²`);
+      write('[data-velocity]', `${state.velocity.toFixed(2)} m/s`);
+      write('[data-ratio]', state.areaRatio.toFixed(2));
+      root.dataset.modified = String(state.modified);
+      write('[data-preview-status]', state.modified ? 'Design changed — new CAD, mesh and CFD required. Recorded results do not apply to this variant.' : 'Nominal dimensions selected. Recorded CFD remains a separate result.');
+      buttons.forEach(button => { button.disabled = state.modified && button.dataset.view !== 'cad'; button.setAttribute('aria-pressed', String(button.dataset.view === mode)); });
+      viewer?.dispose(); viewer = null;
+      viewport.textContent = 'Loading view…';
+      try {
+        if (mode === 'cad') {
+          // A hollow lathed illustration, deliberately separate from run artifacts.
+          const r = state.radiusMm / 1000;
+          const inner = [new THREE.Vector2(.020, -.045), new THREE.Vector2(r, 0), new THREE.Vector2(.024, .110)];
+          const points = [...inner, ...inner.map(p => new THREE.Vector2(p.x + .003, p.y)).reverse(), inner[0]];
+          const geometry = new THREE.LatheGeometry(points, 96);
+          geometry.rotateZ(-Math.PI / 2);
+          const material = new THREE.MeshBasicMaterial();
+          const mesh = new THREE.Mesh(geometry, material);
+          const data = new STLExporter().parse(mesh, { binary: true });
+          viewer = mountCadViewer(viewport, data.buffer as ArrayBuffer);
+          geometry.dispose(); material.dispose();
+          caption.textContent = 'Parametric illustration · drag to orbit · scroll to zoom';
+        } else {
+          const response = await fetch('/demos/aero/wall-refinement-v6/pressure-surface.json');
+          if (!response.ok) throw new Error('Artifact unavailable');
+          const surface = await response.json();
+          if (ticket !== sequence) return;
+          viewer = mountPressureViewer(viewport, surface, { meshOnly: mode === 'mesh' });
+          caption.textContent = mode === 'mesh' ? 'Recorded solver boundary · 12,600 volume cells · triangulated surface of a 1° wedge' : `Recorded pressure · ${surface.range[0].toLocaleString()}–${surface.range[1].toLocaleString()} Pa · 1° solver wedge`;
+        }
+      } catch {
+        if (ticket === sequence) { viewport.textContent = '3D rendering unavailable. The estimates still work; select a view to retry.'; caption.textContent = 'Renderer unavailable — no new solver result has been generated.'; }
+      }
+    }
+    input.addEventListener('input', () => void render('cad'));
+    buttons.forEach(button => button.addEventListener('click', () => void render(button.dataset.view)));
+    root.querySelector('[data-reset]')!.addEventListener('click', () => { input.value = '8'; void render('cad'); });
+    // Load GPU resources only when the visitor approaches this section.
+    const observer = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { observer.disconnect(); void render(active); } }, { rootMargin: '250px' });
+    observer.observe(root);
+    window.addEventListener('pagehide', () => { sequence++; observer.disconnect(); viewer?.dispose(); });
+  }
+</script>
+<style>
+  .explorer { margin:40px 0; }
+  h2 { margin:8px 0; font-size:clamp(1.7rem,3vw,2.6rem); line-height:1.15; letter-spacing:-.04em; }
+  header>p { max-width:720px; color:var(--muted); }
+  .experiment { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(260px,1fr); margin-top:24px; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--surface); }
+  .visual { min-width:0; background:#111719; color:#d9e7eb; }
+  .modes { display:flex; flex-wrap:wrap; gap:6px; padding:14px; }
+  button { font:inherit; cursor:pointer; }
+  .modes button,.reset { border:1px solid #46606a; border-radius:6px; background:transparent; color:inherit; padding:8px 10px; font-size:.78rem; }
+  .modes button[aria-pressed=true] { background:#163f44; border-color:#66e3df; color:#9af2ed; }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  .viewport { height:350px; width:100%; }
+  .viewport>p { padding:30px; }
+  .view-caption { margin:0; padding:12px 16px; color:#a6bdc3; font-size:.73rem; }
+  .controls { padding:24px; min-width:0; }
+  label { display:flex; justify-content:space-between; font-weight:700; }
+  output { color:var(--accent); }
+  input { width:100%; margin:20px 0 0; accent-color:var(--accent); cursor:ew-resize; }
+  .range-label { display:flex; justify-content:space-between; font-size:.7rem; color:var(--muted); }
+  dl { margin:22px 0 12px; }
+  dl>div { display:flex; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border); padding:10px 0; }
+  dt { font-size:.8rem; color:var(--muted); } dd { margin:0; font-variant-numeric:tabular-nums; font-weight:750; }
+  .equation { font-family:Georgia,serif; font-size:1.25rem; }
+  .status { border-left:3px solid var(--accent); padding-left:12px; font-size:.8rem; }
+  [data-modified=true] .status { border-color:#dbab54; }
+  details { margin-top:18px; font-size:.78rem; color:var(--muted); }
+  summary { cursor:pointer; }
+  @media(max-width:700px) { .experiment { grid-template-columns:1fr; } .viewport { height:270px; } }
+</style>

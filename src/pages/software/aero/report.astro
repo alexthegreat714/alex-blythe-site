@@ -1,0 +1,33 @@
+---
+import SoftwareLayout from '../../../layouts/SoftwareLayout.astro';
+import { authoritativeResult as result, evidence } from '../../../lib/aero/nozzle-precursor';
+const parameters = result.geometryManifest.parameters;
+---
+<SoftwareLayout title="Aero / Sample engineering report" description="The retained wall-refinement-v6 study, its numerical evidence and its unresolved validation gates." canonicalPath="/software/aero/report/" compactHeader>
+  <article class="report">
+    <div class="actions"><a href="/software/aero/">← Back to Aero</a><button onclick="window.print()">Print / save PDF</button></div>
+    <p class="eyebrow">Website Rev 1.1 · retained evidence · not a new solver run</p>
+    <h2>Axisymmetric nozzle: a first-cut numerical study</h2>
+    <p class="verdict">Numerical result: {evidence.numerical.status}. Design readiness: {evidence.readiness.status.replaceAll('_', ' ')}.</p>
+    <section><h3>1. Question &amp; acceptance criterion</h3><p>How sensitive is predicted pressure drop to refinement? Compare three grids against the predeclared {result.meshStudy.predeclaredMaximumRelativeChange * 100}% adjacent-grid limit. This is a mesh-sensitivity test, not experimental validation.</p></section>
+    <section><h3>2. Geometry &amp; model</h3><p>The retained case uses a one-degree axisymmetric wedge. The full 3D nozzle on the landing page is an illustrative geometry, not a claim of a full-annulus CFD run.</p><dl>{Object.entries(parameters).map(([key, value]) => <div><dt>{key.replaceAll('_', ' ')}</dt><dd>{String(value)}</dd></div>)}</dl></section>
+    <section><h3>3. First-principles checks</h3><div class="math">ṁ = ρAV &nbsp;&nbsp; A = πr² &nbsp;&nbsp; ρ = p / RT</div><p>These equations establish continuity and an ideal-gas density screen. The landing-page slider uses explicitly stated constant-density assumptions; it does not calculate pressure loss, choking or thrust. Its estimates are not substituted for the retained solver outputs.</p></section>
+    <section><h3>4. Recorded results</h3><table><thead><tr><th>Level</th><th>Volume cells</th><th>Pressure drop</th><th>Numerical gates</th></tr></thead><tbody>{result.meshStudy.levels.map(level => <tr><td>{level.meshLevel}</td><td>{level.cellCount.toLocaleString('en-US')}</td><td>{level.metricValue.toFixed(3)} Pa</td><td>{level.numericalStatus}</td></tr>)}</tbody></table><p>Fine-run solver time: {evidence.execution.solverSeconds?.toFixed(1)} seconds. Execution status: {evidence.execution.status}. These are recorded timings, not a performance promise.</p></section>
+    <section><h3>5. Engineering disposition</h3>{evidence.readiness.gates.map(gate => <div class="gate"><strong>{gate.label}: {gate.status.replaceAll('_', ' ')}</strong><p>{gate.reason}</p></div>)}<p>Do not use this case for design release until the missing independent reference and model-fidelity assessment are resolved. Geometry changes invalidate applicability of the recorded mesh and results.</p></section>
+    <section><h3>6. Inspect the source</h3><p><a href="/demos/aero/wall-refinement-v6/engineering-result.json">Authoritative engineering result (JSON)</a> · <a href="/demos/aero/wall-refinement-v6/checksums.json">Published artifact checksums</a> · <a href="/software/aero/demo/">Guided walkthrough</a></p><p>The earlier first-cut acceptance summary is a different archived study and is not the source of the numbers in this report.</p></section>
+  </article>
+</SoftwareLayout>
+<style>
+  .report { max-width:920px; margin:32px auto 64px; padding:0 24px; }
+  .actions { display:flex; justify-content:space-between; margin-bottom:30px; }
+  button { padding:10px 16px; background:var(--surface); border:1px solid var(--border); color:var(--text); cursor:pointer; }
+  h2 { font-size:2rem; line-height:1.15; } h3 { margin-top:32px; }
+  .verdict { padding:18px; border-left:3px solid #dbab54; background:var(--surface); }
+  section { border-bottom:1px solid var(--border); padding-bottom:20px; }
+  a { text-decoration:underline; } p,dt { color:var(--muted); }
+  dl>div { display:flex; justify-content:space-between; gap:20px; padding:5px 0; } dd { margin:0; }
+  table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; } td,th { padding:12px 6px; text-align:left; border-bottom:1px solid var(--border); }
+  .math { font:1.6rem Georgia,serif; padding:20px 0; }
+  .gate { margin:20px 0; }
+  @media print { :global(.site-header),:global(.site-footer),.actions { display:none; } :global(body) { background:white; color:black; } p,dt { color:#222; } .report { max-width:none; margin:0; } section { break-inside:avoid; } }
+</style>
