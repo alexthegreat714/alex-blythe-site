@@ -165,6 +165,15 @@ def execute(job):
                   "interpretation": "The analytical comparison verifies this idealized flow calculation. Sidewalls, entrance effects, fittings, temperature variation and manufacturing tolerance require separate assessment for a physical channel."}
         atomic_json(job / "result.json", result)
         (job / "report.html").write_text(report_html(result), encoding="utf-8")
+        status('running','Nine solves complete; generating figures and compiling the LaTeX paper',phase='report')
+        paper_root=root/'paper'
+        with (root/'log.paper').open('w') as log:
+            child=subprocess.Popen(['python3',str(Path(__file__).with_name('paper.py')),str(job/'result.json'),str(paper_root)],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+            try:
+                if child.wait(timeout=90):raise RuntimeError('PDF paper generation failed; see the retained report log')
+            except subprocess.TimeoutExpired:
+                os.killpg(child.pid,9);child.wait();raise TimeoutError('PDF paper exceeded its 90-second limit')
+        shutil.copyfile(paper_root/'paper.pdf',job/'paper.pdf')
         manifest = {}
         with zipfile.ZipFile(job / "evidence.zip", "w", zipfile.ZIP_DEFLATED) as bundle:
             total = 0
@@ -180,8 +189,10 @@ def execute(job):
             bundle.write(job / "result.json", "result.json")
             manifest["report.html"] = digest(job / "report.html")
             bundle.write(job / "report.html", "report.html")
+            manifest['paper.pdf']=digest(job/'paper.pdf')
+            bundle.write(job/'paper.pdf','paper.pdf')
             bundle.writestr("sha256.json", json.dumps(manifest, indent=2))
-        status("complete", result["decision"], checks_passed=all_passed, evidence_sha256=digest(job / "evidence.zip"), result_sha256=digest(job / "result.json"), report_sha256=digest(job / "report.html"))
+        status("complete", result["decision"], checks_passed=all_passed, evidence_sha256=digest(job / "evidence.zip"), result_sha256=digest(job / "result.json"), report_sha256=digest(job / "report.html"), paper_sha256=digest(job/'paper.pdf'))
     except Exception as exc:
         # Fixed commands and validated numerical inputs only; logs retained in a bounded ZIP for diagnosis.
         with zipfile.ZipFile(job / "failure.zip", "w", zipfile.ZIP_DEFLATED) as bundle:

@@ -104,8 +104,8 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         if path == "/study/health":
             return self.send(200, {"ready": worker_ready(), "revision": REVISION, "defaults": DEFAULTS, "bounds": BOUNDS,
-                                   "retention_hours": 48, "max_seconds": 300, "solves_per_study": 9})
-        match = re.fullmatch(r"/study/runs/([a-f0-9]{48})(?:/(result|evidence|failure|report))?", path)
+                                   "retention_hours": 48, "max_seconds": 390, "report_max_seconds":90, "solves_per_study": 9})
+        match = re.fullmatch(r"/study/runs/([a-f0-9]{48})(?:/(result|evidence|failure|report|paper))?", path)
         if not match:
             return self.send(404, {"error": "Not found"})
         folder = DATA / match[1]
@@ -114,6 +114,12 @@ class Handler(BaseHTTPRequestHandler):
         except (OSError, ValueError):
             return self.send(404, {"error": "Run not found or evidence expired after 48 hours"})
         artifact = match[2]
+        if artifact=='paper' and status['state']=='complete':
+            file=folder/'paper.pdf'
+            if not file.exists():return self.send(404,{'error':'This older run predates automatic PDF papers; start a fresh study.'})
+            if digest(file)!=status.get('paper_sha256'):return self.send(409,{'error':'PDF integrity check failed'})
+            body=file.read_bytes();self.headers_for(200,'application/pdf',len(body))
+            self.send_header('Content-Disposition','inline; filename="aero-channel-study.pdf"');self.end_headers();self.wfile.write(body);return
         if not artifact:
             if status["state"] in ("queued", "running") and not worker_ready():
                 status = {**status, "message": "Worker unavailable; progress has paused", "worker_offline": True}

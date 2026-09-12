@@ -1,6 +1,8 @@
 FROM leoyue123/foamagent@sha256:5c8bd752884b95b45c02d74a4b5e449fbf22aea8fa13a0eb1a40be851350ff1e AS source
 FROM ubuntu:22.04
-RUN apt-get update && apt-get install -y --no-install-recommends python3 libstdc++6 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y --no-install-recommends python3 python3-matplotlib texlive-latex-base texlive-latex-recommended lmodern libstdc++6 && rm -rf /var/lib/apt/lists/*
+ENV MPLCONFIGDIR=/tmp/matplotlib
+ENV OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/blockMesh /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/blockMesh
 COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/checkMesh /opt/openfoam10/platforms/linux64GccDPInt32Opt/bin/checkMesh
 COPY --from=source /opt/openfoam10/platforms/linux64GccDPInt32Opt/lib /opt/openfoam10/platforms/linux64GccDPInt32Opt/lib
@@ -11,7 +13,7 @@ ENV WM_PROJECT_DIR=/opt/openfoam10 WM_PROJECT_VERSION=10 FOAM_ETC=/opt/openfoam1
 ENV PATH=/opt/openfoam10/platforms/linux64GccDPInt32Opt/bin:/usr/local/bin:/usr/bin:/bin
 ENV LD_LIBRARY_PATH=/opt/openfoam10/platforms/linux64GccDPInt32Opt/lib:/opt/openfoam10/platforms/linux64GccDPInt32Opt/lib/openmpi-system:/opt/aero/mpi:/usr/lib/x86_64-linux-gnu
 WORKDIR /srv
-COPY services/study/core.py services/study/worker.py /srv/
+COPY services/study/core.py services/study/worker.py services/study/paper.py /srv/
 RUN mkdir /data /work && chown 10001:10001 /data /work
 USER 10001:10001
 CMD ["python3", "-u", "worker.py"]

@@ -7,9 +7,22 @@ from unittest.mock import patch
 import core
 import api
 import worker
+import paper
 
 
 class StudyTests(unittest.TestCase):
+    def test_paper_escapes_tex_controls(self):
+        self.assertEqual(paper.tex('A&B_1%'),r'A\&B\_1\%')
+        self.assertNotIn(r'\input{',paper.tex(r'\input{/secret}'))
+
+    def test_pdf_failure_is_not_a_completed_study(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as temporary,patch('paper.subprocess.run',side_effect=subprocess.TimeoutExpired('pdflatex',35)):
+            with self.assertRaises(subprocess.TimeoutExpired):paper.compile_paper(temporary)
+        with tempfile.TemporaryDirectory() as temporary,patch('paper.subprocess.run') as run:
+            run.return_value.returncode=1
+            with self.assertRaises(RuntimeError):paper.compile_paper(temporary)
+            self.assertIn('-no-shell-escape',run.call_args.args[0])
     def test_command_failure_is_terminal_and_scratch_is_removed(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);data=root/'data';work=root/'work';data.mkdir();work.mkdir()

@@ -76,6 +76,7 @@ export function setupChannelStudy(host:HTMLElement,endpoint:string,onChange:(sta
       for(const [label,passed] of [['Solver completed',all('solver')],['Mesh sensitivity <1%',r.variants.every((v:any)=>v.mesh_change_pct<1)],['Reference error <2%',all('analytical_reference')],['Mass conserved',all('conservation')]]){const span=document.createElement('span');span.textContent=`${passed?'✓':'!'} ${label}`;span.dataset.pass=String(passed);checks.append(span);}
       $('[data-study-interpretation]').textContent=r.interpretation+' Margin subtracts a numerical allowance; it does not include omitted physical effects.';
       $<HTMLAnchorElement>('[data-study-evidence]').href=base+'/study/runs/'+state.runId+'/evidence';
+      const paper=$<HTMLAnchorElement>('[data-study-paper]');paper.hidden=!state.status?.paper_sha256;paper.href=base+'/study/runs/'+state.runId+'/paper';
     }else{$('[data-study-decision]').textContent='No solver result for these inputs yet.';$('[data-study-comparison]').replaceChildren();$('[data-study-checks]').replaceChildren();$('[data-study-interpretation]').textContent='';$<HTMLIFrameElement>('[data-study-proof]').removeAttribute('src');$('[data-study-proof]').hidden=true;}
     $<HTMLButtonElement>('[data-study-back]').disabled=currentStage===0;$<HTMLButtonElement>('[data-study-next]').disabled=currentStage===5;
     $('[data-study-next]').textContent=['Review math →','Inspect geometry →','Review mesh →','Prepare run →','Inspect results →','Complete'][currentStage];

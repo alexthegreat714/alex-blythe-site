@@ -8,7 +8,7 @@ const browser=await chromium.launch({headless:true,channel:'chrome'});
 const context=await browser.newContext({viewport:{width:1440,height:960}});
 const page=await context.newPage();
 const errors=[];page.on('pageerror',error=>errors.push(error.message));
-const output='.qa/channel-study/browser';await mkdir(output,{recursive:true});
+const output=process.env.AERO_STUDY_OUTPUT||'.qa/channel-study/browser';await mkdir(output,{recursive:true});
 const preview=process.env.AERO_PREVIEW_ORIGIN;
 if(preview)await page.route('https://alex-blythe.com/**',async route=>{
   const url=new URL(route.request().url());const response=await fetch(preview+url.pathname+url.search);
@@ -61,6 +61,10 @@ try{
     assert.ok(Math.abs(completed.result.variants[1].pressure_drop_pa/60.06269040045428-1.25)<.01,'Computed nominal pressure must respond to the higher flow');
   }
   await stage(5);await page.locator('[data-study-viewport] canvas').waitFor();
+  assert.ok(await page.locator('[data-study-paper]').isVisible(),'Completed studies expose their compiled PDF');
+  const paperResponse=await context.request.get(await page.locator('[data-study-paper]').getAttribute('href'));
+  assert.equal(paperResponse.status(),200);assert.match(paperResponse.headers()['content-type'],/application\/pdf/);
+  const pdf=await paperResponse.body();assert.equal(pdf.subarray(0,5).toString(),'%PDF-');await writeFile(output+'/paper.pdf',pdf);
   assert.ok((await page.locator('[data-study-decision]').textContent()).includes('mm'));
   await page.screenshot({path:output+'/06-result.png'});
   await page.locator('[data-study-field]').selectOption('pressure_pa');

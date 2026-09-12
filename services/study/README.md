@@ -12,6 +12,19 @@ assumptions, Prepare the study, inspect Math / CAD / Mesh, then press Start at
 Solve. Results contains the decision, computed fields, **Read proof**, a portable
 HTML report (print to PDF), and the full hashed OpenFOAM evidence ZIP.
 
+Each new study now automatically compiles a research-style **LaTeX PDF paper**
+before its state becomes complete. Results offers **PDF paper** and **Evidence +
+LaTeX**. The paper includes an abstract, defined inputs/assumptions, equations,
+design comparison, mesh/refinement and residual plots, solved-field snapshots,
+velocity-profile comparison, per-grid gate table and reproducibility hashes.
+Charts are generated from solver data, not model output. The ZIP retains the
+`.tex`, vector/PNG figures, compile log and PDF. Compilation runs with shell
+escape disabled and a timeout; failure produces a failed run, not a missing PDF
+hidden behind a completed status. Allow extra time after the ninth solve for
+figure generation and compilation. The standalone worked paper additionally
+includes real browser screenshots matched to its exact run ID; those are
+maintainer acceptance captures, not screenshots of future visitors' browsers.
+
 Chat can explain the checked study brief and a server-fetched completed result.
 It cannot submit jobs or change the four solver inputs. Model document proposals
 are separate from those controls. Editing a completed study invalidates its
