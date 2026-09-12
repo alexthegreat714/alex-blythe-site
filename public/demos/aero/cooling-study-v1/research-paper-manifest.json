@@ -1,0 +1,11 @@
+{
+  "run_id": "1212c96216c4f6eda0468997a14fc7d146ed39cf1a0aeb53",
+  "paper_sha256": "e21f2738566548c0288830755e06fada9a7bbb9b165d0d2c92faa2ce4da73c73",
+  "source_bundle_sha256": "b4000d81d6e2915fd7d76799b5dce1cfa2a84ea98052bc5709e1427d2e53fda1",
+  "hashed_artifacts": 41,
+  "screenshots": {
+    "workspace-0.png": "e89ed8d6c1e552df5cad1a8415322c00f4694b490fe66ec31db4b6883a85b2e7",
+    "workspace-1.png": "ed12750fae1646d3dcc6e6db566ea5ec8fb9cdbbefc6ca784cf69c5fdf321e47",
+    "workspace-2.png": "28c765e956d6567527a35cd626b36e5f7ff6b8f375de687dc255941f9cd51ad2"
+  }
+}

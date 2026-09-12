@@ -7,6 +7,15 @@ with a reviewable brief, analytical comparison, computed fields and evidence.
 
 ## Use it
 
+Second capability: `/software/aero/cooling/` offers circular-passage forced
+convection screening (analytical, not thermal CFD). It uses the same bounded
+broker and report worker via `/study/cooling/runs`, with seven numeric inputs.
+`cooling.py` owns the model/gates, `cooling_worker.py` owns isolated execution,
+and `cooling_paper.py` compiles a six-page PDF for each new job. The permanent
+nine-page worked paper adds exact-run browser screenshots. Both papers are
+linked prominently at `/software/aero/#capability-papers`. See
+`docs/AERO_COOLING_STUDY_ACCEPTANCE_20260912.md` for evidence and limitations.
+
 Open `/software/aero/current/?study=channel`. Review four inputs and the model
 assumptions, Prepare the study, inspect Math / CAD / Mesh, then press Start at
 Solve. Results contains the decision, computed fields, **Read proof**, a portable

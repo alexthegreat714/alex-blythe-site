@@ -229,7 +229,10 @@ def main():
                 continue
             state = json.loads((job / "status.json").read_text())
             if state["state"] == "queued":
-                execute(job)
+                if (job/'kind.json').exists():
+                    from cooling_worker import execute_cooling
+                    execute_cooling(job,WORK)
+                else:execute(job)
             elif state["state"] in ("complete", "failed") and time.time() - state["updated_at"] > 48*3600:
                 shutil.rmtree(job)
         time.sleep(1)

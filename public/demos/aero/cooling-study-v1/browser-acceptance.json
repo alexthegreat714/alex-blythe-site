@@ -1,0 +1,11 @@
+{
+  "id": "1212c96216c4f6eda0468997a14fc7d146ed39cf1a0aeb53",
+  "source": "ANALYTICAL_SCREENING",
+  "selected_layout": "B",
+  "real_public_job": true,
+  "live_model": true,
+  "staged_assets": true,
+  "refresh_resume": true,
+  "edit_invalidates": true,
+  "errors": []
+}

@@ -3,7 +3,7 @@
 }
 
 :5322 {
-    @study path /study/health /study/brief /study/runs /study/runs/*
+    @study path /study/health /study/brief /study/runs /study/runs/* /study/cooling/brief /study/cooling/runs
     handle @study {
         request_body {
             max_size 2KB

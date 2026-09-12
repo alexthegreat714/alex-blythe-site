@@ -1,6 +1,7 @@
 ---
 import SoftwareLayout from '../../layouts/SoftwareLayout.astro';
 import AeroExplorer from '../../components/AeroExplorer.astro';
+import AeroCapabilityPapers from '../../components/AeroCapabilityPapers.astro';
 import { authoritativeResult, evidence } from '../../lib/aero/nozzle-precursor';
 import { softwareProjects, type SoftwareProject } from '../../data/software';
 
@@ -83,7 +84,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
       <div class="section-heading proof-heading">
         <span class="section-index">01 / How Aero works</span>
         <div>
-          <div class="proof-kicker"><span>Aero</span><span>Website Rev 1.2</span><span>Preliminary engineering analysis</span></div>
+          <div class="proof-kicker"><span>Aero</span><span>Website Rev 1.3</span><span>Preliminary engineering analysis</span><a href="#capability-papers">Read the capability papers ↓</a></div>
           <h1 id="aero-proof-heading">Turn an engineering question<br />into a reviewable CFD study.</h1>
           <p>Define requirements, develop first-principles checks, compare design options, and inspect the results—with assumptions and evidence attached.</p>
         </div>
@@ -141,7 +142,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <div class="channel-result-preview"><small>Actual OpenFOAM results · water · parallel-plate model</small><table><thead><tr><th>Gap</th><th>Pressure drop</th><th>70 Pa target</th></tr></thead><tbody><tr><td>1.5 mm</td><td>142.37 Pa</td><td>Exceeds</td></tr><tr><td>2.0 mm</td><td>60.06 Pa</td><td>Meets</td></tr><tr><td>2.5 mm</td><td>30.75 Pa</td><td>Meets</td></tr></tbody></table><p>9 solves · 3 grids per gap · conservation checked · analytical reference checked</p><small>Sidewalls, entry losses and fittings need separate assessment. See the report for scope and checks.</small></div>
       </section>
 
-      <p class="proof-downloads"><a class="text-link" href="/demos/aero/channel-study-v1/research-paper.pdf">Read the eight-page LaTeX paper ↗</a> · <a class="text-link" href="/demos/aero/channel-study-v1/research-paper-sources.zip">Paper source, charts, screenshots &amp; solver evidence ↓</a><br /><small>Changed-input proof: 25 mL/s, 40 Pa budget; the smallest passing tested gap becomes 2.5 mm. New live studies include an automatic PDF in Results.</small></p>
+      <AeroCapabilityPapers />
 
       <div class="aero-benefits" aria-label="Why Aero">
         <article><span>01</span><h3>Define the problem.</h3><p>Turn a question into inputs, assumptions and clear success criteria.</p></article>

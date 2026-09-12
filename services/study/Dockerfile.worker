@@ -13,7 +13,7 @@ ENV WM_PROJECT_DIR=/opt/openfoam10 WM_PROJECT_VERSION=10 FOAM_ETC=/opt/openfoam1
 ENV PATH=/opt/openfoam10/platforms/linux64GccDPInt32Opt/bin:/usr/local/bin:/usr/bin:/bin
 ENV LD_LIBRARY_PATH=/opt/openfoam10/platforms/linux64GccDPInt32Opt/lib:/opt/openfoam10/platforms/linux64GccDPInt32Opt/lib/openmpi-system:/opt/aero/mpi:/usr/lib/x86_64-linux-gnu
 WORKDIR /srv
-COPY services/study/core.py services/study/worker.py services/study/paper.py /srv/
+COPY services/study/core.py services/study/worker.py services/study/paper.py services/study/cooling.py services/study/cooling_paper.py services/study/cooling_worker.py /srv/
 RUN mkdir /data /work && chown 10001:10001 /data /work
 USER 10001:10001
 CMD ["python3", "-u", "worker.py"]

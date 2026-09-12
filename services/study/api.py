@@ -12,6 +12,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
 from core import BOUNDS, DEFAULTS, REVISION, atomic_json, brief, digest, validate
+import cooling
 
 DATA = Path(os.getenv("AERO_STUDY_DATA", "/data"))
 ORIGINS = set(os.getenv("AERO_STUDY_ORIGINS", "https://alex-blythe.com,https://www.alex-blythe.com").split(","))
@@ -26,13 +27,14 @@ def worker_ready():
         return False
 
 
-def enqueue(ip, key, inputs):
+def enqueue(ip, key, inputs, kind='channel'):
     if not isinstance(key, str) or not re.fullmatch(r"[a-f0-9-]{36}", key):
         raise ValueError("A request UUID is required")
-    values = validate(inputs)
+    if kind not in ('channel','cooling'):raise ValueError('Unsupported study kind')
+    values = cooling.validate(inputs) if kind=='cooling' else validate(inputs)
     with LOCK, closing(sqlite3.connect(DATA / "quota.sqlite")) as db, db:
         db.execute("CREATE TABLE IF NOT EXISTS runs (id TEXT PRIMARY KEY, ip TEXT, request_key TEXT, created REAL, inputs TEXT)")
-        canonical = json.dumps(values, sort_keys=True)
+        canonical = json.dumps({'kind':kind,'inputs':values} if kind=='cooling' else values, sort_keys=True)
         previous = db.execute("SELECT id,inputs FROM runs WHERE ip=? AND request_key=?", (ip, key)).fetchone()
         if previous:
             if previous[1] != canonical:
@@ -59,9 +61,10 @@ def enqueue(ip, key, inputs):
         folder = DATA / job_id
         folder.mkdir()
         atomic_json(folder / "input.json", values)
+        if kind=='cooling':atomic_json(folder/'kind.json',{'kind':'cooling'})
         db.execute("INSERT INTO runs VALUES (?,?,?,?,?)", (job_id, ip, key, now, canonical))
         atomic_json(folder / "status.json", {"id": job_id, "state": "queued", "message": "Queued for the next available solver slot",
-                    "completed": 0, "total": 9, "progress": 0, "updated_at": now})
+                    "completed": 0, "total": 3 if kind=='cooling' else 9, "kind":kind, "progress": 0, "updated_at": now})
         return job_id
 
 
@@ -119,7 +122,7 @@ class Handler(BaseHTTPRequestHandler):
             if not file.exists():return self.send(404,{'error':'This older run predates automatic PDF papers; start a fresh study.'})
             if digest(file)!=status.get('paper_sha256'):return self.send(409,{'error':'PDF integrity check failed'})
             body=file.read_bytes();self.headers_for(200,'application/pdf',len(body))
-            self.send_header('Content-Disposition','inline; filename="aero-channel-study.pdf"');self.end_headers();self.wfile.write(body);return
+            self.send_header('Content-Disposition','inline; filename="aero-study.pdf"');self.end_headers();self.wfile.write(body);return
         if not artifact:
             if status["state"] in ("queued", "running") and not worker_ready():
                 status = {**status, "message": "Worker unavailable; progress has paused", "worker_offline": True}
@@ -157,7 +160,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path = urlsplit(self.path).path
-        if path not in ("/study/brief", "/study/runs"):
+        if path not in ("/study/brief", "/study/runs", "/study/cooling/brief", "/study/cooling/runs"):
             return self.send(404, {"error": "Not found"})
         if self.headers.get("Origin") not in ORIGINS:
             return self.send(403, {"error": "Origin not allowed"})
@@ -172,9 +175,10 @@ class Handler(BaseHTTPRequestHandler):
             data = json.loads(self.rfile.read(size))
             if path == "/study/brief":
                 return self.send(200, brief(data))
+            if path == '/study/cooling/brief':return self.send(200,cooling.calculate(data))
             if not isinstance(data, dict) or set(data) != {"request_id", "inputs"}:
                 raise ValueError("Expected request_id and inputs")
-            job_id = enqueue(ip, data["request_id"], data["inputs"])
+            job_id = enqueue(ip, data["request_id"], data["inputs"],kind='cooling' if path=='/study/cooling/runs' else 'channel')
             return self.send(202, {"id": job_id})
         except (ValueError, TypeError, TimeoutError):
             return self.send(400, {"error": "Check the supported input ranges. Commands, files and additional fields are not accepted."})

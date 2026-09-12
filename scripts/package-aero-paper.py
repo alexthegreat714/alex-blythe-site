@@ -26,9 +26,12 @@ with zipfile.ZipFile(args.solver_evidence) as original:
         def add(name,data):
             assert name not in manifest,f'Duplicate artifact: {name}'
             manifest[name]=digest(data);target.writestr(name,data)
-        for name in old_manifest:add(name,original.read(name))
+        for name in old_manifest:
+            # Preserve automatic papers when adding a reviewed screenshot appendix.
+            target_name='original-report/'+name if name=='paper.pdf' or name.startswith('cases/paper/') else name
+            add(target_name,original.read(name))
         for file in sorted(args.paper_folder.iterdir()):
-            if file.is_file() and file.suffix in {'.tex','.pdf','.png','.json'} and not file.name.startswith('page-'):
+            if file.is_file() and file.suffix in {'.tex','.pdf','.png','.json','.py'} and not file.name.startswith('page-'):
                 add('cases/paper/'+file.name,file.read_bytes())
         add('paper.pdf',(args.paper_folder/'paper.pdf').read_bytes())
         target.writestr('sha256.json',json.dumps(manifest,indent=2))
