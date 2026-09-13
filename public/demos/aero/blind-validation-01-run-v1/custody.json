@@ -1,0 +1,13 @@
+{
+  "custodian_id": "Codex implementation task acting exclusively as exposed source custodian; not the future predictor",
+  "input_review": "Inputs contain geometry, operating conditions, facility methods, all station locations and explicit unknowns. No coefficient values, performance conclusions, published CFD curves or successful modeling choices included.",
+  "license_basis": "NASA NTRS metadata determinationType=GOV_PUBLIC_USE_PERMITTED and containsThirdPartyMaterial=false. The reveal will contain attributed numerical observations, not a redistributed scan of the paper.",
+  "license_clearance": "REDISTRIBUTION_APPROVED",
+  "predictor_requirement": "A fresh inference context with only reviewed input and approved tools; no source PDF, reference CSV, metadata bearing answers, seal key, browsing, RAG or inherited conversation",
+  "reviewed_no_answer_material": true,
+  "reviewer_independence": "One exposed custodian plus source-image and numerical consistency checks; not dual independent human review.",
+  "scientific_criteria": "Not frozen. Input sealing does not authorize solving or endorse any numerical model.",
+  "selection_blindness": "Source selection and curation were NOT blind. Only the future predictor's runtime reference access is intended to be withheld.",
+  "selection_rule": "One complete localized fixed-transition series near Reynolds number six million: Table XIII first subtable, M=0.15, R=5.95e6, No. 180 grit. All 18 rows and both near-zero operating points retained. No row selected or removed for outcome quality.",
+  "transcription_review": "36 CL/CD observations manually transcribed and checked against the rendered PDF page; textual OCR sign errors were not accepted blindly. Printed lift/drag ratios used only inside custody as a secondary transcription consistency check."
+}

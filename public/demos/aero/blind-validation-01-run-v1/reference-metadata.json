@@ -1,0 +1,6 @@
+{
+  "algorithm": "AES-256-GCM",
+  "ciphertext_sha256": "bc70021062c16133cef3816ddea98a6e9fe54a60c1908ccdf7d03f60bada0184",
+  "license_clearance": "REDISTRIBUTION_APPROVED",
+  "plaintext_sha256": "5aead0ecb225b44951b00147353da8f7aaa38a2ee87d0fff23bafe73a08c2ed1"
+}

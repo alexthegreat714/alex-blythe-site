@@ -1,0 +1,222 @@
+{
+  "acceptance_thresholds": {
+    "CD": {
+      "max_absolute_error": 0.01,
+      "rmse": 0.005
+    },
+    "CL": {
+      "max_absolute_error": 0.2,
+      "rmse": 0.1
+    }
+  },
+  "allowable_preprocessing": "Pinned nominal geometry/mesh generation and input dimensional conversion only. Short implementation smoke tests at 1 degree (not a registered station) precede this freeze and remain labelled diagnostic. No tuning from experimental coefficients.",
+  "benchmark_id": "aero-blind-validation-01",
+  "boundary_conditions": {
+    "ReThetat_inlet": 1136.5272,
+    "gammaInt_inlet": 1,
+    "length_scale_over_c_assumed": 0.01,
+    "outer": "freestreamVelocity/freestreamPressure at inlet+outlet; inletOutlet k,omega,gammaInt,ReThetat; empty front/back; corrected-free-air comparison, no second wind-tunnel correction",
+    "turbulence_intensity_assumed": 0.001,
+    "unknown_turbulence": "0.1 percent is a declared nominal assumption, NOT a measurement."
+  },
+  "comparison_metrics": [
+    "rmse",
+    "max_absolute_error"
+  ],
+  "conservation_criteria": {
+    "definition": "abs(sum boundary phi)/sum(abs(boundary phi)); phi in m3/s, density cancels; integrate each patch; not solver residual renamed as mass balance.",
+    "final_boundary_flux_imbalance_fraction_max": 0.001,
+    "max_absolute_final_global_continuity": 1e-06,
+    "max_final_local_continuity": 1e-05
+  },
+  "convergence_criteria": {
+    "iterations": 2000,
+    "physical_time_accuracy": "No physical time integration. A stable RANS fixed point does not establish flow is physically steady. Potential unsteady/stall behavior remains a modeling limitation; a transient follow-up is separate, not silent tuning.",
+    "solver_completion": "Full2000 iterations, finite output and end marker required; no cropped curve accepted as completion.",
+    "stationarity": "Means over iterations1000..1500 versus1500..2000 differ by <=0.01 CL and <=0.001 CD. Additionally last500-iteration CL range <=0.02 and CD range <=0.002, so cancelling oscillations cannot pass by means alone."
+  },
+  "date_time": "2026-09-13T21:18:15.522508+00:00",
+  "dimensional_assumptions": {
+    "chord_m": 0.601,
+    "density": "Force coefficients use rhoInf=1 with kinematic pressure; density cancels. No claim of atmospheric tunnel density.",
+    "empty_span_m": 0.00601,
+    "gas_constant_J_kg_K": 287.05,
+    "geometry_transform": "(x,y,z) in nominal template maps to (0.601*x,0.601*z,-0.00601*y/0.2) metres",
+    "heat_capacity_ratio": 1.4,
+    "nu_relation": "U*0.601/5950000",
+    "speed_relation": "0.15*sqrt(1.4*287.05*288.15)",
+    "temperature_K_assumed": 288.15
+  },
+  "environment_versions": {
+    "Docker_image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "OpenFOAM": "Foundation10",
+    "Python_in_container": "3.8 standard library"
+  },
+  "execution_code": {
+    "analyze_case.py": "91db868db81675aeec0ad565daae0cf9f4b4955ce9378412f5f8b9f37d69d6fb",
+    "case_driver.py": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "execute_case.py": "2ad38ebf9cf2fa0e566829f82bcd093ca8d0a7f54acb5e1cd9d2d42167ee4695",
+    "protocol.py": "40e7ce2d5ddb2f4a062195b17fbe9e44ce580fa090548aa346bbdc08dd17cd29",
+    "run_sweep.py": "222258692339019e3e8fdc8d8a3ba365e3194c5f1145c55c46c5044a461891ca"
+  },
+  "experimental_uncertainty": {
+    "gate_policy": "descriptive_only_no_threshold_widening",
+    "source": "Per-point uncertainty absent in permitted source inputs; unknown remains unknown"
+  },
+  "failure_conditions": "Failed numerical/experimental gates imply FAIL. Missing/incomplete/nonfinite predictions imply INCOMPLETE and no reference reveal under the existing protocol. Timeout is not convergence. Invalid topology/negative-volume geometry aborts before solve. High aspect ratio/determinant warnings remain visible; numerical PASS still requires physical and numerical gates.",
+  "flow_conditions": {
+    "angle_of_attack_degrees": {
+      "p01": -3.99,
+      "p02": -1.98,
+      "p03": -0.03,
+      "p04": 0.04,
+      "p05": 2.0,
+      "p06": 4.06,
+      "p07": 6.09,
+      "p08": 8.09,
+      "p09": 10.18,
+      "p10": 11.13,
+      "p11": 12.1,
+      "p12": 13.31,
+      "p13": 14.08,
+      "p14": 15.24,
+      "p15": 16.33,
+      "p16": 17.13,
+      "p17": 18.21,
+      "p18": 19.27
+    },
+    "fluid": "air",
+    "mach": 0.15,
+    "reynolds_chord": 5950000,
+    "source_static_pressure_density_viscosity": "Not separately tabulated for this series; any dimensional realization must preserve both Mach and chord Reynolds number and disclose assumptions",
+    "source_temperature": "Tunnel stagnation temperature maintained near ambient; exact series temperature not supplied",
+    "transition": {
+      "exact_grit_height_m": "NOT SUPPLIED",
+      "geometry": "localized strips, not wraparound",
+      "grit": "No. 180",
+      "location_x_over_c": 0.05,
+      "strip_width_over_c": 0.01,
+      "surfaces": [
+        "upper",
+        "lower"
+      ],
+      "type": "fixed"
+    }
+  },
+  "geometry_source": {
+    "as_built": "UNKNOWN; nominal approximation only",
+    "license": "OpenFOAM GPL-3.0-or-later geometry and template; retain original provenance",
+    "mesh": "Six-block projected C-grid from Foundation 10 tutorial, with two upper-farfield projection corrections and documented counts/scales",
+    "nominal": "Pinned OpenFOAM Foundation 10 NACA0012.obj.gz, copied without any tutorial solution or flow conditions"
+  },
+  "governing_equations": "Two-dimensional incompressible steady Reynolds-averaged Navier-Stokes. Low-Mach approximation at M=0.15; compressibility is not resolved or corrected post hoc. A bounded steady-model test, not a claim that the complete angle series is physically steady. Oscillating/nonstationary cases fail numerical acceptance.",
+  "initial_conditions": "Uniform free-stream U, p=0, gammaInt=1, ReThetat=1136.5272; k=1.5*(0.001*U)^2, omega=sqrt(k)/(0.09^0.25*0.01c), followed by potentialFoam velocity/flux initialization. Initialize independently for each angle/grid; no warm-start from other stations. Do not write uppercase Phi on the case-insensitive host filesystem.",
+  "input_sha256": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73",
+  "mesh_levels": [
+    {
+      "name": "coarse",
+      "normal": 64,
+      "surface_aft": 40,
+      "upstream": 64,
+      "wake": 64
+    },
+    {
+      "name": "medium",
+      "normal": 96,
+      "surface_aft": 60,
+      "upstream": 96,
+      "wake": 96
+    },
+    {
+      "name": "fine",
+      "normal": 128,
+      "surface_aft": 80,
+      "upstream": 128,
+      "wake": 128
+    }
+  ],
+  "mesh_strategy": "Projected six-block C-grid; upstream semicylinder radius20c, downstream30c; one empty span cell; near-wall grading300000; downstream grading400; no answer-based adaptation.",
+  "prohibited_tuning": "No physical model, criteria, station, mesh-level or averaging-window changes after this freeze. A bug correction requires a visible version and invalidates affected runs. Do not remove difficult or failed operating points.",
+  "quantities": [
+    "CL",
+    "CD"
+  ],
+  "refinement_strategy": "Retain all three independently generated grids at every station. Fine-grid mean over SIMPLE iterations1500..2000 is the prediction, explicitly not a physical time average. Medium/fine CL difference <=0.02 and CD difference <=0.002 at every station. Report coarse values too. No extrapolated GCI or uncertainty claim.",
+  "repository_commit": "7e651f7b7680a1cdb7470e04c5552501585a9131",
+  "residual_criteria": {
+    "fields": [
+      "p",
+      "Ux",
+      "Uy",
+      "k",
+      "omega",
+      "gammaInt",
+      "ReThetat"
+    ],
+    "finite_all_fields_required": true,
+    "last_iteration_final_linear_residual_max": 1e-06,
+    "last_iteration_initial_residual_max": 0.0001,
+    "linear_solution": "PCG/DIC pressure with 2000 linear-iteration cap and tolerance1e-7, relTol0.01. Smooth symGaussSeidel other fields. Both initial and final residual requirements must pass."
+  },
+  "runtime_numerics": "FOAM_SIGFPE unset because unmodified LM Fthetat contains the exp(-(y/delta)^4) limiting expression at zero vorticity. This permits IEEE infinity intermediates, NOT nonfinite stored fields: every retained numeric field and coefficient must pass a finite-value check. No alternate closure or changed coefficient is permitted.",
+  "sealed_reference_sha256": "bc70021062c16133cef3816ddea98a6e9fe54a60c1908ccdf7d03f60bada0184",
+  "solver": {
+    "case_memory_GB": 4,
+    "case_wall_timeout_seconds": 7200,
+    "concurrent_cases": 3,
+    "container_cpus": 2,
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "name": "OpenFOAM Foundation 10 simpleFoam",
+    "threads_per_case": 1
+  },
+  "source_citation": "C. L. Ladson, NASA TM-4074 (1988), NTRS 19880019495. Table XIII, first subtable: M=0.15, R=5.95e6, transition fixed with No. 180 grit. Only the source-defined inputs and all operating-point locations are disclosed here.",
+  "source_version": {
+    "download_name": "19880019495.pdf",
+    "methods_pdf_pages": [
+      4,
+      5
+    ],
+    "ntrs_id": "19880019495",
+    "page_count": 97,
+    "retrieved_utc_date": "2026-09-13",
+    "series_pdf_page": 25,
+    "series_printed_page": 23,
+    "sha256": "8e466706cbdf54b3c778ea2b089c4f52d87686bf7f6b1bd10d224b42c2d06902"
+  },
+  "stations": [
+    "p01",
+    "p02",
+    "p03",
+    "p04",
+    "p05",
+    "p06",
+    "p07",
+    "p08",
+    "p09",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p17",
+    "p18"
+  ],
+  "status": "READY_TO_FREEZE",
+  "threshold_rationale": "Pre-answer engineering utility bounds for this first bounded workflow test, not experimental confidence intervals or a certified design tolerance. No target coefficients or measured scatter used to derive them.",
+  "turbulence_model": "kOmegaSSTLM, unmodified Foundation 10 coefficients. Proposed transition surrogate, not a resolved No.180 grit model.",
+  "wall_treatment": {
+    "U": "no-slip",
+    "gamma_caveat": "Does not establish trip equivalence, transition sensitivity or as-built fidelity.",
+    "k": "fixed 1e-12",
+    "nut": "nutLowReWallFunction",
+    "omega": "omegaWallFunction",
+    "trip_surrogate": "gammaInt fixed to 0 for x/c<0.05 and 1 for x/c>=0.05 in a geometric near-surface band of thickness 0.02c. Cells selected against nominal thickness; constraints audited. This approximates prescribed transition, not physical roughness or strip-width drag."
+  },
+  "yplus_criterion": {
+    "fine_wall_absolute_max": 5,
+    "fine_wall_percentile95_max": 2,
+    "policy": "Both required for numerical PASS; retain per-face data/histograms and all-grid summaries, including failures."
+  }
+}
