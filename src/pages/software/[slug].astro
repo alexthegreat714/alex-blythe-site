@@ -22,7 +22,7 @@ const proofStages = [
   { index: '01', label: 'Chat', title: 'Define the engineering question', detail: 'A plain-language request becomes a typed case specification. Assumptions and missing inputs remain visible.' },
   { index: '02', label: 'Math', title: 'Set expectations before solving', detail: 'First-principles checks and the live LaTeX notebook establish what the solver should be compared against.' },
   { index: '03', label: 'CAD', title: 'Inspect the current nozzle geometry', detail: 'The current CadQuery/OpenCascade manifest records the parametric nozzle, topology checks, dimensions, and source fingerprint.' },
-  { index: '04', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated wall-refined mesh before execution. This proof used 6,048, 9,072, and 12,600 cells.' },
+  { index: '04', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated refinement level before execution. This proof used 6,048, 9,072, and 12,600 cells.' },
   { index: '05', label: 'Solve', title: 'Run and monitor OpenFOAM', detail: 'Each rhoSimpleFoam run retained convergence, conservation, monitor, and cleanup evidence.' },
   { index: '06', label: 'Decide', title: 'Review the study', detail: 'Compare grid changes, monitor histories, and reference checks in the retained report.' },
 ] as const;
