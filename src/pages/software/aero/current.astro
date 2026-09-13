@@ -187,10 +187,6 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('#document-title').textContent=activeCase.title;
     const seed=seedFor(activeCase),strip=$('[data-example-strip]');strip.hidden=!seed;
     if(seed){
-      if(seed.discipline==='FEA'&&seed.surfaceUrl&&index===2){
-        const viewport=document.createElement('section');evidence.append(viewport);
-        void mountStructuralGeometry(viewport,seed.surfaceUrl.replace('surface.json','geometry.stl')).then(dispose=>{if(viewTicket!==structuralTicket)dispose();else disposeStructural=dispose;}).catch(()=>{viewport.textContent='Recorded CAD could not load.';});
-      }
       const status=seed.status==='recorded'?(evidenceCurrent()?'Recorded run · original inputs':'Recorded run · inputs changed'):'Study setup · not run';
       $('[data-example-status]').textContent=status;$('[data-example-summary]').textContent=seed.summary;
       const source=$<HTMLAnchorElement>('[data-example-source]');source.textContent=seed.sourceLabel+' ↗';source.href=seed.sourceUrl;
@@ -233,6 +229,10 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     if(index===5&&seed?.proofUrl){proofFrame.src=seed.proofUrl;$('[data-proof-note]').textContent=evidenceCurrent()?'This proof documents the unedited recorded inputs and the engineering gates.':'Historical proof only: your edited inputs need a fresh solver run.';}
     else proofFrame.removeAttribute('src');
     if(seed){
+      if(seed.discipline==='FEA'&&seed.surfaceUrl&&index===2){
+        const viewport=document.createElement('section');evidence.append(viewport);
+        void mountStructuralGeometry(viewport,seed.surfaceUrl.replace('surface.json','geometry.stl')).then(dispose=>{if(viewTicket!==structuralTicket)dispose();else disposeStructural=dispose;}).catch(()=>{viewport.textContent='Recorded CAD could not load.';});
+      }
       if(seed.discipline==='FEA'&&seed.surfaceUrl&&index>=3){
         const viewport=document.createElement('section');evidence.append(viewport);
         void mountStructuralViewer(viewport,seed.surfaceUrl,index===3).then(dispose=>{if(viewTicket!==structuralTicket)dispose();else disposeStructural=dispose;}).catch(()=>{viewport.textContent='Structural field could not load. The recorded evidence remains available below.';});

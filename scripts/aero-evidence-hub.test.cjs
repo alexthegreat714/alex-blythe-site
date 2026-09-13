@@ -57,8 +57,16 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
   await page.goto(base+'/software/aero/',{waitUntil:'networkidle'});
   assert(await page.locator('#capability-papers a[href="/software/aero/evidence/"]').count()>0);
   assert(!(await page.locator('body').innerText()).includes('each generated wall-resolved mesh'));
+  await page.goto(base+'/software/aero/current/?case=fea-bracket-20260912',{waitUntil:'networkidle'});
+  assert.match(await page.locator('[data-example-summary]').innerText(),/100 N tip load/);
+  await page.locator('[data-stage]').nth(2).click();
+  await page.locator('[data-stage-evidence] canvas').waitFor();
+  // Fresh browser storage: the channel deep link must initialize its own inputs.
+  const fresh=await browser.newPage();fresh.on('pageerror',e=>errors.push(e.message));
+  await fresh.goto(base+'/software/aero/current/?study=channel',{waitUntil:'networkidle'});
+  assert(await fresh.locator('[data-channel-study]').isVisible());await fresh.close();
   assert.deepEqual(errors,[]);
-  const proof={base,checked_at:new Date().toISOString(),passed:true,routes:3,existing_source_hashes_verified:oldHashes,preparation_hashes_verified:manifest.files.length,internal_links_checked:links.size,mobile_widths:[390,768],keyboard_filters:true,scientific_challenge:'NOT_EVALUATED',console_errors:errors};
+  const proof={base,checked_at:new Date().toISOString(),passed:true,routes:3,existing_source_hashes_verified:oldHashes,preparation_hashes_verified:manifest.files.length,internal_links_checked:links.size,mobile_widths:[390,768],keyboard_filters:true,structural_saved_case_and_cad:true,channel_deep_link:true,scientific_challenge:'NOT_EVALUATED',console_errors:errors};
   fs.writeFileSync(output+'/proof.json',JSON.stringify(proof,null,2));console.log(JSON.stringify(proof,null,2));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1);});
