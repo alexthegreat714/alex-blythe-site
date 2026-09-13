@@ -125,7 +125,7 @@ export const aeroCaseSeeds: AeroSeed[] = [
     summary: 'Recorded rhoSimpleFoam nozzle run with CAD/mesh manifests and numerical gates. Not a flight-design validation.',
     sourceLabel: 'Aero public engineering evidence',sourceUrl:'/demos/aero/wall-refinement-v6/engineering-result.json',status:'recorded',
     fields: {
-      goal:'Inspect the end-to-end wall-resolved axisymmetric nozzle CFD workflow and its numerical/evidence gates.',
+      goal:'Inspect the end-to-end wall-refined axisymmetric nozzle CFD workflow and its numerical/evidence gates.',
       geometry:'Parametric axisymmetric converging-diverging nozzle wedge generated with CadQuery/OpenCascade; retained STEP/STL/mesh hashes.',
       fluid:'Compressible steady flow solved with OpenFOAM rhoSimpleFoam.',
       conditions:'Use the exact retained boundary conditions in the linked engineering result; do not infer unreported design conditions.',
@@ -133,7 +133,7 @@ export const aeroCaseSeeds: AeroSeed[] = [
       reference:'Aero retained CFD evidence; independent physical validation remains not established.'
     },
     equations:[{title:'Mass conservation',latex:'\\dot m_{\\mathrm{in}}-\\dot m_{\\mathrm{out}}\\approx 0',assumptions:'Numerical conservation alone does not validate the physical model.'}],
-    build:{geometry:'CadQuery/OpenCascade generated an axisymmetric nozzle wedge with dimension and topology checks.',mesh:'Gmsh generated a wall-resolved mesh; the linked manifest records 25,596 nodes and 12,600 volume elements.',solve:'rhoSimpleFoam completed the retained production proof run. See numerical gates in the linked result.',results:'Open the retained engineering-result JSON and demo visualization. The independent-validation gate remains open.'},
+    build:{geometry:'CadQuery/OpenCascade generated an axisymmetric nozzle wedge with dimension and topology checks.',mesh:'Gmsh generated a wall-refined mesh; the linked manifest records 25,596 nodes and 12,600 volume elements.',solve:'rhoSimpleFoam completed the retained production proof run. See numerical gates in the linked result.',results:'Open the retained engineering-result JSON and demo visualization. The independent-validation gate remains open.'},
     evidence:{label:'Proof document',url:'/software/aero/report/',secondary:[{label:'Engineering result',url:'/demos/aero/wall-refinement-v6/engineering-result.json'},{label:'Explore visual proof',url:'/software/aero/demo/'}]},
     proofUrl:'/software/aero/report/'
   },
