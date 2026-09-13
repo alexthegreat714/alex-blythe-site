@@ -1,4 +1,5 @@
 import { verificationCaseSeeds } from './aero-verification-cases';
+import { challengeCaseSeeds } from './aero-challenge-cases';
 // Public, versioned teaching cases. A source reference is not a local CFD result.
 // Only entries with recordedEvidence have retained local solver evidence.
 export type AeroSeed = {
@@ -20,6 +21,7 @@ export type AeroSeed = {
 };
 
 export const aeroCaseSeeds: AeroSeed[] = [
+  ...challengeCaseSeeds,
   ...verificationCaseSeeds,
   {
     id:'naca-0012-openfoam-tutorial-20260912',folder:'NACA studies',title:'NACA 0012 · OpenFOAM tutorial run',

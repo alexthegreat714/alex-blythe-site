@@ -1,15 +1,15 @@
 {
   "schema": "aero.challenge.status.v3",
-  "updated_at": "2026-09-13T21:26:46.350926+00:00",
+  "updated_at": "2026-09-13T21:44:42.666814+00:00",
   "stage": "SOLVE",
   "result": "NOT EVALUATED",
   "total": 54,
-  "completed": 1,
-  "complete_predictions": 1,
+  "completed": 3,
+  "complete_predictions": 3,
   "running": [
-    "p01-medium",
     "p01-fine",
-    "p02-coarse"
+    "p02-medium",
+    "p02-fine"
   ],
   "phases": [
     {
@@ -55,5 +55,10 @@
   "has_prediction": false,
   "has_comparison": false,
   "has_bundle_index": false,
-  "blinding_scope": "Reference withheld from deterministic solver execution; source-exposed supervisor designed the setup. Not double-blind or pretraining-blind."
+  "blinding_scope": "Reference withheld from deterministic solver execution; source-exposed supervisor designed the setup. Not double-blind or pretraining-blind.",
+  "numerical_status": "NOT EVALUATED",
+  "experimental_comparison": "NOT EVALUATED",
+  "metrics": {},
+  "has_reproduction": false,
+  "has_manifest": false
 }
