@@ -85,8 +85,8 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <span class="section-index">01 / How Aero works</span>
         <div>
           <div class="proof-kicker"><span>Aero</span><span>Website Rev 1.3</span><span>Preliminary engineering analysis</span><a href="#capability-papers">Read the capability papers ↓</a></div>
-          <h1 id="aero-proof-heading">Turn an engineering question<br />into a reviewable CFD study.</h1>
-          <p>Define requirements, develop first-principles checks, compare design options, and inspect the results—with assumptions and evidence attached.</p>
+          <h1 id="aero-proof-heading">See how Aero works.</h1>
+          <p>Follow an engineering requirement through math, geometry, simulation, and reviewable results.</p>
         </div>
       </div>
 
@@ -116,7 +116,8 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <div class="section-heading">
           <span class="section-index">02 / Aero workspaces</span>
           <div>
-            <h2 id="aero-instances-heading">Explore. Build. Go deeper.</h2>
+            <h2 id="aero-instances-heading">Choose how to use Aero.</h2>
+            <p>Walk through a demo, start your own case, or sign in for private tools and compute.</p>
           </div>
         </div>
         <nav class="aero-instance-tabs" aria-label="Choose an Aero workspace">
@@ -141,11 +142,6 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <div class="channel-result-preview"><small>Actual OpenFOAM results · water · parallel-plate model</small><table><thead><tr><th>Gap</th><th>Pressure drop</th><th>70 Pa target</th></tr></thead><tbody><tr><td>1.5 mm</td><td>142.37 Pa</td><td>Exceeds</td></tr><tr><td>2.0 mm</td><td>60.06 Pa</td><td>Meets</td></tr><tr><td>2.5 mm</td><td>30.75 Pa</td><td>Meets</td></tr></tbody></table><p>9 solves · 3 grids per gap · conservation checked · analytical reference checked</p><small>Sidewalls, entry losses and fittings need separate assessment. See the report for scope and checks.</small></div>
       </section>
 
-      <div class="aero-benefits" aria-label="Why Aero">
-        <article><span>01</span><h3>Define the problem.</h3><p>Turn a question into inputs, assumptions and clear success criteria.</p></article>
-        <article><span>02</span><h3>Understand every step.</h3><p>Keep equations, geometry and solver decisions beside the conversation.</p></article>
-        <article><span>03</span><h3>Keep the evidence.</h3><p>Inspect what ran, what changed and what still needs validation.</p></article>
-      </div>
       <AeroExplorer />
       <AeroCapabilityPapers />
       <div class="aero-examples" aria-label="Example library">
@@ -156,13 +152,13 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
       <div class="report-strip"><div><h3>A result you can question.</h3><p>Read the retained run, its assumptions and its open validation gates.</p></div><a class="button" href="/software/aero/report/">Read sample report ↗</a></div>
 
       <details class="aero-disclosure">
-      <summary>Inspect the recorded proof <span>Three grids · numerical gates passed · design readiness not established</span></summary>
+      <summary>What has been verified? <span>Numerical checks and open validation gates</span></summary>
 
       <div class="section-heading proof-detail-heading">
         <span class="section-index">03 / Retained proof</span>
         <div>
-          <h2>What the acceptance case actually established.</h2>
-          <p>The retained wall-refinement-v6 study demonstrates the workflow, not flight-design validity. This table and its linked report use the same result contract.</p>
+          <h2>Passed checks. Open questions.</h2>
+          <p>The retained wall-refinement-v6 run passed its numerical gates. Independent validation and design readiness remain open.</p>
         </div>
       </div>
 
@@ -224,7 +220,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         </div>
       </div>
       </details>
-      <aside class="aero-pilot"><div><span class="eyebrow">Bring your engineering question</span><h2>Leave with a study you can review.</h2><p>A private evaluation covers the problem definition, a supported simulation workflow, comparison to a reference, and an evidence report. Share your geometry, operating range and the decision you need to make.</p></div><a class="button" href="mailto:blythe.ar@gmail.com?subject=Aero%20private%20evaluation">Request a private evaluation ↗</a></aside>
+      <aside class="aero-pilot"><div><span class="eyebrow">Private evaluation</span><h2>Bring your own engineering problem.</h2><p>Share your geometry, operating range, and decision. We’ll scope a supported workflow and a reviewable report of results, assumptions, and validation gaps.</p></div><a class="button" href="mailto:blythe.ar@gmail.com?subject=Aero%20private%20evaluation">Request a private evaluation ↗</a></aside>
     </section>
   )}
 
@@ -329,11 +325,9 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
   .proof-heading { grid-template-columns:1fr; }
   .proof-heading>.section-index { display:none; }
   .proof-heading h1 { margin:12px 0; max-width:1000px; font-size:clamp(2.2rem,4.5vw,4.1rem); letter-spacing:-.045em; line-height:1.08; font-weight:650; }
-  .aero-benefits,.aero-examples { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin:36px 0; }
-  .aero-benefits article { border-top:1px solid var(--border); padding-top:18px; }
-  .aero-benefits span { color:var(--accent); font-size:.75rem; }
-  .aero-benefits h3,.aero-examples h3 { margin:8px 0; font-size:1.15rem; }
-  .aero-benefits p,.aero-examples p,.report-strip p { color:var(--muted); margin:5px 0; font-size:.9rem; }
+  .aero-examples { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin:36px 0; }
+  .aero-examples h3 { margin:8px 0; font-size:1.15rem; }
+  .aero-examples p,.report-strip p { color:var(--muted); margin:5px 0; font-size:.9rem; }
   .aero-examples a { padding:20px; border:1px solid var(--border); border-radius:10px; transition:border-color .2s; }
   .aero-examples a:hover { border-color:var(--accent); }
   .example-art { display:flex; height:85px; align-items:center; color:var(--accent); font:italic 2rem Georgia,serif; }
@@ -351,7 +345,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
   .technical-disclosure.non-aero { display:contents; }
   .technical-disclosure.non-aero>summary { display:none; }
   .aero-disclosure .proof-detail-heading { margin:0; padding:20px 0; border:0; }
-  @media(max-width:700px) { .aero-benefits,.aero-examples { grid-template-columns:1fr; gap:12px; } .report-strip,.aero-pilot { align-items:flex-start; flex-direction:column; } }
+  @media(max-width:700px) { .aero-examples { grid-template-columns:1fr; gap:12px; } .report-strip,.aero-pilot { align-items:flex-start; flex-direction:column; } }
   .demo-link { display:inline-flex; align-items:center; gap:24px; padding:12px 16px; border:1px solid var(--accent); color:var(--accent); font-size:.76rem; font-weight:750; }
   .demo-link:hover { background:var(--accent); color:var(--page); }
   .aero-instance-section { padding-top:clamp(24px,3.5vw,44px); }
