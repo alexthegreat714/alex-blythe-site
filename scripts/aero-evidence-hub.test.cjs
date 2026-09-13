@@ -30,8 +30,10 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
    }
    if(route.includes('blind-validation')){
     assert.equal(await page.locator('.timeline li').count(),6);
-    assert.deepEqual(await page.locator('.timeline span').allTextContents(),['FROZEN',...Array(5).fill('NOT OCCURRED')]);
-    assert.match(await page.locator('body').innerText(),/19 software tests/);
+    const runStatus=await(await get('/demos/aero/blind-validation-01-run-v1/current-status.json')).json();
+    assert.deepEqual(await page.locator('.timeline span').allTextContents(),runStatus.phases.map(p=>p.status));
+    assert.match(await page.locator('body').innerText(),/not fully blinded/);
+    for(const [name,hash] of Object.entries(runStatus.hashes))assert.equal(digest(await(await get('/demos/aero/blind-validation-01-run-v1/'+name)).body()),hash,name);
    }
    for(const width of [1440,768,390]){
     await page.setViewportSize({width,height:1000});
@@ -75,7 +77,8 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
   await fresh.goto(base+'/software/aero/current/?study=channel',{waitUntil:'networkidle'});
   assert(await fresh.locator('[data-channel-study]').isVisible());await fresh.close();
   assert.deepEqual(errors,[]);
-  const proof={base,checked_at:new Date().toISOString(),passed:true,routes:3,existing_source_hashes_verified:oldHashes,preparation_hashes_verified:manifest.files.length,checkpoint_hashes_verified:checkpointHashes,internal_links_checked:links.size,mobile_widths:[390,768],keyboard_filters:true,structural_saved_case_and_cad:true,channel_deep_link:true,scientific_challenge:'INPUT_FROZEN_NOT_EVALUATED',console_errors:errors};
+  const runStatus=await(await get('/demos/aero/blind-validation-01-run-v1/current-status.json')).json();
+  const proof={base,checked_at:new Date().toISOString(),passed:true,routes:3,existing_source_hashes_verified:oldHashes,preparation_hashes_verified:manifest.files.length,checkpoint_hashes_verified:checkpointHashes,internal_links_checked:links.size,mobile_widths:[390,768],keyboard_filters:true,structural_saved_case_and_cad:true,channel_deep_link:true,scientific_challenge:runStatus.stage,console_errors:errors};
   fs.writeFileSync(output+'/proof.json',JSON.stringify(proof,null,2));console.log(JSON.stringify(proof,null,2));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

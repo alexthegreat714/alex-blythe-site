@@ -16,8 +16,22 @@
       },
       "stage": "CRITERIA_FROZEN",
       "time": "2026-09-13T21:18:15.527028+00:00"
+    },
+    {
+      "commit": "0fb460ae948d0a11ce39ed565d619d5eb1d78622",
+      "files": {},
+      "remote_head": "0fb460ae948d0a11ce39ed565d619d5eb1d78622",
+      "stage": "CRITERIA_FROZEN_ANCHORED",
+      "time": "2026-09-13T21:19:26.103190+00:00"
+    },
+    {
+      "files": {
+        "isolation.json": "af72527428a96a92cde8affc7d1e117831a6e292de3e764c950941075fad9701"
+      },
+      "stage": "SOLVE",
+      "time": "2026-09-13T21:19:26.298933+00:00"
     }
   ],
   "schema": "aero.blind.state.v1",
-  "stage": "CRITERIA_FROZEN"
+  "stage": "SOLVE"
 }

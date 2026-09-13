@@ -1,0 +1,10 @@
+{
+  "fresh_predictor_context": true,
+  "isolation_method": "Each Docker case receives only the frozen generator script and a new empty per-case output bind. Source/reference/key and repository are not mounted. No LLM is called during solving.",
+  "key_not_available": true,
+  "network_disabled": true,
+  "predictor_id": "isolated-deterministic-OpenFOAM10-e572c352cf9b",
+  "rag_disabled": true,
+  "reference_not_mounted": true,
+  "supervisor_id": "local-Aero-input-only-orchestrator"
+}
