@@ -1,0 +1,54 @@
+{
+  "schema": "aero.artifacts.v1",
+  "scope": "These release hashes are not scientific preregistration or prediction hashes",
+  "files": [
+    {
+      "path": "preparation-sources.zip",
+      "size": 83400,
+      "sha256": "008fc35a8c294dad5c0d736ece1708ad94a633398831328833ef72cdff628014",
+      "role": "preparation-artifact",
+      "generation_stage": "PREPARATION_ONLY",
+      "classification": "generated; no experimental source redistributed"
+    },
+    {
+      "path": "preregistration.draft.json",
+      "size": 2167,
+      "sha256": "ad721ee18e184daafd440828bae2d435937ce72f255e0d62cd99926791c8912d",
+      "role": "preparation-artifact",
+      "generation_stage": "PREPARATION_ONLY",
+      "classification": "generated; no experimental source redistributed"
+    },
+    {
+      "path": "protocol-paper.pdf",
+      "size": 64661,
+      "sha256": "629b0afa6c386ea5ea1b9d04499db1a59e9d1bbc45a8e90559c01179d524c09b",
+      "role": "protocol-report",
+      "generation_stage": "PREPARATION_ONLY",
+      "classification": "generated; no experimental source redistributed"
+    },
+    {
+      "path": "README.md",
+      "size": 7183,
+      "sha256": "51000ad64c0bd1c1f166325ddeb10e7e781999e1b59bccd833e6a256d1512db0",
+      "role": "preparation-artifact",
+      "generation_stage": "PREPARATION_ONLY",
+      "classification": "generated; no experimental source redistributed"
+    },
+    {
+      "path": "selection.json",
+      "size": 3400,
+      "sha256": "e8df9e05adfc3a82e66b101739504c378de33069c48b36ff61f2d9ee5aef84bd",
+      "role": "preparation-artifact",
+      "generation_stage": "PREPARATION_ONLY",
+      "classification": "generated; no experimental source redistributed"
+    },
+    {
+      "path": "status.json",
+      "size": 1882,
+      "sha256": "cb14d16bed9f20a2e33f6c085eb68f7cc2b8da6ae36623309959bf5ceb5efbb6",
+      "role": "preparation-artifact",
+      "generation_stage": "PREPARATION_ONLY",
+      "classification": "generated; no experimental source redistributed"
+    }
+  ]
+}

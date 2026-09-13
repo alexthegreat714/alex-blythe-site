@@ -1,0 +1,31 @@
+{
+  "schema": "aero.blind.selection.v1",
+  "status": "CANDIDATE_SELECTED_INPUT_CURATION_REQUIRED",
+  "candidate": {
+    "name": "NACA 0012 experimental polar series",
+    "citation": "Charles L. Ladson, Effects of independent variation of Mach and Reynolds numbers on the low-speed aerodynamic characteristics of the NACA 0012 airfoil section, NASA TM-4074, 1988",
+    "ntrs_id": "19880019495",
+    "url": "https://ntrs.nasa.gov/citations/19880019495",
+    "metadata_url": "https://ntrs.nasa.gov/api/citations/19880019495",
+    "source_access": "NASA metadata returned distribution PUBLIC and DOCUMENT_AND_METADATA on 2026-09-13. This does not substitute for checking rights on every redistributed excerpt or dataset.",
+    "facility": "Langley low-turbulence pressure tunnel",
+    "source_scope": "NASA metadata states Mach 0.05–0.36 and chord Reynolds number 3–12 million, with transition-fixing effects studied. These are source ranges, not selected production conditions.",
+    "selection_reason": "Archival experimental campaign with explicit facility and variations of Mach, Reynolds number and transition. A matched full polar series can be predicted rather than selecting a favorable scalar.",
+    "proposed_quantities": ["CL(alpha)", "CD(alpha)"],
+    "distribution_tradeoff": "Full matched polar series proposed. Cp(x/c) is not claimed available for the exact series until a custodian verifies it. This is an operating-condition distribution, not a spatial field.",
+    "exact_series_selected": false
+  },
+  "candidates_considered": [
+    {"name":"NASA TM-4074 NACA 0012","decision":"Selected candidate","reason":"Experimental, archival and parameterized; exact series, trip, corrections and uncertainty still require clean curation."},
+    {"name":"NASA CFDVAL2004 wall-mounted hump","decision":"Deferred","reason":"Rich spatial distributions, but tunnel blockage, incoming boundary layer and flow-control configuration introduce more reconstruction demands for the first challenge. Search results also exposed comparison outcomes to this planning task."},
+    {"name":"Existing Aero/NASA-TMR numerical NACA 0012 examples","decision":"Not an experimental substitute","reason":"Already familiar local cases and code-to-code comparisons cannot establish a new blind experimental prediction."}
+  ],
+  "exposure_log": {
+    "date":"2026-09-13",
+    "planner_exposed":true,
+    "material":"Web search snippets included experimental/published-comparison numbers for TM-4074 and the NASA hump. No complete source paper was read or redistributed in this implementation task.",
+    "consequence":"This task must not be reused as the blind predictor. A fresh isolated predictor must receive only reviewed inputs; canonical-model pretraining familiarity cannot be ruled out.",
+    "no_production_run_claimed":true
+  },
+  "open_items":["Independent custodian reviews exact series and redistribution rights","Extract geometry, chord, trailing edge, Mach/Re/alpha stations, properties, trip and tunnel corrections without answer material","Set experimental uncertainty policy and justified acceptance thresholds without expected values","Archive source version and hashes; create encrypted sealed package with key outside predictor/repository","Freeze and publicly commit complete preregistration","Launch a fresh restricted predictor/solver environment with recorded mount/network/RAG evidence"]
+}

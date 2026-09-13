@@ -1,0 +1,851 @@
+{
+  "schema": "aero.evidence.index.v1",
+  "source_commit": "2ca8e5cbfbdb03515e961be8fc4143f2891e637b",
+  "verification": {
+    "revision": "1.0",
+    "run_date": "2026-09-13",
+    "criteria_revision": "1.1",
+    "gate_revision_note": "Initial v1.0 diagnostics retained separately. v1.1 permits a velocity-component normalized residual above tolerance only when that component's maximum absolute solved velocity is below 1e-10 of prescribed bulk velocity. Pressure residual remains mandatory. Built-in vector residual stopping is reported separately from these explicit acceptance checks.",
+    "pipe": [
+      {
+        "id": "pipe-coarse",
+        "cells": 320,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 4.37568454002e-16,
+          "Uy": 7.59577566434e-14,
+          "Uz": 8.4789587988e-06,
+          "p": 8.72352372463e-11
+        },
+        "mass_imbalance_pct": 2.0626885494423887e-10,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 1.9754643538749999,
+          "Uy": 0.00147286179835,
+          "Uz": 3.5295128915199994e-14
+        },
+        "pressure_drop_pa": 0.6336285695719215,
+        "reference_pressure_drop_pa": 0.64,
+        "reference_error_pct": 0.9955360043872652,
+        "darcy_factor": 0.31681428478596074,
+        "viscosity_multiplier": 1,
+        "status": "ACCEPTED",
+        "gate": "PASS",
+        "checks": {
+          "execution": true,
+          "mesh": true,
+          "residuals": true,
+          "mass_conservation": true,
+          "reference": true,
+          "declared_fluid": true
+        },
+        "failed_checks": [],
+        "elapsed_seconds": 5.29070782661438
+      },
+      {
+        "id": "pipe-medium",
+        "cells": 960,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 2.64820710492e-16,
+          "Uy": 1.03189196082e-13,
+          "Uz": 7.46327494171e-06,
+          "p": 8.96170667054e-11
+        },
+        "mass_imbalance_pct": 7.334298641886788e-10,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 1.99349244516,
+          "Uy": 0.000700741547015,
+          "Uz": 3.157516559825e-14
+        },
+        "pressure_drop_pa": 0.6384474017145066,
+        "reference_pressure_drop_pa": 0.64,
+        "reference_error_pct": 0.2425934821083331,
+        "darcy_factor": 0.31922370085725327,
+        "viscosity_multiplier": 1,
+        "status": "ACCEPTED",
+        "gate": "PASS",
+        "checks": {
+          "execution": true,
+          "mesh": true,
+          "residuals": true,
+          "mass_conservation": true,
+          "reference": true,
+          "declared_fluid": true
+        },
+        "failed_checks": [],
+        "elapsed_seconds": 8.835524559020996
+      },
+      {
+        "id": "pipe-fine",
+        "cells": 2560,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 4.91930604311e-14,
+          "Uy": 2.00405939925e-09,
+          "Uz": 9.54153223735e-05,
+          "p": 7.97559565668e-11
+        },
+        "mass_imbalance_pct": 4.584173632860015e-11,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 1.9983798348850002,
+          "Uy": 0.0004242716145555,
+          "Uz": 2.24900362349e-14
+        },
+        "pressure_drop_pa": 0.639662721373094,
+        "reference_pressure_drop_pa": 0.64,
+        "reference_error_pct": 0.05269978545406895,
+        "darcy_factor": 0.31983136068654694,
+        "viscosity_multiplier": 1,
+        "status": "ACCEPTED",
+        "gate": "PASS",
+        "checks": {
+          "execution": true,
+          "mesh": true,
+          "residuals": true,
+          "mass_conservation": true,
+          "reference": true,
+          "declared_fluid": true
+        },
+        "failed_checks": [],
+        "elapsed_seconds": 22.471678495407104
+      },
+      {
+        "id": "pipe-underresolved",
+        "cells": 80,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 4.04148921326e-15,
+          "Uy": 3.32147842863e-13,
+          "Uz": 3.7257657861e-07,
+          "p": 2.18323077768e-11
+        },
+        "mass_imbalance_pct": 3.896358002586395e-10,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 1.7070653915149998,
+          "Uy": 0.00242788526217,
+          "Uz": 1.115454314625e-14
+        },
+        "pressure_drop_pa": 0.5506378867411579,
+        "reference_pressure_drop_pa": 0.64,
+        "reference_error_pct": 13.962830196694087,
+        "darcy_factor": 0.27531894337057894,
+        "viscosity_multiplier": 1,
+        "status": "REJECTED",
+        "gate": "FAIL",
+        "checks": {
+          "execution": true,
+          "mesh": true,
+          "residuals": true,
+          "mass_conservation": true,
+          "reference": false,
+          "declared_fluid": true
+        },
+        "failed_checks": [
+          "reference"
+        ],
+        "elapsed_seconds": 9.326387882232666
+      },
+      {
+        "id": "pipe-wrong-viscosity",
+        "cells": 960,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 2.16310370832e-16,
+          "Uy": 6.8591425864e-14,
+          "Uz": 9.89494895078e-06,
+          "p": 8.80988652283e-11
+        },
+        "mass_imbalance_pct": 9.626195872972177e-10,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 1.992968841175,
+          "Uy": 0.001038270044975,
+          "Uz": 4.546846602034999e-14
+        },
+        "pressure_drop_pa": 1.2774727501234286,
+        "reference_pressure_drop_pa": 0.64,
+        "reference_error_pct": 99.60511720678574,
+        "darcy_factor": 0.6387363750617143,
+        "viscosity_multiplier": 2,
+        "status": "REJECTED",
+        "gate": "FAIL",
+        "checks": {
+          "execution": true,
+          "mesh": true,
+          "residuals": true,
+          "mass_conservation": true,
+          "reference": false,
+          "declared_fluid": false
+        },
+        "failed_checks": [
+          "reference",
+          "declared_fluid"
+        ],
+        "elapsed_seconds": 11.071516275405884
+      }
+    ],
+    "nozzle": [
+      {
+        "id": "nozzle-wall-function",
+        "cells": 1920,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 0.000120794075821,
+          "Uy": 0.00133100464162,
+          "Uz": 0.00669058252036,
+          "p": 0.000719055464634,
+          "omega": 0.00124952311231,
+          "k": 0.00191813525532
+        },
+        "mass_imbalance_pct": 2.7888095488052603e-05,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 6.95975032655,
+          "Uy": 1.5782930564,
+          "Uz": 5.0599954293e-13
+        },
+        "pressure_change_pa": 62.22138357009312,
+        "max_yplus": 12.6666049654,
+        "min_yplus": 1.89751010251,
+        "treatment": "wall-function",
+        "suitable_area_fraction": 0.0,
+        "near_wall_gate": "FAIL",
+        "status": "NOT_ESTABLISHED",
+        "reason": "No independent nozzle reference; near-wall suitability alone cannot validate the model.",
+        "elapsed_seconds": 29.859869241714478
+      },
+      {
+        "id": "nozzle-low-re",
+        "cells": 1920,
+        "iterations": 1800.0,
+        "terminal": true,
+        "mesh_ok": true,
+        "converged": false,
+        "residuals": {
+          "Ux": 2.8136238835e-12,
+          "Uy": 1.51692477018e-11,
+          "Uz": 0.002999782017,
+          "p": 9.66584045549e-11,
+          "omega": 7.92373803117e-11,
+          "k": 9.69997058358e-11
+        },
+        "mass_imbalance_pct": 9.26853513615626e-05,
+        "final_time": "1800",
+        "velocity_bulk_ratios": {
+          "Ux": 6.7355125695,
+          "Uy": 1.437453514975,
+          "Uz": 5.12483951485e-13
+        },
+        "pressure_change_pa": 22.703348078187467,
+        "max_yplus": 11.6418256628,
+        "min_yplus": 0.241992796608,
+        "treatment": "low-re",
+        "suitable_area_fraction": 0.06160059928300974,
+        "near_wall_gate": "FAIL",
+        "status": "NOT_ESTABLISHED",
+        "reason": "No independent nozzle reference; near-wall suitability alone cannot validate the model.",
+        "elapsed_seconds": 24.94338083267212
+      }
+    ],
+    "cad": [
+      {
+        "id": "imported-manifold",
+        "source": "IMPORTED_STEP",
+        "fixture": "Synthetic manifold with intersecting ports and external fillets; defective variant includes a detached sliver.",
+        "units": "mm",
+        "source_sha256": "416df46e37b5858369e48d99681fa1633ce0bb46488c40cd70a961ee472cebf7",
+        "checks": {
+          "valid_topology": true,
+          "one_connected_solid": true,
+          "positive_volume": true
+        },
+        "solid_count": 1,
+        "solid_volumes_mm3": [
+          21281.373111514276
+        ],
+        "intake_status": "ACCEPTED",
+        "status": "NOT_ESTABLISHED",
+        "reason": "Topology passes; loads, fluid volume, boundary conditions and physics remain unassigned.",
+        "solver_submitted": false,
+        "automatic_repair": false
+      },
+      {
+        "id": "imported-manifold-sliver",
+        "source": "IMPORTED_STEP",
+        "fixture": "Synthetic manifold with intersecting ports and external fillets; defective variant includes a detached sliver.",
+        "units": "mm",
+        "source_sha256": "1ec8586af97093ae05b20d72f0e03d7f6a1f1903c3c786b2d464224cb4dff6dc",
+        "checks": {
+          "valid_topology": true,
+          "one_connected_solid": false,
+          "positive_volume": true
+        },
+        "solid_count": 2,
+        "solid_volumes_mm3": [
+          21281.373111514276,
+          2.4999999999999463
+        ],
+        "intake_status": "REJECTED",
+        "status": "REJECTED",
+        "reason": "Multiple disconnected solids: quarantine for geometry review. No automatic repair, meshing or solver execution.",
+        "solver_submitted": false,
+        "automatic_repair": false
+      }
+    ],
+    "retained_calculix": [
+      {
+        "family": "tube",
+        "level": "coarse",
+        "deck_sha256": "5131debee5d57adda69446ee713f45f579a440b52a754255cabc63358c084bd3",
+        "run_date": "2026-09-12"
+      },
+      {
+        "family": "tube",
+        "level": "medium",
+        "deck_sha256": "81984c4f2100a4c9a813da17e8e8c21bcce8b28f9567623a5834bda9bb64b832",
+        "run_date": "2026-09-12"
+      },
+      {
+        "family": "tube",
+        "level": "fine",
+        "deck_sha256": "d93ada78c636e081a70789ccb34ffa8c3b42bca7677094faab92e396a789e2f4",
+        "run_date": "2026-09-12"
+      },
+      {
+        "family": "port",
+        "level": "fine",
+        "deck_sha256": "740f6d46bcb44c96f9d4e23f21b9889489e9bbe92b09ee6c7fe9cdd35b12af71",
+        "run_date": "2026-09-12"
+      },
+      {
+        "family": "thermal-gradient",
+        "level": "fine",
+        "deck_sha256": "77b16964ec851316e54c696023e147dad43226d9bfddc8227cfe290883f2c464",
+        "run_date": "2026-09-12"
+      }
+    ],
+    "archive_file_count": 295,
+    "reference_url": "https://openstax.org/books/university-physics-volume-1/pages/14-7-viscosity-and-turbulence",
+    "runtime": {
+      "openfoam": "Foundation 10",
+      "openfoam_image_id": "sha256:2965f9e26d1a358e18b5543085adab73927d77e8d16d3995a0c4612e8f430837",
+      "cad_fea_image_id": "sha256:b73d70afc297054bf644db852e8d8ed0bbd2423fecbcd5669194dd7460d9a763"
+    }
+  },
+  "channel": {
+    "conditions": {
+      "length_mm": 200.0,
+      "gap_mm": 2.0,
+      "flow_ml_s": 25.0,
+      "budget_pa": 40.0
+    },
+    "solves": 9,
+    "selected_gap_mm": 2.5,
+    "checks_passed": true,
+    "variants": [
+      {
+        "gap_mm": 1.5,
+        "pressure_drop_pa": 177.96352650829272,
+        "mesh_change_pct": 0.15138475444742586,
+        "checks_passed": true,
+        "meets_budget": false
+      },
+      {
+        "gap_mm": 2.0,
+        "pressure_drop_pa": 75.07836710406906,
+        "mesh_change_pct": 0.15138099199105395,
+        "checks_passed": true,
+        "meets_budget": false
+      },
+      {
+        "gap_mm": 2.5,
+        "pressure_drop_pa": 38.44013313600021,
+        "mesh_change_pct": 0.1513529408469678,
+        "checks_passed": true,
+        "meets_budget": true
+      }
+    ],
+    "paper_artifacts": 200
+  },
+  "thermal": {
+    "inputs": {
+      "heat_w": 100,
+      "flow_ml_s": 1,
+      "inlet_c": 25,
+      "wall_limit_c": 72,
+      "pressure_budget_pa": 2000,
+      "length_mm": 500,
+      "available_width_mm": 12
+    },
+    "selected_layout": "B",
+    "energy_relative_error": 0,
+    "radial_final_error_pct": 0.001941938408545063,
+    "layouts": 3,
+    "paper_artifacts": 41
+  },
+  "structural": {
+    "solves": 21,
+    "cases": [
+      {
+        "case": "bracket",
+        "solves": 3,
+        "numerical": "PASS",
+        "requirements": "PASS",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/bracket/result.json",
+        "manifest": "/demos/aero/fea-v1/bracket/manifest.json"
+      },
+      {
+        "case": "tube",
+        "solves": 3,
+        "numerical": "NOT_ESTABLISHED",
+        "requirements": "PASS",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/tube/result.json",
+        "manifest": "/demos/aero/fea-v1/tube/manifest.json"
+      },
+      {
+        "case": "tube3d",
+        "solves": 3,
+        "numerical": "NOT_ESTABLISHED",
+        "requirements": "PASS",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/tube3d/result.json",
+        "manifest": "/demos/aero/fea-v1/tube3d/manifest.json"
+      },
+      {
+        "case": "port",
+        "solves": 3,
+        "numerical": "FAIL",
+        "requirements": "NOT_ESTABLISHED",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/port/result.json",
+        "manifest": "/demos/aero/fea-v1/port/manifest.json"
+      },
+      {
+        "case": "thermal-free",
+        "solves": 3,
+        "numerical": "PASS",
+        "requirements": "PASS",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/thermal-free/result.json",
+        "manifest": "/demos/aero/fea-v1/thermal-free/manifest.json"
+      },
+      {
+        "case": "thermal-fixed",
+        "solves": 3,
+        "numerical": "PASS",
+        "requirements": "PASS",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/thermal-fixed/result.json",
+        "manifest": "/demos/aero/fea-v1/thermal-fixed/manifest.json"
+      },
+      {
+        "case": "thermal-gradient",
+        "solves": 3,
+        "numerical": "PASS",
+        "requirements": "FAIL",
+        "design": "NOT_ESTABLISHED",
+        "url": "/demos/aero/fea-v1/thermal-gradient/result.json",
+        "manifest": "/demos/aero/fea-v1/thermal-gradient/manifest.json"
+      }
+    ],
+    "manifest_mismatches": []
+  },
+  "artifacts": {
+    "/demos/aero/verification-bench-v1/summary.json": {
+      "sha256": "abc1aebb23f4e993dfa7b4460e0b10f48820c543eae99e838230b1bafc1f960e",
+      "size": 11281,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/manifest.json": {
+      "sha256": "775321fe87b0e05a34e5b2c5558bd0c5eca4babd472ba77f834cd62ae3716034",
+      "size": 1096,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/cad-intake.png": {
+      "sha256": "38207201991da3184a9498b6ffa5505b95de854643da650686c8e6a299b38f50",
+      "size": 205976,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/conservation.png": {
+      "sha256": "fe5b4d074a51666facef1548d08771f27b7b70c7dc721004d70e31277d3df8b8",
+      "size": 121456,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/nozzle-residuals.png": {
+      "sha256": "906a3e9a3b13ac29d735f823af29824735b7a69119ae9e8adc3ab938464822c6",
+      "size": 169585,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/nozzle-yplus.png": {
+      "sha256": "03bbfa2bfdcf6c1ed34fe49c4a6d9fb69b0d4e5f1deac582c4e9b402fc7e7f4a",
+      "size": 89732,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/paper-sources.zip": {
+      "sha256": "d85b048184319c21f997c143942f361d8303c6ef351a727bccd5bc88e3c4b70f",
+      "size": 393932,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/paper.pdf": {
+      "sha256": "c309ac6e84023f7873cdb0bb9d6e2073006ca3b17577a4d7e86c80acb1e1e91c",
+      "size": 484397,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/paper.tex": {
+      "sha256": "b01043d21769eb7df84f866922a260dd7d60c131ab316a8b748b01a8bb664d7d",
+      "size": 13698,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/pipe-reference.png": {
+      "sha256": "7af543ed4d91865ebf718b1d560dd2894c5ce153fd1f11f879fb9cb076c92d4e",
+      "size": 69417,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/README.md": {
+      "sha256": "80854199c7aa473aec6b1551f72d7dc618af5245307398f690e36ef970cc8d9e",
+      "size": 7100,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/verification-bench-v1/reproducibility.zip": {
+      "sha256": "fc8f33e8c3e4e04c450ccf38ec69ea010d8c638e7fc44ca2ad071169d9acbe34",
+      "size": 32969095,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/channel-study-v1/changed-inputs-result.json": {
+      "sha256": "7990bd5fca3ee73e78ec861a11848c70097ba2a5e230acf47891a7fff7f28195",
+      "size": 474244,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/cooling-study-v1/result.json": {
+      "sha256": "d08bdb764883cdec35a830afb88452cdebca8b8197e17eccf4bf3fa385bb814a",
+      "size": 10392,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/channel-study-v1/research-paper-manifest.json": {
+      "sha256": "662ff215a324d19b103db87a6e10361c9efaced9fbfd1fbb2e1184b1f243e1c7",
+      "size": 569,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/channel-study-v1/research-paper.pdf": {
+      "sha256": "680392b3f89df6d3399d3e19edca67f9f0b2fc1e0212ca0c0e9d7a39dd5f1e27",
+      "size": 593793,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/channel-study-v1/research-paper-sources.zip": {
+      "sha256": "8f752ed4498556d94e9b155dbcc89417698eaf68b7c6b746d4bc349efeee0af2",
+      "size": 2862297,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/cooling-study-v1/research-paper-manifest.json": {
+      "sha256": "5a1b0e980e6578fdb287593b8472aff7e3498580b4e8bcaadd03389eb5561958",
+      "size": 568,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/cooling-study-v1/research-paper.pdf": {
+      "sha256": "e21f2738566548c0288830755e06fada9a7bbb9b165d0d2c92faa2ce4da73c73",
+      "size": 625315,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/cooling-study-v1/research-paper-sources.zip": {
+      "sha256": "b4000d81d6e2915fd7d76799b5dce1cfa2a84ea98052bc5709e1427d2e53fda1",
+      "size": 2658684,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/bracket/result.json": {
+      "sha256": "50de4fb597c9a6214e4e722abe06f03afc8bb9ea47f7e0c9302022b4b4266be3",
+      "size": 5936,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/bracket/manifest.json": {
+      "sha256": "ac72e50ec8afb02f77429efd7d62e73658ce036a655e38e33fc1851237729336",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/bracket/case.json": {
+      "sha256": "4848fb412242253a568f33b6c6f0c2145ca1daec08d90c82eb1dcf31f2beb79c",
+      "size": 642,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/bracket/surface.json": {
+      "sha256": "cec3aa60442007101b3a8b60c7ef9cd7cbe859aa0a27035f7614132d8ca6dbb7",
+      "size": 1539296,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/bracket/geometry.json": {
+      "sha256": "8b475ce720cd93dca18745e3189ec679b0016ae85e6bca0dd7bf5db4d09f6c2f",
+      "size": 506,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/bracket/geometry.stl": {
+      "sha256": "4192b9d5e86c4cba7bf3b9e68327b45da6f2840547c4bc04c50ecb6e0ce8bc64",
+      "size": 23284,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube/result.json": {
+      "sha256": "f81701b354ae219a0b98091cba3ca6d7d488a6a1086ca9072d0ee337423760d8",
+      "size": 6019,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube/manifest.json": {
+      "sha256": "fe55569f871583cece36acc48c7dd01d18c49f1eb9e300847a4f078b57694436",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube/case.json": {
+      "sha256": "cd5cef10510aab54f567ea01047ca1e8b8296419f6cbc07c8f4fad510a124e27",
+      "size": 661,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube/surface.json": {
+      "sha256": "23a18f9c6feb7e1d1af68096f16ba330f72949d75db3ac9a8308e4f476ded656",
+      "size": 41261,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube/geometry.json": {
+      "sha256": "e021b8c761426b757ccf895f2304a8d1d38360bec913b6fc5358635e11ab8680",
+      "size": 512,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube/geometry.stl": {
+      "sha256": "40f4aee7bf30070893dfd5d62509416af1bee8e279a53bbc379618e7e1199db0",
+      "size": 46884,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube3d/result.json": {
+      "sha256": "d05cc0392d475faa1d209720b835238e7223c6efb54e0156fed5e633032de031",
+      "size": 6115,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube3d/manifest.json": {
+      "sha256": "7ce4de4e0ef839a38841681b074bc87c0a7945a868e7915e648935c304cdaea5",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube3d/case.json": {
+      "sha256": "a11648890145ab30d50fd74228139f63e68c7bbeb9b53958d92fc18e381705fd",
+      "size": 657,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube3d/surface.json": {
+      "sha256": "8dc7e349cf2a788faeef18a35b0069fc183e570ed81ada9f8b01ae7b45fcf058",
+      "size": 5709032,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube3d/geometry.json": {
+      "sha256": "e93e598719c9473b46e99f3f41a209d2544fea5e1e0843cdebba9c00fda06e37",
+      "size": 512,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/tube3d/geometry.stl": {
+      "sha256": "40f4aee7bf30070893dfd5d62509416af1bee8e279a53bbc379618e7e1199db0",
+      "size": 46884,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/port/result.json": {
+      "sha256": "7c542a742457ed3cf8ed8dc34110acda0e5c887034360c22cdddd97a663f6118",
+      "size": 6137,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/port/manifest.json": {
+      "sha256": "58562435fb20e158bebdb2354d5bba60869502194691f142f4ac3057cd1a72de",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/port/case.json": {
+      "sha256": "3632aac4e5a48c149042068701d80d4607d6e5009a5cc3ded79d97c36705e18a",
+      "size": 659,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/port/surface.json": {
+      "sha256": "99c1afbff6d9a35650799b9470e7d345f8235ff85d55d247f752e31a75d48174",
+      "size": 7856872,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/port/geometry.json": {
+      "sha256": "8912ab05a97ce038842c03331b300f4b8e7ef32aa49b4b5b0d3cfda7f967de23",
+      "size": 515,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/port/geometry.stl": {
+      "sha256": "ff1dad650ab678d2cae2767e85b43ca589ed40c37b887e1e2ab48eb7c45cbb4c",
+      "size": 76084,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-free/result.json": {
+      "sha256": "69b63fec73c289bc68fb3d6eb3e8c334830ec745592e0aacc8ad4b6a665e0873",
+      "size": 5915,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-free/manifest.json": {
+      "sha256": "b60d7946e06992b0e1bf2416cfbe63a0f4637a219c5af16cb45ef40ea4151b4a",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-free/case.json": {
+      "sha256": "cc07e3b852ccebd46869b9afd45d487e8e8c3b6a7c9bdebf709c5572cdef2244",
+      "size": 664,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-free/surface.json": {
+      "sha256": "ff6ca35718aa6ba4c4d2395bfdaa3e18b1b5365ab3ead49d541a2937cc77d97f",
+      "size": 782599,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-free/geometry.json": {
+      "sha256": "8256039f81194ba9e92b79a97c63dd92d1f7f05a956f78d21afbec0ca3e6ad9a",
+      "size": 471,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-free/geometry.stl": {
+      "sha256": "91e2640f3ad2f988d34d871dee4377b0d475ddc05b200fa628d680db5dcdf078",
+      "size": 684,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-fixed/result.json": {
+      "sha256": "d5b1c04b1e508a825104db3c37b5b8828957aebdecf8d2a77464a7160b3e3867",
+      "size": 5839,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-fixed/manifest.json": {
+      "sha256": "94fbec762f56f7a511e318eb4b10be995897fcd88b8cfba84b0bd89bec6aad70",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-fixed/case.json": {
+      "sha256": "8bede383714883f063b43549e70a195002ae100d9d29ebdc2c9734fa2c884af5",
+      "size": 671,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-fixed/surface.json": {
+      "sha256": "2c3ad071ef8d2d1c1d7aed6878aac12e9bf2f087aefe99d5d65d9a2a73b3cd83",
+      "size": 700968,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-fixed/geometry.json": {
+      "sha256": "36bc9e5ba44cc2186ce7254aefcf9d1ed910f7b175bd0c63f6a347f55a4db775",
+      "size": 471,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-fixed/geometry.stl": {
+      "sha256": "91e2640f3ad2f988d34d871dee4377b0d475ddc05b200fa628d680db5dcdf078",
+      "size": 684,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-gradient/result.json": {
+      "sha256": "7e8aa34aae4d5fa0719d8d3378d3b9d48da3038ca292dda01a6950d4f43c7d23",
+      "size": 5957,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-gradient/manifest.json": {
+      "sha256": "ba22764009310f1b089110fa13d2d2b0f16d07817a691f805c1e7b3b59617f95",
+      "size": 614,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-gradient/case.json": {
+      "sha256": "0915a956949017d497e8760fd539785a3d3f6c1d7e0917291221c728ab5ec8c7",
+      "size": 672,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-gradient/surface.json": {
+      "sha256": "259068ce7b3d3f340de6f1fe9a4a09aeb9fbe3bc3cfe54aba0470529f5f06226",
+      "size": 785126,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-gradient/geometry.json": {
+      "sha256": "f4a496a9c2699901e9df645fcea6af838a4fc564c2305a20012d8dd4d9b4b83c",
+      "size": 471,
+      "classification": "retained",
+      "stage": "evidence-index"
+    },
+    "/demos/aero/fea-v1/thermal-gradient/geometry.stl": {
+      "sha256": "91e2640f3ad2f988d34d871dee4377b0d475ddc05b200fa628d680db5dcdf078",
+      "size": 684,
+      "classification": "retained",
+      "stage": "evidence-index"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "aero.blind.public.status.v1",
+  "challenge": "Aero Blind Validation Challenge 01",
+  "status": "NOT_EVALUATED",
+  "release": "Preparation 0.1",
+  "scientific_result": null,
+  "production_runs": 0,
+  "source_selection": "CANDIDATE_SELECTED_INPUT_CURATION_REQUIRED",
+  "phases": [
+    {
+      "label": "Input frozen",
+      "status": "NOT_OCCURRED"
+    },
+    {
+      "label": "Criteria frozen",
+      "status": "NOT_OCCURRED"
+    },
+    {
+      "label": "Solve",
+      "status": "NOT_OCCURRED"
+    },
+    {
+      "label": "Prediction frozen",
+      "status": "NOT_OCCURRED"
+    },
+    {
+      "label": "Reference unsealed",
+      "status": "NOT_OCCURRED"
+    },
+    {
+      "label": "Automated comparison",
+      "status": "NOT_OCCURRED"
+    }
+  ],
+  "scientific_hashes": {
+    "input_package": null,
+    "sealed_reference": null,
+    "preregistration": null,
+    "blind_prediction": null
+  },
+  "scientific_commits": {
+    "preregistration": null,
+    "prediction_freeze": null,
+    "unseal_comparison": null
+  },
+  "tests": {
+    "kind": "synthetic software tests, not scientific evidence",
+    "passed": 13
+  },
+  "blockers": [
+    "Independent custodian reviews exact series and redistribution rights",
+    "Extract geometry, chord, trailing edge, Mach/Re/alpha stations, properties, trip and tunnel corrections without answer material",
+    "Set experimental uncertainty policy and justified acceptance thresholds without expected values",
+    "Archive source version and hashes; create encrypted sealed package with key outside predictor/repository",
+    "Freeze and publicly commit complete preregistration",
+    "Launch a fresh restricted predictor/solver environment with recorded mount/network/RAG evidence"
+  ],
+  "claim": "No completed blind run or external validation result exists. The planning task was exposed; it cannot act as the blind predictor."
+}
