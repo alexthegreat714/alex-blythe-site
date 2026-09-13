@@ -96,7 +96,6 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
             <source src="/demos/aero/pipeline-film/rev-1.3/aero-pipeline-rev-1.3.webm" type="video/webm" />
             <source src="/demos/aero/pipeline-film/rev-1.3/aero-pipeline-rev-1.3.mp4" type="video/mp4" />
           </video>
-          <div class="pipeline-film-badge"><span>Scripted pipeline example</span><strong>Film Rev 1.3 · 3D</strong></div>
           <button class="pipeline-film-toggle" type="button" aria-label="Pause pipeline walkthrough">Pause</button>
         </div>
         <figcaption id="pipeline-film-caption">
@@ -142,14 +141,13 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <div class="channel-result-preview"><small>Actual OpenFOAM results · water · parallel-plate model</small><table><thead><tr><th>Gap</th><th>Pressure drop</th><th>70 Pa target</th></tr></thead><tbody><tr><td>1.5 mm</td><td>142.37 Pa</td><td>Exceeds</td></tr><tr><td>2.0 mm</td><td>60.06 Pa</td><td>Meets</td></tr><tr><td>2.5 mm</td><td>30.75 Pa</td><td>Meets</td></tr></tbody></table><p>9 solves · 3 grids per gap · conservation checked · analytical reference checked</p><small>Sidewalls, entry losses and fittings need separate assessment. See the report for scope and checks.</small></div>
       </section>
 
-      <AeroCapabilityPapers />
-
       <div class="aero-benefits" aria-label="Why Aero">
         <article><span>01</span><h3>Define the problem.</h3><p>Turn a question into inputs, assumptions and clear success criteria.</p></article>
         <article><span>02</span><h3>Understand every step.</h3><p>Keep equations, geometry and solver decisions beside the conversation.</p></article>
         <article><span>03</span><h3>Keep the evidence.</h3><p>Inspect what ran, what changed and what still needs validation.</p></article>
       </div>
       <AeroExplorer />
+      <AeroCapabilityPapers />
       <div class="aero-examples" aria-label="Example library">
         <a href="/software/aero/demo/?example=wall-refinement"><span class="example-art" aria-hidden="true">△ ↗ △</span><small>Recorded CFD</small><h3>Nozzle refinement</h3><p>Compare three grids and the pressure-drop evidence.</p></a>
         <a href="/software/aero/demo/?example=nozzle-first-cut-current"><span class="example-art" aria-hidden="true">Δp / Q</span><small>Same run · different review</small><h3>First-cut pressure loss</h3><p>Explore what numerical convergence does—and does not—establish.</p></a>
@@ -387,9 +385,6 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
   .pipeline-film { margin:0; border:1px solid var(--border); background:#07131b; color:#e8f4f7; }
   .pipeline-film-screen { position:relative; aspect-ratio:16/9; overflow:hidden; background:#061018; }
   .pipeline-film-screen video { display:block; width:100%; height:100%; object-fit:cover; }
-  .pipeline-film-badge { position:absolute; top:14px; left:14px; display:flex; gap:9px; align-items:center; padding:8px 10px; border:1px solid rgba(95,221,218,.45); background:rgba(4,15,22,.84); backdrop-filter:blur(8px); font-size:.68rem; letter-spacing:.07em; text-transform:uppercase; }
-  .pipeline-film-badge span { color:#86aeb8; }
-  .pipeline-film-badge strong { color:#66e3df; }
   .pipeline-film-toggle { position:absolute; right:14px; bottom:14px; padding:8px 13px; border:1px solid rgba(255,255,255,.35); background:rgba(4,15,22,.86); color:#fff; font:inherit; font-size:.72rem; font-weight:800; cursor:pointer; }
   .pipeline-film-toggle:hover,.pipeline-film-toggle:focus-visible { border-color:#66e3df; color:#66e3df; }
   .pipeline-film figcaption { display:grid; grid-template-columns:minmax(220px,.72fr) minmax(0,1.5fr); gap:28px; padding:20px; border-top:1px solid #25404a; }
