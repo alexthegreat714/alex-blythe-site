@@ -61,7 +61,7 @@ const DIFFERENTIAL_CONTINUITY: EquationBlock = {
 
 export const sections: NotebookSection[] = [
   { id: 'problem', index: '01', title: 'Problem', body: [
-    'Evaluate steady compressible air flow through the approved converging-diverging nozzle and determine whether pressure drop is stable across the predeclared wall-resolved mesh family.',
+    'Evaluate steady compressible air flow through the approved converging-diverging nozzle and determine whether pressure drop is stable across the predeclared wall-refined mesh family.',
   ] },
   { id: 'requirements-knowns', index: '02', title: 'Requirements / knowns', body: [
     'Use the fixed rhoSimpleFoam chain, deterministic case template, and every predeclared required gate.',

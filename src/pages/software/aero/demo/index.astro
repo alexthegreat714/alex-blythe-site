@@ -57,11 +57,11 @@ const demoCases = [
     title: 'First-cut nozzle review',
     kind: 'Same retained OpenFOAM run / alternate question',
     question: 'What can the current numerically converged nozzle run establish—and what remains blocked?',
-    summary: 'This view uses the same current wall-resolved nozzle evidence as the mesh-study example, but focuses on the boundary between numerical acceptability and engineering readiness.',
+    summary: 'This view uses the same current wall-refined nozzle evidence as the mesh-study example, but focuses on the boundary between numerical acceptability and engineering readiness.',
     disposition: 'Numerical and mesh-independence gates pass; validation and model-fidelity evidence remain open.',
     evidenceHref: '/demos/aero/wall-refinement-v6/engineering-result.json',
     evidenceLabel: 'Open current evidence',
-    prompt: 'Review the current wall-resolved nozzle run. Explain what the 6,048 / 9,072 / 12,600-cell study proves and what it does not prove.',
+    prompt: 'Review the current wall-refined nozzle run. Explain what the 6,048 / 9,072 / 12,600-cell study proves and what it does not prove.',
     requirements: {
       goal: 'Produce a bounded first-cut compressible nozzle result',
       geometry: '20 / 8 / 24 mm inlet, throat, and exit radii; 45 / 110 mm lengths',
@@ -415,7 +415,7 @@ const demoCases = [
 
         <div class="vp-stage" id="vp-stage" tabindex="0" role="group"
              aria-label="Engineering model viewport. Drag to orbit, right drag to pan, plus and minus to zoom, zero to reset.">
-          <img id="vp-image" src={artifacts.geometry} alt="Wall-resolved axisymmetric nozzle geometry" draggable="false" />
+          <img id="vp-image" src={artifacts.geometry} alt="Axisymmetric nozzle geometry" draggable="false" />
           <div id="vp-scientific" class="vp-scientific" hidden aria-label="Interactive OpenFOAM pressure field"></div>
           <div id="vp-legend" class="vp-legend" hidden>
             <span id="vp-legend-max"></span><span class="vp-legend-bar" aria-hidden="true"></span><span id="vp-legend-min"></span>
@@ -494,7 +494,7 @@ const demoCases = [
           <label>Engineering request <textarea id="local-message" maxlength="500" rows="5">Generate an axisymmetric nozzle with inlet radius 20 mm, throat radius 8 mm, exit radius 24 mm, converging length 45 mm, diverging length 110 mm, mesh size 5 mm, and mass flow 0.010 kg/s</textarea></label>
           <button type="submit">Prepare proposal</button>
           <button type="button" id="mesh-study-preset">Prepare 5 / 4 / 3 mm mesh study</button>
-          <button type="button" id="wall-study-preset">Prepare wall-resolved mesh study</button>
+          <button type="button" id="wall-study-preset">Prepare wall-refined mesh study</button>
           <div id="local-proposal" class="local-proposal" hidden></div>
           <ol id="run-events" class="run-events" aria-live="polite"></ol>
         </form>
@@ -838,7 +838,7 @@ const demoCases = [
         if (img) img.hidden = Boolean(useScientific);
         if (img && src && !useScientific) {
           img.src = src;
-          img.alt = `Wall-resolved axisymmetric nozzle ${mode}`;
+          img.alt = `Wall-refined axisymmetric nozzle ${mode}`;
         }
         commitViewportMode(mode, `${mode[0].toUpperCase()}${mode.slice(1)} — drag to pan, scroll to zoom`);
       }
@@ -1302,7 +1302,7 @@ const demoCases = [
           localMessage?.focus();
         });
         wallStudyPreset?.addEventListener('click', () => {
-          if (localMessage) localMessage.value = 'Run the approved wall-resolved mesh study';
+          if (localMessage) localMessage.value = 'Run the approved wall-refined mesh study';
           localMessage?.focus();
         });
         localForm.addEventListener('submit', async (event) => {

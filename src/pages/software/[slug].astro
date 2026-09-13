@@ -17,44 +17,14 @@ const sections = [
   { label: 'Boundaries', content: project.boundaries },
   { label: 'Evidence / verification', content: project.evidence },
   { label: 'Current limitations', content: project.limitations },
-] as const;
-const aeroInstances = [
-  {
-    name: 'Run a worked example',
-    audience: 'Demo',
-    status: 'Live channel study · no sign-in',
-    description: 'Change the flow or channel dimensions. Compare three gaps with fresh OpenFOAM runs and download the report.',
-    href: '/software/aero/current/?study=channel',
-    action: 'Run the channel study',
-    primary: false,
-  },
-  {
-    name: 'Build your study',
-    audience: 'Public',
-    status: 'Live model · editable engineering record',
-    description: 'Define the question with Aero. Keep requirements, assumptions, equations and acceptance criteria in one working document.',
-    href: '/software/aero/current/',
-    action: 'Build your study',
-    primary: true,
-  },
-  {
-    name: 'Private evaluation',
-    audience: 'Private',
-    status: 'Caddy sign-in required',
-    description: 'Bring a representative case for a setup review, a scoped solver study and an evidence report. Arrange access with Alex.',
-    contact: 'VM access: blythe.ar@gmail.com',
-    href: 'https://aegis.alex-blythe.com/aero-workspaces/',
-    action: 'Sign in to private Aero',
-    primary: false,
-  },
-] as const;
+].filter(section => project.slug !== 'aero' || ['Problem', 'Design approach'].includes(section.label));
 const proofStages = [
   { index: '01', label: 'Chat', title: 'Define the engineering question', detail: 'A plain-language request becomes a typed case specification. Assumptions and missing inputs remain visible.' },
   { index: '02', label: 'Math', title: 'Set expectations before solving', detail: 'First-principles checks and the live LaTeX notebook establish what the solver should be compared against.' },
   { index: '03', label: 'CAD', title: 'Inspect the current nozzle geometry', detail: 'The current CadQuery/OpenCascade manifest records the parametric nozzle, topology checks, dimensions, and source fingerprint.' },
-  { index: '04', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated wall-resolved mesh before execution. This proof used 6,048, 9,072, and 12,600 cells.' },
+  { index: '04', label: 'Mesh', title: 'Preflight three distinct grids', detail: 'OpenFOAM checks each generated wall-refined mesh before execution. This proof used 6,048, 9,072, and 12,600 cells.' },
   { index: '05', label: 'Solve', title: 'Run and monitor OpenFOAM', detail: 'Each rhoSimpleFoam run retained convergence, conservation, monitor, and cleanup evidence.' },
-  { index: '06', label: 'Decide', title: 'Accept only what the evidence supports', detail: 'The grid-change gate passed. Missing reference and fidelity evidence still block design use.' },
+  { index: '06', label: 'Decide', title: 'Review the study', detail: 'Compare grid changes, monitor histories, and reference checks in the retained report.' },
 ] as const;
 const pipelineFilmStages = [
   { label: 'Requirements', time: 0, detail: 'Watch a request being typed, then structured by Aero into reviewable requirements.' },
@@ -84,9 +54,10 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
       <div class="section-heading proof-heading">
         <span class="section-index">01 / How Aero works</span>
         <div>
-          <div class="proof-kicker"><span>Aero</span><span>Website Rev 1.3</span><span>Preliminary engineering analysis</span><a href="#capability-papers">Read the capability papers ↓</a></div>
+          <div class="proof-kicker"><span>Aero</span><span>Website Rev 1.4</span></div>
           <h1 id="aero-proof-heading">See how Aero works.</h1>
           <p>Follow an engineering requirement through math, geometry, simulation, and reviewable results.</p>
+          <nav class="aero-route-guide" aria-label="Explore Aero"><a class="button" href="#try-aero">1. Try Aero</a><a href="#capability-papers">2. See the evidence</a><a href="#technical-details">3. Read the technical details</a></nav>
         </div>
       </div>
 
@@ -112,53 +83,52 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         </figcaption>
       </figure>
 
-      <section class="aero-instance-section" aria-labelledby="aero-instances-heading">
+      <section class="aero-instance-section" id="try-aero" aria-labelledby="aero-instances-heading">
         <div class="section-heading">
-          <span class="section-index">02 / Aero workspaces</span>
+          <span class="section-index">Start here</span>
           <div>
-            <h2 id="aero-instances-heading">Choose how to use Aero.</h2>
-            <p>Walk through a demo, start your own case, or sign in for private tools and compute.</p>
+            <h2 id="aero-instances-heading">Try Aero.</h2>
+            <p>Start with your engineering question. Develop the requirements and working document with Aero.</p>
+            <a class="button" href="/software/aero/current/">Open Aero →</a>
+            <details class="alternate-routes"><summary>Prefer a walkthrough or already have private access?</summary><a href="/software/aero/demo/">Guided demo →</a><a href="https://aegis.alex-blythe.com/aero-workspaces/">Private workspace · Caddy sign-in →</a></details>
           </div>
         </div>
-        <nav class="aero-instance-tabs" aria-label="Choose an Aero workspace">
-          {aeroInstances.map((instance, index) => (
-            <a class:list={["aero-instance-tab", { "aero-instance-primary": instance.primary }]} href={instance.href} aria-label={`${instance.action}: ${instance.description}`}>
-              <span class="instance-topline">
-                <span class="instance-index">0{index + 1}</span>
-                <span class="instance-audience">{instance.audience}</span>
-              </span>
-              <strong>{instance.name}</strong>
-              <span class="instance-description">{instance.description}</span>
-              {'contact' in instance && <span class="instance-contact">{instance.contact}</span>}
-              <span class="instance-action">{instance.action} <span aria-hidden="true">↗</span></span>
-              <span class="instance-status">{instance.status}</span>
-            </a>
-          ))}
-        </nav>
       </section>
 
       <section class="aero-live-study" aria-labelledby="channel-value-heading">
-        <div><span class="eyebrow">A concrete engineering decision</span><h2 id="channel-value-heading">Which channel gap meets a 70 Pa pressure-drop budget?</h2><p>For the recorded 200 mm channel at 20 mL/s, the 2 mm gap meets the target. Change the inputs to see whether that decision holds for your study.</p><a class="button" href="/software/aero/current/?study=channel">Change the inputs and run →</a><a class="text-link" href="/demos/aero/channel-study-v1/report.html">Read the worked study report ↗</a></div>
-        <div class="channel-result-preview"><small>Actual OpenFOAM results · water · parallel-plate model</small><table><thead><tr><th>Gap</th><th>Pressure drop</th><th>70 Pa target</th></tr></thead><tbody><tr><td>1.5 mm</td><td>142.37 Pa</td><td>Exceeds</td></tr><tr><td>2.0 mm</td><td>60.06 Pa</td><td>Meets</td></tr><tr><td>2.5 mm</td><td>30.75 Pa</td><td>Meets</td></tr></tbody></table><p>9 solves · 3 grids per gap · conservation checked · analytical reference checked</p><small>Sidewalls, entry losses and fittings need separate assessment. See the report for scope and checks.</small></div>
+        <div><span class="eyebrow">Interactive example · 20 mL/s / 70 Pa</span><h2 id="channel-value-heading">Which channel gap meets a 70 Pa pressure-drop budget?</h2><p>At 20 mL/s through the 200 mm channel, 2.0 mm is the smallest tested gap that passes. Capability study #01 below tests a different flow and budget.</p><a class="button" href="/software/aero/current/?study=channel">Try these inputs →</a></div>
+        <div class="channel-result-preview"><small>Interactive example results · 20 mL/s · water · parallel-plate model</small><table><thead><tr><th>Gap</th><th>Pressure drop</th><th>70 Pa target</th></tr></thead><tbody><tr><td>1.5 mm</td><td>142.37 Pa</td><td>Exceeds</td></tr><tr><td>2.0 mm</td><td>60.06 Pa</td><td>Meets</td></tr><tr><td>2.5 mm</td><td>30.75 Pa</td><td>Meets</td></tr></tbody></table><p>9 OpenFOAM solves · 3 grids per gap</p></div>
       </section>
 
       <AeroExplorer />
       <AeroCapabilityPapers />
+      <details class="example-library"><summary>More examples and the nozzle report</summary>
       <div class="aero-examples" aria-label="Example library">
         <a href="/software/aero/demo/?example=wall-refinement"><span class="example-art" aria-hidden="true">△ ↗ △</span><small>Recorded CFD</small><h3>Nozzle refinement</h3><p>Compare three grids and the pressure-drop evidence.</p></a>
         <a href="/software/aero/demo/?example=nozzle-first-cut-current"><span class="example-art" aria-hidden="true">Δp / Q</span><small>Same run · different review</small><h3>First-cut pressure loss</h3><p>Explore what numerical convergence does—and does not—establish.</p></a>
         <a href="/software/aero/demo/?example=cooling-channel"><span class="example-art" aria-hidden="true">Q̇ = ṁcₚΔT</span><small>Analytical screening · no CFD</small><h3>Cooling-channel sizing</h3><p>Start with an energy balance and identify missing geometry.</p></a>
       </div>
       <div class="report-strip"><div><h3>A result you can question.</h3><p>Read the retained run, its assumptions and its open validation gates.</p></div><a class="button" href="/software/aero/report/">Read sample report ↗</a></div>
+      </details>
 
-      <details class="aero-disclosure">
-      <summary>What has been verified? <span>Numerical checks and open validation gates</span></summary>
+      <section class="engineering-authority" aria-labelledby="authority-heading">
+        <h2 id="authority-heading">Engineering authority and limitations</h2>
+        <p>Aero helps define, execute, and explain a study. Engineering conclusions must come from the stated physical model, solver or analytical calculations, and supporting checks—not the language model’s confidence. A responsible engineer reviews the inputs and intended use.</p>
+        <ul>
+          <li>Convergence and mesh sensitivity establish numerical behavior, not physical validation or design approval. These studies are preliminary; each report records its reference comparisons, assumptions, uncertainty, and open gates.</li>
+          <li>The nozzle meshes are wall-refined. Wall-resolution suitability is not established without y+ and near-wall-model evidence. Channel results cover the stated idealized passages, not unmodeled sidewalls, fittings, or hardware.</li>
+          <li>Artifact hashes establish file identity, not scientific validity. The papers are reproducible technical reports, not peer-reviewed publications.</li>
+        </ul>
+      </section>
+
+      <details class="aero-disclosure" id="technical-details">
+      <summary>Read the technical details <span>Nozzle checks, artifacts, and recorded gate states</span></summary>
 
       <div class="section-heading proof-detail-heading">
         <span class="section-index">03 / Retained proof</span>
         <div>
           <h2>Passed checks. Open questions.</h2>
-          <p>The retained wall-refinement-v6 run passed its numerical gates. Independent validation and design readiness remain open.</p>
+          <p>Retained run: wall-refinement-v6. The values below come from its result record.</p>
         </div>
       </div>
 
@@ -204,7 +174,6 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <div class="proof-verdict">
           <span>Engineering disposition</span>
           <strong>Preliminary first cut only</strong>
-          <p>The execution and numerical workflow passed. A matched independent reference, complete first-principles inputs, and reviewed higher-fidelity physics are still required before design use.</p>
         </div>
         <div class="proof-readiness-grid">
           {proofReadiness.map((item) => (
@@ -214,10 +183,6 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
             </div>
           ))}
         </div>
-        <div class="proof-actions">
-          <a class="button" href="/software/aero/demo/">Walk through the CFD workbench <span aria-hidden="true">→</span></a>
-          <a class="text-link" href="/software/aero/current/">Open Aero Current <span aria-hidden="true">→</span></a>
-        </div>
       </div>
       </details>
       <aside class="aero-pilot"><div><span class="eyebrow">Private evaluation</span><h2>Bring your own engineering problem.</h2><p>Share your geometry, operating range, and decision. We’ll scope a supported workflow and a reviewable report of results, assumptions, and validation gaps.</p></div><a class="button" href="mailto:blythe.ar@gmail.com?subject=Aero%20private%20evaluation">Request a private evaluation ↗</a></aside>
@@ -226,6 +191,9 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
 
   <script is:inline>
     (() => {
+      const technical = document.getElementById('technical-details');
+      document.querySelectorAll('a[href="#technical-details"]').forEach(link => link.addEventListener('click', () => { if (technical) technical.open = true; }));
+      if (location.hash === '#technical-details' && technical) technical.open = true;
       const root = document.querySelector('[data-pipeline-film]');
       if (!root) return;
       const video = root.querySelector('video');
@@ -279,7 +247,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
   </script>
 
   <details class:list={['technical-disclosure', { 'non-aero': project.slug !== 'aero' }]} open={project.slug !== 'aero'}>
-  <summary>Technical background, limitations &amp; project artifacts</summary>
+  <summary>{project.slug === 'aero' ? 'Project background and supporting links' : 'Technical background, limitations & project artifacts'}</summary>
   <section class="content-section" aria-labelledby="project-overview">
     <div class="section-heading">
       <span class="section-index">{project.slug === 'aero' ? '04' : '01'} / Project</span>
@@ -293,7 +261,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
   </section>
 
   <section class="content-section" id="technical-review" aria-labelledby="technical-review-heading">
-    <div class="section-heading"><span class="section-index">{project.slug === 'aero' ? '05' : '02'} / Design review</span><div><h2 id="technical-review-heading">Capability is presented with its evidence and boundary.</h2><p>This record distinguishes what the current project can demonstrate from what remains experimental or unproven.</p></div></div>
+    <div class="section-heading"><span class="section-index">{project.slug === 'aero' ? '05' : '02'} / Design review</span><div><h2 id="technical-review-heading">{project.slug === 'aero' ? 'Problem and approach' : 'Capability is presented with its evidence and boundary.'}</h2>{project.slug !== 'aero' && <p>This record distinguishes what the current project can demonstrate from what remains experimental or unproven.</p>}</div></div>
     {sections.map((section) => (
       <section class="review-grid" aria-labelledby={`${project.slug}-${section.label.toLowerCase().replaceAll(' ', '-').replace('/', '-')}`}>
         <h3 class="review-label" id={`${project.slug}-${section.label.toLowerCase().replaceAll(' ', '-').replace('/', '-')}`}>{section.label}</h3>
@@ -319,6 +287,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
 </SoftwareLayout>
 
 <style>
+  .aero-route-guide{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:22px 0 0}.aero-route-guide a{font-size:.85rem}.alternate-routes{margin-top:20px}.alternate-routes summary,.example-library summary{cursor:pointer;color:var(--muted);font-size:.85rem}.alternate-routes a{display:inline-block;margin:14px 20px 0 0;font-size:.85rem}.engineering-authority{margin:32px 0;padding:26px;border:1px solid var(--border);border-radius:8px}.engineering-authority h2{font-size:clamp(1.3rem,2.5vw,1.8rem);margin:0 0 14px}.engineering-authority p,.engineering-authority li{font-size:.9rem;line-height:1.75;color:var(--muted)}.engineering-authority ul{padding-left:22px;margin-bottom:0}.engineering-authority li+li{margin-top:12px}#try-aero,#technical-details{scroll-margin-top:90px}.example-library{margin:24px 0}
   .aero-live-study{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;padding:28px 0;margin:20px 0;border-top:1px solid var(--border,#344449);border-bottom:1px solid var(--border,#344449)}.aero-live-study h2{font-size:clamp(25px,3vw,36px);line-height:1.2;margin:10px 0}.aero-live-study p{line-height:1.7}.aero-live-study .button{margin:8px 15px 8px 0}.channel-result-preview{border:1px solid #41606a;padding:20px;background:#12232b;color:#dcebee}.channel-result-preview small{color:#a8c2c9;font-size:11px;line-height:1.6;display:block}.channel-result-preview table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}.channel-result-preview th,.channel-result-preview td{text-align:left;padding:10px 6px;border-bottom:1px solid #39515b}.channel-result-preview tbody tr:nth-child(2){background:#24463f}.channel-result-preview p{font-size:12px;color:#8cdbc6}@media(max-width:760px){.aero-live-study{grid-template-columns:1fr;gap:18px}}
   .aero-proof { --accent:#17818a; }
   :global(html[data-theme='dark']) .aero-proof { --accent:#66d9d5; }
