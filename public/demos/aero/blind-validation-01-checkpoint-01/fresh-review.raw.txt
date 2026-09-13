@@ -1,0 +1,108 @@
+## Readiness Review: Aero-Blind-Validation-01
+
+Here's a readiness review based on the provided input, following your instr[5D[K
+instructions.
+
+**(1) HOLD**
+
+The input contains several unresolved dependencies and missing information [K
+necessary to proceed to draft a solution.  A 'HOLD' status is assigned.  No[2D[K
+No solving or design decisions can be made at this time.
+
+**(2) Unresolved Inputs/Modeling Equivalences:**
+
+*   **Geometry:** The airfoil coordinates are "NOT SUPPLIED". The airfoil s[1D[K
+shape *must* be defined before any simulations can commence. While the sect[4D[K
+section is defined as NACA 0012, this is simply a *reference* and must be s[1D[K
+superseded by actual coordinates. Similarly, the "trailing_edge_convention"[26D[K
+"trailing_edge_convention" is unresolved and requires a concrete, documente[9D[K
+documented choice.
+*   **Dimensional Model:** The dimensional model (“full-span nominally two-[4D[K
+two-dimensional airfoil”) needs to be explicitly defined. This affects span[4D[K
+spanwise boundary conditions if a 3D model is used.
+*   **Source Corrections:** The choice between the "corrected free-air comp[4D[K
+comparison" and another "justified treatment" is a critical modeling decisi[6D[K
+decision requiring explicit documentation and rationale.  Double-correction[17D[K
+Double-correction must be avoided.
+*   **Fluid Properties:** While the fluid is 'air,' the specific static pre[3D[K
+pressure, density, and viscosity required to achieve the specified Mach num[3D[K
+number and Reynolds number are not explicitly provided. A dimensional reali[5D[K
+realization *must* be defined, with assumptions documented.
+*   **Series Temperature:**  The exact series temperature is not provided. [K
+This impacts fluid property calculation and is a necessary piece of informa[7D[K
+information.
+*   **Transition Modeling:** The grit strip geometry ("exact_grit_height_m"[22D[K
+("exact_grit_height_m") and the influence of the grit are not fully defined[7D[K
+defined. While fixed strips are specified, the resulting boundary layer tra[3D[K
+transition is inherently complex, and assumptions about fully turbulent flo[3D[K
+flow after the grit location need justification.
+*   **Free Stream Turbulence:** Explicitly unknown. Must be stated as a bou[3D[K
+boundary condition and its impact must be assessed.
+*   **Uncertainty:**  The absence of pointwise uncertainties requires a str[3D[K
+strategy for handling the comparison between simulation and experiment – a [K
+decision on how to interpret or ignore this absence must be made.
+
+**(3) Proposed Solver/Mesh/Time Treatment with Rationale:**
+
+Given the provided information, I can propose a *potential* approach, but t[1D[K
+this is contingent on resolving the input issues.
+
+*   **Solver:** A Reynolds-Averaged Navier-Stokes (RANS) solver would be ap[2D[K
+appropriate given the level of detail available and the specified transitio[9D[K
+transition methodology.  An explicit solver is likely suitable for the Mach[4D[K
+Mach number specified.
+*   **Mesh:** The mesh resolution must be sufficient to resolve the boundar[7D[K
+boundary layer, particularly near the transition location. Refinement shoul[5D[K
+should be performed near the leading and trailing edges and grit strip. Mes[3D[K
+Mesh independence studies are crucial.  The reported ordinate tolerance (0.[3D[K
+(0.0002 chord) should be used as a guide for geometric fidelity in the mesh[4D[K
+mesh.
+*   **Time:** Time-accurate simulations are probably unnecessary for the sp[2D[K
+specified operating conditions, but a transient simulation may be needed to[2D[K
+to assess grit strip impacts.  A steady-state solution should be sufficient[10D[K
+sufficient for the primary investigation of lift and drag coefficients.
+*   **Transition Modeling:**  Due to the grit strip, the transition model s[1D[K
+should be a delayed transition model such as γ-Reθ or similar.  This model [K
+must be applied starting at the grit location.  A RANS approach with a simp[4D[K
+simple turbulence model will be insufficient.
+
+**(4) Pre-Answer Numerical Verification Gates:**
+
+Before any comparisons can be made, the following verification checks are r[1D[K
+required with quantified acceptance criteria (to be defined later, but are [K
+crucial):
+
+*   **Mesh Independence:** Demonstrate that the solution is independent of [K
+mesh density (CL and CD should not significantly change with mesh refinemen[9D[K
+refinement).
+*   **Dimensional Consistency:** Verify that the chosen fluid properties (d[2D[K
+(density, viscosity) are consistent with the specified Mach number and Reyn[4D[K
+Reynolds number.
+*   **Geometric Fidelity:** Ensure that the generated geometry matches the [K
+defined NACA 0012 coordinates within the reported ordinate tolerance.
+*   **Boundary Condition Validation:** Verify that the applied boundary con[3D[K
+conditions (particularly the source corrections and inlet flow conditions) [K
+are correctly implemented.
+*   **Transition Location Agreement:** The predicted transition location (b[2D[K
+(based on the chosen transition model) should be reasonable given the grit [K
+strip specifications.
+
+**(5) What Must Be Decided Before Preregistration:**
+
+*   **Airfoil Coordinates:** Provide the actual coordinates of the airfoil.[8D[K
+airfoil.
+*   **Dimensional Model:**  Define and justify the specific "dimens[7D[K
+"dimensional model" being used.
+*   **Source Correction Method:** Choose and justify the method for applyin[7D[K
+applying source corrections.
+*   **Fluid Properties:** Specify the dimensional fluid properties (static [K
+pressure, density, viscosity).
+*   **Transition Model Selection & Implementation:** Choose and justify the[3D[K
+the delayed transition model and confirm its correct implementation, includ[6D[K
+including grit strip specification.
+*   **Trailing Edge Convention:** Define a trailing edge convention.
+
+
+
+
+

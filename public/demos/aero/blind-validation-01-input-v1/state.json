@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "files": {
+        "custody.json": "2c1028da361a78af8cb8eb08088cda1501ba652156e25cc1962e751530ad9be1",
+        "input.json": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73",
+        "reference-metadata.json": "c0a05a05b1be83454a856dc9d4a799921238aea0ff4ef4508653563e4dc30f42",
+        "reference.enc": "bc70021062c16133cef3816ddea98a6e9fe54a60c1908ccdf7d03f60bada0184"
+      },
+      "stage": "INPUT_FROZEN",
+      "time": "2026-09-13T18:58:19.947242+00:00"
+    }
+  ],
+  "schema": "aero.blind.state.v1",
+  "stage": "INPUT_FROZEN"
+}

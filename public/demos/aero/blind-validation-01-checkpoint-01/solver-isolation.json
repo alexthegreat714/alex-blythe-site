@@ -1,0 +1,61 @@
+{
+  "schema": "aero.blind.solver-isolation.v1",
+  "kind": "READINESS_PROBE_NOT_CFD",
+  "started_at": "2026-09-13T19:01:22.223790+00:00",
+  "image": "sha256:9d9c9387b6693d4cb4d0963c0e3b7256af22ed320a34cbae7869cf0c497b35f0",
+  "production_solver_runs": 0,
+  "container_id": "50632d2dfd25a2215dd00d558b6b80a7120ce37a7b3bbbe6595b742d1239414c",
+  "enforcement": {
+    "network_mode": "none",
+    "read_only_root": true,
+    "user": "10001:10001",
+    "cap_drop": [
+      "ALL"
+    ],
+    "security_opt": [
+      "no-new-privileges"
+    ],
+    "privileged": false,
+    "gpu_access": false,
+    "pids_limit": 128,
+    "memory_bytes": 2147483648,
+    "nano_cpus": 2000000000,
+    "mounts": [
+      {
+        "target": "/input/input.json",
+        "read_only": true,
+        "type": "bind"
+      },
+      {
+        "target": "/work",
+        "read_only": false,
+        "type": "bind"
+      }
+    ],
+    "input_sha256": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73"
+  },
+  "exit_code": 0,
+  "oom_killed": false,
+  "status": "PASS",
+  "demonstrates": [
+    "read-only input-only bind",
+    "non-root process",
+    "read-only rootfs",
+    "no capabilities",
+    "no external TCP connection",
+    "no repository or reference mounts",
+    "OpenFOAM executable starts"
+  ],
+  "does_not_demonstrate": [
+    "a valid mesh",
+    "production case execution",
+    "model inference isolation",
+    "numerical convergence",
+    "physical validation"
+  ],
+  "finished_at": "2026-09-13T19:01:24.202433+00:00",
+  "artifacts": {
+    "probe.log": "b3fc1a74a46009d74e1af80afc376bb5571c3f327d9b2736f1a7c1120c91aa53",
+    "work/rhoSimpleFoam-help.txt": "831b5ca38fb310e74c2a8234133e6ff95e3e7833febf857af6192c81031d8bba"
+  }
+}

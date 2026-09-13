@@ -30,8 +30,8 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
    }
    if(route.includes('blind-validation')){
     assert.equal(await page.locator('.timeline li').count(),6);
-    assert.deepEqual(await page.locator('.timeline span').allTextContents(),Array(6).fill('NOT OCCURRED'));
-    assert.match(await page.locator('body').innerText(),/13 synthetic software tests/);
+    assert.deepEqual(await page.locator('.timeline span').allTextContents(),['FROZEN',...Array(5).fill('NOT OCCURRED')]);
+    assert.match(await page.locator('body').innerText(),/19 software tests/);
    }
    for(const width of [1440,768,390]){
     await page.setViewportSize({width,height:1000});
@@ -54,6 +54,15 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
   const state=await(await get(prep+'status.json')).json();
   assert.equal(state.production_runs,0);assert.equal(state.scientific_result,null);assert.equal(state.status,'NOT_EVALUATED');
   assert(Object.values(state.scientific_hashes).every(x=>x===null));assert(Object.values(state.scientific_commits).every(x=>x===null));
+  // The original preparation remains frozen; the current checkpoint has advanced.
+  let checkpointHashes=0;
+  for(const family of ['blind-validation-01-input-v1','blind-validation-01-checkpoint-01']){
+   const prefix='/demos/aero/'+family+'/';const m=await(await get(prefix+'manifest.json')).json();
+   for(const a of m.files){const b=await(await get(prefix+a.path)).body();assert.equal(digest(b),a.sha256,a.path);assert.equal(b.length,a.size);checkpointHashes++;}
+  }
+  const current=await(await get('/demos/aero/blind-validation-01-checkpoint-01/status.json')).json();
+  assert.equal(current.current_stage,'INPUT_FROZEN');assert.equal(current.production_runs,0);assert.equal(current.sealed_observations,36);
+  assert.equal(current.scientific_hashes.preregistration,null);assert.equal(current.scientific_hashes.blind_prediction,null);
   await page.goto(base+'/software/aero/',{waitUntil:'networkidle'});
   assert(await page.locator('#capability-papers a[href="/software/aero/evidence/"]').count()>0);
   assert(!(await page.locator('body').innerText()).includes('each generated wall-resolved mesh'));
@@ -66,7 +75,7 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
   await fresh.goto(base+'/software/aero/current/?study=channel',{waitUntil:'networkidle'});
   assert(await fresh.locator('[data-channel-study]').isVisible());await fresh.close();
   assert.deepEqual(errors,[]);
-  const proof={base,checked_at:new Date().toISOString(),passed:true,routes:3,existing_source_hashes_verified:oldHashes,preparation_hashes_verified:manifest.files.length,internal_links_checked:links.size,mobile_widths:[390,768],keyboard_filters:true,structural_saved_case_and_cad:true,channel_deep_link:true,scientific_challenge:'NOT_EVALUATED',console_errors:errors};
+  const proof={base,checked_at:new Date().toISOString(),passed:true,routes:3,existing_source_hashes_verified:oldHashes,preparation_hashes_verified:manifest.files.length,checkpoint_hashes_verified:checkpointHashes,internal_links_checked:links.size,mobile_widths:[390,768],keyboard_filters:true,structural_saved_case_and_cad:true,channel_deep_link:true,scientific_challenge:'INPUT_FROZEN_NOT_EVALUATED',console_errors:errors};
   fs.writeFileSync(output+'/proof.json',JSON.stringify(proof,null,2));console.log(JSON.stringify(proof,null,2));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

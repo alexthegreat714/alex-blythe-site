@@ -2,3 +2,5 @@ public/demos/aero/textbook-pitzdaily/log.* -text
 public/demos/aero/verification-bench-v1/** -text
 public/demos/aero/evidence-index-v1/** -text
 public/demos/aero/blind-validation-01-preparation-v1/** -text
+public/demos/aero/blind-validation-01-input-v1/** -text
+public/demos/aero/blind-validation-01-checkpoint-01/** -text

@@ -1,0 +1,68 @@
+{
+  "schema": "aero.blind.public.status.v2",
+  "challenge": "Aero Blind Validation Challenge 01",
+  "status": "NOT_EVALUATED",
+  "current_stage": "INPUT_FROZEN",
+  "readiness": "HOLD_NUMERICAL_SPECIFICATION",
+  "production_runs": 0,
+  "scientific_result": null,
+  "source_selection": "TABLE_XIII_FIRST_SERIES_FROZEN",
+  "operating_points": 18,
+  "sealed_observations": 36,
+  "phases": [
+    {
+      "label": "Input frozen",
+      "status": "FROZEN",
+      "time": "2026-09-13T18:58:19.947242+00:00"
+    },
+    {
+      "label": "Criteria frozen",
+      "status": "NOT_OCCURRED",
+      "time": null
+    },
+    {
+      "label": "Solve",
+      "status": "NOT_OCCURRED",
+      "time": null
+    },
+    {
+      "label": "Prediction frozen",
+      "status": "NOT_OCCURRED",
+      "time": null
+    },
+    {
+      "label": "Reference unsealed",
+      "status": "NOT_OCCURRED",
+      "time": null
+    },
+    {
+      "label": "Automated comparison",
+      "status": "NOT_OCCURRED",
+      "time": null
+    }
+  ],
+  "scientific_hashes": {
+    "input_package": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73",
+    "sealed_reference": "bc70021062c16133cef3816ddea98a6e9fe54a60c1908ccdf7d03f60bada0184",
+    "preregistration": null,
+    "blind_prediction": null
+  },
+  "scientific_commits": {
+    "preregistration": null,
+    "prediction_freeze": null,
+    "unseal_comparison": null
+  },
+  "tests": {
+    "passed": 19,
+    "kind": "software tests; not experimental validation"
+  },
+  "blockers": [
+    "Choose and justify nominal NACA geometry / trailing-edge convention without claiming exact as-built coordinates",
+    "Define dimensional fluid properties consistent with Mach 0.15 and Re=5.95e6; disclose assumed temperature",
+    "Implement and verify the localized transition-trip approximation and treatment of unknown inlet turbulence",
+    "Resolve steady versus unsteady treatment across all 18 operating points; do not delete difficult points",
+    "Predeclare three mesh levels, numerical gates, comparison thresholds and uncertainty policy before solving",
+    "Freeze and publicly anchor the full numerical specification and audited execution driver"
+  ],
+  "claim": "Input and reference are sealed; inference and solver readiness isolation tested. No scientific result or production solve exists."
+}

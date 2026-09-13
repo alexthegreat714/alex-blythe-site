@@ -1,0 +1,41 @@
+{
+  "stage": "INPUT_FROZEN",
+  "files": [
+    {
+      "path": "input.json",
+      "size": 3748,
+      "sha256": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73",
+      "role": "input-or-custody-record"
+    },
+    {
+      "path": "reference.enc",
+      "size": 625,
+      "sha256": "bc70021062c16133cef3816ddea98a6e9fe54a60c1908ccdf7d03f60bada0184",
+      "role": "ciphertext"
+    },
+    {
+      "path": "reference-metadata.json",
+      "size": 264,
+      "sha256": "c0a05a05b1be83454a856dc9d4a799921238aea0ff4ef4508653563e4dc30f42",
+      "role": "input-or-custody-record"
+    },
+    {
+      "path": "custody.json",
+      "size": 1820,
+      "sha256": "2c1028da361a78af8cb8eb08088cda1501ba652156e25cc1962e751530ad9be1",
+      "role": "input-or-custody-record"
+    },
+    {
+      "path": "state.json",
+      "size": 579,
+      "sha256": "574a661c6b97d5a937d9d89e79bfa8c2aaa5497797ea06a7b174f069feea8d55",
+      "role": "input-or-custody-record"
+    },
+    {
+      "path": "README.md",
+      "size": 1834,
+      "sha256": "de855d8fd8a8b7fa184b8b56212a2e61f754c4c7048881cb0b41418510f4caff",
+      "role": "input-or-custody-record"
+    }
+  ]
+}

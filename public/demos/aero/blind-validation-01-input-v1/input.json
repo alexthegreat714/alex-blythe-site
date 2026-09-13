@@ -1,0 +1,104 @@
+{
+  "benchmark_id": "aero-blind-validation-01",
+  "facility": {
+    "force_measurement": "Surface pressure integration and midspan wake survey; no published CFD comparison is provided to the predictor",
+    "free_stream_turbulence": "Explicitly UNKNOWN at the time of these tests; do not substitute a measured value",
+    "model_rotation_station_x_over_c": 0.25,
+    "name": "NASA Langley Low-Turbulence Pressure Tunnel",
+    "source_corrections": "Published data include standard low-speed wind-tunnel boundary corrections, reference 6 of NASA TM-4074. Choose corrected free-air comparison or another justified treatment before freezing; do not double-correct.",
+    "test_section_height_m": 2.286,
+    "test_section_width_m": 0.914
+  },
+  "flow_conditions": {
+    "angle_of_attack_degrees": {
+      "p01": -3.99,
+      "p02": -1.98,
+      "p03": -0.03,
+      "p04": 0.04,
+      "p05": 2.0,
+      "p06": 4.06,
+      "p07": 6.09,
+      "p08": 8.09,
+      "p09": 10.18,
+      "p10": 11.13,
+      "p11": 12.1,
+      "p12": 13.31,
+      "p13": 14.08,
+      "p14": 15.24,
+      "p15": 16.33,
+      "p16": 17.13,
+      "p17": 18.21,
+      "p18": 19.27
+    },
+    "fluid": "air",
+    "mach": 0.15,
+    "reynolds_chord": 5950000,
+    "source_static_pressure_density_viscosity": "Not separately tabulated for this series; any dimensional realization must preserve both Mach and chord Reynolds number and disclose assumptions",
+    "source_temperature": "Tunnel stagnation temperature maintained near ambient; exact series temperature not supplied",
+    "transition": {
+      "exact_grit_height_m": "NOT SUPPLIED",
+      "geometry": "localized strips, not wraparound",
+      "grit": "No. 180",
+      "location_x_over_c": 0.05,
+      "strip_width_over_c": 0.01,
+      "surfaces": [
+        "upper",
+        "lower"
+      ],
+      "type": "fixed"
+    }
+  },
+  "geometry": {
+    "chord_m": 0.601,
+    "dimensional_model": "To be chosen before preregistration; experiment was a full-span nominally two-dimensional airfoil",
+    "exact_measured_coordinates": "NOT SUPPLIED by this report's model description",
+    "reported_ordinate_tolerance_over_chord": 0.0002,
+    "section": "NACA 0012",
+    "span_m": 0.9144,
+    "trailing_edge_convention": "UNRESOLVED: choose and disclose a nominal geometry approximation before preregistration; no exact as-built equivalence claimed"
+  },
+  "permitted_uncertainty": {
+    "coefficient_pointwise_uncertainties": "Not supplied as per-point confidence intervals; reference uncertainty entries remain unknown",
+    "pressure_transducers": "Gauge calibration accuracy described in source methods; not directly a combined CL/CD confidence interval",
+    "reported_model_geometry_tolerance": "0.0002 chord ordinate tolerance",
+    "treatment_required": "Do not infer missing uncertainties from the hidden answers or use them to widen post-unseal acceptance tolerances"
+  },
+  "quantities": [
+    "CL",
+    "CD"
+  ],
+  "source_citation": "C. L. Ladson, NASA TM-4074 (1988), NTRS 19880019495. Table XIII, first subtable: M=0.15, R=5.95e6, transition fixed with No. 180 grit. Only the source-defined inputs and all operating-point locations are disclosed here.",
+  "source_version": {
+    "download_name": "19880019495.pdf",
+    "methods_pdf_pages": [
+      4,
+      5
+    ],
+    "ntrs_id": "19880019495",
+    "page_count": 97,
+    "retrieved_utc_date": "2026-09-13",
+    "series_pdf_page": 25,
+    "series_printed_page": 23,
+    "sha256": "8e466706cbdf54b3c778ea2b089c4f52d87686bf7f6b1bd10d224b42c2d06902"
+  },
+  "stations": [
+    "p01",
+    "p02",
+    "p03",
+    "p04",
+    "p05",
+    "p06",
+    "p07",
+    "p08",
+    "p09",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p17",
+    "p18"
+  ]
+}

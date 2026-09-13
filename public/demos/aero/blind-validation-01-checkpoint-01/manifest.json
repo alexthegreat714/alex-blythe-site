@@ -1,0 +1,69 @@
+{
+  "schema": "aero.artifacts.v1",
+  "stage": "INPUT_FROZEN_NOT_SOLVED",
+  "files": [
+    {
+      "path": "checkpoint-sources.zip",
+      "size": 33214,
+      "sha256": "56c7b97e0f41f73230fa0958e032647a4ff992ac617ba06172cdc6807fe9e991",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "fresh-review.json",
+      "size": 1542,
+      "sha256": "0a7188e39212d0d83460d0151d79d8d1c9de59725e8e8cc35df9206c3e61b8ad",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "fresh-review.raw.txt",
+      "size": 5962,
+      "sha256": "bd4ba0d73043239cfbbef5d9969543eb0f18070e99fdacfbc2d9bd19e7285a5f",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "input-only-prompt.txt",
+      "size": 4972,
+      "sha256": "cb69aca69c0542f63b8753dd9b0910afa196ed0fc46eaf73ef6a003e7731f4b7",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "README.md",
+      "size": 3534,
+      "sha256": "e7957a9520bba812e869835baeb4830f9588eafabf581f302d49f06609a22274",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "solver-help.txt",
+      "size": 1425,
+      "sha256": "831b5ca38fb310e74c2a8234133e6ff95e3e7833febf857af6192c81031d8bba",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "solver-isolation.json",
+      "size": 1718,
+      "sha256": "044d886de70f11ab2b2ea9716a43837dffca531a3844261b4f502b47a2089efb",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "solver-probe.log",
+      "size": 293,
+      "sha256": "b3fc1a74a46009d74e1af80afc376bb5571c3f327d9b2736f1a7c1120c91aa53",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    },
+    {
+      "path": "status.json",
+      "size": 2316,
+      "sha256": "f578db4a763c9bbd2d9596b3a3162b72ca5a8e9b2244e03d748e5489b70c2356",
+      "classification": "generated-or-reviewed-input-only",
+      "role": "milestone-evidence"
+    }
+  ]
+}

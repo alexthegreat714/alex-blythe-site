@@ -1,0 +1,42 @@
+{
+  "schema": "aero.blind.fresh-review.v1",
+  "kind": "INPUT_ONLY_READINESS_REVIEW_NOT_PREDICTION",
+  "started_at": "2026-09-13T19:01:24.469233+00:00",
+  "model": "gemma3:12b",
+  "image": "sha256:684d8674b4315fa18f4f0e973a118ec2652ed96f67563277839985175858e0ba",
+  "input_sha256": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73",
+  "source_context_inherited": false,
+  "rag": false,
+  "tools": false,
+  "experimental_values_supplied": false,
+  "production_solver_runs": 0,
+  "container_id": "0556c26721471f5088f728841c13c32992d15530e4e9a952d8bb2b553a6dab4c",
+  "isolation": {
+    "network_mode": "none",
+    "read_only_root": true,
+    "user": "10001:10001",
+    "cap_drop": [
+      "ALL"
+    ],
+    "security_opt": [
+      "no-new-privileges"
+    ],
+    "mount_targets": [
+      "/models"
+    ],
+    "read_only_model_subpath": "models",
+    "host_filesystem_mounts": 0,
+    "ephemeral_home": true,
+    "memory_bytes": 6442450944,
+    "gpu_requested": true
+  },
+  "model_manifest_sha256": "f4031aab637d1ffa37b42570452ae0e4fad0314754d17ded67322e4b95836f8a",
+  "status": "COMPLETED_REVIEW_ONLY",
+  "finished_at": "2026-09-13T19:03:58.709767+00:00",
+  "artifacts": {
+    "inference.stderr.txt": "21669c4c9cea07762b0b8666f37113731f043f5f19a02f9ce2692ccf0c97d39d",
+    "prompt.txt": "cb69aca69c0542f63b8753dd9b0910afa196ed0fc46eaf73ef6a003e7731f4b7",
+    "review.txt": "bd4ba0d73043239cfbbef5d9969543eb0f18070e99fdacfbc2d9bd19e7285a5f",
+    "server.log": "0e8ba62b009e8f063339547163680ed4ddbde0d645bc58179f55ba7f82ceb4be"
+  }
+}
