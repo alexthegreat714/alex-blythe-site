@@ -1,3 +1,4 @@
+import { verificationCaseSeeds } from './aero-verification-cases';
 // Public, versioned teaching cases. A source reference is not a local CFD result.
 // Only entries with recordedEvidence have retained local solver evidence.
 export type AeroSeed = {
@@ -19,6 +20,7 @@ export type AeroSeed = {
 };
 
 export const aeroCaseSeeds: AeroSeed[] = [
+  ...verificationCaseSeeds,
   {
     id:'naca-0012-openfoam-tutorial-20260912',folder:'NACA studies',title:'NACA 0012 · OpenFOAM tutorial run',
     summary:'Actual 16,200-cell rhoSimpleFoam teaching run at 0° and 250 m/s. Solver converged in 1,581 iterations; mesh aspect-ratio check warned. Not NASA validation.',

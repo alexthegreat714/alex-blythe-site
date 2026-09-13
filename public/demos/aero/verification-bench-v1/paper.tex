@@ -1,0 +1,98 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,booktabs,graphicx,xcolor,hyperref,fancyhdr}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
+\pagestyle{fancy}\fancyhf{}\lhead{Aero / Verification Bench}\rhead{Rev 1.0}\cfoot{\thepage}
+\setlength{\headheight}{14pt}\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+\newcommand{\fig}[2]{\begin{center}\includegraphics[width=\linewidth]{#1.pdf}\end{center}{\small #2}\par}
+\title{When a completed solve is not an accepted result\\\large Aero Verification Bench: reference agreement, wall treatment, conservation, and imported geometry}
+\author{Alex Blythe / Aero engineering workflow}\date{13 September 2026 --- Research-style technical report, not peer reviewed}
+\begin{document}\maketitle
+\begin{abstract}
+Seven new OpenFOAM Foundation 10 computations and two STEP reimports exercise an engineering acceptance workflow. Three laminar-pipe grids agree with the analytical pressure-gradient reference within a declared 2\% allowance; two negative controls fail by measured error. Two nozzle wall treatments remain unqualified despite small boundary mass imbalance; their residual behavior differs. A manifold with an added detached sliver is rejected before meshing or solving. Complete decks, logs and fields are archived alongside five retained CalculiX solves. This demonstrates bounded numerical verification and rejection behavior, not experimental validation, arbitrary-geometry reliability, or autonomous language-model diagnosis.
+\end{abstract}
+\section{Decision and scope}
+The pipe reference checks pass on the three nominated grids. The two-radial-cell and wrong-viscosity controls are rejected. Neither nozzle run establishes near-wall suitability; the wall-function run also has significant active-field residuals. The intact imported manifold passes topology only; the defective compound fails intake. No geometry was silently repaired.
+
+These are deterministic workflow gates over measured solver artifacts. Solver termination, numerical acceptance, physical-model suitability and design release are separate states. An LLM did not decide the measured pass/fail values. The new nozzle is a low-Mach diagnostic, not a rerun or revalidation of the older \texttt{wall-refinement-v6} demonstration.
+
+\section{Protocol revision disclosure}
+An initial diagnostic run used a maximum normalized component residual. It rejected pipe solutions because the essentially zero out-of-plane velocity retained an ill-conditioned normalized residual. Criteria revision 1.1 was then written and the seven CFD cases were rerun from fresh directories. This is a disclosed, post-diagnostic criterion correction, \emph{not} a blind preregistration or an unchanged initial protocol. Original diagnostic summaries and the executed source are retained in the archive.
+
+Revision 1.1 permits a velocity component to exceed the $10^{-6}$ normalized residual threshold only if its maximum absolute solved velocity divided by the prescribed bulk velocity is at most $10^{-10}$. Pressure is never exempt. The initial mesher fixture also required a collapsed-wedge face correction; a missing wall-distance scheme caused the first nozzle setup to fail. These harness repairs precede the reported final runs.
+\clearpage
+\section{Laminar pipe: reference and measured failure}
+For steady, incompressible, Newtonian, fully developed circular-pipe flow, the published Poiseuille relation [1] gives
+\begin{align}
+ Q&=\frac{\pi R^4\Delta p}{8\mu L}, & U_b&=\frac{Q}{\pi R^2},\\
+ \Delta p&=\frac{32\mu U_b L}{D^2}, & Re&=\frac{U_bD}{\nu},\\
+ f_D&=\frac{\Delta p D}{L(\rho U_b^2/2)}=\frac{64}{Re}.
+\end{align}
+With $D=0.010$ m, $L=0.10$ m, $U_b=0.020$ m/s, $\rho=1000$ kg/m$^3$, and $\nu=10^{-6}$ m$^2$/s, $Re=200$, $\Delta p=0.64$ Pa, and the Darcy factor is $0.32$ (Fanning factor $0.08$). These targets are analytically derived from [1], not experimental measurements.
+
+\texttt{simpleFoam} solves a one-degree axisymmetric wedge. A parabolic inlet is discretized and area-normalized to the declared bulk flow, with no-slip walls and fixed outlet pressure. Kinematic pressure is converted to Pa. Cross-sectional area-weighted pressure over $x=0.025$--$0.075$ m is fitted with a straight line; its slope times the full length defines the reported pressure drop. This excludes entrance-loss interpretation.
+
+\begin{center}\small\begin{tabular}{lrrrr}\toprule
+Case & Cells & $\Delta p$ (Pa) & Error & Gate\\\midrule
+coarse & 320 & 0.633629 & 0.9955\% & ACCEPTED \\
+medium & 960 & 0.638447 & 0.2426\% & ACCEPTED \\
+fine & 2560 & 0.639663 & 0.0527\% & ACCEPTED \\
+underresolved & 80 & 0.550638 & 13.9628\% & REJECTED \\
+wrong viscosity & 960 & 1.277473 & 99.6051\% & REJECTED \\
+\bottomrule\end{tabular}\end{center}
+\fig{pipe-reference}{Three nominated grids pass a 2\% reference-error allowance. The underresolved control uses two radial cells. The second control doubles the actual deck viscosity while preserving the original requirements and reference; both reference and declared-fluid gates fail. No FAIL result is manually assigned.}
+\clearpage
+\section{Conservation and convergence are distinct}
+\fig{conservation}{Actual inlet/outlet \texttt{surfaceFieldValue} sums at every SIMPLE iteration. Values below $10^{-12}$\% are clipped only for logarithmic plotting; exact values remain in CSV. Iteration is not elapsed physical time.}
+For these incompressible cases, boundary mass imbalance is equivalent to volumetric-flux imbalance:
+\[
+ e_m=100\frac{|Q_{in}+Q_{out}|}{|Q_{in}|}.
+\]
+Every pipe must satisfy mesh validity, terminal execution, residual checks, a 0.1\% boundary imbalance limit, the 2\% reference allowance, and unchanged fluid properties. A well-balanced wrong-viscosity solution still fails reference agreement.
+
+The pipe runs reach the fixed 1800-iteration stop rather than the stricter built-in vector stopping condition. Their explicit scale-aware gates pass where reported. The raw normalized transverse residual, maximum component-to-bulk ratios, and built-in convergence flags remain in each result file. This distinction is not concealed by the ACCEPTED label. The initial naive-gate outcomes remain in \texttt{initial-diagnostics/}.
+
+Decreasing pressure error across these grids supports numerical verification of this quantity on this case. It is not a formal GCI uncertainty estimate, general mesh-independence proof, turbulence validation, or a manufacturing tolerance allowance. The 2\% bound is an acceptance criterion, not a quantified confidence interval. Boundary flux closure is not a full momentum or energy balance audit.
+\clearpage
+\section{Nozzle: a wall-treatment comparison that does not pass}
+Both runs use the same 1920-cell uniform-radial wedge grid and $k$--$\omega$ SST closure [2]. Inlet, throat and exit radii are 20, 8 and 24 mm; converging and diverging lengths are 45 and 110 mm. $U_{in}=2$ m/s, $\rho=1.1768$ kg/m$^3$ and $\nu=1.5\times10^{-5}$ m$^2$/s. Inlet $Re\approx5333$ does not by itself justify an everywhere-fully-turbulent assumption; transition is not modeled.
+
+The first case uses \texttt{nutkWallFunction}, \texttt{kqRWallFunction}, and \texttt{omegaWallFunction}. The second uses zero wall $k$ and $\nu_t$ with $\omega_w=6\nu/(0.075 y_1^2)$, where $y_1$ is an approximate first-cell wall-normal distance. This compares near-wall treatments of SST, not two independent turbulence closures. Wall-function behavior depends on the near-wall mesh and model [3].
+
+For this bench, wall-function screening requires 95\% of nominal wall area at $30\leq y^+\leq300$; direct low-Re screening requires 95\% at $y^+\leq1$. These are selected screening thresholds, not universal validity laws. Areas are derived from the generated wedge faces. Neither case passes.
+\fig{nozzle-yplus}{OpenFOAM-exported wall $y^+$ at the last iteration. These are \textbf{provisional suitability diagnostics}, not validated wall-resolution evidence. Neither run meets the built-in stopping test. The next page distinguishes the actual residual behavior. Nominal-area weighting and all 80 per-face values are archived.}
+\clearpage
+\section{Why the nozzle remains NOT ESTABLISHED}
+\fig{nozzle-residuals}{All six solved-component histories are shown, including $U_z$. Neither run reaches the built-in stop. The wall-function run has substantial active-field residuals; the direct low-Re run's only residual above the screen is the essentially zero transverse component.}
+Maximum $y^+$ values are 12.667 and 11.642. Final boundary imbalances are $2.79e-05$ and $9.27e-05$\%, respectively. Small boundary imbalance does not rescue the failed near-wall screen.
+
+For direct low-Re walls, $p,U_x,U_y,k,\omega$ residuals are below $10^{-10}$, but normalized $U_z$ remains about 0.003 while $\max|U_z|/U_{in}=5.12\times10^{-13}$. This resembles the negligible-component issue disclosed for the pipe. The active fields pass a $10^{-6}$ residual screen; it would be misleading to equate this with the wall-function run's persistent active-field residuals. Regardless, only 6.16\% of its wall area meets $y^+\leq1$, versus a required 95\%, so near-wall readiness remains failed.
+
+No independent nozzle pressure/shear target is attached. Consequently no claim of turbulence-model fidelity, thrust prediction, heat-transfer accuracy, wall-resolved suitability, or design readiness is made. The pressure fields are retained for diagnosis, not promoted as accepted performance predictions.
+
+The next justified investigation would first establish the physical regime and appropriate model, choose wall-normal spacing consistent with that treatment, and demonstrate stable residuals and monitored quantities. Only then should a matched independent reference and a systematic mesh study be used to evaluate prediction error. Tuning until a gate turns green without preserving the intervening failures would not provide the intended evidence.
+\clearpage
+\section{Imported geometry: reject before solving}
+\fig{cad-intake}{Actual tessellation of STEP geometry after reimport. Left: connected manifold with intersecting ports and 2 mm external fillets. Right: the same manifold plus a detached 0.1 mm thick sliver (red). The sliver is shown at its real position, not enlarged.}
+The synthetic fixture starts as a $40\times30\times20$ mm manifold, with 4 mm and 3 mm radius intersecting bores. It is exported as STEP and then imported through CadQuery/OpenCASCADE before testing validity, positive volume and connected-solid count. This checks imported topology rather than trusting the original builder.
+
+The intact STEP has one solid and passes topology intake; physics, loads, fluid-region definition and boundary assignments remain missing, so overall readiness is NOT ESTABLISHED. The defective compound contains two solids, including a 2.5 mm$^3$ detached sliver, and is REJECTED. Neither import is automatically repaired or sent to a mesh/solver.
+
+This is a controlled synthetic negative test, not a claim to handle all customer CAD defects. Multiple solids may be legitimate in an assembly; this particular intake contract requires one connected solid. The correct action is review, not deleting the second body without authorization.
+\clearpage
+\section{Permanent decks, software, and reproduction}
+The versioned static archive contains the seven OpenFOAM input decks, generated meshes, final fields, conservation CSVs, logs, per-input manifests, source scripts and criteria; both original STEP files and reimported STL files; and five retained CalculiX input decks with meshes, results, logs and original manifests. The CalculiX cases are the pressure tube at three levels, a ported tube fine run, and a thermal-gradient fine run, from 12 September 2026. They are archived historical runs, \emph{not five new solves}. Their original gate states and case receipts are preserved.
+
+Recorded versions: OpenFOAM Foundation 10; CalculiX 2.20; Gmsh 4.15.2; CadQuery 2.7.0; OCP 7.8.1.1. Image content IDs and individual file SHA-256 values are provided with the download. Local image IDs identify the executed environment, but are not public registry pull instructions. Decks can be rerun with matching local tools; bitwise cross-platform solver equivalence is not promised.
+
+After extracting the archive, run \texttt{python source/audit.py .} to verify artifact identity. Copy a case to a scratch directory before rerunning \texttt{blockMesh}, \texttt{checkMesh}, and \texttt{simpleFoam}; do not overwrite the retained evidence. For CalculiX, copy a retained solve directory and run \texttt{ccx job}. See the archived README for exact commands, dependencies and scope.
+
+These curated files are served as ordinary versioned site assets, without a 48-hour visitor-job expiration. SHA-256 hashes establish artifact identity and detect changes; they do not establish scientific validity, authenticity by themselves, or a design approval. No private service credentials or customer data belong in this archive.
+
+\section{References}
+\small [1] OpenStax, \emph{University Physics, Volume 1}, Sec. 14.7, Viscosity and Turbulence. Poiseuille relation used as the independent analytical reference.\\\url{https://openstax.org/books/university-physics-volume-1/pages/14-7-viscosity-and-turbulence}
+
+[2] OpenFOAM Foundation v10 User Guide, Sec. 7.2, Turbulence models.\\\url{https://doc.cfd.direct/openfoam/user-guide-v10/turbulence}
+
+[3] CFD Direct, \emph{Notes on Computational Fluid Dynamics: General Principles}, Sec. 7.5, Wall functions.\\\url{https://doc.cfd.direct/notes/cfd-general-principles/wall-functions}
+\end{document}

@@ -1,0 +1,17 @@
+{
+  "schema": "aero.verification.public.v1",
+  "revision": "1.0",
+  "files": {
+    "cad-intake.png": "38207201991da3184a9498b6ffa5505b95de854643da650686c8e6a299b38f50",
+    "conservation.png": "fe5b4d074a51666facef1548d08771f27b7b70c7dc721004d70e31277d3df8b8",
+    "nozzle-residuals.png": "906a3e9a3b13ac29d735f823af29824735b7a69119ae9e8adc3ab938464822c6",
+    "nozzle-yplus.png": "03bbfa2bfdcf6c1ed34fe49c4a6d9fb69b0d4e5f1deac582c4e9b402fc7e7f4a",
+    "paper-sources.zip": "d85b048184319c21f997c143942f361d8303c6ef351a727bccd5bc88e3c4b70f",
+    "paper.pdf": "c309ac6e84023f7873cdb0bb9d6e2073006ca3b17577a4d7e86c80acb1e1e91c",
+    "paper.tex": "b01043d21769eb7df84f866922a260dd7d60c131ab316a8b748b01a8bb664d7d",
+    "pipe-reference.png": "7af543ed4d91865ebf718b1d560dd2894c5ce153fd1f11f879fb9cb076c92d4e",
+    "README.md": "80854199c7aa473aec6b1551f72d7dc618af5245307398f690e36ef970cc8d9e",
+    "reproducibility.zip": "fc8f33e8c3e4e04c450ccf38ec69ea010d8c638e7fc44ca2ad071169d9acbe34",
+    "summary.json": "abc1aebb23f4e993dfa7b4460e0b10f48820c543eae99e838230b1bafc1f960e"
+  }
+}

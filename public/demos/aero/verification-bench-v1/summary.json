@@ -1,0 +1,353 @@
+{
+  "revision": "1.0",
+  "run_date": "2026-09-13",
+  "criteria_revision": "1.1",
+  "gate_revision_note": "Initial v1.0 diagnostics retained separately. v1.1 permits a velocity-component normalized residual above tolerance only when that component's maximum absolute solved velocity is below 1e-10 of prescribed bulk velocity. Pressure residual remains mandatory. Built-in vector residual stopping is reported separately from these explicit acceptance checks.",
+  "pipe": [
+    {
+      "id": "pipe-coarse",
+      "cells": 320,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 4.37568454002e-16,
+        "Uy": 7.59577566434e-14,
+        "Uz": 8.4789587988e-06,
+        "p": 8.72352372463e-11
+      },
+      "mass_imbalance_pct": 2.0626885494423887e-10,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 1.9754643538749999,
+        "Uy": 0.00147286179835,
+        "Uz": 3.5295128915199994e-14
+      },
+      "pressure_drop_pa": 0.6336285695719215,
+      "reference_pressure_drop_pa": 0.64,
+      "reference_error_pct": 0.9955360043872652,
+      "darcy_factor": 0.31681428478596074,
+      "viscosity_multiplier": 1,
+      "status": "ACCEPTED",
+      "gate": "PASS",
+      "checks": {
+        "execution": true,
+        "mesh": true,
+        "residuals": true,
+        "mass_conservation": true,
+        "reference": true,
+        "declared_fluid": true
+      },
+      "failed_checks": [],
+      "elapsed_seconds": 5.29070782661438
+    },
+    {
+      "id": "pipe-medium",
+      "cells": 960,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 2.64820710492e-16,
+        "Uy": 1.03189196082e-13,
+        "Uz": 7.46327494171e-06,
+        "p": 8.96170667054e-11
+      },
+      "mass_imbalance_pct": 7.334298641886788e-10,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 1.99349244516,
+        "Uy": 0.000700741547015,
+        "Uz": 3.157516559825e-14
+      },
+      "pressure_drop_pa": 0.6384474017145066,
+      "reference_pressure_drop_pa": 0.64,
+      "reference_error_pct": 0.2425934821083331,
+      "darcy_factor": 0.31922370085725327,
+      "viscosity_multiplier": 1,
+      "status": "ACCEPTED",
+      "gate": "PASS",
+      "checks": {
+        "execution": true,
+        "mesh": true,
+        "residuals": true,
+        "mass_conservation": true,
+        "reference": true,
+        "declared_fluid": true
+      },
+      "failed_checks": [],
+      "elapsed_seconds": 8.835524559020996
+    },
+    {
+      "id": "pipe-fine",
+      "cells": 2560,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 4.91930604311e-14,
+        "Uy": 2.00405939925e-09,
+        "Uz": 9.54153223735e-05,
+        "p": 7.97559565668e-11
+      },
+      "mass_imbalance_pct": 4.584173632860015e-11,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 1.9983798348850002,
+        "Uy": 0.0004242716145555,
+        "Uz": 2.24900362349e-14
+      },
+      "pressure_drop_pa": 0.639662721373094,
+      "reference_pressure_drop_pa": 0.64,
+      "reference_error_pct": 0.05269978545406895,
+      "darcy_factor": 0.31983136068654694,
+      "viscosity_multiplier": 1,
+      "status": "ACCEPTED",
+      "gate": "PASS",
+      "checks": {
+        "execution": true,
+        "mesh": true,
+        "residuals": true,
+        "mass_conservation": true,
+        "reference": true,
+        "declared_fluid": true
+      },
+      "failed_checks": [],
+      "elapsed_seconds": 22.471678495407104
+    },
+    {
+      "id": "pipe-underresolved",
+      "cells": 80,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 4.04148921326e-15,
+        "Uy": 3.32147842863e-13,
+        "Uz": 3.7257657861e-07,
+        "p": 2.18323077768e-11
+      },
+      "mass_imbalance_pct": 3.896358002586395e-10,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 1.7070653915149998,
+        "Uy": 0.00242788526217,
+        "Uz": 1.115454314625e-14
+      },
+      "pressure_drop_pa": 0.5506378867411579,
+      "reference_pressure_drop_pa": 0.64,
+      "reference_error_pct": 13.962830196694087,
+      "darcy_factor": 0.27531894337057894,
+      "viscosity_multiplier": 1,
+      "status": "REJECTED",
+      "gate": "FAIL",
+      "checks": {
+        "execution": true,
+        "mesh": true,
+        "residuals": true,
+        "mass_conservation": true,
+        "reference": false,
+        "declared_fluid": true
+      },
+      "failed_checks": [
+        "reference"
+      ],
+      "elapsed_seconds": 9.326387882232666
+    },
+    {
+      "id": "pipe-wrong-viscosity",
+      "cells": 960,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 2.16310370832e-16,
+        "Uy": 6.8591425864e-14,
+        "Uz": 9.89494895078e-06,
+        "p": 8.80988652283e-11
+      },
+      "mass_imbalance_pct": 9.626195872972177e-10,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 1.992968841175,
+        "Uy": 0.001038270044975,
+        "Uz": 4.546846602034999e-14
+      },
+      "pressure_drop_pa": 1.2774727501234286,
+      "reference_pressure_drop_pa": 0.64,
+      "reference_error_pct": 99.60511720678574,
+      "darcy_factor": 0.6387363750617143,
+      "viscosity_multiplier": 2,
+      "status": "REJECTED",
+      "gate": "FAIL",
+      "checks": {
+        "execution": true,
+        "mesh": true,
+        "residuals": true,
+        "mass_conservation": true,
+        "reference": false,
+        "declared_fluid": false
+      },
+      "failed_checks": [
+        "reference",
+        "declared_fluid"
+      ],
+      "elapsed_seconds": 11.071516275405884
+    }
+  ],
+  "nozzle": [
+    {
+      "id": "nozzle-wall-function",
+      "cells": 1920,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 0.000120794075821,
+        "Uy": 0.00133100464162,
+        "Uz": 0.00669058252036,
+        "p": 0.000719055464634,
+        "omega": 0.00124952311231,
+        "k": 0.00191813525532
+      },
+      "mass_imbalance_pct": 2.7888095488052603e-05,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 6.95975032655,
+        "Uy": 1.5782930564,
+        "Uz": 5.0599954293e-13
+      },
+      "pressure_change_pa": 62.22138357009312,
+      "max_yplus": 12.6666049654,
+      "min_yplus": 1.89751010251,
+      "treatment": "wall-function",
+      "suitable_area_fraction": 0.0,
+      "near_wall_gate": "FAIL",
+      "status": "NOT_ESTABLISHED",
+      "reason": "No independent nozzle reference; near-wall suitability alone cannot validate the model.",
+      "elapsed_seconds": 29.859869241714478
+    },
+    {
+      "id": "nozzle-low-re",
+      "cells": 1920,
+      "iterations": 1800.0,
+      "terminal": true,
+      "mesh_ok": true,
+      "converged": false,
+      "residuals": {
+        "Ux": 2.8136238835e-12,
+        "Uy": 1.51692477018e-11,
+        "Uz": 0.002999782017,
+        "p": 9.66584045549e-11,
+        "omega": 7.92373803117e-11,
+        "k": 9.69997058358e-11
+      },
+      "mass_imbalance_pct": 9.26853513615626e-05,
+      "final_time": "1800",
+      "velocity_bulk_ratios": {
+        "Ux": 6.7355125695,
+        "Uy": 1.437453514975,
+        "Uz": 5.12483951485e-13
+      },
+      "pressure_change_pa": 22.703348078187467,
+      "max_yplus": 11.6418256628,
+      "min_yplus": 0.241992796608,
+      "treatment": "low-re",
+      "suitable_area_fraction": 0.06160059928300974,
+      "near_wall_gate": "FAIL",
+      "status": "NOT_ESTABLISHED",
+      "reason": "No independent nozzle reference; near-wall suitability alone cannot validate the model.",
+      "elapsed_seconds": 24.94338083267212
+    }
+  ],
+  "cad": [
+    {
+      "id": "imported-manifold",
+      "source": "IMPORTED_STEP",
+      "fixture": "Synthetic manifold with intersecting ports and external fillets; defective variant includes a detached sliver.",
+      "units": "mm",
+      "source_sha256": "416df46e37b5858369e48d99681fa1633ce0bb46488c40cd70a961ee472cebf7",
+      "checks": {
+        "valid_topology": true,
+        "one_connected_solid": true,
+        "positive_volume": true
+      },
+      "solid_count": 1,
+      "solid_volumes_mm3": [
+        21281.373111514276
+      ],
+      "intake_status": "ACCEPTED",
+      "status": "NOT_ESTABLISHED",
+      "reason": "Topology passes; loads, fluid volume, boundary conditions and physics remain unassigned.",
+      "solver_submitted": false,
+      "automatic_repair": false
+    },
+    {
+      "id": "imported-manifold-sliver",
+      "source": "IMPORTED_STEP",
+      "fixture": "Synthetic manifold with intersecting ports and external fillets; defective variant includes a detached sliver.",
+      "units": "mm",
+      "source_sha256": "1ec8586af97093ae05b20d72f0e03d7f6a1f1903c3c786b2d464224cb4dff6dc",
+      "checks": {
+        "valid_topology": true,
+        "one_connected_solid": false,
+        "positive_volume": true
+      },
+      "solid_count": 2,
+      "solid_volumes_mm3": [
+        21281.373111514276,
+        2.4999999999999463
+      ],
+      "intake_status": "REJECTED",
+      "status": "REJECTED",
+      "reason": "Multiple disconnected solids: quarantine for geometry review. No automatic repair, meshing or solver execution.",
+      "solver_submitted": false,
+      "automatic_repair": false
+    }
+  ],
+  "retained_calculix": [
+    {
+      "family": "tube",
+      "level": "coarse",
+      "deck_sha256": "5131debee5d57adda69446ee713f45f579a440b52a754255cabc63358c084bd3",
+      "run_date": "2026-09-12"
+    },
+    {
+      "family": "tube",
+      "level": "medium",
+      "deck_sha256": "81984c4f2100a4c9a813da17e8e8c21bcce8b28f9567623a5834bda9bb64b832",
+      "run_date": "2026-09-12"
+    },
+    {
+      "family": "tube",
+      "level": "fine",
+      "deck_sha256": "d93ada78c636e081a70789ccb34ffa8c3b42bca7677094faab92e396a789e2f4",
+      "run_date": "2026-09-12"
+    },
+    {
+      "family": "port",
+      "level": "fine",
+      "deck_sha256": "740f6d46bcb44c96f9d4e23f21b9889489e9bbe92b09ee6c7fe9cdd35b12af71",
+      "run_date": "2026-09-12"
+    },
+    {
+      "family": "thermal-gradient",
+      "level": "fine",
+      "deck_sha256": "77b16964ec851316e54c696023e147dad43226d9bfddc8227cfe290883f2c464",
+      "run_date": "2026-09-12"
+    }
+  ],
+  "archive_file_count": 295,
+  "reference_url": "https://openstax.org/books/university-physics-volume-1/pages/14-7-viscosity-and-turbulence",
+  "runtime": {
+    "openfoam": "Foundation 10",
+    "openfoam_image_id": "sha256:2965f9e26d1a358e18b5543085adab73927d77e8d16d3995a0c4612e8f430837",
+    "cad_fea_image_id": "sha256:b73d70afc297054bf644db852e8d8ed0bbd2423fecbcd5669194dd7460d9a763"
+  }
+}

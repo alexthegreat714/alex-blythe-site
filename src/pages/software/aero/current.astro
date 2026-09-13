@@ -349,7 +349,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   save();renderMessages();renderRecord();void connect();
   if(activeCase.study){channelActive=true;channel.load(activeCase.study);selectStage(0);}
   if(new URLSearchParams(location.search).get('study')==='channel'&&!activeCase.study)$('[data-open-channel]').click();
-  const requestedSeed=structuralSeeds.find(seed=>seed.id===new URLSearchParams(location.search).get('case'));
+  const requestedSeed=aeroCaseSeeds.find(seed=>seed.id===new URLSearchParams(location.search).get('case'));
   if(requestedSeed)openSeed(requestedSeed);
   window.setInterval(()=>{if(!busy)void connect(false);},60000);
 </script>
