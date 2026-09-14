@@ -106,8 +106,15 @@
       },
       "stage": "PREDICTION_FROZEN",
       "time": "2026-09-14T14:00:53.514967+00:00"
+    },
+    {
+      "commit": "b98e123b11a37bf0f0e0dfae916bfe2d5b4e1507",
+      "files": {},
+      "remote_head": "b98e123b11a37bf0f0e0dfae916bfe2d5b4e1507",
+      "stage": "PREDICTION_FROZEN_ANCHORED",
+      "time": "2026-09-14T14:02:24.436781+00:00"
     }
   ],
   "schema": "aero.blind.state.v1",
-  "stage": "PREDICTION_FROZEN"
+  "stage": "PREDICTION_FROZEN_ANCHORED"
 }
