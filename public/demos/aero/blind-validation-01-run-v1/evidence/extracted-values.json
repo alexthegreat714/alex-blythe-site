@@ -1,0 +1,3350 @@
+{
+  "p01-coarse": {
+    "angle_deg": -3.99,
+    "boundary_flux_imbalance_fraction": 8.323209903319764e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0007856040192999996,
+      "CL": 0.015042185360000015
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      5.36071723e-07,
+      3.246381324e-08,
+      0.001991379975
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 5.057419427e-05,
+      "Ux": 1.45309735e-05,
+      "Uy": 0.0002351059553,
+      "gammaInt": 9.537282648e-09,
+      "k": 0.0002151476848,
+      "omega": 7.879991115e-08,
+      "p": 9.70091253e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 8.66573598e-07,
+      "Ux": 2.065021901e-07,
+      "Uy": 3.510831245e-06,
+      "gammaInt": 9.537282648e-09,
+      "k": 3.232287521e-06,
+      "omega": 9.141759968e-09,
+      "p": 9.036000488e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.005924620576263101,
+      "CL": -0.40920390926948963
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.007926532993778894,
+      "CL": -0.3991840789512893
+    },
+    "station": "p01",
+    "status": "FAIL",
+    "yplus_max": 2.375771387,
+    "yplus_p95": 2.357131453
+  },
+  "p01-fine": {
+    "angle_deg": -3.99,
+    "boundary_flux_imbalance_fraction": 1.6634367515323614e-10,
+    "coefficient_range_last500": {
+      "CD": 0.0062450531874999994,
+      "CL": 0.07492711188000001
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.860877957e-07,
+      -6.260148021e-10,
+      0.0009566909451
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 6.074105892e-05,
+      "Ux": 1.276507881e-05,
+      "Uy": 0.0002153894093,
+      "gammaInt": 5.015521268e-08,
+      "k": 0.0003936527357,
+      "omega": 9.135278221e-08,
+      "p": 0.0001188704109
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.246581002e-06,
+      "Ux": 1.558813977e-07,
+      "Uy": 2.81380244e-06,
+      "gammaInt": 5.346875078e-09,
+      "k": 5.154159683e-06,
+      "omega": 1.212870269e-09,
+      "p": 1.093469591e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.010977280749959906,
+      "CL": -0.19400810015083997
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006804676893891689,
+      "CL": -0.3039373085503601
+    },
+    "station": "p01",
+    "status": "FAIL",
+    "yplus_max": 1.208989639,
+    "yplus_p95": 1.195236002
+  },
+  "p01-medium": {
+    "angle_deg": -3.99,
+    "boundary_flux_imbalance_fraction": 1.3183206285494108e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0020172981132999994,
+      "CL": 0.06277824947999999
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.39177107e-07,
+      -5.149387599e-09,
+      0.001833314899
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 5.258303942e-05,
+      "Ux": 1.120259113e-05,
+      "Uy": 0.0002114760917,
+      "gammaInt": 9.658425266e-09,
+      "k": 0.0002987108386,
+      "omega": 9.892030517e-08,
+      "p": 0.0001242844795
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 9.111553842e-07,
+      "Ux": 1.448798858e-07,
+      "Uy": 2.942545136e-06,
+      "gammaInt": 9.658425266e-09,
+      "k": 4.153139508e-06,
+      "omega": 1.382286377e-09,
+      "p": 1.209833156e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.008069463990003795,
+      "CL": -0.2947579923181199
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.0047302132749683,
+      "CL": -0.38231402734805975
+    },
+    "station": "p01",
+    "status": "FAIL",
+    "yplus_max": 1.660024647,
+    "yplus_p95": 1.644030181
+  },
+  "p02-coarse": {
+    "angle_deg": -1.98,
+    "boundary_flux_imbalance_fraction": 3.94255930491582e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0004514821122999996,
+      "CL": 0.02051133757000001
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.251175088e-07,
+      -1.519738091e-08,
+      0.001698117847
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": false,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 2.91368281e-05,
+      "Ux": 1.21621919e-05,
+      "Uy": 0.0006115207459,
+      "gammaInt": 6.056424614e-08,
+      "k": 0.0002449157838,
+      "omega": 6.290140933e-08,
+      "p": 0.0001027073137
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 9.094443094e-07,
+      "Ux": 1.689854153e-07,
+      "Uy": 9.215948884e-06,
+      "gammaInt": 7.133140052e-09,
+      "k": 3.607427391e-06,
+      "omega": 7.284164424e-09,
+      "p": 9.873416532e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006213239688247902,
+      "CL": -0.19021284285343004
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.0059695178686363926,
+      "CL": -0.20636657024833982
+    },
+    "station": "p02",
+    "status": "FAIL",
+    "yplus_max": 2.015588024,
+    "yplus_p95": 1.945531804
+  },
+  "p02-fine": {
+    "angle_deg": -1.98,
+    "boundary_flux_imbalance_fraction": 1.8950624795461156e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0004397662911000003,
+      "CL": 0.026380216717
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.449847028e-06,
+      7.231349255e-08,
+      0.0008561126541
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": false,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.646601979e-05,
+      "Ux": 9.596104355e-06,
+      "Uy": 0.0004976867751,
+      "gammaInt": 6.480398337e-07,
+      "k": 0.0003039792,
+      "omega": 6.413375121e-08,
+      "p": 0.0002228885982
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.291954064e-06,
+      "Ux": 1.198835584e-07,
+      "Uy": 6.603687976e-06,
+      "gammaInt": 8.828564201e-09,
+      "k": 3.986590061e-06,
+      "omega": 7.244518741e-09,
+      "p": 2.198413266e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006011592852108401,
+      "CL": -0.09866634312044208
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006090061463359598,
+      "CL": -0.07748174959371598
+    },
+    "station": "p02",
+    "status": "FAIL",
+    "yplus_max": 0.9531076792,
+    "yplus_p95": 0.9049949528
+  },
+  "p02-medium": {
+    "angle_deg": -1.98,
+    "boundary_flux_imbalance_fraction": 3.9270336393659565e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0010515032717999997,
+      "CL": 0.06617829774000002
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.304096635e-07,
+      1.499026033e-08,
+      0.001711983949
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": false,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 4.869067642e-05,
+      "Ux": 1.04097464e-05,
+      "Uy": 0.0005268243077,
+      "gammaInt": 2.116681318e-07,
+      "k": 0.0003847115213,
+      "omega": 7.538693245e-08,
+      "p": 0.0001061271613
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 9.983039573e-07,
+      "Ux": 1.333470498e-07,
+      "Uy": 7.342894474e-06,
+      "gammaInt": 3.026246294e-09,
+      "k": 5.242846592e-06,
+      "omega": 8.633793172e-09,
+      "p": 9.843925093e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006251095769578299,
+      "CL": -0.10615855230824801
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006169287049345498,
+      "CL": -0.16204795224480006
+    },
+    "station": "p02",
+    "status": "FAIL",
+    "yplus_max": 1.355059575,
+    "yplus_p95": 1.306226062
+  },
+  "p03-coarse": {
+    "angle_deg": -0.03,
+    "boundary_flux_imbalance_fraction": 8.932761537631159e-09,
+    "coefficient_range_last500": {
+      "CD": 0.00011158401340000037,
+      "CL": 0.00022411023970000032
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.508194903e-07,
+      -3.342793746e-08,
+      0.001453866006
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 9.185486368e-06,
+      "Ux": 7.313706028e-06,
+      "Uy": 0.0002447439673,
+      "gammaInt": 2.075684706e-07,
+      "k": 0.0002759282853,
+      "omega": 2.741116052e-08,
+      "p": 3.006285288e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 1.334633371e-07,
+      "Ux": 1.12289753e-07,
+      "Uy": 3.638797178e-06,
+      "gammaInt": 3.241652527e-09,
+      "k": 4.25910113e-06,
+      "omega": 3.307038768e-09,
+      "p": 2.707726591e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.005652829006374602,
+      "CL": -0.0024901402622687988
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.005771214509833989,
+      "CL": -0.0025953449917442
+    },
+    "station": "p03",
+    "status": "FAIL",
+    "yplus_max": 1.657791251,
+    "yplus_p95": 1.62433467
+  },
+  "p03-fine": {
+    "angle_deg": -0.03,
+    "boundary_flux_imbalance_fraction": 4.349115248458328e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0004178622059999998,
+      "CL": 0.0007596970939999998
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      4.964763322e-07,
+      1.619732131e-08,
+      0.0006347495987
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 1.853683113e-05,
+      "Ux": 5.317206741e-06,
+      "Uy": 0.0002850121812,
+      "gammaInt": 1.155475456e-06,
+      "k": 0.0001771521492,
+      "omega": 1.773240008e-08,
+      "p": 9.175471918e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.558720477e-07,
+      "Ux": 7.111249716e-08,
+      "Uy": 3.681420395e-06,
+      "gammaInt": 1.616107805e-08,
+      "k": 2.3996997e-06,
+      "omega": 1.988426154e-09,
+      "p": 8.989386032e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.005828374358903595,
+      "CL": -0.00020573492832722017
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.0052059974925332,
+      "CL": 0.0022920400639899
+    },
+    "station": "p03",
+    "status": "FAIL",
+    "yplus_max": 0.8635124092,
+    "yplus_p95": 0.8474024106
+  },
+  "p03-medium": {
+    "angle_deg": -0.03,
+    "boundary_flux_imbalance_fraction": 1.4087074524497642e-10,
+    "coefficient_range_last500": {
+      "CD": 9.132559899999951e-05,
+      "CL": 0.00023192583682999995
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.209876945e-07,
+      -5.035217858e-10,
+      0.001879466202
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 1.316587391e-05,
+      "Ux": 5.365410837e-06,
+      "Uy": 0.0003475671775,
+      "gammaInt": 8.546627436e-07,
+      "k": 0.0002497676048,
+      "omega": 1.891612469e-08,
+      "p": 4.063731043e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.350996844e-07,
+      "Ux": 7.647882501e-08,
+      "Uy": 4.648311731e-06,
+      "gammaInt": 1.240438256e-08,
+      "k": 3.594014794e-06,
+      "omega": 2.206905387e-09,
+      "p": 3.961067817e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.005173767120494498,
+      "CL": -0.0016968180616850992
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.005189059108413603,
+      "CL": -0.0009752318480316998
+    },
+    "station": "p03",
+    "status": "FAIL",
+    "yplus_max": 1.135159926,
+    "yplus_p95": 1.114593009
+  },
+  "p04-coarse": {
+    "angle_deg": 0.04,
+    "boundary_flux_imbalance_fraction": 1.100588601910559e-08,
+    "coefficient_range_last500": {
+      "CD": 0.00010585385430000004,
+      "CL": 0.0006456922462000003
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.611573302e-07,
+      4.121728547e-08,
+      0.001428611203
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 9.399361862e-06,
+      "Ux": 7.291963912e-06,
+      "Uy": 0.0003175678415,
+      "gammaInt": 2.030326172e-07,
+      "k": 0.0002745703033,
+      "omega": 2.747095422e-08,
+      "p": 3.135842537e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 1.332562178e-07,
+      "Ux": 1.119234542e-07,
+      "Uy": 4.726148149e-06,
+      "gammaInt": 3.171720344e-09,
+      "k": 4.239340151e-06,
+      "omega": 3.314664988e-09,
+      "p": 2.884535876e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.005649913883756498,
+      "CL": 0.0034344121872841014
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.005767018405527105,
+      "CL": 0.002562752962423402
+    },
+    "station": "p04",
+    "status": "FAIL",
+    "yplus_max": 1.657381833,
+    "yplus_p95": 1.624695534
+  },
+  "p04-fine": {
+    "angle_deg": 0.04,
+    "boundary_flux_imbalance_fraction": 1.2637787843192983e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0004125383947999996,
+      "CL": 0.00105695648001
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      4.652847246e-07,
+      -4.730796344e-08,
+      0.0006958886181
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 1.772383916e-05,
+      "Ux": 5.19157942e-06,
+      "Uy": 0.0002561138792,
+      "gammaInt": 1.067648216e-06,
+      "k": 0.0001735492473,
+      "omega": 1.782237663e-08,
+      "p": 8.621908681e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.558141152e-07,
+      "Ux": 6.966650321e-08,
+      "Uy": 3.336709502e-06,
+      "gammaInt": 1.495077428e-08,
+      "k": 2.357214205e-06,
+      "omega": 1.999781333e-09,
+      "p": 8.533105611e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.005821432248559998,
+      "CL": -0.0002487948233804557
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.005205590044597205,
+      "CL": -0.0004825599443137173
+    },
+    "station": "p04",
+    "status": "FAIL",
+    "yplus_max": 0.8627738696,
+    "yplus_p95": 0.8475049636
+  },
+  "p04-medium": {
+    "angle_deg": 0.04,
+    "boundary_flux_imbalance_fraction": 1.3210993230858612e-09,
+    "coefficient_range_last500": {
+      "CD": 8.768355340000016e-05,
+      "CL": 0.0005576155314
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.409391633e-07,
+      -4.893988265e-09,
+      0.00177778329
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 1.310137916e-05,
+      "Ux": 5.383172866e-06,
+      "Uy": 0.0003762412509,
+      "gammaInt": 8.460933456e-07,
+      "k": 0.0002496640081,
+      "omega": 1.905068036e-08,
+      "p": 4.359479812e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.349501802e-07,
+      "Ux": 7.658717106e-08,
+      "Uy": 4.987946939e-06,
+      "gammaInt": 1.228069019e-08,
+      "k": 3.592017897e-06,
+      "omega": 2.220416971e-09,
+      "p": 4.320105578e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.0051716148958999035,
+      "CL": 0.003497252119055998
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.005185432286756898,
+      "CL": 0.0025569834235835004
+    },
+    "station": "p04",
+    "status": "FAIL",
+    "yplus_max": 1.136786347,
+    "yplus_p95": 1.116506466
+  },
+  "p05-coarse": {
+    "angle_deg": 2.0,
+    "boundary_flux_imbalance_fraction": 3.8245669821141923e-10,
+    "coefficient_range_last500": {
+      "CD": 0.0004921390594999995,
+      "CL": 0.01876800247999999
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.321188843e-07,
+      -1.508964313e-09,
+      0.001795774356
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.133961988e-05,
+      "Ux": 1.230821307e-05,
+      "Uy": 0.0006141511409,
+      "gammaInt": 5.76618602e-08,
+      "k": 0.0002442306486,
+      "omega": 6.284848238e-08,
+      "p": 9.909144273e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 9.067246186e-07,
+      "Ux": 1.703683353e-07,
+      "Uy": 9.25633467e-06,
+      "gammaInt": 6.78200675e-09,
+      "k": 3.591529694e-06,
+      "omega": 7.280103704e-09,
+      "p": 9.908790021e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006184103482569096,
+      "CL": 0.1938535178755899
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.0059271251916350005,
+      "CL": 0.21003829598334997
+    },
+    "station": "p05",
+    "status": "FAIL",
+    "yplus_max": 2.021135877,
+    "yplus_p95": 1.948932756
+  },
+  "p05-fine": {
+    "angle_deg": 2.0,
+    "boundary_flux_imbalance_fraction": 1.1186289298948701e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0003979305406,
+      "CL": 0.032640344682
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.666773103e-06,
+      4.27128166e-08,
+      0.0009232868564
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": false,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.952625002e-05,
+      "Ux": 1.013395984e-05,
+      "Uy": 0.0005040653455,
+      "gammaInt": 5.71993204e-07,
+      "k": 0.0003195075827,
+      "omega": 6.856652617e-08,
+      "p": 0.0002512586451
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.290680944e-06,
+      "Ux": 1.255310241e-07,
+      "Uy": 6.686697073e-06,
+      "gammaInt": 7.799971851e-09,
+      "k": 4.183528258e-06,
+      "omega": 7.748095842e-09,
+      "p": 2.462860721e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006069272395911699,
+      "CL": 0.09203940562629499
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006166721811696405,
+      "CL": 0.07477131830581595
+    },
+    "station": "p05",
+    "status": "FAIL",
+    "yplus_max": 0.9531027454,
+    "yplus_p95": 0.9054837645
+  },
+  "p05-medium": {
+    "angle_deg": 2.0,
+    "boundary_flux_imbalance_fraction": 2.1367409172439047e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0011898614027999995,
+      "CL": 0.07253160139999999
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.181971136e-07,
+      8.150262644e-08,
+      0.001771115463
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": false,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 5.331553178e-05,
+      "Ux": 1.057574718e-05,
+      "Uy": 0.0005201423139,
+      "gammaInt": 2.095981972e-07,
+      "k": 0.0003871848491,
+      "omega": 7.534591366e-08,
+      "p": 9.979599749e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 9.978621407e-07,
+      "Ux": 1.349181571e-07,
+      "Uy": 7.239497645e-06,
+      "gammaInt": 3.002988888e-09,
+      "k": 5.271897106e-06,
+      "omega": 8.639027729e-09,
+      "p": 9.641953253e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006352634255687496,
+      "CL": 0.10312536762887102
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006191985605725402,
+      "CL": 0.16563917763180003
+    },
+    "station": "p05",
+    "status": "FAIL",
+    "yplus_max": 1.361538743,
+    "yplus_p95": 1.312822608
+  },
+  "p06-coarse": {
+    "angle_deg": 4.06,
+    "boundary_flux_imbalance_fraction": 1.1204359876324396e-10,
+    "coefficient_range_last500": {
+      "CD": 0.0009179291260999999,
+      "CL": 0.012900446389999987
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.398468734e-07,
+      -3.975731678e-10,
+      0.001896370158
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": false,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.337217895e-05,
+      "Ux": 1.444989555e-05,
+      "Uy": 0.0002038766066,
+      "gammaInt": 9.518015753e-09,
+      "k": 0.0002140828173,
+      "omega": 8.138019755e-08,
+      "p": 0.0001199147231
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 8.636211222e-07,
+      "Ux": 2.064555043e-07,
+      "Uy": 3.049025031e-06,
+      "gammaInt": 9.518015753e-09,
+      "k": 3.208256807e-06,
+      "omega": 9.486625461e-09,
+      "p": 1.066075234e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.006231108187206796,
+      "CL": 0.41391973997974
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.007704114768838002,
+      "CL": 0.41006520123148976
+    },
+    "station": "p06",
+    "status": "FAIL",
+    "yplus_max": 2.395492191,
+    "yplus_p95": 2.375005258
+  },
+  "p06-fine": {
+    "angle_deg": 4.06,
+    "boundary_flux_imbalance_fraction": 5.428784885466668e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0068095073725,
+      "CL": 0.07608716021
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      7.587434383e-07,
+      2.130353083e-08,
+      0.001015045836
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 6.116899569e-05,
+      "Ux": 1.267477217e-05,
+      "Uy": 0.0002011082925,
+      "gammaInt": 3.833879499e-08,
+      "k": 0.0003876892035,
+      "omega": 9.043024416e-08,
+      "p": 0.0001232719852
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.244049773e-06,
+      "Ux": 1.540163992e-07,
+      "Uy": 2.624337298e-06,
+      "gammaInt": 3.914119305e-09,
+      "k": 5.083131287e-06,
+      "omega": 1.203716972e-09,
+      "p": 1.215683863e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.011172578543244098,
+      "CL": 0.19939314229214
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006797036476016103,
+      "CL": 0.31296360936666984
+    },
+    "station": "p06",
+    "status": "FAIL",
+    "yplus_max": 1.219320251,
+    "yplus_p95": 1.206367348
+  },
+  "p06-medium": {
+    "angle_deg": 4.06,
+    "boundary_flux_imbalance_fraction": 1.121683691476933e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0055705035161,
+      "CL": 0.12665258156999998
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      8.426407684e-07,
+      4.376425355e-08,
+      0.001920497213
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 6.958594869e-05,
+      "Ux": 1.472909101e-05,
+      "Uy": 0.0003217917372,
+      "gammaInt": 1.007289564e-08,
+      "k": 0.0003456238052,
+      "omega": 1.596025008e-07,
+      "p": 0.0001303061059
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 9.030064155e-07,
+      "Ux": 1.82841245e-07,
+      "Uy": 4.465652122e-06,
+      "gammaInt": 4.800491784e-10,
+      "k": 4.691573836e-06,
+      "omega": 2.214803386e-09,
+      "p": 1.288715001e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.0109252494616799,
+      "CL": 0.21974900438864003
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.006544335685363901,
+      "CL": 0.37117041887484997
+    },
+    "station": "p06",
+    "status": "FAIL",
+    "yplus_max": 1.671990922,
+    "yplus_p95": 1.658485343
+  },
+  "p07-coarse": {
+    "angle_deg": 6.09,
+    "boundary_flux_imbalance_fraction": 5.669502124613966e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0009608128980000009,
+      "CL": 0.014904239400000074
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.994115676e-07,
+      -2.26472354e-08,
+      0.002006883483
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": true,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.168534755e-05,
+      "Ux": 1.691395163e-05,
+      "Uy": 5.963110219e-05,
+      "gammaInt": 9.620351716e-09,
+      "k": 0.0001895068798,
+      "omega": 1.250590145e-07,
+      "p": 0.0002385440041
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 8.87030468e-07,
+      "Ux": 2.520108519e-07,
+      "Uy": 8.874092663e-07,
+      "gammaInt": 9.620351716e-09,
+      "k": 2.896216284e-06,
+      "omega": 1.902312458e-09,
+      "p": 2.158179269e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.008894872929970708,
+      "CL": 0.6106598046731697
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.007277817137156396,
+      "CL": 0.6478464985872796
+    },
+    "station": "p07",
+    "status": "FAIL",
+    "yplus_max": 2.905240983,
+    "yplus_p95": 2.855752533
+  },
+  "p07-fine": {
+    "angle_deg": 6.09,
+    "boundary_flux_imbalance_fraction": 2.8629800885419033e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0053679321751,
+      "CL": 0.01346811740999998
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      8.369987741e-07,
+      -1.137702028e-08,
+      0.0009571004923
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": true,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.041158875e-05,
+      "Ux": 1.035175181e-05,
+      "Uy": 5.854605659e-05,
+      "gammaInt": 1.033679185e-08,
+      "k": 0.0002966322141,
+      "omega": 8.488242977e-08,
+      "p": 0.0001388458044
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.08327948e-06,
+      "Ux": 1.333489622e-07,
+      "Uy": 7.735429329e-07,
+      "gammaInt": 3.410895635e-10,
+      "k": 3.97629285e-06,
+      "omega": 9.645594613e-09,
+      "p": 1.385745079e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.015914126876468017,
+      "CL": 0.40785813442331004
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.008565025445873493,
+      "CL": 0.47562538476889
+    },
+    "station": "p07",
+    "status": "FAIL",
+    "yplus_max": 1.415114525,
+    "yplus_p95": 1.394879006
+  },
+  "p07-medium": {
+    "angle_deg": 6.09,
+    "boundary_flux_imbalance_fraction": 7.569616270941748e-09,
+    "coefficient_range_last500": {
+      "CD": 0.002351528895400001,
+      "CL": 0.06222932889999999
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      7.04325242e-07,
+      3.015152249e-08,
+      0.001676497998
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": true,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.618846178e-05,
+      "Ux": 1.15619446e-05,
+      "Uy": 6.964210942e-05,
+      "gammaInt": 1.054434745e-08,
+      "k": 0.0002515634339,
+      "omega": 8.914455246e-08,
+      "p": 0.000141937717
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 9.24541091e-07,
+      "Ux": 1.547282139e-07,
+      "Uy": 9.562946959e-07,
+      "gammaInt": 2.099668636e-10,
+      "k": 3.544385036e-06,
+      "omega": 1.242722434e-09,
+      "p": 1.394196578e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.008606022910951604,
+      "CL": 0.48105145333753974
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.009444835853218593,
+      "CL": 0.5314255151408801
+    },
+    "station": "p07",
+    "status": "FAIL",
+    "yplus_max": 1.909378333,
+    "yplus_p95": 1.880215903
+  },
+  "p08-coarse": {
+    "angle_deg": 8.09,
+    "boundary_flux_imbalance_fraction": 1.6592774650819835e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0024385559957,
+      "CL": 0.036938453870000054
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.087074999e-06,
+      6.748220248e-08,
+      0.001840516247
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 2.648543245e-05,
+      "Ux": 2.670397957e-05,
+      "Uy": 4.95791157e-05,
+      "gammaInt": 1.0144759e-08,
+      "k": 0.0002091035424,
+      "omega": 4.067971609e-07,
+      "p": 0.0003349834169
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 1.029691624e-06,
+      "Ux": 3.962256329e-07,
+      "Uy": 7.304305908e-07,
+      "gammaInt": 2.503552193e-10,
+      "k": 3.199629432e-06,
+      "omega": 6.230481089e-09,
+      "p": 3.119955868e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.011000463485603991,
+      "CL": 0.7888830601716397
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.008357066885727299,
+      "CL": 0.8557186281471496
+    },
+    "station": "p08",
+    "status": "FAIL",
+    "yplus_max": 3.32539336,
+    "yplus_p95": 3.271570668
+  },
+  "p08-fine": {
+    "angle_deg": 8.09,
+    "boundary_flux_imbalance_fraction": 2.1520204498753883e-08,
+    "coefficient_range_last500": {
+      "CD": 0.00404304636,
+      "CL": 0.06701210880999997
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.507644161e-06,
+      8.77292119e-08,
+      0.001007509942
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 7.647132506e-05,
+      "Ux": 9.967138712e-06,
+      "Uy": 3.537370113e-05,
+      "gammaInt": 1.051261457e-08,
+      "k": 0.0002546240852,
+      "omega": 6.147171598e-08,
+      "p": 0.0002272816063
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.117932323e-06,
+      "Ux": 1.238200815e-07,
+      "Uy": 4.442857954e-07,
+      "gammaInt": 3.810145551e-10,
+      "k": 3.446302981e-06,
+      "omega": 6.929848129e-09,
+      "p": 2.232896342e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.02148602710111,
+      "CL": 0.5100562577198101
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.01689740536945401,
+      "CL": 0.5985522513958701
+    },
+    "station": "p08",
+    "status": "FAIL",
+    "yplus_max": 1.584991777,
+    "yplus_p95": 1.549226978
+  },
+  "p08-medium": {
+    "angle_deg": 8.09,
+    "boundary_flux_imbalance_fraction": 8.269898327535074e-09,
+    "coefficient_range_last500": {
+      "CD": 0.0019415831630000008,
+      "CL": 0.056892979180000025
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      9.138719383e-07,
+      3.357703007e-08,
+      0.001513996526
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": true,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 5.256706598e-05,
+      "Ux": 1.384412568e-05,
+      "Uy": 4.020901534e-05,
+      "gammaInt": 1.423790089e-08,
+      "k": 0.0002544509192,
+      "omega": 1.494871704e-07,
+      "p": 0.0002662902849
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.068651428e-06,
+      "Ux": 1.860679015e-07,
+      "Uy": 5.535910876e-07,
+      "gammaInt": 6.705090067e-10,
+      "k": 3.596321933e-06,
+      "omega": 2.083731122e-09,
+      "p": 2.424320679e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.016088138013855006,
+      "CL": 0.6206151106451201
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.01284097799159401,
+      "CL": 0.6865736734512405
+    },
+    "station": "p08",
+    "status": "FAIL",
+    "yplus_max": 2.156118049,
+    "yplus_p95": 2.114147405
+  },
+  "p09-coarse": {
+    "angle_deg": 10.18,
+    "boundary_flux_imbalance_fraction": 1.5097926705387075e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0051768755411,
+      "CL": 0.07621654773000008
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.300194517e-06,
+      6.28676811e-08,
+      0.001976193682
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 2.725671123e-05,
+      "Ux": 1.893735249e-05,
+      "Uy": 2.240571393e-05,
+      "gammaInt": 1.004251781e-08,
+      "k": 0.0001834543723,
+      "omega": 2.269827016e-07,
+      "p": 0.0003236896438
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 8.816067506e-07,
+      "Ux": 2.755174085e-07,
+      "Uy": 3.175421742e-07,
+      "gammaInt": 2.196548026e-10,
+      "k": 2.809289178e-06,
+      "omega": 3.427074489e-09,
+      "p": 3.007426977e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.015088702774021988,
+      "CL": 0.9341383456224194
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.009209773988537097,
+      "CL": 1.0417708744754903
+    },
+    "station": "p09",
+    "status": "FAIL",
+    "yplus_max": 3.704291778,
+    "yplus_p95": 3.671941843
+  },
+  "p09-fine": {
+    "angle_deg": 10.18,
+    "boundary_flux_imbalance_fraction": 3.7322644760740695e-09,
+    "coefficient_range_last500": {
+      "CD": 0.012577012986999998,
+      "CL": 0.13448414102999995
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.550959371e-06,
+      1.5586616e-08,
+      0.001182493034
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0001172426852,
+      "Ux": 1.380361785e-05,
+      "Uy": 2.486563494e-05,
+      "gammaInt": 2.627500868e-08,
+      "k": 0.0003033729229,
+      "omega": 9.48370393e-08,
+      "p": 0.000327443145
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.230741105e-06,
+      "Ux": 1.707454068e-07,
+      "Uy": 2.981262885e-07,
+      "gammaInt": 1.298546178e-09,
+      "k": 4.061155745e-06,
+      "omega": 1.256959105e-09,
+      "p": 3.070786224e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.033229836021357026,
+      "CL": 0.5463131954563705
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.034987903288644984,
+      "CL": 0.7183789881057899
+    },
+    "station": "p09",
+    "status": "FAIL",
+    "yplus_max": 1.736666668,
+    "yplus_p95": 1.704283591
+  },
+  "p09-medium": {
+    "angle_deg": 10.18,
+    "boundary_flux_imbalance_fraction": 2.496755535660365e-09,
+    "coefficient_range_last500": {
+      "CD": 0.004122025383000001,
+      "CL": 0.07139129066000005
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.194767806e-06,
+      -1.032923842e-08,
+      0.001975584385
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 7.531022476e-05,
+      "Ux": 1.751913957e-05,
+      "Uy": 3.051094457e-05,
+      "gammaInt": 1.983386642e-08,
+      "k": 0.0002714918637,
+      "omega": 2.150852342e-07,
+      "p": 0.0003827789931
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.203946884e-06,
+      "Ux": 2.33700025e-07,
+      "Uy": 4.006426777e-07,
+      "gammaInt": 6.637297606e-10,
+      "k": 3.809352808e-06,
+      "omega": 2.970107958e-09,
+      "p": 3.642641542e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.030373505553369984,
+      "CL": 0.7373810410055498
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.01970777923368102,
+      "CL": 0.8290213673037993
+    },
+    "station": "p09",
+    "status": "FAIL",
+    "yplus_max": 2.382223551,
+    "yplus_p95": 2.344657562
+  },
+  "p10-coarse": {
+    "angle_deg": 11.13,
+    "boundary_flux_imbalance_fraction": 1.054822904777113e-08,
+    "coefficient_range_last500": {
+      "CD": 0.0068725664417999995,
+      "CL": 0.10920661400000009
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.256343535e-06,
+      -4.431496416e-08,
+      0.002094028859
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.082928001e-05,
+      "Ux": 2.017102411e-05,
+      "Uy": 2.031612507e-05,
+      "gammaInt": 2.027230455e-08,
+      "k": 0.0001679055242,
+      "omega": 2.26118829e-07,
+      "p": 0.0002486217
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 9.002330903e-07,
+      "Ux": 2.941644677e-07,
+      "Uy": 2.888827041e-07,
+      "gammaInt": 4.821457083e-10,
+      "k": 2.58104068e-06,
+      "omega": 3.435459446e-09,
+      "p": 2.306283032e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.020842841867629993,
+      "CL": 0.9606092171957104
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.012724532971608605,
+      "CL": 1.0973100641796003
+    },
+    "station": "p10",
+    "status": "FAIL",
+    "yplus_max": 3.842582627,
+    "yplus_p95": 3.807775746
+  },
+  "p10-fine": {
+    "angle_deg": 11.13,
+    "boundary_flux_imbalance_fraction": 8.527413198518715e-09,
+    "coefficient_range_last500": {
+      "CD": 0.01882843586,
+      "CL": 0.09944113375000008
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.476171499e-06,
+      3.589994324e-08,
+      0.001141613546
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.324934947e-05,
+      "Ux": 1.421400964e-05,
+      "Uy": 1.759865369e-05,
+      "gammaInt": 3.11245358e-08,
+      "k": 0.0002992978496,
+      "omega": 1.077473472e-07,
+      "p": 0.0003337103432
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.301066936e-06,
+      "Ux": 1.846800539e-07,
+      "Uy": 2.192490352e-07,
+      "gammaInt": 1.549304895e-09,
+      "k": 4.028768668e-06,
+      "omega": 1.427882983e-09,
+      "p": 3.23892259e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.04652730822955097,
+      "CL": 0.5996983412076105
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.04220808530982999,
+      "CL": 0.7842719420184199
+    },
+    "station": "p10",
+    "status": "FAIL",
+    "yplus_max": 1.805806893,
+    "yplus_p95": 1.774502405
+  },
+  "p10-medium": {
+    "angle_deg": 11.13,
+    "boundary_flux_imbalance_fraction": 3.0636516536789544e-08,
+    "coefficient_range_last500": {
+      "CD": 0.003629627616000001,
+      "CL": 0.10771075165999999
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.266335581e-06,
+      -1.287757186e-07,
+      0.001744342425
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.229411023e-05,
+      "Ux": 1.543035218e-05,
+      "Uy": 2.115631409e-05,
+      "gammaInt": 2.889561919e-08,
+      "k": 0.0002347077417,
+      "omega": 1.650674666e-07,
+      "p": 0.0003027183097
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.102794532e-06,
+      "Ux": 2.088559402e-07,
+      "Uy": 2.833105417e-07,
+      "gammaInt": 1.034101498e-09,
+      "k": 3.341082295e-06,
+      "omega": 2.286480513e-09,
+      "p": 2.680798698e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.035926830395548996,
+      "CL": 0.7786416232171199
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.02585894912247597,
+      "CL": 0.8716593373967604
+    },
+    "station": "p10",
+    "status": "FAIL",
+    "yplus_max": 2.46848319,
+    "yplus_p95": 2.436975064
+  },
+  "p11-coarse": {
+    "angle_deg": 12.1,
+    "boundary_flux_imbalance_fraction": 3.117224836478088e-08,
+    "coefficient_range_last500": {
+      "CD": 0.008291689142,
+      "CL": 0.12763596999999982
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.001114697e-06,
+      1.322066176e-07,
+      0.001895916236
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.885610723e-05,
+      "Ux": 4.884102909e-05,
+      "Uy": 5.673519605e-05,
+      "gammaInt": 3.528618696e-08,
+      "k": 0.0003003942909,
+      "omega": 1.046212734e-06,
+      "p": 0.0001555784808
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 9.205764391e-07,
+      "Ux": 7.254262353e-07,
+      "Uy": 8.465509849e-07,
+      "gammaInt": 7.274604807e-10,
+      "k": 4.58486116e-06,
+      "omega": 1.602833293e-08,
+      "p": 1.53578128e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.032343198230043044,
+      "CL": 0.9629614721265805
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.019357899740423987,
+      "CL": 1.1251386514817996
+    },
+    "station": "p11",
+    "status": "FAIL",
+    "yplus_max": 3.941510871,
+    "yplus_p95": 3.90726669
+  },
+  "p11-fine": {
+    "angle_deg": 12.1,
+    "boundary_flux_imbalance_fraction": 1.3418940145073132e-09,
+    "coefficient_range_last500": {
+      "CD": 0.022083375281000003,
+      "CL": 0.051014987100000075
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.442478447e-06,
+      -5.686934173e-09,
+      0.001163771122
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 4.049567829e-05,
+      "Ux": 1.550336443e-05,
+      "Uy": 1.727851511e-05,
+      "gammaInt": 1.977297272e-08,
+      "k": 0.0002991819332,
+      "omega": 1.20009185e-07,
+      "p": 0.0003232058871
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.326837638e-06,
+      "Ux": 1.990565532e-07,
+      "Uy": 2.112551855e-07,
+      "gammaInt": 9.390431142e-10,
+      "k": 4.025929243e-06,
+      "omega": 1.593457623e-09,
+      "p": 3.165694682e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.06542454704057404,
+      "CL": 0.697063126400099
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.050513794629316974,
+      "CL": 0.8451060066269686
+    },
+    "station": "p11",
+    "status": "FAIL",
+    "yplus_max": 1.864628936,
+    "yplus_p95": 1.835908165
+  },
+  "p11-medium": {
+    "angle_deg": 12.1,
+    "boundary_flux_imbalance_fraction": 2.3247918692432674e-08,
+    "coefficient_range_last500": {
+      "CD": 0.004800599546000005,
+      "CL": 0.10308589974999993
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.392429604e-06,
+      -9.813939291e-08,
+      0.001695319025
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.771163844e-05,
+      "Ux": 2.034709066e-05,
+      "Uy": 2.70911208e-05,
+      "gammaInt": 4.249894246e-08,
+      "k": 0.000268311268,
+      "omega": 3.109568926e-07,
+      "p": 0.0002214224931
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.122049772e-06,
+      "Ux": 2.743401278e-07,
+      "Uy": 3.666233611e-07,
+      "gammaInt": 1.696657843e-09,
+      "k": 3.781025683e-06,
+      "omega": 4.318832469e-09,
+      "p": 2.180288721e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.04673264307114001,
+      "CL": 0.8034626564673706
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.03498564097838796,
+      "CL": 0.8916312929613709
+    },
+    "station": "p11",
+    "status": "FAIL",
+    "yplus_max": 2.517051889,
+    "yplus_p95": 2.489552385
+  },
+  "p12-coarse": {
+    "angle_deg": 13.31,
+    "boundary_flux_imbalance_fraction": 1.793702091211021e-08,
+    "coefficient_range_last500": {
+      "CD": 0.018941131129999997,
+      "CL": 0.19413405373000003
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.575876856e-06,
+      7.697183584e-08,
+      0.001566669118
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 6.83567175e-05,
+      "Ux": 4.446287441e-05,
+      "Uy": 3.573144207e-05,
+      "gammaInt": 6.93410531e-08,
+      "k": 0.0001952386912,
+      "omega": 5.136257024e-07,
+      "p": 0.0001339374847
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 8.133360115e-07,
+      "Ux": 6.559480701e-07,
+      "Uy": 5.136738669e-07,
+      "gammaInt": 1.856923522e-09,
+      "k": 2.959014467e-06,
+      "omega": 7.636028456e-09,
+      "p": 1.199312497e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.06381068246029296,
+      "CL": 0.7867055331516004
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.041774402807686024,
+      "CL": 0.9995079153129898
+    },
+    "station": "p12",
+    "status": "FAIL",
+    "yplus_max": 3.906477713,
+    "yplus_p95": 3.871363329
+  },
+  "p12-fine": {
+    "angle_deg": 13.31,
+    "boundary_flux_imbalance_fraction": 1.9948314220076095e-09,
+    "coefficient_range_last500": {
+      "CD": 0.027215171837000007,
+      "CL": 0.059399811879999986
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.474720114e-06,
+      -8.514342334e-09,
+      0.0009568088755
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.916965481e-05,
+      "Ux": 1.990360959e-05,
+      "Uy": 2.679126822e-05,
+      "gammaInt": 1.02031952e-08,
+      "k": 0.0003258701762,
+      "omega": 1.785772476e-07,
+      "p": 0.000402364091
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.360723218e-06,
+      "Ux": 2.516521513e-07,
+      "Uy": 3.375341893e-07,
+      "gammaInt": 4.798434897e-10,
+      "k": 4.376735367e-06,
+      "omega": 2.366952193e-09,
+      "p": 3.854008838e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.09704685913443398,
+      "CL": 0.7922328777935098
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.06813058316859905,
+      "CL": 0.8511962111731699
+    },
+    "station": "p12",
+    "status": "FAIL",
+    "yplus_max": 1.879677805,
+    "yplus_p95": 1.850589518
+  },
+  "p12-medium": {
+    "angle_deg": 13.31,
+    "boundary_flux_imbalance_fraction": 1.8949416780406385e-08,
+    "coefficient_range_last500": {
+      "CD": 0.007810179607999998,
+      "CL": 0.11992751427000004
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.240365664e-06,
+      8.102847787e-08,
+      0.00157388617
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 5.363044984e-05,
+      "Ux": 2.368370955e-05,
+      "Uy": 2.727630501e-05,
+      "gammaInt": 2.619513222e-08,
+      "k": 0.0002784120875,
+      "omega": 4.184904604e-07,
+      "p": 0.0001870730443
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.135788749e-06,
+      "Ux": 3.187389118e-07,
+      "Uy": 3.682381233e-07,
+      "gammaInt": 9.852313741e-10,
+      "k": 3.905952707e-06,
+      "omega": 5.804988095e-09,
+      "p": 1.760338069e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.06645225785980406,
+      "CL": 0.7852993989600596
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.05557632478850798,
+      "CL": 0.8572992712064101
+    },
+    "station": "p12",
+    "status": "FAIL",
+    "yplus_max": 2.530213539,
+    "yplus_p95": 2.505765744
+  },
+  "p13-coarse": {
+    "angle_deg": 14.08,
+    "boundary_flux_imbalance_fraction": 5.717053625071654e-08,
+    "coefficient_range_last500": {
+      "CD": 0.021383782961999998,
+      "CL": 0.19575675935999992
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.708166949e-06,
+      2.471779889e-07,
+      0.00113819862
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 6.675707983e-05,
+      "Ux": 4.647286109e-05,
+      "Uy": 4.401845986e-05,
+      "gammaInt": 6.40800486e-08,
+      "k": 0.000121178611,
+      "omega": 6.886143161e-08,
+      "p": 0.0001316220074
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 8.656774483e-07,
+      "Ux": 6.878516585e-07,
+      "Uy": 6.411788268e-07,
+      "gammaInt": 1.712473507e-09,
+      "k": 1.849624085e-06,
+      "omega": 7.389138055e-09,
+      "p": 1.307320532e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.07757762463636803,
+      "CL": 0.7608650737982497
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.05324414857775401,
+      "CL": 0.968776865429199
+    },
+    "station": "p13",
+    "status": "FAIL",
+    "yplus_max": 3.914738755,
+    "yplus_p95": 3.877890185
+  },
+  "p13-fine": {
+    "angle_deg": 14.08,
+    "boundary_flux_imbalance_fraction": 1.3590038991610582e-08,
+    "coefficient_range_last500": {
+      "CD": 0.029166951627999996,
+      "CL": 0.13754288297000006
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.700094956e-06,
+      -5.840195891e-08,
+      0.0009098934122
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.341935453e-05,
+      "Ux": 2.127303846e-05,
+      "Uy": 2.593308162e-05,
+      "gammaInt": 2.015034607e-08,
+      "k": 0.0003218788694,
+      "omega": 1.895972397e-07,
+      "p": 0.0002739322144
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.3587424e-06,
+      "Ux": 2.693769121e-07,
+      "Uy": 3.291323982e-07,
+      "gammaInt": 7.699235859e-10,
+      "k": 4.336142254e-06,
+      "omega": 2.51060469e-09,
+      "p": 2.716054758e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.11692139254658815,
+      "CL": 0.8359128663705302
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.08460894699673101,
+      "CL": 0.8559599039034295
+    },
+    "station": "p13",
+    "status": "FAIL",
+    "yplus_max": 1.871440899,
+    "yplus_p95": 1.844666447
+  },
+  "p13-medium": {
+    "angle_deg": 14.08,
+    "boundary_flux_imbalance_fraction": 4.402544901054072e-09,
+    "coefficient_range_last500": {
+      "CD": 0.017663194487999995,
+      "CL": 0.12239386871000002
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      9.689805702e-07,
+      1.900998216e-08,
+      0.001630363071
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.719234183e-05,
+      "Ux": 2.755675332e-05,
+      "Uy": 3.389587566e-05,
+      "gammaInt": 2.335121615e-08,
+      "k": 0.0002844487952,
+      "omega": 4.27130289e-07,
+      "p": 0.0001997434677
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.100070471e-06,
+      "Ux": 3.74893401e-07,
+      "Uy": 4.620758266e-07,
+      "gammaInt": 9.089482632e-10,
+      "k": 3.98482279e-06,
+      "omega": 5.933194583e-09,
+      "p": 1.96358014e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.09925217571559995,
+      "CL": 0.6497250224466294
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.092683128642037,
+      "CL": 0.7203228715624894
+    },
+    "station": "p13",
+    "status": "FAIL",
+    "yplus_max": 2.392627171,
+    "yplus_p95": 2.363351061
+  },
+  "p14-coarse": {
+    "angle_deg": 15.24,
+    "boundary_flux_imbalance_fraction": 8.885934814978375e-09,
+    "coefficient_range_last500": {
+      "CD": 0.005765219530000004,
+      "CL": 0.023197011850000004
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      4.951321343e-07,
+      3.918685856e-08,
+      0.001113563849
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 2.515160989e-05,
+      "Ux": 3.792846094e-05,
+      "Uy": 0.0001205286305,
+      "gammaInt": 3.221634289e-08,
+      "k": 3.3762832e-05,
+      "omega": 1.016543953e-08,
+      "p": 9.892121685e-05
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 3.926405874e-07,
+      "Ux": 5.320203525e-07,
+      "Uy": 1.72716055e-06,
+      "gammaInt": 1.092492274e-09,
+      "k": 3.974131174e-07,
+      "omega": 8.19098404e-10,
+      "p": 9.545432567e-07
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.16225668466125004,
+      "CL": 0.5453317429417099
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.15899006839083993,
+      "CL": 0.5658873501530196
+    },
+    "station": "p14",
+    "status": "FAIL",
+    "yplus_max": 2.934418542,
+    "yplus_p95": 2.894220068
+  },
+  "p14-fine": {
+    "angle_deg": 15.24,
+    "boundary_flux_imbalance_fraction": 1.0528598904017427e-08,
+    "coefficient_range_last500": {
+      "CD": 0.317151522072,
+      "CL": 1.26794276989
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      3.652342413e-06,
+      4.571564092e-08,
+      0.001258467779
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0001236503121,
+      "Ux": 3.941424297e-05,
+      "Uy": 0.0001359624142,
+      "gammaInt": 2.199494761e-07,
+      "k": 0.0004116522697,
+      "omega": 2.578148321e-07,
+      "p": 0.0002831401849
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.173015656e-06,
+      "Ux": 3.604034385e-07,
+      "Uy": 1.078743106e-06,
+      "gammaInt": 5.820283461e-09,
+      "k": 5.233310698e-06,
+      "omega": 3.363630485e-09,
+      "p": 2.827807018e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.32898148112906994,
+      "CL": 1.146528165343611
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.14048374103106998,
+      "CL": 0.2480186579598538
+    },
+    "station": "p14",
+    "status": "FAIL",
+    "yplus_max": 1.033453561,
+    "yplus_p95": 1.017195842
+  },
+  "p14-medium": {
+    "angle_deg": 15.24,
+    "boundary_flux_imbalance_fraction": 3.0439387262691967e-09,
+    "coefficient_range_last500": {
+      "CD": 0.022617701500000004,
+      "CL": 0.15857440435999998
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.446608551e-06,
+      -1.320191631e-08,
+      0.001686981471
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 6.419821071e-05,
+      "Ux": 4.004644606e-05,
+      "Uy": 5.970485905e-05,
+      "gammaInt": 3.490660707e-08,
+      "k": 0.0002521621373,
+      "omega": 3.472458332e-07,
+      "p": 0.0004415323506
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.073922789e-06,
+      "Ux": 4.787712658e-07,
+      "Uy": 6.525236394e-07,
+      "gammaInt": 1.192870218e-09,
+      "k": 3.512137938e-06,
+      "omega": 4.841306078e-09,
+      "p": 4.206019583e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.13852646429810997,
+      "CL": 0.34190371718630985
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.16256219359756022,
+      "CL": 0.600549271772329
+    },
+    "station": "p14",
+    "status": "FAIL",
+    "yplus_max": 2.032464693,
+    "yplus_p95": 2.003522351
+  },
+  "p15-coarse": {
+    "angle_deg": 16.33,
+    "boundary_flux_imbalance_fraction": 1.3753546328376846e-09,
+    "coefficient_range_last500": {
+      "CD": 0.01682557254,
+      "CL": 0.07763941640999994
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      8.006421966e-07,
+      -6.009025067e-09,
+      0.0009096749338
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 4.287695988e-05,
+      "Ux": 5.475676199e-05,
+      "Uy": 9.97967891e-05,
+      "gammaInt": 7.986920858e-08,
+      "k": 4.255197731e-05,
+      "omega": 1.182177186e-08,
+      "p": 0.0002363890076
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 5.781410784e-07,
+      "Ux": 7.087184898e-07,
+      "Uy": 1.181586826e-06,
+      "gammaInt": 1.277990191e-09,
+      "k": 3.674946039e-07,
+      "omega": 1.007281797e-09,
+      "p": 2.147165891e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.21133971821404007,
+      "CL": 0.5785200967067601
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.1897350155178101,
+      "CL": 0.5482296343452803
+    },
+    "station": "p15",
+    "status": "FAIL",
+    "yplus_max": 2.723707177,
+    "yplus_p95": 2.689539154
+  },
+  "p15-fine": {
+    "angle_deg": 16.33,
+    "boundary_flux_imbalance_fraction": 3.595987005191677e-08,
+    "coefficient_range_last500": {
+      "CD": 0.06725291711,
+      "CL": 0.34433092642999996
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.968909344e-06,
+      1.57723669e-07,
+      0.001064115053
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0001223364556,
+      "Ux": 3.417251348e-05,
+      "Uy": 6.518154161e-05,
+      "gammaInt": 9.055891724e-08,
+      "k": 0.0003338676845,
+      "omega": 2.379777616e-07,
+      "p": 0.0001942344594
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.26298346e-06,
+      "Ux": 3.81985571e-07,
+      "Uy": 6.854003314e-07,
+      "gammaInt": 3.76845067e-09,
+      "k": 4.411238022e-06,
+      "omega": 3.151621979e-09,
+      "p": 1.914782456e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.19843431081705007,
+      "CL": 0.5063243628531602
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.14283789345507997,
+      "CL": 0.35868463832541986
+    },
+    "station": "p15",
+    "status": "FAIL",
+    "yplus_max": 1.389836899,
+    "yplus_p95": 1.36241088
+  },
+  "p15-medium": {
+    "angle_deg": 16.33,
+    "boundary_flux_imbalance_fraction": 2.300816130112945e-08,
+    "coefficient_range_last500": {
+      "CD": 0.06631848095000001,
+      "CL": 0.25805436695000006
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.264666913e-06,
+      -1.017216479e-07,
+      0.001478432786
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 8.154744086e-05,
+      "Ux": 3.761567042e-05,
+      "Uy": 8.771109144e-05,
+      "gammaInt": 2.817991943e-07,
+      "k": 0.000188804026,
+      "omega": 8.725804881e-08,
+      "p": 0.0005082709594
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.064001939e-06,
+      "Ux": 3.835745038e-07,
+      "Uy": 7.725017115e-07,
+      "gammaInt": 5.372856582e-09,
+      "k": 2.581061735e-06,
+      "omega": 9.758149459e-09,
+      "p": 4.869316953e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.18100104179740004,
+      "CL": 0.44081761609508036
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.18908586546782,
+      "CL": 0.5278545753475893
+    },
+    "station": "p15",
+    "status": "FAIL",
+    "yplus_max": 1.789211571,
+    "yplus_p95": 1.752797825
+  },
+  "p16-coarse": {
+    "angle_deg": 17.13,
+    "boundary_flux_imbalance_fraction": 8.312538754981239e-10,
+    "coefficient_range_last500": {
+      "CD": 0.02019525853000001,
+      "CL": 0.07515948186999999
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      6.963520189e-07,
+      3.71314445e-09,
+      0.001385030004
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 3.27422961e-05,
+      "Ux": 5.713936671e-05,
+      "Uy": 0.0002766955238,
+      "gammaInt": 5.511045397e-08,
+      "k": 3.687966319e-05,
+      "omega": 1.037838606e-08,
+      "p": 0.000199206479
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 5.314663819e-07,
+      "Ux": 7.429327658e-07,
+      "Uy": 3.490721864e-06,
+      "gammaInt": 8.883613605e-10,
+      "k": 3.735885882e-07,
+      "omega": 7.905212055e-10,
+      "p": 1.779391962e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.21934914565350014,
+      "CL": 0.5599086906326496
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.20560913549866994,
+      "CL": 0.55391963718363
+    },
+    "station": "p16",
+    "status": "FAIL",
+    "yplus_max": 2.646625766,
+    "yplus_p95": 2.616882813
+  },
+  "p16-fine": {
+    "angle_deg": 17.13,
+    "boundary_flux_imbalance_fraction": 7.899543879092294e-08,
+    "coefficient_range_last500": {
+      "CD": 0.06110765081000001,
+      "CL": 0.32450931984000003
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.020721799e-06,
+      3.489239165e-07,
+      0.0007997839931
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 9.598690245e-05,
+      "Ux": 4.063593278e-05,
+      "Uy": 8.474604568e-05,
+      "gammaInt": 1.146041123e-07,
+      "k": 0.0003196271429,
+      "omega": 1.953456915e-07,
+      "p": 0.0001783825117
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 1.164342143e-06,
+      "Ux": 4.453897715e-07,
+      "Uy": 8.603714111e-07,
+      "gammaInt": 4.475810394e-09,
+      "k": 4.156503642e-06,
+      "omega": 2.576351542e-09,
+      "p": 1.73371977e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.2312371784602199,
+      "CL": 0.5147945605592602
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.11986994313319004,
+      "CL": 0.20144360597341
+    },
+    "station": "p16",
+    "status": "FAIL",
+    "yplus_max": 1.276960048,
+    "yplus_p95": 1.249105438
+  },
+  "p16-medium": {
+    "angle_deg": 17.13,
+    "boundary_flux_imbalance_fraction": 1.1224263736303607e-08,
+    "coefficient_range_last500": {
+      "CD": 0.06954349797999998,
+      "CL": 0.30954631067000005
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.466624454e-06,
+      5.007357048e-08,
+      0.001406260355
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0001356664669,
+      "Ux": 4.25398163e-05,
+      "Uy": 0.0001318059837,
+      "gammaInt": 2.422626314e-07,
+      "k": 0.0001814693374,
+      "omega": 3.138111616e-08,
+      "p": 0.0007755297031
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.051124139e-06,
+      "Ux": 3.771679712e-07,
+      "Uy": 1.172446918e-06,
+      "gammaInt": 6.114366883e-09,
+      "k": 2.374819254e-06,
+      "omega": 2.954100512e-09,
+      "p": 6.942135136e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.19567255864712021,
+      "CL": 0.44307025023599567
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.22158037039164016,
+      "CL": 0.5966496261033802
+    },
+    "station": "p16",
+    "status": "FAIL",
+    "yplus_max": 1.732782455,
+    "yplus_p95": 1.703653197
+  },
+  "p17-coarse": {
+    "angle_deg": 18.21,
+    "boundary_flux_imbalance_fraction": 2.4526929165672172e-08,
+    "coefficient_range_last500": {
+      "CD": 0.09721814415000002,
+      "CL": 0.29661442626000006
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.660406248e-06,
+      1.106623197e-07,
+      0.0008974546521
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0002510100199,
+      "Ux": 7.387863853e-05,
+      "Uy": 0.0003183536172,
+      "gammaInt": 6.08276354e-07,
+      "k": 8.974752735e-05,
+      "omega": 3.184388296e-08,
+      "p": 0.0004150926894
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 6.848529245e-07,
+      "Ux": 7.33604001e-07,
+      "Uy": 2.993935673e-06,
+      "gammaInt": 1.197395155e-08,
+      "k": 5.821716578e-07,
+      "omega": 1.726278907e-09,
+      "p": 4.008527438e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.3619224824122498,
+      "CL": 0.9574375731636486
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.22017826713968025,
+      "CL": 0.5319212478854102
+    },
+    "station": "p17",
+    "status": "FAIL",
+    "yplus_max": 2.613825675,
+    "yplus_p95": 2.588896406
+  },
+  "p17-fine": {
+    "angle_deg": 18.21,
+    "boundary_flux_imbalance_fraction": 2.7574372454612587e-08,
+    "coefficient_range_last500": {
+      "CD": 0.08566778233,
+      "CL": 0.33947293263
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.994336596e-06,
+      1.228671347e-07,
+      0.001127734273
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0003440128261,
+      "Ux": 6.127568408e-05,
+      "Uy": 0.0001095342,
+      "gammaInt": 1.669908265e-07,
+      "k": 0.0002968993071,
+      "omega": 1.512661999e-07,
+      "p": 0.0001897822816
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 9.876851796e-07,
+      "Ux": 6.08013679e-07,
+      "Uy": 8.720612045e-07,
+      "gammaInt": 6.335288703e-09,
+      "k": 3.654190593e-06,
+      "omega": 1.989892794e-09,
+      "p": 1.845382845e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.27341700301877997,
+      "CL": 0.55889001696402
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.15409669001763,
+      "CL": 0.2999181005209897
+    },
+    "station": "p17",
+    "status": "FAIL",
+    "yplus_max": 1.289061473,
+    "yplus_p95": 1.262673689
+  },
+  "p17-medium": {
+    "angle_deg": 18.21,
+    "boundary_flux_imbalance_fraction": 4.4017264740963704e-08,
+    "coefficient_range_last500": {
+      "CD": 0.08709211751000001,
+      "CL": 0.31756855627
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      3.81569713e-06,
+      -1.98048576e-07,
+      0.001535534303
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0002699967898,
+      "Ux": 7.485952357e-05,
+      "Uy": 0.000235300005,
+      "gammaInt": 6.330044459e-07,
+      "k": 0.0002960647666,
+      "omega": 5.029650366e-08,
+      "p": 0.001726606217
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.029198026e-06,
+      "Ux": 5.181909036e-07,
+      "Uy": 1.597069511e-06,
+      "gammaInt": 1.012935263e-08,
+      "k": 2.965151619e-06,
+      "omega": 4.138784673e-09,
+      "p": 1.654420032e-05
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.21218535329453392,
+      "CL": 0.4702665835325782
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.2502784286460102,
+      "CL": 0.6256838819171197
+    },
+    "station": "p17",
+    "status": "FAIL",
+    "yplus_max": 1.67923377,
+    "yplus_p95": 1.658632423
+  },
+  "p18-coarse": {
+    "angle_deg": 19.27,
+    "boundary_flux_imbalance_fraction": 1.0027806970238449e-07,
+    "coefficient_range_last500": {
+      "CD": 0.07115531534,
+      "CL": 0.19331994497000005
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      1.156052258e-05,
+      4.558606725e-07,
+      0.001132854113
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": false,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": true,
+      "trip_constraints": true,
+      "wall_yplus": false
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0002232648904,
+      "Ux": 0.0002026603349,
+      "Uy": 0.001150680982,
+      "gammaInt": 2.127884637e-06,
+      "k": 0.0006723011157,
+      "omega": 1.986422461e-07,
+      "p": 0.003078289256
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "coarse",
+    "linear_residuals_final": {
+      "ReThetat": 7.69943263e-07,
+      "Ux": 1.395587723e-06,
+      "Uy": 6.728493229e-06,
+      "gammaInt": 2.483289598e-08,
+      "k": 2.678581743e-06,
+      "omega": 7.55432894e-10,
+      "p": 2.957777991e-05
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.2585146436396101,
+      "CL": 0.5868459754755203
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.25305437558610977,
+      "CL": 0.5881719412067903
+    },
+    "station": "p18",
+    "status": "FAIL",
+    "yplus_max": 2.547165217,
+    "yplus_p95": 2.52140122
+  },
+  "p18-fine": {
+    "angle_deg": 19.27,
+    "boundary_flux_imbalance_fraction": 5.47521954534131e-08,
+    "coefficient_range_last500": {
+      "CD": 0.12187164429,
+      "CL": 0.4678812238000001
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      2.979648093e-06,
+      2.482066261e-07,
+      0.001094882059
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0003541944843,
+      "Ux": 6.954455778e-05,
+      "Uy": 0.000122371146,
+      "gammaInt": 3.179636051e-07,
+      "k": 0.0002353479241,
+      "omega": 4.087804237e-08,
+      "p": 0.0004092663128
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "fine",
+    "linear_residuals_final": {
+      "ReThetat": 9.459789688e-07,
+      "Ux": 6.606318548e-07,
+      "Uy": 9.438428449e-07,
+      "gammaInt": 1.163420585e-08,
+      "k": 2.899878476e-06,
+      "omega": 4.296448776e-09,
+      "p": 4.080013516e-06
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.2775305364403002,
+      "CL": 0.5227165268081203
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.20178532521355008,
+      "CL": 0.4352843591541802
+    },
+    "station": "p18",
+    "status": "FAIL",
+    "yplus_max": 1.342358862,
+    "yplus_p95": 1.324445159
+  },
+  "p18-medium": {
+    "angle_deg": 19.27,
+    "boundary_flux_imbalance_fraction": 1.4229632329240902e-08,
+    "coefficient_range_last500": {
+      "CD": 0.13972652106,
+      "CL": 0.31980612439
+    },
+    "complete_prediction": true,
+    "continuity_final": [
+      9.509966264e-06,
+      -6.455369066e-08,
+      0.001489226026
+    ],
+    "extraction_errors": [],
+    "gates": {
+      "boundary_conservation": true,
+      "continuity": true,
+      "duration_complete": true,
+      "finite_fields": true,
+      "initial_residuals": false,
+      "linear_residuals": false,
+      "nonoscillating_CD": false,
+      "nonoscillating_CL": false,
+      "stationary_CD": false,
+      "stationary_CL": false,
+      "trip_constraints": true,
+      "wall_yplus": true
+    },
+    "initial_residuals_final_iteration": {
+      "ReThetat": 0.0002988824011,
+      "Ux": 0.0001229313076,
+      "Uy": 0.0003711512829,
+      "gammaInt": 2.975187125e-06,
+      "k": 0.000414212226,
+      "omega": 8.032282587e-08,
+      "p": 0.002898395895
+    },
+    "iteration_is_not_physical_time": true,
+    "last_iteration": 2000.0,
+    "level": "medium",
+    "linear_residuals_final": {
+      "ReThetat": 1.148607604e-06,
+      "Ux": 7.726771588e-07,
+      "Uy": 2.293339378e-06,
+      "gammaInt": 2.077944596e-08,
+      "k": 3.069116623e-06,
+      "omega": 5.380640407e-09,
+      "p": 2.889990571e-05
+    },
+    "mean_iterations_1000_1500": {
+      "CD": 0.21402487959574004,
+      "CL": 0.4478987656158002
+    },
+    "mean_iterations_1500_2000": {
+      "CD": 0.25896754332586996,
+      "CL": 0.6085175711500899
+    },
+    "station": "p18",
+    "status": "FAIL",
+    "yplus_max": 1.701014327,
+    "yplus_p95": 1.681048996
+  }
+}

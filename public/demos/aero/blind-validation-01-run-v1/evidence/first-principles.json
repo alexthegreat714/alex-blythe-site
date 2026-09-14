@@ -1,0 +1,6 @@
+{
+  "chord_m": 0.601,
+  "normalization": "CL/CD from forces divided by 0.5*rhoInf*U^2*chord*empty_span; rhoInf=1 for kinematic pressure. No pressure or lift target used.",
+  "nu_m2_s": 5.1558570858663395e-06,
+  "speed_m_s": 51.04384302979155
+}

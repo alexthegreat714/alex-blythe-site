@@ -1,0 +1,812 @@
+[
+  {
+    "case": "p01-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p01-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p01-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p02-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p02-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p02-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p03-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p03-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p03-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p04-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p04-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p04-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p05-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p05-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p05-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p06-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p06-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p06-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p07-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p07-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p07-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p08-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p08-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p08-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p09-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p09-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p09-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p10-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p10-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p10-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p11-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p11-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p11-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p12-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p12-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p12-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p13-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p13-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p13-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p14-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p14-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p14-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p15-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p15-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p15-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p16-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p16-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p16-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p17-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p17-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p17-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  },
+  {
+    "case": "p18-coarse",
+    "cells": 21504,
+    "counts": [
+      64,
+      64,
+      40,
+      64
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 1612,
+    "level": "coarse",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 3440
+  },
+  {
+    "case": "p18-medium",
+    "cells": 48384,
+    "counts": [
+      96,
+      96,
+      60,
+      96
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 3610,
+    "level": "medium",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 7768
+  },
+  {
+    "case": "p18-fine",
+    "cells": 86016,
+    "counts": [
+      128,
+      128,
+      80,
+      128
+    ],
+    "geometry_source": "Pinned OpenFOAM 10 NACA0012.obj; nominal geometry only",
+    "laminar_cells": 6384,
+    "level": "fine",
+    "topology": "Foundation 10 projected C-grid",
+    "trip_cells": 13722
+  }
+]

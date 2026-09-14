@@ -1,0 +1,2594 @@
+[
+  {
+    "angle": -3.99,
+    "case": "p01-coarse",
+    "container_id": "b65fd6d232cd245e30446718a1321d1b30b6e07848e0a56187bb3c80039c9618",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T21:24:37.174486+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T21:19:26.305934+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T21:24:34.808043308Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:19:27.01324059Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -3.99,
+    "case": "p01-medium",
+    "container_id": "d70de9618b2d92eca800d4585332fe1aaf07da4ce990955ca42eb209d122093b",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T21:34:48.469161+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T21:19:26.308067+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T21:34:45.652394241Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:19:27.020406385Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -3.99,
+    "case": "p01-fine",
+    "container_id": "e96f91feeb1766d18013472b1c3bb1e6b451ed7688c32f74723f976bf0c8b004",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T21:53:22.818913+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T21:19:26.308067+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T21:53:20.756595904Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:19:27.024245313Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -1.98,
+    "case": "p02-coarse",
+    "container_id": "03c6dd844a6d311807f189ca76a9f1d4bbe66fe20cad192f565865180289e2bd",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T21:31:29.835544+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T21:24:37.695610+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T21:31:27.999904462Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:24:38.844432044Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -1.98,
+    "case": "p02-medium",
+    "container_id": "06bcdab1655dde253fd97515b59a5cf9aa6b833db94a597bf6449637bf4d07dd",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T21:46:17.406622+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T21:31:30.268766+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T21:46:15.86327136Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:31:31.331668028Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -1.98,
+    "case": "p02-fine",
+    "container_id": "ba15416b8e7a899899e911c4b4db5dc27ea9311ff34081d3767668a5e075f433",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:08:34.900463+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T21:34:49.213309+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:08:32.444439674Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:34:50.05428549Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -0.03,
+    "case": "p03-coarse",
+    "container_id": "4b76eadee666cacf3f49ca169929b95b4d6a1e988be12bbd34e2fa0b27b3a400",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T21:51:41.705048+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T21:46:18.238312+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T21:51:39.427578848Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:46:19.164930588Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -0.03,
+    "case": "p03-medium",
+    "container_id": "d8ab0b5cdee86e7826272abfe5c768ae957ebc18643ed0fdd204fded934888f4",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:07:00.950657+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T21:51:42.110014+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:06:58.3487527Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:51:42.97647444Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": -0.03,
+    "case": "p03-fine",
+    "container_id": "44728ab977ea0fe8a6ee80002e5062353f8a1e4e386ccba71fbd0dc142874cc4",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:28:32.074075+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T21:53:24.274045+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:28:29.564927919Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T21:53:25.05977392Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 0.04,
+    "case": "p04-coarse",
+    "container_id": "1d3f31478694199834d8427d56a3d839e181e0b14aaff2fa10247e6932a73e9c",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:11:49.728787+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T22:07:01.632599+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:11:48.188279268Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:07:02.607191762Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 0.04,
+    "case": "p04-medium",
+    "container_id": "0fb4c00651f97528d8b820c08cc4877b55d60fb24a6d1510d9a282803b6c2a5b",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:24:52.855233+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T22:08:36.198532+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:24:49.965947533Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:08:36.975488451Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 0.04,
+    "case": "p04-fine",
+    "container_id": "8d5b6f6075737adea6a114224bb15468ad595f5c5f77a3ab68b8e21bd3a42c05",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:45:40.185385+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T22:11:50.073074+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:45:37.188449921Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:11:50.87730519Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 2.0,
+    "case": "p05-coarse",
+    "container_id": "f88ca2b1f908bc2df8045231bc58231e551a044095e4e8edf5cd53540878d412",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:30:05.352399+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T22:24:53.478061+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:30:04.186503955Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:24:54.361483404Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 2.0,
+    "case": "p05-medium",
+    "container_id": "0281f1d5c1e75a2c55758f81350119478a314582d5b9d927576c9ce0456a7103",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:42:21.247989+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T22:28:33.217141+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:42:18.925479127Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:28:34.166402881Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 2.0,
+    "case": "p05-fine",
+    "container_id": "c7c4d10b63c7ef7666ec1cff24c80cf2a12c33b27b18a849d5d920b5ae59d29c",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:00:53.095333+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T22:30:05.726414+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:00:51.296704204Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:30:06.560819336Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 4.06,
+    "case": "p06-coarse",
+    "container_id": "5982283f29ed277c8a9e84edc602feaf764cb70bedbd0f41d8edd1325d61f285",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:47:38.436555+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T22:42:21.888711+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:47:37.292084671Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:42:22.659838608Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 4.06,
+    "case": "p06-medium",
+    "container_id": "89efed3dfcb525a94d92e83402b48106bbf01e0b4ba5a5cd1f1438f80706b7ed",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T22:59:47.266186+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T22:45:41.508739+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T22:59:44.702353403Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:45:42.275272975Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 4.06,
+    "case": "p06-fine",
+    "container_id": "d20ff3e5349de1211eb34d420b642d69bbd4c1f9c471977e523165f5a28e0d9d",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:19:00.668156+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T22:47:38.789906+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:18:57.811010264Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:47:39.688099907Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 6.09,
+    "case": "p07-coarse",
+    "container_id": "b879fd4c35e8503cf66fca5f8ad2236bf8b4a555c42658982a8dcdf754fabb0f",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:04:55.485172+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T22:59:48.098906+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:04:53.453224259Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T22:59:48.960247592Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 6.09,
+    "case": "p07-medium",
+    "container_id": "c38fa521b4bc8ac1809bd51ba98d4a3290c5e7e1c52479d0c5be1cefa67a3a72",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:14:35.418914+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T23:00:54.229476+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:14:33.290108409Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:00:55.019300939Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 6.09,
+    "case": "p07-fine",
+    "container_id": "5e00799ecc06ae727902a7fdb328ec0245a5a36459a65c053ac1abeaaeeed332",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:36:26.710032+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T23:04:55.813577+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:36:24.226154663Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:04:56.59569432Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 8.09,
+    "case": "p08-coarse",
+    "container_id": "4eed90f84bdfc8c756580b993bfa281e4449ae6442d5bae3b8ce2a54826c88fc",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:19:48.274066+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T23:14:35.998755+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:19:46.636748896Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:14:36.858162123Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 8.09,
+    "case": "p08-medium",
+    "container_id": "db33595a93fef9f04f971f1955ac98042fef491490b6bb4fdff5e44d6b9d52d5",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:33:22.184484+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T23:19:01.784388+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:33:20.809526029Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:19:02.590720043Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 8.09,
+    "case": "p08-fine",
+    "container_id": "5e1515b71b1460b8f636359622b9e24364c793111093e43958cbd8a7a8fcf4c3",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:51:54.628741+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T23:19:48.708328+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:51:52.627308874Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:19:49.770675487Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 10.18,
+    "case": "p09-coarse",
+    "container_id": "f2767d4dae7591e23101990948a1dbd38c7bc5e530e39741cdce81b7b84c8cb2",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:38:44.536438+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T23:33:22.871399+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:38:41.548854361Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:33:23.705612543Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 10.18,
+    "case": "p09-medium",
+    "container_id": "dcea6e60e0652998cba326b34695c5619d0316c0be3fe2eee6af7fe15b139156",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:50:26.696358+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T23:36:27.733617+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:50:25.37619448Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:36:28.572032422Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 10.18,
+    "case": "p09-fine",
+    "container_id": "27cb73b4db73fa1ad23e1d8e4e6c98175552e62f7e9a4647f9357e2ba0f78a5c",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:10:16.551327+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T23:38:44.883982+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:10:13.236325033Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:38:45.835954135Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 11.13,
+    "case": "p10-coarse",
+    "container_id": "ef012be103049158975a35e03dee02a45112f27f93f7415a2391689c92ae0028",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-13T23:55:36.185608+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-13T23:50:27.605355+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-13T23:55:34.114676119Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:50:28.561915314Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 11.13,
+    "case": "p10-medium",
+    "container_id": "fd1afe63a936c55d7ad0506512a02958d1ac56c4a139b5b8cd6f3255a4327b26",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:05:39.720945+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-13T23:51:55.707487+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:05:37.522052174Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:51:56.415449245Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 11.13,
+    "case": "p10-fine",
+    "container_id": "e4954245f83fc57a223a6d634e7a94d039ff8cc569b170a50b989a436fba8c28",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:27:03.568654+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-13T23:55:36.537643+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:27:01.548775323Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-13T23:55:37.411828926Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 12.1,
+    "case": "p11-coarse",
+    "container_id": "fa02c4294d22ed118e777db1aa3f6c76bc41079c431535a4044f39b9dc5b175b",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:10:58.194319+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T00:05:40.408239+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:10:56.286108552Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:05:41.333055018Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 12.1,
+    "case": "p11-medium",
+    "container_id": "48b3f753d60df74123ed499f5ec53a36913cfae1d51241695c7902ca5c293320",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:24:30.012010+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T00:10:17.604817+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:24:27.661049273Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:10:18.412677242Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 12.1,
+    "case": "p11-fine",
+    "container_id": "c3c9043a77ad21156ec45f54dc99c04658d3b8f5b433baa964aaab2d41d30f1b",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:42:18.229535+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T00:10:58.550753+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:42:16.804735095Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:10:59.367862169Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 13.31,
+    "case": "p12-coarse",
+    "container_id": "1cf1a2b3b19d063ae40bc18de787360b56ff5ec7c7dbb38f8c3aaf0c18a258f1",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:29:45.707363+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T00:24:30.642041+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:29:43.267404774Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:24:31.544875454Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 13.31,
+    "case": "p12-medium",
+    "container_id": "940c3a150c8070eca460ee235eecd50531029533f830e16a6b31535e3c05aa62",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:40:57.799880+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T00:27:04.678238+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:40:55.806526668Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:27:05.398882053Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 13.31,
+    "case": "p12-fine",
+    "container_id": "5cbac9bd1543756c77180117dac4917a64b201d707cb3d1b24509fc7c58cb227",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:00:41.357237+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T00:29:46.061264+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:00:40.02605208Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:29:46.977421055Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 14.08,
+    "case": "p13-coarse",
+    "container_id": "06222960bb49420c7ed97e85dbef83f436dd5245271c0f886e182276a76c8486",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:46:09.267417+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T00:40:58.467982+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:46:06.859231524Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:40:59.360577123Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 14.08,
+    "case": "p13-medium",
+    "container_id": "9202bec83456762c04c2b23005327cd774004acbaf41013cf35d248a4af3d078",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T00:56:00.611421+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T00:42:19.385669+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T00:55:59.564620417Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:42:20.17974157Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 14.08,
+    "case": "p13-fine",
+    "container_id": "c1335ab89859e82581a33825077e9b63c53db0ae405a7ba8c0efd931f16fc6d4",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:18:03.965096+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T00:46:09.596848+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:18:01.137154877Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:46:10.460501016Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 15.24,
+    "case": "p14-coarse",
+    "container_id": "8565d5809ef640af67e6accd5a1039b07dad55a51a5886694064a317800a361d",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:01:24.662198+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T00:56:01.237153+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:01:21.5071011Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T00:56:02.157505144Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 15.24,
+    "case": "p14-medium",
+    "container_id": "175c304a412898fad67705131dd75ae3e67cd45faa8ffb3742259dfcf41e6dd5",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:15:30.221783+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T01:00:42.672232+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:15:28.291128913Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:00:43.531444911Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 15.24,
+    "case": "p14-fine",
+    "container_id": "7d8f77be0f6a87d553b183a7c8ef2ab99b8e441fcb00167d122bbda7286e5990",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:33:26.751775+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T01:01:24.949739+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:33:25.158331244Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:01:25.721330636Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 16.33,
+    "case": "p15-coarse",
+    "container_id": "3591beb1809dd57c65ff6be9f80149308ffca64b5225cb217981a92f1f9e0131",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:20:44.886046+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T01:15:30.975505+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:20:42.496184766Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:15:31.890647056Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 16.33,
+    "case": "p15-medium",
+    "container_id": "e0a62ae0faf1d01bc61e3e2bb0c7592ede3a5cde3726e039f3072061ab1f7cce",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:31:52.699567+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T01:18:05.125088+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:31:51.110354383Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:18:05.927335694Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 16.33,
+    "case": "p15-fine",
+    "container_id": "9f7e7d2798585cd496c2ce0ec86571433b9f4c1fea35e5911f5ed978b5283b8b",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:51:30.341381+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T01:20:45.176831+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:51:27.938652902Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:20:46.040990855Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 17.13,
+    "case": "p16-coarse",
+    "container_id": "56d8e9bc6fe14b26d2e1b0aa52fae4849eb2d96ad7f6987f92edafd326dbe47e",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:37:00.719408+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T01:31:53.324653+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:36:58.61976765Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:31:54.187998489Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 17.13,
+    "case": "p16-medium",
+    "container_id": "8c046e3821116e3b4eb42960efa2ac805b76035e787b4404dcec0077bcf93e1c",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:47:17.872661+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T01:33:27.774577+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:47:16.403690002Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:33:28.839071768Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 17.13,
+    "case": "p16-fine",
+    "container_id": "7460d0a962d55dd8154d4e56d055f6557a506e68aa29f8e85286148ea8352515",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T02:09:20.113323+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T01:37:01.053079+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T02:09:18.760114461Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:37:01.968907817Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 18.21,
+    "case": "p17-coarse",
+    "container_id": "bc5def0ec93fc1eec287949ef9861458cfa03dbab4bab02501e8df502ca9d56f",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T01:52:39.605267+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T01:47:18.497225+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T01:52:37.31140776Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:47:19.44509029Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 18.21,
+    "case": "p17-medium",
+    "container_id": "48f1cb9c2195dd40583e6b1d27bbe58e730c120223cd246b3ea60de3d7d5fc51",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T02:06:10.839244+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T01:51:31.533975+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T02:06:09.330215869Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:51:32.208829988Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 18.21,
+    "case": "p17-fine",
+    "container_id": "23578f51e07778f0f39c5995bb3eebfb45775d069a2ef0fca176b0463f146b93",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": true,
+          "target": "/work"
+        },
+        {
+          "rw": false,
+          "target": "/driver.py"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T02:24:22.586146+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T01:52:39.973903+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T02:24:20.476503262Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T01:52:40.899927335Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 19.27,
+    "case": "p18-coarse",
+    "container_id": "2ad53627c2dbe15387f2ac535f85aaf9321ca8899bc928fc7c0b9fadb7f589ef",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T02:11:54.738235+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "coarse",
+    "started_at": "2026-09-14T02:06:11.532996+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T02:11:51.701018072Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T02:06:12.515979448Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 19.27,
+    "case": "p18-medium",
+    "container_id": "2a2f40d0ecc404842e163e1e5cf268403cd947c72c34ef80f8656e80c605c668",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T02:23:10.204672+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "medium",
+    "started_at": "2026-09-14T02:09:21.341454+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T02:23:07.309507301Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T02:09:22.131689783Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  },
+  {
+    "angle": 19.27,
+    "case": "p18-fine",
+    "container_id": "4613e5092c8a142df9efac58b4d5ea1309d5403e6b48f0b5a492a99e3f5fe655",
+    "driver_sha256": "e572c352cf9b4a168b539e51b30042641b0af5a73de5d343dd0fce95072592fe",
+    "enforcement": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "fresh_output": true,
+      "image_id": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+      "key_mounted": false,
+      "mounts": [
+        {
+          "rw": false,
+          "target": "/driver.py"
+        },
+        {
+          "rw": true,
+          "target": "/work"
+        }
+      ],
+      "network": "none",
+      "rag": false,
+      "read_only_root": true,
+      "reference_mounted": false,
+      "user": "10001:10001"
+    },
+    "finished_at": "2026-09-14T02:32:59.045327+00:00",
+    "image": "sha256:5992a995c1eacc16246de4cba583b5645cde7e4e8c480db83158dddbe07b36f6",
+    "kind": "PRODUCTION",
+    "level": "fine",
+    "started_at": "2026-09-14T02:11:55.057491+00:00",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-09-14T02:32:58.070942897Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-09-14T02:11:55.898049418Z",
+      "Status": "exited"
+    },
+    "status": "EXECUTED"
+  }
+]

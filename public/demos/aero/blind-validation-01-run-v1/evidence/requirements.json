@@ -1,0 +1,6 @@
+{
+  "exposure": "Source-exposed supervisor; execution reference-withheld, not fully blinded setup.",
+  "inputs": "../input.json",
+  "prediction": "Nominal two-dimensional steady-RANS CL/CD polar; all18 operating points retained.",
+  "preregistration": "../preregistration.json"
+}

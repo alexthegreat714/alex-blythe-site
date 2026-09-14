@@ -1,0 +1,24 @@
+{
+  "case_count": 54,
+  "cases_passing_applicable_individual_gates": 0,
+  "failed_case_counts_by_gate": {
+    "boundary_conservation": 0,
+    "continuity": 1,
+    "duration_complete": 0,
+    "finite_fields": 0,
+    "initial_residuals": 54,
+    "linear_residuals": 54,
+    "nonoscillating_CD": 38,
+    "nonoscillating_CL": 43,
+    "stationary_CD": 41,
+    "stationary_CL": 45,
+    "trip_constraints": 0,
+    "wall_yplus": 0
+  },
+  "grid_pairs_passing": 2,
+  "grid_pairs_total": 18,
+  "mesh_cases_with_failed_checkMesh_checks": 54,
+  "mesh_policy": "Aspect-ratio/determinant check failures retained under the declared thin-grid policy. Not presented as a clean mesh-quality PASS.",
+  "transition_model_iteration_warning_count": 108000,
+  "wall_gate_applicability": "Fine grid only; coarse/medium wall values remain diagnostics."
+}

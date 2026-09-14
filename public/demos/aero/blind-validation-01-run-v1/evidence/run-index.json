@@ -1,0 +1,546 @@
+{
+  "cases": [
+    {
+      "case": "p01-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p01-coarse.zip",
+      "sha256": "ffa764248aa48f723c522289f1cf780974d6edb8bdf6bcb579078669605bd591",
+      "size": 3534703,
+      "station": "p01"
+    },
+    {
+      "case": "p01-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p01-medium.zip",
+      "sha256": "5c13c3f9aa03ec998569953e8c153daf7c60a5f0593ef69674b1bee12d5f1f63",
+      "size": 7194759,
+      "station": "p01"
+    },
+    {
+      "case": "p01-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p01-fine.zip",
+      "sha256": "1daa5b0a64f1f4a960b2259f1653a48fd10d4181c2ec9931212d634d25c21c92",
+      "size": 12383326,
+      "station": "p01"
+    },
+    {
+      "case": "p02-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p02-coarse.zip",
+      "sha256": "665eca1832ec49b72ea9895d5f80033c717328e77fbecf19e768be1c0d133559",
+      "size": 3534903,
+      "station": "p02"
+    },
+    {
+      "case": "p02-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p02-medium.zip",
+      "sha256": "6a30849108a7c6922629e9eca1c902a78da0ba85a3ecd8490c1dda028cf50b42",
+      "size": 7200947,
+      "station": "p02"
+    },
+    {
+      "case": "p02-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p02-fine.zip",
+      "sha256": "0041146da15d09a203e21b47773ea48cf7168e4cc496bab5831a52c1577821a4",
+      "size": 12398427,
+      "station": "p02"
+    },
+    {
+      "case": "p03-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p03-coarse.zip",
+      "sha256": "15e29071e79f9f3be8347934ed29a65281e142c347a9777309169056c38da4c7",
+      "size": 3536537,
+      "station": "p03"
+    },
+    {
+      "case": "p03-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p03-medium.zip",
+      "sha256": "e836d533d5e71e4068e723cb9a17ebb922d6b864f0eb2af6c5bc778c572226b1",
+      "size": 7215550,
+      "station": "p03"
+    },
+    {
+      "case": "p03-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p03-fine.zip",
+      "sha256": "ba87ef2b86e7d66d9ce6bee58ba60a143f123029f266af670803c25983f760b1",
+      "size": 12418714,
+      "station": "p03"
+    },
+    {
+      "case": "p04-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p04-coarse.zip",
+      "sha256": "1f862b2aa2bb3c1198c3a52c478fa9ea0011ea95378cfb6602d56244c0ef70a4",
+      "size": 3536627,
+      "station": "p04"
+    },
+    {
+      "case": "p04-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p04-medium.zip",
+      "sha256": "eb351cf028a0ef1f93f7e0964e3d04c2fa22b36ca6c3266938fa96a9643aa89f",
+      "size": 7213521,
+      "station": "p04"
+    },
+    {
+      "case": "p04-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p04-fine.zip",
+      "sha256": "2a66132a599046b0cf0b8a21163018c1c53a77ce8cbfc0629635c4cc8e9bac95",
+      "size": 12416892,
+      "station": "p04"
+    },
+    {
+      "case": "p05-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p05-coarse.zip",
+      "sha256": "cec22cf70597d7a4eb70cfa91aa797a521d8938a58608cc908ba29bea75637ef",
+      "size": 3530690,
+      "station": "p05"
+    },
+    {
+      "case": "p05-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p05-medium.zip",
+      "sha256": "6cf4bf2f1466d483faf2db9305e525df1a49e7f445a8d467da088f41d6c54304",
+      "size": 7194136,
+      "station": "p05"
+    },
+    {
+      "case": "p05-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p05-fine.zip",
+      "sha256": "c2752e9cdf1fd495899aadb150344df07b5a187f98f4b17faa79e6d66930d501",
+      "size": 12385046,
+      "station": "p05"
+    },
+    {
+      "case": "p06-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p06-coarse.zip",
+      "sha256": "d6ea4767041ad4e90f4f50ae85247816989fc63290f9f43ef3121108236caeeb",
+      "size": 3529085,
+      "station": "p06"
+    },
+    {
+      "case": "p06-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p06-medium.zip",
+      "sha256": "c8e87bde59327aa4deeb6afb3f614a8adb0b9532f040956375c8c9faf9aecff0",
+      "size": 7189887,
+      "station": "p06"
+    },
+    {
+      "case": "p06-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p06-fine.zip",
+      "sha256": "0b11c6b649bde0e1614e63e95e7a76ab3cca5174fedbff4b78a5f265c261043d",
+      "size": 12366740,
+      "station": "p06"
+    },
+    {
+      "case": "p07-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p07-coarse.zip",
+      "sha256": "3938ba348e77f9511a541f97ad5fc756f4a5da97bbb3708c5afe0404ebb704c6",
+      "size": 3530895,
+      "station": "p07"
+    },
+    {
+      "case": "p07-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p07-medium.zip",
+      "sha256": "704e7e7908526ac155837e5c799ca38d80b5a9119d84a2ecae6a615cad3543c4",
+      "size": 7176826,
+      "station": "p07"
+    },
+    {
+      "case": "p07-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p07-fine.zip",
+      "sha256": "454ac088097833d2f26287141bb3695225afe4922e092a7aefd86d74f5dd54d5",
+      "size": 12347445,
+      "station": "p07"
+    },
+    {
+      "case": "p08-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p08-coarse.zip",
+      "sha256": "8a665f658ff05d5986f4c050b80768209413a9cb84bdd36df12fcfd2715a168b",
+      "size": 3533833,
+      "station": "p08"
+    },
+    {
+      "case": "p08-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p08-medium.zip",
+      "sha256": "c9d9751ee7085f9a24eacde020344f5258b10718adbfd4af848650c200a93bda",
+      "size": 7184886,
+      "station": "p08"
+    },
+    {
+      "case": "p08-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p08-fine.zip",
+      "sha256": "79cce9600e904f146a079e9bd1296fd3054fb82876728bcaa4b50668b3b5c31c",
+      "size": 12358067,
+      "station": "p08"
+    },
+    {
+      "case": "p09-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p09-coarse.zip",
+      "sha256": "5d6f21494196885e41bf9fb0d74ba1b75715dc9fb2b41694864f0ad91b6a7f10",
+      "size": 3532323,
+      "station": "p09"
+    },
+    {
+      "case": "p09-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p09-medium.zip",
+      "sha256": "656cdb7230fe4b034239af2a9b386dc2646a8bfe3576ea5d39e78d0e559bb94e",
+      "size": 7186476,
+      "station": "p09"
+    },
+    {
+      "case": "p09-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p09-fine.zip",
+      "sha256": "820d61cea772c80bff45a5e6c782828686ece460d608e41190794b1f6ccfce60",
+      "size": 12367668,
+      "station": "p09"
+    },
+    {
+      "case": "p10-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p10-coarse.zip",
+      "sha256": "d7cc7d45f98d6927e026773c506643ddfc0fac60747cbef3f52db1ca64148b98",
+      "size": 3530361,
+      "station": "p10"
+    },
+    {
+      "case": "p10-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p10-medium.zip",
+      "sha256": "1c556da1ca26b048e6787585818eb84a5dac35d89e4fc26a81e14f9be47f5175",
+      "size": 7182000,
+      "station": "p10"
+    },
+    {
+      "case": "p10-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p10-fine.zip",
+      "sha256": "4f65dfbeb428218b7e75d7a56be7b49319dc5395fdea8ae30cccd562cb484574",
+      "size": 12362338,
+      "station": "p10"
+    },
+    {
+      "case": "p11-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p11-coarse.zip",
+      "sha256": "ffed47700f6b48d9174a454e5495de4188872b07cb087137fcae6721bc3289bd",
+      "size": 3524110,
+      "station": "p11"
+    },
+    {
+      "case": "p11-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p11-medium.zip",
+      "sha256": "74b70954cf14ccd67e235addb7dcaea7f519e10f3e46cc64815eca48df3322f3",
+      "size": 7177995,
+      "station": "p11"
+    },
+    {
+      "case": "p11-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p11-fine.zip",
+      "sha256": "dd97171c5034e2808a8b6a3c96118718afd714b689c0c4e37c6eab921bd6074c",
+      "size": 12356320,
+      "station": "p11"
+    },
+    {
+      "case": "p12-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p12-coarse.zip",
+      "sha256": "702cccf1ad895bdbe641973a7380b487d54205f92be8053eb176c7b6a454d92f",
+      "size": 3522569,
+      "station": "p12"
+    },
+    {
+      "case": "p12-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p12-medium.zip",
+      "sha256": "8e427a4c1fbe693fec209505b6999668e01e3e6d54071e62a74552527aec3208",
+      "size": 7171456,
+      "station": "p12"
+    },
+    {
+      "case": "p12-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p12-fine.zip",
+      "sha256": "2e4c0de3bc850e68bb8584f975ff703a841483a99c9da54e3e3884ed306f0c92",
+      "size": 12354683,
+      "station": "p12"
+    },
+    {
+      "case": "p13-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p13-coarse.zip",
+      "sha256": "34d18e2542af0282eb7b88d76f6aa9d2e3a2264e8dea6c539f490c57e8090f36",
+      "size": 3521903,
+      "station": "p13"
+    },
+    {
+      "case": "p13-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p13-medium.zip",
+      "sha256": "3cf8e1655051fe110c7cfd4c0031dadfd1da57af3d28a760e6eadfe1ef15c764",
+      "size": 7170118,
+      "station": "p13"
+    },
+    {
+      "case": "p13-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p13-fine.zip",
+      "sha256": "44696c3eb84e50d47c9b5b666f76125bf2b0ad1a03c1c93d3360ba3e8a77698f",
+      "size": 12358945,
+      "station": "p13"
+    },
+    {
+      "case": "p14-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p14-coarse.zip",
+      "sha256": "3cbcc721b83f43a97260e4ea167af33f56aa1ad507c3b8c4e6d6fafbb874e8e7",
+      "size": 3516108,
+      "station": "p14"
+    },
+    {
+      "case": "p14-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p14-medium.zip",
+      "sha256": "1d37c21c05abf9bfab4c3639cb8ae2d676126af847b15ac8ab355e8d02761383",
+      "size": 7177993,
+      "station": "p14"
+    },
+    {
+      "case": "p14-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p14-fine.zip",
+      "sha256": "dde1f3d8b0027711a3d1f606ca8c0a576ad4ddf2329b060056b4f165fc5d6232",
+      "size": 12372381,
+      "station": "p14"
+    },
+    {
+      "case": "p15-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p15-coarse.zip",
+      "sha256": "8216c3e4c87650d6d568fb640066a46324c97a181247332b1f003675093924c9",
+      "size": 3526390,
+      "station": "p15"
+    },
+    {
+      "case": "p15-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p15-medium.zip",
+      "sha256": "4357216cafe21937b2c8ac4ef842580cb8bee867c602da998f4fbe2993de3ef5",
+      "size": 7176925,
+      "station": "p15"
+    },
+    {
+      "case": "p15-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p15-fine.zip",
+      "sha256": "dc108abe83d650fd04930d56233ef26a803cdfc723a10181fbd68c07af7d9ad3",
+      "size": 12365531,
+      "station": "p15"
+    },
+    {
+      "case": "p16-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p16-coarse.zip",
+      "sha256": "e0fb0eae10b1801b2dc0c4cc0482db2d16c2305e98d1c8c77c781db5a39c0dcd",
+      "size": 3523528,
+      "station": "p16"
+    },
+    {
+      "case": "p16-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p16-medium.zip",
+      "sha256": "600824e67b074343cdd4df525e5fc3ac132efa8cfe12014bee995fd2c1403721",
+      "size": 7179417,
+      "station": "p16"
+    },
+    {
+      "case": "p16-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p16-fine.zip",
+      "sha256": "9b81f4d1d9cd7cdc2362dcaf28add2b22f76c2f9835c47af06347165a8c95c45",
+      "size": 12366260,
+      "station": "p16"
+    },
+    {
+      "case": "p17-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p17-coarse.zip",
+      "sha256": "e463cb278cdb2e1c793892c97b1f586b6aadcc47e2e7c9916355efdcbb5ae7d5",
+      "size": 3531320,
+      "station": "p17"
+    },
+    {
+      "case": "p17-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p17-medium.zip",
+      "sha256": "f1063123c554c8522423543db66ed090d13c60f1dd79ecef557e85cc614def9d",
+      "size": 7180030,
+      "station": "p17"
+    },
+    {
+      "case": "p17-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p17-fine.zip",
+      "sha256": "825543cc7f1d8dca4c2b2c536d3055e5194629e99180981aa46df27128ab0e04",
+      "size": 12366585,
+      "station": "p17"
+    },
+    {
+      "case": "p18-coarse",
+      "file_count": 52,
+      "level": "coarse",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p18-coarse.zip",
+      "sha256": "74794244db340fe2fecf72e6839061b5d5418ac796e94a3e5543ad2992645acf",
+      "size": 3535103,
+      "station": "p18"
+    },
+    {
+      "case": "p18-medium",
+      "file_count": 52,
+      "level": "medium",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p18-medium.zip",
+      "sha256": "8e78de4655f968f3d5343b41b35af005e5da3efed234dc499c60862137a7d0f5",
+      "size": 7186456,
+      "station": "p18"
+    },
+    {
+      "case": "p18-fine",
+      "file_count": 52,
+      "level": "fine",
+      "numerical_status": "FAIL",
+      "path": "evidence/cases/p18-fine.zip",
+      "sha256": "b2f3c63c8e78d94aa7c222fbeed493ca7d78c5ad9c61972ad99f20e2e45ebafa",
+      "size": 12369238,
+      "station": "p18"
+    }
+  ],
+  "compressed_bytes": 415604972,
+  "files_retained": 2808
+}
