@@ -9,9 +9,9 @@ const trials = [
   { id: 'Airfoil v5', model: '14B', result: 'Proposal rejected', solver: 'No', detail: 'Unresolved setup questions.' },
   { id: 'Airfoil v6', model: '14B', result: 'Freeze rejected', solver: 'No', detail: 'Wall-y-plus request unsupported for the template.' },
   { id: 'Airfoil v7', model: '14B', result: 'Workflow pass', solver: 'Yes', detail: 'Solver and manifest verified; strict observer passed; design-ready no. Recorded workflow rubric: 100/100.' },
+  { id: 'Internal flow 7B', model: '7B', result: 'Solver completed; strict observer failed', solver: 'Yes', detail: 'Model-authored proposal and numerical pass; two evidence-key aliases. Operator-assisted setup and start.' },
   { id: 'Internal flow v1', model: '14B', result: 'Schema rejected', solver: 'No', detail: 'Cross-backend fea_case field in an OpenFOAM proposal.' },
   { id: 'Internal flow v2', model: '14B', result: 'Workflow pass', solver: 'Yes', detail: 'Corrected proposal, numerical pass, verified manifest, strict observer pass; design-ready no. Independent workflow review: 89/100.' },
-  { id: 'Internal flow 1.5B v1', model: '1.5B', result: 'Model proposal failed', solver: 'No', detail: 'Two responses rejected for an unsupported template/cross-backend field; no solver case; ntfy sent.' },
 ];
 ---
 <Shell title="Aero · Model-operator trials" description="Retained local-model CFD workflow attempts, including proposal failures and bounded successes. Not physical CFD validation." path="/software/aero/evidence/benchmarks/model-operator/">
@@ -22,7 +22,7 @@ const trials = [
   </header>
   <section class="cards" aria-label="What passed and what remains open">
     <article><p class="eyebrow">COMPLETED WORKFLOWS</p><p class="metric">2 bounded passes</p><p>Airfoil v7 and internal-flow v2 produced completed solver runs and verified evidence manifests. Their observers kept design readiness at <strong>no</strong>.</p></article>
-    <article><p class="eyebrow">SMALL-MODEL RESULT</p><p class="metric">1.5B model: rejected</p><p>The model produced two contract-invalid proposals. No solver case was created, and the terminal ntfy was sent. This is a model workflow failure, not a CFD failure.</p></article>
+    <article><p class="eyebrow">7B LOCAL RUN</p><p class="metric">Solver completed</p><p>The 7B model authored the accepted proposal and read the terminal state. Its strict observer grade failed on evidence-key aliases. A Codex operator prepared and started the run.</p></article>
   </section>
   <section>
     <h2>Every versioned attempt</h2>
@@ -30,6 +30,6 @@ const trials = [
     <div class="table-wrap"><table><thead><tr><th>Trial</th><th>Model</th><th>Outcome</th><th>Solver?</th><th>Finding</th></tr></thead><tbody>{trials.map(t => <tr><td>{t.id}</td><td>{t.model}</td><td>{t.result}</td><td>{t.solver}</td><td>{t.detail}</td></tr>)}</tbody></table></div>
   </section>
   <section class="boundary"><h2>The engineering boundary</h2><p>Aero's typed harness and operator approval decide what may run; OpenFOAM and retained evidence decide what happened. Numerical convergence is not validation. The successful internal-flow run still lacks an independent matched reference, demonstrated model fidelity, and mesh independence.</p></section>
-  <section><h2>Why test 1.5B?</h2><p>It is a controlled stress test: keep the same reviewed internal-flow case, proposal contract, solver, and evidence gates, but reduce the local planner and observer from 14B to 1.5B. It failed at proposal formation twice, so no solver run or observer score exists. The failure is retained, not repaired into a pass.</p></section>
-  <section><h2>Read the complete report</h2><p>The report records how the smaller model was configured, why it was chosen, what we expect to learn, every retained attempt, limitations, and audit hashes. Pending 1.5B results will be added only after its receipt is reviewed.</p><div class="links"><a class="primary" href="/demos/aero/model-operator-trials-v1/report.md">Open benchmark report →</a><a href="/software/aero/evidence/benchmarks/">External CFD benchmarks →</a><a href="/software/aero/evidence/">All Aero evidence →</a></div></section>
+  <section><h2>Was the 7B run fully solo?</h2><p>No. The local model wrote the accepted proposal and assessed the solver evidence. Earlier proposal failures led to a clearer reusable example, and a Codex operator invoked the staged handoff and solver start. The receipt does not name that operator's model, so Luna's involvement in this specific run is unverified.</p></section>
+  <section><h2>Read the complete report</h2><p>The report records each retained attempt, the 7B model's role, the operator's role, strict observer limits, and audit hashes.</p><div class="links"><a class="primary" href="/demos/aero/model-operator-trials-v1/report.md">Open benchmark report →</a><a href="/software/aero/evidence/benchmarks/">External CFD benchmarks →</a><a href="/software/aero/evidence/">All Aero evidence →</a></div></section>
 </Shell>
