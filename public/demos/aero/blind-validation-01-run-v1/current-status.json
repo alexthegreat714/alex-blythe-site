@@ -1,16 +1,12 @@
 {
   "schema": "aero.challenge.status.v3",
-  "updated_at": "2026-09-13T21:44:42.666814+00:00",
-  "stage": "SOLVE",
-  "result": "NOT EVALUATED",
+  "updated_at": "2026-09-14T14:08:21.197091+00:00",
+  "stage": "COMPARED_ANCHORED",
+  "result": "FAIL",
   "total": 54,
-  "completed": 3,
-  "complete_predictions": 3,
-  "running": [
-    "p01-fine",
-    "p02-medium",
-    "p02-fine"
-  ],
+  "completed": 54,
+  "complete_predictions": 54,
+  "running": [],
   "phases": [
     {
       "label": "Input frozen",
@@ -24,41 +20,60 @@
     },
     {
       "label": "Solve",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "time": "2026-09-13T21:19:26.298933+00:00"
     },
     {
       "label": "Prediction frozen",
-      "status": "NOT OCCURRED",
-      "time": null
+      "status": "COMPLETE",
+      "time": "2026-09-14T14:00:53.514967+00:00"
     },
     {
       "label": "Reference unsealed",
-      "status": "NOT OCCURRED",
-      "time": null
+      "status": "COMPLETE",
+      "time": "2026-09-14T14:02:25.517366+00:00"
     },
     {
       "label": "Comparison",
-      "status": "NOT OCCURRED",
-      "time": null
+      "status": "COMPLETE",
+      "time": "2026-09-14T14:02:26.109491+00:00"
     }
   ],
   "hashes": {
     "input.json": "827bb840cce7068cd09c0a292aea4efcd73a8d046c18c7e7eb1751fbefce3c73",
     "reference.enc": "bc70021062c16133cef3816ddea98a6e9fe54a60c1908ccdf7d03f60bada0184",
-    "preregistration.json": "d82c98b1f835a52b88c7f355e738253741cb2aa0ae3216913cdad1993c985c6c"
+    "preregistration.json": "d82c98b1f835a52b88c7f355e738253741cb2aa0ae3216913cdad1993c985c6c",
+    "blind_prediction.json": "7b5e04d12e2e0be0aaefdec2eb29c1a9728f6f0ddbb90f2d6a72160742638e31",
+    "comparison.json": "f165ced785f6a23604e579a5b64b71261d80b78fd3c29b51c04befd45f069b46"
   },
   "commits": {
-    "CRITERIA_FROZEN_ANCHORED": "0fb460ae948d0a11ce39ed565d619d5eb1d78622"
+    "CRITERIA_FROZEN_ANCHORED": "0fb460ae948d0a11ce39ed565d619d5eb1d78622",
+    "PREDICTION_FROZEN_ANCHORED": "b98e123b11a37bf0f0e0dfae916bfe2d5b4e1507",
+    "COMPARED_ANCHORED": "ada06530369cbdd9393cf9432241c0954d916b93"
   },
-  "has_paper": false,
-  "has_prediction": false,
-  "has_comparison": false,
-  "has_bundle_index": false,
+  "has_paper": true,
+  "has_prediction": true,
+  "has_comparison": true,
+  "has_bundle_index": true,
   "blinding_scope": "Reference withheld from deterministic solver execution; source-exposed supervisor designed the setup. Not double-blind or pretraining-blind.",
-  "numerical_status": "NOT EVALUATED",
-  "experimental_comparison": "NOT EVALUATED",
-  "metrics": {},
-  "has_reproduction": false,
-  "has_manifest": false
+  "numerical_status": "FAIL",
+  "experimental_comparison": "FAIL",
+  "metrics": {
+    "CD": {
+      "max_absolute_error": 0.23267467478644993,
+      "pass": false,
+      "rmse": 0.07965883447236194,
+      "uncertainty_known_points": 0,
+      "uncertainty_overlap_count": null
+    },
+    "CL": {
+      "max_absolute_error": 1.42045639402659,
+      "pass": false,
+      "rmse": 0.6355321832668555,
+      "uncertainty_known_points": 0,
+      "uncertainty_overlap_count": null
+    }
+  },
+  "has_reproduction": true,
+  "has_manifest": true
 }
