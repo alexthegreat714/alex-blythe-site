@@ -18,14 +18,14 @@ const trials = [
   <header>
     <p class="eyebrow">AERO / LOCAL-MODEL OPERATOR BENCHMARK</p>
     <h1>Can a local model pilot a guarded CFD workflow?</h1>
-    <p>Two public OpenFOAM seeds; every failed proposal stays visible. These trials test case handoff and evidence reading, <strong>not aerodynamic accuracy or design readiness.</strong></p>
+    <p>Two public OpenFOAM seeds with retained proposal failures. These trials test case handoff and evidence reading, <strong>not aerodynamic accuracy or design readiness.</strong></p>
   </header>
   <section class="cards" aria-label="What passed and what remains open">
     <article><p class="eyebrow">COMPLETED WORKFLOWS</p><p class="metric">2 bounded passes</p><p>Airfoil v7 and internal-flow v2 produced completed solver runs and verified evidence manifests. Their observers kept design readiness at <strong>no</strong>.</p></article>
     <article><p class="eyebrow">7B LOCAL RUN</p><p class="metric">Solver completed</p><p>The 7B model authored the accepted proposal and read the terminal state. Its strict observer grade failed on evidence-key aliases. A Codex operator prepared and started the run.</p></article>
   </section>
   <section>
-    <h2>Every versioned attempt</h2>
+    <h2>Retained attempts</h2>
     <p>Airfoil v1-v7 are iterative revisions, not independent samples. The 14B airfoil rubric and the 89/100 internal-flow review use different scoring methods and cannot be averaged.</p>
     <div class="table-wrap"><table><thead><tr><th>Trial</th><th>Model</th><th>Outcome</th><th>Solver?</th><th>Finding</th></tr></thead><tbody>{trials.map(t => <tr><td>{t.id}</td><td>{t.model}</td><td>{t.result}</td><td>{t.solver}</td><td>{t.detail}</td></tr>)}</tbody></table></div>
   </section>
