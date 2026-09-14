@@ -74,7 +74,7 @@ failure, but it would not turn that failure into a model-authored pass.
 | Airfoil v7 | qwen2.5-coder:14b | Bounded workflow passed | Yes | Accepted model proposal; OpenFOAM completed; manifest verified; strict observer passed with zero aliases/errors; recorded rubric 100/100. Design readiness remained no. |
 | Internal flow v1 | qwen2.5-coder:14b | Model proposal rejected | No | OpenFOAM proposal included an inappropriate cross-backend `fea_case` field. |
 | Internal flow v2 | qwen2.5-coder:14b | Bounded workflow passed after allowed correction | Yes | OpenFOAM completed; manifest verified; numerical gate passed; strict observer passed with zero aliases/errors. Independent review scored this narrow workflow 89/100, with deductions for the earlier schema miss and limited generality. Design readiness remained no. |
-| Internal flow 1.5B v1 | qwen2.5:1.5b | **Prepared, not run** | No | Fresh receipt and two-attempt, model-only contract are ready. No result or score is claimed. |
+| Internal flow 1.5B v1 | qwen2.5:1.5b | **Model proposal failed** | No | Two responses rejected for an unsupported CFD template/cross-backend field. No case was frozen and OpenFOAM did not start; terminal ntfy was sent. |
 
 The airfoil v7 score is its predeclared *workflow* rubric; 89/100 is a later
 reviewer's judgment of the internal-flow handoff, not the same instrument.
@@ -114,7 +114,11 @@ the internal-flow v2 receipt was
 `536e22b61ef9fd25c25bf1f96ea697fdb13bdac433bf2f22760fb97fd77be20f`.
 Hashes identify those local records, not scientific validity.
 
-The pending 1.5B entry will be revised only after its receipt and passive
-terminal watch are inspected. Failures, retries, solver status, strict observer
-grade, and open engineering gates will be reported even if the trial does not
-complete.
+The 1.5B receipt and passive terminal watch have now been inspected. The model
+arm failed before solver dispatch, and that failure is retained rather than
+repaired into a pass. The next compact-model experiment should first test a
+narrower proposal schema or a model with stronger structured-output behavior;
+it must keep the same no-fallback rule.
+
+The detailed setup and rationale are recorded in
+`Aero/reports/internal_flow_1p5b_setup_method_20260914.md`.
