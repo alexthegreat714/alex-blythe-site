@@ -21,6 +21,46 @@ and evidence gates remained authoritative.
   random samples. Internal-flow v1-v2 reuse one reviewed pitzDaily seed. These
   results cannot estimate a general autonomous success rate.
 
+## How the smaller-model trial was prepared
+
+The previous internal-flow v2 test used `qwen2.5-coder:14b` as both proposal
+author and shadow observer. Its accepted proposal needed one allowed
+correction; the resulting OpenFOAM run completed and its terminal observer
+passed strict checks. Earlier 7B trials exposed missing proposal criteria and
+evidence-key alias use. The next controlled variable is model size: the same
+public pitzDaily seed and the same two-attempt model-only contract are retained,
+while Aero's local planner **and** observer are changed to `qwen2.5:1.5b`.
+The compact model was already installed; no model was fine-tuned or downloaded
+for this trial. The human/Codex operator model is separate from Aero's local
+model and may be switched without changing the latter.
+
+Before changing the configured model, the prior 14B watch was complete and no
+OpenFOAM run was active. The Aero web process and durable observer were then
+reloaded with the 1.5B setting, preserving the existing case/evidence volume.
+A read-only preflight confirmed matching configuration, a ready observer,
+zero active runs, and no new trial receipt. A fresh contract and receipt path
+were reserved; earlier records cannot be overwritten. A passive terminal
+notification monitor is armed. It reports completion, proposal/solver failure,
+stall, or timeout but **cannot start the proposal or solver**. As of this
+report, the 1.5B model has not been asked to propose the case.
+
+Why 1.5B? It is a deliberate stress test of a much smaller local controller:
+can typed constraints and independent solver checks compensate for less model
+capacity on a narrow, already-reviewed task? Parameter count alone does not
+predict speed, reliability, or quality, so no performance score is forecast.
+This is a workflow-efficiency question, not a claim that 1.5B knows CFD.
+
+The main expected failure is a malformed or incomplete proposal, even after
+one corrective response. If that happens, the model-only arm stops with no
+caller-written fallback and no solver run. If the proposal passes, OpenFOAM
+may complete the known seed, but the compact observer must still correctly
+identify solver state, numerical evidence, open validation gates, and a safe
+next action without evidence-key aliases or invented budgets. A completed
+solver cannot make the design ready while independent reference, model
+fidelity, and mesh independence remain open. A separate reviewed-seed
+observer-only test could later isolate observation ability after proposal
+failure, but it would not turn that failure into a model-authored pass.
+
 ## Retained chronology
 
 | Trial | Local model | Outcome | Solver started? | Specific finding |
