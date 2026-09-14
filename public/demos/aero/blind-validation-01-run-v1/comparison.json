@@ -1,0 +1,421 @@
+{
+  "all_points": [
+    {
+      "absolute_error": 0.1323626914496399,
+      "prediction": -0.3039373085503601,
+      "quantity": "CL",
+      "reference": -0.4363,
+      "relative_error": 0.3033754101527387,
+      "signed_error": 0.1323626914496399,
+      "station": "p01",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.14381825040628402,
+      "prediction": -0.07748174959371598,
+      "quantity": "CL",
+      "reference": -0.2213,
+      "relative_error": 0.6498791251978492,
+      "signed_error": 0.14381825040628402,
+      "station": "p02",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.0137920400639899,
+      "prediction": 0.0022920400639899,
+      "quantity": "CL",
+      "reference": -0.0115,
+      "relative_error": 1.1993078316512957,
+      "signed_error": 0.0137920400639899,
+      "station": "p03",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.0008174400556862826,
+      "prediction": -0.0004825599443137173,
+      "quantity": "CL",
+      "reference": -0.0013,
+      "relative_error": 0.6288000428356021,
+      "signed_error": 0.0008174400556862826,
+      "station": "p04",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.13652868169418403,
+      "prediction": 0.07477131830581595,
+      "quantity": "CL",
+      "reference": 0.2113,
+      "relative_error": 0.6461366857273263,
+      "signed_error": -0.13652868169418403,
+      "station": "p05",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.12353639063333016,
+      "prediction": 0.31296360936666984,
+      "quantity": "CL",
+      "reference": 0.4365,
+      "relative_error": 0.2830157861015582,
+      "signed_error": -0.12353639063333016,
+      "station": "p06",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.18017461523111006,
+      "prediction": 0.47562538476889,
+      "quantity": "CL",
+      "reference": 0.6558,
+      "relative_error": 0.2747401879095914,
+      "signed_error": -0.18017461523111006,
+      "station": "p07",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.2703477486041299,
+      "prediction": 0.5985522513958701,
+      "quantity": "CL",
+      "reference": 0.8689,
+      "relative_error": 0.3111379314122798,
+      "signed_error": -0.2703477486041299,
+      "station": "p08",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.36252101189421004,
+      "prediction": 0.7183789881057899,
+      "quantity": "CL",
+      "reference": 1.0809,
+      "relative_error": 0.33538811351115744,
+      "signed_error": -0.36252101189421004,
+      "station": "p09",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.38882805798158016,
+      "prediction": 0.7842719420184199,
+      "quantity": "CL",
+      "reference": 1.1731,
+      "relative_error": 0.3314534634571479,
+      "signed_error": -0.38882805798158016,
+      "station": "p10",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.4192939933730314,
+      "prediction": 0.8451060066269686,
+      "quantity": "CL",
+      "reference": 1.2644,
+      "relative_error": 0.33161499001346995,
+      "signed_error": -0.4192939933730314,
+      "station": "p11",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.51640378882683,
+      "prediction": 0.8511962111731699,
+      "quantity": "CL",
+      "reference": 1.3676,
+      "relative_error": 0.37759855866249636,
+      "signed_error": -0.51640378882683,
+      "station": "p12",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.5756400960965705,
+      "prediction": 0.8559599039034295,
+      "quantity": "CL",
+      "reference": 1.4316,
+      "relative_error": 0.402095624543567,
+      "signed_error": -0.5756400960965705,
+      "station": "p13",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 1.2688813420401461,
+      "prediction": 0.2480186579598538,
+      "quantity": "CL",
+      "reference": 1.5169,
+      "relative_error": 0.8364963689367435,
+      "signed_error": -1.2688813420401461,
+      "station": "p14",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 1.22681536167458,
+      "prediction": 0.35868463832541986,
+      "quantity": "CL",
+      "reference": 1.5855,
+      "relative_error": 0.7737719089716684,
+      "signed_error": -1.22681536167458,
+      "station": "p15",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 1.42045639402659,
+      "prediction": 0.20144360597341,
+      "quantity": "CL",
+      "reference": 1.6219,
+      "relative_error": 0.8757977643668475,
+      "signed_error": -1.42045639402659,
+      "station": "p16",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.7104818994790103,
+      "prediction": 0.2999181005209897,
+      "quantity": "CL",
+      "reference": 1.0104,
+      "relative_error": 0.7031689424772469,
+      "signed_error": -0.7104818994790103,
+      "station": "p17",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.6311156408458198,
+      "prediction": 0.4352843591541802,
+      "quantity": "CL",
+      "reference": 1.0664,
+      "relative_error": 0.5918188680099585,
+      "signed_error": -0.6311156408458198,
+      "station": "p18",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.0019053231061083118,
+      "prediction": 0.006804676893891689,
+      "quantity": "CD",
+      "reference": 0.00871,
+      "relative_error": 0.21875121769326195,
+      "signed_error": -0.0019053231061083118,
+      "station": "p01",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.001829938536640402,
+      "prediction": 0.006090061463359598,
+      "quantity": "CD",
+      "reference": 0.00792,
+      "relative_error": 0.23105284553540428,
+      "signed_error": -0.001829938536640402,
+      "station": "p02",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.0028240025074668003,
+      "prediction": 0.0052059974925332,
+      "quantity": "CD",
+      "reference": 0.00803,
+      "relative_error": 0.3516815077791781,
+      "signed_error": -0.0028240025074668003,
+      "station": "p03",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.0029044099554027944,
+      "prediction": 0.005205590044597205,
+      "quantity": "CD",
+      "reference": 0.00811,
+      "relative_error": 0.35812699820009797,
+      "signed_error": -0.0029044099554027944,
+      "station": "p04",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.0019732781883035943,
+      "prediction": 0.006166721811696405,
+      "quantity": "CD",
+      "reference": 0.00814,
+      "relative_error": 0.24241746785056442,
+      "signed_error": -0.0019732781883035943,
+      "station": "p05",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.001342963523983897,
+      "prediction": 0.006797036476016103,
+      "quantity": "CD",
+      "reference": 0.00814,
+      "relative_error": 0.16498323390465566,
+      "signed_error": -0.001342963523983897,
+      "station": "p06",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 5.5025445873492854e-05,
+      "prediction": 0.008565025445873493,
+      "quantity": "CD",
+      "reference": 0.00851,
+      "relative_error": 0.006465974838248279,
+      "signed_error": 5.5025445873492854e-05,
+      "station": "p07",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.00704740536945401,
+      "prediction": 0.01689740536945401,
+      "quantity": "CD",
+      "reference": 0.00985,
+      "relative_error": 0.7154726263405087,
+      "signed_error": 0.00704740536945401,
+      "station": "p08",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.023337903288644983,
+      "prediction": 0.034987903288644984,
+      "quantity": "CD",
+      "reference": 0.01165,
+      "relative_error": 2.003253501171243,
+      "signed_error": 0.023337903288644983,
+      "station": "p09",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.029738085309829985,
+      "prediction": 0.04220808530982999,
+      "quantity": "CD",
+      "reference": 0.01247,
+      "relative_error": 2.384770273442661,
+      "signed_error": 0.029738085309829985,
+      "station": "p10",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.03752379462931697,
+      "prediction": 0.050513794629316974,
+      "quantity": "CD",
+      "reference": 0.01299,
+      "relative_error": 2.888667792865048,
+      "signed_error": 0.03752379462931697,
+      "station": "p11",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.054050583168599044,
+      "prediction": 0.06813058316859905,
+      "quantity": "CD",
+      "reference": 0.01408,
+      "relative_error": 3.8388198273152727,
+      "signed_error": 0.054050583168599044,
+      "station": "p12",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.06927894699673101,
+      "prediction": 0.08460894699673101,
+      "quantity": "CD",
+      "reference": 0.01533,
+      "relative_error": 4.51917462470522,
+      "signed_error": 0.06927894699673101,
+      "station": "p13",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.12178374103106998,
+      "prediction": 0.14048374103106998,
+      "quantity": "CD",
+      "reference": 0.0187,
+      "relative_error": 6.512499520378073,
+      "signed_error": 0.12178374103106998,
+      "station": "p14",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.12097789345507996,
+      "prediction": 0.14283789345507997,
+      "quantity": "CD",
+      "reference": 0.02186,
+      "relative_error": 5.53421287534675,
+      "signed_error": 0.12097789345507996,
+      "station": "p15",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.09473994313319004,
+      "prediction": 0.11986994313319004,
+      "quantity": "CD",
+      "reference": 0.02513,
+      "relative_error": 3.7699937577871085,
+      "signed_error": 0.09473994313319004,
+      "station": "p16",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.10489330998237001,
+      "prediction": 0.15409669001763,
+      "quantity": "CD",
+      "reference": 0.25899,
+      "relative_error": 0.40500911225286695,
+      "signed_error": -0.10489330998237001,
+      "station": "p17",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    },
+    {
+      "absolute_error": 0.23267467478644993,
+      "prediction": 0.20178532521355008,
+      "quantity": "CD",
+      "reference": 0.43446,
+      "relative_error": 0.5355491294628963,
+      "signed_error": -0.23267467478644993,
+      "station": "p18",
+      "uncertainty": null,
+      "uncertainty_overlap": null
+    }
+  ],
+  "experimental_comparison": "FAIL",
+  "metrics": {
+    "CD": {
+      "max_absolute_error": 0.23267467478644993,
+      "pass": false,
+      "rmse": 0.07965883447236194,
+      "uncertainty_known_points": 0,
+      "uncertainty_overlap_count": null
+    },
+    "CL": {
+      "max_absolute_error": 1.42045639402659,
+      "pass": false,
+      "rmse": 0.6355321832668555,
+      "uncertainty_known_points": 0,
+      "uncertainty_overlap_count": null
+    }
+  },
+  "numerical_status": "FAIL",
+  "schema": "aero.blind.comparison.v1",
+  "scope": "Specific benchmark only. No universal validation or design readiness.",
+  "status": "FAIL"
+}

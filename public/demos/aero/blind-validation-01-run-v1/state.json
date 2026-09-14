@@ -113,8 +113,22 @@
       "remote_head": "b98e123b11a37bf0f0e0dfae916bfe2d5b4e1507",
       "stage": "PREDICTION_FROZEN_ANCHORED",
       "time": "2026-09-14T14:02:24.436781+00:00"
+    },
+    {
+      "files": {
+        "reference.csv": "5aead0ecb225b44951b00147353da8f7aaa38a2ee87d0fff23bafe73a08c2ed1"
+      },
+      "stage": "REFERENCE_UNSEALED",
+      "time": "2026-09-14T14:02:25.517366+00:00"
+    },
+    {
+      "files": {
+        "comparison.json": "f165ced785f6a23604e579a5b64b71261d80b78fd3c29b51c04befd45f069b46"
+      },
+      "stage": "COMPARED",
+      "time": "2026-09-14T14:02:26.109491+00:00"
     }
   ],
   "schema": "aero.blind.state.v1",
-  "stage": "PREDICTION_FROZEN_ANCHORED"
+  "stage": "COMPARED"
 }
