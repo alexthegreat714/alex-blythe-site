@@ -127,8 +127,15 @@
       },
       "stage": "COMPARED",
       "time": "2026-09-14T14:02:26.109491+00:00"
+    },
+    {
+      "commit": "ada06530369cbdd9393cf9432241c0954d916b93",
+      "files": {},
+      "remote_head": "ada06530369cbdd9393cf9432241c0954d916b93",
+      "stage": "COMPARED_ANCHORED",
+      "time": "2026-09-14T14:02:36.194802+00:00"
     }
   ],
   "schema": "aero.blind.state.v1",
-  "stage": "COMPARED"
+  "stage": "COMPARED_ANCHORED"
 }
