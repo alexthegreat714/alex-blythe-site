@@ -1,0 +1,155 @@
+{
+  "schema": "aero.harcc_s4.part2_public_summary.v1",
+  "study": {
+    "id": "HARCC-S4-PART2",
+    "title": "HARCC S4 methane cooling case: bounded CFD failure investigation",
+    "date": "2026-09-15",
+    "investigator": "GPT-5.6 Luna",
+    "solver": "OpenFOAM Foundation 10",
+    "application": "chtMultiRegionFoam",
+    "investigation_status": "COMPLETE_FOR_BOUNDED_SOLVER_CONTROL_BRANCH",
+    "numerical_disposition": "FAIL",
+    "external_validation": "NOT_EVALUATED",
+    "design_readiness": "NOT_ESTABLISHED",
+    "scope_note": "The initial diagnosis used a clean, read-only context with publication results and the retrospective Part-I report withheld. It was reference-withheld, not a fully hermetic blind benchmark. Sequential follow-up reviews saw the earlier hypotheses and outcomes."
+  },
+  "baseline": {
+    "version": "v5",
+    "start_iteration": 5000,
+    "cells": 70400,
+    "geometry_note": "A reconstructed single-pitch segment, not the complete as-built assembly or native author CAD.",
+    "interface_y_plus": {
+      "minimum": 36.2,
+      "mean": 100.6,
+      "maximum": 289.8,
+      "interpretation": "Wall-treatment suitability was not established."
+    },
+    "residuals": [
+      {"field": "U", "value": 0.00011485, "limit": 0.00001, "gate": "FAIL"},
+      {"field": "h", "value": 0.000067264, "limit": 0.00001, "gate": "FAIL"},
+      {"field": "solid e", "value": 0.00018235, "limit": 0.000001, "gate": "FAIL"},
+      {"field": "p_rgh", "value": 0.000011582575, "limit": 0.0001, "gate": "PASS"},
+      {"field": "k", "value": null, "limit": 0.0001, "gate": "PASS", "note": "Below limit; exact value omitted from this compact record."},
+      {"field": "omega", "value": null, "limit": 0.0001, "gate": "PASS", "note": "Below limit; exact value omitted from this compact record."}
+    ],
+    "mass_flow_kg_per_s": {
+      "inlet": 0.011299999995,
+      "outlet": 0.011299999992,
+      "reported_mismatch_percent": 0.0000000265,
+      "gate": "NOT_SCORED",
+      "reason": "No frozen mass-imbalance acceptance tolerance was defined."
+    }
+  },
+  "experiments": [
+    {
+      "id": "v6",
+      "question": "Does increasing the regional p_rgh maxIter cap from 100 to 300 materially improve coupled U, h, and solid-e residuals?",
+      "status": "VALID_PAIRED_CONTINUATION",
+      "window": "5000-5200",
+      "result": "The cap constrained some inner pressure solves, but removing that cap did not materially improve the coupled target residuals; all three target gates remained failed.",
+      "details": {
+        "control_cap_hits": "190/400",
+        "treatment_cap_hits": "0/400",
+        "treatment_max_pressure_iterations": 106,
+        "mean_final_pressure_linear_residual_last_20_control": 2.7551e-7,
+        "mean_final_pressure_linear_residual_last_20_treatment": 2.4165e-7
+      },
+      "hypothesis_disposition": "PARTIALLY_SUPPORTED_AS_INNER_SOLVER_LIMIT; NOT_ESTABLISHED_AS_COUPLED_FAILURE_CAUSE"
+    },
+    {
+      "id": "v7",
+      "question": "Does using two global PIMPLE outer correctors improve coupled residual progress?",
+      "status": "INVALID_FOR_HYPOTHESIS_INFERENCE",
+      "result": "The treatment value was written to a region-local dictionary the solver did not use. Both runtime logs reported one outer corrector. The error was detected and the results were excluded from inference.",
+      "hypothesis_disposition": "NO_INFERENCE"
+    },
+    {
+      "id": "v8",
+      "question": "Does changing only the global outer-corrector count from one to two improve paired U, h, and solid-e residuals?",
+      "status": "VALID_PAIRED_CONTINUATION",
+      "start_iteration": 5000,
+      "end_iteration": 5200,
+      "control_global_outer_correctors": 1,
+      "treatment_global_outer_correctors": 2,
+      "treatment_input_difference": "The global case/system/fvSolution nOuterCorrectors value; common run-window extension was applied to both branches.",
+      "residuals_at_5200": [
+        {"field": "U", "control": 0.00010618507, "treatment": 0.00010755145, "treatment_change_percent": 1.2868, "limit": 0.00001, "gate_both": "FAIL"},
+        {"field": "h", "control": 0.000066143406, "treatment": 0.000065061837, "treatment_change_percent": -1.6352, "limit": 0.00001, "gate_both": "FAIL"},
+        {"field": "solid e", "control": 0.00017854397, "treatment": 0.00017479682, "treatment_change_percent": -2.0987, "limit": 0.000001, "gate_both": "FAIL"},
+        {"field": "p_rgh", "control": 0.000011285021, "treatment": 0.000011034152, "treatment_change_percent": -2.223, "limit": 0.0001, "gate_both": "PASS"},
+        {"field": "k", "control": 0.000047785213, "treatment": 0.000095224623, "treatment_change_percent": 99.28, "limit": 0.0001, "gate_both": "PASS"},
+        {"field": "omega", "control": 0.0000037509783, "treatment": 0.0000074665358, "treatment_change_percent": 99.06, "limit": 0.0001, "gate_both": "PASS"}
+      ],
+      "solver_work": {
+        "pressure_solves_control": 400,
+        "pressure_solves_treatment": 800,
+        "max_iter_100_cap_hits_control": "190/400",
+        "max_iter_100_cap_hits_treatment": "389/800",
+        "runtime_seconds_control": 69.0,
+        "runtime_seconds_treatment": 116.4
+      },
+      "last_saved_diagnostic_fields": {
+        "pressure_drop_pa_control": 73726.654,
+        "pressure_drop_pa_treatment": 75301.872,
+        "mean_outlet_temperature_k_control": 202.739242,
+        "mean_outlet_temperature_k_treatment": 203.476735,
+        "note": "These differ between short restart continuations and are not validated predictions."
+      },
+      "hypothesis_disposition": "PARTIALLY_SUPPORTED_NOT_CONSISTENT_ACROSS_U_H_E"
+    }
+  ],
+  "final_disposition": {
+    "stop_solver_control_tuning": true,
+    "v9_launched": false,
+    "residual_convergence": "FAIL",
+    "mass_conservation": "NOT_SCORED_NO_FROZEN_TOLERANCE",
+    "energy_balance": "NOT_ESTABLISHED",
+    "mesh_independence": "NOT_ESTABLISHED_SINGLE_GRID",
+    "wall_treatment_suitability": "NOT_ESTABLISHED",
+    "experimental_validation": "NOT_EVALUATED_NO_MATCHED_MEASUREMENT_DEFINITION",
+    "design_readiness": "NOT_ESTABLISHED",
+    "interpretation": "The investigation found bounded effects and an implementation mistake, but no unique root cause and no acceptable CFD solution. The frozen stop rule was followed rather than continuing until the result turned green."
+  },
+  "known_open_issues": [
+    "The heat-input prose and the retained facewise thermal boundary field conflict; provenance remains unresolved.",
+    "The reconstructed geometry omits the complete assembly, native author CAD, and several inlet/manifold details.",
+    "The measured y+ range is much larger than the approximately 1 target described in the source methods, but no wall-treatment acceptance criterion or matched wall-model study was run.",
+    "No global energy-closure result or frozen mass-imbalance tolerance is available.",
+    "A single 70,400-cell grid cannot establish mesh independence."
+  ],
+  "future_sol_comparison": {
+    "status": "PREPARED_NOT_RUN",
+    "purpose": "A fresh independent investigator can diagnose the same frozen v5 failure without exposure to Luna's hypotheses, follow-up experiments, or outcomes.",
+    "information_boundary": "Only the original v5 evidence packet, the same initial prompt, and frozen criteria; no Part-II findings.",
+    "scope_note": "This is a proposed model-behavior cross-check, not additional CFD evidence and not part of the completed Part-II result."
+  },
+  "public_artifacts": [
+    {
+      "path": "/demos/aero/harcc-s4-part2/v8-control-solver.log",
+      "sha256": "2fc5762954717b15ab4631cce027d7725833e6bd386e96d7375602c5b91ea62b",
+      "description": "Byte-preserved OpenFOAM solver log for the one-global-outer-corrector control."
+    },
+    {
+      "path": "/demos/aero/harcc-s4-part2/v8-two-outer-correctors-solver.log",
+      "sha256": "4914cf9819ebaA482ee48ebeb00bbf47a897298c33323c4a3db5b2ac3329b506",
+      "description": "Byte-preserved OpenFOAM solver log for the two-global-outer-corrector treatment."
+    },
+    {
+      "path": "/demos/aero/harcc-s4-part2/README.md",
+      "description": "Public technical report and reproduction/evidence scope."
+    }
+  ],
+  "integrity": {
+    "criteria_sha256": "9e50bdbb94955703223edd7fa891026f10029500c440fd35f722babd5288ea82",
+    "frozen_v5_case_tree_sha256": "7b3365ff7d15ba4928c9581efc0557deb7e777d543fbae824c6c678b4474d047",
+    "v6_plan_sha256": "0a4ff516db0a75a7c679fe39d868f9e8b79db51c5dacd532bf87169bbbc4f048",
+    "v6_paired_comparison_sha256": "4a41e201e6a48f7b72b7df91777e76be8e73830362fc6bb974852063d808c874",
+    "v7_plan_sha256": "9bb2b89c158092192e15173b8e55e5242fbffbf8d65f5d757d68345579ca6bb2",
+    "v7_comparison_invalid_for_inference_sha256": "7718b4db7d6c3840d251a056ec9c320be2df74fade6a63750ea2691953e1263d",
+    "v8_plan_sha256": "37523cf00cd26d4ab6abade05f6ba8cf3c6c7caf76c61ed07a215e3de94e3991",
+    "v8_pre_run_receipt_sha256": "c89ea90b7d806d9390c5ec4440f78d549202c1cdb8b9c10e03122935d8bfbe46",
+    "v8_execution_receipt_sha256": "0a0b4c49a7f9bb4c4c3fd3257e26f787f95dafd867b73f803c653c0574e4e344",
+    "v8_deterministic_comparison_sha256": "3900c9d5dca6d37ba495f2413a84144f058cb2cb6a8d2eeed226b892f4248c06",
+    "hash_meaning": "Hashes identify exact recorded artifacts. They do not independently establish numerical or scientific validity."
+  }
+}

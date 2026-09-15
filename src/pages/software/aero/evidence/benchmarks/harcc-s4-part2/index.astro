@@ -1,0 +1,109 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import summary from '../../../../../../../public/demos/aero/harcc-s4-part2/summary.json';
+
+const base = '/demos/aero/harcc-s4-part2/';
+const baseline = summary.baseline;
+const v8 = summary.experiments.find((item) => item.id === 'v8');
+const pct = (value) => `${value > 0 ? '+' : ''}${Number(value).toFixed(2)}%`;
+---
+
+<Shell
+  title="Aero · HARCC S4 Part II failure investigation"
+  description="A transparent investigation of a methane heat-exchanger CFD residual failure: valid and invalid solver-control tests, runtime evidence, and an honest stop decision."
+  path="/software/aero/evidence/benchmarks/harcc-s4-part2/"
+>
+  <header>
+    <p class="eyebrow">AERO / HARCC S4 METHANE COOLING / PART II</p>
+    <span class="status failed">CFD NUMERICAL FAIL</span>
+    <h1>The solver ran. The CFD did not pass.</h1>
+    <p>A bounded investigation tested whether OpenFOAM solver controls explained the frozen v5 residual failure. One valid intervention helped only some fields; a configuration mistake was excluded; the stop rule ended the branch without turning a mixed result into a pass.</p>
+    <p class="metric">v6 pressure-cap test · v7 invalid test disclosed · v8 corrected paired test · no v9</p>
+    <div class="links">
+      <a class="primary" href={base + 'README.md'}>Read the technical record</a>
+      <a href={base + 'summary.json'}>Machine-readable results</a>
+      <a href="#logs">Inspect solver logs</a>
+    </div>
+  </header>
+
+  <section class="boundary" aria-labelledby="meaning">
+    <h2 id="meaning">Disposition</h2>
+    <p><strong>Investigation: complete for the bounded solver-control branch.</strong> <strong>Numerical credibility: not established.</strong> The v8 two-corrector treatment lowered the final `h` and solid-`e` residuals but raised `U`; all three target residual criteria still failed.</p>
+    <p>This is diagnostic evidence, not experimental validation. Energy closure, mesh independence, wall-treatment suitability and design readiness remain open.</p>
+  </section>
+
+  <section aria-labelledby="baseline-heading">
+    <h2 id="baseline-heading">The frozen failure that started the investigation</h2>
+    <p>OpenFOAM Foundation 10 <code>chtMultiRegionFoam</code> reached pseudo-iteration {baseline.start_iteration} and ended normally. Normal process completion did not satisfy the pre-existing residual limits.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Equation</th><th>v5 residual</th><th>Frozen limit</th><th>Gate</th></tr></thead>
+      <tbody>{baseline.residuals.map((r) => <tr>
+        <th>{r.field}</th><td>{r.value === null ? 'Below limit' : Number(r.value).toExponential(4)}</td><td>{Number(r.limit).toExponential(0)}</td><td class={r.gate === 'FAIL' ? 'failed-text' : ''}>{r.gate}</td>
+      </tr>)}</tbody>
+    </table></div>
+    <p class="subtle">The case was a {baseline.cells.toLocaleString()}-cell reconstructed single-pitch segment, not a complete as-built assembly. Interface y+ ranged {baseline.interface_y_plus.minimum}–{baseline.interface_y_plus.maximum} (mean {baseline.interface_y_plus.mean}); no wall-treatment suitability gate had been established.</p>
+  </section>
+
+  <section aria-labelledby="sequence-heading">
+    <h2 id="sequence-heading">Three attempts, with the invalid one kept visible</h2>
+    <div class="cards">
+      {summary.experiments.map((experiment) => <article>
+        <p class="eyebrow">{experiment.id.toUpperCase()} · {experiment.status.replaceAll('_', ' ')}</p>
+        <h3>{experiment.id === 'v6' ? 'Raise the pressure-solver cap' : experiment.id === 'v7' ? 'Catch a setup mistake' : 'Correct the outer-corrector test'}</h3>
+        <p>{experiment.result}</p>
+        {experiment.id === 'v8' && <p class="subtle">One versus two global outer correctors, both continued from iteration 5000 to 5200. Runtime settings were checked in each solver log.</p>}
+      </article>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="v8-heading">
+    <h2 id="v8-heading">v8: partial movement is not convergence</h2>
+    <p>Final residuals at iteration {v8.end_iteration}. Positive change means the treatment residual is higher than control.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>1 outer corrector</th><th>2 outer correctors</th><th>Change</th><th>Both gates</th></tr></thead>
+      <tbody>{v8.residuals_at_5200.map((r) => <tr>
+        <th>{r.field}</th><td>{Number(r.control).toExponential(4)}</td><td>{Number(r.treatment).toExponential(4)}</td><td>{pct(r.treatment_change_percent)}</td><td class={r.gate_both === 'FAIL' ? 'failed-text' : ''}>{r.gate_both}</td>
+      </tr>)}</tbody>
+    </table></div>
+    <div class="cards">
+      <article><h3>More solver work</h3><p>{v8.solver_work.pressure_solves_control} → {v8.solver_work.pressure_solves_treatment} pressure solves. Runtime rose from {v8.solver_work.runtime_seconds_control} s to {v8.solver_work.runtime_seconds_treatment} s.</p><p class="subtle">The extra work is not evidence of greater physical accuracy.</p></article>
+      <article><h3>The stop rule held</h3><p>Since improvement was not consistent across `U`, `h` and solid `e`, this solver-control branch stopped at v8. No v9 was launched.</p></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="limits-heading" class="boundary">
+    <h2 id="limits-heading">What this does and does not show</h2>
+    <ul>
+      <li><strong>Shown:</strong> the pressure iteration cap affected inner solves; its removal did not materially repair the coupled target residuals.</li>
+      <li><strong>Shown:</strong> the v7 treatment setting was not read by the solver, and its branch comparison was correctly excluded.</li>
+      <li><strong>Shown:</strong> the corrected v8 intervention changed `h` and `e` favorably but `U` unfavorably; frozen gates remained unchanged and failed.</li>
+      <li><strong>Not shown:</strong> a unique failure cause, mesh independence, energy closure, matched experimental agreement, physical validation or design readiness.</li>
+    </ul>
+    <p>The heat-input prose and facewise boundary field conflict; native author CAD and complete assembly geometry are unavailable in this reconstruction. These uncertainties were retained, not resolved after the runs.</p>
+  </section>
+
+  <section aria-labelledby="blind-heading">
+    <h2 id="blind-heading">Reference boundary and model comparison</h2>
+    <p>The initial GPT-5.6 Luna diagnosis used a clean, read-only context with publication results and the retrospective Part-I report withheld. It could see the original case evidence and a methods-only source extract. That is reference-withheld diagnosis, not a fully hermetic blind benchmark. Follow-up v6–v8 reviews were sequential in the same Luna context.</p>
+    <p>A fresh GPT-5.6 Sol blind-comparison protocol was prepared but <strong>not run</strong>. Its purpose is an optional independent model-behavior check using only the original v5 packet and criteria, without Luna’s hypotheses or later outcomes. It adds no CFD evidence and is not part of this result.</p>
+  </section>
+
+  <section id="logs" aria-labelledby="logs-heading">
+    <h2 id="logs-heading">Retained public run evidence</h2>
+    <p>The v8 solver logs are byte-preserved and their SHA-256 values are listed in the results JSON. The complete mesh and field/checkpoint archive remains in local research storage; this public release is not a turnkey rerun package.</p>
+    <div class="links">
+      <a href={base + 'v8-control-solver.log'}>Download control solver log</a>
+      <a href={base + 'v8-two-outer-correctors-solver.log'}>Download treatment solver log</a>
+      <a href={base + 'summary.json'}>Results + hashes (JSON)</a>
+      <a href={base + 'README.md'}>Full public run note</a>
+      <a href="https://doi.org/10.2322/tastj.19.96">Source publication DOI</a>
+    </div>
+    <p class="subtle">Artifact hashes establish identity, not scientific validity. No full-text paper, figures or experimental tables are reproduced.</p>
+  </section>
+
+  <section><div class="links"><a href="/software/aero/evidence/benchmarks/">Back to the benchmark register</a><a href="/software/aero/evidence/">All Aero evidence</a></div></section>
+</Shell>
+
+<style>
+  .table-wrap{overflow:auto}.table-wrap table{min-width:680px}.failed-text{color:#c84749;font-weight:750}:root[data-theme=dark] .failed-text{color:#f69b96}.subtle{font-size:14px}
+</style>
