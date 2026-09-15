@@ -1,9 +1,10 @@
 {
   "schema": "aero.heat_exchanger.hx_s01_public_artifact_manifest.v1",
   "case_id": "HX-S01",
-  "generated_utc": "2026-09-15T22:52:08.620287Z",
+  "generated_utc": "2026-09-15T22:59:42.967015Z",
   "purpose": "Identifies the public report and public-safe summary assets; local raw logs and mesh binaries are separately indexed by evidence_manifest.json.",
-  "notice": "The public report is a path-sanitized, adapted edition of the local report. This manifest hashes the public bytes; its report hash is not expected to equal the local report hash.",
+  "notice": "Hashes and byte sizes use canonical UTF-8/LF text bytes as deployed from Git. The public report is a path-sanitized, adapted edition of the local report, so its hash is not expected to equal the local report hash. The evidence-manifest sidecar here is recalculated for the canonical public copy; the local sidecar is retained separately in the local study folder.",
+  "hash_encoding": "UTF-8 with CRLF normalized to LF, matching committed/deployed text assets",
   "files": [
     {
       "path": "baseline_gate_assessment.json",
@@ -17,18 +18,18 @@
     },
     {
       "path": "continuation_diagnostic.json",
-      "size_bytes": 2968,
-      "sha256": "b4ec43e67379f3c78eeaf5e0352fad9649da545bfbe4446661b1b0d10cf89fee"
+      "size_bytes": 2894,
+      "sha256": "d11f80223b5a305e7a5c2d0acf0030ba26a14f9db5a53af9a029e882d9eb2e92"
     },
     {
       "path": "evidence_manifest.json",
-      "size_bytes": 12241,
-      "sha256": "da7ede79372347ad6dc4ce214c6f2f235b0d1ea11b40667e2734696b09aa3851"
+      "size_bytes": 11899,
+      "sha256": "29dbe2d3dd6dfce8486ae4bd3cc0dfbc363227cc27d71bf79f3a3000d1950767"
     },
     {
       "path": "evidence_manifest.sha256",
-      "size_bytes": 90,
-      "sha256": "d8d2887b49c3a9a07497c77d6c9b9ee346eb85e84abb8b0a5092dfefab3451c9"
+      "size_bytes": 89,
+      "sha256": "e1c456c8d4fedde0f3b10723c46b3486b31d19ed51859d1b645f5132149fafd9"
     },
     {
       "path": "fine_1000.json",
