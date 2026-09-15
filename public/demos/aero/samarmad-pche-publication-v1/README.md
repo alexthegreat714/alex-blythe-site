@@ -1,6 +1,6 @@
-# Samarmad PCHE benchmark — pre-reveal record (v1)
+# Samarmad PCHE publication-targeted run — v1
 
-This page records a prediction package for a printed-circuit heat-exchanger study before the publication's experimental measurement tables were opened for comparison. The numerical result at this stage is **FAIL**: the three-grid OpenFOAM study does not meet the preregistered residual and pressure-drop grid-sensitivity gates. Mass and energy balances pass; that does not rescue the failed solver/convergence disposition.
+**Final disposition: INCOMPLETE.** OpenFOAM numerical disposition is **FAIL**; publication comparison is **UNSCORED**; source-supported structural validation is **NOT SUPPORTED**. The pre-reveal prediction package remains frozen and unmodified.
 
 ## Source
 
@@ -16,16 +16,19 @@ OpenFOAM Foundation v10 ran coarse, medium and fine tetrahedral meshes of 494,67
 
 The cited paper provides no structural material, supports, mechanical loads, or structural measurement. A separately planned three-grid CalculiX thermal-mapping exercise is exploratory only and failed its exact 100% transfer-coverage gate at 92.95%, 94.56%, and 99.9976%; no decks were generated for that plan. A distinct earlier single assumption-only CalculiX shakedown is not source validation.
 
-## Freeze and reveal status
+## Freeze and post-reveal comparison
 
-The prediction manifest contains 653 hashed entries. Its SHA-256 is `e09516c5946190b72e29009f0bc3f99ae3f7586c2c29e89e3f9dc02539e07cfb`; its inventory SHA-256 is `9f34e3f2615437fe15c61b60b36fcddb671ca09cdecd0739689201494437e92d`. An independent local verification checked all entries with zero mismatches. OpenTimestamps submissions have been made to four calendars, but blockchain confirmation is still pending. Consequently the publication's experimental tables have **not been opened or compared** in this revision.
+The frozen manifest contains 653 entries. Its SHA-256 is `e09516c5946190b72e29009f0bc3f99ae3f7586c2c29e89e3f9dc02539e07cfb`; inventory SHA-256 is `9f34e3f2615437fe15c61b60b36fcddb671ca09cdecd0739689201494437e92d`. An independent verifier checked every entry with zero mismatches.
 
-The orchestration agent had prior exposure to an abstract-level summary and a Section 4.1 discrepancy, and the solver container was not hermetic. This is a reference-withheld solver run, not a fully blind benchmark. After external timestamp verification, a separate reveal report will compare only matching frozen test conditions and measurement definitions. If no exact match exists, the result will be marked **UNSCORED**; v1 will not be retuned. Any post-reveal tuning will be a separate calibration study.
+The publication result section has since been reviewed, but the frozen experimental point could not be matched to an exact source measurement from the accessible article data. The source reports a Reynolds-number sweep and plotted comparisons; this review did not identify pointwise raw data at Aero's frozen 0.246 m/s condition (solver Reynolds number ≈519.105 using declared properties). The frozen criteria require matching conditions and definitions; no error percentage is fabricated from a different point. Therefore the experimental comparison is **UNSCORED**. The article's own reported 11.6% Nusselt and 11.5% friction-factor deviations describe its Model 6 numerical results versus its experiments, not Aero's error.
+
+The OpenTimestamps proof was submitted to four calendars, but Bitcoin confirmation remains pending. Publication results were reviewed after the inventory was re-hashed and after submission, but before confirmation; that procedural limitation is explicitly recorded. The proof is submitted/pending, not externally confirmed. The orchestrator had prior exposure to the article's abstract and Section 4.1 summary, and the solver was not isolated in a hermetic, network-disabled environment. This is not a fully blind benchmark.
 
 ## Files
 
 - [`run_summary.json`](run_summary.json) — machine-readable pre-reveal status and numerical gates.
 - [`pre_reveal_prediction_freeze.json`](pre_reveal_prediction_freeze.json) — hash inventory of the frozen prediction package.
 - [`pre_reveal_prediction_freeze.json.ots`](pre_reveal_prediction_freeze.json.ots) — OpenTimestamps proof (calendar-submitted; confirmation pending).
+- [`post_reveal_comparison_v1.json`](post_reveal_comparison_v1.json) — separate post-reveal disposition and explanation for the unscored comparison.
 
-This public summary reports Aero's independently generated run; it does not reproduce the source article or constitute design-release evidence.
+This public summary reports Aero's independently generated run; it does not reproduce the source article or constitute design-release evidence. V1 was not tuned after reveal; any later calibration must be a separately identified study.

@@ -1,7 +1,7 @@
 {
   "schema": "aero.publication_benchmark_summary.v1",
   "case_id": "PCHE-SAMARMAD-PUBLICATION-01",
-  "title": "Samarmad PCHE — pre-reveal prediction record",
+  "title": "Samarmad PCHE — frozen numerical fail and post-reveal comparison",
   "revision": "v1",
   "source": {
     "citation": "Samarmad and Jaffal (2023), Results in Engineering 19, 101303",
@@ -16,7 +16,7 @@
     "openfoam_numerical_disposition": "FAIL",
     "calculix_source_validation": "NOT_SUPPORTED_BY_SOURCE",
     "calculix_exploratory_mesh_sensitivity": "FAIL_MAPPING_COVERAGE",
-    "publication_measurement_reveal": "WITHHELD_PENDING_EXTERNAL_TIMESTAMP_CONFIRMATION",
+    "publication_measurement_reveal": "REVEALED_AFTER_FREEZE; COMPARISON_UNSCORED",
     "full_blindness": false
   },
   "pre_reveal_prediction": {
@@ -80,8 +80,25 @@
   },
   "blinding_limit": "The solver received no publication measurement values or result plots, but the human/orchestrator had prior abstract-level and Section 4.1-summary exposure; this is not a fully blind benchmark.",
   "measurement_comparison": {
-    "status": "NOT_OPENED",
-    "reason": "Await external timestamp proof upgrade/verification",
-    "scoring_rule": "After reveal, compare only a matching frozen experimental condition and measurement definition; otherwise label UNSCORED. No tuning of v1 after reveal."
+    "status": "UNSCORED",
+    "reason": "The frozen 0.246 m/s solver condition (Re approximately 519.105 with the declared solver properties) is not established as an exact experimental point in the accessible article data. The preregistered rule requires a matched frozen condition and prohibits fitting/extrapolation. No Aero-versus-experiment error percentage is calculated from a guessed or mismatched point.",
+    "source_reported_context": "The paper reports aggregate Model 6 numerical-to-experimental deviations of 11.6% for Nusselt number and 11.5% for friction factor, with experimental values slightly higher. These are the authors' own comparison, not Aero's score.",
+    "comparison_record": "post_reveal_comparison_v1.json",
+    "digitized_measurements": false,
+    "scoring_rule": "Compare only a matching frozen experimental condition and measurement definition; otherwise mark UNSCORED. No v1 tuning after reveal."
+  },
+  "overall_disposition": {
+    "status": "INCOMPLETE",
+    "openfoam_numerical": "FAIL",
+    "experimental_comparison": "UNSCORED",
+    "calculix_source_validation": "NOT_SUPPORTED_BY_SOURCE",
+    "calculix_exploratory_mapping": "FAIL_BLOCKED_AT_100_PERCENT_COVERAGE"
+  },
+  "reveal_protocol": {
+    "prediction_package_remains_unchanged": true,
+    "post_reveal_record_is_separate": true,
+    "external_timestamp_state": "SUBMITTED_TO_FOUR_CALENDARS; BITCOIN_CONFIRMATION_PENDING_AT_REVEAL",
+    "timestamp_confirmed": false,
+    "note": "Publication results were reviewed after the frozen inventory was re-hashed but before the external OpenTimestamps proof received Bitcoin confirmation. This procedural limitation is disclosed in the post-reveal record."
   }
 }

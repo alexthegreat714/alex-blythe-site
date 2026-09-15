@@ -1,0 +1,62 @@
+{
+  "schema": "aero.pche.samarmad.post_reveal_comparison.v1",
+  "case_id": "PCHE-SAMARMAD-PUBLICATION-01",
+  "recorded_at_utc": "2026-09-15T05:13:54Z",
+  "prediction_freeze": {
+    "manifest_sha256": "e09516c5946190b72e29009f0bc3f99ae3f7586c2c29e89e3f9dc02539e07cfb",
+    "inventory_sha256": "9f34e3f2615437fe15c61b60b36fcddb671ca09cdecd0739689201494437e92d",
+    "entries_reverified_after_reveal": 653,
+    "mismatches": 0,
+    "external_timestamp": "SUBMITTED_TO_FOUR_CALENDARS; BITCOIN_CONFIRMATION_PENDING",
+    "reveal_timing_caveat": "The article result narrative was reviewed after the freeze and after external calendar submission, but before the timestamp proof received Bitcoin confirmation. The pre-reveal package remains unchanged; this limitation is disclosed rather than represented as a completed external timestamp."
+  },
+  "source": {
+    "citation": "Samarmad and Jaffal (2023), Results in Engineering 19, 101303",
+    "doi": "10.1016/j.rineng.2023.101303",
+    "url": "https://doi.org/10.1016/j.rineng.2023.101303",
+    "author_uploaded_full_text": "https://www.researchgate.net/publication/372453246_Performance_evaluation_of_a_printed_circuit_heat_exchanger_with_a_novel_two-way_corrugated_channel",
+    "reviewed_source_sections": ["3.2–3.5 experimental rig, sensors and data reduction", "4.1 Model 6 numerical-to-experimental comparison"],
+    "measurement_access": "The accessible full text presents experimental comparison curves and reported aggregate deviations; no accessible pointwise raw result table was identified for the frozen case condition."
+  },
+  "source_reported_validation_context": {
+    "scope": "Article authors' comparison of their own Model 6 numerical results with their experiments; not Aero's result.",
+    "reported_nusselt_deviation_percent": 11.6,
+    "reported_friction_factor_deviation_percent": 11.5,
+    "reported_direction": "Experimental values were described as slightly higher than the paper's numerical values.",
+    "use_in_aero_scoring": false
+  },
+  "frozen_condition": {
+    "inlet_velocity_m_s_each_stream": 0.246,
+    "solver_reynolds_number": 519.1050396053363,
+    "hot_inlet_temperature_k": 323.0,
+    "cold_inlet_temperature_k": 293.0,
+    "experimental_point_match": "NOT_ESTABLISHED"
+  },
+  "comparison": {
+    "status": "UNSCORED",
+    "reason": "The frozen solver condition is not established as an exact experimental operating point in the accessible article data. The preregistered comparison rule allows scoring only an input condition represented by the frozen prediction and prohibits post-reveal fitting or extrapolation. The accessible result figures/summary do not provide a verified pointwise measurement at the matched frozen condition and definition. No error percentage is calculated from a guessed or mismatched point.",
+    "digitization": "NOT_PERFORMED; no source point matching the frozen condition was established. This avoids assigning false precision to a curve read at an unmatched condition.",
+    "quantities_not_scored": [
+      "hot_pressure_drop",
+      "cold_pressure_drop",
+      "hot_outlet_temperature",
+      "cold_outlet_temperature",
+      "hot_heat_duty",
+      "cold_heat_duty",
+      "Nusselt_number",
+      "friction_factor"
+    ],
+    "aero_pointwise_error_calculation": "NOT_POSSIBLE_WITHOUT_A_MATCHED_EXPERIMENTAL_POINT"
+  },
+  "engineering_disposition": {
+    "overall": "INCOMPLETE",
+    "openfoam_numerical": "FAIL",
+    "publication_experiment_comparison": "UNSCORED",
+    "calculix_source_validation": "NOT_SUPPORTED_BY_SOURCE",
+    "calculix_exploratory_transfer": "FAIL_BLOCKED_AT_100_PERCENT_MAPPING_GATE",
+    "criteria_changed_after_reveal": false,
+    "v1_retuned_after_reveal": false,
+    "calibration_study_created": false
+  },
+  "publication_rights_boundary": "Public record cites the article and reports Aero's own disposition. It does not redistribute the source article, text, figures, tables, or digitized measurements. Commercial reuse remains uncleared."
+}

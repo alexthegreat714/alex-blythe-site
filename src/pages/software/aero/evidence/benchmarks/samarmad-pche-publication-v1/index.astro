@@ -10,26 +10,26 @@ const pct = (value) => `${Number(value).toFixed(2)}%`;
 ---
 <Shell
   title="Aero · Samarmad PCHE publication benchmark v1"
-  description="Pre-reveal OpenFOAM prediction record for an independently reconstructed printed-circuit heat exchanger. Numerical failures are retained; publication measurements remain withheld."
+  description="A frozen OpenFOAM prediction for an independently reconstructed printed-circuit heat exchanger. Numerical failure and an unscored publication comparison are reported transparently."
   path="/software/aero/evidence/benchmarks/samarmad-pche-publication-v1/"
 >
   <header>
-    <p class="eyebrow">AERO / SOURCE-DERIVED PCHE STUDY · V1</p>
+    <p class="eyebrow">AERO / PUBLICATION-TARGETED PCHE STUDY · V1</p>
     <span class="status failed">NUMERICAL FAIL</span>
-    <h1>Samarmad PCHE: the solver did not clear its gates.</h1>
-    <p>This is the pre-reveal prediction record for an independently reconstructed corrugated heat-exchanger cell. The solver reached the declared end time, but its residual and pressure-drop mesh-independence checks failed. The publication’s experimental measurements are still withheld.</p>
-    <p class="metric">3 grids run · 0 grids met every frozen numerical gate · prediction package hash-verified</p>
+    <h1>Samarmad PCHE: numerical fail; experiment unscored.</h1>
+    <p>The frozen v1 prediction was compared against the accessible publication after the run. No exact experimental point could be matched to the frozen operating condition, so the experimental comparison is honestly left unscored.</p>
+    <p class="metric">3 grids run · 0 cleared every numerical gate · prediction package hash-verified</p>
     <div class="links">
       <a class="primary" href={base + 'README.md'}>Read the run record</a>
       <a href="#numerics">Inspect the numerical gates</a>
-      <a href="#reveal">See reveal status</a>
+      <a href="#reveal">See comparison disposition</a>
     </div>
   </header>
 
   <section class="boundary" aria-labelledby="meaning">
     <h2 id="meaning">What this result means</h2>
     <p><strong>Numerical disposition: FAIL.</strong> All meshes pass OpenFOAM’s region checks, and conservation checks pass their predeclared limits. Residuals remain above the 1×10<sup>−6</sup> target on every grid, and medium-to-fine pressure drop changes by more than the 5% allowance.</p>
-    <p><strong>Experimental agreement: NOT SCORED.</strong> The source result tables have not been opened for comparison. No validation claim is made from this pre-reveal record.</p>
+    <p><strong>Experimental agreement: UNSCORED.</strong> The source results were reviewed, but no exact measured point matching this frozen condition and definition was established. No validation claim is made.</p>
   </section>
 
   <section aria-labelledby="source">
@@ -91,10 +91,12 @@ const pct = (value) => `${Number(value).toFixed(2)}%`;
   </section>
 
   <section id="reveal" class="boundary" aria-labelledby="reveal-heading">
-    <h2 id="reveal-heading">Experimental reveal remains closed</h2>
-    <p>The 653-file prediction inventory was independently re-hashed with zero mismatches. Its exact manifest SHA-256 is <code>{freeze.manifest_sha256}</code>; inventory SHA-256 is <code>{freeze.inventory_sha256}</code>.</p>
-    <p>OpenTimestamps receipts have been submitted to four calendars, but the proof is still pending blockchain confirmation. Until upgraded and verified, the publication measurement tables remain unopened. After that, only an exact match to the frozen condition and measurement definition will be scored; otherwise the comparison will be marked <strong>UNSCORED</strong>. V1 will not be tuned after reveal.</p>
-    <div class="links"><a href={base + 'pre_reveal_prediction_freeze.json'}>Prediction freeze manifest</a><a href={base + 'pre_reveal_prediction_freeze.json.ots'}>Timestamp proof (pending)</a><a href={base + 'README.md'}>Full pre-reveal record</a><a href="/software/aero/evidence/benchmarks/">Benchmark register</a></div>
+    <h2 id="reveal-heading">Post-reveal comparison</h2>
+    <p>The 653-entry prediction inventory was independently re-hashed with zero mismatches. Manifest SHA-256: <code>{freeze.manifest_sha256}</code>; inventory SHA-256: <code>{freeze.inventory_sha256}</code>.</p>
+    <p>The frozen case is 0.246 m/s per stream (solver Re ≈519.105). The accessible paper reports experimental curves over a Reynolds sweep, but the review did not establish an exact pointwise experimental observation matching this operating condition and measurement definition. The preregistered rule prohibits scoring a mismatched point or fitting after reveal; therefore the Aero-versus-experiment error is <strong>UNSCORED</strong>.</p>
+    <p>The paper itself reports aggregate Model 6 differences of 11.6% in Nusselt number and 11.5% in friction factor between its own simulation and experiments, with experimental values slightly higher. That is source context—not Aero's score. V1's OpenFOAM numerical disposition remains <strong>FAIL</strong>; no post-reveal tuning was performed.</p>
+    <p>OpenTimestamps was submitted to four calendars; Bitcoin confirmation was still pending at reveal. This procedural caveat is disclosed. The freeze is hash-verified, but no confirmed external timestamp is claimed.</p>
+    <div class="links"><a href={base + 'post_reveal_comparison_v1.json'}>Post-reveal comparison record (JSON)</a><a href={base + 'pre_reveal_prediction_freeze.json'}>Prediction freeze manifest</a><a href={base + 'pre_reveal_prediction_freeze.json.ots'}>Timestamp proof (pending)</a><a href={base + 'README.md'}>Full run record</a><a href="/software/aero/evidence/benchmarks/">Benchmark register</a></div>
   </section>
 </Shell>
 
