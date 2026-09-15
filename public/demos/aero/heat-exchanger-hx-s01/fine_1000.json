@@ -1,0 +1,37 @@
+{
+  "schema": "aero.heat_exchanger.hx_s01_public_grid_endpoint.v1",
+  "case_id": "HX-S01",
+  "grid": "fine",
+  "endpoint_pseudo_iteration": 1000,
+  "completion": "NORMAL_END_MARKER_CONFIRMED",
+  "resume_provenance": "Same-settings continuation resumed from the archived iteration-275 field; mesh, geometry, physics, schemes, tolerances, relaxation, and write interval were unchanged.",
+  "solver": "OpenFOAM Foundation v10 chtMultiRegionFoam",
+  "numerical_status": {
+    "max_final_residual": 0.0000019805244,
+    "residual_gate_limit": 0.000001,
+    "residual_gate": "FAIL",
+    "mass_imbalance_percent": 0.06252864,
+    "mass_gate_limit_percent": 0.5,
+    "mass_gate": "PASS",
+    "energy_imbalance_percent": 2.1226172,
+    "energy_gate_limit_percent": 5.0,
+    "energy_gate": "PASS"
+  },
+  "outputs": {
+    "hot_pressure_drop_Pa": 1794.7222543,
+    "cold_pressure_drop_Pa": 1802.3630072,
+    "hot_heat_duty_W": 20.09676763,
+    "cold_heat_duty_W": 20.53259604,
+    "Reynolds_number_from_frozen_properties_and_speed": 519.1050,
+    "cold_Darcy_friction_factor": 0.3813660,
+    "cold_Nusselt_number": 2.9908170,
+    "cold_heat_transfer_coefficient_W_m2_K": 1218.0604
+  },
+  "limitations": [
+    "Synthetic, source-informed reconstructed case; not a blind publication benchmark.",
+    "No experimental comparison or validation claim.",
+    "The frozen three-grid 250-iteration baseline remains NUMERICAL FAIL; this optional endpoint does not change it.",
+    "Fine-to-medium pressure-drop differences at iteration 1000 are 28.7% hot-side and 28.1% cold-side."
+  ],
+  "provenance_note": "Path-free public summary. The local evidence hash register identifies the retained raw solver log, post-processing record, mesh, and archived restart checkpoint."
+}

@@ -1,0 +1,50 @@
+{
+  "case_id": "HX-S01",
+  "assessment_horizon_pseudo_iterations": 250,
+  "frozen_criteria": {
+    "max_final_residual": 1e-6,
+    "mass_imbalance_max_fraction": 0.005,
+    "energy_imbalance_max_fraction": 0.05,
+    "medium_to_fine_delta_max_fraction": 0.05,
+    "checkMesh_all_regions": "PASS required"
+  },
+  "grids": {
+    "coarse": {
+      "cells": 494670,
+      "max_final_residual": 0.00021375007,
+      "residual_gate": "FAIL",
+      "mass_imbalance_fraction": 0.0006688238574544633,
+      "energy_imbalance_fraction": 0.03671461567085675,
+      "hot_pressure_drop_Pa": 1319.395385895361,
+      "cold_pressure_drop_Pa": 1340.9303482432442,
+      "checkMesh_all_regions": "PASS"
+    },
+    "medium": {
+      "cells": 1003677,
+      "max_final_residual": 5.7687564e-6,
+      "residual_gate": "FAIL",
+      "mass_imbalance_fraction": 0.0008958229125249288,
+      "energy_imbalance_fraction": 0.024920305551397754,
+      "hot_pressure_drop_Pa": 1393.713598626462,
+      "cold_pressure_drop_Pa": 1407.924458724563,
+      "checkMesh_all_regions": "PASS"
+    },
+    "fine": {
+      "cells": 2770939,
+      "max_final_residual": 6.6988823e-6,
+      "residual_gate": "FAIL",
+      "mass_imbalance_fraction": 0.0006235392453585061,
+      "energy_imbalance_fraction": 0.014960742427898757,
+      "hot_pressure_drop_Pa": 1800.9443363756436,
+      "cold_pressure_drop_Pa": 1808.931235972239,
+      "checkMesh_all_regions": "PASS"
+    }
+  },
+  "medium_to_fine_changes": {
+    "hot_pressure_drop_percent": 22.61206687646568,
+    "cold_pressure_drop_percent": 22.168160363052632,
+    "gate": "FAIL; both exceed 5 percent"
+  },
+  "overall_disposition": "NUMERICAL FAIL",
+  "interpretation": "A normal solver end marker is not convergence. Mass, energy and the retained basic mesh checks pass, but all three residual limits fail and pressure drop is not mesh-independent."
+}

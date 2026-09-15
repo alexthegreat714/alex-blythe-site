@@ -1,0 +1,81 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+
+const base = '/demos/aero/heat-exchanger-hx-s01/';
+---
+<Shell title="Aero | HX-S01 synthetic PCHE study" description="A source-informed synthetic counterflow PCHE study with assumptions, numerical failures, and validation limits disclosed." path="/software/aero/evidence/benchmarks/heat-exchanger-program-v1/">
+  <header>
+    <p class="eyebrow">AERO / HX-S01 - SYNTHETIC REPLACEMENT</p>
+    <span class="status mixed">SOURCE-INFORMED / NOT BLIND / NOT EXPERIMENTALLY VALIDATED</span>
+    <h1>A counterflow PCHE study with its assumptions left visible.</h1>
+    <p>The publication-targeted path did not establish a pointwise experiment matched to the reconstructed solver condition. With the owner's approval, HX-S01 uses a real PCHE study for configuration context, labels missing inputs as assumptions, and tests a bounded analytical-plus-OpenFOAM workflow. It does not invent experimental measurements.</p>
+    <div class="links">
+      <a class="primary" href={base + 'REPORT.md'}>Read the complete report</a>
+      <a href={base + 'study_definition.json'}>Inspect inputs and assumptions</a>
+      <a href={base + 'evidence_manifest.json'}>Inspect evidence hashes</a>
+    </div>
+  </header>
+
+  <section class="boundary" aria-labelledby="why-heading">
+    <h2 id="why-heading">Why the replacement is synthetic</h2>
+    <p>Samarmad and Jaffal (2023) provide a real two-way-corrugated PCHE configuration reference. The reconstructed 293 K case has no established pointwise experimental match, and the source gives 290 K in another passage. Structural test truth and complete structural inputs are also absent. The publisher says data are available on request, but a matched pointwise package was not obtained for this execution. We therefore define a runnable synthetic case and mark each completion instead of inventing measurements or scoring agreement; a custodian-led request can reopen HX-B01 later.</p>
+    <p>Seo et al. (2015) provides additional water-PCHE method context, and NIST reference correlations ground nominal liquid-water properties. These references inform setup and property selection, not a hidden answer or validation target.</p>
+    <p class="subtle">The public package contains Aero-authored inputs and calculated outputs, not the cited papers, figures, tables, or copied passages. The source-use record identifies the consulted author-uploaded Samarmad copy as CC BY-NC-ND 4.0 and records attributed noncommercial reference use; commercial reuse was not cleared. This is not legal advice.</p>
+  </section>
+
+  <section aria-labelledby="baseline-heading">
+    <h2 id="baseline-heading">Frozen numerical baseline: FAIL</h2>
+    <p>All three OpenFOAM Foundation v10 <code>chtMultiRegionFoam</code> grids reached the original 250-iteration horizon. A normal end marker does not establish convergence. The predeclared residual target failed on every grid; medium-to-fine pressure-drop changes were 22.2% cold-side and 22.6% hot-side against a 5% limit. Mass and energy balances met their limits, and the retained basic <code>checkMesh</code> gate passed.</p>
+    <div class="table-wrap"><table><thead><tr><th>Metric at 250 iterations</th><th>Coarse</th><th>Medium</th><th>Fine</th><th>Disposition</th></tr></thead><tbody>
+      <tr><th>Cells</th><td>494,670</td><td>1,003,677</td><td>2,770,939</td><td>Three levels executed</td></tr>
+      <tr><th>Maximum final residual</th><td>2.14e-4</td><td>5.77e-6</td><td>6.70e-6</td><td>FAIL; limit 1e-6</td></tr>
+      <tr><th>Mass imbalance</th><td>0.067%</td><td>0.090%</td><td>0.062%</td><td>Within 0.5% limit</td></tr>
+      <tr><th>Hot/cold energy imbalance</th><td>3.67%</td><td>2.49%</td><td>1.50%</td><td>Within 5% limit</td></tr>
+      <tr><th>Cold-side pressure drop</th><td>1,340.9 Pa</td><td>1,407.9 Pa</td><td>1,808.9 Pa</td><td>22.2% medium-to-fine; FAIL</td></tr>
+      <tr><th>Hot-side pressure drop</th><td>1,319.4 Pa</td><td>1,393.7 Pa</td><td>1,800.9 Pa</td><td>22.6% medium-to-fine; FAIL</td></tr>
+    </tbody></table></div>
+    <figure class="balance-figure"><img src={base + 'conservation_balance.svg'} alt="Mass and energy imbalances for coarse, medium, and fine grids compared with their predeclared limits." loading="lazy" /><figcaption>Conservation passes on all three baseline grids. Residual and pressure-drop mesh-sensitivity gates still fail.</figcaption></figure>
+    <p class="subtle"><strong>Mesh-record clarification:</strong> a generated setup manifest says all meshes fail an additional frozen quality criterion, but the frozen acceptance file specifies the per-region <code>checkMesh</code> gate and the retained logs and assessment say <code>Mesh OK</code>. No separate frozen limit supporting that sentence was found, so it is treated as unsupported and the original file is preserved. The medium hot-fluid log records one face at 70.103 degrees while still reporting <code>Mesh OK</code>. This does not change the overall numerical FAIL.</p>
+  </section>
+
+  <section aria-labelledby="continuation-heading">
+    <h2 id="continuation-heading">Optional same-settings continuation</h2>
+    <p>All three grids reached iteration 1,000 under the original numerical settings. Each still misses the residual limit; heat-duty snapshots rose by about 196-203% from iteration 250. The fine case resumed from its archived iteration-275 field without changing mesh, physics, or numerical settings. These diagnostic extensions do not change the frozen baseline.</p>
+    <div class="table-wrap"><table><thead><tr><th>Grid</th><th>Endpoint</th><th>Final max residual</th><th>Hot / cold ΔP</th><th>Hot duty</th><th>Cold duty</th><th>Mass / energy balance</th></tr></thead><tbody>
+      <tr><th>Coarse</th><td>1,000; normal end</td><td>2.848e-4; FAIL</td><td>1,318.63 / 1,342.31 Pa</td><td>6.661 to 20.134 W (+202.3%)</td><td>6.915 to 20.638 W (+198.5%)</td><td>0.067% / 2.443%</td></tr>
+      <tr><th>Medium</th><td>1,000; normal end</td><td>1.809e-6; FAIL</td><td>1,394.24 / 1,406.88 Pa</td><td>6.844 to 20.428 W (+198.5%)</td><td>7.019 to 20.799 W (+196.3%)</td><td>0.088% / 1.782%</td></tr>
+      <tr><th>Fine</th><td>1,000; normal end after resume</td><td>1.981e-6; FAIL</td><td>1,794.72 / 1,802.36 Pa</td><td>6.722 to 20.097 W (+199.0%)</td><td>6.824 to 20.533 W (+200.9%)</td><td>0.063% / 2.123%</td></tr>
+    </tbody></table></div>
+    <p class="subtle">At 1,000, fine-to-medium pressure-drop differences are 28.7% hot-side and 28.1% cold-side. Heat-duty snapshots are more closely grouped, but this quantity-specific agreement does not cure residual failure or pressure-drop disagreement. The 1,000 extension is diagnostic only, not a newly frozen gate or validation claim.</p>
+    <div class="links"><a href={base + 'continuation_diagnostic.json'}>Continuation summary</a><a href={base + 'fine_275_partial.json'}>Archived fine 275 checkpoint</a></div>
+  </section>
+
+  <section aria-labelledby="case-heading">
+    <h2 id="case-heading">Case and analysis boundary</h2>
+    <div class="cards">
+      <article><h3>Reconstructed geometry</h3><p>One periodic hot/cold channel pair, 0.24 m active length, semicircular 2.5 mm channel diameter, and declared corrugation assumptions. This is independent OpenCASCADE geometry, not author CAD.</p></article>
+      <article><h3>Declared conditions</h3><p>Counter-current water-to-water; 323 K hot inlet, 293 K cold inlet, and plus/minus 0.246 m/s. Constant water properties are nominal near 308.15 K; temperature dependence, headers, and collectors are omitted.</p></article>
+      <article><h3>First-principles screen</h3><p>A straight, fully developed semicircular-duct estimate gives Re about 519, hydraulic diameter about 1.528 mm, and pressure drop about 576 Pa. An idealized straight-channel duty screen gives 27.5-30.9 W per pair. Neither is an uncertainty band or target for corrugated CFD.</p></article>
+      <article><h3>Not claimed</h3><p>No experiment comparison, PCHE-specific structural FEA, material-strength assessment, wall-resolution qualification, or design readiness. Those remain NOT EVALUATED or NOT ESTABLISHED.</p></article>
+    </div>
+    <div class="links">
+      <a href={base + 'first_principles_screen.json'}>First-principles screen</a>
+      <a href={base + 'baseline_gate_assessment.json'}>Frozen gate summary</a>
+      <a href={base + 'geometry_identity.json'}>Geometry and mesh hashes</a>
+      <a href="https://doi.org/10.1016/j.rineng.2023.101303">Samarmad and Jaffal (2023)</a>
+      <a href="https://doi.org/10.3390/e17053438">Seo et al. (2015)</a>
+      <a href="https://www.nist.gov/publications/reference-correlations-thermophysical-properties-liquid-water-01-mpa">NIST water correlations</a>
+    </div>
+  </section>
+
+  <section id="scope" class="boundary" aria-labelledby="scope-heading">
+    <h2 id="scope-heading">What this proves - and what it does not</h2>
+    <p>HX-S01 demonstrates that Aero's existing case tooling supported a declared source-informed case through analytical screening, parametric geometry, three-region OpenFOAM CHT, conservation accounting, and numerical-gate evaluation. The work was Codex-supervised and human-orchestrated; it did not test whether Aero's local conversational model independently plans, configures, or recovers a case. The result is a <strong>numerical failure</strong>, not physical validation. The useful pipeline evidence is that its gates rejected an unsettled, mesh-sensitive result rather than reporting success.</p>
+    <p>The earlier publication-blind HX-B01 attempts remain unchanged and stopped before solver execution. This synthetic study is separate; it does not retroactively resolve HX-B01 or close HX-B02 through HX-B05 or HX-D01.</p>
+    <p>The evidence register identifies retained local artifacts by SHA-256. Hashes establish file identity relative to the register; they do not prove scientific validity or provide a trusted timestamp. The public page hosts the report and summary records, not the raw solver logs or mesh binaries.</p>
+    <div class="links"><a href={base + 'REPORT.md'}>Complete report</a><a href={base + 'evidence_manifest.json'}>Local evidence hash register</a><a href={base + 'public_artifact_manifest.json'}>Public-package hash register</a><a href="/software/aero/evidence/benchmarks/">Back to benchmark register</a></div>
+  </section>
+</Shell>
+<style>
+  .table-wrap{overflow:auto}.table-wrap table{min-width:720px}.table-wrap th:first-child{min-width:220px}.status{display:inline-block}.balance-figure{margin:1.5rem 0 0}.balance-figure img{display:block;width:100%;height:auto;border:1px solid #25424b;border-radius:12px}.balance-figure figcaption{margin-top:.55rem;color:#8faeb7;font-size:.85rem}
+</style>

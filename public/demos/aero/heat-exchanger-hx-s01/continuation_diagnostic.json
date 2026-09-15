@@ -1,0 +1,74 @@
+{
+  "case_id": "HX-S01",
+  "purpose": "Optional same-settings diagnostic only; not blind, not validation, and does not replace the frozen 250-iteration result.",
+  "target_pseudo_iteration": 1000.0,
+  "original_250_baseline": "UNCHANGED; NUMERICAL FAIL",
+  "continuation_is_blind_or_validation": false,
+  "results": {
+    "coarse": {
+      "status": "Reached target; normal solver end marker",
+      "target_endpoint": 1000.0,
+      "normal_end_marker": true,
+      "max_final_residual": 0.00028481554,
+      "residual_gate_1e_6": "FAIL",
+      "mass_imbalance_percent": 0.06673915091534977,
+      "energy_imbalance_percent": 2.442944246815636,
+      "hot_duty_W_250_to_target": [
+        6.6609942602996615,
+        20.133867804678516
+      ],
+      "hot_duty_change_percent": 202.26520272925055,
+      "cold_duty_W_250_to_target": [
+        6.914871094964811,
+        20.63804370605078
+      ],
+      "cold_duty_change_percent": 198.45883491709264,
+      "hot_pressure_drop_Pa_at_target": 1318.6290966344095,
+      "cold_pressure_drop_Pa_at_target": 1342.3107819626312
+    },
+    "medium": {
+      "status": "Reached target; normal solver end marker",
+      "target_endpoint": 1000.0,
+      "normal_end_marker": true,
+      "max_final_residual": 1.8094386e-06,
+      "residual_gate_1e_6": "FAIL",
+      "mass_imbalance_percent": 0.08841219057906693,
+      "energy_imbalance_percent": 1.7820358417878244,
+      "hot_duty_W_250_to_target": [
+        6.843840815444146,
+        20.428309347227373
+      ],
+      "hot_duty_change_percent": 198.4918834045329,
+      "cold_duty_W_250_to_target": [
+        7.018750215400875,
+        20.798954165167682
+      ],
+      "cold_duty_change_percent": 196.33415532482735,
+      "hot_pressure_drop_Pa_at_target": 1394.2402424453612,
+      "cold_pressure_drop_Pa_at_target": 1406.8814423181902
+    },
+    "fine": {
+      "status": "Reached target; normal solver end marker",
+      "target_endpoint": 1000.0,
+      "normal_end_marker": true,
+      "max_final_residual": 1.9805244e-06,
+      "residual_gate_1e_6": "FAIL",
+      "mass_imbalance_percent": 0.06252864408168766,
+      "energy_imbalance_percent": 2.1226171961905322,
+      "hot_duty_W_250_to_target": [
+        6.7217072827288815,
+        20.096767625977876
+      ],
+      "hot_duty_change_percent": 198.9830824322802,
+      "cold_duty_W_250_to_target": [
+        6.823796342184745,
+        20.532596040354782
+      ],
+      "cold_duty_change_percent": 200.89696425173426,
+      "hot_pressure_drop_Pa_at_target": 1794.722254311011,
+      "cold_pressure_drop_Pa_at_target": 1802.3630072131782
+    }
+  },
+  "three_grid_independence_at_target": "DIAGNOSTIC ONLY; not a frozen gate or validation claim",
+  "provenance_note": "This public projection intentionally omits machine-local paths. Retained local logs, checkpoints, inputs, and hashes are identified by the separate evidence hash register."
+}

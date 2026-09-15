@@ -1,0 +1,15 @@
+{
+  "case_id": "HX-S01",
+  "grid": "fine",
+  "checkpoint": "Last written field at pseudo-iteration 275; solver log reached 279 before interruption.",
+  "status": "Partial diagnostic; not a 1000-iteration result and not part of the frozen baseline acceptance score.",
+  "metrics_at_checkpoint": {
+    "hot_heat_duty_W": 7.265789,
+    "cold_heat_duty_W": 7.416673,
+    "hot_pressure_drop_Pa": 1799.575,
+    "cold_pressure_drop_Pa": 1807.188,
+    "mass_imbalance_percent": 0.06227,
+    "energy_imbalance_percent": 2.034
+  },
+  "interpretation": "No 1000 residual result or medium-to-fine continuation comparison is available. Do not treat this checkpoint as convergence."
+}

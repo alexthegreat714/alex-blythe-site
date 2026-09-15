@@ -1,0 +1,22 @@
+{
+  "case_id": "HX-S01",
+  "geometry_scope": "Independent reconstruction of one periodic Model 6 hot-fluid/cold-fluid/solid-plate cell; not author CAD.",
+  "identity_method": "SHA-256 of STEP bytes after normalizing only the export timestamp in the STEP FILE_NAME header; geometry parameters and region volumes compared across levels.",
+  "timestamp_normalized_step_sha256_all_levels": "8070432787a05f4f6920ce762b34f97826f776d76cd21414c415a42e65c029b4",
+  "same_geometry_at_all_mesh_levels": true,
+  "mesh_files": {
+    "coarse": {
+      "tetrahedra": 494670,
+      "sha256": "b3e97e205707b9b84d1f4dcbdbefa1693c2d68321691c5968e96526ae7ffe934"
+    },
+    "medium": {
+      "tetrahedra": 1003677,
+      "sha256": "2807d20770d5208d1545334a4a52645011918c473a6fe66962dcf4a4feef7a89"
+    },
+    "fine": {
+      "tetrahedra": 2770939,
+      "sha256": "02b95270d9ce61e0d1ca001d31274872aa4285215a05ce462639d3036d545638"
+    }
+  },
+  "limitation": "Identity proves that the same reconstructed geometry was meshed; it does not establish fidelity to the paper CAD, near-wall adequacy, or scientific validity."
+}

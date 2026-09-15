@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">HX-S01 baseline mass and energy imbalance by grid</title>
+  <desc id="desc">At 250 pseudo-iterations, mass imbalance is 0.0669, 0.0896, and 0.0624 percent for coarse, medium, and fine grids, below the 0.5 percent gate. Energy imbalance is 3.671, 2.492, and 1.496 percent, below the 5 percent gate. Residual and pressure-drop gates still fail.</desc>
+  <rect width="1200" height="600" rx="18" fill="#071923"/>
+  <text x="48" y="52" fill="#e8f4f7" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Conservation checks at the frozen 250-step endpoint</text>
+  <text x="48" y="82" fill="#99b8c0" font-family="Segoe UI, Arial, sans-serif" font-size="15">All balances pass their individual limits; this does not override the residual and mesh-sensitivity FAIL.</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="50" y="139" fill="#d9ebef" font-size="19" font-weight="700">Mass imbalance</text>
+    <text x="50" y="162" fill="#8faeb7" font-size="13">Gate: 0.5%</text>
+    <line x1="270" y1="160" x2="1138" y2="160" stroke="#25424b"/>
+    <line x1="270" y1="205" x2="1138" y2="205" stroke="#25424b"/>
+    <line x1="270" y1="250" x2="1138" y2="250" stroke="#25424b"/>
+    <text x="220" y="165" fill="#87a6af" font-size="12" text-anchor="end">0.5%</text>
+    <text x="220" y="210" fill="#87a6af" font-size="12" text-anchor="end">0.25%</text>
+    <text x="220" y="255" fill="#87a6af" font-size="12" text-anchor="end">0%</text>
+    <line x1="270" y1="160" x2="1138" y2="160" stroke="#e77d73" stroke-width="2" stroke-dasharray="8 7"/>
+    <rect x="390" y="237.96" width="110" height="12.04" rx="5" fill="#4d92cf"/>
+    <rect x="650" y="233.87" width="110" height="16.13" rx="5" fill="#31b6ab"/>
+    <rect x="910" y="238.77" width="110" height="11.23" rx="5" fill="#7893a8"/>
+    <text x="445" y="228" fill="#d9ebef" font-size="14" text-anchor="middle">0.0669%</text>
+    <text x="705" y="224" fill="#d9ebef" font-size="14" text-anchor="middle">0.0896%</text>
+    <text x="965" y="229" fill="#d9ebef" font-size="14" text-anchor="middle">0.0624%</text>
+    <text x="445" y="275" fill="#aec4ca" font-size="14" text-anchor="middle">Coarse</text>
+    <text x="705" y="275" fill="#aec4ca" font-size="14" text-anchor="middle">Medium</text>
+    <text x="965" y="275" fill="#aec4ca" font-size="14" text-anchor="middle">Fine</text>
+
+    <text x="50" y="352" fill="#d9ebef" font-size="19" font-weight="700">Energy imbalance</text>
+    <text x="50" y="375" fill="#8faeb7" font-size="13">Gate: 5%</text>
+    <line x1="270" y1="370" x2="1138" y2="370" stroke="#25424b"/>
+    <line x1="270" y1="425" x2="1138" y2="425" stroke="#25424b"/>
+    <line x1="270" y1="480" x2="1138" y2="480" stroke="#25424b"/>
+    <text x="220" y="375" fill="#87a6af" font-size="12" text-anchor="end">5%</text>
+    <text x="220" y="430" fill="#87a6af" font-size="12" text-anchor="end">2.5%</text>
+    <text x="220" y="485" fill="#87a6af" font-size="12" text-anchor="end">0%</text>
+    <line x1="270" y1="370" x2="1138" y2="370" stroke="#e77d73" stroke-width="2" stroke-dasharray="8 7"/>
+    <rect x="390" y="399.65" width="110" height="80.35" rx="5" fill="#4d92cf"/>
+    <rect x="650" y="425.18" width="110" height="54.82" rx="5" fill="#31b6ab"/>
+    <rect x="910" y="447.09" width="110" height="32.91" rx="5" fill="#7893a8"/>
+    <text x="445" y="392" fill="#d9ebef" font-size="14" text-anchor="middle">3.671%</text>
+    <text x="705" y="417" fill="#d9ebef" font-size="14" text-anchor="middle">2.492%</text>
+    <text x="965" y="439" fill="#d9ebef" font-size="14" text-anchor="middle">1.496%</text>
+    <text x="445" y="505" fill="#aec4ca" font-size="14" text-anchor="middle">Coarse</text>
+    <text x="705" y="505" fill="#aec4ca" font-size="14" text-anchor="middle">Medium</text>
+    <text x="965" y="505" fill="#aec4ca" font-size="14" text-anchor="middle">Fine</text>
+  </g>
+  <line x1="48" y1="548" x2="1152" y2="548" stroke="#25424b"/>
+  <circle cx="66" cy="574" r="5" fill="#e77d73"/>
+  <text x="80" y="579" fill="#9db9c0" font-family="Segoe UI, Arial, sans-serif" font-size="13">Dashed line = predeclared limit</text>
+  <text x="1148" y="579" fill="#7f9da5" font-family="Segoe UI, Arial, sans-serif" font-size="12" text-anchor="end">HX-S01 / numerical evidence</text>
+</svg>

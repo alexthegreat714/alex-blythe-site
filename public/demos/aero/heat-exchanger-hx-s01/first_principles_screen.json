@@ -1,0 +1,50 @@
+{
+  "case_id": "HX-S01",
+  "status": "ANALYTICAL SCREEN; NOT EXPERIMENTAL TRUTH OR CFD ACCEPTANCE TARGET",
+  "geometry_idealization": "Straight, fully developed semicircular duct; corrugation, entry development, headers and collectors omitted.",
+  "inputs": {
+    "diameter_m": 0.0025,
+    "length_m": 0.24,
+    "velocity_m_s": 0.246,
+    "hot_inlet_K": 323.0,
+    "cold_inlet_K": 293.0,
+    "rho_kg_m3": 994.1,
+    "mu_Pa_s": 0.0007196,
+    "cp_J_kg_K": 4178.0,
+    "k_water_W_m_K": 0.6221,
+    "Pr": 4.833
+  },
+  "relations": {
+    "area": "A = pi*D^2/8",
+    "wetted_perimeter": "P = pi*D/2 + D",
+    "hydraulic_diameter": "Dh = 4*A/P",
+    "reynolds": "Re = rho*U*Dh/mu",
+    "pressure_drop": "dP = f_D*(L/Dh)*(rho*U^2/2); laminar semicircle relation converted from Fanning to Darcy basis",
+    "duty_screen": "Two fully-developed Nusselt asymptotes feed an idealized counterflow epsilon-NTU screen."
+  },
+  "predictions": {
+    "hydraulic_diameter_m": 0.001527538675879143,
+    "reynolds": 519.1181832019151,
+    "straight_channel_pressure_drop_Pa": 576.1982000103136,
+    "idealized_duty_band_W_per_pair": [27.461396898909808, 30.90061888206734],
+    "nusselt_limits": [4.631, 5.626]
+  },
+  "limitations": [
+    "The duty range is a two-correlation screening band, not a statistical uncertainty interval.",
+    "The duct idealization does not represent the corrugated reconstructed geometry.",
+    "No pointwise experiment match was established.",
+    "Not used as a post-hoc acceptance target."
+  ],
+  "correlation_references": [
+    {
+      "title": "Hydrodynamically Developing and Fully Developed Laminar Flows in a Semicircular Duct: Analytical and Computational Analyses",
+      "doi": "10.13182/NSE14-107",
+      "url": "https://wx1.ans.org/pubs/journals/nse/a_38310"
+    },
+    {
+      "title": "Laminar flow heat transfer in a semi-circular tube with uniform wall temperature",
+      "doi": "10.1016/0017-9310(88)90044-0",
+      "url": "https://doi.org/10.1016/0017-9310(88)90044-0"
+    }
+  ]
+}

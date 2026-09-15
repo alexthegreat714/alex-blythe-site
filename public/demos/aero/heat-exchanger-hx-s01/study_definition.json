@@ -1,0 +1,103 @@
+{
+  "schema": "aero.heat_exchanger.synthetic_replacement.public.v1",
+  "case_id": "HX-S01",
+  "title": "Source-informed synthetic counterflow PCHE reconstruction",
+  "mode": "source-informed; not blind; not experimentally validated",
+  "real_references": [
+    {
+      "title": "Performance evaluation of a printed circuit heat exchanger with a novel two-way corrugated channel",
+      "authors": ["Ahmed Oleiwi Samarmad", "Hayder Mohammad Jaffal"],
+      "year": 2023,
+      "journal": "Results in Engineering",
+      "doi": "10.1016/j.rineng.2023.101303",
+      "url": "https://doi.org/10.1016/j.rineng.2023.101303",
+      "use": "Configuration and input context only; no publication result used as HX-S01 truth."
+    },
+    {
+      "title": "Heat Transfer and Pressure Drop Characteristics in Straight Microchannel of Printed Circuit Heat Exchangers",
+      "authors": ["Jang-Won Seo", "Yoon-Ho Kim", "Dongseon Kim", "Young-Don Choi", "Kyu-Jung Lee"],
+      "year": 2015,
+      "journal": "Entropy",
+      "doi": "10.3390/e17053438",
+      "url": "https://doi.org/10.3390/e17053438",
+      "use": "Method/context reference only; not a result target."
+    },
+    {
+      "title": "Reference Correlations for Thermophysical Properties of Liquid Water at 0.1 MPa",
+      "authors": ["Jan Hruby", "Jaroslav Patek", "Jaroslav Klomfar", "Monika Souckova", "Allan H. Harvey"],
+      "year": 2009,
+      "url": "https://www.nist.gov/publications/reference-correlations-thermophysical-properties-liquid-water-01-mpa",
+      "use": "Basis for nominal constant liquid-water properties near 308.15 K."
+    }
+  ],
+  "why_synthetic": {
+    "blocker": "No verified pointwise experimental data matched the reconstructed solver condition. The source gives 290 K and 293 K cold-inlet values in different places, and does not provide complete independent structural truth and inputs.",
+    "choice": "Use a real publication for configuration context; explicitly assume only missing inputs needed for a runnable case; evaluate first-principles and numerical gates only.",
+    "rejected_shortcut": "Do not fabricate measurements or call solver outputs synthetic experimental truth.",
+    "blindness": "Not blind. HX-S01 is separate from and does not replace the stopped HX-B01 blind attempts."
+  },
+  "geometry": {
+    "basis": "Independent OpenCASCADE reconstruction of one periodic hot/cold channel pair; not author CAD.",
+    "active_length_m": 0.24,
+    "pitch_width_m": 0.005,
+    "plate_thickness_m": 0.004,
+    "channel_shape": "semicircular",
+    "channel_diameter_m": 0.0025,
+    "plate_amplitude_assumed_m": 0.0008,
+    "channel_amplitude_assumed_m": 0.0008,
+    "wavelength_assumed_m": 0.0126,
+    "sections_per_wave": 12,
+    "omitted": ["headers", "collectors"],
+    "identity_record": "geometry_identity.json"
+  },
+  "operating_condition": {
+    "hot_fluid": "liquid water",
+    "cold_fluid": "liquid water",
+    "arrangement": "counter-current",
+    "hot_velocity_m_s": 0.246,
+    "cold_velocity_m_s": -0.246,
+    "hot_inlet_temperature_K": 323.0,
+    "cold_inlet_temperature_K": 293.0,
+    "outlet_gauge_pressure_Pa": 0.0,
+    "condition_status": "Source-informed synthetic completion; exact experiment match not established.",
+    "temperature_note": "293 K follows a detailed boundary/loop description; another source passage states 290 K. This choice does not resolve the discrepancy."
+  },
+  "properties": {
+    "reference_temperature_K": 308.15,
+    "water": {
+      "density_kg_m3": 994.1,
+      "dynamic_viscosity_Pa_s": 0.0007196,
+      "specific_heat_J_kg_K": 4178.0,
+      "thermal_conductivity_W_m_K": 0.6221,
+      "prandtl": 4.833,
+      "status": "Nominal constant values; temperature dependence omitted."
+    },
+    "solid": {
+      "label": "Aluminum-like isotropic thermal surrogate",
+      "thermal_conductivity_W_m_K": 202.4,
+      "density_kg_m3_assumed": 2700.0,
+      "specific_heat_J_kg_K_assumed": 900.0,
+      "status": "Thermal CHT completion only; no alloy grade, strength, or structural allowable inferred."
+    }
+  },
+  "boundary_conditions": {
+    "fluid_walls": "no-slip",
+    "fluid_solid_interface": "conjugate temperature coupling",
+    "outer_solid": "adiabatic",
+    "periodic_sides": "cyclicAMI with 5 mm translation",
+    "gravity": "zero",
+    "initial_temperature_K": 308.15
+  },
+  "solver_scope": {
+    "solver": "OpenFOAM Foundation v10 chtMultiRegionFoam",
+    "regions": ["hotFluid", "coldFluid", "solidPlate"],
+    "mesh_levels": ["coarse", "medium", "fine"],
+    "fea": "PCHE-specific structural FEA not evaluated."
+  },
+  "disposition": {
+    "frozen_250_iteration_baseline": "NUMERICAL FAIL",
+    "experimental_comparison": "NOT EVALUATED",
+    "structural_design_readiness": "NOT EVALUATED",
+    "design_readiness": "NOT ESTABLISHED"
+  }
+}
