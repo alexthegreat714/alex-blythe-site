@@ -1,0 +1,35 @@
+{
+  "study_id": "HARCC-S4-PART2-SOL-COMPARISON",
+  "scope": "paired initial-investigator diagnosis quality; not CFD validation or model superiority",
+  "model_under_test": "gpt-5.6-sol",
+  "reasoning_effort": "low",
+  "fresh_context": true,
+  "reference_withheld": true,
+  "solver_runs_during_sol_turn": 0,
+  "sol_response_sha256": "7f333f42f6b3095d7bb719fc7762be082fa9fcbb30ae4492f64ac5973245eb1a2",
+  "luna_response_sha256": "6ccfe176e5f3a078809d37313c4f1ec952b60e8fed6496d041c147d215ca3981",
+  "input_packet_sha256_reverified": "c3802f63ecc37f42ab28b72e3a1c7ca10587f9eef58fda0afbb6bcc0f48761ed",
+  "prompt_sha256_reverified": "b490924cb0b3e53508134c745cb4751ede709ad83d5bb84d667e0964d165817c",
+  "criteria_sha256_reverified": "9e50bdbb94955703223edd7fa891026f10029500c440fd35f722babd5288ea82",
+  "telemetry": {
+    "wall_time_seconds": 362.1,
+    "input_tokens": 406442,
+    "cached_input_tokens": 331392,
+    "output_tokens": 6709,
+    "reasoning_output_tokens": 1034,
+    "cost": "NOT_RECORDED"
+  },
+  "rubric": [
+    {"dimension": "Case-specific evidence", "luna": 2, "sol": 1, "note": "Both used concrete residual, y+ and solver evidence. Sol did not reconcile the retained v5 machine-observation versus raw-log temperature discrepancy and treated retained mass-flow observations as unestablished."},
+    {"dimension": "Competing hypotheses", "luna": 2, "sol": 2, "note": "Both ranked multiple plausible case-specific explanations with support, contradiction and missing evidence."},
+    {"dimension": "Unknown preservation", "luna": 2, "sol": 1, "note": "Both preserved validation, mesh, energy and readiness unknowns. Sol over-preserved one available quantity by saying measured inlet/outlet flow was not established even though the packet retained those observations; the absent item was a frozen acceptance tolerance."},
+    {"dimension": "Experiment isolation", "luna": 2, "sol": 2, "note": "Luna proposed a one-variable pressure maxIter pair. Sol proposed an unchanged fixed-length continuation before any settings comparison."},
+    {"dimension": "Frozen prediction", "luna": 2, "sol": 2, "note": "Both named observables and discriminating outcomes before execution."},
+    {"dimension": "Numerical/physical distinction", "luna": 2, "sol": 2, "note": "Both separated solver completion, convergence, conservation, fidelity, validation and design readiness."},
+    {"dimension": "Reference-method use", "luna": 2, "sol": 2, "note": "Both used the source methodology as a neutral method comparison rather than hidden experimental truth."},
+    {"dimension": "No gate manipulation", "luna": 2, "sol": 2, "note": "Neither changed thresholds or optimized for a green result."},
+    {"dimension": "Stop discipline", "luna": 1, "sol": 2, "note": "Sol specified a fixed 200-iteration stop and redirect conditions. Luna called for a short pair but did not freeze an exact duration in its initial response."}
+  ],
+  "totals": {"luna": 17, "sol": 16, "maximum": 18},
+  "outcome": "Both diagnoses were strong. Luna scored one point higher on packet reconciliation; Sol defined the tighter first-test stop and selected the unchanged continuation that better addresses the still-open secular thermal evolution after the later v6-v8 record. This single case does not establish model superiority."
+}

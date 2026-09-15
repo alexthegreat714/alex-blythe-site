@@ -1,0 +1,80 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import scorecard from '../../../../../../../public/demos/aero/harcc-s4-sol-comparison/comparison_scorecard.json';
+
+const base = '/demos/aero/harcc-s4-sol-comparison/';
+---
+
+<Shell
+  title="Aero · HARCC S4 investigator comparison"
+  description="A frozen, reference-withheld comparison of Luna and Sol investigator behavior on the same failed HARCC S4 CFD evidence packet."
+  path="/software/aero/evidence/benchmarks/harcc-s4-sol-comparison/"
+>
+  <header>
+    <p class="eyebrow">AERO / MODEL-BEHAVIOR BENCHMARK</p>
+    <span class="status mixed">COMPLETE · NO SOLVER RUN</span>
+    <h1>Same failed CFD packet. Two independent investigators.</h1>
+    <p>Luna and Sol inspected the same frozen v5 HARCC S4 evidence with later experiments and publication results withheld. Their explicit diagnoses were frozen before comparison.</p>
+    <p class="metric">Luna {scorecard.totals.luna}/{scorecard.totals.maximum} · Sol-light {scorecard.totals.sol}/{scorecard.totals.maximum} · one paired case</p>
+    <div class="links">
+      <a class="primary" href={base + 'README.md'}>Read the comparison report</a>
+      <a href={base + 'sol_initial_diagnosis.md'}>Read Sol’s frozen response</a>
+      <a href={base + 'comparison_scorecard.json'}>Download scorecard JSON</a>
+    </div>
+  </header>
+
+  <section class="boundary">
+    <h2>What this result means</h2>
+    <p><strong>Both investigators were strong and evidence-disciplined.</strong> Luna reconciled the retained packet more completely. Sol imposed the sharper fixed stop and chose the conservative unchanged continuation that addresses the still-open slow thermal evolution.</p>
+    <p>This evaluates investigation behavior—not physical validation, CFD recovery, or general model superiority. The underlying CFD residual gates remain failed.</p>
+  </section>
+
+  <section>
+    <h2>Frozen input boundary</h2>
+    <div class="cards">
+      <article><p class="eyebrow">INPUT</p><h3>140 retained files</h3><p>Original v5 evidence, the common investigator prompt, and the unchanged deterministic criteria.</p></article>
+      <article><p class="eyebrow">WITHHELD</p><h3>No hindsight</h3><p>No Luna response, v6-v8 experiments, Part II conclusions, publication results, or website copy.</p></article>
+      <article><p class="eyebrow">EXECUTION</p><h3>Diagnosis only</h3><p>Sol ran in a fresh ephemeral context at low reasoning. Zero CFD solver experiments were executed.</p></article>
+    </div>
+    <p class="subtle">The 140-file packet re-hashed after the run to <code>{scorecard.input_packet_sha256_reverified}</code>.</p>
+  </section>
+
+  <section>
+    <h2>Predeclared rubric</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Dimension</th><th>Luna</th><th>Sol</th><th>Audit note</th></tr></thead>
+      <tbody>{scorecard.rubric.map((row) => <tr><th>{row.dimension}</th><td>{row.luna}/2</td><td>{row.sol}/2</td><td>{row.note}</td></tr>)}</tbody>
+      <tfoot><tr><th>Total</th><th>{scorecard.totals.luna}/{scorecard.totals.maximum}</th><th>{scorecard.totals.sol}/{scorecard.totals.maximum}</th><td>One case; no broad ranking claim.</td></tr></tfoot>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Different first experiments, both defensible</h2>
+    <div class="cards">
+      <article><p class="eyebrow">LUNA</p><h3>Pressure-cap A/B test</h3><p>Compare an unchanged control against only <code>p_rgh maxIter</code> 100→300. Later execution showed the cap was real but not the material coupled-residual fix.</p></article>
+      <article><p class="eyebrow">SOL-LIGHT</p><h3>Unchanged 200-iteration continuation</h3><p>Freeze thermal, flow, and residual slopes; change no settings; stop after 200 iterations. The experiment was proposed but not run in this comparison.</p></article>
+    </div>
+    <p>Disagreement is preserved. The harness permits different engineering hypotheses while demanding case evidence, explicit unknowns, isolated tests, frozen predictions, immutable gates, and stop conditions.</p>
+  </section>
+
+  <section>
+    <h2>Sol run telemetry</h2>
+    <div class="cards">
+      <article><h3>{Math.round(scorecard.telemetry.wall_time_seconds)} s</h3><p>Model wall time</p></article>
+      <article><h3>{scorecard.telemetry.output_tokens.toLocaleString()}</h3><p>Output tokens</p></article>
+      <article><h3>{scorecard.solver_runs_during_sol_turn}</h3><p>Solver experiments run</p></article>
+    </div>
+    <p class="subtle">Input tokens: {scorecard.telemetry.input_tokens.toLocaleString()}, of which {scorecard.telemetry.cached_input_tokens.toLocaleString()} were cached. Cost was not recorded. Transport attempts that produced no valid diagnosis were excluded and disclosed in the report.</p>
+  </section>
+
+  <section class="boundary">
+    <h2>Engineering disposition</h2>
+    <p>{scorecard.outcome}</p>
+    <p>Hashes establish artifact identity, not scientific validity. Read the paired diagnosis report before interpreting the numeric score.</p>
+    <div class="links"><a href={base + 'README.md'}>Full comparison report</a><a href="/software/aero/evidence/benchmarks/harcc-s4-part2/">Return to HARCC Part II</a><a href="/software/aero/evidence/benchmarks/">Benchmark register</a></div>
+  </section>
+</Shell>
+
+<style>
+  .table-wrap{overflow:auto}.table-wrap table{min-width:760px}.table-wrap td:last-child{min-width:340px}.subtle{font-size:14px}tfoot{font-weight:750}
+</style>
