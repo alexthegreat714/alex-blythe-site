@@ -1,7 +1,7 @@
 {
   "schema": "aero.pche.samarmad.post_reveal_comparison.v1",
   "case_id": "PCHE-SAMARMAD-PUBLICATION-01",
-  "recorded_at_utc": "2026-09-15T05:13:54Z",
+  "recorded_at_utc": "2026-09-15T05:23:21Z",
   "prediction_freeze": {
     "manifest_sha256": "e09516c5946190b72e29009f0bc3f99ae3f7586c2c29e89e3f9dc02539e07cfb",
     "inventory_sha256": "9f34e3f2615437fe15c61b60b36fcddb671ca09cdecd0739689201494437e92d",
