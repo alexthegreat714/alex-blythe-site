@@ -1,0 +1,50 @@
+{
+  "case_id": "PCHE-SAMARMAD-SYNTHETIC-01",
+  "completed_at_utc": "2026-09-15T00:06:38.653098+00:00",
+  "evidence": {
+    "cht_openfoam_acceptance": "cht_openfoam_acceptance.json",
+    "criteria": "criteria.json",
+    "curved_transfer": "Aero\\reports\\pche_samarmad_synthetic_gate_pack_20260914_v5\\curved_transfer",
+    "fea_acceptance": "fea_acceptance.json",
+    "openfoam_acceptance": "openfoam_acceptance.json",
+    "source_custody": "source_custody.json",
+    "source_prebenchmark": "Aero\\reports\\pche_samarmad_synthetic_prebenchmark_20260914",
+    "timestamp_anchor": "timestamp_anchor.json"
+  },
+  "gates": {
+    "benchmark_criteria_frozen": "PASS",
+    "curved_transfer_heat_rate": "PASS",
+    "curved_transfer_pressure_integral_and_force": "PASS",
+    "generic_calculix_worker_image": "PASS",
+    "generic_openfoam_cht": "PASS",
+    "generic_openfoam_study": "PASS",
+    "generic_three_level_fea": "PASS",
+    "pche_calculix_geometry": "NOT_RUN",
+    "pche_curved_cht": "NOT_RUN",
+    "pche_openfoam": "NOT_RUN",
+    "prediction_bundle_hash_and_verify": "PASS",
+    "publication_reference_validation": "NOT_ESTABLISHED",
+    "publication_source_eligibility": "OPEN",
+    "source_custody_reference_separation": "PASS",
+    "source_input_and_synthetic_estimate_packet": "PASS",
+    "trusted_external_timestamp": "OPEN"
+  },
+  "hashes": {
+    "cht_openfoam_acceptance": "b2b442a7463209c3257c4d5a29a57231afa005048c75f99ecc28fb99510deead",
+    "criteria": "ca37cf842c210402ff591cbed1737dfaeb93cba9ba0c9739ec796fe9a806e7b9",
+    "fea_acceptance": "2bb1d55e927cec49108eeb332fc93826b7b1d16a785a4434ceae5be7d5ea69a9",
+    "openfoam_acceptance": "04923c097893cdac9e274dced25275a6675066338debffab068dcceed2694ffb",
+    "source_custody": "435961337644e7108fc25779028d550278fb55a5f0b0d0a0d53c218a1c48a9ec",
+    "timestamp_anchor": "9a68c92e33fa9e40e669b0c0311bb44cc800726639d8dc3e768a94c19b1b0acf"
+  },
+  "limitations": [
+    "Samarmad source measurements remain withheld and unaudited for a scored run",
+    "Curved transfer proof uses a synthetic cylindrical surface, not the paper's corrugated CAD",
+    "CalculiX acceptance uses the reviewed generic thermal-bar worker, not PCHE geometry",
+    "No claim of CFD/FEA agreement or design readiness"
+  ],
+  "prediction_frozen_before_truth": true,
+  "publication_measurements_accessed": false,
+  "schema": "aero.pche.samarmad.synthetic_gate_pack.v1",
+  "started_at_utc": "2026-09-15T00:06:17.729019+00:00"
+}

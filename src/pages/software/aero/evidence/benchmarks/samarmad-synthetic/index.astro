@@ -1,0 +1,94 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import packet from '../../../../../../../public/demos/aero/samarmad-synthetic-prebenchmark-v1/input_packet.json';
+import gate from '../../../../../../../public/demos/aero/samarmad-synthetic-prebenchmark-v1/gate_manifest.json';
+import verification from '../../../../../../../public/demos/aero/samarmad-synthetic-prebenchmark-v1/verification.json';
+import custody from '../../../../../../../public/demos/aero/samarmad-synthetic-prebenchmark-v1/source_custody.json';
+
+const base = '/demos/aero/samarmad-synthetic-prebenchmark-v1/';
+const geometry = packet.source_derived_geometry;
+const operating = packet.source_derived_operating_envelope;
+const points = packet.operating_points;
+const gateEntries = Object.entries(gate.gates);
+const passedGates = gateEntries.filter(([, result]) => result === 'PASS').length;
+const openGates = gateEntries.filter(([, result]) => result !== 'PASS');
+---
+<Shell title="Aero · Samarmad PCHE synthetic prebenchmark" description="A source-derived, synthetic-only PCHE prebenchmark with frozen predictions, runnable pipeline gates, and explicit validation boundaries." path="/software/aero/evidence/benchmarks/samarmad-synthetic/">
+  <header>
+    <p class="eyebrow">AERO / SYNTHETIC PREBENCHMARK</p>
+    <span class="status mixed">PREBENCHMARK · SYNTHETIC ONLY</span>
+    <h1>Printed-circuit heat exchanger, with the answer kept out of the model.</h1>
+    <p>Samarmad-derived geometry and operating conditions were assembled before a prediction bundle was frozen. Missing measurements and properties were completed with marked synthetic estimates so the surrounding CFD → transfer → FEA contracts could be exercised without claiming publication agreement.</p>
+    <p class="metric">{passedGates} runnable gates passed · {points.length} synthetic operating points · paper comparison not established</p>
+    <div class="links">
+      <a class="primary" href={base + 'README.md'}>Read the public record ↗</a>
+      <a href={base + 'gate_manifest.json'}>Inspect gate manifest</a>
+      <a href="#scope">See what remains open ↓</a>
+    </div>
+  </header>
+
+  <section class="boundary" aria-labelledby="status-heading">
+    <h2 id="status-heading">What this entry means</h2>
+    <p><strong>Runnable pipeline proof: PASS.</strong> The frozen packet, criteria, hash verification, curved-interface transfer, generic OpenFOAM CHT run, and generic three-level CalculiX run are retained below.</p>
+    <p><strong>Physical validation: NOT ESTABLISHED.</strong> The paper's measurements were not exposed to the model, and the Samarmad-specific corrugated CFD and PCHE structural cases have not been run.</p>
+  </section>
+
+  <section aria-labelledby="input-heading">
+    <h2 id="input-heading">Model-facing input packet</h2>
+    <p>These are the inputs Aero was allowed to use before the synthetic truth was generated. The source paper is linked for attribution; its results and conclusions are not part of this packet.</p>
+    <div class="cards">
+      <article><h3>Geometry envelope</h3><dl class="facts">
+        <div><dt>Configuration</dt><dd>{geometry.model}</dd></div>
+        <div><dt>Plate stack</dt><dd>{geometry.number_of_plates} plates · {geometry.plate_thickness_m * 1000} mm thick</dd></div>
+        <div><dt>Channel count</dt><dd>{geometry.channels_per_plate} per plate · {geometry.channel_shape}</dd></div>
+        <div><dt>Hydraulic diameter</dt><dd>{(geometry.hydraulic_diameter_m * 1000).toFixed(4)} mm</dd></div>
+        <div><dt>Corrugation</dt><dd>{(geometry.model6_channel_amplitude_m * 1000).toFixed(2)} mm amplitude · {(geometry.model6_wavelength_m * 1000).toFixed(2)} mm wavelength</dd></div>
+      </dl></article>
+      <article><h3>Operating envelope</h3><dl class="facts">
+        <div><dt>Working fluids</dt><dd>{operating.working_fluid_hot} / {operating.working_fluid_cold}</dd></div>
+        <div><dt>Arrangement</dt><dd>{operating.flow_arrangement}</dd></div>
+        <div><dt>Inlet temperatures</dt><dd>{operating.cold_inlet_temperature_K} K cold · {operating.hot_inlet_temperature_K} K hot</dd></div>
+        <div><dt>Flow regime</dt><dd>{operating.flow_regime}</dd></div>
+        <div><dt>Reynolds range</dt><dd>{operating.reynolds_range[0]}–{operating.reynolds_range[1]}</dd></div>
+      </dl></article>
+    </div>
+    <p class="subtle">Synthetic completion: nominal water properties, aluminum solid mechanics, and ±2% channel-diameter / ±1% plate-thickness sensitivity estimates. These are estimates, not transcribed experimental values.</p>
+    <div class="links"><a href={base + 'input_packet.json'}>Download the input packet</a><a href="https://doi.org/10.1016/j.rineng.2023.101303">Open the cited source ↗</a></div>
+  </section>
+
+  <section aria-labelledby="freeze-heading">
+    <h2 id="freeze-heading">Prediction freeze before synthetic truth</h2>
+    <p>The prediction bundle was sealed and verified before the synthetic pointwise truth existed. The published measurements remain withheld.</p>
+    <div class="table-wrap"><table><thead><tr><th>Record</th><th>State</th></tr></thead><tbody>
+      <tr><th>Prediction frozen before truth</th><td>TRUE</td></tr>
+      <tr><th>Publication measurements accessed</th><td>{gate.publication_measurements_accessed ? 'TRUE' : 'FALSE'}</td></tr>
+      <tr><th>Freeze manifest SHA-256</th><td><code>025bf0d8e1056986d3d80662475f723ee824813a9a787904a090a2016f3da4b3</code></td></tr>
+      <tr><th>Gate-pack verification</th><td>{verification.verified ? 'VERIFIED' : 'NOT VERIFIED'}</td></tr>
+      <tr><th>Criteria SHA-256</th><td><code>{verification.criteria_sha256}</code></td></tr>
+    </tbody></table></div>
+    <div class="links"><a href={base + 'run_manifest.json'}>Prediction/run manifest</a><a href={base + 'criteria.json'}>Frozen criteria</a><a href={base + 'verification.json'}>Verification receipt</a></div>
+  </section>
+
+  <section aria-labelledby="gates-heading">
+    <h2 id="gates-heading">Gate ledger</h2>
+    <p>The surrounding pipeline contracts are explicit. A passed generic gate is not silently promoted to a Samarmad-specific result.</p>
+    <div class="table-wrap"><table><thead><tr><th>Gate</th><th>Result</th></tr></thead><tbody>{gateEntries.map(([name, result]) => <tr><th>{name.replaceAll('_', ' ')}</th><td class:list={{'gate-pass': result === 'PASS', 'gate-open': result !== 'PASS'}}>{result}</td></tr>)}</tbody></table></div>
+  </section>
+
+  <section aria-labelledby="points-heading">
+    <h2 id="points-heading">Synthetic operating-point packet</h2>
+    <p>These values are synthetic completions used to exercise the prebenchmark contract. They are not experimental observations.</p>
+    <div class="table-wrap"><table><thead><tr><th>Re</th><th>Velocity (m/s)</th><th>Δp (Pa)</th><th>Heat duty (W)</th><th>Effectiveness</th></tr></thead><tbody>{points.map((point) => <tr><th>{point.reynolds}</th><td>{point.velocity_m_s.toFixed(3)}</td><td>{point.pressure_drop_Pa.toFixed(1)}</td><td>{point.heat_duty_W.toFixed(1)}</td><td>{point.effectiveness.toFixed(3)}</td></tr>)}</tbody></table></div>
+  </section>
+
+  <section id="scope" class="boundary" aria-labelledby="scope-heading">
+    <h2 id="scope-heading">Open gates and next step</h2>
+    <p>The following items remain open in this revision: {openGates.map(([name]) => name.replaceAll('_', ' ')).join(', ')}.</p>
+    <p>To turn this into a scored paper benchmark, Aero still needs a rights-cleared source-custody record, complete pre-result inputs, sealed pointwise measurements and uncertainty, corrugated PCHE CAD, three target-specific OpenFOAM CHT levels, PCHE-specific CalculiX mapping, and an external timestamp before the reference is revealed.</p>
+    <p class="subtle">Source custody status: {custody.status}. The source is linked for attribution only; no full text or adapted publication measurements are redistributed here.</p>
+    <div class="links"><a href={base + 'source_custody.json'}>Source-custody record</a><a href={base + 'cht_openfoam_acceptance.json'}>Generic CHT acceptance</a><a href={base + 'fea_acceptance.json'}>Generic CalculiX acceptance</a><a href={base + 'curved-transfer/curved_transfer_shakedown.json'}>Curved-transfer proof</a></div>
+  </section>
+</Shell>
+<style>
+  .facts{margin:0}.facts div{display:grid;grid-template-columns:minmax(130px,.8fr) 1.2fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border)}.facts dt{font-size:13px;color:var(--muted)}.facts dd{margin:0;font-weight:650}.gate-pass{color:#26806a;font-weight:750}.gate-open{color:var(--muted);font-weight:700}.table-wrap{overflow:auto}.table-wrap code{white-space:nowrap}.table-wrap th:first-child{min-width:230px}
+</style>

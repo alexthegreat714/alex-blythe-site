@@ -1,0 +1,26 @@
+{
+  "full_text_and_data_audit": "INCOMPLETE",
+  "pointwise_measurements": "NOT_DIGITIZED_OR_SEALED",
+  "publication_source_eligibility": "OPEN",
+  "reference_package_exposed_to_model": false,
+  "required_before_scored_run": [
+    "rights review and source custody record",
+    "complete pre-result input extraction",
+    "pointwise measurement and uncertainty package sealed separately"
+  ],
+  "schema": "aero.pche.samarmad.source_custody.v1",
+  "source": {
+    "authors": [
+      "Ahmed Oleiwi Samarmad",
+      "Hayder Mohammad Jaffal"
+    ],
+    "doi": "10.1016/j.rineng.2023.101303",
+    "full_text_url": "https://www.researchgate.net/publication/372453246_Performance_evaluation_of_a_printed_circuit_heat_exchanger_with_a_novel_two-way_corrugated_channel",
+    "license": "CC BY-NC-ND 4.0 (source custody; do not redistribute adapted source material)",
+    "title": "Performance evaluation of a printed circuit heat exchanger with a novel two-way corrugated channel",
+    "url": "https://doi.org/10.1016/j.rineng.2023.101303",
+    "year": 2023
+  },
+  "status": "CONDITIONAL_LOCAL_SYNTHETIC_ONLY",
+  "synthetic_prebenchmark_use": "ALLOWED_LOCAL_HARNESS_ONLY"
+}

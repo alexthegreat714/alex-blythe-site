@@ -1,0 +1,130 @@
+{
+  "heat_flux": {
+    "coverage": 1.0,
+    "execution_enabled": false,
+    "field": "heat_flux",
+    "heat_rate_w": 0.014382840743301853,
+    "mapped_area_integral": 0.014382840743301853,
+    "relative_integral_error": 0.0,
+    "schema": "aero.curved_transfer.v1",
+    "source_area_integral": 0.014382840743301853,
+    "source_area_m2": 0.0007539822368615504,
+    "source_sha256": "476c4728954073a8454dd0e8785dd59d90dd5e2e426ca127632823ba7db32ef0",
+    "status": "VERIFIED_CURVED_CYLINDRICAL_TRANSFER",
+    "surface_parameterization": "cylinder_z_axis_unwrapped_theta_z",
+    "target_area_m2": 0.0007539822368615504,
+    "target_faces": [
+      {
+        "area_m2": 0.0003769911184307752,
+        "coverage": 1.0,
+        "uv_area": 0.031415926535897934,
+        "value": 19.075835
+      },
+      {
+        "area_m2": 0.0003769911184307752,
+        "coverage": 1.0,
+        "uv_area": 0.031415926535897934,
+        "value": 19.075835
+      }
+    ],
+    "target_sha256": "35c2dd89a4c04a946fd3af59a80667c410804bf0eb13048b8358ba08583b2894",
+    "units": "W/m2"
+  },
+  "heat_flux_provenance": "openfoam_cht_monitor",
+  "heat_flux_values_W_m2": [
+    19.075835,
+    19.075835
+  ],
+  "limitations": [
+    "Cylindrical z-axis parameterization only",
+    "Synthetic fields, not OpenFOAM output",
+    "Transfer verifier does not authorize a solver"
+  ],
+  "pressure": {
+    "coverage": 1.0,
+    "execution_enabled": false,
+    "field": "pressure",
+    "mapped_area_integral": 1.2063715789784806,
+    "mapped_resultant_force_n": [
+      0.768,
+      0.768,
+      0.0
+    ],
+    "relative_force_error": 1.0221956111222494e-16,
+    "relative_integral_error": 0.0,
+    "schema": "aero.curved_transfer.v1",
+    "source_area_integral": 1.2063715789784806,
+    "source_area_m2": 0.0007539822368615504,
+    "source_resultant_force_n": [
+      0.768,
+      0.7679999999999999,
+      0.0
+    ],
+    "source_sha256": "5b13cfd8d8eca69fc5ca710fa1b2be87aa1481b80a18cee83508606ddc94c32b",
+    "status": "VERIFIED_CURVED_CYLINDRICAL_TRANSFER",
+    "surface_parameterization": "cylinder_z_axis_unwrapped_theta_z",
+    "target_area_m2": 0.0007539822368615504,
+    "target_faces": [
+      {
+        "area_m2": 9.42477796076938e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974483,
+        "value": 1000.0
+      },
+      {
+        "area_m2": 9.42477796076938e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974483,
+        "value": 1000.0
+      },
+      {
+        "area_m2": 9.42477796076938e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974483,
+        "value": 1400.0
+      },
+      {
+        "area_m2": 9.42477796076938e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974483,
+        "value": 1400.0
+      },
+      {
+        "area_m2": 9.424777960769378e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974482,
+        "value": 1800.0
+      },
+      {
+        "area_m2": 9.424777960769378e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974482,
+        "value": 1800.0
+      },
+      {
+        "area_m2": 9.42477796076938e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974483,
+        "value": 2200.0
+      },
+      {
+        "area_m2": 9.42477796076938e-05,
+        "coverage": 1.0,
+        "uv_area": 0.007853981633974483,
+        "value": 2200.0
+      }
+    ],
+    "target_sha256": "9605185c62e0c6c9db94f5738b5e22d2a2bf9df426212c284925005bb5326dd1",
+    "units": "Pa"
+  },
+  "samarmad_measurements_accessed": false,
+  "schema": "aero.pche.curved_transfer_shakedown.v1",
+  "source_artifacts": {
+    "source_heat_flux.json": "476c4728954073a8454dd0e8785dd59d90dd5e2e426ca127632823ba7db32ef0",
+    "source_pressure.json": "5b13cfd8d8eca69fc5ca710fa1b2be87aa1481b80a18cee83508606ddc94c32b",
+    "target_heat_flux.json": "35c2dd89a4c04a946fd3af59a80667c410804bf0eb13048b8358ba08583b2894",
+    "target_pressure.json": "9605185c62e0c6c9db94f5738b5e22d2a2bf9df426212c284925005bb5326dd1"
+  },
+  "status": "COMPLETE_WITH_VERIFIED_CURVED_TRANSFER",
+  "synthetic_geometry": true
+}

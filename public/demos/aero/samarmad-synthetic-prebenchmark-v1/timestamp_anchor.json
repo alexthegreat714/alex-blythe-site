@@ -1,0 +1,13 @@
+{
+  "anchor_type": "local_clock_and_content_hash_only",
+  "cht_openfoam_acceptance_sha256": "b2b442a7463209c3257c4d5a29a57231afa005048c75f99ecc28fb99510deead",
+  "created_at_utc": "2026-09-15T00:06:38.651592+00:00",
+  "criteria_sha256": "ca37cf842c210402ff591cbed1737dfaeb93cba9ba0c9739ec796fe9a806e7b9",
+  "curved_transfer_manifest_sha256": "68aaf2c4732f03d49c47825d63faecb8601a15dbc5d4084670213b7b4066544d",
+  "fea_acceptance_sha256": "2bb1d55e927cec49108eeb332fc93826b7b1d16a785a4434ceae5be7d5ea69a9",
+  "openfoam_acceptance_sha256": "04923c097893cdac9e274dced25275a6675066338debffab068dcceed2694ffb",
+  "prediction_freeze_manifest_sha256": "025bf0d8e1056986d3d80662475f723ee824813a9a787904a090a2016f3da4b3",
+  "schema": "aero.local_timestamp_anchor.v1",
+  "source_custody_sha256": "435961337644e7108fc25779028d550278fb55a5f0b0d0a0d53c218a1c48a9ec",
+  "trusted_external_timestamp": false
+}

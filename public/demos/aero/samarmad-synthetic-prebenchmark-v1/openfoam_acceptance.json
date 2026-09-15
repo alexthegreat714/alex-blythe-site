@@ -1,0 +1,10 @@
+{
+  "harness_score_0_100": 100,
+  "negative_control": "PASS",
+  "schema": "aero.pche.synthetic_gate_pack_openfoam.v1",
+  "scope": "Standalone simpleFoam physics/evidence study only; not Aero Blue production or local-model autonomy.",
+  "source_receipt": "C:\\Users\\blyth\\Desktop\\Engineering\\Aero\\reports\\laminar_channel_study_v1\\receipt.json",
+  "source_receipt_sha256": "355a3f4a92e4cfaf5e45ee1522d7b326c28a77d88a83daf70666be132595aca1",
+  "status": "PASS",
+  "synthetic_samarmad_measurements_accessed": false
+}

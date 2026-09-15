@@ -1,0 +1,36 @@
+{
+  "case_id": "PCHE-SAMARMAD-SYNTHETIC-01",
+  "created_at_utc": "2026-09-14T23:32:57.116198+00:00",
+  "freeze_manifest_sha256": "025bf0d8e1056986d3d80662475f723ee824813a9a787904a090a2016f3da4b3",
+  "freeze_verify": {
+    "files": 7,
+    "frozen_at_utc": "2026-09-14T23:32:57.113199+00:00",
+    "manifest_sha256": "025bf0d8e1056986d3d80662475f723ee824813a9a787904a090a2016f3da4b3",
+    "verified": true
+  },
+  "gates": {
+    "analytical_screen": "PASS",
+    "curved_openfoam": "NOT_RUN",
+    "curved_transfer": "NOT_RUN",
+    "input_packet": "READY_WITH_ESTIMATES",
+    "pche_calculix": "NOT_RUN",
+    "publication_validation": "NOT_ESTABLISHED"
+  },
+  "mode": "source_derived_with_synthetic_completion",
+  "prediction_frozen_before_truth": true,
+  "reference_revealed_to_model": false,
+  "schema": "aero.pche.samarmad.synthetic_prebenchmark.v1",
+  "sealed_synthetic_truth_sha256": "042d0d63a5a1b062ec5eba5386379bba96ca1083dd053411bf08e5bd3b7646ba",
+  "source": {
+    "authors": [
+      "Ahmed Oleiwi Samarmad",
+      "Hayder Mohammad Jaffal"
+    ],
+    "doi": "10.1016/j.rineng.2023.101303",
+    "full_text_url": "https://www.researchgate.net/publication/372453246_Performance_evaluation_of_a_printed_circuit_heat_exchanger_with_a_novel_two-way_corrugated_channel",
+    "license": "CC BY-NC-ND 4.0 (source custody; do not redistribute adapted source material)",
+    "title": "Performance evaluation of a printed circuit heat exchanger with a novel two-way corrugated channel",
+    "url": "https://doi.org/10.1016/j.rineng.2023.101303",
+    "year": 2023
+  }
+}

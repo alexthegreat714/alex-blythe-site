@@ -1,0 +1,23 @@
+{
+  "artifact_collection": {
+    "excluded_intermediate_time_directory_count": 2,
+    "excluded_transient_scratch_count": 0,
+    "file_count": 83,
+    "manifest": "D:\\AeroRuntime\\pche_synthetic_cht_acceptance_20260914\\runs\\run_1789430121_a4487902\\case_result\\aero_result_manifest.json",
+    "ok": true,
+    "path": "D:\\AeroRuntime\\pche_synthetic_cht_acceptance_20260914\\runs\\run_1789430121_a4487902\\case_result"
+  },
+  "classification": "bounded_solver_smoke",
+  "design_ready": false,
+  "energy_imbalance_latest": 0.0,
+  "heat_flux_fluid_latest_W_m2": 19.075835,
+  "heat_flux_solid_latest_W_m2": -19.075835,
+  "run_id": "run_1789430121_a4487902",
+  "samarmad_measurements_accessed": false,
+  "schema": "aero.pche.synthetic_gate_pack_cht.v1",
+  "scope": "Generic cooling-cylinder CHT precursor; not PCHE geometry or validation.",
+  "source_result": "C:\\Users\\blyth\\Desktop\\Engineering\\Aero\\reports\\pche_synthetic_cht_acceptance_20260914.json",
+  "source_result_sha256": "2bd9e07d71aae9029e04ccddb8a1d58812d08dfaf37261a27ce761cdc7497ccf",
+  "status": "PASS",
+  "template": "conjugate_heat_transfer"
+}

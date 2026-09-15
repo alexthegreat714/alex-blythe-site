@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "analytical_points_required": 6,
+    "curved_transfer_coverage_floor": 0.999999,
+    "curved_transfer_force_error_max": 1e-08,
+    "curved_transfer_integral_error_max": 1e-08,
+    "fea_mesh_levels_required": 3,
+    "fea_mesh_sensitivity_max": 0.05,
+    "fea_reaction_balance_max": 0.01
+  },
+  "frozen_at_utc": "2026-09-15T00:06:38.651592+00:00",
+  "note": "Criteria apply to the synthetic orchestration/worker gates; they are not Samarmad experimental acceptance thresholds.",
+  "post_reveal_tuning": "forbidden",
+  "schema": "aero.pche.synthetic_gate_criteria.v1"
+}

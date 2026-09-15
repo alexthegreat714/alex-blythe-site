@@ -1,0 +1,17 @@
+{
+  "artifacts": {
+    "source_heat_flux.json": "476c4728954073a8454dd0e8785dd59d90dd5e2e426ca127632823ba7db32ef0",
+    "source_pressure.json": "5b13cfd8d8eca69fc5ca710fa1b2be87aa1481b80a18cee83508606ddc94c32b",
+    "target_heat_flux.json": "35c2dd89a4c04a946fd3af59a80667c410804bf0eb13048b8358ba08583b2894",
+    "target_pressure.json": "9605185c62e0c6c9db94f5738b5e22d2a2bf9df426212c284925005bb5326dd1"
+  },
+  "curved_transfer_result_sha256": "971f0ad7dd8de16f40bbbbdf19492ad1c3f848f0e5acb5c705b8baa93779df9f",
+  "gates": {
+    "curved_transfer": "PASS",
+    "heat_rate_integral": "PASS",
+    "openfoam_source": "NOT_RUN",
+    "pressure_integral": "PASS",
+    "pressure_resultant": "PASS"
+  },
+  "schema": "aero.pche.curved_transfer_shakedown_manifest.v1"
+}

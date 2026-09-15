@@ -1,0 +1,13 @@
+{
+  "case_id": "PCHE-SAMARMAD-SYNTHETIC-01",
+  "cht_openfoam_run_id": "run_1789430121_a4487902",
+  "criteria_sha256": "ca37cf842c210402ff591cbed1737dfaeb93cba9ba0c9739ec796fe9a806e7b9",
+  "curved_transfer_result_sha256": "971f0ad7dd8de16f40bbbbdf19492ad1c3f848f0e5acb5c705b8baa93779df9f",
+  "fea_worker_state": "COMPLETE_WITH_OPEN_GATES",
+  "openfoam_harness_score_0_100": 100,
+  "publication_validation": "NOT_ESTABLISHED",
+  "required_pass_count": 10,
+  "schema": "aero.pche.samarmad.synthetic_gate_pack_verification.v1",
+  "trusted_external_timestamp": "OPEN",
+  "verified": true
+}

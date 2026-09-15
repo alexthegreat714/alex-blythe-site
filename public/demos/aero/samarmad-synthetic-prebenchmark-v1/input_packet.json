@@ -1,0 +1,144 @@
+{
+  "benchmark_mode": "source_derived_with_synthetic_completion",
+  "case_id": "PCHE-SAMARMAD-SYNTHETIC-01",
+  "operating_points": [
+    {
+      "cold_outlet_temperature_K": 318.975673441,
+      "darcy_friction_factor": 0.213333333,
+      "effectiveness": 0.866270066,
+      "heat_duty_W": 734.558757,
+      "heat_transfer_coefficient_W_m2K": 1706.893617,
+      "hot_outlet_temperature_K": 297.011898007,
+      "nusselt_number": 4.36,
+      "pressure_drop_Pa": 650.214568,
+      "reynolds": 300,
+      "ua_W_K": 183.095073,
+      "velocity_m_s": 0.197147009
+    },
+    {
+      "cold_outlet_temperature_K": 315.91169411,
+      "darcy_friction_factor": 0.106666667,
+      "effectiveness": 0.764088555,
+      "heat_duty_W": 1295.826696,
+      "heat_transfer_coefficient_W_m2K": 1706.893617,
+      "hot_outlet_temperature_K": 300.077343357,
+      "nusselt_number": 4.36,
+      "pressure_drop_Pa": 1300.429136,
+      "reynolds": 600,
+      "ua_W_K": 183.095073,
+      "velocity_m_s": 0.394294017
+    },
+    {
+      "cold_outlet_temperature_K": 313.494276872,
+      "darcy_friction_factor": 0.071111111,
+      "effectiveness": 0.683469425,
+      "heat_duty_W": 1738.655659,
+      "heat_transfer_coefficient_W_m2K": 1706.893617,
+      "hot_outlet_temperature_K": 302.495917254,
+      "nusselt_number": 4.36,
+      "pressure_drop_Pa": 1950.643704,
+      "reynolds": 900,
+      "ua_W_K": 183.095073,
+      "velocity_m_s": 0.591441026
+    },
+    {
+      "cold_outlet_temperature_K": 311.538297544,
+      "darcy_friction_factor": 0.053333333,
+      "effectiveness": 0.618238918,
+      "heat_duty_W": 2096.95719,
+      "heat_transfer_coefficient_W_m2K": 1706.893617,
+      "hot_outlet_temperature_K": 304.452832457,
+      "nusselt_number": 4.36,
+      "pressure_drop_Pa": 2600.858272,
+      "reynolds": 1200,
+      "ua_W_K": 183.095073,
+      "velocity_m_s": 0.788588035
+    },
+    {
+      "cold_outlet_temperature_K": 309.923147746,
+      "darcy_friction_factor": 0.042666667,
+      "effectiveness": 0.564374832,
+      "heat_duty_W": 2392.824655,
+      "heat_transfer_coefficient_W_m2K": 1706.893617,
+      "hot_outlet_temperature_K": 306.068755054,
+      "nusselt_number": 4.36,
+      "pressure_drop_Pa": 3251.07284,
+      "reynolds": 1500,
+      "ua_W_K": 183.095073,
+      "velocity_m_s": 0.985735043
+    },
+    {
+      "cold_outlet_temperature_K": 308.161845959,
+      "darcy_friction_factor": 0.033684211,
+      "effectiveness": 0.505636681,
+      "heat_duty_W": 2715.464633,
+      "heat_transfer_coefficient_W_m2K": 1706.893617,
+      "hot_outlet_temperature_K": 307.830899569,
+      "nusselt_number": 4.36,
+      "pressure_drop_Pa": 4118.025597,
+      "reynolds": 1900,
+      "ua_W_K": 183.095073,
+      "velocity_m_s": 1.248597721
+    }
+  ],
+  "reference_policy": "No publication measurements or conclusions are in this model-facing packet.",
+  "schema": "aero.pche.samarmad.synthetic_input.v1",
+  "source": {
+    "authors": [
+      "Ahmed Oleiwi Samarmad",
+      "Hayder Mohammad Jaffal"
+    ],
+    "doi": "10.1016/j.rineng.2023.101303",
+    "full_text_url": "https://www.researchgate.net/publication/372453246_Performance_evaluation_of_a_printed_circuit_heat_exchanger_with_a_novel_two-way_corrugated_channel",
+    "license": "CC BY-NC-ND 4.0 (source custody; do not redistribute adapted source material)",
+    "title": "Performance evaluation of a printed circuit heat exchanger with a novel two-way corrugated channel",
+    "url": "https://doi.org/10.1016/j.rineng.2023.101303",
+    "year": 2023
+  },
+  "source_derived_geometry": {
+    "channel_diameter_m": 0.0025,
+    "channel_shape": "semicircular",
+    "channels_per_plate": 14,
+    "computational_channel_length_m": 0.24,
+    "drilling_depth_m": 0.00125,
+    "hydraulic_diameter_m": 0.0015275,
+    "model": "straight baseline and two-way corrugated Model 6",
+    "model6_channel_amplitude_m": 0.0008,
+    "model6_plate_amplitude_m": 0.0008,
+    "model6_wavelength_m": 0.0126,
+    "number_of_plates": 8,
+    "physical_plate_length_m": 0.3,
+    "physical_plate_width_m": 0.1,
+    "plate_thickness_m": 0.004
+  },
+  "source_derived_operating_envelope": {
+    "cold_inlet_temperature_K": 293.0,
+    "flow_arrangement": "counter-current",
+    "flow_regime": "laminar single phase",
+    "hot_inlet_temperature_K": 323.0,
+    "inlet_velocity_range_m_s": [
+      0.246,
+      1.562
+    ],
+    "outlet_pressure_gauge_Pa": 0.0,
+    "reynolds_range": [
+      300,
+      1900
+    ],
+    "walls": {
+      "fluid_solid_interface": "thermally coupled",
+      "front_back_thermal": "adiabatic",
+      "hydraulic": "no slip",
+      "top_bottom_left_right_thermal": "periodic"
+    },
+    "working_fluid_cold": "water",
+    "working_fluid_hot": "water"
+  },
+  "synthetic_completion": {
+    "geometry_uncertainty": "\u00b12% channel diameter and \u00b11% plate thickness for sensitivity only",
+    "pointwise_measurements": "synthetic truth generated after prediction freeze; never model input",
+    "properties": "nominal water properties at 293/323 K; estimated, not transcribed",
+    "solid_mechanics": "aluminum E=70 GPa, nu=0.33, alpha=23e-6/K, wall thickness=1.5 mm; estimated",
+    "status": "required_for_prebenchmark_only"
+  }
+}
