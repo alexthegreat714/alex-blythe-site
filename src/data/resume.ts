@@ -1,6 +1,6 @@
 export const resume = {
   summary:
-    'Aerospace engineer with more than seven years of experience across government, defense, and private-sector programs, spanning analysis, test, instrumentation, data acquisition, hardware verification, software tools, and technical workflow design.',
+    'Aerospace engineer with experience spanning 2015–present across government, defense, and private-sector programs, including analysis, test, instrumentation, hardware verification, software tools, and workflow design.',
   experience: [
     {
       period: 'Sep 2025 – Present',

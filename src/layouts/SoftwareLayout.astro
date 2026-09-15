@@ -53,10 +53,10 @@ const canonical = new URL(canonicalPath, Astro.site);
         <span class="brand-context">Aerospace engineering / research</span>
         <nav aria-label="Primary navigation">
           <a href="/#engineering">Engineering</a>
-          <a href="/#research">Research</a>
+          <a href="/#experience">Experience</a>
           <a href="/software/" aria-current="page">Software &amp; Tools</a>
-          <a href="/#road-to-type-2">Road to Type 2</a>
-          <a href="/#resume">Resume</a>
+          <a href="/#research">Research</a>
+          <a href="/#road-to-type-2">Personal writing</a>
         </nav>
         <a class="header-link" href="/#contact">Contact <span aria-hidden="true">↗</span></a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☾</span><span class="theme-toggle-text">Dark</span></button>
@@ -82,7 +82,7 @@ const canonical = new URL(canonicalPath, Astro.site);
       )}
       <slot />
     </main>
-    <footer class="site-footer"><span>Alex Blythe / Aerospace engineering &amp; research</span><span>Engineering software · Evidence · Verification</span></footer>
+    <footer class="site-footer"><span>Alex Blythe / Aerospace engineering &amp; research</span><span>Personal work · Not employer-endorsed · No controlled data</span></footer>
     <script is:inline>
       (() => {
         const key = 'alex-theme';
@@ -159,6 +159,9 @@ const canonical = new URL(canonicalPath, Astro.site);
   :global(.project-side) { display:flex; flex-direction:column; align-items:flex-start; gap:11px; color:var(--muted); font-family:"SFMono-Regular",Consolas,monospace; font-size:.62rem; text-transform:uppercase; }
   :global(.project-link),:global(.inline-link) { color:var(--accent); font-weight:700; }
   :global(.project-link) { margin-top:auto; }
+  :global(.supporting-project-row) { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:28px; align-items:center; padding:22px 0; border-bottom:1px solid var(--subtle); }
+  :global(.supporting-project-row h3) { margin:7px 0 0; font-family:Georgia,serif; font-size:1.65rem; font-weight:400; letter-spacing:-.03em; line-height:1; }
+  :global(.supporting-project-row .project-summary) { margin-top:9px; font-size:.82rem; }
   :global(.idea-list) { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; padding:0; list-style:none; }
   :global(.idea-list li) { padding:7px 9px; border:1px solid var(--border); color:var(--muted); font-family:"SFMono-Regular",Consolas,monospace; font-size:.62rem; }
   :global(.review-grid) { display:grid; grid-template-columns:190px minmax(0,1fr); gap:34px; padding:32px 0; border-bottom:1px solid var(--subtle); }
@@ -178,5 +181,5 @@ const canonical = new URL(canonicalPath, Astro.site);
   .site-footer { display:flex; justify-content:space-between; gap:20px; padding:20px max(24px,calc((100vw - 1180px)/2)); background:var(--deep); color:#9daaa6; font-family:"SFMono-Regular",Consolas,monospace; font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; }
   @media (max-width:1100px) { .brand-context{display:none} .header-inner{gap:15px} nav{gap:14px} }
   @media (max-width:860px) { .header-link{display:none} .theme-toggle{margin-left:auto} .header-inner{flex-wrap:wrap; padding:12px 0 10px} nav{order:3; width:100%; margin-left:0; overflow-x:auto; scrollbar-width:none} nav::-webkit-scrollbar{display:none} .page-header{grid-template-columns:1fr;align-items:start} :global(.section-heading){grid-template-columns:1fr;gap:15px} }
-  @media (max-width:650px) { .header-inner,.page-header,:global(.content-section){width:calc(100% - 32px)} nav{justify-content:flex-start;gap:15px} nav a{font-size:.68rem} .theme-toggle{width:32px;justify-content:center;padding:0}.theme-toggle-text{display:none} h1{font-size:clamp(2.55rem,13vw,3.7rem)} :global(.project-row){grid-template-columns:34px 1fr;gap:14px} :global(.project-side){grid-column:2;display:grid;grid-template-columns:1fr auto} :global(.project-link){grid-column:1/-1;margin-top:8px} :global(.review-grid){grid-template-columns:1fr;gap:12px} :global(.artifact-row){grid-template-columns:1fr;gap:8px} .site-footer{flex-direction:column;align-items:flex-start} }
+  @media (max-width:650px) { .header-inner,.page-header,:global(.content-section){width:calc(100% - 32px)} nav{justify-content:flex-start;gap:15px} nav a{font-size:.68rem} .theme-toggle{width:32px;justify-content:center;padding:0}.theme-toggle-text{display:none} h1{font-size:clamp(2.55rem,13vw,3.7rem)} :global(.project-row){grid-template-columns:34px 1fr;gap:14px} :global(.project-side){grid-column:2;display:grid;grid-template-columns:1fr auto} :global(.project-link){grid-column:1/-1;margin-top:8px} :global(.supporting-project-row){grid-template-columns:1fr;gap:12px} :global(.review-grid){grid-template-columns:1fr;gap:12px} :global(.artifact-row){grid-template-columns:1fr;gap:8px} .site-footer{flex-direction:column;align-items:flex-start} }
 </style>

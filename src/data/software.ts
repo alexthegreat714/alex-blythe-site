@@ -67,8 +67,8 @@ export const softwareProjects: SoftwareProject[] = [
     ],
     artifacts: [
       { label: 'CFD technical article', description: 'Background on CFD foundations, workflow, and aerospace applications.', href: '/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/' },
-      { label: 'Case specifications', description: 'Typed inputs that keep setup intent and solver configuration inspectable.' },
-      { label: 'Run evidence', description: 'Preflight results, telemetry, manifests, and validation status retained with each workflow.' },
+      { label: 'Case specifications', description: 'Typed inputs that keep setup intent and solver configuration inspectable.', href: '/software/aero/current/' },
+      { label: 'Run evidence', description: 'Preflight results, telemetry, manifests, and validation status retained with each workflow.', href: '/software/aero/evidence/' },
     ],
   },
   {

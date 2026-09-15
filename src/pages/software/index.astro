@@ -22,18 +22,11 @@ const softwareNotes = (await getCollection('research'))
       <div><h2 id="featured-heading">Software built around inspectable engineering work.</h2><p>These projects support technical reasoning, repeatable execution, evidence capture, and honest failure states. Maturity and limitations are shown alongside capability.</p></div>
     </div>
     <div class="project-list">
-      {softwareProjects.map((project, index) => (
-        <article class="project-row">
-          <span class="project-number">0{index + 1}</span>
-          <div>
-            <span class="project-meta">{project.category}</span>
-            <h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3>
-            <p class="project-summary">{project.summary}</p>
-            <ul class="idea-list">{project.keyIdeas.slice(0, 3).map((idea) => <li>{idea}</li>)}</ul>
-          </div>
-          <div class="project-side"><span>{project.status}</span><span>{project.version ?? project.year}</span><a class="project-link" href={`/software/${project.slug}/`}>View technical review <span aria-hidden="true">→</span></a></div>
-        </article>
-      ))}
+      <article class="project-row">
+        <span class="project-number">01</span>
+        <div><span class="project-meta">{aero.category}</span><h3><a href="/software/aero/">Aero</a></h3><p class="project-summary">{aero.summary}</p><ul class="idea-list">{aero.keyIdeas.slice(0, 3).map((idea) => <li>{idea}</li>)}</ul></div>
+        <div class="project-side"><span>{aero.status}</span><span>{aero.version ?? aero.year}</span><a class="project-link" href="/software/aero/">Try Aero <span aria-hidden="true">→</span></a></div>
+      </article>
     </div>
   </section>
 
@@ -46,16 +39,12 @@ const softwareNotes = (await getCollection('research'))
 
   <section class="content-section" aria-labelledby="local-ai-heading">
     <div class="section-heading">
-      <span class="section-index">03 / Local AI & automation</span>
-      <div><h2 id="local-ai-heading">Bounded execution and evidence-aware extraction.</h2><p>ForgeClaw and OCR97 focus on the parts of automation that are easy to hide: authority, uncertainty, evidence quality, verification, and failure.</p></div>
+      <span class="section-index">03 / Supporting experiments</span>
+      <div><h2 id="local-ai-heading">Supporting tools for bounded automation.</h2><p>ForgeClaw and OCR97 remain useful companion experiments. They are deliberately secondary to Aero on this index.</p></div>
     </div>
     <div class="project-list">
       {automationProjects.map((project, index) => (
-        <article class="project-row">
-          <span class="project-number">0{index + 1}</span>
-          <div><span class="project-meta">{project.category}</span><h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3><p class="project-summary">{project.purpose}</p></div>
-          <div class="project-side"><span>{project.status}</span><a class="project-link" href={`/software/${project.slug}/`}>Boundaries & evidence <span aria-hidden="true">→</span></a></div>
-        </article>
+        <article class="supporting-project-row"><div><span class="project-meta">{project.category}</span><h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3><p class="project-summary">{project.purpose}</p></div><a class="project-link" href={`/software/${project.slug}/`}>Boundaries &amp; evidence <span aria-hidden="true">→</span></a></article>
       ))}
     </div>
   </section>
