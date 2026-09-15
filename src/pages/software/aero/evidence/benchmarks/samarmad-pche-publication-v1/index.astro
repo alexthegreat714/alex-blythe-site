@@ -1,0 +1,103 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import summary from '../../../../../../../public/demos/aero/samarmad-pche-publication-v1/run_summary.json';
+
+const base = '/demos/aero/samarmad-pche-publication-v1/';
+const cfd = summary.openfoam_v10_at_250_s;
+const fea = summary.calculix;
+const freeze = summary.freeze;
+const pct = (value) => `${Number(value).toFixed(2)}%`;
+---
+<Shell
+  title="Aero · Samarmad PCHE publication benchmark v1"
+  description="Pre-reveal OpenFOAM prediction record for an independently reconstructed printed-circuit heat exchanger. Numerical failures are retained; publication measurements remain withheld."
+  path="/software/aero/evidence/benchmarks/samarmad-pche-publication-v1/"
+>
+  <header>
+    <p class="eyebrow">AERO / SOURCE-DERIVED PCHE STUDY · V1</p>
+    <span class="status failed">NUMERICAL FAIL</span>
+    <h1>Samarmad PCHE: the solver did not clear its gates.</h1>
+    <p>This is the pre-reveal prediction record for an independently reconstructed corrugated heat-exchanger cell. The solver reached the declared end time, but its residual and pressure-drop mesh-independence checks failed. The publication’s experimental measurements are still withheld.</p>
+    <p class="metric">3 grids run · 0 grids met every frozen numerical gate · prediction package hash-verified</p>
+    <div class="links">
+      <a class="primary" href={base + 'README.md'}>Read the run record</a>
+      <a href="#numerics">Inspect the numerical gates</a>
+      <a href="#reveal">See reveal status</a>
+    </div>
+  </header>
+
+  <section class="boundary" aria-labelledby="meaning">
+    <h2 id="meaning">What this result means</h2>
+    <p><strong>Numerical disposition: FAIL.</strong> All meshes pass OpenFOAM’s region checks, and conservation checks pass their predeclared limits. Residuals remain above the 1×10<sup>−6</sup> target on every grid, and medium-to-fine pressure drop changes by more than the 5% allowance.</p>
+    <p><strong>Experimental agreement: NOT SCORED.</strong> The source result tables have not been opened for comparison. No validation claim is made from this pre-reveal record.</p>
+  </section>
+
+  <section aria-labelledby="source">
+    <h2 id="source">Study and pre-reveal scope</h2>
+    <p>{summary.source.citation}. <a href={summary.source.source_url}>Open the DOI record</a>. The independent reconstruction is one periodic Model 6 cell; it is not author CAD. The analysis uses a frozen 293 K cold inlet, 323 K hot inlet and 0.246 m/s per stream. The source’s 290/293 K and 4/5 mm discrepancies, plus the inferred corrugation-amplitude unit, remain explicit uncertainties.</p>
+    <p>The solver received no measurement values or result plots. However, the orchestration agent had prior exposure to the abstract-level summary and a Section 4.1 discrepancy, and the solver environment was networked rather than hermetic. This is a <strong>reference-withheld deterministic run, not a fully blind benchmark.</strong></p>
+    <div class="cards">
+      <article>
+        <h3>First-principles screen</h3>
+        <p>For a straight, fully developed semicircular duct only: Re {summary.pre_reveal_prediction.first_principles_straight_channel_screen.Re.toFixed(2)}, hydraulic diameter {(summary.pre_reveal_prediction.first_principles_straight_channel_screen.hydraulic_diameter_m * 1000).toFixed(4)} mm, ΔP {summary.pre_reveal_prediction.first_principles_straight_channel_screen.pressure_drop_Pa_per_channel.toFixed(1)} Pa/channel, and effectiveness {summary.pre_reveal_prediction.first_principles_straight_channel_screen.effectiveness_range.map((x) => x.toFixed(3)).join('–')}.</p>
+        <p class="subtle">This screening calculation omits corrugation, entrance and manifold effects; it is not presented as a Model 6 prediction.</p>
+      </article>
+      <article>
+        <h3>Source limits</h3>
+        <p>The author-uploaded full-text record reports CC BY-NC-ND 4.0. This page does not reproduce the article, its figures, tables or measured point values. Local analysis was documented as noncommercial; commercial reuse is not cleared.</p>
+        <p class="subtle">The paper contains no structural material model, supports, mechanical loads or structural measurements.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="numerics" aria-labelledby="numerics-heading">
+    <h2 id="numerics-heading">OpenFOAM numerical gates at 250 s</h2>
+    <p>Each row is retained even where a gate fails. Cell counts are tetrahedra in the reconstructed periodic cell.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Grid</th><th>Tetrahedra</th><th>Maximum residual</th><th>Mass imbalance</th><th>Energy imbalance</th><th>Every gate</th></tr></thead>
+      <tbody>
+        {Object.entries(cfd.tetrahedra).map(([grid, cells]) => {
+          const residual = cfd.max_final_residual[grid];
+          const data = summary.openfoam_v10_at_250_s;
+          // Per-grid balance fractions are retained in the local machine-readable assessment.
+          const mass = grid === 'coarse' ? 0.0668824 : grid === 'medium' ? 0.0895823 : 0.0623539;
+          const energy = grid === 'coarse' ? 3.67146 : grid === 'medium' ? 2.49203 : 1.49607;
+          return <tr>
+            <th>{grid}</th><td>{cells.toLocaleString()}</td><td>{residual.toExponential(3)} · FAIL</td>
+            <td>{pct(mass)} · PASS</td><td>{pct(energy)} · PASS</td><td class="failed-text">FAIL</td>
+          </tr>;
+        })}
+      </tbody>
+    </table></div>
+    <div class="cards">
+      <article><h3>Medium → fine pressure-drop change</h3>
+        <dl class="facts"><div><dt>Hot side</dt><dd>{pct(cfd.medium_to_fine_relative_change_percent.hot_pressure_drop)} · FAIL</dd></div><div><dt>Cold side</dt><dd>{pct(cfd.medium_to_fine_relative_change_percent.cold_pressure_drop)} · FAIL</dd></div><div><dt>Frozen limit</dt><dd>{pct(cfd.medium_to_fine_relative_change_percent.pressure_drop_grid_gate_limit)}</dd></div></dl>
+      </article>
+      <article><h3>Heat-transfer and temperature changes</h3>
+        <dl class="facts"><div><dt>Hot / cold duty</dt><dd>{pct(cfd.medium_to_fine_relative_change_percent.hot_heat_duty)} / {pct(cfd.medium_to_fine_relative_change_percent.cold_heat_duty)} · within 5%</dd></div><div><dt>Hot / cold outlet temperature</dt><dd>{pct(cfd.medium_to_fine_relative_change_percent.hot_outlet_temperature)} / {pct(cfd.medium_to_fine_relative_change_percent.cold_outlet_temperature)} · within 5%</dd></div><div><dt>Overall numerical disposition</dt><dd class="failed-text">FAIL</dd></div></dl>
+      </article>
+    </div>
+    <p class="subtle">High Courant and solid diffusion numbers are retained in the detailed assessment. End-time completion is not treated as convergence, and the frozen acceptance criteria were not changed after the runs.</p>
+    <div class="links"><a href={base + 'run_summary.json'}>Download pre-reveal summary (JSON)</a></div>
+  </section>
+
+  <section aria-labelledby="fea-heading">
+    <h2 id="fea-heading">CalculiX: source gate and mapping result</h2>
+    <p>The publication does not specify a structural case, so it cannot support a paper-correlated FEA prediction. An exploratory, assumption-only transfer plan used the fine-grid solid temperature field and required exactly 100% mapping before creating any structural deck.</p>
+    <div class="table-wrap"><table><thead><tr><th>Target solid mesh</th><th>Temperature nodes mapped</th><th>Coverage</th><th>Disposition</th></tr></thead><tbody>
+      {Object.entries(fea.v1_three_grid_transfer_coverage_percent).filter(([key]) => key !== 'required').map(([grid, coverage]) => <tr><th>{grid}</th><td>{grid === 'coarse' ? '85,619 / 92,113' : grid === 'medium' ? '182,061 / 192,543' : '504,066 / 504,078'}</td><td>{pct(coverage)}</td><td class="failed-text">FAIL · no deck</td></tr>)}
+    </tbody></table></div>
+    <p class="subtle">A prior single assumption-only CalculiX shakedown used an unconverged coarse CFD field; it is retained separately and is not a source prediction or a mesh-convergence result.</p>
+  </section>
+
+  <section id="reveal" class="boundary" aria-labelledby="reveal-heading">
+    <h2 id="reveal-heading">Experimental reveal remains closed</h2>
+    <p>The 653-file prediction inventory was independently re-hashed with zero mismatches. Its exact manifest SHA-256 is <code>{freeze.manifest_sha256}</code>; inventory SHA-256 is <code>{freeze.inventory_sha256}</code>.</p>
+    <p>OpenTimestamps receipts have been submitted to four calendars, but the proof is still pending blockchain confirmation. Until upgraded and verified, the publication measurement tables remain unopened. After that, only an exact match to the frozen condition and measurement definition will be scored; otherwise the comparison will be marked <strong>UNSCORED</strong>. V1 will not be tuned after reveal.</p>
+    <div class="links"><a href={base + 'pre_reveal_prediction_freeze.json'}>Prediction freeze manifest</a><a href={base + 'pre_reveal_prediction_freeze.json.ots'}>Timestamp proof (pending)</a><a href={base + 'README.md'}>Full pre-reveal record</a><a href="/software/aero/evidence/benchmarks/">Benchmark register</a></div>
+  </section>
+</Shell>
+
+<style>
+  .facts{margin:0}.facts div{display:grid;grid-template-columns:minmax(145px,.8fr) 1.2fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border)}.facts dt{font-size:14px;color:var(--muted)}.facts dd{margin:0;font-weight:650}.failed-text{color:#c84749;font-weight:750}:root[data-theme=dark] .failed-text{color:#f69b96}.table-wrap{overflow:auto}.table-wrap table{min-width:780px}.table-wrap th:first-child{min-width:135px}.subtle{font-size:14px}
+</style>

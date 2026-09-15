@@ -1,0 +1,3280 @@
+{
+  "case_id": "PCHE-SAMARMAD-PUBLICATION-01",
+  "external_timestamp_status": "pending",
+  "file_count": 653,
+  "files": [
+    {
+      "path": "Aero/tests/test_aegis_bridge_calculix_status.py",
+      "sha256": "3cf68e6c0ec19f01c926f64999c21da1c1dc294d86100d07f3df9b6bd98627c5",
+      "size_bytes": 1200
+    },
+    {
+      "path": "Aero/tools/assess_samarmad_cht_gates.py",
+      "sha256": "963a6e67c5b2affb713c8079b79a0da24364cf7fa9b0c86c6c5fe9d3be47153e",
+      "size_bytes": 9526
+    },
+    {
+      "path": "Aero/tools/build_samarmad_calculix_exploratory.py",
+      "sha256": "f4dac3d5f113af4ee4e1b8e1d823d4d14480f68345fdde7de3aab6d885d4aba4",
+      "size_bytes": 11545
+    },
+    {
+      "path": "Aero/tools/build_samarmad_model6_cad.py",
+      "sha256": "dcb98f12f8fc60b228ed58dd3f5eb33eaa0aa2fc86254a341a51b5a750ca4594",
+      "size_bytes": 12704
+    },
+    {
+      "path": "Aero/tools/calculate_samarmad_first_principles.py",
+      "sha256": "e5efda8ef258b81f69978a80cb990efa326d738dfde91d42ae472bbf931187c7",
+      "size_bytes": 9002
+    },
+    {
+      "path": "Aero/tools/diagnose_samarmad_mapping.py",
+      "sha256": "3369096d427d33513b9c526f81455f719f56a24fd42a12ee608d66ad168baac6",
+      "size_bytes": 3262
+    },
+    {
+      "path": "Aero/tools/extend_samarmad_cht_iterations.py",
+      "sha256": "d2432e901e575f0124e33a0234cb1ea84f4904f55788979a5e7614860bcfc3bd",
+      "size_bytes": 3240
+    },
+    {
+      "path": "Aero/tools/freeze_samarmad_prediction_package.py",
+      "sha256": "e2f5fb284450fe20ad95f60133898e2084ad015f747b3ecd99661e57f84f6da3",
+      "size_bytes": 6107
+    },
+    {
+      "path": "Aero/tools/optimize_samarmad_mesh.py",
+      "sha256": "476eacdc7b9130193d052cb1fd84d8dde4c4570d1ecbc1108bf64a2c2b76da61",
+      "size_bytes": 1566
+    },
+    {
+      "path": "Aero/tools/postprocess_samarmad_cht_bulk.py",
+      "sha256": "c61cc4eedec3a28759471654131af429c935139ccde5b604eeac00545f74203c",
+      "size_bytes": 10528
+    },
+    {
+      "path": "Aero/tools/prepare_samarmad_cht_cases.py",
+      "sha256": "514ac6a8dd9cd984da92a0e77eb48a75dffbbb2227fe1e93f706e4b3d2240e92",
+      "size_bytes": 13354
+    },
+    {
+      "path": "Aero/tools/samarmad_calculix_runtime/Dockerfile",
+      "sha256": "9bf1fd7044442fe4ddf3ec4506b2e198e8c74cb6b72dca84c0c6d116ed76e1ce",
+      "size_bytes": 420
+    },
+    {
+      "path": "Aero/tools/summarize_samarmad_calculix_frd.py",
+      "sha256": "02b48599bb5e767cfed0146b69063b44dd971ba4b3352f5cb8908051732a3110",
+      "size_bytes": 4686
+    },
+    {
+      "path": "Aero/vm/aegis_bridge.py",
+      "sha256": "ff0252227f7a2ee8ba56cb44381d7884fc1a137507cd96b885c2572349e7f6b6",
+      "size_bytes": 16003
+    },
+    {
+      "path": "report/acceptance_criteria.json",
+      "sha256": "a6a5de92952b8fbe50e1d62f795fcc6fa13d6dc343dbc70e7500207c6991330f",
+      "size_bytes": 2617
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/assumption_only_manifest.json",
+      "sha256": "8d25976db969b15f39ed6ffc8ae1f60b33037dce433bade554ad88565d32ea3e",
+      "size_bytes": 2513
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/ccx_attempt_01.json",
+      "sha256": "62ed9b26cff438552df9de0074775d6e47c8f043048416d3e73c240806e255e8",
+      "size_bytes": 1079
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/pche_thermoelastic_exploratory.12d",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/pche_thermoelastic_exploratory.cvg",
+      "sha256": "65086dedb4572132b815ace04b294909c7f6f337111f9704fc310b02320f67f7",
+      "size_bytes": 274
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/pche_thermoelastic_exploratory.dat",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/pche_thermoelastic_exploratory.inp",
+      "sha256": "f645f9c73c551569012e1ce984e5d1a8f35cf4f6bc1f918ea1f07ece1768835d",
+      "size_bytes": 21638178
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged/pche_thermoelastic_exploratory.sta",
+      "sha256": "20946efba93047e4092386fb9fedd29e43961806698459a19066356660f2e1a9",
+      "size_bytes": 98
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/assumption_only_manifest.json",
+      "sha256": "d8f1efe20fb1a3418ba159caa280cb14343ffbfba030ee6f2bd308fd82f3b7d2",
+      "size_bytes": 2516
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/calculix_execution.json",
+      "sha256": "fc3e7fc201c9b615b0b4eac9ec78e3b2e3c06fe57b38da2eca8d0256c783bc66",
+      "size_bytes": 1799
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/calculix_result.json",
+      "sha256": "46268f70f996d86543131909c823ed6a3628460fba6bc2c3ef537857015d3c15",
+      "size_bytes": 2215
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/pche_thermoelastic_exploratory.12d",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/pche_thermoelastic_exploratory.cvg",
+      "sha256": "65086dedb4572132b815ace04b294909c7f6f337111f9704fc310b02320f67f7",
+      "size_bytes": 274
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/pche_thermoelastic_exploratory.dat",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/pche_thermoelastic_exploratory.frd",
+      "sha256": "eb2ef6ee7059ae35f4084a5271b13cd022873382bcf47ae1258d1a9095a40bb9",
+      "size_bytes": 61443098
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/pche_thermoelastic_exploratory.inp",
+      "sha256": "0a36705051fd5a73269128f1da45f3d0e94fa64f43317a91bc1bdb59c401c537",
+      "size_bytes": 22271941
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/pche_thermoelastic_exploratory.sta",
+      "sha256": "01e324ec0ea28f4d1fd7f5e2da1277af53812b873e218be1604c17a4c8e4990d",
+      "size_bytes": 170
+    },
+    {
+      "path": "report/fea_exploratory/coarse_unconverged_v2/spooles.out",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "report/fea_exploratory/mesh_sensitivity_plan_v1.json",
+      "sha256": "fdd392e8c2342a2c09aec22b44ab137caec1b2fef0f87b0fd0d1af272785e16c",
+      "size_bytes": 2609
+    },
+    {
+      "path": "report/fea_exploratory/mesh_sensitivity_v1/assessment.json",
+      "sha256": "a4dda7776328466f153d814bb9e2b16dcc51b658bfe105f8be531eae095ce320",
+      "size_bytes": 1287
+    },
+    {
+      "path": "report/fea_exploratory/mesh_sensitivity_v1/coarse/mapping_failure.json",
+      "sha256": "5add8c22b2ff9b499461c75639efd308824e4d4981a68702901467de790a65d9",
+      "size_bytes": 1261
+    },
+    {
+      "path": "report/fea_exploratory/mesh_sensitivity_v1/fine/mapping_failure.json",
+      "sha256": "2591a38d88b82e11e0aeb2bca0a0ca09a35c2bed4e23d9dc55ba88b73f9cf5ec",
+      "size_bytes": 1258
+    },
+    {
+      "path": "report/fea_exploratory/mesh_sensitivity_v1/mapping_diagnostic.json",
+      "sha256": "814d7cd1b80e2f00a45dc9c40fc18f96f48bf8c92f72cd0642594c24f170b806",
+      "size_bytes": 2569
+    },
+    {
+      "path": "report/fea_exploratory/mesh_sensitivity_v1/medium/mapping_failure.json",
+      "sha256": "81f5df8db54cb7bbfb3886c3fa4bc335b9ded6a77fc51768cb808282a6b98d12",
+      "size_bytes": 1265
+    },
+    {
+      "path": "report/first_principles_freeze.json",
+      "sha256": "60e8c0c7ecbcc28273e72b2d51432c54708a02346ebd3b60f2149d00941fec6c",
+      "size_bytes": 876
+    },
+    {
+      "path": "report/first_principles_prediction.json",
+      "sha256": "47350df6ea1dd6919fb287ace376cf843d318adb3c6fd46358d985b057d3ac6d",
+      "size_bytes": 5273
+    },
+    {
+      "path": "report/geometry_identity.json",
+      "sha256": "be786febec79fd4014028b79c24262dc4153d6acdd6c5529cd39671ad289d5a6",
+      "size_bytes": 2620
+    },
+    {
+      "path": "report/input_spec.json",
+      "sha256": "404e510b063d5b0294e02691fe38bbb31963079e058250e1779b5977c46888fa",
+      "size_bytes": 7333
+    },
+    {
+      "path": "report/pre_reveal_data_boundary.json",
+      "sha256": "fae5a082defcc90d54cb1ca89e3b3d4a1b30bf754bd9df09cf1892fd1530e733",
+      "size_bytes": 4365
+    },
+    {
+      "path": "report/progress/cht_gate_assessment.json",
+      "sha256": "5fd2458dec31086e11becbc8a11c5001998c321729cea81c8794aa8f54b05487",
+      "size_bytes": 10947
+    },
+    {
+      "path": "report/progress/coarse_1000.json",
+      "sha256": "45e8592b1a6d0608d8dab53bfa2648220608e5c0442822242020b951279e2cd6",
+      "size_bytes": 6189
+    },
+    {
+      "path": "report/progress/coarse_250.json",
+      "sha256": "7d1a9e382d43241039cc7eb3d924339cc1c9634eed71447534aac710c8699380",
+      "size_bytes": 6185
+    },
+    {
+      "path": "report/progress/coarse_800.json",
+      "sha256": "213e32bc6604e286ac25e2ecd99544f458ef690c835c35aa7e1955b389cd56ab",
+      "size_bytes": 6178
+    },
+    {
+      "path": "report/progress/fine_250.json",
+      "sha256": "fb1b6ccc93275b3504d49a8a176b0a613f5aed86440dff929e1566ba4a40cfe3",
+      "size_bytes": 6196
+    },
+    {
+      "path": "report/progress/medium_250.json",
+      "sha256": "8fdaecd59eef32b7871f685aeca3f2035abb486861da3e06af469e99148d6719",
+      "size_bytes": 6189
+    },
+    {
+      "path": "report/solver_access_audit.json",
+      "sha256": "40aae17bbb95286e634b8c73f8858da5ebc8932215de1672d8f77994f4b8015a",
+      "size_bytes": 2773
+    },
+    {
+      "path": "report/solver_access_boundary_addendum.json",
+      "sha256": "d85d53b8c6b4b596db03839ca06282a10874c338d0d0594e7fc67bc83f5312b2",
+      "size_bytes": 2590
+    },
+    {
+      "path": "report/source_condition_ambiguity_addendum.json",
+      "sha256": "cb5f1fdca90dac626a63ed68b0501c6e9dfe70ffc670dc3817190a5e7ea1e1dc",
+      "size_bytes": 2531
+    },
+    {
+      "path": "report/source_eligibility.json",
+      "sha256": "12b903fb3fd2f2e6d52711a1a57f6b74e33e8a239f3eae480cf62ff64aa0e5c5",
+      "size_bytes": 3702
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/cellToRegion",
+      "sha256": "c9a0c4e8c2c4f693e524933a59d8c443f6a8b3265830f5f0aeef914f0e74e645",
+      "size_bytes": 3958890
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/coldFluid/T",
+      "sha256": "3239fa3102acac90d7d107d787ba7eb74694b1bb4e00356f6570f1f5fc4d1798",
+      "size_bytes": 733
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/coldFluid/U",
+      "sha256": "9b6c5ce676b27e2af23ca43ac6c2e242b221879a3c243c9343ed38a42600e838",
+      "size_bytes": 674
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/coldFluid/cellToRegion",
+      "sha256": "c40748fe35b341daeaaa926598fd1caafc58bf1a0e86781e833000daaf9cd01c",
+      "size_bytes": 1007
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/coldFluid/p",
+      "sha256": "4c951568479b12641c0a99d21ff4d5dba8b608f176e18278b4ed8462a247fa2c",
+      "size_bytes": 534
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/coldFluid/p_rgh",
+      "sha256": "661b57913cef4f52459b2b8d168c4ee04c1bf3bf9c29ec4ce4d309012ba4aac7",
+      "size_bytes": 590
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/hotFluid/T",
+      "sha256": "c2eeaa020cd796822a4b8ea919ec6abb371f1e8eda091d04e32f92b5e342d206",
+      "size_bytes": 729
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/hotFluid/U",
+      "sha256": "3a0d041907c64209b24f01537d5fabded03bd52ccf6e8848e74f9ce00b96e3cf",
+      "size_bytes": 668
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/hotFluid/cellToRegion",
+      "sha256": "ba88a1b1436dc441167d0261934ca7c3f2ff6eaeaa9bcc2e733c71981c9b4a30",
+      "size_bytes": 1003
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/hotFluid/p",
+      "sha256": "e72ba9c290ef74bc21a0baf27714b255504400198eba68ab54a0212d408d1f06",
+      "size_bytes": 533
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/hotFluid/p_rgh",
+      "sha256": "112bd450d02151c52c0af20366c92c4a33681b32485166816e9f81907ab78dbd",
+      "size_bytes": 588
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/solidPlate/T",
+      "sha256": "0519169bd2cb284107b10a6f904de7b5b32b36f35163d9a53551a66b8d8b2ddf",
+      "size_bytes": 1036
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/0/solidPlate/cellToRegion",
+      "sha256": "ce7a49597bd3e302dce67fb4f5bfdcae637c21bfe35515af3d964aadaa95270d",
+      "size_bytes": 1328
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/coldFluid/T",
+      "sha256": "75b26f3625e3e4a3d436cbd6a42ad35404ed1e7ac9933a3581331a58d985c903",
+      "size_bytes": 909392
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/coldFluid/U",
+      "sha256": "fb02a581113c7b442d996d7c354d9ffa305239035cea16d0b5cdf047b0c40d1b",
+      "size_bytes": 1105412
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/coldFluid/p",
+      "sha256": "b1413ad383448a2920848b3dd6da9a2a6bdd14d492a0d847e54b76b0b3867731",
+      "size_bytes": 549181
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/coldFluid/p_rgh",
+      "sha256": "7bcc961b75d145178d9254631890dd79688546ac04dd397d4be465856f9204cc",
+      "size_bytes": 549264
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/coldFluid/phi",
+      "sha256": "cfe3f04be00d229983013b6df994aa0d16ce833f9e53dd664ff60565093f9dbc",
+      "size_bytes": 647066
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/coldFluid/rho",
+      "sha256": "0f3ea74e53318e3307f17097a505384fc0adc2d14ead053d2f66eed5fb312263",
+      "size_bytes": 1084
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/hotFluid/T",
+      "sha256": "30b8fbd9d4802d418aeea4add7b1273f3a9734b43e70ee736c91d8a627aada40",
+      "size_bytes": 908852
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/hotFluid/U",
+      "sha256": "a31f2a9880b25b27107b49faf099e09f1485dc0fa2043763c9d158796726638f",
+      "size_bytes": 1109847
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/hotFluid/p",
+      "sha256": "16e0578fb010441c08ba310c752413dd2efe9f56604c2f6f6dbf6d8be0ebbae5",
+      "size_bytes": 549985
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/hotFluid/p_rgh",
+      "sha256": "9dcec97449585bb3925be59135cacfb9d519640b824ee84d5f21a9adc6e09d22",
+      "size_bytes": 550068
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/hotFluid/phi",
+      "sha256": "921840cd647ecda196a1411385642d2855f50dc70e58d0c604b40dff67c534ed",
+      "size_bytes": 650358
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/hotFluid/rho",
+      "sha256": "ae033f9140e5326ab8ea5b9d517c40d1391555da0f71b4f8d679c43241d2f931",
+      "size_bytes": 1080
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/solidPlate/T",
+      "sha256": "e206e8eef8f8cd7112c456f68ac0aa6fddd1e49197cf8a95f541115a0ef50fcd",
+      "size_bytes": 4603027
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/1000/uniform/time",
+      "sha256": "13d3f477d05f19b5ed8d7023bbd0c98dbcd0e50c1b3883ca5410543625c345f5",
+      "size_bytes": 803
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/coldFluid/T",
+      "sha256": "815c85a58f042f5d6e93c56066e681d9d989185daabe239ec9d6a71dfedcb2b7",
+      "size_bytes": 909391
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/coldFluid/U",
+      "sha256": "2f2377721b53f0e730e9d553bc0f12ec7cf1a8cd52e7548d7af7a7aed7d32d98",
+      "size_bytes": 1105411
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/coldFluid/p",
+      "sha256": "2734e899c200e9f2ac076c1c0de128bd45a82600d3dffabfdf24bd68c71e2687",
+      "size_bytes": 549180
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/coldFluid/p_rgh",
+      "sha256": "6794771dc0f2d2f6e4d3cccaf4f6a5981f01b21c90863de70f7c62634997b001",
+      "size_bytes": 549263
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/coldFluid/phi",
+      "sha256": "293932b21ceab962e660f6cc33739126587ab9fe25a2f47296a0af920ba1df71",
+      "size_bytes": 647065
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/coldFluid/rho",
+      "sha256": "37f1e22fd5a62b48dddcca120f556d2a3576bc66be1143c7ac96a04ad8180b57",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/hotFluid/T",
+      "sha256": "a78d084921bedd98257b232f052cd29c478b5a170ceb8fc306ad07181c7e2572",
+      "size_bytes": 908851
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/hotFluid/U",
+      "sha256": "65675661eb132118dc60f0b9c6965e30e339ccbdc216c948d05f462d59e1dd27",
+      "size_bytes": 1109846
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/hotFluid/p",
+      "sha256": "cae1c03638595da9e2a89e7a0b3692bc72525014fd4c5cf648f4565fb4ec2e85",
+      "size_bytes": 549984
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/hotFluid/p_rgh",
+      "sha256": "8e03695b75117d6b9c726bc6447545e5beeabf505c5031543f2c48e87a77902f",
+      "size_bytes": 550067
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/hotFluid/phi",
+      "sha256": "61ad5bf42c5c8ce78abf5c064996575654326ba0ba8e24a08bbf686a2ea9d27f",
+      "size_bytes": 650357
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/hotFluid/rho",
+      "sha256": "4c02a87dec703b31835284b84348a5eaa5806af8af1196e707241250c8d40ea3",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/solidPlate/T",
+      "sha256": "6b89dc8cbd5aa4a546e357fefcff6364c779814b6f4c32dc887b1bc9a92cb796",
+      "size_bytes": 4603026
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/200/uniform/time",
+      "sha256": "5916951d642d6a5b6ade06c9634a5dbedc5a7349d55f742e73f8dd8730f0173e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/coldFluid/T",
+      "sha256": "ab461d4ca3d06aa7a5f39bcdeb76f18cc1fb486deeac0567be49f15059db06c3",
+      "size_bytes": 909391
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/coldFluid/U",
+      "sha256": "6c08a709a8cdb256c08fff7a4d298631e37bfcf9943208cd1f6a48b77c8e4f9e",
+      "size_bytes": 1105411
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/coldFluid/p",
+      "sha256": "9dceb14b8423f9c5e5f0697f8315164b4ead7dd8a6b6972759ba262d4b367248",
+      "size_bytes": 549180
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/coldFluid/p_rgh",
+      "sha256": "d67e008f930eb4db9c131d8eee6ab96e1844227b1880ef14bce614720746092e",
+      "size_bytes": 549263
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/coldFluid/phi",
+      "sha256": "37c2b7427cf6c9754a2d39f9bcbbcaaed25225c03e855ba1453f9824acc6d63b",
+      "size_bytes": 647065
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/coldFluid/rho",
+      "sha256": "100f4df3bcb8570e8167a26e1cdd0db2bbd96156af0fe3e1310d6338b7086680",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/hotFluid/T",
+      "sha256": "f3b5c91b69e6f099fae158744162a4b8b864bc27f4fda9fd79c5cfcbd807eb84",
+      "size_bytes": 908851
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/hotFluid/U",
+      "sha256": "db97903dd4c6eb4b5ee0d80d2afdf34a4fc4a093552a5940c19b53a10bf19d06",
+      "size_bytes": 1109846
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/hotFluid/p",
+      "sha256": "d803a63caf4b259aefb8defce21b577dc81efb755e324e20ea1153d4dd67662b",
+      "size_bytes": 549984
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/hotFluid/p_rgh",
+      "sha256": "d14a1848d27c70cb9f159d5a34f327d549a027fb2cebb4e7b670ca6e3ff07d4e",
+      "size_bytes": 550067
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/hotFluid/phi",
+      "sha256": "99e32211f267220c4797f481234c8ba86e85e5e8e9d9aea9880f97f36184c60c",
+      "size_bytes": 650357
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/hotFluid/rho",
+      "sha256": "936078a878a6dc1797a2b8d65b055a111a41902044078cf383e36ad957cccb53",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/solidPlate/T",
+      "sha256": "2c4be51db7465a20bcc0423f6ea157a6481a85f790a1f384f35211e85a3f7ac4",
+      "size_bytes": 4603026
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/225/uniform/time",
+      "sha256": "0f786524baac3aa613b0ec39d4dacadaf9ede59e15ba00957897a245d56a0861",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/coldFluid/T",
+      "sha256": "55a1396ec7b5ad44158348e110600aa6bd20f2ec356e96dc8811742ed450e50f",
+      "size_bytes": 909391
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/coldFluid/U",
+      "sha256": "3d755a2df9647e3fa6bb87db681d1bcc03f06132eac004954b69e0dfccae07a6",
+      "size_bytes": 1105411
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/coldFluid/p",
+      "sha256": "1f587b0fd3905ff6ef7cac7db745fb01d6cdd7137ba1e6e352d91fcf248c71e6",
+      "size_bytes": 549180
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/coldFluid/p_rgh",
+      "sha256": "ba05aa57a11aa0cf616842d3ec9e7dd016fbac22373b5a43051af50895971df7",
+      "size_bytes": 549263
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/coldFluid/phi",
+      "sha256": "d492742cfec4ef6809bd8b29c6e19866e5c7eb9e1ac3e87b73a30c7f721e6e6c",
+      "size_bytes": 647065
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/coldFluid/rho",
+      "sha256": "26c4c9ff6e7e8f460d913bf347b020bb50b7898ff77f72e8c8fb04697b298c3e",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/hotFluid/T",
+      "sha256": "f8618ea5fae94750fba40443e9e74a887d3361994653fca0339f3e7bc0ef3929",
+      "size_bytes": 908851
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/hotFluid/U",
+      "sha256": "e5adbd8749909c16b2f9a296c8a16bcc97f425121d288c84df430a9294ad332c",
+      "size_bytes": 1109846
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/hotFluid/p",
+      "sha256": "1665b48c52a1f7a00be1b3f35a1a1b72469d879af9b14dba8b371f8e7ec78396",
+      "size_bytes": 549984
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/hotFluid/p_rgh",
+      "sha256": "6bd65cdf40c6235c87132c21270c71522ecf602cf56d2a2d595207d721272a7b",
+      "size_bytes": 550067
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/hotFluid/phi",
+      "sha256": "f49d26774df2427ce17366acc31d9f050cb544ced8663c849bb5c7244163d9ae",
+      "size_bytes": 650357
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/hotFluid/rho",
+      "sha256": "f0aa0f1d72a64687c00e4f3ec3f917be4863230cf5da9c68fe5a9242883294cc",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/solidPlate/T",
+      "sha256": "054d14c689e7154352676abeb5b4a052debb49cff837777b9994b3a7f5c07229",
+      "size_bytes": 4603026
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/250/uniform/time",
+      "sha256": "7b75cb6cfac0c86480bc61bbba655c9a7e640a2d7124504d70d473a4a106cc8e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/coldFluid/T",
+      "sha256": "0f9aa1742cf7c9c60b48c8576e3d176f3a69133e4cb07053afba6c90bac4c69a",
+      "size_bytes": 909391
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/coldFluid/U",
+      "sha256": "d59019c042221c82510a5128720c7851053fc3f35bdc60b408c7063dee656c18",
+      "size_bytes": 1105411
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/coldFluid/p",
+      "sha256": "3aa997bf21c47e14cf30e4152c8a6d56d6caefee9c851ef2e5c68f82d8eed150",
+      "size_bytes": 549180
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/coldFluid/p_rgh",
+      "sha256": "95a0477b153a2b5e5b4e48141d3e62ab78f3d82a01bfb8190b483fc829c8cdf1",
+      "size_bytes": 549263
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/coldFluid/phi",
+      "sha256": "6b739092eb9662fbc4054103702d90b6e4db271e30248e4da38dffb31948fe0a",
+      "size_bytes": 647065
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/coldFluid/rho",
+      "sha256": "fec21a301ef4d024442b216196209c125a6e8bfb18e3a2095123c160e7b41f5a",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/hotFluid/T",
+      "sha256": "f7182ba1181ded87d929de0ddd46a4e47840e564e6fd55d3baa44f40944d9a22",
+      "size_bytes": 908851
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/hotFluid/U",
+      "sha256": "fc932af8c50c46ec83ee261a6d88040ab149d88fcad35dd6f849fe100dda985d",
+      "size_bytes": 1109846
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/hotFluid/p",
+      "sha256": "08e5a4dbd1503c211f59710745e9c23e9790f37a52ac2f6d9600b26d1667b88a",
+      "size_bytes": 549984
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/hotFluid/p_rgh",
+      "sha256": "2e821ea666eb8ca0bb6c66da03c3972d9ee7eabe26dfa9be47bd53e9c4009110",
+      "size_bytes": 550067
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/hotFluid/phi",
+      "sha256": "82e4d4737a3ab0915e7632801240564c93b5052c19b992f8e85c78d29eb95b50",
+      "size_bytes": 650357
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/hotFluid/rho",
+      "sha256": "fe7922991d2c3cf4aa3c5a15dd7e2766b2f2c76fbeadf24413f7a1c01aa2aabe",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/solidPlate/T",
+      "sha256": "07cfa7500c0a7de89b52d504d50c5d05395d1b0360d646524d2c73762fc521f2",
+      "size_bytes": 4603026
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/950/uniform/time",
+      "sha256": "636a1e46241a39eb77582eaff847d3882d39193414cd23eec8f632eca72d000e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/coldFluid/T",
+      "sha256": "970b35110d1ef41cbed29fb333c61e772e65a94c1f6a62be413851484470584d",
+      "size_bytes": 909391
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/coldFluid/U",
+      "sha256": "5a69934fb87a20cee3ecd00e8fbedc3e1c4f3c3b073cb11a72d1db077591995c",
+      "size_bytes": 1105411
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/coldFluid/p",
+      "sha256": "5d333d6e531a8f8e43a6b64437f845de58d5a463d938665ab1f6d69efc09011e",
+      "size_bytes": 549180
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/coldFluid/p_rgh",
+      "sha256": "9ee46c55798ebfd94f0d658f98690e6cf1c085a828d2ff6fa97b5628c9730e44",
+      "size_bytes": 549263
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/coldFluid/phi",
+      "sha256": "34631e18a0bf76d78cfc4e3b70baddc8413094b08312536d68bb7c01a83181a1",
+      "size_bytes": 647065
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/coldFluid/rho",
+      "sha256": "da2132e4d8ecbdfdf024195fe4247f27a0483b68d8e46db89c70467c05d97da3",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/hotFluid/T",
+      "sha256": "e59e75e5dcc91ff8ea8411c56c7fa4a4a0a930f97e6ccee5f5b49574281bd51a",
+      "size_bytes": 908851
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/hotFluid/U",
+      "sha256": "8385d08c6373fbf890ba239fcae9288d033f01a5f2ab93ea9d5861021828263f",
+      "size_bytes": 1109846
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/hotFluid/p",
+      "sha256": "5efe825e302e7573f419c8b228394805dd655022dfe871d07c9dda0f03b29a62",
+      "size_bytes": 549984
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/hotFluid/p_rgh",
+      "sha256": "1f16cad6b5b67f08c74d0ed0d7fb07604b215453081df45a224dc7b0b2f108ba",
+      "size_bytes": 550067
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/hotFluid/phi",
+      "sha256": "b57f0942b8f55d9e89a34c544f60db2f18b2bcd90e90c2b5f0e3032440b7b96c",
+      "size_bytes": 650357
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/hotFluid/rho",
+      "sha256": "6af938e8c76fadeab35195288a9349aa5f7b70c0355b2748a5fd4fe51c53f55c",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/solidPlate/T",
+      "sha256": "98049d0d8eeb45af43dd242817a6ececffd4664e33e67d2d271573569fbffe14",
+      "size_bytes": 4603026
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/975/uniform/time",
+      "sha256": "a1a886633ba2cd195dc4e3d6b8bd3d40045216e6e04c8ddffa7498762fc5ee98",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/coldFluid_to_solidPlate/coldFluid_to_solidPlate_1000.vtk",
+      "sha256": "9bf47a3201da1164099f24c14e1dfb89026517957c1d241929f2f1cd47fa6170",
+      "size_bytes": 1967545
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/coldFluid_to_solidPlate/coldFluid_to_solidPlate_200.vtk",
+      "sha256": "32907e2c8a34e2145c343c1de7d4b231a48207f90a0d4e1ec419557457149994",
+      "size_bytes": 1967696
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/coldFluid_to_solidPlate/coldFluid_to_solidPlate_250.vtk",
+      "sha256": "8f12e4cb99b8613c35b59bed9f0635db193ddc226e1169eccb892ed883ebf89b",
+      "size_bytes": 1967775
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/coldFluid_to_solidPlate/coldFluid_to_solidPlate_800.vtk",
+      "sha256": "36750149e235ab9dca561c7b5c09cb013e1ec84cd87817bb1771bede36c16457",
+      "size_bytes": 1967604
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_inlet/cold_inlet_1000.vtk",
+      "sha256": "a3a88dd5ef8fd3b9ef98ad151f76e627862082ef21e0c77dc9c094d8ee4e24a0",
+      "size_bytes": 3971
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_inlet/cold_inlet_200.vtk",
+      "sha256": "667e70760dde7c0c878408d931a9d687b3bd1210deda838879f74c78acebcc69",
+      "size_bytes": 3968
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_inlet/cold_inlet_250.vtk",
+      "sha256": "855bddc6c3a99d75eb360dea72a648cbd4470c06ec4f57d37daa73f9a9f54919",
+      "size_bytes": 3969
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_inlet/cold_inlet_800.vtk",
+      "sha256": "923de3e92b881fd42169b68e670691a43aa31af465810b7f9eba4dbc9348d8dc",
+      "size_bytes": 3963
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_outlet/cold_outlet_1000.vtk",
+      "sha256": "4316dd7f70d0032a8a9565ce970e3b1dddc885d22a0c874018734a019338f037",
+      "size_bytes": 5078
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_outlet/cold_outlet_200.vtk",
+      "sha256": "1db128b11a53d7da229051c048647cb95e64a4b48e55d0010b0ce84045afd350",
+      "size_bytes": 5076
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_outlet/cold_outlet_250.vtk",
+      "sha256": "2879e1850a9555301e2ca264b647d356762cebc42ee74269b92a0cce14b5482a",
+      "size_bytes": 5080
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_outlet/cold_outlet_800.vtk",
+      "sha256": "a41dd917aa47aeeb9a78286aeb6289cc83ddb1f64ed7a28da6c4f80d8a064495",
+      "size_bytes": 5099
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_solid_interface/cold_solid_interface_1000.vtk",
+      "sha256": "8854dfd4cf40d56f971d196deb7f1a7c73bec6e949f62e7f49fa44afa3227f40",
+      "size_bytes": 793581
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_solid_interface/cold_solid_interface_200.vtk",
+      "sha256": "8854dfd4cf40d56f971d196deb7f1a7c73bec6e949f62e7f49fa44afa3227f40",
+      "size_bytes": 793581
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "8854dfd4cf40d56f971d196deb7f1a7c73bec6e949f62e7f49fa44afa3227f40",
+      "size_bytes": 793581
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/cold_solid_interface/cold_solid_interface_800.vtk",
+      "sha256": "8854dfd4cf40d56f971d196deb7f1a7c73bec6e949f62e7f49fa44afa3227f40",
+      "size_bytes": 793581
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/hot_solid_interface/hot_solid_interface_1000.vtk",
+      "sha256": "a450295cd9e1e6af54f97dbd91f1cb5c047f7fb4e52e76a25513957ccade4855",
+      "size_bytes": 146
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/hot_solid_interface/hot_solid_interface_200.vtk",
+      "sha256": "a450295cd9e1e6af54f97dbd91f1cb5c047f7fb4e52e76a25513957ccade4855",
+      "size_bytes": 146
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "a450295cd9e1e6af54f97dbd91f1cb5c047f7fb4e52e76a25513957ccade4855",
+      "size_bytes": 146
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/coldFluid/hot_solid_interface/hot_solid_interface_800.vtk",
+      "sha256": "a450295cd9e1e6af54f97dbd91f1cb5c047f7fb4e52e76a25513957ccade4855",
+      "size_bytes": 146
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/cold_solid_interface/cold_solid_interface_1000.vtk",
+      "sha256": "fa013d82b311b4c566ceca86a4b3f86241a67cccd4b3f4f2f93d0faa4c6b3f56",
+      "size_bytes": 147
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/cold_solid_interface/cold_solid_interface_150.vtk",
+      "sha256": "fa013d82b311b4c566ceca86a4b3f86241a67cccd4b3f4f2f93d0faa4c6b3f56",
+      "size_bytes": 147
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "fa013d82b311b4c566ceca86a4b3f86241a67cccd4b3f4f2f93d0faa4c6b3f56",
+      "size_bytes": 147
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/cold_solid_interface/cold_solid_interface_800.vtk",
+      "sha256": "fa013d82b311b4c566ceca86a4b3f86241a67cccd4b3f4f2f93d0faa4c6b3f56",
+      "size_bytes": 147
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hotFluid_to_solidPlate/hotFluid_to_solidPlate_1000.vtk",
+      "sha256": "db0513fd10d0a3823f202daa3f016b626db3db6b3a384f0fd6a6aab964c04a90",
+      "size_bytes": 1948738
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hotFluid_to_solidPlate/hotFluid_to_solidPlate_150.vtk",
+      "sha256": "663e1ef8ffdb2a158a48ae2a9a98a69a1b3008c0bf8ac9ba3b41cd0f46d1211a",
+      "size_bytes": 1948975
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hotFluid_to_solidPlate/hotFluid_to_solidPlate_250.vtk",
+      "sha256": "ff7cca286db489c91f4a64c1c249f6e786caddecfb60853109c6bf35464f243d",
+      "size_bytes": 1948854
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hotFluid_to_solidPlate/hotFluid_to_solidPlate_800.vtk",
+      "sha256": "877b44410a250c8e359a093bb55b9060de2860bd35d5027621a307a750b01653",
+      "size_bytes": 1948814
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_inlet/hot_inlet_1000.vtk",
+      "sha256": "ed00d24432ffd5374156ac441dd2cc89bcea69b2f334cfe696c7ed40f222cced",
+      "size_bytes": 3772
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_inlet/hot_inlet_150.vtk",
+      "sha256": "37d6a0117b9e2801e956cdfcc8fcf1fbb595a363e0cd721a8e90e94841cd661b",
+      "size_bytes": 3767
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_inlet/hot_inlet_250.vtk",
+      "sha256": "19f4cbdd0619d4d4c1d5fc69cb0c07b962cf0a055d44bbdab59375a8bdfa0633",
+      "size_bytes": 3770
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_inlet/hot_inlet_800.vtk",
+      "sha256": "b3653fd3e030a151e9f44fb8abeb58d975fc7a9d77d1d6fb2a7319faaa31ed5e",
+      "size_bytes": 3772
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_outlet/hot_outlet_1000.vtk",
+      "sha256": "04fb212f50f7460a2be3169e7e73edcb87a29b4dfff2ede8bd10ba1310a2b32f",
+      "size_bytes": 4942
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_outlet/hot_outlet_150.vtk",
+      "sha256": "69877b8a938722493e98080f4685525f03105a1c22607af07e4b5f0083b25ece",
+      "size_bytes": 4940
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_outlet/hot_outlet_250.vtk",
+      "sha256": "eb569f6cdd92b79441fd3cba32b155d04acc6159194aeeb4f0691e540a91433c",
+      "size_bytes": 4948
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_outlet/hot_outlet_800.vtk",
+      "sha256": "fd4dfb9449b4326c27e3da424e3ebbb8ba27d3c8e01987aec8d65bef4ea13de9",
+      "size_bytes": 4950
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_solid_interface/hot_solid_interface_1000.vtk",
+      "sha256": "43ebe9d40c625d15bb1f868e90dad373b18e1982d50ea473c6067465804d573d",
+      "size_bytes": 779233
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_solid_interface/hot_solid_interface_150.vtk",
+      "sha256": "43ebe9d40c625d15bb1f868e90dad373b18e1982d50ea473c6067465804d573d",
+      "size_bytes": 779233
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "43ebe9d40c625d15bb1f868e90dad373b18e1982d50ea473c6067465804d573d",
+      "size_bytes": 779233
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/hot_solid_interface/hot_solid_interface_800.vtk",
+      "sha256": "43ebe9d40c625d15bb1f868e90dad373b18e1982d50ea473c6067465804d573d",
+      "size_bytes": 779233
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/hotFluid/surfaceFields/surfaceFields_150.vtk",
+      "sha256": "395db7a1c4999ec074a17783a83ade52aad2a851538f1268bb9a345f6a103574",
+      "size_bytes": 6409273
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/coarse_netgen_1000.vtk",
+      "sha256": "f2209e944429b784777aaa736043b4fe758e6c0136fe5e50ea8c93619b8c49d0",
+      "size_bytes": 20953276
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/cold_solid_interface/cold_solid_interface_1000.vtk",
+      "sha256": "826dd858d7244a85f6467d1b86f5432f338b3658ec010f5d6f839a339baffce0",
+      "size_bytes": 748578
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/hot_solid_interface/hot_solid_interface_1000.vtk",
+      "sha256": "42b6fb7d2a9e3e9d1d36bdd58c856e84f5908976d16217b61bc4103fa1fbe63a",
+      "size_bytes": 734398
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solidPlate_outer/solidPlate_outer_1000.vtk",
+      "sha256": "4ffa1d88cd3aeb278a71f3f4fb353723805767393d1d00b422a9aff8d6c55446",
+      "size_bytes": 802484
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solidPlate_to_coldFluid/solidPlate_to_coldFluid_1000.vtk",
+      "sha256": "89a851b35f5aa426b54d08d38fae09487f30ae3e5ac4de0f475ae8d80ef0dd48",
+      "size_bytes": 1059834
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solidPlate_to_hotFluid/solidPlate_to_hotFluid_1000.vtk",
+      "sha256": "74052e59bafd293cb654fca734bb7d42b53f6eab2578a95dbeb33241db99f538",
+      "size_bytes": 1044551
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solid_end_x0/solid_end_x0_1000.vtk",
+      "sha256": "c76bdba229000a615ac3060d222d4daaa4d567dbbabed4c933ae8dc99c838911",
+      "size_bytes": 20612
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solid_end_xL/solid_end_xL_1000.vtk",
+      "sha256": "41d09c9fdcce9f48e4c256394eee27cef6b747b95b7b8b8439d8c68ccf8b09cf",
+      "size_bytes": 22371
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solid_y0/solid_y0_1000.vtk",
+      "sha256": "bb6182ccde56e153bc5897d39408cbcdd5b800fec5507484bb6e386c27d87bd6",
+      "size_bytes": 809031
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/VTK/solidPlate/solid_yW/solid_yW_1000.vtk",
+      "sha256": "75fcf3222ff87f41972317b1bd91d63d615cac1a5806c7e9a17c431e5de57fc4",
+      "size_bytes": 847605
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/case_setup_manifest.json",
+      "sha256": "2bc5ad41a772e66d6b4764eb2eb0a310dc41b823567a13fbfced3ffa1f8f6e00",
+      "size_bytes": 1520
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/checkMesh.log",
+      "sha256": "43d9f6722f233bc619a85c71b1cbc04a7e14e5049a8ba61479fba79ace994f56",
+      "size_bytes": 4745
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/checkMesh_coldFluid.log",
+      "sha256": "71b4308526b8463e183a697f31a597ec0466a57b99ffee6019e065463a6562ca",
+      "size_bytes": 3680
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/checkMesh_hotFluid.log",
+      "sha256": "22feee5f0b8385ceecf71020076e35d85a382685f9dbf309504906b59e07ca29",
+      "size_bytes": 3671
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/checkMesh_solidPlate.log",
+      "sha256": "dc3acfc3f40db6ab29fdb00b0bc4413ec035c6bc46c2aec21eb7cf3ddb6f4c6a",
+      "size_bytes": 4449
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/chtMultiRegionFoam.log",
+      "sha256": "f216f87a32dd1db27e91faee65782c26620357b29a61b347189d6719b5d37db9",
+      "size_bytes": 719705
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/chtMultiRegionFoam_continuation_250_1000.log",
+      "sha256": "6ae3de29dbfe3451b70dd9c455208c574ea0bf2be6612149b9515764c0a08aed",
+      "size_bytes": 2161834
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/cellToRegion",
+      "sha256": "b6b6cc8fb515d7d4312582f6f749a73357ed472c26d1b657dd867ac972f27e93",
+      "size_bytes": 1979367
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/g",
+      "sha256": "1fcf8a989bfc6ff0eae6fc5cd0c188ff6e31e6de953ca7479cee9c8336e15660",
+      "size_bytes": 418
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/momentumTransport",
+      "sha256": "363a9dba1ead09baffa6f57db6357f286aecd269497b181cc912c229f853495f",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/pRef",
+      "sha256": "5ad2c5765c443c8df1e92e233300c6e24a0d1070c5d20a37047e955184874a76",
+      "size_bytes": 421
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/physicalProperties",
+      "sha256": "9112a353f6ccbc6097d7afec3782b73666c1978641f023f5f71a12fbc403d1da",
+      "size_bytes": 721
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/boundary",
+      "sha256": "5471cd8dfb546a0a50b8f8cdedceefc3621d771f37fb478670b0b5fb372a7e74",
+      "size_bytes": 1310
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/cellRegionAddressing",
+      "sha256": "e8b22fcef02a9824b88c5b1041ebc8bf0029b16115a8aca83c6ab35c45d4e652",
+      "size_bytes": 184609
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/cellZones",
+      "sha256": "eaff30900fede16df8c1f9ae874bc64c4b0b05316c16b83d137db576291a1f14",
+      "size_bytes": 184802
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/faceRegionAddressing",
+      "sha256": "2261a58e604f4f49e8d8a3434da3593abe27acd46f685115c1e86cbe81effa33",
+      "size_bytes": 413646
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/faceZones",
+      "sha256": "caac349b45011175313a3f4cafc90f91a8df65c6b24a026501535479334f0a67",
+      "size_bytes": 113390
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/faces",
+      "sha256": "74bb6bd35189a8ad794843bbf4481ce6fc9ccb03521b5e2315c7f1b1c7fdb978",
+      "size_bytes": 1652447
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/neighbour",
+      "sha256": "f07b007190b2220455868d925f5b33ed808698b66cdadc38e9c60c64b96972af",
+      "size_bytes": 323438
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/owner",
+      "sha256": "afa313d3583db7bc3a1869837554ae0188976f9e4d80228f22aef52b8c06c0dc",
+      "size_bytes": 413715
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/pointRegionAddressing",
+      "sha256": "ec799e3856967c6016aac2555512a2edc722828c4a75e0d2088b7c87c47dd826",
+      "size_bytes": 57158
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/pointZones",
+      "sha256": "d3bedf17311c167c96e6a36a6837884653bc6bc7e75854a2812d365624b0ce69",
+      "size_bytes": 700
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/coldFluid/polyMesh/points",
+      "sha256": "795e7b9e474d4a4c1f8af4d4660a86904489c32ae63074f8f32c4345b0ce9d55",
+      "size_bytes": 339365
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/g",
+      "sha256": "b492a7eb91781508be50cebf6ed9a83ceb7b651fd5973a2a46ffd904719bf223",
+      "size_bytes": 417
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/momentumTransport",
+      "sha256": "363a9dba1ead09baffa6f57db6357f286aecd269497b181cc912c229f853495f",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/pRef",
+      "sha256": "47c9d66ff6714a7538da8d7007ab017eadcc4982479fa07a4c76d5a2a21dfa67",
+      "size_bytes": 420
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/physicalProperties",
+      "sha256": "9112a353f6ccbc6097d7afec3782b73666c1978641f023f5f71a12fbc403d1da",
+      "size_bytes": 721
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/boundary",
+      "sha256": "4c4dc84c7d6a3b0faaff17360708e5e2824e281af0a555fcb8507196c9c53dd2",
+      "size_bytes": 1305
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/cellRegionAddressing",
+      "sha256": "72243ea4e363ac1d8ba939697bc8fdbd3a64adb85c0b33bf7584674b5513323f",
+      "size_bytes": 185348
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/cellZones",
+      "sha256": "707d9f7fd6174a936350d34a266e2a78b6a21d84eb253482aee0d0e2b71cc0b2",
+      "size_bytes": 185541
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/faceRegionAddressing",
+      "sha256": "04a7bfc62fa16ae5566c0bfdb0fb587f768ab18f20b6e4865d1fac416d3137eb",
+      "size_bytes": 414957
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/faceZones",
+      "sha256": "da2a86c328a174288eb6490419bacd95aed754a396a9c7db53376a57ca940da0",
+      "size_bytes": 112969
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/faces",
+      "sha256": "07864401055912feb24af821d2fd3de83a1a61d1f60242e2c068630add80ba8c",
+      "size_bytes": 1657694
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/neighbour",
+      "sha256": "e70df5af1ab58f9314e8c4baa87a84e7615f46c247ea4682d8cfe9438ae3890a",
+      "size_bytes": 325085
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/owner",
+      "sha256": "8db422e16f9bb51d4b2f7c516d3b9515995cf6d29e4ec56e489f5a5fc95975c9",
+      "size_bytes": 415026
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/pointRegionAddressing",
+      "sha256": "09b2f8122cbbaffb13b1d92ee127051c466763d154faa5647a6ca47a832813ff",
+      "size_bytes": 57189
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/pointZones",
+      "sha256": "909fb3027e6d8a1d95989069806ed8aa54ef231b297bcdc8aba7edc50b4340a4",
+      "size_bytes": 699
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/hotFluid/polyMesh/points",
+      "sha256": "f10218346cbdd485da4a7f043751712cdbcb8e39c174ad84cf7b42730d9d6e12",
+      "size_bytes": 339556
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/boundary",
+      "sha256": "ec8bf9f2caa0a92b363e3abe801fd26b4b8464e184894e5bb99bb55cad884e91",
+      "size_bytes": 2378
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/cellZones",
+      "sha256": "8e1c1d0a01995e2803ee219bc910024dc01c3e8b120326d59c63a2e12280510e",
+      "size_bytes": 1979589
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/faceZones",
+      "sha256": "5bc51c4f7e774c52ba8588838aa1c57553bf08d1104a094e2173a727bdaa35e1",
+      "size_bytes": 225432
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/faces",
+      "sha256": "494ea143a06ba79907c601575d04895b7a7c6895cc7b9cbfeee90c591fd77683",
+      "size_bytes": 16277127
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/neighbour",
+      "sha256": "89dadce7e5283157875863d1881d8722e0258dcb829f40d8e5e4bb9f0b49a817",
+      "size_bytes": 3846396
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/owner",
+      "sha256": "f9c94b28ba170b356ba75d64b9659ab40ba16c245932b4a3fda2ed04e84832ae",
+      "size_bytes": 4069881
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/pointZones",
+      "sha256": "faf05399503748693b22c95ca561062701753c8720278117f97975ef97254346",
+      "size_bytes": 690
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/points",
+      "sha256": "7b43f11db5e9f057cb64ba6d4da2c6fdcad978dcfa91d22c826fc5ecb1a548ea",
+      "size_bytes": 2349403
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/sets/coldFluid",
+      "sha256": "15e48d7dc99f52e767b63b56c31f13da0980c7d679f96310ee289af33ac5f2c3",
+      "size_bytes": 322514
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/sets/cold_solid_interface",
+      "sha256": "e4aeac8e89588eb85e675aba67ba3689e09b1efb170e5e89c3e322482ed59020",
+      "size_bytes": 180643
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/sets/hotFluid",
+      "sha256": "b1d3f3ea0412241691f61a6e2d744d528384f326f75568fb4e0df02821cb71b7",
+      "size_bytes": 312698
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/sets/hot_solid_interface",
+      "sha256": "e22183b5aa5184c3eeb745210aef5a54f8efb04506c4c3937be6ca105ace66c8",
+      "size_bytes": 158270
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/polyMesh/sets/solidPlate",
+      "sha256": "88a79d5ef145c007d33f7ed65749ed267462499035fd17e2501c8a17798f90c1",
+      "size_bytes": 3213127
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/regionProperties",
+      "sha256": "8dac6d0a255d7b015148a93be5d2f237b8d62944392220d8787981f499dd0271",
+      "size_bytes": 430
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/physicalProperties",
+      "sha256": "04c1dec027be9f87cdc235b866d4355060e50a71ebdba15152538ae631944e22",
+      "size_bytes": 724
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/boundary",
+      "sha256": "71c7edf6b057b8e128ecbeec2058eebfdc3eb4db8fa7f2dae36b88bedee07663",
+      "size_bytes": 2531
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/cellRegionAddressing",
+      "sha256": "0de6180284a9006464727322249df349dfecbca4993c4a36809502b4ae3e483b",
+      "size_bytes": 1610863
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/cellZones",
+      "sha256": "94bcfd30f907957e4b7fc59a8a919b7dcb42c2b2a74625f749a7f9344dd6afa3",
+      "size_bytes": 1611056
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/faceRegionAddressing",
+      "sha256": "cb0ba5e5964bc1d0ffdd2954a27850c289879153dc5431e7cc8fa75fa72fd151",
+      "size_bytes": 3422243
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/faceZones",
+      "sha256": "3efd0297fd1419ee4274f2e5cd194f84280d7b647eaa41763a876bcdadcf18ad",
+      "size_bytes": 225443
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/faces",
+      "sha256": "f4d2580833bfb88be1472fe33b8c901c6a45fe9db4cc8bd4d31123d2d3f78aab",
+      "size_bytes": 13686833
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/neighbour",
+      "sha256": "765ddb047ec842c99d19a6ca6f17a21882153dd589b1b404db482b26eada0ec5",
+      "size_bytes": 3019854
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/owner",
+      "sha256": "7a2a8721bb3493cafee355926be6616f454682972e73e7856f237b39e0727414",
+      "size_bytes": 3422314
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/pointRegionAddressing",
+      "sha256": "a7a742f2a0c2f9e6e44b75be21d33ac2633b280d10ccebc0b7f32cf70e56344a",
+      "size_bytes": 369167
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/pointZones",
+      "sha256": "3a294e8848be127c0428f7e9bf8b5e230cf9504e0a0751a46f7de17a4ff150e3",
+      "size_bytes": 701
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/constant/solidPlate/polyMesh/points",
+      "sha256": "63cc945c1ef350bac886d7001c1988f26181251f5afb8c3c2565b4b65d1addf8",
+      "size_bytes": 2211414
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/continuation_250_1000.json",
+      "sha256": "f50df4815a21b476062bcd5fa0b9bcc61d6cf953981ea0327030c6b7d0f8960e",
+      "size_bytes": 2619
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/createPatch_solidPlate.log",
+      "sha256": "4eee7caef8c73f0e6906b7be18cbd9d5e136d01ef890a970786641d0597b2177",
+      "size_bytes": 1810
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/foamToVTK_150.log",
+      "sha256": "44028011e4d33a6dbfaab74a800470e09b407f017cdffb252aa0e03bc353accb",
+      "size_bytes": 1990
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/gmshToFoam.log",
+      "sha256": "328370937a3f1d200d2928d346bc52a58df1f162b1317db93cef85a6b9a1b871",
+      "size_bytes": 4831655
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_in_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "46a2d5f583cfd92af26c3e2d3f58848fc34d06f1c192e7ef523c0f9e9ea19c2b",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_in_T_areaAverage/250/surfaceFieldValue.dat",
+      "sha256": "5011e6b52c0b00a76164ced2206c4b2b470124784e4e108bd990886a05d0357e",
+      "size_bytes": 1107
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_in_p/0/surfaceFieldValue.dat",
+      "sha256": "80a276a841cd67777bb1cc72d30426fc2f8c97e6029eb82b59e630d45070e7ee",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_in_p/250/surfaceFieldValue.dat",
+      "sha256": "744c3215f5153991be3a0adda608fa5c47cab437c30d52d8681ac1dd5f8fa1c3",
+      "size_bytes": 1107
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_in_phi/0/surfaceFieldValue.dat",
+      "sha256": "a60f66a7e8598b82aebcd71de655f3a3794cb212806c5cf7dd74318ee3e8f6ea",
+      "size_bytes": 472
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_in_phi/250/surfaceFieldValue.dat",
+      "sha256": "880bd534fd1de16bcbbb03f98553c36c41c589d56833be2bae39a1e35b5ec552",
+      "size_bytes": 1132
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_out_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "13cb1676515a028bc0f008b774d6daa6a8dbf3a2af8690c1d7636e5c55d314ac",
+      "size_bytes": 468
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_out_T_areaAverage/250/surfaceFieldValue.dat",
+      "sha256": "285e6dd19304c0830c5eb0505718621360cb6bb37ff8a70aa689a5179ff9b6d4",
+      "size_bytes": 1108
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_out_p/0/surfaceFieldValue.dat",
+      "sha256": "deff5f84f31235568a7f3d52f6455dcd55d09370e7ab64ff9066fb6b2c241c7b",
+      "size_bytes": 468
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_out_p/250/surfaceFieldValue.dat",
+      "sha256": "dade67ff0bb39d90f2e5c44db7d5e0690e9a73d57f42e7df640fa670933ed08d",
+      "size_bytes": 1108
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_out_phi/0/surfaceFieldValue.dat",
+      "sha256": "61be13c93531155625f136a1d872d7988250c7daa3d7865cf021a4d4c653fc66",
+      "size_bytes": 462
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/coldFluid/coldFluid_out_phi/250/surfaceFieldValue.dat",
+      "sha256": "8ed05619acec3c8de6ff961d02b22e26b5017cf5575d95b0eae9be69c5c5680c",
+      "size_bytes": 1102
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_in_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "5c86c324f9ebf04c5d75cda448560507fc95f590d4e64754716888a72597c051",
+      "size_bytes": 466
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_in_T_areaAverage/250/surfaceFieldValue.dat",
+      "sha256": "2bb8ff610968b006e4d199de64a4613875d3eeb06a778604c746e73f0999f8b5",
+      "size_bytes": 1106
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_in_p/0/surfaceFieldValue.dat",
+      "sha256": "7a1e91c34c53f6bc744e7797c683af1d5620e82aa2ca62a3144206f2dcec5a95",
+      "size_bytes": 466
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_in_p/250/surfaceFieldValue.dat",
+      "sha256": "05acb8279708bd2b4fb6ad73e8efcac96613c7f46d9d46736b459512e1d71072",
+      "size_bytes": 1106
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_in_phi/0/surfaceFieldValue.dat",
+      "sha256": "64fea271edea5f1322f5155c2946a6dea6cd0540c0e83ae20fb53cc1a1054e75",
+      "size_bytes": 471
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_in_phi/250/surfaceFieldValue.dat",
+      "sha256": "712eb86802aa82fe9fa60b26edf76088d7758b77953c69fd7e13c2d62154f907",
+      "size_bytes": 1131
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_out_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "d749dfcd38359cb2b0dfffb9dfcd1d6bf9cad560c7a9753f85c28f2605436941",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_out_T_areaAverage/250/surfaceFieldValue.dat",
+      "sha256": "2a915b0cec2c5546eb60a92b81e0995fd9bc8adc6a7701d76eda4eb20b5082d8",
+      "size_bytes": 1107
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_out_p/0/surfaceFieldValue.dat",
+      "sha256": "9291d56cf3e47da643149e6ab947301e298c0647db7ae96442db873e772e0464",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_out_p/250/surfaceFieldValue.dat",
+      "sha256": "a066fafa69157a99c63e639176020e6b7cbcf5dce28d32e2bc70b04ec3166f66",
+      "size_bytes": 1107
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_out_phi/0/surfaceFieldValue.dat",
+      "sha256": "cbc0daea354e4f26f2dce5c50f4e2631e9a989580d7656d9bd8bf9507aff40ff",
+      "size_bytes": 461
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/hotFluid/hotFluid_out_phi/250/surfaceFieldValue.dat",
+      "sha256": "d2316d60e2b759c91d485adf711d0db7fa7b40bfb2e882edc6b097ed4b01c3f6",
+      "size_bytes": 1101
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/weightsSum_src_0.vtk",
+      "sha256": "3a8b184ff4277109699f6434b4ca055b76ec8fd3b56eab3d56e587e4c271b50a",
+      "size_bytes": 498059
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/postProcessing/weightsSum_tgt_0.vtk",
+      "sha256": "aa0a8a273ad318cb2aec26e00c744b614f85b94a9457fa598967a01855516ef0",
+      "size_bytes": 497591
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/splitMeshRegions.log",
+      "sha256": "2cf43a1c604aa505ac1a359072bbcac87341caaf6f0c10a9674e91f86a4cb59c",
+      "size_bytes": 3589
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/coldFluid/fvSchemes",
+      "sha256": "47329d52939b9419feaacbf5a2f6044f273562bf18502570f0637a857f359c28",
+      "size_bytes": 1197
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/coldFluid/fvSolution",
+      "sha256": "da2b5818d60abbd5cf33c2ea9ed06ac502c289d52bbf2d5134942e57d5e6a6d1",
+      "size_bytes": 938
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/controlDict",
+      "sha256": "9996e6ccb26c16b300289c88b8d8e2cee8163913960838ef18e018a6378fac43",
+      "size_bytes": 6859
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/controlDict.precontinuation_250",
+      "sha256": "252e03ca26d0ce79ce1c60d90fb970f8b41102d4be290fc50acea4c74d618fef",
+      "size_bytes": 6855
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/fvSchemes",
+      "sha256": "71edd17d87b1ad1229df0db7e45d2c0cc649ec26b5ebf8d905fb8099f31869f1",
+      "size_bytes": 725
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/fvSolution",
+      "sha256": "c0834c562934470fdbac02c1a039eb3d183643de05f6de2c81ee2a1c5565da2e",
+      "size_bytes": 442
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/hotFluid/fvSchemes",
+      "sha256": "47329d52939b9419feaacbf5a2f6044f273562bf18502570f0637a857f359c28",
+      "size_bytes": 1197
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/hotFluid/fvSolution",
+      "sha256": "da2b5818d60abbd5cf33c2ea9ed06ac502c289d52bbf2d5134942e57d5e6a6d1",
+      "size_bytes": 938
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/solidPlate/createPatchDict",
+      "sha256": "0e08d0d6c1fc63082ae14fc3d24c285e47ee72ce427eb8589b30e64f7c74441c",
+      "size_bytes": 969
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/solidPlate/fvSchemes",
+      "sha256": "33fbf494db15bd58985c275971058c08f5482c90709971e16de461596bb36928",
+      "size_bytes": 1035
+    },
+    {
+      "path": "runtime/foam/coarse_netgen/system/solidPlate/fvSolution",
+      "sha256": "a99aa4ad2272ed0954b845c304eceee1d34bd070a57de4b29b8a6366cf966639",
+      "size_bytes": 611
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/cellToRegion",
+      "sha256": "63cae86f958002732fd4837384e5d8bfc9ef2a5fe27b2cf133da28b649128c9d",
+      "size_bytes": 22169043
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/coldFluid/T",
+      "sha256": "3239fa3102acac90d7d107d787ba7eb74694b1bb4e00356f6570f1f5fc4d1798",
+      "size_bytes": 733
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/coldFluid/U",
+      "sha256": "9b6c5ce676b27e2af23ca43ac6c2e242b221879a3c243c9343ed38a42600e838",
+      "size_bytes": 674
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/coldFluid/cellToRegion",
+      "sha256": "c40748fe35b341daeaaa926598fd1caafc58bf1a0e86781e833000daaf9cd01c",
+      "size_bytes": 1007
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/coldFluid/p",
+      "sha256": "4c951568479b12641c0a99d21ff4d5dba8b608f176e18278b4ed8462a247fa2c",
+      "size_bytes": 534
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/coldFluid/p_rgh",
+      "sha256": "661b57913cef4f52459b2b8d168c4ee04c1bf3bf9c29ec4ce4d309012ba4aac7",
+      "size_bytes": 590
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/hotFluid/T",
+      "sha256": "c2eeaa020cd796822a4b8ea919ec6abb371f1e8eda091d04e32f92b5e342d206",
+      "size_bytes": 729
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/hotFluid/U",
+      "sha256": "3a0d041907c64209b24f01537d5fabded03bd52ccf6e8848e74f9ce00b96e3cf",
+      "size_bytes": 668
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/hotFluid/cellToRegion",
+      "sha256": "ba88a1b1436dc441167d0261934ca7c3f2ff6eaeaa9bcc2e733c71981c9b4a30",
+      "size_bytes": 1003
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/hotFluid/p",
+      "sha256": "e72ba9c290ef74bc21a0baf27714b255504400198eba68ab54a0212d408d1f06",
+      "size_bytes": 533
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/hotFluid/p_rgh",
+      "sha256": "112bd450d02151c52c0af20366c92c4a33681b32485166816e9f81907ab78dbd",
+      "size_bytes": 588
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/solidPlate/T",
+      "sha256": "0519169bd2cb284107b10a6f904de7b5b32b36f35163d9a53551a66b8d8b2ddf",
+      "size_bytes": 1036
+    },
+    {
+      "path": "runtime/foam/fine_netgen/0/solidPlate/cellToRegion",
+      "sha256": "ce7a49597bd3e302dce67fb4f5bfdcae637c21bfe35515af3d964aadaa95270d",
+      "size_bytes": 1328
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/coldFluid/T",
+      "sha256": "8d758f3393560486f28ab05f56a6d8a90fe4866f9f1a7d656089bccf94a17323",
+      "size_bytes": 2299408
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/coldFluid/U",
+      "sha256": "a3f3ff9c647e096bbc06591100dcac05e3845cf33a57d50063e998241decc147",
+      "size_bytes": 3357380
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/coldFluid/p",
+      "sha256": "105dcf054bc9792ad494e18ea2f671cdfa0e2b36b7624c886a762b3d9900846e",
+      "size_bytes": 1512957
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/coldFluid/p_rgh",
+      "sha256": "d2e89bbcaa642a035e9c95b05a2d214877b3726707882b4a78ca218a5f17c26f",
+      "size_bytes": 1513040
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/coldFluid/phi",
+      "sha256": "7d0fad12057c0fe5ba5c8b176706653369d089167fc912675640449df613f0f4",
+      "size_bytes": 2041426
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/coldFluid/rho",
+      "sha256": "37f1e22fd5a62b48dddcca120f556d2a3576bc66be1143c7ac96a04ad8180b57",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/hotFluid/T",
+      "sha256": "a2dac0771cdc16a9bc080546b7dfbe1d2e0618bd24c0e7458449091508743b8f",
+      "size_bytes": 2292852
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/hotFluid/U",
+      "sha256": "d01f5c41103490765306c604d09adb4badd13b92fa7116a1d12cf3c14032b1a9",
+      "size_bytes": 3344055
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/hotFluid/p",
+      "sha256": "71d422268a64e6a2b595c8bcceef2237af6f8fddb72ee3471b13d9925a290db9",
+      "size_bytes": 1507809
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/hotFluid/p_rgh",
+      "sha256": "234fe38adad9782f9233db197eb8ff08ce40a8e5f61828c33f5051151ab050fe",
+      "size_bytes": 1507892
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/hotFluid/phi",
+      "sha256": "1d0515f6beccfca292aa4249e120ba880580da629d4cc8685344201c529a02b6",
+      "size_bytes": 2032894
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/hotFluid/rho",
+      "sha256": "4c02a87dec703b31835284b84348a5eaa5806af8af1196e707241250c8d40ea3",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/solidPlate/T",
+      "sha256": "722f9de3e1888f760cf5f9cd51543a5c32715e88de3e4a03cff3a4d035f45af5",
+      "size_bytes": 23666587
+    },
+    {
+      "path": "runtime/foam/fine_netgen/200/uniform/time",
+      "sha256": "5916951d642d6a5b6ade06c9634a5dbedc5a7349d55f742e73f8dd8730f0173e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/coldFluid/T",
+      "sha256": "0118137693f8c6722ba659b1a7a70fe82dc86dfefa75d9c5de365614b513643d",
+      "size_bytes": 2299408
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/coldFluid/U",
+      "sha256": "6d8c2da85b4216a8b6b66ff8f3b8a37ea7a83b6fb49e14ef4d4cfe8b066f1122",
+      "size_bytes": 3357380
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/coldFluid/p",
+      "sha256": "3b0d374bd6ad8d9ebe8a150ee0afa06d8175be3a1c516b8c92fcb6fdec56b535",
+      "size_bytes": 1512957
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/coldFluid/p_rgh",
+      "sha256": "9892f93954d01d9f5911a8f49e34573242898828167cfcf83be3675cc377f4b8",
+      "size_bytes": 1513040
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/coldFluid/phi",
+      "sha256": "99adb1b745c464b6233838ae5407d9f96a3f8261039621892c345f500b001524",
+      "size_bytes": 2041426
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/coldFluid/rho",
+      "sha256": "100f4df3bcb8570e8167a26e1cdd0db2bbd96156af0fe3e1310d6338b7086680",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/hotFluid/T",
+      "sha256": "7b9f68653312a043cc2d6c7caf96ff0fe411de6ea3abafb8251c98d3f8007453",
+      "size_bytes": 2292852
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/hotFluid/U",
+      "sha256": "4ec66c9ee2be4176ef137463332105569cd990b2aecc2a0e7a01c1417685388b",
+      "size_bytes": 3344055
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/hotFluid/p",
+      "sha256": "be40969c40a7a9daba6d30d4aaf630575f466c804e5066d24dd6197f2b6d6400",
+      "size_bytes": 1507809
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/hotFluid/p_rgh",
+      "sha256": "2c92240ab285d71f4e6de9f14704d7d6dd258662253fd30492732b047e2a849c",
+      "size_bytes": 1507892
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/hotFluid/phi",
+      "sha256": "063bfa7335aa9cb6d24b320f22b343633be85c80a01c5ff0879ee698c6547d86",
+      "size_bytes": 2032894
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/hotFluid/rho",
+      "sha256": "936078a878a6dc1797a2b8d65b055a111a41902044078cf383e36ad957cccb53",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/solidPlate/T",
+      "sha256": "40e9244192f184228e12baed6eb557764daa8320e130f979daadae2e77aa9a0c",
+      "size_bytes": 23666587
+    },
+    {
+      "path": "runtime/foam/fine_netgen/225/uniform/time",
+      "sha256": "0f786524baac3aa613b0ec39d4dacadaf9ede59e15ba00957897a245d56a0861",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/coldFluid/T",
+      "sha256": "b9b315f7dce1944799fbdda854091f12a729bda38e997402f69975d4f535afc3",
+      "size_bytes": 2299408
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/coldFluid/U",
+      "sha256": "594770bdbfaa2816fcabf655eb06cd21f74c1aff65c5fa952d3f387beed568b5",
+      "size_bytes": 3357380
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/coldFluid/p",
+      "sha256": "f1789c46471d5c279e2f2fbcfea42695c67010a8915de6d6f6afffb6981caeb7",
+      "size_bytes": 1512957
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/coldFluid/p_rgh",
+      "sha256": "bc0063ca2ed732ad882bbec54897e4489ade029460c62e2960e4ed860c299c39",
+      "size_bytes": 1513040
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/coldFluid/phi",
+      "sha256": "47b7c2ae2e793953b6822de2ab2551ce5dd3d621484c2a8f2b030d97d53bd673",
+      "size_bytes": 2041426
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/coldFluid/rho",
+      "sha256": "26c4c9ff6e7e8f460d913bf347b020bb50b7898ff77f72e8c8fb04697b298c3e",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/hotFluid/T",
+      "sha256": "f16a56d3f344561353233aae1a954ab523dd6c8a53f2a76b6ed0af6aec63e634",
+      "size_bytes": 2292852
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/hotFluid/U",
+      "sha256": "d62b50ce117a22f6880b5d12e5333e2926728cffe7a6ce890120194e7ac4b7ef",
+      "size_bytes": 3344055
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/hotFluid/p",
+      "sha256": "d1b7fc7f59ddba8f56913367f3155497e8622b5a4571e818911f6abfa1986f73",
+      "size_bytes": 1507809
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/hotFluid/p_rgh",
+      "sha256": "7ca1a66982d588b097e90f43d267bd6fdbf905ec8ac313c15d93b2e990db578a",
+      "size_bytes": 1507892
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/hotFluid/phi",
+      "sha256": "fb018b0bbf6266f09747a55dc54706781de98a397dede23b0ec0a53fd72a4948",
+      "size_bytes": 2032894
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/hotFluid/rho",
+      "sha256": "f0aa0f1d72a64687c00e4f3ec3f917be4863230cf5da9c68fe5a9242883294cc",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/solidPlate/T",
+      "sha256": "6b035155ca0cb63a7d091dd7f0c0155d5284737615d7242991b9514033d69905",
+      "size_bytes": 23666587
+    },
+    {
+      "path": "runtime/foam/fine_netgen/250/uniform/time",
+      "sha256": "7b75cb6cfac0c86480bc61bbba655c9a7e640a2d7124504d70d473a4a106cc8e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/coldFluid/coldFluid_to_solidPlate/coldFluid_to_solidPlate_250.vtk",
+      "sha256": "3e8207c3716781e2fced2131b7904651c5b7d9abbaffd65781716fb16098eceb",
+      "size_bytes": 4375535
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/coldFluid/cold_inlet/cold_inlet_250.vtk",
+      "sha256": "aee8341eb388ef1e925fb3148c1283bb3e516f2e728bcf477db6a41e3340544f",
+      "size_bytes": 8223
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/coldFluid/cold_outlet/cold_outlet_250.vtk",
+      "sha256": "89b268be1d125a3d7de04f02ff5a7a087dd26ddddbbfbc5aed34e724fdbd1d21",
+      "size_bytes": 10653
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/coldFluid/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "6e95f5a1ca0158085f6a0ea146b81746f4cc312ea505c3849b46f28ce18ec799",
+      "size_bytes": 1811719
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/coldFluid/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "a450295cd9e1e6af54f97dbd91f1cb5c047f7fb4e52e76a25513957ccade4855",
+      "size_bytes": 146
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/hotFluid/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "fa013d82b311b4c566ceca86a4b3f86241a67cccd4b3f4f2f93d0faa4c6b3f56",
+      "size_bytes": 147
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/hotFluid/hotFluid_to_solidPlate/hotFluid_to_solidPlate_250.vtk",
+      "sha256": "bdea6829e3f8098ba776a98f81efed2b9891744d9138e36b4468754351e18c5d",
+      "size_bytes": 4343686
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/hotFluid/hot_inlet/hot_inlet_250.vtk",
+      "sha256": "204bebbe79bf8bca1f79cfa1411e2d9a95d00ed15ce1dc3d4c7b5acaac33417f",
+      "size_bytes": 7786
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/hotFluid/hot_outlet/hot_outlet_250.vtk",
+      "sha256": "ed8893565e99e2b1106fbed0351f0d27dca1986180ff4dc4b5cbc595b630cffb",
+      "size_bytes": 10325
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/hotFluid/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "dc4db65908034ef5d8f780b454648d95c2226782d173832705733bbe862965a8",
+      "size_bytes": 1784416
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "c50af3c915b8895f88f2a6cad7ff7f7e9aa74aa860597f3a155f95e276c32f7a",
+      "size_bytes": 1713436
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/fine_netgen_250.vtk",
+      "sha256": "b9d7e84cf3c365d97750f638f45562dece1e7da0bcef66858f95f0394d6bfc2e",
+      "size_bytes": 134987345
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "e4d8f2eed4de1a8e0f6911e66af8761b7188a07c3ce887c68baa5c8ae92f6fe4",
+      "size_bytes": 1686309
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solidPlate_outer/solidPlate_outer_250.vtk",
+      "sha256": "2f884e6d473ca6a9dab5a2d18ea71c30371f2bce27221e9fded257b4c7d01e3d",
+      "size_bytes": 3395658
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solidPlate_to_coldFluid/solidPlate_to_coldFluid_250.vtk",
+      "sha256": "0a91107a8e10aa3e6458f6e3b8823acfa84b9635c7cb66e2b60ad8a7a687afb0",
+      "size_bytes": 2199320
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solidPlate_to_hotFluid/solidPlate_to_hotFluid_250.vtk",
+      "sha256": "2d48f07c7192107d75d179e840ace2717df71a65a076c3a6b00eb0724c003d15",
+      "size_bytes": 2171369
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solid_end_x0/solid_end_x0_250.vtk",
+      "sha256": "5034e20bea738f80c216ea10cec46d79b20f4faae8fc857ae02822118217bedb",
+      "size_bytes": 64951
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solid_end_xL/solid_end_xL_250.vtk",
+      "sha256": "e8a677d3223ce79c01ba4dd2b962f0bc4e56316e04c2fe4b44fe4f0a2183ea78",
+      "size_bytes": 68069
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solid_y0/solid_y0_250.vtk",
+      "sha256": "b0a8cc6618807495c3535ba64db6af3b2f9d5d3e99068f24bcffc7ac48a0ce03",
+      "size_bytes": 3503304
+    },
+    {
+      "path": "runtime/foam/fine_netgen/VTK/solidPlate/solid_yW/solid_yW_250.vtk",
+      "sha256": "55884d55e0837132a7c751e392cb197a6a060e1014e7dfa09d02f444e7d987bb",
+      "size_bytes": 3679424
+    },
+    {
+      "path": "runtime/foam/fine_netgen/case_setup_manifest.json",
+      "sha256": "bacd9f797be8be06de5eeafacd54ea37237badc410592f64cb219621ee6db455",
+      "size_bytes": 1518
+    },
+    {
+      "path": "runtime/foam/fine_netgen/checkMesh.log",
+      "sha256": "81db9508cfbf7fe9b35e9cb80aeb691a7aaa3850000cc46b68a46ac35749893b",
+      "size_bytes": 4740
+    },
+    {
+      "path": "runtime/foam/fine_netgen/checkMesh_coldFluid.log",
+      "sha256": "80919d89d71bedcf1c7d992ab25106d32790b1eaee559de85a22bb11699c6735",
+      "size_bytes": 3682
+    },
+    {
+      "path": "runtime/foam/fine_netgen/checkMesh_hotFluid.log",
+      "sha256": "9dd679eed3836791ccccdde58674d5f41f3a37b2b465053c36a6692c002f66b1",
+      "size_bytes": 3671
+    },
+    {
+      "path": "runtime/foam/fine_netgen/checkMesh_solidPlate.log",
+      "sha256": "98551857ca44462397b75a56f0d56584204cc39a32f7488784aa0dc877df876d",
+      "size_bytes": 4476
+    },
+    {
+      "path": "runtime/foam/fine_netgen/chtMultiRegionFoam.log",
+      "sha256": "d339fda6521e8f90c098924478fb006c4b1b11777796c23b1c8197bcec985d9c",
+      "size_bytes": 723359
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/cellToRegion",
+      "sha256": "701e1ca0b0c9c8a3feffd7c80785dabf7ff9f939e06c1f283a32cb1416189749",
+      "size_bytes": 11084444
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/g",
+      "sha256": "1fcf8a989bfc6ff0eae6fc5cd0c188ff6e31e6de953ca7479cee9c8336e15660",
+      "size_bytes": 418
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/momentumTransport",
+      "sha256": "363a9dba1ead09baffa6f57db6357f286aecd269497b181cc912c229f853495f",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/pRef",
+      "sha256": "5ad2c5765c443c8df1e92e233300c6e24a0d1070c5d20a37047e955184874a76",
+      "size_bytes": 421
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/physicalProperties",
+      "sha256": "9112a353f6ccbc6097d7afec3782b73666c1978641f023f5f71a12fbc403d1da",
+      "size_bytes": 721
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/boundary",
+      "sha256": "13bdb703bb3009f9eecba9bcc2f931ecd2a400f864db29d3b32efa1f08203867",
+      "size_bytes": 1313
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/cellRegionAddressing",
+      "sha256": "90bccc1e6293929af67e75d994e673ce23ee20b94948cf51d293e2c4604e3c95",
+      "size_bytes": 559742
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/cellZones",
+      "sha256": "7eff65ca88714105e155a8cac5e15d9f1dd75573e7556a0f4e24b2ebc7c95cdf",
+      "size_bytes": 559935
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/faceRegionAddressing",
+      "sha256": "70ba2ee7c490bee3c9e833d219559b1ee33e0cbf720ed99326523beff724c28f",
+      "size_bytes": 1217386
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/faceZones",
+      "sha256": "f2d539962f00afa729faed491838d10735806dc2626655b995487d87aa9da15d",
+      "size_bytes": 246590
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/faces",
+      "sha256": "ee972fd154720f6fcb12f542450c93e20aa87cda668b0d3dea4f5ce291424fc4",
+      "size_bytes": 4867407
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/neighbour",
+      "sha256": "e95bc48ed34eb6af4558528737e3ada73176f191ad50765e10a0fa5993391b04",
+      "size_bytes": 1020229
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/owner",
+      "sha256": "21a89889406b1d7994f66e1f2b86e24352651d6b541df58ffe25e7ca706e5948",
+      "size_bytes": 1217457
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/pointRegionAddressing",
+      "sha256": "4f75b545f739e3df6375d4bfd5282b95c6f2e7823c4d8e476800ecddb416529d",
+      "size_bytes": 148026
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/pointZones",
+      "sha256": "d3bedf17311c167c96e6a36a6837884653bc6bc7e75854a2812d365624b0ce69",
+      "size_bytes": 700
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/coldFluid/polyMesh/points",
+      "sha256": "28aea9621811700adf89374e243c79325d242abe7ea52c42b6e3a18d85978626",
+      "size_bytes": 884573
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/g",
+      "sha256": "b492a7eb91781508be50cebf6ed9a83ceb7b651fd5973a2a46ffd904719bf223",
+      "size_bytes": 417
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/momentumTransport",
+      "sha256": "363a9dba1ead09baffa6f57db6357f286aecd269497b181cc912c229f853495f",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/pRef",
+      "sha256": "47c9d66ff6714a7538da8d7007ab017eadcc4982479fa07a4c76d5a2a21dfa67",
+      "size_bytes": 420
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/physicalProperties",
+      "sha256": "9112a353f6ccbc6097d7afec3782b73666c1978641f023f5f71a12fbc403d1da",
+      "size_bytes": 721
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/boundary",
+      "sha256": "282501b52c10cf7efb728ff82baa95e743e45a9a54e1af373233054b34158962",
+      "size_bytes": 1308
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/cellRegionAddressing",
+      "sha256": "9a19341a678a5fa9af486adf78563d4cc1d8c5966e131c752a4241eea10cda43",
+      "size_bytes": 557521
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/cellZones",
+      "sha256": "13b118f8cd2697c1f0456e654bc93f040cb79de813c5f1388067658ff21e01ea",
+      "size_bytes": 557714
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/faceRegionAddressing",
+      "sha256": "e7739219e5d8ca78ce86bf231dfa52e3acadbee16381701054a049a49014ba71",
+      "size_bytes": 1212769
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/faceZones",
+      "sha256": "44f21135a8ab260a3bcf8c05452b00e400b3f80535c8f18ea9bbf2d2bd291c6a",
+      "size_bytes": 246149
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/faces",
+      "sha256": "ecd8f851788a24a6af0dcc06b0d737b4eb4829ef343a2c62c9d2a00669fd2416",
+      "size_bytes": 4848942
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/neighbour",
+      "sha256": "e7dc29dc3dbd703fb02ef444dc91937aca3863ffbc80e8aabc0bc05a15d80778",
+      "size_bytes": 1015964
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/owner",
+      "sha256": "a704ca8a06d1a2d153ba5a5f99c0bf3c943fe2646fb40fadf10e40789434b1b2",
+      "size_bytes": 1212840
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/pointRegionAddressing",
+      "sha256": "912844531a066752128acb4fdb17f626d0589eb94f041f62d384aeedf10dde8d",
+      "size_bytes": 147573
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/pointZones",
+      "sha256": "909fb3027e6d8a1d95989069806ed8aa54ef231b297bcdc8aba7edc50b4340a4",
+      "size_bytes": 699
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/hotFluid/polyMesh/points",
+      "sha256": "40b2ecf39b3d54dbb3e1072a2d2a3e09274fed227e993ecfeb864a5c403486a3",
+      "size_bytes": 881860
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/boundary",
+      "sha256": "791a684ff38ad35867569ea422bbea2249fcd70c394e019d0e5a9a0d1b6bb690",
+      "size_bytes": 2391
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/cellZones",
+      "sha256": "ec532ff4eac32077eee8db211245fbaac7139fe2020ba644601f973b164da3c4",
+      "size_bytes": 11084668
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/faceZones",
+      "sha256": "bb9f42e0de38258ecd2158043b7f51ae611c63772f18c8ba4857c2b28c84c6ed",
+      "size_bytes": 491812
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/faces",
+      "sha256": "ded2ebcabad5b3922a8cc9aedb16dcd43d33a73e49749e7676925018b3f2c34f",
+      "size_bytes": 90672264
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/neighbour",
+      "sha256": "208b35b387614ad41050fb9e51a2031da7bb4eaed3a97bae9274b7b35c26d313",
+      "size_bytes": 21667920
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/owner",
+      "sha256": "e6687e91b223a4bd2b23e7a1bf1dfa6d2c5253a1568b21d9ce0a2733eb604f43",
+      "size_bytes": 22668668
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/pointZones",
+      "sha256": "faf05399503748693b22c95ca561062701753c8720278117f97975ef97254346",
+      "size_bytes": 690
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/points",
+      "sha256": "761f791864e468d07e12094383379953717af7894b5b8b89daac2ef37c16463e",
+      "size_bytes": 12684332
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/sets/coldFluid",
+      "sha256": "20b177ed5ecd5e714f8f1c77687a07b67ec62bf67520e34eca201a6de824d9d4",
+      "size_bytes": 1118753
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/sets/cold_solid_interface",
+      "sha256": "bd5dd6a8d29bc8b0869f2943b3d1a31abfef277f8e0652087aea35c05cf8fe14",
+      "size_bytes": 393763
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/sets/hotFluid",
+      "sha256": "626b6381cb660bca5582ce679e96665c11988181d5794d469e420354aa9b2051",
+      "size_bytes": 1003202
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/sets/hot_solid_interface",
+      "sha256": "c9aa3183301a21726f58ef9539d3c4c44d88d942d145f473a4069629b7aa2bba",
+      "size_bytes": 389208
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/polyMesh/sets/solidPlate",
+      "sha256": "e97369160ab3f4a66fd8cdca8ce3f91936549faeb6ea67a17a9541baede7cc0e",
+      "size_bytes": 21707478
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/regionProperties",
+      "sha256": "8dac6d0a255d7b015148a93be5d2f237b8d62944392220d8787981f499dd0271",
+      "size_bytes": 430
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/physicalProperties",
+      "sha256": "04c1dec027be9f87cdc235b866d4355060e50a71ebdba15152538ae631944e22",
+      "size_bytes": 724
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/boundary",
+      "sha256": "b1c429e28d16f4f3556ad540a6287f8e5db45e11ccd722e2a0218f936e16a6bf",
+      "size_bytes": 2540
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/cellRegionAddressing",
+      "sha256": "7ee3a6002b5bc83605395d87a90d145c8a6bc9e86174891ae468c25de5ad5909",
+      "size_bytes": 9968636
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/cellZones",
+      "sha256": "369c83832eeb82ee8eea0a77b39f03ee0c0ecb66b8f866b3111ba9dd15068f33",
+      "size_bytes": 9968829
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/faceRegionAddressing",
+      "sha256": "57ac038eee6d412112e06ca1be9038b76afd36939ea340cb6a84753cd9c94a4d",
+      "size_bytes": 20632580
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/faceZones",
+      "sha256": "06721adf7fbaf6a95fdc7a6d02f1d45edbcfb2d80a7867eeeff2ba4b3b5d6338",
+      "size_bytes": 491823
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/faces",
+      "sha256": "1775c3659c0024636cb17c76bf929e1cab77f60727b643712d6016449ec37ccc",
+      "size_bytes": 82528179
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/neighbour",
+      "sha256": "f5592ebdf5f7425efc9b05fd6b561bfff10e7767518f357f03483d0436fd26b0",
+      "size_bytes": 19240611
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/owner",
+      "sha256": "ba476bae9d533c31b67ea79ce8fe6cb22d5a986f09683d44095cca394c315fe4",
+      "size_bytes": 20632655
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/pointRegionAddressing",
+      "sha256": "e7692426d2868575b399f71a4ace3bb2636f07ea2f93c18f3d805f6fe82cd50c",
+      "size_bytes": 2017028
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/pointZones",
+      "sha256": "3a294e8848be127c0428f7e9bf8b5e230cf9504e0a0751a46f7de17a4ff150e3",
+      "size_bytes": 701
+    },
+    {
+      "path": "runtime/foam/fine_netgen/constant/solidPlate/polyMesh/points",
+      "sha256": "bf787e73353a3c2047f33e3678d2b96b573377545990daa3050b8e59f5b94907",
+      "size_bytes": 12098575
+    },
+    {
+      "path": "runtime/foam/fine_netgen/createPatch_solidPlate.log",
+      "sha256": "66700c7cf9719aa98947663959d98a3f7aa2e2c35ac4938aba666760c2d8320b",
+      "size_bytes": 1809
+    },
+    {
+      "path": "runtime/foam/fine_netgen/gmshToFoam.log",
+      "sha256": "12762524d7c8e15f5b17ecb50afd481b1b71913bf1f4638ddd6402c5977a73a2",
+      "size_bytes": 10645912
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/coldFluid/coldFluid_in_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "b788f77e2d1a227a3c7fa3563a03873880d9c63d4ee7c091f5f2c56de9dd4c44",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/coldFluid/coldFluid_in_p/0/surfaceFieldValue.dat",
+      "sha256": "bff128c33e2529b3f6d91b18836675ca119380f8a601a0077def49899888239d",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/coldFluid/coldFluid_in_phi/0/surfaceFieldValue.dat",
+      "sha256": "28ddde27f3263705a92a7de398c26a0fe397cc4b5b095af04f4f030b3ecf5c8d",
+      "size_bytes": 472
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/coldFluid/coldFluid_out_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "7a6f542765e44c97260a65145d22bd15e3e235216c9abffebd42767cba0d1435",
+      "size_bytes": 468
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/coldFluid/coldFluid_out_p/0/surfaceFieldValue.dat",
+      "sha256": "ddfd6f8e2984974fd61ebb7795ddb028207cc65f81c90134b25afb06d4a15be5",
+      "size_bytes": 468
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/coldFluid/coldFluid_out_phi/0/surfaceFieldValue.dat",
+      "sha256": "095e7504a6634a9c61ff08652cfe6bf9326c198018a1e937cfe4f5cbb4033eb1",
+      "size_bytes": 462
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/hotFluid/hotFluid_in_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "b273585696ec64c972722d0fe0eabe2d2b524abeea45fa7df60af7e9943b8ac9",
+      "size_bytes": 466
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/hotFluid/hotFluid_in_p/0/surfaceFieldValue.dat",
+      "sha256": "a23b95d0df826de156bb975a090b794dcf5914d027762c9d3bc3327276ec3c97",
+      "size_bytes": 466
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/hotFluid/hotFluid_in_phi/0/surfaceFieldValue.dat",
+      "sha256": "35abb5bb6aab9ee5d2fa390187c814f8a41cc9d4affd5ffb0ade5248a637e019",
+      "size_bytes": 471
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/hotFluid/hotFluid_out_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "e2218c530429d35c3ee6b56118fc07ffaab53c06a2e7dfa8341229ea15e02393",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/hotFluid/hotFluid_out_p/0/surfaceFieldValue.dat",
+      "sha256": "1780e3a5b7c58e7c2c26194a841f0f34eb358ce55ec276852abb3d7eac78512c",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/hotFluid/hotFluid_out_phi/0/surfaceFieldValue.dat",
+      "sha256": "bf86c6ac51328d561e36d5015b83d962b12caec1cce1553060151cb6a1a7ebeb",
+      "size_bytes": 461
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/weightsSum_src_0.vtk",
+      "sha256": "2a6656d281b1e49d5eb2651c33b34b2f17de0640f34efd3867366371e1b14ba7",
+      "size_bytes": 2241305
+    },
+    {
+      "path": "runtime/foam/fine_netgen/postProcessing/weightsSum_tgt_0.vtk",
+      "sha256": "29bdb5d69ca10e8d7bb9636797a7a644711f51983d71eecd5dc44998f0138d1e",
+      "size_bytes": 2241825
+    },
+    {
+      "path": "runtime/foam/fine_netgen/splitMeshRegions.log",
+      "sha256": "863317f00c280b7b38bbf14d396e0d829d1d6424939e005b416383ec943a644a",
+      "size_bytes": 3585
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/coldFluid/fvSchemes",
+      "sha256": "47329d52939b9419feaacbf5a2f6044f273562bf18502570f0637a857f359c28",
+      "size_bytes": 1197
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/coldFluid/fvSolution",
+      "sha256": "da2b5818d60abbd5cf33c2ea9ed06ac502c289d52bbf2d5134942e57d5e6a6d1",
+      "size_bytes": 938
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/controlDict",
+      "sha256": "252e03ca26d0ce79ce1c60d90fb970f8b41102d4be290fc50acea4c74d618fef",
+      "size_bytes": 6855
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/fvSchemes",
+      "sha256": "71edd17d87b1ad1229df0db7e45d2c0cc649ec26b5ebf8d905fb8099f31869f1",
+      "size_bytes": 725
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/fvSolution",
+      "sha256": "c0834c562934470fdbac02c1a039eb3d183643de05f6de2c81ee2a1c5565da2e",
+      "size_bytes": 442
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/hotFluid/fvSchemes",
+      "sha256": "47329d52939b9419feaacbf5a2f6044f273562bf18502570f0637a857f359c28",
+      "size_bytes": 1197
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/hotFluid/fvSolution",
+      "sha256": "da2b5818d60abbd5cf33c2ea9ed06ac502c289d52bbf2d5134942e57d5e6a6d1",
+      "size_bytes": 938
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/solidPlate/createPatchDict",
+      "sha256": "0e08d0d6c1fc63082ae14fc3d24c285e47ee72ce427eb8589b30e64f7c74441c",
+      "size_bytes": 969
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/solidPlate/fvSchemes",
+      "sha256": "33fbf494db15bd58985c275971058c08f5482c90709971e16de461596bb36928",
+      "size_bytes": 1035
+    },
+    {
+      "path": "runtime/foam/fine_netgen/system/solidPlate/fvSolution",
+      "sha256": "a99aa4ad2272ed0954b845c304eceee1d34bd070a57de4b29b8a6366cf966639",
+      "size_bytes": 611
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/cellToRegion",
+      "sha256": "739b1bb921de94fbc21fd34ae48ffebee0ea42f19e0dd4b5d65e97b649f375ae",
+      "size_bytes": 8030947
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/coldFluid/T",
+      "sha256": "3239fa3102acac90d7d107d787ba7eb74694b1bb4e00356f6570f1f5fc4d1798",
+      "size_bytes": 733
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/coldFluid/U",
+      "sha256": "9b6c5ce676b27e2af23ca43ac6c2e242b221879a3c243c9343ed38a42600e838",
+      "size_bytes": 674
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/coldFluid/cellToRegion",
+      "sha256": "c40748fe35b341daeaaa926598fd1caafc58bf1a0e86781e833000daaf9cd01c",
+      "size_bytes": 1007
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/coldFluid/p",
+      "sha256": "4c951568479b12641c0a99d21ff4d5dba8b608f176e18278b4ed8462a247fa2c",
+      "size_bytes": 534
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/coldFluid/p_rgh",
+      "sha256": "661b57913cef4f52459b2b8d168c4ee04c1bf3bf9c29ec4ce4d309012ba4aac7",
+      "size_bytes": 590
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/hotFluid/T",
+      "sha256": "c2eeaa020cd796822a4b8ea919ec6abb371f1e8eda091d04e32f92b5e342d206",
+      "size_bytes": 729
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/hotFluid/U",
+      "sha256": "3a0d041907c64209b24f01537d5fabded03bd52ccf6e8848e74f9ce00b96e3cf",
+      "size_bytes": 668
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/hotFluid/cellToRegion",
+      "sha256": "ba88a1b1436dc441167d0261934ca7c3f2ff6eaeaa9bcc2e733c71981c9b4a30",
+      "size_bytes": 1003
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/hotFluid/p",
+      "sha256": "e72ba9c290ef74bc21a0baf27714b255504400198eba68ab54a0212d408d1f06",
+      "size_bytes": 533
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/hotFluid/p_rgh",
+      "sha256": "112bd450d02151c52c0af20366c92c4a33681b32485166816e9f81907ab78dbd",
+      "size_bytes": 588
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/solidPlate/T",
+      "sha256": "0519169bd2cb284107b10a6f904de7b5b32b36f35163d9a53551a66b8d8b2ddf",
+      "size_bytes": 1036
+    },
+    {
+      "path": "runtime/foam/medium_netgen/0/solidPlate/cellToRegion",
+      "sha256": "ce7a49597bd3e302dce67fb4f5bfdcae637c21bfe35515af3d964aadaa95270d",
+      "size_bytes": 1328
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/coldFluid/T",
+      "sha256": "a0dda62ca9ca91942ee071bdf18514195b14d3bb4ee7c67bd7a66052c264cd3e",
+      "size_bytes": 1034319
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/coldFluid/U",
+      "sha256": "440c6e1db04cfe871ed2b42bb47236d7b8c2905808611e883fc099c2f6543274",
+      "size_bytes": 1319203
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/coldFluid/p",
+      "sha256": "95bdb2dfbc847f00529c835375cd25983e02f0740dc186d738f7d47bcb3a808e",
+      "size_bytes": 638332
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/coldFluid/p_rgh",
+      "sha256": "f7e73513fd57fa2cc2d90976497998cea01ca871be2cf160b03fe046fa816928",
+      "size_bytes": 638415
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/coldFluid/phi",
+      "sha256": "14f0ca2a6291ec58e4d58d1d522831bad6574e74e9be40dc0c5f09292f604014",
+      "size_bytes": 780561
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/coldFluid/rho",
+      "sha256": "37f1e22fd5a62b48dddcca120f556d2a3576bc66be1143c7ac96a04ad8180b57",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/hotFluid/T",
+      "sha256": "a4a9a1ab5a612b86f4f338e984ea3ff96f7af7f0ebbe74530cc614d288476360",
+      "size_bytes": 1027307
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/hotFluid/U",
+      "sha256": "ee50a5e6febbd96926a11e6705d084c50ff89c58fe4bd21becf3b9785ade2e6e",
+      "size_bytes": 1308542
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/hotFluid/p",
+      "sha256": "e79b697489bc1b58da21a5866ba65927ad9f1abd77e609267079d837485bc5b4",
+      "size_bytes": 633624
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/hotFluid/p_rgh",
+      "sha256": "0caf5ae3d860beb94263d4f8696bbe737f8ee357d21e1a0dc6023bfa62fec2a4",
+      "size_bytes": 633707
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/hotFluid/phi",
+      "sha256": "6dba30cb5057a22cc4b78b24bfcff97b0c70cc98812a9651ab2259a3a3be2695",
+      "size_bytes": 774029
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/hotFluid/rho",
+      "sha256": "4c02a87dec703b31835284b84348a5eaa5806af8af1196e707241250c8d40ea3",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/solidPlate/T",
+      "sha256": "7a46f8c5cc4be34cc8bdfa88c16743ecb6dda51f4ac14f762c5d70fb002dade8",
+      "size_bytes": 9016466
+    },
+    {
+      "path": "runtime/foam/medium_netgen/200/uniform/time",
+      "sha256": "5916951d642d6a5b6ade06c9634a5dbedc5a7349d55f742e73f8dd8730f0173e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/coldFluid/T",
+      "sha256": "ae7e42ebf1348c6f597848aa31fc72249d2c0f747e5a87f1c81731c8ecf26030",
+      "size_bytes": 1034319
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/coldFluid/U",
+      "sha256": "8f76540789e0f6aa43efdc1ded7f2eb4cd2e58c86da394639f2f29317b2611d4",
+      "size_bytes": 1319203
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/coldFluid/p",
+      "sha256": "23e5520f21d9d45945c89d16aa627b60fab2c71e5bb6ea1d185a90e4e15d0a50",
+      "size_bytes": 638332
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/coldFluid/p_rgh",
+      "sha256": "9c42cf5ce33788f47d45a6f95f1d713334880ec384f82c049d2d817cd8d67b04",
+      "size_bytes": 638415
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/coldFluid/phi",
+      "sha256": "cb91db6d1f815a50e55f707b57ad91bb940a9c9d0b96a29a87b04fbdc7ff2ffc",
+      "size_bytes": 780561
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/coldFluid/rho",
+      "sha256": "100f4df3bcb8570e8167a26e1cdd0db2bbd96156af0fe3e1310d6338b7086680",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/hotFluid/T",
+      "sha256": "297380edee50683f91930ca8d7c5836431954545876d8748697bbb46d4c7d4f8",
+      "size_bytes": 1027307
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/hotFluid/U",
+      "sha256": "4005f1fc5fbbda7a795ebd38e6cf4c82655808528a300fac8321739226f9203c",
+      "size_bytes": 1308542
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/hotFluid/p",
+      "sha256": "2b2805e14e3ec066dce672097bf8ed074456f722387dcf52e6401e8f050a7913",
+      "size_bytes": 633624
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/hotFluid/p_rgh",
+      "sha256": "a04afb09623597dbac3aa5632771934386a917cfc3ada35a50fa56fa4d6614b1",
+      "size_bytes": 633707
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/hotFluid/phi",
+      "sha256": "e3a780a392c3147df32b86612d4f293c5ce05dac202f8a957f451c266069cf09",
+      "size_bytes": 774029
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/hotFluid/rho",
+      "sha256": "936078a878a6dc1797a2b8d65b055a111a41902044078cf383e36ad957cccb53",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/solidPlate/T",
+      "sha256": "bdccbf2fe80f6a2446773dfd10a58310573e160ee759aba81f9528a9e6ac4fc5",
+      "size_bytes": 9016466
+    },
+    {
+      "path": "runtime/foam/medium_netgen/225/uniform/time",
+      "sha256": "0f786524baac3aa613b0ec39d4dacadaf9ede59e15ba00957897a245d56a0861",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/coldFluid/T",
+      "sha256": "d871c87155fa8544413e42a5e3e5e2762016060ff734035271a1cea2d0c20bc3",
+      "size_bytes": 1034319
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/coldFluid/U",
+      "sha256": "38593fe2d50c60054680bc26d2bf2e818b4b9cf42d2e02f044dd68d7d517296b",
+      "size_bytes": 1319203
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/coldFluid/p",
+      "sha256": "a92df9cb4a8f7b1a44cc8f729b6b3409ffd3398ee6177a63a39c084290c80c76",
+      "size_bytes": 638332
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/coldFluid/p_rgh",
+      "sha256": "3c5f022099e71ad4fea7a2af1f21bf57b29e4a1e67946e3c5147d5f6fe199a5a",
+      "size_bytes": 638415
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/coldFluid/phi",
+      "sha256": "12e31446632f3b4a79e217f995f30931830721b9a87578904bf70e2044c93c03",
+      "size_bytes": 780561
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/coldFluid/rho",
+      "sha256": "26c4c9ff6e7e8f460d913bf347b020bb50b7898ff77f72e8c8fb04697b298c3e",
+      "size_bytes": 1083
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/hotFluid/T",
+      "sha256": "4ed9d777df70c22fc1519f4228eaaab80fb9120510d72266f12a7bf3d1581b59",
+      "size_bytes": 1027307
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/hotFluid/U",
+      "sha256": "f390e27f091ba3e189ffbb3457a3c9aef4b1782df2411d28c4a9195ae7938c6c",
+      "size_bytes": 1308542
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/hotFluid/p",
+      "sha256": "5f41ecc5bc95b7f2e5d780ea0aa08695b4c87cccbd70416459e6a4a067855ddf",
+      "size_bytes": 633624
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/hotFluid/p_rgh",
+      "sha256": "b7c1fba1695eb95a0a6690195111c3e6e4cdfdfc25b023ecdefb540b9ec54a45",
+      "size_bytes": 633707
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/hotFluid/phi",
+      "sha256": "dd0388c829d6db3a2dfbb5dd71acb0a8a872cb16c0582db1d39b84a9c39a6932",
+      "size_bytes": 774029
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/hotFluid/rho",
+      "sha256": "f0aa0f1d72a64687c00e4f3ec3f917be4863230cf5da9c68fe5a9242883294cc",
+      "size_bytes": 1079
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/solidPlate/T",
+      "sha256": "1a7ac6c06d9d326dee3994f4213166e29d796664d755eb3a60915082f984abd4",
+      "size_bytes": 9016466
+    },
+    {
+      "path": "runtime/foam/medium_netgen/250/uniform/time",
+      "sha256": "7b75cb6cfac0c86480bc61bbba655c9a7e640a2d7124504d70d473a4a106cc8e",
+      "size_bytes": 799
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/coldFluid/coldFluid_to_solidPlate/coldFluid_to_solidPlate_250.vtk",
+      "sha256": "91de35faf6fa35c76aaff98bac362cc2746fd6d8a759183e6723cacd0852c9ec",
+      "size_bytes": 2169823
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/coldFluid/cold_inlet/cold_inlet_250.vtk",
+      "sha256": "6747fdb790b05c67f2b0daabf1773b02b1e2ccc4e08f29459ee9fe18616f855c",
+      "size_bytes": 4968
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/coldFluid/cold_outlet/cold_outlet_250.vtk",
+      "sha256": "fbef083836bc967406ef2c112a703fbc9b6e378925bf6c5efa3691fd12abc817",
+      "size_bytes": 6359
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/coldFluid/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "696223f272152cf5d68f640193ebad569afba30b737a91141afa2610b531a87a",
+      "size_bytes": 878996
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/coldFluid/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "a450295cd9e1e6af54f97dbd91f1cb5c047f7fb4e52e76a25513957ccade4855",
+      "size_bytes": 146
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/hotFluid/cold_solid_interface/cold_solid_interface_250.vtk",
+      "sha256": "fa013d82b311b4c566ceca86a4b3f86241a67cccd4b3f4f2f93d0faa4c6b3f56",
+      "size_bytes": 147
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/hotFluid/hotFluid_to_solidPlate/hotFluid_to_solidPlate_250.vtk",
+      "sha256": "cdaa1523c2ee22fd2a6d7e911cf1a1929dc108278b8996f88fa0bec5a72a2900",
+      "size_bytes": 2144577
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/hotFluid/hot_inlet/hot_inlet_250.vtk",
+      "sha256": "ed23656983d35a95c7ceece40c030d0abf61ec48ddbbfeebe8d991a41beb3155",
+      "size_bytes": 4690
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/hotFluid/hot_outlet/hot_outlet_250.vtk",
+      "sha256": "2cb9e37dd2ceb72c81bc8c8c3287e0e413c5932f7ae9cc8112737cbe9ccaf81c",
+      "size_bytes": 6209
+    },
+    {
+      "path": "runtime/foam/medium_netgen/VTK/hotFluid/hot_solid_interface/hot_solid_interface_250.vtk",
+      "sha256": "09205fba3bb484adc11310c5e0b5a4041d20c7a00e5e0cdaea02d8b4e8a1dc69",
+      "size_bytes": 861272
+    },
+    {
+      "path": "runtime/foam/medium_netgen/case_setup_manifest.json",
+      "sha256": "37edb89390450e82aafd9e8279b0fc0cbd9fb14c74d7aa97bfc583ca4501a277",
+      "size_bytes": 1520
+    },
+    {
+      "path": "runtime/foam/medium_netgen/checkMesh.log",
+      "sha256": "982f0670f525f4a01be313390dd6222d01491b505618a14fdde561a9b709eff9",
+      "size_bytes": 4869
+    },
+    {
+      "path": "runtime/foam/medium_netgen/checkMesh_coldFluid.log",
+      "sha256": "c0ab3467f7cffcabe0453aea2d619c02233413cbab788076d86fa02477cf5c31",
+      "size_bytes": 3680
+    },
+    {
+      "path": "runtime/foam/medium_netgen/checkMesh_hotFluid.log",
+      "sha256": "069ea02a345d18a339bba50ee14f54e8b11092078bc3b0851e62fde234a1df2d",
+      "size_bytes": 3787
+    },
+    {
+      "path": "runtime/foam/medium_netgen/checkMesh_solidPlate.log",
+      "sha256": "65eefb00c81782dc8be136788c12b82782663685764e561bd6f8b231503095bf",
+      "size_bytes": 4461
+    },
+    {
+      "path": "runtime/foam/medium_netgen/chtMultiRegionFoam.log",
+      "sha256": "14495c0f9188d8cd173f84d1721fb2c3c6e2b09e0406b0ca1f35916edd206cf4",
+      "size_bytes": 722248
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/cellToRegion",
+      "sha256": "ab30afcbaade803105d4e5fb49bbcf180f5af56a2b75c6160b06426a52123067",
+      "size_bytes": 4015396
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/g",
+      "sha256": "1fcf8a989bfc6ff0eae6fc5cd0c188ff6e31e6de953ca7479cee9c8336e15660",
+      "size_bytes": 418
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/momentumTransport",
+      "sha256": "363a9dba1ead09baffa6f57db6357f286aecd269497b181cc912c229f853495f",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/pRef",
+      "sha256": "5ad2c5765c443c8df1e92e233300c6e24a0d1070c5d20a37047e955184874a76",
+      "size_bytes": 421
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/physicalProperties",
+      "sha256": "9112a353f6ccbc6097d7afec3782b73666c1978641f023f5f71a12fbc403d1da",
+      "size_bytes": 721
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/boundary",
+      "sha256": "337287add3203c024ad858734333d0d7fcad1c72e7aa1d84b141c0b324efbec3",
+      "size_bytes": 1310
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/cellRegionAddressing",
+      "sha256": "263bb2f616351e8b7f3389263e8291a2cd66f89983419f901dea2c91301f1c3c",
+      "size_bytes": 220197
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/cellZones",
+      "sha256": "67b0d6a85810c0055d9f646ed5868b30e49ccbf54b6ecab09a626e58e28b511c",
+      "size_bytes": 220390
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/faceRegionAddressing",
+      "sha256": "f4132b2078100a84fcaf17983ad1a8a664a7d83e8a94c38f53a6e3ae6f51ebf2",
+      "size_bytes": 489338
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/faceZones",
+      "sha256": "bea70e3244151d7a80264b7aef00a0068329384f13d8b020863b35f383f3956a",
+      "size_bytes": 124570
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/faces",
+      "sha256": "4bbda2a4da2d0777315b526dcf845b85865359b13d4f0347fe92c3f794d5f678",
+      "size_bytes": 1955215
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/neighbour",
+      "sha256": "701c7f8af58a9d658d4dda9c8551b6994b2499277e5e58c792ae71911dc548b0",
+      "size_bytes": 390098
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/owner",
+      "sha256": "f3e68bfdddceb26082a757d11468f9b1fad6028266ebc699f7ccf0ec576eb75d",
+      "size_bytes": 489407
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/pointRegionAddressing",
+      "sha256": "0e4b39d242090c579972e77481ebd24455ce63e2a5b98b45035ab5adc449adf9",
+      "size_bytes": 65382
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/pointZones",
+      "sha256": "d3bedf17311c167c96e6a36a6837884653bc6bc7e75854a2812d365624b0ce69",
+      "size_bytes": 700
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/coldFluid/polyMesh/points",
+      "sha256": "8bef8c982c598275d9f77eefb75e9d4624554ca66a1fe2606c758b94a4be0355",
+      "size_bytes": 388709
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/g",
+      "sha256": "b492a7eb91781508be50cebf6ed9a83ceb7b651fd5973a2a46ffd904719bf223",
+      "size_bytes": 417
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/momentumTransport",
+      "sha256": "363a9dba1ead09baffa6f57db6357f286aecd269497b181cc912c229f853495f",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/pRef",
+      "sha256": "47c9d66ff6714a7538da8d7007ab017eadcc4982479fa07a4c76d5a2a21dfa67",
+      "size_bytes": 420
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/physicalProperties",
+      "sha256": "9112a353f6ccbc6097d7afec3782b73666c1978641f023f5f71a12fbc403d1da",
+      "size_bytes": 721
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/boundary",
+      "sha256": "2ef71df9275c2f9d463b1392b6f7691c1c04bc5ffbaaa37c5319bad01e188230",
+      "size_bytes": 1305
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/cellRegionAddressing",
+      "sha256": "db62ebd51102a484a80505fd98a2048932b2a7db04029a63021f777eaf69665a",
+      "size_bytes": 218420
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/cellZones",
+      "sha256": "1b47e7fe5385d6198bbd749c3c5b6bb9b5e8fa93e92963d7ff4811aa0ed22c77",
+      "size_bytes": 218613
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/faceRegionAddressing",
+      "sha256": "7d7b9b24ef733358f5f6731f51da2b0d3b324fb9a796d353081e403edc4a9116",
+      "size_bytes": 485497
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/faceZones",
+      "sha256": "8ea720bb1fe77bc54e72ed58fda43a2e69252a07b9f9ca18c4b69efedc62429d",
+      "size_bytes": 123849
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/faces",
+      "sha256": "66d7895aae6c6d0f9117e37ba713dbd94196e61bc527d2ad175532ff94cfda6a",
+      "size_bytes": 1939854
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/neighbour",
+      "sha256": "2517c90fda001c4f01d736ed6b920ae70d9a3ba98cbd81b73fa43705ee45d771",
+      "size_bytes": 386833
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/owner",
+      "sha256": "e2b26ddcbd090e3ff2b8a38a0dcdf8610db351c329993f9875a2b88525c66943",
+      "size_bytes": 485566
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/pointRegionAddressing",
+      "sha256": "a75b64e38c4033eadb9174a4dd1ca3ad59e08f2f661e549b33b826fe16908030",
+      "size_bytes": 64929
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/pointZones",
+      "sha256": "909fb3027e6d8a1d95989069806ed8aa54ef231b297bcdc8aba7edc50b4340a4",
+      "size_bytes": 699
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/points",
+      "sha256": "49120e3375afee184b680f88ed5824f17c340192bab020b4ddecd513d5ceea44",
+      "size_bytes": 385996
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/hotFluid/polyMesh/sets/nonOrthoFaces",
+      "sha256": "da936b771fafb1d75f63eab507a9885cdf62d75d3d93bbfc0fc0ab90943490a4",
+      "size_bytes": 712
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/boundary",
+      "sha256": "5e94394e2c210acece6c32cbb9fea78787efe1ba5a53d0e59754a7f85f08a009",
+      "size_bytes": 2389
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/cellZones",
+      "sha256": "a98b8ef5e2e61dd37120076bb16b4791871c74447f8d2419e06824314fb5a048",
+      "size_bytes": 4015617
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/faceZones",
+      "sha256": "d8422b585886ede21962a0d590bfd9e8e84c522382a6ee7c0fcba6927ed27772",
+      "size_bytes": 247492
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/faces",
+      "sha256": "ef267380a2315511758a8a8b9c377b05dd429d96c702d039e4581f20b5cbd0d2",
+      "size_bytes": 33106183
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/neighbour",
+      "sha256": "81dd5a3127b14ed606812e3ffd8b4d6f8b36fad7b42808fe3487aae066a90338",
+      "size_bytes": 7783248
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/owner",
+      "sha256": "e57bfa116052fe65f93345c75eaecfd5550aa4e7289aa2eea7085ce94f5a6743",
+      "size_bytes": 8277148
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/pointZones",
+      "sha256": "faf05399503748693b22c95ca561062701753c8720278117f97975ef97254346",
+      "size_bytes": 690
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/points",
+      "sha256": "4b5412dfd69217d5e5ec72026090b46d85f3b4e0ab34bdaecf54aa2cd717a1b5",
+      "size_bytes": 4802420
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/sets/coldFluid",
+      "sha256": "6fdafab1fd232bf34871d95bb5171aa6e11c4f7c41d029eb6af8a33e50d89e4c",
+      "size_bytes": 394091
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/sets/cold_solid_interface",
+      "sha256": "2b9cdb814f0f1fc19e1cf86d8e772f3eb3359699a2c9a1c3e2756f1068335695",
+      "size_bytes": 198531
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/sets/hotFluid",
+      "sha256": "de4eb12b89a0b47d5edbe7bbe8dadfe792c0845f1819bcb6f9386e22ebcc0435",
+      "size_bytes": 370574
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/sets/hot_solid_interface",
+      "sha256": "a3cea8dbef98c57a9e758d7bd0ae26b7da260a2cf036b984a246fa2a7f254925",
+      "size_bytes": 180910
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/sets/nonOrthoFaces",
+      "sha256": "df833c69b228ff5adabc444ee8f3d209b2be3aa53db6c2d7dd55b9a813f00c06",
+      "size_bytes": 703
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/polyMesh/sets/solidPlate",
+      "sha256": "544ee584225bd95bbec4c12c8d3fbea1ce337fd9623937544e1aab19e81f1651",
+      "size_bytes": 7159407
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/regionProperties",
+      "sha256": "8dac6d0a255d7b015148a93be5d2f237b8d62944392220d8787981f499dd0271",
+      "size_bytes": 430
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/physicalProperties",
+      "sha256": "04c1dec027be9f87cdc235b866d4355060e50a71ebdba15152538ae631944e22",
+      "size_bytes": 724
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/boundary",
+      "sha256": "d210634582cb2bb2c7dfa757cc823f726e276dfe8079a488c4ab77dab8921e9f",
+      "size_bytes": 2538
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/cellRegionAddressing",
+      "sha256": "e00a0340144d59c92e80d3fb728c46b747e42b20cf8f72a8edc7a9d56addcaa2",
+      "size_bytes": 3578231
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/cellZones",
+      "sha256": "818d792eb79ee724b4fa676406c032b0aa4c090b4e0531f7781fc1aefa59ac90",
+      "size_bytes": 3578424
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/faceRegionAddressing",
+      "sha256": "8ab1232abef9542cd8e8865743df65635050a08e0ca92d649edb0beb4dde2464",
+      "size_bytes": 7500924
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/faceZones",
+      "sha256": "4b7d09b2440d682980af142dfeecfd4dbf86913be1c0bdb5723b08c166bc65b7",
+      "size_bytes": 247503
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/faces",
+      "sha256": "d63c1f8ecaaaa06e12000721172f7a3bb18cb5059120239044ccc2b8ea596b57",
+      "size_bytes": 30001554
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/neighbour",
+      "sha256": "a3bdddfe7e785de1d9edea6e4fd15000173f916cdec935f94494116533f3ff34",
+      "size_bytes": 6810650
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/owner",
+      "sha256": "3a5c111f0df4e648a394bf018fa008d25c82e624ede89636d846ca88117057da",
+      "size_bytes": 7500998
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/pointRegionAddressing",
+      "sha256": "76608f920c7758a4ad2a05a8873d7eed142332189240f9aa6e82fecce9bcc40f",
+      "size_bytes": 770888
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/pointZones",
+      "sha256": "3a294e8848be127c0428f7e9bf8b5e230cf9504e0a0751a46f7de17a4ff150e3",
+      "size_bytes": 701
+    },
+    {
+      "path": "runtime/foam/medium_netgen/constant/solidPlate/polyMesh/points",
+      "sha256": "f34c333a3d84d5fbbb16ae85334d40944843a6f50c0fb0760c948e0de03e5b76",
+      "size_bytes": 4621735
+    },
+    {
+      "path": "runtime/foam/medium_netgen/createPatch_solidPlate.log",
+      "sha256": "de702bbd2f93756e055ce93caa68dc1fc67d4febdfe99d10d8a9ebb40fdb7c79",
+      "size_bytes": 1811
+    },
+    {
+      "path": "runtime/foam/medium_netgen/gmshToFoam.log",
+      "sha256": "945e90d706cd3cadf89e770d9ab68eda812e98c326ce8761a534856bff77e40f",
+      "size_bytes": 5316425
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/coldFluid/coldFluid_in_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "5f5ba0965dcc652eae54a23f2ad212d73b087f3779fd00454480452c8eb15b8d",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/coldFluid/coldFluid_in_p/0/surfaceFieldValue.dat",
+      "sha256": "c03c7b70190f1bd53ffe7b32c87f05cf780e38e2acd814fe6d47f9f3871fc471",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/coldFluid/coldFluid_in_phi/0/surfaceFieldValue.dat",
+      "sha256": "432f4dd5180a598b4a29eb95faf09ad7cb3674bb485c127aa994b67bc33df1d2",
+      "size_bytes": 472
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/coldFluid/coldFluid_out_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "42faf54c94d5b2a5c6fe87cfbb52b0ace3eddc75d00623b9eb52f79d6267c16f",
+      "size_bytes": 468
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/coldFluid/coldFluid_out_p/0/surfaceFieldValue.dat",
+      "sha256": "4271f1a32d7408f0389f815b4506eaea2f90c5d8bc8468018231076f6c334d52",
+      "size_bytes": 468
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/coldFluid/coldFluid_out_phi/0/surfaceFieldValue.dat",
+      "sha256": "636bd5e0b14e758e5d1328ddf91442c043fc9fd372e7f895092979ff79d2c74e",
+      "size_bytes": 462
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/hotFluid/hotFluid_in_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "9fdf7f6d039ef1be9adecec69460d8b113252b873eef83b4f092fed874ef63b1",
+      "size_bytes": 466
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/hotFluid/hotFluid_in_p/0/surfaceFieldValue.dat",
+      "sha256": "0afd5378dd319594f290131ac81a31af5c5d7311bc543d420772b406249bcb28",
+      "size_bytes": 466
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/hotFluid/hotFluid_in_phi/0/surfaceFieldValue.dat",
+      "sha256": "c07d61a9b42e1b24e9a65b6d79d2ecb6b4dd7e0052bab23fe5eaf6e93d434777",
+      "size_bytes": 471
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/hotFluid/hotFluid_out_T_areaAverage/0/surfaceFieldValue.dat",
+      "sha256": "369bc5cb8ed0dd006ba53d1d1ffed44171119d50bea466bf7a0a3439966ce42a",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/hotFluid/hotFluid_out_p/0/surfaceFieldValue.dat",
+      "sha256": "fb4b906e1aeb8eae77225d3b3fc2111d62fd5806fad256958e6bbf191246a7d0",
+      "size_bytes": 467
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/hotFluid/hotFluid_out_phi/0/surfaceFieldValue.dat",
+      "sha256": "27de1ad358fc3d37c040d4f8cc5ef13919d48ac680bc90258928a2f2e44d7774",
+      "size_bytes": 461
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/weightsSum_src_0.vtk",
+      "sha256": "202f3c0dee1d298ed9e11534744a707f5d29765cbb64c6c287ed324b0e013f0a",
+      "size_bytes": 1104137
+    },
+    {
+      "path": "runtime/foam/medium_netgen/postProcessing/weightsSum_tgt_0.vtk",
+      "sha256": "28856ea2713c521f794eae82a4bd3e6fe2fc09f0e912e3c74799908247e72f19",
+      "size_bytes": 1108401
+    },
+    {
+      "path": "runtime/foam/medium_netgen/splitMeshRegions.log",
+      "sha256": "bb1c138865ff08549e51355a050e89b597d03292100d07b31210b66df16340e0",
+      "size_bytes": 3590
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/coldFluid/fvSchemes",
+      "sha256": "47329d52939b9419feaacbf5a2f6044f273562bf18502570f0637a857f359c28",
+      "size_bytes": 1197
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/coldFluid/fvSolution",
+      "sha256": "da2b5818d60abbd5cf33c2ea9ed06ac502c289d52bbf2d5134942e57d5e6a6d1",
+      "size_bytes": 938
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/controlDict",
+      "sha256": "252e03ca26d0ce79ce1c60d90fb970f8b41102d4be290fc50acea4c74d618fef",
+      "size_bytes": 6855
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/fvSchemes",
+      "sha256": "71edd17d87b1ad1229df0db7e45d2c0cc649ec26b5ebf8d905fb8099f31869f1",
+      "size_bytes": 725
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/fvSolution",
+      "sha256": "c0834c562934470fdbac02c1a039eb3d183643de05f6de2c81ee2a1c5565da2e",
+      "size_bytes": 442
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/hotFluid/fvSchemes",
+      "sha256": "47329d52939b9419feaacbf5a2f6044f273562bf18502570f0637a857f359c28",
+      "size_bytes": 1197
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/hotFluid/fvSolution",
+      "sha256": "da2b5818d60abbd5cf33c2ea9ed06ac502c289d52bbf2d5134942e57d5e6a6d1",
+      "size_bytes": 938
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/solidPlate/createPatchDict",
+      "sha256": "0e08d0d6c1fc63082ae14fc3d24c285e47ee72ce427eb8589b30e64f7c74441c",
+      "size_bytes": 969
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/solidPlate/fvSchemes",
+      "sha256": "33fbf494db15bd58985c275971058c08f5482c90709971e16de461596bb36928",
+      "size_bytes": 1035
+    },
+    {
+      "path": "runtime/foam/medium_netgen/system/solidPlate/fvSolution",
+      "sha256": "a99aa4ad2272ed0954b845c304eceee1d34bd070a57de4b29b8a6366cf966639",
+      "size_bytes": 611
+    },
+    {
+      "path": "runtime/mesh_coarse/coarse_geometry_manifest.json",
+      "sha256": "c86ab5a6e72346cdc0072d007d2f3f0524cc679a11cf82fe9886f4f313d2a8dc",
+      "size_bytes": 9022
+    },
+    {
+      "path": "runtime/mesh_coarse/gmsh.log",
+      "sha256": "fca99f9286ad4d23c6bfb3aa60c7731bac07678e4f49f39567317cd7f5e42680",
+      "size_bytes": 217316
+    },
+    {
+      "path": "runtime/mesh_coarse/samarmad_model6_coarse.msh",
+      "sha256": "431b3797a89ef6544ba8de8932fed6d377dbae2fa99b58332a7103f6c7212a8f",
+      "size_bytes": 29900869
+    },
+    {
+      "path": "runtime/mesh_coarse/samarmad_model6_unit_cell.step",
+      "sha256": "d7247814f6e939036685e04df4d9572dcb1e312e9d24023d00f32ac74c6cdbc4",
+      "size_bytes": 11452697
+    },
+    {
+      "path": "runtime/mesh_coarse_netgen_full/coarse_netgen_geometry_manifest.json",
+      "sha256": "da21c03e1d38cff3356b78528aab1b6d159baab41435ab1291548c9ea34a09cd",
+      "size_bytes": 9092
+    },
+    {
+      "path": "runtime/mesh_coarse_netgen_full/samarmad_model6_coarse_netgen.msh",
+      "sha256": "b3e97e205707b9b84d1f4dcbdbefa1693c2d68321691c5968e96526ae7ffe934",
+      "size_bytes": 29463374
+    },
+    {
+      "path": "runtime/mesh_coarse_netgen_full/samarmad_model6_unit_cell.step",
+      "sha256": "a875602992f53339f622c3a56b1b63b2cbb775ad17fae1be3ea4d33508ef501c",
+      "size_bytes": 11452697
+    },
+    {
+      "path": "runtime/mesh_fine/fine_geometry_manifest.json",
+      "sha256": "9cbd2fb130b9b8814223da3c38fa84af53312b1b138340f508ac2b8a8a211fba",
+      "size_bytes": 9016
+    },
+    {
+      "path": "runtime/mesh_fine/gmsh.log",
+      "sha256": "af349fe52327276340f44ee53035807689d8cc6021b6f49ccccea0f12c8cbab4",
+      "size_bytes": 339238
+    },
+    {
+      "path": "runtime/mesh_fine/samarmad_model6_fine.msh",
+      "sha256": "5c342e2fb64e30ab6199c75aa44cf7f24bb7079be1fc0859ef8ee5ecf53824ed",
+      "size_bytes": 185264586
+    },
+    {
+      "path": "runtime/mesh_fine/samarmad_model6_unit_cell.step",
+      "sha256": "87ac86aff4c5fd06e3acb2e4cc172aa5b153ff18047c4faea3befda6c2a74aa4",
+      "size_bytes": 11452697
+    },
+    {
+      "path": "runtime/mesh_fine_netgen_full/fine_netgen_geometry_manifest.json",
+      "sha256": "c7597ae33f8b97f64c7e9b4f290fa8e50bbaf068a6b40edd77ca62386fa2f529",
+      "size_bytes": 9086
+    },
+    {
+      "path": "runtime/mesh_fine_netgen_full/samarmad_model6_fine_netgen.msh",
+      "sha256": "02b95270d9ce61e0d1ca001d31274872aa4285215a05ce462639d3036d545638",
+      "size_bytes": 170809935
+    },
+    {
+      "path": "runtime/mesh_fine_netgen_full/samarmad_model6_unit_cell.step",
+      "sha256": "b6c5bdbf795737220bf1891bfd520337581edc967fe7bb775dba85580246ae3e",
+      "size_bytes": 11452697
+    },
+    {
+      "path": "runtime/mesh_medium/gmsh.log",
+      "sha256": "4b02076ab42da73fba0fb68f0c1d424eb6d8285a7587a288ed746b330985ac36",
+      "size_bytes": 243034
+    },
+    {
+      "path": "runtime/mesh_medium/medium_geometry_manifest.json",
+      "sha256": "b6eb89bd4b2b7ed7d051275fad33933fc32fbe44245835b0086746647ed2a1f1",
+      "size_bytes": 9022
+    },
+    {
+      "path": "runtime/mesh_medium/samarmad_model6_medium.msh",
+      "sha256": "025f786d8963ce31d8caa4213a8b7d889e67a5ed1bd7fb541f0b1d8d10aa855f",
+      "size_bytes": 65309507
+    },
+    {
+      "path": "runtime/mesh_medium/samarmad_model6_unit_cell.step",
+      "sha256": "11dc4141d997ae819b60518811a19ad3da97624366068a3e44226b4fa42efb6e",
+      "size_bytes": 11452697
+    },
+    {
+      "path": "runtime/mesh_medium_netgen_full/medium_netgen_geometry_manifest.json",
+      "sha256": "4bc8d075d5234c596afdc8adc1263bb000e5608486added0339c60aa0cc19cc6",
+      "size_bytes": 9092
+    },
+    {
+      "path": "runtime/mesh_medium_netgen_full/samarmad_model6_medium_netgen.msh",
+      "sha256": "2807d20770d5208d1545334a4a52645011918c473a6fe66962dcf4a4feef7a89",
+      "size_bytes": 61958486
+    },
+    {
+      "path": "runtime/mesh_medium_netgen_full/samarmad_model6_unit_cell.step",
+      "sha256": "55de22080f04c454de3b372911939945cfed7b31fb89d1fc697449004ccda34c",
+      "size_bytes": 11452697
+    },
+    {
+      "path": "runtime/mesh_quality_trial_netgen/samarmad_model6_trial.msh",
+      "sha256": "2eb0ff3aac73f9e87d0cbf88775c3a05fcb2ab6ddcb780ed0a8550cee9b68f7a",
+      "size_bytes": 1529873
+    },
+    {
+      "path": "runtime/mesh_quality_trial_netgen/samarmad_model6_unit_cell.step",
+      "sha256": "59a91cc3033938446bac297e45d3373989b6884fb69f8567878ad33b04a48ceb",
+      "size_bytes": 672686
+    },
+    {
+      "path": "runtime/mesh_quality_trial_netgen/trial_geometry_manifest.json",
+      "sha256": "24a3820c0054b84adfd32dbd3ba77deaeb5886d2f2ccb52171164a6c0e10e031",
+      "size_bytes": 8934
+    }
+  ],
+  "frozen_at_utc_local_clock": "2026-09-15T04:51:48+00:00",
+  "inventory_sha256": "9f34e3f2615437fe15c61b60b36fcddb671ca09cdecd0739689201494437e92d",
+  "reference_data_in_solver_case": false,
+  "reveal_state": "Publication result data have not been passed to the OpenFOAM solver. The orchestrator has disclosed prior exposure to the paper abstract and its Section 4.1 reported discrepancy; therefore this is not a fully blind experiment.",
+  "schema": "aero.pche.samarmad.prediction_package_freeze.v1",
+  "scope": "Hash inventory of frozen criteria, input specification, independent calculation, source and solver-access audits, CalculiX exploratory transfer and result artifacts, code/tooling fixes, reconstructed geometry, original failed and optimized meshes, solver dictionaries, all retained flow/thermal fields, logs, continuations, and post-processing outputs for coarse/medium/fine cases.",
+  "source_condition_note": "The frozen v1 input selected 293 K. The paper's conflicting 290 K Table 2 condition is documented in a separate addendum; no active case was silently altered.",
+  "timestamp_authority": "Local host clock is recorded but not trusted; external OpenTimestamps proof is a separate artifact."
+}

@@ -28,9 +28,17 @@ import status from '../../../../../../public/demos/aero/blind-validation-01-run-
       <p class="eyebrow">THERMAL + STRUCTURAL / SOURCE-DERIVED</p>
       <span class="status mixed">SYNTHETIC PREBENCHMARK</span>
       <h2>Samarmad-derived PCHE gate pack</h2>
-      <p>A printed-circuit heat-exchanger workflow with six synthetic operating points. Prediction freeze, criteria hashing, curved-interface transfer, generic OpenFOAM CHT, and generic CalculiX gates are retained.</p>
-      <p class="subtle">The publication's measurements were withheld. Samarmad-specific corrugated CFD/FEA and experimental validation remain open.</p>
+      <p>A separate six-point synthetic shakedown of prediction freeze, criteria hashing, curved-interface transfer, generic OpenFOAM CHT, and generic CalculiX gates.</p>
+      <p class="subtle">Synthetic pipeline proof only; not the publication-specific run.</p>
       <div class="links"><a href="/software/aero/evidence/benchmarks/samarmad-synthetic/">Inspect the prebenchmark record →</a></div>
+    </article>
+    <article>
+      <p class="eyebrow">THERMAL-HYDRAULIC / PUBLICATION-TARGETED</p>
+      <span class="status failed">NUMERICAL FAIL · PRE-REVEAL</span>
+      <h2>Samarmad PCHE, reconstructed target</h2>
+      <p>Actual Model 6 periodic geometry reconstruction and three OpenFOAM CHT grids are retained. Every grid fails the frozen residual threshold; medium-to-fine pressure drop also shifts by more than 22%. Publication measurements remain withheld pending timestamp confirmation.</p>
+      <p class="subtle">The paper has no structural test; CalculiX mapping is exploratory and failed its 100% coverage gate.</p>
+      <div class="links"><a href="/software/aero/evidence/benchmarks/samarmad-pche-publication-v1/">Read the pre-reveal run record →</a></div>
     </article>
   </section>
   <section><h2>Register policy</h2><p>Each future CFD, thermal or structural benchmark receives a versioned entry, source citation, frozen criteria, outcome, and comparison history. Failed and incomplete trials remain listed. Workflow scores are not presented as physical-validation scores.</p><a href="/software/aero/evidence/">Return to all evidence →</a></section>

@@ -1,0 +1,87 @@
+{
+  "schema": "aero.publication_benchmark_summary.v1",
+  "case_id": "PCHE-SAMARMAD-PUBLICATION-01",
+  "title": "Samarmad PCHE — pre-reveal prediction record",
+  "revision": "v1",
+  "source": {
+    "citation": "Samarmad and Jaffal (2023), Results in Engineering 19, 101303",
+    "doi": "10.1016/j.rineng.2023.101303",
+    "source_url": "https://doi.org/10.1016/j.rineng.2023.101303",
+    "author_upload_url": "https://www.researchgate.net/publication/372453246_Performance_evaluation_of_a_printed_circuit_heat_exchanger_with_a_novel_two-way_corrugated_channel",
+    "reported_license": "CC BY-NC-ND 4.0",
+    "public_artifact_policy": "No article PDF, source text, figure, table, or digitized experimental point values are redistributed. Commercial reuse is not cleared."
+  },
+  "status": {
+    "prediction_package": "FROZEN_AND_INDEPENDENTLY_HASH_VERIFIED",
+    "openfoam_numerical_disposition": "FAIL",
+    "calculix_source_validation": "NOT_SUPPORTED_BY_SOURCE",
+    "calculix_exploratory_mesh_sensitivity": "FAIL_MAPPING_COVERAGE",
+    "publication_measurement_reveal": "WITHHELD_PENDING_EXTERNAL_TIMESTAMP_CONFIRMATION",
+    "full_blindness": false
+  },
+  "pre_reveal_prediction": {
+    "geometry": "Independent reconstruction of one periodic Model 6 corrugated channel cell; not author CAD",
+    "analysis_point": {
+      "hot_inlet_K": 323.0,
+      "cold_inlet_K": 293.0,
+      "velocity_m_s_each_stream": 0.246,
+      "experimental_condition_match": "NOT_ESTABLISHED"
+    },
+    "first_principles_straight_channel_screen": {
+      "Re": 519.1182,
+      "hydraulic_diameter_m": 0.00152754,
+      "pressure_drop_Pa_per_channel": 576.198,
+      "heat_duty_W_per_channel_pair_range": [27.4614, 30.9006],
+      "effectiveness_range": [0.3650, 0.4107],
+      "scope": "Straight fully-developed semicircle screening only; not a corrugated Model 6 prediction."
+    }
+  },
+  "openfoam_v10_at_250_s": {
+    "tetrahedra": {"coarse": 494670, "medium": 1003677, "fine": 2770939},
+    "all_region_checkMesh": "PASS",
+    "mass_balance": "PASS on all three grids; maximum imbalance 0.0896% against 0.5%",
+    "hot_cold_energy_balance": "PASS on all three grids; maximum imbalance 3.6715% against 5%",
+    "max_final_residual": {
+      "coarse": 0.00021375007,
+      "medium": 0.0000057687564,
+      "fine": 0.0000066988823,
+      "frozen_limit": 0.000001,
+      "gate": "FAIL on all three grids"
+    },
+    "medium_to_fine_relative_change_percent": {
+      "hot_pressure_drop": 22.6121,
+      "cold_pressure_drop": 22.1682,
+      "hot_heat_duty": 1.7846,
+      "cold_heat_duty": 2.7776,
+      "hot_outlet_temperature": 0.0207,
+      "cold_outlet_temperature": 0.0325,
+      "pressure_drop_grid_gate_limit": 5.0
+    },
+    "overall_numerical_disposition": "FAIL"
+  },
+  "calculix": {
+    "paper_has_structural_model_or_measurement": false,
+    "v1_three_grid_transfer_coverage_percent": {
+      "coarse": 92.94996,
+      "medium": 94.55602,
+      "fine": 99.99762,
+      "required": 100.0
+    },
+    "v1_mapping_gate": "FAIL; no mesh-sensitivity decks generated",
+    "interpretation": "A prior single assumption-only pipeline shakedown is retained locally; it is not a Samarmad structural prediction or validation."
+  },
+  "freeze": {
+    "file_count": 653,
+    "inventory_sha256": "9f34e3f2615437fe15c61b60b36fcddb671ca09cdecd0739689201494437e92d",
+    "manifest_sha256": "e09516c5946190b72e29009f0bc3f99ae3f7586c2c29e89e3f9dc02539e07cfb",
+    "inventory_verification": "PASS; 653 entries, zero mismatches",
+    "open_timestamps": "Submitted to four remote calendars; blockchain confirmation pending",
+    "external_timestamp_confirmed": false
+  },
+  "blinding_limit": "The solver received no publication measurement values or result plots, but the human/orchestrator had prior abstract-level and Section 4.1-summary exposure; this is not a fully blind benchmark.",
+  "measurement_comparison": {
+    "status": "NOT_OPENED",
+    "reason": "Await external timestamp proof upgrade/verification",
+    "scoring_rule": "After reveal, compare only a matching frozen experimental condition and measurement definition; otherwise label UNSCORED. No tuning of v1 after reveal."
+  }
+}
