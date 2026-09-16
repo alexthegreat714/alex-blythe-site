@@ -1,0 +1,45 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+const artifacts = '/demos/aero/heat-exchanger-hx02b/';
+---
+<Shell title="Aero - HX-02B candidate search" description="Multi-paper custody screen and selected external-truth candidate for Aero's next heat-exchanger benchmark." path="/software/aero/evidence/benchmarks/heat-exchanger-hx02b/">
+  <header>
+    <p class="eyebrow">AERO / HX-02B / CANDIDATE SEARCH</p>
+    <span class="status mixed">SELECTED / PRE-EXECUTION</span>
+    <h1>A replacement benchmark earned selection.</h1>
+    <p>Aero screened 13 credible sources instead of reopening the Kim HX-02 stop. Zhang et al.'s open sodium/supercritical-CO₂ PCHE study earned a bounded thermal-fluid selection because its geometry, operating conditions and measurement definitions are coherent in one source.</p>
+    <p class="metric">Program decision: <strong>HX02B_SELECTED</strong></p>
+    <div class="links">
+      <a class="primary" href={artifacts + 'README.md'}>Read the selection</a>
+      <a href={artifacts + 'HX02B_CANDIDATE_REGISTER.md'}>Inspect all candidates</a>
+      <a href={artifacts + 'HX02B_VISIBLE_INPUT_PACKET/VISIBLE_PRE_RUN_PACKET.md'}>Inspect visible packet</a>
+      <a href="https://doi.org/10.3389/fenrg.2022.835224">Open source DOI</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="scope-heading">
+    <h2 id="scope-heading">What HX-02B will test</h2>
+    <p>Hot/cold inlet and outlet temperatures, two-side heat-duty balance, overall U, and a bounded wall-temperature trend. Pressure-drop scoring, wall-material CHT truth and FEA are explicitly outside this revision.</p>
+  </section>
+
+  <section class="boundary" aria-labelledby="screen-heading">
+    <h2 id="screen-heading">Why this candidate survived</h2>
+    <div class="table-wrap"><table><thead><tr><th>Gate</th><th>Disposition</th></tr></thead><tbody>
+      <tr><th>Two-stream experiment</th><td><strong>PASS</strong> — sodium / supercritical CO₂ prototype</td></tr>
+      <tr><th>Geometry and operating point</th><td><strong>ADEQUATE</strong> — core/channel dimensions and matched ranges</td></tr>
+      <tr><th>Thermal truth</th><td><strong>STRONG</strong> — inlet/outlet measurements and heat-duty balance</td></tr>
+      <tr><th>Pressure-drop truth</th><td><strong>EXCLUDED</strong> — not reported as a selected observable</td></tr>
+      <tr><th>Wall material / FEA</th><td><strong>EXCLUDED</strong> — source definition is incomplete</td></tr>
+      <tr><th>Blind separation</th><td><strong>CONDITIONAL PASS</strong> — result-bearing material sealed</td></tr>
+    </tbody></table></div>
+    <div class="links">
+      <a href={artifacts + 'HX02B_SELECTION_REPORT.md'}>Read the selection report</a>
+      <a href={artifacts + 'SELECTION_RUBRIC.md'}>Read the rubric</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="status-heading">
+    <h2 id="status-heading">Stopped before solving</h2>
+    <p>The visible packet and local sealed reference are frozen for human review. Luna, first-principles prediction, CFD, FEA and experimental reveal have not run. This prevents the candidate search from turning into a tuned reproduction.</p>
+  </section>
+</Shell>
