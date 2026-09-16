@@ -1,15 +1,15 @@
 # HX-02B blind investigator handoff
 
 **Study ID:** `HX02B-ZHANG-2022`  
-**Status:** `BLOCKED_BEFORE_BLIND_PREDICTION_FREEZE`  
+**Status:** `BLOCKED_PENDING_INDEPENDENT_PROPERTY_RUNTIME`  
 **Investigator:** `gpt-5.6-luna`  
 **Fidelity selected by investigator:** `ANALYTICAL_ONLY`
 
 The required Luna response was captured verbatim under the private execution record and hash-locked before any downstream work. Luna preserved unresolved quantities as `UNKNOWN/NOT_ESTABLISHED`, selected an analytical-only path, and excluded CFD, CHT, FEA, CFD-to-FEA coupling, and pressure-drop scoring under the current packet.
 
-The run stopped honestly because the visible pre-run packet does not freeze an exact operating point, active heat-transfer area/outlet-plane convention, or independent sodium/supercritical-CO₂ property-source versions. Inventing those values would violate the blind handoff and its own stop criteria. No solver was dispatched, no experimental result was revealed, and no validation claim was made.
+The operating point, idealized channel-bundle measurement planes, and parametric active-area convention are now explicit in a new pre-result continuation stage. The run remains stopped because this environment does not expose NIST REFPROP or an equivalent supercritical-CO₂ property runtime with a recorded version/hash and validity check. Substituting guessed constant properties would violate the blind handoff. No solver was dispatched, no experimental result was revealed, and no validation claim was made.
 
-This is an input-completeness stop, not a solver failure. The next continuation requires only those missing visible inputs to be frozen in a new stage; this record remains immutable.
+This is a property-runtime stop, not a solver failure. The next continuation requires an independently sourced, versioned property runtime; the Luna response and prior blind record remain immutable.
 
 ## What is retained
 
