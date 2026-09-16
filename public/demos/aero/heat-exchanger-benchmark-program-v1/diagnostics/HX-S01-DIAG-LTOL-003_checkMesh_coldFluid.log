@@ -1,0 +1,80 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-c4cf895ad8fa
+Exec   : checkMesh -region coldFluid -latestTime
+Date   : Sep 16 2026
+Time   : 02:27:28
+Host   : "d1a43442a6f0"
+PID    : 31893
+I/O    : uncollated
+Case   : /d_runtime/cases/samarmad_publication_v1/diagnostics/HX-S01-DIAG-LTOL-003/coarse_netgen
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh coldFluid for time = 1100
+
+Time = 1100s
+
+Mesh stats
+    points:           14111
+    faces:            103233
+    internal faces:   80663
+    cells:            45974
+    faces per cell:   4
+    boundary patches: 3
+    point zones:      0
+    face zones:       2
+    cell zones:       3
+
+Overall number of cells of each type:
+    hexahedra:     0
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    45974
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Number of regions: 1 (OK).
+
+Checking patch topology for multiply connected surfaces...
+    Patch               Faces    Points   Surface topology                  
+    cold_outlet         39       28       ok (non-closed singly connected)  
+    cold_inlet          39       28       ok (non-closed singly connected)  
+    coldFluid_to_solidPlate22492    11261    ok (non-closed singly connected)  
+
+Checking geometry...
+    Overall domain bounding box (0 0.00044842632 -0.0028016324) (0.24 0.0045511816 4.8519116e-05)
+    Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
+    Mesh has 3 solution (non-empty) directions (1 1 1)
+    Boundary openness (-6.8608111e-18 1.9574674e-17 -1.1707962e-16) OK.
+    Max cell openness = 2.7176712e-16 OK.
+    Max aspect ratio = 7.5238241 OK.
+    Minimum face area = 1.6314058e-08. Maximum face area = 3.229912e-07.  Face area magnitudes OK.
+    Min volume = 1.5311604e-12. Max volume = 5.4368826e-11.  Total volume = 5.8053055e-07.  Cell volumes OK.
+    Mesh non-orthogonality Max: 68.735715 average: 20.245114
+    Non-orthogonality check OK.
+    Face pyramids OK.
+    Max skewness = 0.81473023 OK.
+    Coupled point location match (average 0) OK.
+
+Mesh OK.
+
+End
+
