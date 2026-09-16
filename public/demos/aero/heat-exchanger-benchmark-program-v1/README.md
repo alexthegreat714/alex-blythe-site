@@ -1,7 +1,8 @@
 # Aero Heat Exchanger Blind Benchmark Program — v1
 
-**Current program state (2026-09-16): the evidence release is complete, but
-validation is incomplete. HX-B01 has two preserved, hash-frozen plan-only STOPs
+**Current program state (2026-09-16): the executable synthetic evidence release
+is complete, but publication validation is incomplete. HX-B01 has two preserved,
+hash-frozen plan-only STOPs
 plus a separately identified Seo-channel analytical comparison. That scoped
 slice deliberately failed its revealed correlation screen by 30.86%; it did
 not run CFD/FEA and does not establish pointwise experimental validation. The
@@ -9,7 +10,9 @@ approved HX-S01 source-informed synthetic replacement remains a numerical FAIL;
 HX-B02 through HX-B04 remain source/scoreability gated. HX-B05 received a
 separate anonymized, result-withheld Luna feasibility packet after custodian
 disclosure and stopped before preregistration. HX-D01 remains open and must not
-begin until the preceding study dispositions are complete and frozen.
+begin until the preceding study dispositions are complete and frozen. A separate
+synthetic companion suite now exercises the remaining B02–B05/D01 capability
+intents without claiming source truth.
 HX-S01 is not blind and does not replace or pass HX-B01.**
 
 ### Latest HX-S01 diagnostic update — 16 September 2026
@@ -76,6 +79,12 @@ isolation, immutable storage, or trusted time. The existing
 | HX-B04 | PCHE structural and geometry sensitivity study | Candidate requires lawful full text and enough pre-result geometry/material/loading to reproduce. |
 | HX-B05 | High-temperature lattice-HX architecture/material trade | An anonymized, runtime-reference-withheld Luna plan-only review completed and froze a `STOP` before preregistration. The packet passed lexical review; custodian result exposure is disclosed. No selection, solver run, or score. See `HX-B05/custodian/LUNA_PREPLAN_REVIEW.md`. |
 | HX-D01 | New, generic synthetic design-transfer study | Explicitly blocked until HX-B01–B05 have finished and been frozen. |
+
+The separately identified `synthetic_companion_suite_v1/` adds executable,
+source-informed synthetic companions for the coupled contract, fidelity,
+sensitivity, architecture/material and design-transfer intents. It does not
+override the publication-order gate or convert any synthetic output into
+validation.
 
 The authoritative details, DOI links, licensing/access checks, and per-study
 gates are in `program_registry.json`; that custodian file is not part of the

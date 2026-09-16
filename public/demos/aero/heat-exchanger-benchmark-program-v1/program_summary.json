@@ -1,9 +1,9 @@
 {
   "schema": "aero.heat_exchanger_program.summary.v1",
   "program": "Aero heat-exchanger benchmark program",
-  "revision": "1.2",
+  "revision": "1.3",
   "report_date_utc": "2026-09-16",
-  "overall_status": "EVIDENCE_RELEASE_COMPLETE_VALIDATION_INCOMPLETE",
+  "overall_status": "SYNTHETIC_EVIDENCE_RELEASE_COMPLETE_PUBLICATION_VALIDATION_INCOMPLETE",
   "executed_synthetic_study": {
     "id": "HX-S01",
     "disposition": "NUMERICAL_FAIL_EXPERIMENT_NOT_EVALUATED",
@@ -51,6 +51,19 @@
     "pche_specific_structural_analysis": "NOT_EVALUATED",
     "design_readiness": "NOT_ESTABLISHED"
   },
+  "synthetic_companion_suite": {
+    "path": "synthetic_companion_suite_v1",
+    "status": "COMPLETE_SYNTHETIC_COMPANIONS_VALIDATION_INCOMPLETE",
+    "source_results_used": false,
+    "studies": [
+      {"id": "HX-S02-COUPLED-SURROGATE-01", "intent": "B02 coupled CFD-to-structural contract", "status": "COMPLETE_WITH_SYNTHETIC_COUPLING_CONTRACT"},
+      {"id": "HX-S03-FIDELITY-01", "intent": "B03 fidelity selection", "status": "COMPLETE_SYNTHETIC_FIDELITY_DECISION"},
+      {"id": "HX-S04-SENSITIVITY-01", "intent": "B04 structural/geometry sensitivity", "status": "COMPLETE_SYNTHETIC_SENSITIVITY_SWEEP", "cases": 81},
+      {"id": "HX-S05-ARCH-01", "intent": "B05 architecture/material selection", "status": "COMPLETE_SYNTHETIC_ARCHITECTURE_MATERIAL_TRADE"},
+      {"id": "HX-D01-TRANSFER-01", "intent": "D01 novel design transfer", "status": "COMPLETE_SYNTHETIC_DESIGN_TRANSFER_WITH_FIDELITY_ESCALATION"}
+    ],
+    "limitations": ["synthetic inputs and reduced-order equations", "no publication results or author rankings used", "no PCHE-specific OpenFOAM/CalculiX validation"]
+  },
   "candidate_studies": [
     {"id": "HX-B01", "disposition": "SCOPED_ANALYTICAL_COMPARISON_COMPLETE_POINTWISE_EXPERIMENT_NOT_ESTABLISHED", "solver_runs": 0, "score": "CORRELATION_COMPARISON_FAIL_NOT_VALIDATION", "frozen_plan_hashes_reverified": 2, "preserved_prior_stops": true, "scoped_run": {"run_id": "HX-B01-SC-ANALYTICAL-01", "source": "Seo et al. 2015 straight microchannel PCHE", "status": "COMPLETED_CORRELATION_COMPARISON_FAIL", "run_path": "HX-B01/runs/seo_channel_analytical_01", "matched_reynolds": 300, "analytical_fanning_factor": 0.05333333333333334, "revealed_correlation_fanning_factor": 0.07713468569618204, "relative_error_percent": -30.856873464938232, "hydraulic_diameter_reconciliation_percent": 0.1962606348815289, "pointwise_experiment": "NOT_ESTABLISHED", "cfd": "NOT_RUN_BY_SCOPE", "fea": "NOT_RUN_BY_SCOPE", "blindness": "IMPLEMENTING_AGENT_SOURCE_EXPOSURE_DISCLOSED"}},
     {"id": "HX-B02", "disposition": "SOURCE_AND_STRUCTURAL_TRUTH_GATE_OPEN", "solver_runs": 0, "score": "NOT_SCORED"},
@@ -66,7 +79,8 @@
     "external_timestamp_established": false,
     "b01_scoped_analytical_release_added": true,
     "b01_scoped_run_hash_manifest": "HX-B01/runs/seo_channel_analytical_01/SHA256SUMS.txt",
-    "public_report_published": true
+    "public_report_published": true,
+    "synthetic_companion_suite_added": true
   },
-  "scope_limit": "Evidence release complete for the preserved HX-S01 diagnostics and HX-B01 scoped analytical comparison; full pointwise experimental validation, CFD/FEA truth benchmarks, and the planned HX-B01-B05/HX-D01 sequence remain incomplete."
+  "scope_limit": "Executable synthetic evidence release complete for the preserved HX-S01 diagnostics, HX-B01 scoped analytical comparison and five companion intents; full pointwise experimental validation, source-specific CFD/FEA truth benchmarks, and the original publication-order sequence remain incomplete."
 }

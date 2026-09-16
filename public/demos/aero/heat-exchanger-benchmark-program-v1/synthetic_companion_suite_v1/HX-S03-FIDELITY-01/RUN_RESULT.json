@@ -1,0 +1,13 @@
+{
+  "gates": {
+    "fidelity_reasoning": "PASS",
+    "higher_fidelity_surrogate": "PASS",
+    "lower_fidelity_screen": "PASS",
+    "publication_validation": "NOT_ESTABLISHED"
+  },
+  "prediction_sha256": "3CFB75A389BCC9562AD643BAE5622E0CB14547C2113C3FC456AEA721C4673862",
+  "run_id": "HX-S03-FIDELITY-01",
+  "schema": "aero.hx.synthetic_companion.result.v1",
+  "started_utc": "2026-09-16T03:55:46.015569Z",
+  "status": "COMPLETE_SYNTHETIC_FIDELITY_DECISION"
+}

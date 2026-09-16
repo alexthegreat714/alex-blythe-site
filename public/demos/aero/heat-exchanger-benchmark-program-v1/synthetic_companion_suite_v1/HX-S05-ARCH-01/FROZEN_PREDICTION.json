@@ -1,0 +1,123 @@
+{
+  "criteria": [
+    "heat duty",
+    "pressure loss",
+    "structural margin",
+    "manufacturability"
+  ],
+  "frozen_ranking": [
+    {
+      "architecture": "straight",
+      "feasible": true,
+      "heat_duty_W": 1200.0,
+      "margin": 11.418301,
+      "material": "Inconel718",
+      "pressure_drop_Pa": 22000.0,
+      "stress_MPa": 61.2,
+      "trade_score": 3.164569
+    },
+    {
+      "architecture": "straight",
+      "feasible": true,
+      "heat_duty_W": 1200.0,
+      "margin": 0.764706,
+      "material": "Alloy800H",
+      "pressure_drop_Pa": 22000.0,
+      "stress_MPa": 85.0,
+      "trade_score": 1.03385
+    },
+    {
+      "architecture": "zigzag",
+      "feasible": false,
+      "heat_duty_W": 1620.0,
+      "margin": 7.564345,
+      "material": "Inconel718",
+      "pressure_drop_Pa": 31900.0,
+      "stress_MPa": 88.74,
+      "trade_score": 2.376479
+    },
+    {
+      "architecture": "offset_lattice",
+      "feasible": false,
+      "heat_duty_W": 2040.0,
+      "margin": 5.368359,
+      "material": "Inconel718",
+      "pressure_drop_Pa": 42900.0,
+      "stress_MPa": 119.34,
+      "trade_score": 1.963497
+    },
+    {
+      "architecture": "straight",
+      "feasible": false,
+      "heat_duty_W": 1140.0,
+      "margin": 1.0,
+      "material": "SS304L",
+      "pressure_drop_Pa": 22000.0,
+      "stress_MPa": 85.0,
+      "trade_score": 1.063409
+    },
+    {
+      "architecture": "zigzag",
+      "feasible": false,
+      "heat_duty_W": 1539.0,
+      "margin": 0.37931,
+      "material": "SS304L",
+      "pressure_drop_Pa": 31900.0,
+      "stress_MPa": 123.25,
+      "trade_score": 0.915847
+    },
+    {
+      "architecture": "zigzag",
+      "feasible": false,
+      "heat_duty_W": 1620.0,
+      "margin": 0.217039,
+      "material": "Alloy800H",
+      "pressure_drop_Pa": 31900.0,
+      "stress_MPa": 123.25,
+      "trade_score": 0.907017
+    },
+    {
+      "architecture": "offset_lattice",
+      "feasible": false,
+      "heat_duty_W": 2040.0,
+      "margin": -0.095023,
+      "material": "Alloy800H",
+      "pressure_drop_Pa": 42900.0,
+      "stress_MPa": 165.75,
+      "trade_score": 0.889825
+    },
+    {
+      "architecture": "offset_lattice",
+      "feasible": false,
+      "heat_duty_W": 1938.0,
+      "margin": 0.025641,
+      "material": "SS304L",
+      "pressure_drop_Pa": 42900.0,
+      "stress_MPa": 165.75,
+      "trade_score": 0.865203
+    }
+  ],
+  "limitations": [
+    "synthetic coefficients",
+    "no authors' ranking revealed",
+    "preliminary trade only"
+  ],
+  "requirements": {
+    "heat_duty_W_min": 1200.0,
+    "minimum_margin": 0.5,
+    "pressure_drop_Pa_max": 30000.0,
+    "service_temperature_K": 900.0
+  },
+  "schema": "aero.hx.synthetic_architecture_prediction.v1",
+  "selected": {
+    "architecture": "straight",
+    "feasible": true,
+    "heat_duty_W": 1200.0,
+    "margin": 11.418301,
+    "material": "Inconel718",
+    "pressure_drop_Pa": 22000.0,
+    "stress_MPa": 61.2,
+    "trade_score": 3.164569
+  },
+  "source_results_used": false
+}

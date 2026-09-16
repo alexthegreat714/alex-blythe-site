@@ -1,0 +1,85 @@
+{
+  "completed_utc": "2026-09-16T03:55:46.034252Z",
+  "global_limitations": [
+    "synthetic inputs and reduced-order equations",
+    "no publication result or author ranking used",
+    "no PCHE-specific OpenFOAM/CalculiX validation",
+    "not design release or employer-hardware evidence"
+  ],
+  "real_public_methodology_references": [
+    "https://doi.org/10.1115/PVP2021-60735",
+    "https://doi.org/10.1016/j.nucengdes.2023.112270",
+    "https://doi.org/10.1016/j.nucengdes.2020.110713",
+    "https://www.mdpi.com/1996-1944/14/12/3225",
+    "https://doi.org/10.2514/6.2024-4036"
+  ],
+  "revision": "1.0",
+  "schema": "aero.hx.synthetic_companion_suite.v1",
+  "source_results_used": false,
+  "started_utc": "2026-09-16T03:55:46.015569Z",
+  "status": "COMPLETE_SYNTHETIC_COMPANIONS_VALIDATION_INCOMPLETE",
+  "studies": [
+    {
+      "duty_W": 6222.660312047767,
+      "files": {
+        "input": "4CBA55F08B038E64683FAC287F66F5F931C8B33B0F4C80465E621D409A1373BF",
+        "prediction": "FC9FF81322DAFD2CEA61493C3AE2C1DEB9710EA665725DCE860CE68AFE601F68",
+        "report": "2B2556B8AF8B62F86F98B4EC308A46BE88A33447C8EA320ED99863919F251068",
+        "result": "9D9E72FF1C4FA88A355A544B146B9ECB089A63E01D757EE67B95DDCEE9739C3E"
+      },
+      "id": "HX-S02-COUPLED-SURROGATE-01",
+      "path": "heat_exchanger_blind_program_v1\\synthetic_companion_suite_v1\\HX-S02-COUPLED-SURROGATE-01",
+      "status": "COMPLETE_WITH_SYNTHETIC_COUPLING_CONTRACT"
+    },
+    {
+      "decision": "ESCALATE_TO_3D_FOR_MANIFOLD_MALDISTRIBUTION_AND_LOCAL_STRESS",
+      "files": {
+        "prediction": "3CFB75A389BCC9562AD643BAE5622E0CB14547C2113C3FC456AEA721C4673862",
+        "report": "F037CF71C53D14F9A8DBCBAC15FBE34124EF55ED56322B4A2190E872C486AFAF",
+        "result": "1C8119B9A5AC376D495AF1C84913A2B2DB4911061823E52A8BDDAC511CB697D8"
+      },
+      "id": "HX-S03-FIDELITY-01",
+      "status": "COMPLETE_SYNTHETIC_FIDELITY_DECISION"
+    },
+    {
+      "files": {
+        "prediction": "32F41F40C9107001005C17BA39C63F1289FF1B3ABC6280F974143357F456CDA7",
+        "report": "A9A48BF2AD8D6514327F29E39BE5B350FD20555710F0499CA4C1FA55C9FB025F",
+        "result": "69DAA31D5DCBB82031EE0D23C937D077C48A8272BA91F5CDD36031B79BEE818E",
+        "sweep": "3DB02DB2BB5FD4FFA4AB14652A492B90B46009B3FC4BCCCE3AF4B7E75EF0A373"
+      },
+      "id": "HX-S04-SENSITIVITY-01",
+      "rows": 81,
+      "status": "COMPLETE_SYNTHETIC_SENSITIVITY_SWEEP"
+    },
+    {
+      "files": {
+        "prediction": "3B38223C99A8FF65ED9B501EDFDD920D55BEB6454EF8B34DAE2BD7017A3B44AF",
+        "report": "42FB9A071E1D98911F68FFB9970C4754FF96A71402D12328184979E067E20BD6",
+        "result": "2C73ED7198D2D9B4A76A6B73EA9F96EAAA813D7466914AB867ACF7E513900DA1"
+      },
+      "id": "HX-S05-ARCH-01",
+      "selected": {
+        "architecture": "straight",
+        "feasible": true,
+        "heat_duty_W": 1200.0,
+        "margin": 11.418301,
+        "material": "Inconel718",
+        "pressure_drop_Pa": 22000.0,
+        "stress_MPa": 61.2,
+        "trade_score": 3.164569
+      },
+      "status": "COMPLETE_SYNTHETIC_ARCHITECTURE_MATERIAL_TRADE"
+    },
+    {
+      "files": {
+        "prediction": "F1D4425E9916B2811D552B83C3E69301F75F0A4D0761AE7F0F08976F5B40D72D",
+        "report": "0647DE9C53FE10E93E56D0E016E8DBE3B45D5A21107D24B37BAC9B809AB0C4C2",
+        "result": "90FC400034379B3EC485F08EFBCA1590352F2810B94FA75365946EF0134365C0"
+      },
+      "id": "HX-D01-TRANSFER-01",
+      "stage_a_duty_W": 19750.499999999996,
+      "status": "COMPLETE_SYNTHETIC_DESIGN_TRANSFER_WITH_FIDELITY_ESCALATION"
+    }
+  ]
+}

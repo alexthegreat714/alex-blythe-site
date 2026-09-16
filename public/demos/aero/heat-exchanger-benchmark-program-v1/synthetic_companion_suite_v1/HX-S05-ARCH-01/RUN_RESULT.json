@@ -1,0 +1,20 @@
+{
+  "candidate_count": 9,
+  "prediction_sha256": "3B38223C99A8FF65ED9B501EDFDD920D55BEB6454EF8B34DAE2BD7017A3B44AF",
+  "publication_validation": "NOT_ESTABLISHED",
+  "ranking_frozen": true,
+  "run_id": "HX-S05-ARCH-01",
+  "schema": "aero.hx.synthetic_companion.result.v1",
+  "selected": {
+    "architecture": "straight",
+    "feasible": true,
+    "heat_duty_W": 1200.0,
+    "margin": 11.418301,
+    "material": "Inconel718",
+    "pressure_drop_Pa": 22000.0,
+    "stress_MPa": 61.2,
+    "trade_score": 3.164569
+  },
+  "started_utc": "2026-09-16T03:55:46.015569Z",
+  "status": "COMPLETE_SYNTHETIC_ARCHITECTURE_MATERIAL_TRADE"
+}

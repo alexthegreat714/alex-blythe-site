@@ -1,0 +1,47 @@
+{
+  "decision": "ESCALATE_TO_3D_FOR_MANIFOLD_MALDISTRIBUTION_AND_LOCAL_STRESS",
+  "expected_escalation": {
+    "design_ranking": "2D_SCREEN_THEN_3D",
+    "local_stress": "3D",
+    "pressure_loss": "3D",
+    "temperature_field": "3D"
+  },
+  "limitations": [
+    "surrogate correction, not CFD",
+    "no publication comparison"
+  ],
+  "low_to_high_percent": {
+    "dp_Pa": 12.216216216216216,
+    "local_stress_MPa": 23.863636363636363,
+    "q_W": 3.1666666666666665,
+    "wall_delta_T_K": 15.573770491803279
+  },
+  "runs": [
+    {
+      "cost_seconds": 0.02,
+      "dp_Pa": 18500.0,
+      "local_stress_MPa": 88.0,
+      "model": "1D_P_NTU",
+      "q_W": 1200.0,
+      "wall_delta_T_K": 122.0
+    },
+    {
+      "cost_seconds": 1.8,
+      "dp_Pa": 19040.0,
+      "local_stress_MPa": 91.0,
+      "model": "2D_periodic_channel",
+      "q_W": 1216.0,
+      "wall_delta_T_K": 126.0
+    },
+    {
+      "cost_seconds": 18.0,
+      "dp_Pa": 20760.0,
+      "local_stress_MPa": 109.0,
+      "model": "3D_manifold_surrogate",
+      "q_W": 1238.0,
+      "wall_delta_T_K": 141.0
+    }
+  ],
+  "schema": "aero.hx.synthetic_fidelity_prediction.v1",
+  "source_results_used": false
+}

@@ -1,0 +1,12 @@
+{
+  "csv_sha256": "3DB02DB2BB5FD4FFA4AB14652A492B90B46009B3FC4BCCCE3AF4B7E75EF0A373",
+  "prediction_sha256": "32F41F40C9107001005C17BA39C63F1289FF1B3ABC6280F974143357F456CDA7",
+  "publication_validation": "NOT_ESTABLISHED",
+  "rows": 81,
+  "run_id": "HX-S04-SENSITIVITY-01",
+  "schema": "aero.hx.synthetic_companion.result.v1",
+  "started_utc": "2026-09-16T03:55:46.015569Z",
+  "status": "COMPLETE_SYNTHETIC_SENSITIVITY_SWEEP",
+  "top_screened_driver": "channel_diameter",
+  "trend_gate": "PASS_DETERMINISTIC_SELF_CHECK"
+}

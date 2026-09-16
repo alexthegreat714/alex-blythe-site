@@ -1,0 +1,20 @@
+{
+  "prediction_sha256": "F1D4425E9916B2811D552B83C3E69301F75F0A4D0761AE7F0F08976F5B40D72D",
+  "publication_validation": "NOT_APPLICABLE_SYNTHETIC_TRANSFER",
+  "run_id": "HX-D01-TRANSFER-01",
+  "schema": "aero.hx.synthetic_companion.result.v1",
+  "selected_design": {
+    "architecture": "zigzag PCHE surrogate",
+    "material": "Alloy800H family",
+    "predicted_duty_W": 21330.54,
+    "predicted_mass_kg": 9.4,
+    "predicted_pressure_drop_Pa": 28700.0,
+    "predicted_wall_max_K": 386.0,
+    "stage_a_decision": "CFD_NOT_JUSTIFIED_FOR_FIRST_SCREEN",
+    "stage_b_decision": "CFD_AND_FEA_JUSTIFIED_AFTER_REQUIREMENT_CHANGE"
+  },
+  "stage_a": "CFD_NOT_CURRENTLY_JUSTIFIED",
+  "stage_b": "ESCALATED_TO_CFD_FEA_TOLERANCE_PLAN",
+  "started_utc": "2026-09-16T03:55:46.015569Z",
+  "status": "COMPLETE_SYNTHETIC_DESIGN_TRANSFER_WITH_FIDELITY_ESCALATION"
+}

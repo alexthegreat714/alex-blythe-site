@@ -1,0 +1,31 @@
+{
+  "geometry": {
+    "channel_height_m": 0.001,
+    "channel_width_m": 0.002,
+    "flow_length_m": 0.12,
+    "kind": "parametric_pche_unit_cell_surrogate",
+    "material": "Alloy 800H family (methodology reference only)",
+    "plate_thickness_m": 0.0015,
+    "source": "synthetic; not author CAD"
+  },
+  "operating": {
+    "cold_cp_J_kg_K": 1000.0,
+    "cold_inlet_K": 300.0,
+    "cold_mdot_kg_s": 0.025,
+    "hot_cp_J_kg_K": 1100.0,
+    "hot_inlet_K": 650.0,
+    "hot_mdot_kg_s": 0.02,
+    "ua_W_K": 75.0
+  },
+  "schema": "aero.hx.synthetic_coupled_input.v1",
+  "source_basis": [
+    "Che et al. 2021 methodology family",
+    "Samarmad et al. 2023 PCHE context"
+  ],
+  "source_results_used": false,
+  "study_id": "HX-S02-COUPLED-SURROGATE-01",
+  "unknowns": [
+    "publication-specific turbulence/roughness",
+    "independent structural truth"
+  ]
+}

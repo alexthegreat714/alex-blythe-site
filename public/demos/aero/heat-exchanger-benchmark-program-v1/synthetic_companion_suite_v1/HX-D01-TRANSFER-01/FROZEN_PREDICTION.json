@@ -1,0 +1,67 @@
+{
+  "gates": {
+    "analytical": "PASS_SCREEN",
+    "cfd": "NOT_RUN",
+    "design_readiness": "NOT_ESTABLISHED",
+    "fea": "NOT_RUN",
+    "geometry": "PARAMETRIC_SURROGATE",
+    "mesh": "NOT_RUN",
+    "requirements": "PASS_SYNTHETIC",
+    "tolerance": "NOT_RUN"
+  },
+  "limitations": [
+    "new generic requirement, no predetermined answer",
+    "no solver artifacts",
+    "no employer hardware claim"
+  ],
+  "schema": "aero.hx.synthetic_transfer_prediction.v1",
+  "selected_design": {
+    "architecture": "zigzag PCHE surrogate",
+    "material": "Alloy800H family",
+    "predicted_duty_W": 21330.54,
+    "predicted_mass_kg": 9.4,
+    "predicted_pressure_drop_Pa": 28700.0,
+    "predicted_wall_max_K": 386.0,
+    "stage_a_decision": "CFD_NOT_JUSTIFIED_FOR_FIRST_SCREEN",
+    "stage_b_decision": "CFD_AND_FEA_JUSTIFIED_AFTER_REQUIREMENT_CHANGE"
+  },
+  "source_results_used": false,
+  "stage_a": {
+    "analytical_duty_W": 19750.499999999996,
+    "disposition": "PRELIMINARY_SCREEN_ONLY",
+    "inputs": {
+      "cold_fluid": "water",
+      "cold_inlet_K": 295.0,
+      "cold_mdot_kg_s": 0.035,
+      "envelope_m": [
+        0.18,
+        0.08,
+        0.06
+      ],
+      "hot_fluid": "water",
+      "hot_inlet_K": 520.0,
+      "hot_mdot_kg_s": 0.03,
+      "mass_limit_kg": 12.0,
+      "missing_at_stage_a": [
+        "manufacturing route",
+        "allowable temperature gradient",
+        "manifold maldistribution"
+      ],
+      "pressure_drop_limit_Pa": 45000.0,
+      "required_duty_W": 4000.0
+    }
+  },
+  "stage_b": {
+    "change": "local wall-temperature limit 390 K and pressure-drop limit 30000 Pa",
+    "required_fidelity": [
+      "3D CFD",
+      "thermal mapping",
+      "structural screen",
+      "tolerance analysis"
+    ],
+    "why_escalate": [
+      "broad stage leaves manifold maldistribution unknown",
+      "local wall limit is decision-sensitive"
+    ]
+  }
+}

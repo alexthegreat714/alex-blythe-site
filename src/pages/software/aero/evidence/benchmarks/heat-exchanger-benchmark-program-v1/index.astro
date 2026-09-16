@@ -39,6 +39,24 @@ const diagnostic = hx.post_baseline_stationarity_diagnostics['LTOL-003'];
     </div>
   </section>
 
+  <section aria-labelledby="synthetic-suite-heading">
+    <h2 id="synthetic-suite-heading">Synthetic companions for the remaining paths</h2>
+    <p>The publication candidates B02–B05 remain source/independent-truth gated. Rather than invent publication inputs, Aero runs a separate synthetic suite that exercises the same capability intents with every assumption disclosed.</p>
+    <div class="table-wrap"><table><thead><tr><th>Companion</th><th>Capability exercised</th><th>Status</th></tr></thead><tbody>
+      <tr><th>HX-S02</th><td>Coupled transfer and structural-contract handling</td><td><strong>COMPLETE</strong> · PCHE-specific CFD/FEA not established</td></tr>
+      <tr><th>HX-S03</th><td>1-D → 2-D → 3-D fidelity selection</td><td><strong>COMPLETE</strong> · synthetic surrogate</td></tr>
+      <tr><th>HX-S04</th><td>81-case geometry/thermal sensitivity sweep</td><td><strong>COMPLETE</strong> · synthetic equations</td></tr>
+      <tr><th>HX-S05</th><td>Architecture/material trade with retained alternatives</td><td><strong>COMPLETE</strong> · preliminary only</td></tr>
+      <tr><th>HX-D01</th><td>New design-transfer requirement with controlled escalation</td><td><strong>COMPLETE</strong> · no solver claim</td></tr>
+    </tbody></table></div>
+    <p class="subtle">These companions use public papers only for methodology context. They do not use publication results or author rankings and do not establish validation, qualification, or design readiness.</p>
+    <div class="links">
+      <a href={artifacts + 'synthetic_companion_suite_v1/SYNTHETIC_COMPANION_REPORT.md'}>Read the synthetic companion report</a>
+      <a href={artifacts + 'synthetic_companion_suite_v1/synthetic_companion_summary.json'}>Inspect machine summary</a>
+      <a href={artifacts + 'synthetic_companion_suite_v1/SHA256SUMS.txt'}>Verify companion hashes</a>
+    </div>
+  </section>
+
   <section class="boundary" aria-labelledby="boundary-heading">
     <h2 id="boundary-heading">Numerical failure is not the same as a failed run</h2>
     <p>All three OpenFOAM Foundation 10 CHT grids reached the original 250-iteration horizon. Mass and energy balances met their stated bounds, but every grid missed the predeclared residual limit and the medium-to-fine pressure-drop changes exceeded 5%. A solver process ending normally does not establish convergence.</p>

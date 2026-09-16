@@ -1,0 +1,41 @@
+{
+  "baseline": {
+    "channel_diameter_mm": 1.0,
+    "combined_stress_MPa": 1000.000243,
+    "delta_T_K": 150.0,
+    "fillet_radius_mm": 0.2,
+    "margin_to_240MPa": -0.76,
+    "plate_thickness_mm": 1.2,
+    "pressure_drop_kPa": 22.0,
+    "pressure_stress_MPa": 1.0,
+    "thermal_stress_MPa": 0.000243
+  },
+  "frozen_directional_trends": {
+    "delta_T": {
+      "thermal_stress": "increase_with_increase"
+    },
+    "diameter": {
+      "pressure_drop": "decrease_with_increase",
+      "stress": "increase_with_increase"
+    },
+    "fillet_radius": {
+      "notch_stress": "decrease_with_increase"
+    },
+    "plate_thickness": {
+      "stress": "decrease_with_increase"
+    }
+  },
+  "limitations": [
+    "thin-wall and laminar surrogate equations",
+    "no publication trend reveal",
+    "not a manufacturing tolerance result"
+  ],
+  "rows": 81,
+  "schema": "aero.hx.synthetic_sensitivity_prediction.v1",
+  "sensitivity_screen": {
+    "channel_diameter": 23.596924071245233,
+    "delta_T": 8.000000002539309e-05,
+    "plate_thickness": 308.5714280000001
+  },
+  "source_results_used": false
+}

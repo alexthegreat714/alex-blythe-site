@@ -1,0 +1,24 @@
+{
+  "analytical_prediction": {
+    "cold_outlet_K": 548.9064124819107,
+    "effectiveness": 0.8081377028633463,
+    "heat_duty_W": 6222.660312047767,
+    "hot_outlet_K": 367.1518039978288
+  },
+  "capability_gates": {
+    "design_readiness": "NOT_ESTABLISHED",
+    "experimental_validation": "NOT_ESTABLISHED",
+    "field_transfer_contract": "PASS_SYNTHETIC",
+    "first_principles": "PASS",
+    "generic_calculix_reference": "PASS_PRIOR_RUN",
+    "pcHE_specific_cfd": "NOT_RUN",
+    "pcHE_specific_fea": "NOT_RUN"
+  },
+  "input_sha256": "4CBA55F08B038E64683FAC287F66F5F931C8B33B0F4C80465E621D409A1373BF",
+  "prediction_sha256": "FC9FF81322DAFD2CEA61493C3AE2C1DEB9710EA665725DCE860CE68AFE601F68",
+  "prior_generic_evidence": "Aero/reports/pche_coupling_shakedown_20260914_v2/shakedown.json",
+  "run_id": "HX-S02-COUPLED-SURROGATE-01",
+  "schema": "aero.hx.synthetic_companion.result.v1",
+  "started_utc": "2026-09-16T03:55:46.015569Z",
+  "status": "COMPLETE_WITH_SYNTHETIC_COUPLING_CONTRACT"
+}

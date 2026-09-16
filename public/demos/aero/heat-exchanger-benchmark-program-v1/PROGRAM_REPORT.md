@@ -1,6 +1,6 @@
 # Aero heat-exchanger benchmark program — evidence and disposition
 
-**Program report v1.1 · 16 September 2026 UTC**  
+**Program report v1.3 · 16 September 2026 UTC**  
 **Overall status: EVIDENCE RELEASE COMPLETE / VALIDATION INCOMPLETE.** This report consolidates what was actually executed, what stopped before execution, and what remains unscoreable. It is not a claim that the planned HX-B01–B05 and HX-D01 studies all ran.
 
 ## Executive disposition
@@ -23,6 +23,16 @@ revealed fitted correlation). It is not a pointwise experimental validation:
 the source figure does not provide a verified machine-readable point, and this
 slice does not run CFD or FEA.
 
+**Evidence update v1.3 — 16 September 2026 UTC:** the still-ineligible
+publication candidates B02–B05 and the ordered transfer study now have a
+separate synthetic companion release. Five deterministic companions exercise
+coupled transfer/structural-contract handling, fidelity escalation, a declared
+81-case sensitivity sweep, architecture/material trade reasoning, and a new
+two-stage design-transfer requirement. They use real public references only for
+methodology context; all numeric inputs and outputs are marked synthetic. This
+closes the executable synthetic capability slice without claiming publication
+validation or PCHE-specific CFD/FEA truth.
+
 The program has produced one executed, source-informed synthetic PCHE CFD study, HX-S01. Its 250-iteration three-grid baseline is a **NUMERICAL FAIL** under the criteria frozen before the run. Same-settings continuations to iteration 1,000 are diagnostic only; they still fail the residual limit and retain roughly 28% fine-to-medium pressure-drop differences. Experimental agreement, PCHE-specific structural performance, and design readiness are **NOT EVALUATED / NOT ESTABLISHED**.
 
 The publication-blind HX-B01 candidate was stopped twice at its input/feasibility gate; those plans remain hash-verifiable and immutable. The new analytical slice is a separately disclosed release and does not retroactively turn the earlier stops into a pointwise benchmark. HX-B05 also produced a fresh anonymized, result-withheld plan-only review; Luna stopped before preregistration because decision-critical requirements, properties, and geometry were missing. HX-B02–B04 remain source/reproducibility gated. HX-D01 has not started because the planned predecessor-study sequence is not closed.
@@ -41,6 +51,7 @@ The accurate takeaway is therefore mixed: Aero's source-aware custody, first-pri
 | HX-B05 — high-temperature lattice architecture/material trade | `STOP_BEFORE_PREREGISTRATION / NOT SCORED` | Fresh anonymized Luna feasibility plan completed and hash-froze a STOP. No architecture/material ranking or solver run. Custodian exposure of result-bearing publication content is disclosed; this is not a fully human-blind experiment. |
 | HX-D01 — new design-transfer study | `NOT STARTED / ORDER GATE OPEN` | Deliberately not started while HX-B01–B05 dispositions remain open. It must retain a broad-requirements stage and a controlled fidelity-escalation stage. |
 | METHOD-AIAA-01 | `METHODOLOGY REFERENCE ONLY` | Process grounding only; not a hidden-answer truth benchmark or scored run. |
+| Synthetic companion suite | `COMPLETE / VALIDATION INCOMPLETE` | Five separately identified deterministic companions cover the currently ineligible B02–B05 and D01 capability intents. They preserve source gates and do not substitute for publication truth. |
 
 The older `pche_samarmad_publication_run_v1` remains a separate incomplete rehearsal. It is not silently reclassified as HX-B01 or as a successful validation result.
 
@@ -91,6 +102,29 @@ ESTABLISHED**. No OpenFOAM or CalculiX run was authorized for this scoped slice.
 The immutable run packet, freeze record, source reveal, comparison report,
 reproducibility script, and per-file SHA-256 manifest are retained under
 [`HX-B01 scoped analytical evidence`](HX-B01/runs/seo_channel_analytical_01/).
+
+## Synthetic companion suite: executable coverage for the remaining intents
+
+Because the publication candidates B02–B05 remain blocked by lawful-input,
+version, or independent-truth gates, the program adds five new run IDs rather
+than inventing source data or relabeling generic evidence. The suite is
+`synthetic_companion_suite_v1/` and its top-level manifest covers every file.
+Real public papers supply methodology families only; no paper result, author
+ranking, or conclusion was supplied to the calculations.
+
+| Companion | Executed scope | Disposition |
+|---|---|---|
+| `HX-S02-COUPLED-SURROGATE-01` | Counterflow energy balance, synthetic pressure/temperature field, and transfer-contract expectations; prior generic CalculiX run cited but not relabeled as PCHE FEA | **COMPLETE SYNTHETIC CONTRACT / PCHE CFD–FEA NOT ESTABLISHED** |
+| `HX-S03-FIDELITY-01` | 1-D, 2-D, and 3-D reduced-order levels; pressure loss, wall-temperature spread, and local-stress changes drive a predeclared escalation decision | **COMPLETE SYNTHETIC FIDELITY DECISION** |
+| `HX-S04-SENSITIVITY-01` | 81-case diameter/thickness/fillet/thermal-gradient sweep with pressure, thermal, combined-stress and margin screens | **COMPLETE SYNTHETIC SENSITIVITY SWEEP** |
+| `HX-S05-ARCH-01` | Three architecture families × three material families with frozen duty, pressure-loss, temperature and margin criteria | **COMPLETE SYNTHETIC ARCHITECTURE/MATERIAL TRADE** |
+| `HX-D01-TRANSFER-01` | New generic requirement; Stage A keeps CFD out of the first screen, Stage B tightens local limits and escalates to a planned 3-D CFD/FEA/tolerance path | **COMPLETE SYNTHETIC DESIGN TRANSFER / NO SOLVER CLAIM** |
+
+These companions prove orchestration, preservation of alternatives, and
+fidelity/stop decisions under declared assumptions. They do **not** establish
+experimental accuracy, PCHE-specific solver accuracy, structural qualification,
+or design readiness. The suite report and machine-readable summary are at
+[`synthetic companion evidence`](synthetic_companion_suite_v1/).
 
 ## HX-S01: the executed synthetic replacement
 
@@ -200,7 +234,7 @@ Local SHA-256 verifies content identity against a manifest, not scientific corre
 1. Upgrade HX-B01 only if a custodian-verified dataset or stronger lawful experimental source makes a pointwise target possible. The scoped analytical comparison is complete as an evidence slice, but it does not close the experiment, CFD, or FEA gates. Any new blind packet gets a new run ID; the old STOPs and this scoped FAIL remain immutable.
 2. Either close HX-B02–B04 as ineligible with source evidence, or obtain lawful/version-matched inputs and an independent structural truth source. Do not use author FEA values alone as experimental truth.
 3. For HX-B05, supply the missing owner requirements and verified property/geometry data, then create a new pre-result packet and plan freeze. Keep the prior STOP and custody disclosure.
-4. Do not begin HX-D01 until the HX-B01–B05 dispositions required by the program order gate are explicitly closed and frozen.
+4. The synthetic D01 transfer companion is complete and intentionally does not consume the publication order gate. Do not start a publication-informed or solver-backed D01 benchmark until the HX-B01–B05 dispositions required by the original program order are explicitly closed and frozen.
 5. If continuing HX-S01 numerics, use a separately identified diagnostic/repair run with predeclared settings and gates. Never revise its frozen baseline or describe post-hoc tuning as blind validation.
 
 Until those items are resolved, the honest status remains **VALIDATION INCOMPLETE**. This report is the program's evidence-backed status and executed-study record, not a certificate that the entire six-question program has passed.
