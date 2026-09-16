@@ -1,0 +1,55 @@
+{
+  "schema": "aero.hx_b01.seo_channel_analytical_prediction.v1",
+  "run_id": "HX-B01-SC-ANALYTICAL-01",
+  "prediction_status": "FROZEN_PRE_REVEAL",
+  "generated_utc": "2026-09-16T03:20:00Z",
+  "source_results_used": false,
+  "inputs": {
+    "Re": 300,
+    "rho_kg_m3": 995.65,
+    "mu_Pa_s": 0.00079722,
+    "hydraulic_diameter_source_m": 0.0006685,
+    "hydraulic_diameter_reconstructed_from_Ac_Lf_As_m": 0.0006671890002688482,
+    "straight_flow_length_m": 0.137,
+    "hot_free_flow_area_m2": 0.0000317,
+    "hot_plates": 3,
+    "channels_per_plate": 22
+  },
+  "geometry_reconciliation": {
+    "relative_difference_percent": 0.1962606348815289,
+    "gate": "<= 1% rounding/reconciliation difference",
+    "pass": true,
+    "decision": "Use the source-reported Dh=0.6685 mm for the frozen screen."
+  },
+  "method": {
+    "fanning_friction_relation": "f = 16/Re for fully developed laminar circular-duct screening",
+    "velocity_relation": "V = Re*mu/(rho*Dh)",
+    "mass_flux_relation": "G = rho*V",
+    "pressure_drop_relation": "DeltaP_channel = 4*f*L*G^2/(2*Dh*rho)",
+    "definition_boundary": "Fanning f and channel-only pressure drop; no port/header loss"
+  },
+  "predictions": {
+    "velocity_m_s": 0.3593282236216697,
+    "mass_flux_kg_m2_s": 357.76514584891544,
+    "fanning_friction_factor": 0.05333333333333334,
+    "channel_pressure_drop_Pa": 2810.2000559955254,
+    "total_hot_mass_flow_kg_s": 0.011341155123410619,
+    "per_hot_channel_mass_flow_kg_s": 0.00017183568368803968
+  },
+  "predicted_trends": [
+    "At fixed properties and geometry, channel pressure drop increases with Re in this laminar screen.",
+    "The source-defined fanning factor decreases approximately as 1/Re in the screen.",
+    "This screen does not predict total exchanger pressure drop, heat duty, UA, or outlet temperatures."
+  ],
+  "limitations": [
+    "The source describes a half-moon etched profile but does not provide profile coordinates in the visible packet.",
+    "The chosen laminar circular-duct relation is a first-principles screen and is not a validated half-moon correlation.",
+    "The source total pressure drop includes ports; the frozen prediction is channel-only.",
+    "No CFD, FEA, calibration, or publication result was used before this freeze."
+  ],
+  "withheld_at_prediction_time": [
+    "publication fitted friction-factor correlation",
+    "experimental point values",
+    "source agreement/error statements"
+  ]
+}

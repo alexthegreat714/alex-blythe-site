@@ -1,7 +1,7 @@
 # Aero heat-exchanger benchmark program — evidence and disposition
 
 **Program report v1.1 · 16 September 2026 UTC**  
-**Overall status: ACTIVE / NOT COMPLETE.** This report consolidates what was actually executed, what stopped before execution, and what remains unscoreable. It is not a claim that the planned HX-B01–B05 and HX-D01 studies all ran.
+**Overall status: EVIDENCE RELEASE COMPLETE / VALIDATION INCOMPLETE.** This report consolidates what was actually executed, what stopped before execution, and what remains unscoreable. It is not a claim that the planned HX-B01–B05 and HX-D01 studies all ran.
 
 ## Executive disposition
 
@@ -13,9 +13,19 @@ run. The original 250-iteration three-grid numerical FAIL remains unchanged.
 LTOL-002 is documented as a normal solver end with its stationarity window
 unevaluable because output purging removed two required checkpoints.
 
+**Evidence update v1.2 — 16 September 2026 UTC:** HX-B01 now has a separately
+identified, source-grounded analytical slice (`HX-B01-SC-ANALYTICAL-01`). It
+uses only the Seo et al. straight-microchannel geometry and operating inputs,
+freezes a first-principles channel-friction prediction before revealing the
+source correlation, and preserves the two earlier Luna feasibility STOPs.
+The comparison is a deliberate **FAIL** (30.86% underprediction against the
+revealed fitted correlation). It is not a pointwise experimental validation:
+the source figure does not provide a verified machine-readable point, and this
+slice does not run CFD or FEA.
+
 The program has produced one executed, source-informed synthetic PCHE CFD study, HX-S01. Its 250-iteration three-grid baseline is a **NUMERICAL FAIL** under the criteria frozen before the run. Same-settings continuations to iteration 1,000 are diagnostic only; they still fail the residual limit and retain roughly 28% fine-to-medium pressure-drop differences. Experimental agreement, PCHE-specific structural performance, and design readiness are **NOT EVALUATED / NOT ESTABLISHED**.
 
-The publication-blind HX-B01 candidate was stopped twice at its input/feasibility gate. Both frozen Luna plans are still hash-verifiable, explicitly withhold publication results from Luna, and authorize no solver run. HX-B05 also produced a fresh anonymized, result-withheld plan-only review; Luna stopped before preregistration because decision-critical requirements, properties, and geometry were missing. HX-B02–B04 remain source/reproducibility gated. HX-D01 has not started because the planned predecessor-study sequence is not closed.
+The publication-blind HX-B01 candidate was stopped twice at its input/feasibility gate; those plans remain hash-verifiable and immutable. The new analytical slice is a separately disclosed release and does not retroactively turn the earlier stops into a pointwise benchmark. HX-B05 also produced a fresh anonymized, result-withheld plan-only review; Luna stopped before preregistration because decision-critical requirements, properties, and geometry were missing. HX-B02–B04 remain source/reproducibility gated. HX-D01 has not started because the planned predecessor-study sequence is not closed.
 
 The accurate takeaway is therefore mixed: Aero's source-aware custody, first-principles, CHT, numerical-gate, and evidence-preservation path has been exercised on a difficult synthetic reconstruction, and the gates rejected it. This does **not** demonstrate a validated heat exchanger or a fully autonomous model-piloted workflow.
 
@@ -23,7 +33,7 @@ The accurate takeaway is therefore mixed: Aero's source-aware custody, first-pri
 
 | Study | Current disposition | What the evidence supports |
 |---|---|---|
-| HX-B01 — experimental straight-channel PCHE | `STOP_BEFORE_PREREGISTRATION / NOT SCORED` | Two plan-only Luna attempts; no target prediction or solver run. Geometry/flow/measurement correspondence and a defensible pointwise comparison remain unresolved. |
+| HX-B01 — experimental straight-channel PCHE | `SCOPED ANALYTICAL COMPARISON COMPLETE / POINTWISE EXPERIMENT NOT ESTABLISHED` | Two plan-only Luna STOPs are preserved. A new Seo-channel analytical slice froze f and channel ΔP before revealing the fitted correlation; it failed by 30.86% and ran no CFD/FEA. |
 | HX-S01 — source-informed synthetic PCHE | `NUMERICAL FAIL / EXPERIMENT NOT SCORED` | First-principles screen, reconstructed periodic geometry, three-grid OpenFOAM CHT, balances, and retained 1,000-iteration diagnostics. The numerical gates fail; no experimental truth or structural result is claimed. |
 | HX-B02 — laboratory PCHE CFD-to-FEA candidate | `SOURCE_AND_STRUCTURAL_TRUTH_GATE_OPEN` | No eligible run. Lawful full-text/input access and an independent structural truth target were not established. Author FEA output alone would not score physical accuracy. |
 | HX-B03 — 3D zigzag PCHE fidelity candidate | `ACCESS_AND_VERSION_GATE_OPEN` | Publisher record identifies a 3D CFD→FEA study and reports 2D/3D differences, but a lawful, version-matched full methods/input source and independent structural target were not established. No run. |
@@ -44,6 +54,43 @@ The run guard reverified both frozen-plan hashes during this report pass:
 - Scoped thermal plan: `72aea54a3f3d3cdda9b53a2d243873ecb8dfec5e2a17cecb48a3487bff961fca`
 
 The STOP is not a CFD failure. The cases were never submitted. The missing items include verified channel/profile geometry, configuration-specific flow and area mapping, pressure-tap/port correspondence, a target-point procedure, and an uncertainty-aware extraction route for figure-only results. No results were revealed to those Luna invocations. However, local hashes are not a trusted timestamp or immutable archive, and CLI sandboxing is not proof of system-wide isolation.
+
+## HX-B01: scoped Seo analytical comparison
+
+To exercise a valid part of HX-B01 without overwriting the earlier STOPs, the
+program added run `HX-B01-SC-ANALYTICAL-01`. This is a source-grounded,
+analytical-only comparison against Seo et al. (2015), whose open-access paper
+defines a straight PCHE microchannel geometry and a fitted friction-factor
+correlation. The implementing agent had access to the public article during
+construction; that exposure is disclosed, so this is not claimed as a fully
+human-custodian blind experiment.
+
+The visible packet contained the geometry envelope, channel dimensions,
+hydraulic-area definitions, water-property reference, and a single matched
+operating point (`Re = 300`). It excluded the fitted correlation, experimental
+points, result figures, reported errors, and conclusions until the prediction
+was frozen. The deterministic script reads only that packet and reproduces the
+frozen values; it does not need the publication to run.
+
+| Quantity | Frozen first-principles prediction | Revealed source-correlation comparison |
+|---|---:|---:|
+| Hydraulic diameter reconciliation | 0.1963% difference from source value | **PASS** (predeclared ≤1% screen) |
+| Fanning friction factor at Re 300 | 0.0533333 | 0.0771347 |
+| Channel pressure drop | 2,810.20 Pa | 4,064.32 Pa (same channel-only definition) |
+| Relative error | — | **−30.86%** (underprediction) |
+
+The source reports its fitted correlation as valid over `Re = 100–850` and an
+approximately ±8% experiment/correlation envelope. The frozen analytical
+screen therefore **FAILS** that disclosed correlation comparison. This is a
+useful negative result, not a validation success: the article does not provide
+a verified machine-readable point and its reported apparatus pressure drop
+includes inlet/outlet-port effects that are not represented in this channel-only
+comparison. Pointwise experimental validation is consequently **NOT
+ESTABLISHED**. No OpenFOAM or CalculiX run was authorized for this scoped slice.
+
+The immutable run packet, freeze record, source reveal, comparison report,
+reproducibility script, and per-file SHA-256 manifest are retained under
+[`HX-B01 scoped analytical evidence`](HX-B01/runs/seo_channel_analytical_01/).
 
 ## HX-S01: the executed synthetic replacement
 
@@ -148,15 +195,15 @@ The complete local HX-S01 report and evidence manifest are retained under `HX-S0
 
 Local SHA-256 verifies content identity against a manifest, not scientific correctness, trusted time, or write-once storage. No external timestamp is established for the blind plans. Solver success or a normal process end is not a physical validation. None of the studies establish design release, qualification, Blue Origin/other employer hardware applicability, or autonomous local-model competence.
 
-## Work still required before program closure
+## Remaining validation work before full program closure
 
-1. Resolve HX-B01 with a custodian-verified dataset or replace it with a stronger lawful experimental source whose geometry, operating point, measurement definitions, and uncertainty can be matched. Any new blind packet gets a new run ID; the old STOPs remain immutable.
+1. Upgrade HX-B01 only if a custodian-verified dataset or stronger lawful experimental source makes a pointwise target possible. The scoped analytical comparison is complete as an evidence slice, but it does not close the experiment, CFD, or FEA gates. Any new blind packet gets a new run ID; the old STOPs and this scoped FAIL remain immutable.
 2. Either close HX-B02–B04 as ineligible with source evidence, or obtain lawful/version-matched inputs and an independent structural truth source. Do not use author FEA values alone as experimental truth.
 3. For HX-B05, supply the missing owner requirements and verified property/geometry data, then create a new pre-result packet and plan freeze. Keep the prior STOP and custody disclosure.
 4. Do not begin HX-D01 until the HX-B01–B05 dispositions required by the program order gate are explicitly closed and frozen.
 5. If continuing HX-S01 numerics, use a separately identified diagnostic/repair run with predeclared settings and gates. Never revise its frozen baseline or describe post-hoc tuning as blind validation.
 
-Until those items are resolved, the honest status remains **ACTIVE / NOT COMPLETE**. This report is the program's evidence-backed status and executed-study record, not a certificate that the entire six-question program has passed.
+Until those items are resolved, the honest status remains **VALIDATION INCOMPLETE**. This report is the program's evidence-backed status and executed-study record, not a certificate that the entire six-question program has passed.
 
 ## References
 

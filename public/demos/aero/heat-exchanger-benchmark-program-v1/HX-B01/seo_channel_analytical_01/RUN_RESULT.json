@@ -1,0 +1,53 @@
+{
+  "schema": "aero.hx_b01.seo_scoped_analytical_result.v1",
+  "run_id": "HX-B01-SC-ANALYTICAL-01",
+  "status": "COMPLETED_CORRELATION_COMPARISON_FAIL_POINTWISE_EXPERIMENT_NOT_ESTABLISHED",
+  "run_class": "SOURCE_GROUNDED_ANALYTICAL_ONLY",
+  "prediction_freeze": "FROZEN_BEFORE_SOURCE_REVEAL",
+  "source_reveal": "COMPLETED_AFTER_FREEZE",
+  "source_results_used_before_freeze": false,
+  "operator_boundary": "Implementing-agent access to public source disclosed; no human-custodian isolation claim.",
+  "frozen_prediction": {
+    "Re": 300,
+    "fanning_friction_factor": 0.05333333333333334,
+    "channel_pressure_drop_Pa": 2810.2000559955254
+  },
+  "revealed_source_correlation": {
+    "equation": "f_N = 1.3383 * Re^(-0.5003)",
+    "Re_range": [100, 850],
+    "f_N_at_Re_300": 0.07713468569618204,
+    "reported_correlation_experiment_agreement_percent": 8,
+    "same_definition_channel_pressure_drop_Pa": 4064.3230886738997
+  },
+  "comparison": {
+    "friction_factor_relative_error_percent": -30.856873464938232,
+    "channel_pressure_drop_relative_error_percent": -30.856873464938232,
+    "magnitude_gate": "FAIL; frozen screen outside the source correlation's reported +/-8% envelope",
+    "trend_gate": "PASS; increasing pressure drop with Re is predicted by both relations",
+    "pointwise_experimental_data": "NOT_AVAILABLE_AS_NUMERIC_TABLE",
+    "port_to_port_validation": "NOT_ESTABLISHED"
+  },
+  "capability_states": {
+    "source_input_reconstruction": "PARTIAL_ESTABLISHED",
+    "geometry_convention_reconciliation": "PASS; 0.1963% difference",
+    "first_principles_screen": "COMPLETE",
+    "publication_correlation_comparison": "COMPLETE_FAIL",
+    "openfoam_cfd": "NOT_RUN_BY_PREDECLARED_SCOPE",
+    "calculix_fea": "NOT_RUN_BY_PREDECLARED_SCOPE",
+    "experimental_validation": "NOT_ESTABLISHED",
+    "design_readiness": "NOT_ESTABLISHED"
+  },
+  "artifacts": {
+    "plan": "PRE_RUN_PLAN.md",
+    "visible_packet": "VISIBLE_INPUT_PACKET.json",
+    "analytical_prediction": "ANALYTICAL_PREDICTION.json",
+    "blind_freeze": "BLIND_FREEZE.json",
+    "source_reveal": "SOURCE_REVEAL.json",
+    "comparison_report": "COMPARISON_REPORT.md"
+  },
+  "preservation": {
+    "earlier_hx_b01_blind_stops_untouched": true,
+    "hx_s01_synthetic_study_untouched": true,
+    "post_reveal_tuning_applied": false
+  }
+}

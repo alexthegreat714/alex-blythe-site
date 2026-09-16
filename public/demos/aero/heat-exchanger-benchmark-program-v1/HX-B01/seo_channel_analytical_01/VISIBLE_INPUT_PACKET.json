@@ -1,0 +1,59 @@
+{
+  "schema": "aero.hx_b01.seo_channel_visible_input.v1",
+  "run_id": "HX-B01-SC-ANALYTICAL-01",
+  "source_identity": "WITHHELD_FROM_PREDICTION_RECORD",
+  "study_scope": "single-channel friction screen for a straight water-to-water PCHE condition",
+  "configuration": {
+    "label": "Seo configuration A",
+    "hot_plates": 3,
+    "cold_plates": 4,
+    "channels_per_plate": 22,
+    "plate_material": "SUS304L"
+  },
+  "geometry": {
+    "cross_section_descriptor": "half-moon etched channel envelope",
+    "channel_width_m": 0.0008,
+    "channel_height_m": 0.0006,
+    "land_width_m": 0.0006,
+    "straight_flow_length_m": 0.137,
+    "hot_free_flow_area_m2": 0.0000317,
+    "cold_free_flow_area_m2": 0.0000422,
+    "hot_effective_heat_transfer_area_m2": 0.026037,
+    "cold_effective_heat_transfer_area_m2": 0.034716,
+    "hydraulic_diameter_m": 0.0006685,
+    "hydraulic_diameter_definition": "4 Ac Lf / As; source-defined convention"
+  },
+  "fluids": {
+    "hot": "liquid water, single phase",
+    "cold": "liquid water, single phase",
+    "property_reference_temperature_C": 30,
+    "density_kg_m3": 995.65,
+    "dynamic_viscosity_Pa_s": 0.00079722
+  },
+  "operating_condition": {
+    "hot_inlet_temperature_C": 40,
+    "cold_inlet_temperature_C": 20,
+    "hot_reynolds": 300,
+    "cold_reynolds": 300,
+    "flow_arrangement": "counterflow"
+  },
+  "outputs": [
+    "Fanning friction factor f",
+    "straight-channel friction pressure drop Pa",
+    "per-channel mass flow kg/s",
+    "Reynolds-number and velocity checks"
+  ],
+  "excluded_from_visible_packet": [
+    "publication fitted friction-factor correlation",
+    "experimental friction-factor points",
+    "publication agreement/error statements",
+    "total port-plus-channel pressure-drop results",
+    "publication conclusions"
+  ],
+  "limitations": [
+    "This packet does not define port geometry or pressure-tap planes.",
+    "The target is channel-only and cannot be equated to the source total pressure drop.",
+    "The half-moon profile is represented by source dimensions and a source hydraulic-diameter convention, not exact profile coordinates.",
+    "The laminar circular-duct relation is an analytical screen, not a validated half-moon-channel model."
+  ]
+}

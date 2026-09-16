@@ -1,0 +1,24 @@
+{
+  "schema": "aero.hx_b01.seo_source_reveal.v1",
+  "run_id": "HX-B01-SC-ANALYTICAL-01",
+  "revealed_utc": "2026-09-16T03:22:00Z",
+  "source": {
+    "title": "Heat Transfer and Pressure Drop Characteristics in Straight Microchannel of Printed Circuit Heat Exchangers",
+    "authors": ["Jang-Won Seo", "Yoon-Ho Kim", "Dongseon Kim", "Young-Don Choi", "Kyu-Jung Lee"],
+    "venue": "Entropy 17(5), 3438-3457 (2015)",
+    "doi": "10.3390/e17053438",
+    "open_access_url": "https://www.mdpi.com/1099-4300/17/5/3438/htm",
+    "license": "CC BY 4.0"
+  },
+  "revealed_publication_result": {
+    "quantity": "source friction factor f_N",
+    "correlation": "f_N = 1.3383 * Re^(-0.5003)",
+    "valid_re_range": [100, 850],
+    "f_N_at_Re_300": 0.07713468569618204,
+    "reported_experiment_correlation_agreement_envelope_percent": 8,
+    "derived_same_definition_channel_pressure_drop_Pa": 4064.3230886738997,
+    "derivation_note": "The pressure drop is recomputed using the frozen run's rho, mu, Dh, L, Re and the revealed f_N. It is not the article's total measured port-plus-channel drop."
+  },
+  "pointwise_experimental_data": "NOT_AVAILABLE_AS_NUMERIC_TABLE; article Figure 14 provides plotted experimental points and the text reports correlation agreement within +/-8%.",
+  "reveal_boundary": "This reveal occurs after BLIND_FREEZE.json was hash-verified. No source result was used to alter the frozen prediction."
+}

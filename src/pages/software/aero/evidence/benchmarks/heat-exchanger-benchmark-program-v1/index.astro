@@ -9,10 +9,10 @@ const diagnostic = hx.post_baseline_stationarity_diagnostics['LTOL-003'];
 <Shell title="Aero - Heat exchanger benchmark program" description="Program-wide heat-exchanger benchmark status, source stops, synthetic CFD evidence, and open validation gates." path="/software/aero/evidence/benchmarks/heat-exchanger-benchmark-program-v1/">
   <header>
     <p class="eyebrow">AERO / HEAT-EXCHANGER BENCHMARK PROGRAM</p>
-    <span class="status mixed">ACTIVE / NOT COMPLETE</span>
-    <h1>One executed synthetic study. Its numerical gates failed.</h1>
-    <p>This report distinguishes actual runs from candidates that stopped before execution. HX-S01 is a source-informed synthetic PCHE study, not an experimental validation. The earlier blind plans and their stop decisions remain preserved.</p>
-    <p class="metric">HX-S01: 3 grids / all residual gates failed / experimental comparison not evaluated</p>
+    <span class="status mixed">EVIDENCE RELEASE COMPLETE / VALIDATION INCOMPLETE</span>
+    <h1>Two evidence slices. The gates stay honest.</h1>
+    <p>This report distinguishes actual runs from candidates that stopped before execution. HX-S01 is a source-informed synthetic PCHE study with numerical gates that failed. HX-B01 adds a separately disclosed analytical comparison that also failed its revealed correlation screen. Neither is a claim of validated heat-exchanger performance.</p>
+    <p class="metric">HX-S01: 3-grid CHT numerical FAIL · HX-B01: −30.86% correlation screen</p>
     <div class="links">
       <a class="primary" href={artifacts + 'PROGRAM_REPORT.md'}>Read the program report</a>
       <a href={artifacts + 'program_summary.json'}>Inspect machine-readable status</a>
@@ -20,6 +20,24 @@ const diagnostic = hx.post_baseline_stationarity_diagnostics['LTOL-003'];
       <a href="/software/aero/evidence/benchmarks/heat-exchanger-program-v1/">Open HX-S01 results</a>
     </div>
   </header>
+
+  <section class="boundary" aria-labelledby="b01-heading">
+    <h2 id="b01-heading">HX-B01 scoped analytical comparison</h2>
+    <p>After two preserved Luna feasibility STOPs, Aero ran a narrower, source-grounded Seo et al. straight-microchannel screen. The visible packet contained geometry, water properties, and <code>Re = 300</code>; the fitted source correlation and outcome material were revealed only after the prediction freeze. The implementing agent had seen the public article, so this is not claimed as a fully human-custodian blind experiment.</p>
+    <div class="table-wrap"><table><thead><tr><th>Quantity</th><th>Frozen analytical value</th><th>Revealed comparison</th></tr></thead><tbody>
+      <tr><th>Hydraulic diameter reconciliation</th><td>0.1963% difference</td><td><strong>PASS</strong> vs ≤1% screen</td></tr>
+      <tr><th>Fanning friction factor</th><td>0.0533333</td><td>0.0771347 from source correlation</td></tr>
+      <tr><th>Channel pressure drop</th><td>2,810.20 Pa</td><td>4,064.32 Pa, same channel-only definition</td></tr>
+      <tr><th>Relative error</th><td>—</td><td><strong>FAIL</strong> −30.86% underprediction</td></tr>
+    </tbody></table></div>
+    <p>The source correlation is reported over <code>Re = 100–850</code> with an approximately ±8% experiment/correlation envelope, so this screen is outside that envelope. The paper does not provide a verified machine-readable point for a pointwise test here, and its apparatus pressure drop includes port effects not represented by this channel-only comparison. Pointwise experiment validation remains <strong>NOT ESTABLISHED</strong>; CFD and FEA were not run by scope.</p>
+    <div class="links">
+      <a href={artifacts + 'HX-B01/seo_channel_analytical_01/COMPARISON_REPORT.md'}>Read the B01 comparison report</a>
+      <a href={artifacts + 'HX-B01/seo_channel_analytical_01/RUN_RESULT.json'}>Inspect the frozen/revealed result</a>
+      <a href={artifacts + 'HX-B01/seo_channel_analytical_01/BLIND_FREEZE.json'}>Open the freeze record</a>
+      <a href={artifacts + 'HX-B01/seo_channel_analytical_01/SHA256SUMS.txt'}>Verify B01 file hashes</a>
+    </div>
+  </section>
 
   <section class="boundary" aria-labelledby="boundary-heading">
     <h2 id="boundary-heading">Numerical failure is not the same as a failed run</h2>
@@ -60,7 +78,7 @@ const diagnostic = hx.post_baseline_stationarity_diagnostics['LTOL-003'];
       {summary.candidate_studies.map((study) => <tr>
         <th>{study.id}</th>
         <td>{study.disposition.replaceAll('_', ' ')}</td>
-        <td>{study.id === 'HX-B01' ? 'Two frozen input-only Luna plans stopped before numerical work; not scored.' : study.id === 'HX-B02' ? 'Lawful full-text inputs and independent structural truth not established; no run.' : study.id === 'HX-B03' ? 'Version-matched full methods/input source and independent structural truth not established; no run.' : study.id === 'HX-B04' ? 'Complete lawful inputs and independent structural truth not established; no run.' : study.id === 'HX-B05' ? 'Luna feasibility plan stopped before preregistration; no ranking or solver run.' : study.id === 'HX-D01' ? 'Not started; predecessor disposition gate remains open.' : 'Synthetic CHT study executed; numerical failure, experiment not scored.'}</td>
+        <td>{study.id === 'HX-B01' ? 'Two frozen input-only Luna STOPs are preserved; the scoped Seo analytical comparison failed its revealed correlation screen, with pointwise experiment, CFD, and FEA unestablished.' : study.id === 'HX-B02' ? 'Lawful full-text inputs and independent structural truth not established; no run.' : study.id === 'HX-B03' ? 'Version-matched full methods/input source and independent structural truth not established; no run.' : study.id === 'HX-B04' ? 'Complete lawful inputs and independent structural truth not established; no run.' : study.id === 'HX-B05' ? 'Luna feasibility plan stopped before preregistration; no ranking or solver run.' : study.id === 'HX-D01' ? 'Not started; predecessor disposition gate remains open.' : 'Synthetic CHT study executed; numerical failure, experiment not scored.'}</td>
       </tr>)}
     </tbody></table></div>
   </section>
