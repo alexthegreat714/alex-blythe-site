@@ -1,0 +1,26 @@
+{
+  "schema": "aero.hx_s01_stationarity_diagnostic_record.v1",
+  "run_id": "HX-S01-DIAG-LTOL-002",
+  "classification": "POST_BASELINE_NON_BLIND_COARSE_CONTINUATION",
+  "status": "NORMAL_SOLVER_END_REQUIRED_STABILITY_WINDOW_NOT_EVALUABLE",
+  "solver": "OpenFOAM Foundation v10 chtMultiRegionFoam",
+  "start_iteration": 1100,
+  "observed_end_iteration": 1600,
+  "normal_end_marker": true,
+  "solver_exit_code": 0,
+  "purgeWrite": 3,
+  "required_stationarity_samples": [1500, 1525, 1550, 1575, 1600],
+  "available_time_directories_after_run": ["0", "1100", "1550", "1575", "1600"],
+  "missing_required_checkpoints": [1500, 1525],
+  "residual_gate": "NOT_EVALUATED_IN_THIS_RESULT_RECORD",
+  "conservation_gates": "NOT_EVALUATED_IN_THIS_RESULT_RECORD",
+  "monitor_stability_gate": "NOT_EVALUABLE; complete five-point window not retained",
+  "root_cause_of_evidence_gap": "The inherited purgeWrite setting retained only the last three write checkpoints after the starting checkpoint.",
+  "follow_up": "Separate LTOL-003 repeat changed only copied-case endTime and purgeWrite=0 to retain the full preregistered window.",
+  "baseline_modified": false,
+  "solver_log": {
+    "file": "HX-S01-DIAG-LTOL-002_solver.log",
+    "sha256": "30F5BBD78C18735C2FEC1FF9D8A40952ABB0F908124F6FEFC453166A83771EFE"
+  },
+  "interpretation_boundary": "This is a normally completed solver process with an incomplete required evidence window. It is neither a solver failure nor a numerical PASS."
+}

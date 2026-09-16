@@ -1,0 +1,103 @@
+{
+  "acceptance": {
+    "energy_gate_pass": true,
+    "energy_imbalance_max": 0.05,
+    "mass_gate_pass": true,
+    "mass_imbalance_max": 0.005
+  },
+  "case": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen",
+  "cold_heat_duty_W": 26.476043886577344,
+  "derived_publication_metrics": {
+    "Re_based_on_frozen_properties_and_velocity": 519.1050396053363,
+    "cold_Darcy_friction_factor": 0.27641726886684165,
+    "cold_Nusselt_number": 4.36469328080563,
+    "cold_bulk_mean_temperature_K": 298.36410494005884,
+    "cold_heat_transfer_coefficient_W_m2_K": 1777.5945597310526,
+    "cold_pressure_drop_Pa": 1306.3678589721967,
+    "cold_wall_area_average_temperature_K": 307.68341268798594,
+    "cold_wall_area_m2": 0.001598220608105064,
+    "hot_Darcy_friction_factor": 0.2790116513022627,
+    "hot_pressure_drop_Pa": 1318.6290966344095,
+    "note": "Re, Darcy friction factor, and cold-side h/Nu use the article definitions with this run's declared constant properties and reconstructed one-pitch periodic geometry; the wall-temperature average is surface-area-weighted, not the experimental discrete-thermocouple average."
+  },
+  "hot_cold_energy_imbalance_fraction": 0.022370206021482125,
+  "hot_heat_duty_W": 25.883769330200806,
+  "max_stream_inlet_outlet_mass_imbalance_fraction": 0.0006674056489027075,
+  "method": "foamToVTK patch face T/U/rho fields; polygon vector area; mass flux rho*(U dot outward area vector); flux-weighted bulk T uses absolute per-face flux",
+  "patches": {
+    "coldFluid_inlet": {
+      "area_m2": 2.4138977419373233e-06,
+      "face_count": 39,
+      "file": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen\\VTK\\coldFluid\\cold_inlet\\cold_inlet_1525.vtk",
+      "mass_flow_absolute_face_sum_kg_s": 0.0005903153151418946,
+      "mass_flow_signed_kg_s": -0.0005903153151418946,
+      "mass_flux_weighting": "sum(T_face * abs(rho_face * U_face dot outward_area_vector)) / sum(abs(rho_face * U_face dot outward_area_vector))",
+      "pressure_area_average_Pa": 102631.36785897218,
+      "sha256": "d708e06984a3af8ff4ccf6439b97665366d7db969ae70f367d50bab285d2277d",
+      "temperature_area_average_K": 293.0,
+      "temperature_mass_flux_weighted_K": 293.0
+    },
+    "coldFluid_outlet": {
+      "area_m2": 2.4138784668591196e-06,
+      "face_count": 39,
+      "file": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen\\VTK\\coldFluid\\cold_outlet\\cold_outlet_1525.vtk",
+      "mass_flow_absolute_face_sum_kg_s": 0.0005906869762901396,
+      "mass_flow_signed_kg_s": 0.0005906869762901396,
+      "mass_flux_weighting": "sum(T_face * abs(rho_face * U_face dot outward_area_vector)) / sum(abs(rho_face * U_face dot outward_area_vector))",
+      "pressure_area_average_Pa": 101324.99999999999,
+      "sha256": "03ab735cc5e413f8a4d59e99e58ae931a03e4bf0eb78b63d5f03719dfe34b256",
+      "temperature_area_average_K": 303.8023757378786,
+      "temperature_mass_flux_weighted_K": 303.7282098801177
+    },
+    "coldFluid_wall": {
+      "area_m2": 0.001598220608105064,
+      "face_count": 22492,
+      "file": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen\\VTK\\coldFluid\\coldFluid_to_solidPlate\\coldFluid_to_solidPlate_1525.vtk",
+      "mass_flow_absolute_face_sum_kg_s": 0.0,
+      "mass_flow_signed_kg_s": 0.0,
+      "mass_flux_weighting": "sum(T_face * abs(rho_face * U_face dot outward_area_vector)) / sum(abs(rho_face * U_face dot outward_area_vector))",
+      "pressure_area_average_Pa": 101970.75645448464,
+      "sha256": "5f39f4bd8b42f8ea186927ddd97f53fd11e44a46abc4c252fb4f6a26d34a0dd1",
+      "temperature_area_average_K": 307.68341268798594,
+      "temperature_mass_flux_weighted_K": null
+    },
+    "hotFluid_inlet": {
+      "area_m2": 2.4138789628794146e-06,
+      "face_count": 39,
+      "file": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen\\VTK\\hotFluid\\hot_inlet\\hot_inlet_1525.vtk",
+      "mass_flow_absolute_face_sum_kg_s": 0.0005903107227495596,
+      "mass_flow_signed_kg_s": -0.0005903107227495596,
+      "mass_flux_weighting": "sum(T_face * abs(rho_face * U_face dot outward_area_vector)) / sum(abs(rho_face * U_face dot outward_area_vector))",
+      "pressure_area_average_Pa": 102643.62909663442,
+      "sha256": "ed00d24432ffd5374156ac441dd2cc89bcea69b2f334cfe696c7ed40f222cced",
+      "temperature_area_average_K": 323.0,
+      "temperature_mass_flux_weighted_K": 323.00000000000006
+    },
+    "hotFluid_outlet": {
+      "area_m2": 2.413865649504381e-06,
+      "face_count": 39,
+      "file": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen\\VTK\\hotFluid\\hot_outlet\\hot_outlet_1525.vtk",
+      "mass_flow_absolute_face_sum_kg_s": 0.000590704702525519,
+      "mass_flow_signed_kg_s": 0.000590704702525519,
+      "mass_flux_weighting": "sum(T_face * abs(rho_face * U_face dot outward_area_vector)) / sum(abs(rho_face * U_face dot outward_area_vector))",
+      "pressure_area_average_Pa": 101325.00000000001,
+      "sha256": "08f8afe162d73e12cc9046bd5ba71bcb200b12a97d5f638bb986ca5d9b63c646",
+      "temperature_area_average_K": 312.450327940071,
+      "temperature_mass_flux_weighted_K": 312.51209712212227
+    },
+    "hotFluid_wall": {
+      "area_m2": 0.0015981953384554771,
+      "face_count": 22408,
+      "file": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen\\VTK\\hotFluid\\hotFluid_to_solidPlate\\hotFluid_to_solidPlate_1525.vtk",
+      "mass_flow_absolute_face_sum_kg_s": 0.0,
+      "mass_flow_signed_kg_s": 0.0,
+      "mass_flux_weighting": "sum(T_face * abs(rho_face * U_face dot outward_area_vector)) / sum(abs(rho_face * U_face dot outward_area_vector))",
+      "pressure_area_average_Pa": 101977.2963269101,
+      "sha256": "b64b97c22e8b9d8c6b288c58204bc3ca1b6c1b57d8593c6a30285df97cc66c4a",
+      "temperature_area_average_K": 308.5728398738668,
+      "temperature_mass_flux_weighted_K": null
+    }
+  },
+  "schema": "aero.pche.samarmad.bulk_patch_integral.v1",
+  "time": "1525"
+}

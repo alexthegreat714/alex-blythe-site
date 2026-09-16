@@ -1,0 +1,43 @@
+{
+  "schema": "aero.hx_s01_checkpoint_retention_setup.v1",
+  "run_id": "HX-S01-DIAG-LTOL-003",
+  "status": "COMPLETED_STOP_AT_COARSE_MONITOR_STABILITY_FAIL",
+  "prepared_utc": "2026-09-16T02:28:14Z",
+  "parent_run": "HX-S01-DIAG-LTOL-002",
+  "source_case": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-001\\coarse_netgen",
+  "diagnostic_case": "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-003\\coarse_netgen",
+  "source_checkpoint": "1100",
+  "end_time": 1600,
+  "changes_from_source": {
+    "system/controlDict.endTime": "1100 -> 1600",
+    "system/controlDict.purgeWrite": "3 -> 0 (retain all time directories; output retention only)"
+  },
+  "control_dict_identical_except_declared_changes": true,
+  "mesh_hashes_match_LTOL001": true,
+  "fvSolution_hash_matches_LTOL001": true,
+  "sha256": {
+    "system/controlDict": "F9BAFC56ABA82D86B11ACE0CE6BD82D9F3E3E768343959E15FDE2E2993E6A51D",
+    "system/fvSolution": "C0834C562934470FDBAC02C1A039EB3D183643DE05F6DE2C81EE2A1C5565DA2E",
+    "constant/polyMesh/points": "7B43F11DB5E9F057CB64BA6D4DA2C6FDCAD978DCFA91D22C826FC5ECB1A548EA",
+    "constant/hotFluid/polyMesh/points": "F10218346CBDD485DA4A7F043751712CDBCB8E39C174AD84CF7B42730D9D6E12",
+    "constant/coldFluid/polyMesh/points": "795E7B9E474D4A4C1F8AF4D4660A86904489C32AE63074F8F32C4345B0CE9D55",
+    "constant/solidPlate/polyMesh/points": "63CC945C1EF350BAC886D7001C1988F26181251F5AFB8C3C2565B4B65D1ADDF8"
+  },
+  "mesh_check_status": "PASS_ALL_THREE_REGIONS",
+  "mesh_check_logs": [
+    "coarse_netgen/checkMesh_hotFluid.log",
+    "coarse_netgen/checkMesh_coldFluid.log",
+    "coarse_netgen/checkMesh_solidPlate.log"
+  ],
+  "original_baseline_modified": false,
+  "LTOL001_modified": false,
+  "solver_started": true,
+  "solver_completed_utc": "2026-09-16T02:40:06.6913133Z",
+  "solver_exit_code": 0,
+  "solver_end_marker": true,
+  "observed_end_time": 1600,
+  "retained_time_directories": ["0", "1100", "1125", "1150", "1175", "1200", "1225", "1250", "1275", "1300", "1325", "1350", "1375", "1400", "1425", "1450", "1475", "1500", "1525", "1550", "1575", "1600"],
+  "full_final_window_postprocess": "COMPLETE; five points 1500, 1525, 1550, 1575, 1600",
+  "monitor_stability_gate": "FAIL; cold pressure-drop and both duty monitors exceed the 0.5% adjacent-change limit",
+  "solver_log_sha256": "054EECDA39E5FABB057FD6531A5B977C407CB2A805004EF5F121FAC484483C48"
+}

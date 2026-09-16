@@ -4,6 +4,7 @@ import summary from '../../../../../../../public/demos/aero/heat-exchanger-bench
 
 const artifacts = '/demos/aero/heat-exchanger-benchmark-program-v1/';
 const hx = summary.executed_synthetic_study;
+const diagnostic = hx.post_baseline_stationarity_diagnostics['LTOL-003'];
 ---
 <Shell title="Aero - Heat exchanger benchmark program" description="Program-wide heat-exchanger benchmark status, source stops, synthetic CFD evidence, and open validation gates." path="/software/aero/evidence/benchmarks/heat-exchanger-benchmark-program-v1/">
   <header>
@@ -34,6 +35,23 @@ const hx = summary.executed_synthetic_study;
       <tr><th>Fine</th><td>{hx.grid_cells.fine.toLocaleString()}</td><td>6.6989e-6</td><td>0.0624%</td><td>1.496%</td><td>1,800.9 / 1,808.9 Pa</td><td><strong>FAIL</strong> residual</td></tr>
     </tbody></table></div>
     <p>Medium-to-fine pressure-drop changes were 22.61% hot-side and 22.17% cold-side. Same-settings 1,000-iteration continuations also miss residual convergence; fine-to-medium pressure-drop differences remain 28.7% and 28.1%. Those continuations are diagnostic and do not replace the frozen baseline.</p>
+  </section>
+
+  <section class="boundary" aria-labelledby="diagnostic-heading">
+    <h2 id="diagnostic-heading">Post-baseline diagnostic: stable solve still not established</h2>
+    <p>After the frozen 250-iteration baseline failed, Aero ran separately labeled, non-blind coarse-grid diagnostics. LTOL-003 tightened the copied linear solves and retained every checkpoint from iterations 1,100 through 1,600. It ended normally and passed residual and conservation checks, but the engineering monitors still moved too much to declare a stationary solution.</p>
+    <div class="table-wrap"><table><thead><tr><th>LTOL-003 gate</th><th>Observed</th><th>Disposition</th></tr></thead><tbody>
+      <tr><th>Solver end</th><td>{diagnostic.solver_end}</td><td><strong>PASS</strong></td></tr>
+      <tr><th>Final equation residual</th><td>{diagnostic.maximum_final_residual.toExponential(4)}</td><td><strong>PASS</strong> vs 1e-6</td></tr>
+      <tr><th>Mass / energy balance</th><td>{diagnostic.mass_imbalance_percent.toFixed(3)}% / {diagnostic.energy_imbalance_percent.toFixed(3)}%</td><td><strong>PASS</strong></td></tr>
+      <tr><th>Pressure-drop / duty stationarity</th><td>Cold Δp 1.81–4.42%; duties 0.79–0.89% per 25 steps</td><td><strong>FAIL</strong> vs 0.5%</td></tr>
+    </tbody></table></div>
+    <p class="subtle">LTOL-002 also reached 1,600 normally, but output purging removed two required checkpoints, so its full stability gate is reported as NOT EVALUABLE. The medium/fine diagnostic follow-up was not run. These runs are synthetic diagnostics—not experimental validation, structural proof, or design readiness.</p>
+    <div class="links">
+      <a href={artifacts + 'HX-S01-DIAG-LTOL-003_RESULTS.md'}>Read the retained-checkpoint report</a>
+      <a href={artifacts + 'HX-S01-DIAG-LTOL-003_RESULT.json'}>Inspect machine result</a>
+      <a href={artifacts + 'HX-S01-DIAG-LTOL-002_RESULTS.md'}>See LTOL-002 evidence gap</a>
+    </div>
   </section>
 
   <section aria-labelledby="register-heading">

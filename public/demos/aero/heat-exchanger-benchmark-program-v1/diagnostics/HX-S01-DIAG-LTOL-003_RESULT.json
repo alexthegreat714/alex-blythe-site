@@ -1,0 +1,54 @@
+{
+  "schema": "aero.hx_s01_coarse_stationarity_diagnostic.v1",
+  "run_id": "HX-S01-DIAG-LTOL-003",
+  "classification": "POST_BASELINE_NON_BLIND_CHECKPOINT_RETENTION_REPEAT",
+  "status": "COMPLETED_STOP_AT_COARSE_MONITOR_STABILITY_FAIL",
+  "started_from_iteration": 1100,
+  "end_iteration": 1600,
+  "solver": "OpenFOAM Foundation v10 chtMultiRegionFoam",
+  "normal_exit": true,
+  "end_marker": true,
+  "execution_time_seconds": 666.08883,
+  "clock_time_seconds": 680,
+  "control_changes_only": {
+    "endTime": "1100 -> 1600",
+    "purgeWrite": "3 -> 0; retain checkpoints only, no equation/model change"
+  },
+  "baseline_modified": false,
+  "LTOL001_modified": false,
+  "gates": {
+    "normal_solver_exit": {"threshold": "End at 1600, exit code 0", "value": "End at 1600, exit code 0", "pass": true},
+    "maximum_final_equation_residual": {"threshold": 1e-6, "value": 5.8496127e-9, "pass": true},
+    "mass_imbalance_fraction": {"threshold": 0.005, "value": 0.0006674056489027075, "percent": 0.06674056489027075, "pass": true},
+    "energy_imbalance_fraction": {"threshold": 0.05, "value": 0.021810703710196607, "percent": 2.1810703710196607, "pass": true},
+    "monitor_stationarity": {"threshold_per_adjacent_25_step_change_percent": 0.5, "pass": false}
+  },
+  "monitor_samples": [
+    {"iteration": 1500, "hot_pressure_drop_Pa": 1318.6290966344095, "cold_pressure_drop_Pa": 1282.7004740225093, "hot_heat_duty_W": 25.65466156905967, "cold_heat_duty_W": 26.242230221363346, "mass_imbalance_percent": 0.06674056489027075, "energy_imbalance_percent": 2.2390195015717356},
+    {"iteration": 1525, "hot_pressure_drop_Pa": 1318.6290966344095, "cold_pressure_drop_Pa": 1306.3678589721967, "hot_heat_duty_W": 25.883769330200806, "cold_heat_duty_W": 26.476043886577344, "mass_imbalance_percent": 0.06674056489027075, "energy_imbalance_percent": 2.2370206021482125},
+    {"iteration": 1550, "hot_pressure_drop_Pa": 1318.6290966344095, "cold_pressure_drop_Pa": 1264.7513573630422, "hot_heat_duty_W": 26.109438852183295, "cold_heat_duty_W": 26.703097119152222, "mass_imbalance_percent": 0.06674056489027075, "energy_imbalance_percent": 2.2231813198295185},
+    {"iteration": 1575, "hot_pressure_drop_Pa": 1318.6290966344095, "cold_pressure_drop_Pa": 1323.2904873585649, "hot_heat_duty_W": 26.330336564077328, "cold_heat_duty_W": 26.923797708621645, "mass_imbalance_percent": 0.06674056489027075, "energy_imbalance_percent": 2.204225239570408},
+    {"iteration": 1600, "hot_pressure_drop_Pa": 1318.6290966344095, "cold_pressure_drop_Pa": 1272.7334800055396, "hot_heat_duty_W": 26.546230479308303, "cold_heat_duty_W": 27.138132240861875, "mass_imbalance_percent": 0.06674056489027075, "energy_imbalance_percent": 2.1810703710196607}
+  ],
+  "adjacent_symmetric_change_percent": [
+    {"from": 1500, "to": 1525, "hot_pressure_drop": 0.0, "cold_pressure_drop": 1.81169375740062, "hot_heat_duty": 0.885140638592452, "cold_heat_duty": 0.883114056675734},
+    {"from": 1525, "to": 1550, "hot_pressure_drop": 0.0, "cold_pressure_drop": 3.18566484343062, "hot_heat_duty": 0.864321608978657, "cold_heat_duty": 0.850288008022982},
+    {"from": 1550, "to": 1575, "hot_pressure_drop": 0.0, "cold_pressure_drop": 4.42375506774581, "hot_heat_duty": 0.838947543858611, "cold_heat_duty": 0.819723100945548},
+    {"from": 1575, "to": 1600, "hot_pressure_drop": 0.0, "cold_pressure_drop": 3.82055246644617, "hot_heat_duty": 0.813275223385314, "cold_heat_duty": 0.789791022970646}
+  ],
+  "decision": "STOP_AT_COARSE; do not run the medium/fine follow-up under this gate.",
+  "interpretation_boundary": "The coarse-grid solver reached the requested endpoint and passed residual and conservation gates, but the pressure-drop and heat-duty monitors did not meet the preregistered stationarity criterion. This is a numerical-stability failure in a source-informed synthetic reconstruction, not an experimental comparison, validation result, or design-readiness assessment.",
+  "artifacts": {
+    "solver_log": {"file": "HX-S01-DIAG-LTOL-003_solver.log", "sha256": "054EECDA39E5FABB057FD6531A5B977C407CB2A805004EF5F121FAC484483C48"},
+    "checkMesh_hotFluid": {"file": "HX-S01-DIAG-LTOL-003_checkMesh_hotFluid.log", "sha256": "CEB9F2392615C7C6C55C42AE63B2C07B719665A286758F1BEEAC52CF1D62D41C"},
+    "checkMesh_coldFluid": {"file": "HX-S01-DIAG-LTOL-003_checkMesh_coldFluid.log", "sha256": "8E96CB72727F440A53A0EC33079FAFAA4F0BB05D43B7D2159186630632BD53E7"},
+    "checkMesh_solidPlate": {"file": "HX-S01-DIAG-LTOL-003_checkMesh_solidPlate.log", "sha256": "6D784828CC34BE1B279BE4C4F914CC4BE79B1299DEBC1A23906D73F8D3E27F83"},
+    "bulk_postprocessing": [
+      {"file": "HX-S01-DIAG-LTOL-003_bulk_patch_1500.json", "sha256": "A5A600C3739DA88ADEC3E1ED7D676E69DC3EC91D554D40BF89880CB1C10C9D5A"},
+      {"file": "HX-S01-DIAG-LTOL-003_bulk_patch_1525.json", "sha256": "66014E1622F19C09CB50CA042043C6EC617645159280440F4CAC758B5B735863"},
+      {"file": "HX-S01-DIAG-LTOL-003_bulk_patch_1550.json", "sha256": "0D3C320A77E4103B4FDD1D6C870965615E5F84B39EBA6EA704DA18795C1CF2CA"},
+      {"file": "HX-S01-DIAG-LTOL-003_bulk_patch_1575.json", "sha256": "CF040EB3B58DDBD2EA9D793E5A7F9D6AF12A9A58664587633A55A6556C9F9979"},
+      {"file": "HX-S01-DIAG-LTOL-003_bulk_patch_1600.json", "sha256": "74420770A139E93D1F388F0A7A18C7ECCA5D8569EEC01E79169C829D7F3078B9"}
+    ]
+  }
+}

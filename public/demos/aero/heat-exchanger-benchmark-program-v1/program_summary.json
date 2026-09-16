@@ -1,7 +1,7 @@
 {
   "schema": "aero.heat_exchanger_program.summary.v1",
   "program": "Aero heat-exchanger benchmark program",
-  "revision": "1.0",
+  "revision": "1.1",
   "report_date_utc": "2026-09-16",
   "overall_status": "ACTIVE_NOT_COMPLETE",
   "executed_synthetic_study": {
@@ -24,6 +24,27 @@
       "fine_to_medium_pressure_drop_change_percent": {
         "hot": 28.7,
         "cold": 28.1
+      }
+    },
+    "post_baseline_stationarity_diagnostics": {
+      "LTOL-001": {
+        "scope": "coarse only, 100 iterations from 1000 to 1100, tighter linear solve",
+        "residual_and_conservation": "PASS",
+        "monitor_stability": "FAIL; cold pressure drop 0.671%, hot duty 1.489%, cold duty 1.426% over the final 25 steps; limit 0.5%"
+      },
+      "LTOL-002": {
+        "scope": "coarse continuation from 1100 to 1600",
+        "solver_end": "NORMAL_END",
+        "monitor_stability": "NOT_EVALUABLE; purgeWrite 3 removed required 1500 and 1525 checkpoints"
+      },
+      "LTOL-003": {
+        "scope": "coarse-only repeat from 1100 to 1600; all checkpoints retained",
+        "solver_end": "NORMAL_END",
+        "maximum_final_residual": 5.8496127e-9,
+        "mass_imbalance_percent": 0.06674056489027075,
+        "energy_imbalance_percent": 2.1810703710196607,
+        "monitor_stability": "FAIL; cold pressure-drop changes 1.8117-4.4238%, hot duty 0.7898-0.8851%, cold duty 0.7898-0.8831%; limit 0.5%",
+        "medium_fine_followup": "NOT_RUN_PER_STOP_RULE"
       }
     },
     "experimental_comparison": "NOT_EVALUATED",

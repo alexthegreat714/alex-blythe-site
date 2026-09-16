@@ -1,0 +1,33 @@
+{
+    "schema":  "aero.hx_s01_extended_stationarity_setup.v1",
+    "run_id":  "HX-S01-DIAG-LTOL-002",
+    "status":  "COMPLETED_NORMAL_END_STABILITY_WINDOW_NOT_EVALUABLE",
+    "prepared_utc":  "2026-09-16T02:11:32.7615848Z",
+    "parent_run":  "HX-S01-DIAG-LTOL-001",
+    "source_case":  "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-001\\coarse_netgen",
+    "diagnostic_case":  "D:\\AeroRuntime\\foamagent\\cases\\samarmad_publication_v1\\diagnostics\\HX-S01-DIAG-LTOL-002\\coarse_netgen",
+    "source_checkpoint":  "1100",
+    "end_time":  1600,
+    "settings":  "Identical to LTOL-001; only endTime changes",
+    "source_control_sha256":  "d3264aa75a1d54ab5fd7d1b1b905aaac44c258acb342edcc3753cb1636f35a3d",
+    "diagnostic_control_sha256":  "3932f282cf2cb0a8158f8efc3689dde1e68bec4c39a00847c6c93d72383883a1",
+    "p_rgh_and_U_h_fvSolution_hashes":  {
+                                            "hotFluid":  "6911ff161e2a8de6dcf745e02dfb1b8510c3b07e4e224474d3ae48fe4a8cffdb",
+                                            "coldFluid":  "6911ff161e2a8de6dcf745e02dfb1b8510c3b07e4e224474d3ae48fe4a8cffdb"
+                                        },
+    "original_baseline_modified":  false,
+    "started_utc":  "2026-09-16T02:12:42.1044559Z",
+    "mesh_check_status":  "PASS_ALL_THREE_REGIONS",
+    "completed_utc":  "2026-09-16T02:24:02.2680723Z",
+    "solver_exit_code":  0,
+    "solver_end_marker":  true,
+    "observed_end_time":  1600,
+    "retained_time_directories":  ["0", "1100", "1550", "1575", "1600"],
+    "monitor_stability_gate":  "NOT_EVALUABLE: purgeWrite 3 removed 1500 and 1525 checkpoints before full-window postprocessing",
+    "solver_log_sha256":  "30F5BBD78C18735C2FEC1FF9D8A40952ABB0F908124F6FEFC453166A83771EFE",
+    "mesh_check_logs":  [
+                            "coarse_netgen/checkMesh_hotFluid.log",
+                            "coarse_netgen/checkMesh_coldFluid.log",
+                            "coarse_netgen/checkMesh_solidPlate.log"
+                        ]
+}

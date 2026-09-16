@@ -5,6 +5,14 @@
 
 ## Executive disposition
 
+**Evidence update v1.1 — 16 September 2026 UTC:** a separately labeled,
+post-baseline coarse-grid solver-tolerance investigation has now reached its
+predeclared stop. LTOL-003 passed the residual and conservation gates but
+failed the full-window monitor-stability limit; no medium/fine follow-up was
+run. The original 250-iteration three-grid numerical FAIL remains unchanged.
+LTOL-002 is documented as a normal solver end with its stationarity window
+unevaluable because output purging removed two required checkpoints.
+
 The program has produced one executed, source-informed synthetic PCHE CFD study, HX-S01. Its 250-iteration three-grid baseline is a **NUMERICAL FAIL** under the criteria frozen before the run. Same-settings continuations to iteration 1,000 are diagnostic only; they still fail the residual limit and retain roughly 28% fine-to-medium pressure-drop differences. Experimental agreement, PCHE-specific structural performance, and design readiness are **NOT EVALUATED / NOT ESTABLISHED**.
 
 The publication-blind HX-B01 candidate was stopped twice at its input/feasibility gate. Both frozen Luna plans are still hash-verifiable, explicitly withhold publication results from Luna, and authorize no solver run. HX-B05 also produced a fresh anonymized, result-withheld plan-only review; Luna stopped before preregistration because decision-critical requirements, properties, and geometry were missing. HX-B02–B04 remain source/reproducibility gated. HX-D01 has not started because the planned predecessor-study sequence is not closed.
@@ -88,6 +96,34 @@ The original case manifest contains an unsupported statement that all meshes fai
 
 The detailed study report, input definition, conservation plot, machine records, and evidence manifests are available from the [HX-S01 evidence page](https://alex-blythe.com/software/aero/evidence/benchmarks/heat-exchanger-program-v1/).
 
+## HX-S01: post-baseline stationarity diagnostics
+
+These are non-blind synthetic diagnostics and do not replace the frozen
+baseline. LTOL-001 tightened copied-case linear solves on the coarse grid;
+although residual and balance checks passed, cold pressure drop and both duty
+monitors changed more than the frozen 0.5% stability limit over its final
+25-step interval. LTOL-002 extended the same coarse case to 1,600 and ended
+normally, but `purgeWrite 3` removed iterations 1,500 and 1,525 before the full
+five-point window could be postprocessed. That gate is **NOT EVALUABLE** for
+LTOL-002, not a PASS or solver crash.
+
+LTOL-003 repeated the 1,100–1,600 coarse continuation with the same numerical
+settings and changed only the copied run horizon and `purgeWrite 0` checkpoint
+retention. At 1,600, maximum final equation residual was `5.8496e-9`, mass
+imbalance `0.06674%`, and energy imbalance `2.1811%`; all three passed their
+frozen limits. The full-window stability gate failed: cold-side pressure-drop
+changes were `1.812–4.424%`, while hot/cold duty changes were `0.790–0.885%`
+per adjacent 25-step interval, all above the `0.5%` limit. The hot pressure
+drop stayed unchanged in the sampled window. No root cause is asserted. The
+predeclared action was to stop at coarse, so medium/fine were not run.
+
+The detailed records, postprocessing JSON, region mesh logs, solver log, and
+hashes are retained in
+[`HX-S01 diagnostic evidence`](HX-S01_synthetic_replacement/diagnostics/HX-S01-DIAG-LTOL-003_RESULTS.md).
+These results remain synthetic and non-blind; they do not establish
+experimental accuracy, grid independence, structural performance, or design
+readiness.
+
 ## HX-B05: architecture/material feasibility stop
 
 The fresh packet used anonymized duty inputs and candidate architecture/material families from Pelanconi et al. (2021); it did not expose the source title, DOI, result-bearing abstract, rankings, or outcomes to the Luna invocation. The packet contained only the two allowlisted files and passed the lexical audit. The verified visible-packet SHA-256 is `8477398fd71c8a4e0eb8a3b87c12f1ea1b4545a82282caddbff35c5961a87a72`.
@@ -132,4 +168,3 @@ Until those items are resolved, the honest status remains **ACTIVE / NOT COMPLET
 6. de la Torre, R., François, J.-L., and Lin, C.-X. (2020). “Assessment of the design effects on the structural performance of the Printed Circuit Heat Exchanger under very high temperature condition.” *Nuclear Engineering and Design*, 365, 110713. [DOI: 10.1016/j.nucengdes.2020.110713](https://doi.org/10.1016/j.nucengdes.2020.110713).
 7. Pelanconi, M. et al. (2021). “Application of Ceramic Lattice Structures to Design Compact, High Temperature Heat Exchangers: Material and Architecture Selection.” *Materials*, 14(12), 3225. [Publisher article](https://www.mdpi.com/1996-1944/14/12/3225).
 8. El-Soueidan et al. (2024). “The Coupling of a Preliminary Design Method with CFD Analysis for the Design of Heat Exchangers in Aviation.” AIAA SciTech Forum, AIAA 2024-4036. [DOI: 10.2514/6.2024-4036](https://doi.org/10.2514/6.2024-4036).
-
