@@ -14,3 +14,4 @@ The source candidate for HX-02 is Kim et al., “Single-Phase Heat Transfer Char
 * [HX-02 blind plan](HX-02_PSHE_BLIND/BLIND_PLAN.md)
 * [HX-03 transfer capstone](HX-03_TRANSFER_CAPSTONE/README.md)
 * [HX-03 Stage A/B fidelity decision](HX-03_TRANSFER_CAPSTONE/FIDELITY_DECISION.md)
+* [Public maturity-pass report](MATURITY_PASS_REPORT.md)
