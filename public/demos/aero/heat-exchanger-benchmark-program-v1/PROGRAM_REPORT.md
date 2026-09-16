@@ -1,6 +1,6 @@
 # Aero heat-exchanger benchmark program — evidence and disposition
 
-**Program report v1.0 · 16 September 2026 UTC**  
+**Program report v1.1 · 16 September 2026 UTC**  
 **Overall status: ACTIVE / NOT COMPLETE.** This report consolidates what was actually executed, what stopped before execution, and what remains unscoreable. It is not a claim that the planned HX-B01–B05 and HX-D01 studies all ran.
 
 ## Executive disposition
