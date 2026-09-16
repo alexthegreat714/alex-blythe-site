@@ -1,11 +1,13 @@
 {
   "qualification-summary.json": {
-    "sha256": "deeea36ce6033520154b4ede2f6ceac47e7097304a616c0c27a8a4a81b018206",
-    "bytes": 129867
+    "sha256": "b3298c1bfb288bae9d8470dc12ade24933eac80e354b56651354e5c0b11aed58",
+    "bytes": 126643,
+    "hash_basis": "deployed static bytes (LF normalized by repository checkout)"
   },
   "REPORT.md": {
-    "sha256": "314c0ec155a975932b8c2c4b6e9e4f56e9e1d5f0fc27c93d6769e367bcdb2907",
-    "bytes": 4198
+    "sha256": "b48df0004d1c68d0c7b1ec0007a766e3fe3e7a0d9bad7d7faac623471badf9cc",
+    "bytes": 4135,
+    "hash_basis": "deployed static bytes (LF normalized by repository checkout)"
   },
   "schema": "aero.cep01.qualification.artifacts.v2"
 }
