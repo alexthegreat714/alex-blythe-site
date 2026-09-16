@@ -1,0 +1,54 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+const artifacts = '/demos/aero/heat-exchanger-hx02/';
+---
+<Shell title="Aero - HX-02 custody review" description="Custody and input-reconstruction review for Aero's publication-grounded two-stream plate-and-shell heat-exchanger benchmark." path="/software/aero/evidence/benchmarks/heat-exchanger-hx02/">
+  <header>
+    <p class="eyebrow">AERO / HX-02 / CUSTODY REVIEW</p>
+    <span class="status mixed">STOPPED BEFORE SCORED CFD</span>
+    <h1>A real benchmark candidate, stopped at the input gate.</h1>
+    <p>HX-02 is Kim et al.'s open-access two-stream water plate-and-shell experiment. Aero audited what an independent analyst can legitimately know before a blind prediction, reconciled the visible dimensions, and preserved the experimental reference separately.</p>
+    <p class="metric">Disposition: <strong>INELIGIBLE_FOR_SCORED_REPRODUCTION</strong></p>
+    <div class="links">
+      <a class="primary" href={artifacts + 'README.md'}>Read the review</a>
+      <a href={artifacts + 'HX02_FINAL_VISIBLE_PACKET/VISIBLE_PRE_RUN_PACKET.md'}>Inspect the visible packet</a>
+      <a href="https://doi.org/10.3390/en14206688">Open the source DOI</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="known-heading">
+    <h2 id="known-heading">What the source defines</h2>
+    <p>Two water streams, plate-side hot flow, shell-side cold flow, circular plate / chevron channels, operating envelopes, energy-balance and counter-current LMTD definitions, uncertainty specifications, and a T1-T20 plate-sensor layout.</p>
+  </section>
+
+  <section class="boundary" aria-labelledby="blocked-heading">
+    <h2 id="blocked-heading">Why the blind run is not authorized</h2>
+    <div class="table-wrap"><table><thead><tr><th>Open input</th><th>Engineering consequence</th></tr></thead><tbody>
+      <tr><th>3-D header/manifold topology</th><td>Core and port losses/flow distribution cannot be reconstructed.</td></tr>
+      <tr><th>Pressure-tap stations</th><td>A CFD pressure span could use the wrong measurement plane.</td></tr>
+      <tr><th>Thermal bulk-temperature definition</th><td>Heat duty and CHT comparison would be underdetermined.</td></tr>
+      <tr><th>Plate/shell material properties</th><td>Wall-temperature prediction would require an invented model.</td></tr>
+    </tbody></table></div>
+    <p><strong>This is an input-eligibility stop, not a solver failure.</strong> No Luna analysis, analytical prediction freeze, CFD, experimental reveal, or validation claim exists for this stage.</p>
+    <div class="links">
+      <a href={artifacts + 'HX02_AMBIGUITY_REGISTER.md'}>Open ambiguity register</a>
+      <a href={artifacts + 'HX02_PRESSURE_MEASUREMENT_RECONCILIATION.md'}>Pressure-plane review</a>
+      <a href={artifacts + 'HX02_THERMAL_MEASUREMENT_RECONCILIATION.md'}>Thermal review</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="check-heading">
+    <h2 id="check-heading">Deterministic reconstruction check</h2>
+    <p>The rounded source dimensions reproduce an effective area within about 2.10% and hydraulic diameter within about 2.56% of the printed values. Aero preserves the printed values and records the derived values as a self-check; it does not silently substitute one for the other.</p>
+    <div class="links">
+      <a href={artifacts + 'HX02_RECONSTRUCTION_SELF_CHECK.md'}>Read the calculation</a>
+      <a href={artifacts + 'HX02_FINAL_INFORMATION_BOUNDARY_REPORT.md'}>Review the boundary audit</a>
+      <a href={artifacts + 'HX02_BENCHMARK_ELIGIBILITY.md'}>Read the eligibility decision</a>
+    </div>
+  </section>
+
+  <section class="boundary" aria-labelledby="next-heading">
+    <h2 id="next-heading">Next legitimate action</h2>
+    <p>A human custodian must supply or approve the missing topology, measurement planes, thermal definitions and material data. Once those are reconciled, a new additive stage may freeze Luna's plan and analytical predictions before any CFD. The sealed experimental reference remains private until that blind freeze.</p>
+  </section>
+</Shell>
