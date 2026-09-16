@@ -1,0 +1,3224 @@
+{
+  "schema": "aero.cep01.qualification.v2",
+  "program": "CEP-01 context efficiency, model routing, and portability",
+  "purpose": "Separate infrastructure qualification tracks; no universal model verdict.",
+  "authority": "deterministic_evidence_and_tools",
+  "model_qualification": "OPEN",
+  "solver_runs": 0,
+  "cases": [
+    {
+      "case_id": "channel-pass",
+      "label": "Analytical channel / CFD screen",
+      "disposition": "BOUNDED_PASS",
+      "source_url": "/software/aero/evidence/"
+    },
+    {
+      "case_id": "structural-pass",
+      "label": "Retained CalculiX bracket",
+      "disposition": "NUMERICAL_PASS",
+      "source_url": "/software/aero/evidence/"
+    },
+    {
+      "case_id": "structural-not-established",
+      "label": "Pressure-tube structural run",
+      "disposition": "NOT_ESTABLISHED",
+      "source_url": "/software/aero/evidence/"
+    },
+    {
+      "case_id": "structural-fail",
+      "label": "Thermal-gradient requirement",
+      "disposition": "REQUIREMENT_FAIL",
+      "source_url": "/software/aero/evidence/"
+    },
+    {
+      "case_id": "harcc-failure",
+      "label": "HARCC S4 solver-control investigation",
+      "disposition": "NUMERICAL_FAIL",
+      "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/"
+    },
+    {
+      "case_id": "cad-rejection",
+      "label": "Imported CAD detached sliver",
+      "disposition": "REJECTED",
+      "source_url": "/software/aero/evidence/"
+    },
+    {
+      "case_id": "coupled-evidence",
+      "label": "Thermal-fluid-to-structural evidence",
+      "disposition": "MIXED",
+      "source_url": "/software/aero/evidence/"
+    }
+  ],
+  "tracks": {
+    "CEP-R": {
+      "name": "REPORTING",
+      "claim": "Model-written report prose is checked against immutable deterministic facts.",
+      "acceptance_criteria": [
+        "unsupported numeric or unit claims are rejected",
+        "wrong gate/readiness states are rejected",
+        "accepted prose cannot change authoritative facts"
+      ],
+      "status": "INFRASTRUCTURE_PASS_MODEL_QUALIFICATION_OPEN",
+      "cases": [
+        {
+          "case_id": "channel-pass",
+          "case_label": "Analytical channel / CFD screen",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "BOUNDED_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48862,
+              "progressive": 3125
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "BOUNDED_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "channel-pass",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 48862,
+              "estimated_tokens": 16292,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "a562726412206dcf7ba115f919737c60aa8ad37db9b2feaa439052aa87674229",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3125,
+              "estimated_tokens": 1046,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "f9f60a17a2d2bfe0b56abed5ea54570bdf42e75bfb2ba73e7637dec5efceba56",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.58,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "channel-gates"
+              ],
+              "progressive_evidence_ids": [
+                "channel-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-pass",
+          "case_label": "Retained CalculiX bracket",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NUMERICAL_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48900,
+              "progressive": 3150
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-pass",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 48900,
+              "estimated_tokens": 16304,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "b00f42cf532bbb114af7a7a3a1b865c09a708f8fe4d3b03f42cb69b8625db649",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3150,
+              "estimated_tokens": 1054,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "0ee1851083076df4ae55898b2480cd431395abf80d497c9915bbd9c5ae903f53",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.54,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-not-established",
+          "case_label": "Pressure-tube structural run",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NOT_ESTABLISHED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49030,
+              "progressive": 3337
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NOT_ESTABLISHED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-not-established",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 49030,
+              "estimated_tokens": 16348,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "683f1aad6f1fddf0fcf5e515d89dbc04811cfcdbe0a8e1d5bc714c6f0de7b2d1",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3337,
+              "estimated_tokens": 1117,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "296d7d1e9d8246731d8da65ae53d4fdbdf91a06df0d6332c967a6a1bc9350bf6",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.17,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-fail",
+          "case_label": "Thermal-gradient requirement",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REQUIREMENT_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48878,
+              "progressive": 3149
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REQUIREMENT_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-fail",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 48878,
+              "estimated_tokens": 16297,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "5d9f2c963356d4b8402e02ec067b67e01d9f5680f3111362f4108ff1d5925309",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3149,
+              "estimated_tokens": 1054,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "25209e7395366ea1c12d4d0618a963c79b545c85e38d1b6b5cd79a9fe0a40fe1",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.53,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "progressive_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "harcc-failure",
+          "case_label": "HARCC S4 solver-control investigation",
+          "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/",
+          "disposition": "NUMERICAL_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49107,
+              "progressive": 3419
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "harcc-failure",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 49107,
+              "estimated_tokens": 16373,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "072e5b40f951d6941f6aae1bbe667aadc6a300c96197dd8ee261588412696e26",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3419,
+              "estimated_tokens": 1144,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "5e08abc9f5ec35881e90b20352786d8e34213dda6050c798fa79eb32127d4b99",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.01,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "progressive_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "cad-rejection",
+          "case_label": "Imported CAD detached sliver",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REJECTED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48901,
+              "progressive": 3190
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REJECTED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "cad-rejection",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 48901,
+              "estimated_tokens": 16305,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "46ed6c106aeb938f367089f5391e7008e81235bc3c9ee536110f175375fbf4fd",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3190,
+              "estimated_tokens": 1068,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "15c8facf162d21e05d027e544d152c8d637bd8bcaddb6a7d6dd0c6163f8c0961",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.45,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "cad-reject"
+              ],
+              "progressive_evidence_ids": [
+                "cad-reject"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "coupled-evidence",
+          "case_label": "Thermal-fluid-to-structural evidence",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "MIXED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49065,
+              "progressive": 3393
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "MIXED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "coupled-evidence",
+            "track_id": "CEP-R",
+            "full_measurement": {
+              "serialized_bytes": 49065,
+              "estimated_tokens": 16359,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "918f3a2f88d2c96395c6eea591e5b2545c49f4caa21b70efb3d160b7290e45ae",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3393,
+              "estimated_tokens": 1135,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "8486f766faa606cf4823025c495072d0b0da352fc04a6967b7270afd5f298761",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.06,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "progressive_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        }
+      ],
+      "model_calls": 0,
+      "solver_runs": 0,
+      "note": "Deterministic fixture evaluation only; no model reliability claim."
+    },
+    "CEP-S": {
+      "name": "STATUS / TELEMETRY NARRATION",
+      "claim": "Status narration preserves authoritative run state and does not invent progress.",
+      "acceptance_criteria": [
+        "running and unknown states remain running/unknown",
+        "telemetry is allowlisted",
+        "event/rate policy suppresses iteration spam"
+      ],
+      "status": "INFRASTRUCTURE_PASS_MODEL_QUALIFICATION_OPEN",
+      "cases": [
+        {
+          "case_id": "channel-pass",
+          "case_label": "Analytical channel / CFD screen",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "BOUNDED_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48881,
+              "progressive": 2666
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "BOUNDED_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "channel-pass",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 48881,
+              "estimated_tokens": 16298,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "6495b46998ea8064a1110ccb4afc57742a01b47d57d75bfbaa2d89101188b9c0",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2666,
+              "estimated_tokens": 893,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "fc5906303b1d32b4e6c39f0fd0d45546b39a7a27481904024abb8e01787f517d",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.52,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "channel-gates"
+              ],
+              "progressive_evidence_ids": [
+                "channel-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-pass",
+          "case_label": "Retained CalculiX bracket",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NUMERICAL_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48919,
+              "progressive": 2712
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-pass",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 48919,
+              "estimated_tokens": 16311,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "a48a155a3ce308381459a12f9643c5c3e1e5838460a86b02bbf7827bb44398a0",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2712,
+              "estimated_tokens": 908,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "93581846eabc27d5e1b44bc639e6a34bcb405024095204b715a29c425cefe942",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.43,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-not-established",
+          "case_label": "Pressure-tube structural run",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NOT_ESTABLISHED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49049,
+              "progressive": 2842
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NOT_ESTABLISHED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-not-established",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 49049,
+              "estimated_tokens": 16354,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "531ecc8a5ab10d5dbc7a65807234b4970edf0232ff0c355460fd34853eeb0271",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2842,
+              "estimated_tokens": 952,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "1525ee008b40d14268e98cc0768c3ad717c9a155ac3f2622ba2a91109c969fa3",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.18,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-fail",
+          "case_label": "Thermal-gradient requirement",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REQUIREMENT_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48897,
+              "progressive": 2694
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REQUIREMENT_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-fail",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 48897,
+              "estimated_tokens": 16303,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "be334e322c0437b292f2f52b72281a40c64d1aa65c6758684087d781aded51b6",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2694,
+              "estimated_tokens": 902,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "290b83fde15863c44900fef69613d0cd6a8c90b843ce78e57705bd26b084504e",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.47,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "progressive_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "harcc-failure",
+          "case_label": "HARCC S4 solver-control investigation",
+          "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/",
+          "disposition": "NUMERICAL_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49126,
+              "progressive": 2904
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "harcc-failure",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 49126,
+              "estimated_tokens": 16380,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "434d2e3e499d25587e31d32c6a1e45de4c0f0006b35d9d34ede85701aef3ba59",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2904,
+              "estimated_tokens": 972,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "3b48448aca0d169c6ea92c16b3ffaa4b62ac0da88d7fb6432f885ca6cdb284b9",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.07,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "progressive_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "cad-rejection",
+          "case_label": "Imported CAD detached sliver",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REJECTED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48920,
+              "progressive": 2720
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REJECTED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "cad-rejection",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 48920,
+              "estimated_tokens": 16311,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "e6c4902f48bd4884502090f0f081f318ca154880316619cca9d6472649204c23",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2720,
+              "estimated_tokens": 911,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "2c0faec0c4829313b158f183c0ca6fb129b61ddabffc384d466188e12421e383",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.41,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "cad-reject"
+              ],
+              "progressive_evidence_ids": [
+                "cad-reject"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "coupled-evidence",
+          "case_label": "Thermal-fluid-to-structural evidence",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "MIXED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49084,
+              "progressive": 2875
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "MIXED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "coupled-evidence",
+            "track_id": "CEP-S",
+            "full_measurement": {
+              "serialized_bytes": 49084,
+              "estimated_tokens": 16366,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "4bf1caa97bdc746241d5bd04920f12748f88c89cf05f200b7d1a73dbfaf298db",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2875,
+              "estimated_tokens": 963,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "f64500f8d21e9154e4e395c2494ad1faecd519aa5e6b147ea6822880af908fed",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.12,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "progressive_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        }
+      ],
+      "model_calls": 0,
+      "solver_runs": 0,
+      "note": "Deterministic fixture evaluation only; no model reliability claim."
+    },
+    "CEP-E": {
+      "name": "ENGINEERING EXPLANATION",
+      "claim": "Routine explanations can request bounded evidence and retain open gates.",
+      "acceptance_criteria": [
+        "evidence expansion is typed and ID-scoped",
+        "unknowns and NOT_ESTABLISHED states are preserved",
+        "high-consequence explanations remain advisory"
+      ],
+      "status": "INFRASTRUCTURE_PASS_MODEL_QUALIFICATION_OPEN",
+      "cases": [
+        {
+          "case_id": "channel-pass",
+          "case_label": "Analytical channel / CFD screen",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "BOUNDED_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48876,
+              "progressive": 3139
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "BOUNDED_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "channel-pass",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 48876,
+              "estimated_tokens": 16296,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "05313e5e2346bbc312bb0696f71622656ce2ce24e7b50c7e4aa2f0e5c85546a7",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3139,
+              "estimated_tokens": 1051,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "12a21eb2b1a55b8ba9114f64d49daf05eb05b34beef97982c636f335e38a5c84",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.55,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "channel-gates"
+              ],
+              "progressive_evidence_ids": [
+                "channel-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-pass",
+          "case_label": "Retained CalculiX bracket",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NUMERICAL_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48914,
+              "progressive": 3164
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-pass",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 48914,
+              "estimated_tokens": 16309,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "0d84ae464e562758edae626396fed8be814680f56a6bab958ee4103ceee47f7f",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3164,
+              "estimated_tokens": 1059,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "8895264ee096d120a74b240fd8dbcc08bffb84017563ff674e8d269d899e225d",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.51,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-not-established",
+          "case_label": "Pressure-tube structural run",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NOT_ESTABLISHED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49044,
+              "progressive": 3351
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NOT_ESTABLISHED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-not-established",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 49044,
+              "estimated_tokens": 16352,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "ce0d92bc462505bd9b8b70459a730caa2f202e469261d682084eb25063e74255",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3351,
+              "estimated_tokens": 1121,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "5dd212e10beb1bfdf8ea3083592318c299af5dbc44939058906028cdc28a2220",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.14,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-fail",
+          "case_label": "Thermal-gradient requirement",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REQUIREMENT_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48892,
+              "progressive": 3163
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REQUIREMENT_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-fail",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 48892,
+              "estimated_tokens": 16302,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "43cb031bb1b6899130731e569ae9fd87975196fe616dfd10212dbcf177a78e49",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3163,
+              "estimated_tokens": 1059,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "21ffd9c083f3e8bf042c4cee72d6f36075aa5397ef7a7eff85a52912496d1001",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.5,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "progressive_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "harcc-failure",
+          "case_label": "HARCC S4 solver-control investigation",
+          "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/",
+          "disposition": "NUMERICAL_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49121,
+              "progressive": 3433
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "harcc-failure",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 49121,
+              "estimated_tokens": 16378,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "1c7c05e189bbb6e723ecdb7f9a10401db1f13d8d6d1424bfdedb98f977a20303",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3433,
+              "estimated_tokens": 1149,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "7110f5225a415bc20ee0bd1205e696c38aeba688e9acc0cc1e56d80bdac68f44",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 92.98,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "progressive_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "cad-rejection",
+          "case_label": "Imported CAD detached sliver",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REJECTED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48915,
+              "progressive": 3204
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REJECTED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "cad-rejection",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 48915,
+              "estimated_tokens": 16309,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "9feccf0ecf3f49bcaabdac2b1eb4ae2676d5b90ec9093b1b26f76ebd3d1416d4",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3204,
+              "estimated_tokens": 1072,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "d32caa15ae756b08f745a916ce4c545633592208a9c353b7e753a0e766b4cf50",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.43,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "cad-reject"
+              ],
+              "progressive_evidence_ids": [
+                "cad-reject"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "coupled-evidence",
+          "case_label": "Thermal-fluid-to-structural evidence",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "MIXED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49079,
+              "progressive": 3407
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "MIXED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "coupled-evidence",
+            "track_id": "CEP-E",
+            "full_measurement": {
+              "serialized_bytes": 49079,
+              "estimated_tokens": 16364,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "223c514f4d390f232bbb1a653346daad49e07efec4b6a21cacf2c190ae31a108",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3407,
+              "estimated_tokens": 1140,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "02872dcc07c56e0f335c648cf683041cffc16f69bec89cfe2b49ec36a30c74c6",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.03,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "progressive_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        }
+      ],
+      "model_calls": 0,
+      "solver_runs": 0,
+      "note": "Deterministic fixture evaluation only; no model reliability claim."
+    },
+    "CEP-C": {
+      "name": "CONTEXT COMPRESSION",
+      "claim": "Progressive context reduces payload size without changing decision-grade meaning.",
+      "acceptance_criteria": [
+        "full and progressive views contain the same authoritative semantic fields",
+        "progressive view is smaller",
+        "a changed disposition is retained as a qualification failure"
+      ],
+      "status": "INFRASTRUCTURE_PASS_MODEL_QUALIFICATION_OPEN",
+      "cases": [
+        {
+          "case_id": "channel-pass",
+          "case_label": "Analytical channel / CFD screen",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "BOUNDED_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48872,
+              "progressive": 2657
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "BOUNDED_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "channel-pass",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 48872,
+              "estimated_tokens": 16295,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "94dcff41d37b0879de1db54f6d0bed202ab451838fbccb5e680cb7d7481bf984",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2657,
+              "estimated_tokens": 890,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "bd62841b629040b01183a4c18063f69614391a47200d38e9548229f795b6e5eb",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.54,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "channel-gates"
+              ],
+              "progressive_evidence_ids": [
+                "channel-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-pass",
+          "case_label": "Retained CalculiX bracket",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NUMERICAL_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48910,
+              "progressive": 2703
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-pass",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 48910,
+              "estimated_tokens": 16308,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "59ce967e4adc4c38bcec66c0ef5bc1625564bc81b6a3ae7b6531c9ef190f0ea9",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2703,
+              "estimated_tokens": 905,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "4e376313d329936e16e8229fe0896630b32f4174751450244434fe3d6141ffad",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.45,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-not-established",
+          "case_label": "Pressure-tube structural run",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NOT_ESTABLISHED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49040,
+              "progressive": 2833
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NOT_ESTABLISHED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-not-established",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 49040,
+              "estimated_tokens": 16351,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "535515de3e27c2dffaa74e74eb6e48f49050eaeef0c88dbd1d12222b16a20b97",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2833,
+              "estimated_tokens": 949,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "ab589216a1a4ef7c5cf9c62e9e565d47c88d24f23969185fc8b8160d3e4aa881",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.2,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-fail",
+          "case_label": "Thermal-gradient requirement",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REQUIREMENT_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48888,
+              "progressive": 2685
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REQUIREMENT_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-fail",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 48888,
+              "estimated_tokens": 16300,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "74c17788f57fd0c0fb9cd8b88bdb0a296dad1fc6ddab0f2ba8f932309315ca68",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2685,
+              "estimated_tokens": 899,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "ef0b401252666287504ea44b7208b4a1312ff3646a7fabf9afda648e2404971b",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.48,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "progressive_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "harcc-failure",
+          "case_label": "HARCC S4 solver-control investigation",
+          "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/",
+          "disposition": "NUMERICAL_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49117,
+              "progressive": 2895
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "harcc-failure",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 49117,
+              "estimated_tokens": 16377,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "a8545b9dd0f2db9ccad6c1e49e425cba033b9f2af9490a5583139e7895949142",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2895,
+              "estimated_tokens": 969,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "29d463df2ec45aeb5360117f540938eceac1cd41ad8827bdce3bd3f651e431b5",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.08,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "progressive_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "cad-rejection",
+          "case_label": "Imported CAD detached sliver",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REJECTED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48911,
+              "progressive": 2711
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REJECTED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "cad-rejection",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 48911,
+              "estimated_tokens": 16308,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "db04aa33df712ea246fbaa4f57ff8f5370c73a9503166d982be21cfb70fa2abb",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2711,
+              "estimated_tokens": 908,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "1743002cb1bdede3b2bd99dcf2e0dad5c7a607ae62813963ffd65d1916839d38",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.43,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "cad-reject"
+              ],
+              "progressive_evidence_ids": [
+                "cad-reject"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "coupled-evidence",
+          "case_label": "Thermal-fluid-to-structural evidence",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "MIXED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49075,
+              "progressive": 2866
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "MIXED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "coupled-evidence",
+            "track_id": "CEP-C",
+            "full_measurement": {
+              "serialized_bytes": 49075,
+              "estimated_tokens": 16363,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "d9afe3fbb566d554dd1864bbaa7736d05b00e935875c1f5c1c94341af7d1cdd6",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2866,
+              "estimated_tokens": 960,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "fc8f27090a8597ded94af7d77ce85e160b670eb95cbbd96050c68f845975f262",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.13,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "progressive_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        }
+      ],
+      "model_calls": 0,
+      "solver_runs": 0,
+      "note": "Deterministic fixture evaluation only; no model reliability claim."
+    },
+    "CEP-RTR": {
+      "name": "ROUTING / ESCALATION",
+      "claim": "Tasks route by capability, consequence, and evidence rather than model name.",
+      "acceptance_criteria": [
+        "deterministic tasks select NO_MODEL_REQUIRED",
+        "routine tasks select an available qualified capability profile",
+        "high/critical tasks retain escalation or human review"
+      ],
+      "status": "INFRASTRUCTURE_PASS_MODEL_QUALIFICATION_OPEN",
+      "cases": [
+        {
+          "case_id": "channel-pass",
+          "case_label": "Analytical channel / CFD screen",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "BOUNDED_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48873,
+              "progressive": 2658
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "BOUNDED_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "channel-pass",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 48873,
+              "estimated_tokens": 16295,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "bc198e3052cccad10b8b2e9381a5824b62e95aed0aee55096d1eb66ff57d36a9",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2658,
+              "estimated_tokens": 890,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "7fce680ee32297496ca1dd4125fed45bdc266ef21fb0fb2656b4bd810a06ffc5",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.54,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "channel-gates"
+              ],
+              "progressive_evidence_ids": [
+                "channel-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-pass",
+          "case_label": "Retained CalculiX bracket",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NUMERICAL_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48911,
+              "progressive": 2704
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-pass",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 48911,
+              "estimated_tokens": 16308,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "a5998c819ab96982718198178ad6b21e288eaf48c814f16c9bedbdbcc0c431c7",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2704,
+              "estimated_tokens": 906,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "34e026b7f2b2ad97de5b671e058fc2d089016555623bb8083c966ea66418d09b",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.44,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-not-established",
+          "case_label": "Pressure-tube structural run",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NOT_ESTABLISHED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49041,
+              "progressive": 2834
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NOT_ESTABLISHED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-not-established",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 49041,
+              "estimated_tokens": 16351,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "8edccd4ee58bac76f12e193b59a15ce24dfde40c836c0a831c6545c834e06185",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2834,
+              "estimated_tokens": 949,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "b77df494f65516840de73557ea5fbd553c89871c71540616806e91391981115f",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.2,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-fail",
+          "case_label": "Thermal-gradient requirement",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REQUIREMENT_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48889,
+              "progressive": 2686
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REQUIREMENT_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-fail",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 48889,
+              "estimated_tokens": 16301,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "25a1be55f0c8d0a5f21bb063eb091e76348e492413689127b79173d2d23a05ee",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2686,
+              "estimated_tokens": 900,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "8c1290fd2516b6f3b2d22234e0c770ac2441c958e547bd04aacac7ed7331f2cb",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.48,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "progressive_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "harcc-failure",
+          "case_label": "HARCC S4 solver-control investigation",
+          "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/",
+          "disposition": "NUMERICAL_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49118,
+              "progressive": 2896
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "harcc-failure",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 49118,
+              "estimated_tokens": 16377,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "d294852f1da117e014f0d11e37f08cb3f2fc94d71c30891769e9e7dd1fc33612",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2896,
+              "estimated_tokens": 970,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "6fc5942f0d87a1523958eb160f6ebb50faa57a5785f1818105ba77b72de70dc9",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.08,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "progressive_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "cad-rejection",
+          "case_label": "Imported CAD detached sliver",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REJECTED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48912,
+              "progressive": 2712
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REJECTED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "cad-rejection",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 48912,
+              "estimated_tokens": 16308,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "1170cc18ec1e8037bbcd22e84f337929cf129b324da3139e0f8f684c40e938da",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2712,
+              "estimated_tokens": 908,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "818affbc2033df5c6161e92e9f5e6fc8f8a0b6907b48c4fa54e8dc47ef9a410c",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.43,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "cad-reject"
+              ],
+              "progressive_evidence_ids": [
+                "cad-reject"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "coupled-evidence",
+          "case_label": "Thermal-fluid-to-structural evidence",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "MIXED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49076,
+              "progressive": 2867
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 0,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "MIXED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "coupled-evidence",
+            "track_id": "CEP-RTR",
+            "full_measurement": {
+              "serialized_bytes": 49076,
+              "estimated_tokens": 16363,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "23b0d640e2a2ee70ab527c62a4287a6cdfb55583b0732a940fbaa41ef41e6dc2",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 2867,
+              "estimated_tokens": 960,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "8b98753c96977a84964b3d1f566b565e218b2b4d803cbbd165032e488158cca3",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 94.13,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "progressive_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        }
+      ],
+      "model_calls": 0,
+      "solver_runs": 0,
+      "note": "Deterministic fixture evaluation only; no model reliability claim."
+    },
+    "CEP-INV": {
+      "name": "INVESTIGATION ROUTING",
+      "claim": "Failed-analysis questions receive bounded evidence and an explicit escalation contract.",
+      "acceptance_criteria": [
+        "failed cases route to an investigation capability",
+        "inspected and uninspected evidence IDs are retained",
+        "a model cannot promote a hypothesis to an authoritative cause"
+      ],
+      "status": "INFRASTRUCTURE_PASS_MODEL_QUALIFICATION_OPEN",
+      "cases": [
+        {
+          "case_id": "channel-pass",
+          "case_label": "Analytical channel / CFD screen",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "BOUNDED_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48874,
+              "progressive": 3137
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "BOUNDED_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "channel-pass",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 48874,
+              "estimated_tokens": 16296,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "af2b99ca971508eb6aa5fbf6b78d038b8b08d44d7eb2d36cfabf9cc65755623b",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3137,
+              "estimated_tokens": 1050,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "d4ee0457751bf407c56d8ebe00df0a6d145e0be05362964e6ebf0aa7ccaf5cb7",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.56,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "channel-gates"
+              ],
+              "progressive_evidence_ids": [
+                "channel-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-pass",
+          "case_label": "Retained CalculiX bracket",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NUMERICAL_PASS",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48912,
+              "progressive": 3162
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_PASS",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-pass",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 48912,
+              "estimated_tokens": 16308,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "9c42441eddb9a171941b00b32202a8f7169ea0dc3bc15d27c79df496ad13abd5",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3162,
+              "estimated_tokens": 1058,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "09385a77152f6229c9ba502684b11b1982157bbe2cb3c2e1f420c8ba7f6a6081",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.51,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-pass-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-not-established",
+          "case_label": "Pressure-tube structural run",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "NOT_ESTABLISHED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49042,
+              "progressive": 3349
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NOT_ESTABLISHED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-not-established",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 49042,
+              "estimated_tokens": 16352,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "4e62f8e7a1ca96a7c3ac23dbf65efbc692017f18602011b5a7e596bd78f7648e",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3349,
+              "estimated_tokens": 1121,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "91d9d7c587cfd4cf3768415bf5303257e8131d6afb7b3237e7a00a89420b2fbd",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.14,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "progressive_evidence_ids": [
+                "fea-open-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "structural-fail",
+          "case_label": "Thermal-gradient requirement",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REQUIREMENT_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48890,
+              "progressive": 3161
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REQUIREMENT_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "structural-fail",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 48890,
+              "estimated_tokens": 16301,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "69adec6afefdd86f469e8814f5eb559bd5e3716707531538d77b4ec068a4e721",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3161,
+              "estimated_tokens": 1058,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "ba91fc1b305c96363b00b1f7eb2935ba78293183e051fa0cb36f89f956fdda25",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.51,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "progressive_evidence_ids": [
+                "fea-thermal-fail"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "harcc-failure",
+          "case_label": "HARCC S4 solver-control investigation",
+          "source_url": "/software/aero/evidence/benchmarks/harcc-s4-part2/",
+          "disposition": "NUMERICAL_FAIL",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49119,
+              "progressive": 3431
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "NUMERICAL_FAIL",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "harcc-failure",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 49119,
+              "estimated_tokens": 16377,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "e01bf0d9cdfb491cff903181c481711567b0c9e8c7ca3d6a3ed4a51a3dde83e5",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3431,
+              "estimated_tokens": 1148,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "838b3b1f133067c957460d1e473cb8725b425ff54de54200ac84bb08e035e403",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 92.99,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "progressive_evidence_ids": [
+                "harcc-failure-gates"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "cad-rejection",
+          "case_label": "Imported CAD detached sliver",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "REJECTED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 48913,
+              "progressive": 3202
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "REJECTED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "cad-rejection",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 48913,
+              "estimated_tokens": 16309,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "10c60843fdec1505755688a4c4fd1515b46f8a18ca4502916370795595a001ef",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3202,
+              "estimated_tokens": 1072,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "e88d885549456047405b1894c6410b699b0d1a25cfbc883ec593a62489d9d779",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.43,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "cad-reject"
+              ],
+              "progressive_evidence_ids": [
+                "cad-reject"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        },
+        {
+          "case_id": "coupled-evidence",
+          "case_label": "Thermal-fluid-to-structural evidence",
+          "source_url": "/software/aero/evidence/",
+          "disposition": "MIXED",
+          "model_execution": "NOT_RUN",
+          "metrics": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "context_bytes": {
+              "full": 49077,
+              "progressive": 3405
+            },
+            "mcp_calls": 0,
+            "evidence_expansions": 1,
+            "latency_ms": null,
+            "selected_model": null,
+            "escalations": 0,
+            "final_engineering_disposition": "MIXED",
+            "gate_state_accuracy": "NOT_RUN",
+            "numerical_claim_accuracy": "NOT_RUN",
+            "unknown_preservation": "PASS",
+            "unsupported_claims": "NOT_RUN",
+            "rubric_score": "NOT_RUN",
+            "measurement_status": "FIXTURE_INFRASTRUCTURE_ONLY"
+          },
+          "full_vs_progressive": {
+            "case_id": "coupled-evidence",
+            "track_id": "CEP-INV",
+            "full_measurement": {
+              "serialized_bytes": 49077,
+              "estimated_tokens": 16363,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "cccaaa252195c1f01835f99df2bf07f4fd8eab5feddaa1b2b0ba992620834b0e",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "progressive_measurement": {
+              "serialized_bytes": 3405,
+              "estimated_tokens": 1139,
+              "unique_segments": 1,
+              "duplicate_segments": 0,
+              "context_hash": "50a02b51f1edf1b227e006780824a2c853be2eaa042a443059b70e44e2a7f636",
+              "estimator": "utf8_bytes_div_3_plus_message_overhead"
+            },
+            "estimated_reduction_percent": 93.04,
+            "equivalence": {
+              "materially_equivalent": true,
+              "semantic_fields_checked": [
+                "current_disposition",
+                "numerical_acceptability",
+                "design_readiness",
+                "gate_states",
+                "open_gates",
+                "known_unknowns",
+                "current_stage"
+              ],
+              "semantic_mismatches": [],
+              "authoritative_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "progressive_evidence_ids": [
+                "coupled-transfer"
+              ],
+              "missing_progressive_evidence_ids": [],
+              "interpretation": "Equivalent means decision-grade disposition/gates/unknowns match; wording need not match."
+            },
+            "full_context_sent_to_model": false
+          }
+        }
+      ],
+      "model_calls": 0,
+      "solver_runs": 0,
+      "note": "Deterministic fixture evaluation only; no model reliability claim."
+    }
+  },
+  "routing_contract_probe": {
+    "status": "FAIL",
+    "model_calls": 0,
+    "routes": [
+      {
+        "task_id": "route-deterministic",
+        "task_type": "mesh_comparison",
+        "selected_capability": "NO_MODEL_REQUIRED",
+        "selected_model": "",
+        "reason": "deterministic_code_is_authoritative_for_this_task",
+        "context_budget": 0,
+        "fallback_model": "",
+        "escalation_conditions": [],
+        "consequence_level": "LOW",
+        "complexity": "ROUTINE",
+        "human_review_required": false,
+        "routing_hash": "228be3279c94283090bfc7c40a6530164af886a5f9f52b6299c0599a0958b252"
+      },
+      {
+        "task_id": "route-routine",
+        "task_type": "status_narration",
+        "selected_capability": "STATUS_NARRATION",
+        "selected_model": "routine-profile",
+        "reason": "capability_and_consequence_match; cheapest qualified configured profile",
+        "context_budget": 700,
+        "fallback_model": "",
+        "escalation_conditions": [],
+        "consequence_level": "LOW",
+        "complexity": "ROUTINE",
+        "human_review_required": false,
+        "routing_hash": "43d3c3fd963ee9c3f81a4521036d29d0b2c80bb8287e8d8594520c04e1e19956"
+      },
+      {
+        "task_id": "route-investigation",
+        "task_type": "failed_analysis",
+        "selected_capability": "FAILED_ANALYSIS_INVESTIGATION",
+        "selected_model": "investigation-profile",
+        "reason": "capability_and_consequence_match; cheapest qualified configured profile",
+        "context_budget": 4000,
+        "fallback_model": "",
+        "escalation_conditions": [
+          "model output is advisory; authoritative tools and human review remain required"
+        ],
+        "consequence_level": "HIGH",
+        "complexity": "INVESTIGATIVE",
+        "human_review_required": true,
+        "routing_hash": "03923e6351600b9a2101ef5b40a4b0fae4360536c630e63c5bb709e9022ae623"
+      },
+      {
+        "task_id": "route-critical",
+        "task_type": "engineering_trade",
+        "selected_capability": "ENGINEERING_TRADE_REASONING",
+        "selected_model": "",
+        "reason": "ESCALATION_REQUIRED",
+        "context_budget": 3000,
+        "fallback_model": "",
+        "escalation_conditions": [
+          "no available profile meets capability, privacy, context and consequence requirements",
+          "benchmark this capability or escalate to an approved reviewer"
+        ],
+        "consequence_level": "CRITICAL",
+        "complexity": "ROUTINE",
+        "human_review_required": true,
+        "routing_hash": "18a0150c929956da2cac2035beca5e05f0e7bd6e6c772a94c26360a6524d87ca"
+      }
+    ],
+    "note": "Generic fixture profiles exercise capability routing; no configured provider was invoked."
+  },
+  "context_summary": {
+    "comparisons": 42,
+    "mean_estimated_reduction_percent": 93.82,
+    "min_estimated_reduction_percent": 92.98,
+    "max_estimated_reduction_percent": 94.54,
+    "full_context_sent_to_model": false,
+    "estimator": "canonical UTF-8 bytes / 3 plus message overhead; provider token counts not available in fixture mode"
+  },
+  "equivalence_policy": {
+    "required": [
+      "final disposition",
+      "numerical gate states",
+      "requirement states",
+      "open validation gates",
+      "critical evidence",
+      "unknowns",
+      "fidelity recommendation where applicable",
+      "stop discipline"
+    ],
+    "prose_identity_required": false,
+    "changed_disposition_policy": "retain as qualification failure; do not tune away"
+  },
+  "limitations": [
+    "All seven cases are structured retained-evidence fixtures; raw solver logs and private corpus are not injected.",
+    "No local-model calls were made in this infrastructure qualification run.",
+    "Model qualification remains open until each track has held-out, repeated provider runs with fact verification.",
+    "Context estimates are serialization heuristics, not tokenizer-equivalent or cost claims."
+  ],
+  "run_started_at_utc": "2026-09-16T12:58:24.406633Z",
+  "result_hash": "562bb7aed5620eb97b565aedab6caecc330d467c32a0c19b442b58ccc0c23f31"
+}

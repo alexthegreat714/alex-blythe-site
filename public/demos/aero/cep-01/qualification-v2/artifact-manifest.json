@@ -1,0 +1,11 @@
+{
+  "qualification-summary.json": {
+    "sha256": "deeea36ce6033520154b4ede2f6ceac47e7097304a616c0c27a8a4a81b018206",
+    "bytes": 129867
+  },
+  "REPORT.md": {
+    "sha256": "314c0ec155a975932b8c2c4b6e9e4f56e9e1d5f0fc27c93d6769e367bcdb2907",
+    "bytes": 4198
+  },
+  "schema": "aero.cep01.qualification.artifacts.v2"
+}

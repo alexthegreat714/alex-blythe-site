@@ -28,16 +28,17 @@ export const softwareProjects: SoftwareProject[] = [
   {
     slug: 'aero',
     name: 'Aero',
-    category: 'Engineering orchestration / CFD',
+    category: 'Engineering analysis orchestration',
     status: 'Public beta / preliminary analysis',
     year: '2026',
-    summary: 'Turn an engineering question into a reviewable CFD study: requirements, first-principles checks, design comparisons and OpenFOAM evidence.',
-    purpose: 'Aero connects engineering problem framing, fidelity selection, solver setup, execution evidence, and review without treating an AI-generated answer as computational authority.',
+    summary: 'Turn an engineering question into a reviewable analysis: requirements, first-principles checks, geometry, CFD or structural analysis where justified, and inspectable evidence.',
+    purpose: 'Aero carries a declared engineering question through requirements, first-principles checks, geometry, appropriate numerical analysis, evidence evaluation, and reviewable disposition without treating an AI-generated answer as computational authority.',
     keyIdeas: [
       'Engineering problem framing and fidelity selection',
       'Geometry, mesh, boundary-condition, and preflight checks',
       'Convergence, conservation, and validation gates',
-      'Linux-native OpenFOAM execution',
+      'CFD, thermal, and structural paths where justified',
+      'Linux-native OpenFOAM and CalculiX execution',
       'Python analysis and inspectable run artifacts',
     ],
     problem: [
@@ -52,6 +53,7 @@ export const softwareProjects: SoftwareProject[] = [
     boundaries: [
       'The numerical solver—not the AI—is the computational authority.',
       'Aero does not treat a converged solution as a validated prediction.',
+      'Aero is not autonomous engineering software and does not hold design authority.',
       'Consequential setup changes and engineering conclusions remain subject to human review.',
       'A bounded solver smoke test proves an execution path, not design fitness or predictive validity.',
     ],
@@ -61,7 +63,7 @@ export const softwareProjects: SoftwareProject[] = [
       'Promotion toward engineering evidence requires numerical convergence, conservation checks, and comparison with an appropriate analytical, experimental, or reference basis.',
     ],
     limitations: [
-      'The public release supports preliminary analysis with explicit physical assumptions and numerical checks.',
+      'The public release supports preliminary analysis with explicit physical assumptions, numerical checks, and retained failure states.',
       'Visitors can run a bounded parallel-plate channel study. General CAD uploads and arbitrary solver cases use the private workspace.',
       'Validation coverage depends on the problem class; completed execution alone does not establish physical accuracy.',
     ],
