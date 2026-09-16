@@ -1,0 +1,11 @@
+{
+  "schema": "aero.public.hx02b_manifest.v1",
+  "study_id": "HX02B-ZHANG-2022",
+  "files": [
+    {"path": "HX02B_BLIND_STATUS.md", "sha256": "30FA2127A53502B1258363459809B6EF710B50D9C17927CFD1F8DDD259C36ED7"},
+    {"path": "status.json", "sha256": "5060F3E2296EDDE020C6D9F4C921A63DA24A618429057805D377A7709101F9C8"}
+  ],
+  "contains_experimental_results": false,
+  "contains_sealed_reference": false,
+  "contains_private_verbatim_investigator_artifact": false
+}

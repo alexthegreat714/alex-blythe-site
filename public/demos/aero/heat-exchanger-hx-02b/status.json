@@ -1,0 +1,18 @@
+{
+  "study_id": "HX02B-ZHANG-2022",
+  "status": "BLOCKED_BEFORE_BLIND_PREDICTION_FREEZE",
+  "investigator": "gpt-5.6-luna",
+  "fidelity_decision": "ANALYTICAL_ONLY",
+  "solver_dispatched": false,
+  "experimental_reveal": false,
+  "validation_claim": "NONE",
+  "stop_gate": "LUNA_ANALYTICAL_INPUT_COMPLETENESS",
+  "missing_visible_inputs": [
+    "exact rated operating point",
+    "active heat-transfer area and outlet-plane convention",
+    "independent sodium and sCO2 property source/version records"
+  ],
+  "excluded": ["pressure_drop_validation", "predictive_wall_temperature", "CHT", "FEA", "CFD_to_FEA_coupling"],
+  "private_verbatim_response_sha256": "EEC22904DA51940E5271DE27595DA0310F0A86DFD169F2B9DE21D707B8A9371A",
+  "public_artifact_scope": "stop_state_only; sealed_truth_not_published"
+}
