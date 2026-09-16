@@ -1,0 +1,48 @@
+{
+  "schema": "aero.heat_exchanger_program.summary.v1",
+  "program": "Aero heat-exchanger benchmark program",
+  "revision": "1.0",
+  "report_date_utc": "2026-09-16",
+  "overall_status": "ACTIVE_NOT_COMPLETE",
+  "executed_synthetic_study": {
+    "id": "HX-S01",
+    "disposition": "NUMERICAL_FAIL_EXPERIMENT_NOT_EVALUATED",
+    "solver": "OpenFOAM Foundation 10 chtMultiRegionFoam",
+    "baseline_iteration_limit": 250,
+    "grid_cells": {
+      "coarse": 494670,
+      "medium": 1003677,
+      "fine": 2770939
+    },
+    "baseline_all_grids_residual_gate": "FAIL",
+    "baseline_medium_to_fine_pressure_drop_change_percent": {
+      "hot": 22.61,
+      "cold": 22.17
+    },
+    "iteration_1000_diagnostics": {
+      "all_residual_gates": "FAIL",
+      "fine_to_medium_pressure_drop_change_percent": {
+        "hot": 28.7,
+        "cold": 28.1
+      }
+    },
+    "experimental_comparison": "NOT_EVALUATED",
+    "pche_specific_structural_analysis": "NOT_EVALUATED",
+    "design_readiness": "NOT_ESTABLISHED"
+  },
+  "candidate_studies": [
+    {"id": "HX-B01", "disposition": "STOP_BEFORE_PREREGISTRATION", "solver_runs": 0, "score": "NOT_SCORED", "frozen_plan_hashes_reverified": 2},
+    {"id": "HX-B02", "disposition": "SOURCE_AND_STRUCTURAL_TRUTH_GATE_OPEN", "solver_runs": 0, "score": "NOT_SCORED"},
+    {"id": "HX-B03", "disposition": "ACCESS_AND_VERSION_GATE_OPEN", "solver_runs": 0, "score": "NOT_SCORED"},
+    {"id": "HX-B04", "disposition": "FULL_TEXT_AND_REPRODUCIBILITY_GATE_OPEN", "solver_runs": 0, "score": "NOT_SCORED"},
+    {"id": "HX-B05", "disposition": "STOP_BEFORE_PREREGISTRATION", "solver_runs": 0, "score": "NOT_SCORED", "frozen_plan_hash_reverified": true, "blindness": "RUNTIME_REFERENCE_WITHHELD_FROM_LUNA; IMPLEMENTING_AGENT_EXPOSURE_DISCLOSED"},
+    {"id": "HX-D01", "disposition": "NOT_STARTED_ORDER_GATE_OPEN", "solver_runs": 0, "score": "NOT_SCORED"}
+  ],
+  "preservation": {
+    "earlier_hx_b01_blind_plans_preserved": true,
+    "prior_samarmad_publication_run_reclassified": false,
+    "synthetic_run_claimed_as_experimental_validation": false,
+    "external_timestamp_established": false
+  },
+  "scope_limit": "Program status and executed-study record only; the planned benchmark sequence is not complete."
+}

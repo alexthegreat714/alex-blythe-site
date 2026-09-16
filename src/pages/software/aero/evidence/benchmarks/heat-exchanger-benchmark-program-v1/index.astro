@@ -1,0 +1,72 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import summary from '../../../../../../../public/demos/aero/heat-exchanger-benchmark-program-v1/program_summary.json';
+
+const artifacts = '/demos/aero/heat-exchanger-benchmark-program-v1/';
+const hx = summary.executed_synthetic_study;
+---
+<Shell title="Aero - Heat exchanger benchmark program" description="Program-wide heat-exchanger benchmark status, source stops, synthetic CFD evidence, and open validation gates." path="/software/aero/evidence/benchmarks/heat-exchanger-benchmark-program-v1/">
+  <header>
+    <p class="eyebrow">AERO / HEAT-EXCHANGER BENCHMARK PROGRAM</p>
+    <span class="status mixed">ACTIVE / NOT COMPLETE</span>
+    <h1>One executed synthetic study. Its numerical gates failed.</h1>
+    <p>This report distinguishes actual runs from candidates that stopped before execution. HX-S01 is a source-informed synthetic PCHE study, not an experimental validation. The earlier blind plans and their stop decisions remain preserved.</p>
+    <p class="metric">HX-S01: 3 grids / all residual gates failed / experimental comparison not evaluated</p>
+    <div class="links">
+      <a class="primary" href={artifacts + 'PROGRAM_REPORT.md'}>Read the program report</a>
+      <a href={artifacts + 'program_summary.json'}>Inspect machine-readable status</a>
+      <a href={artifacts + 'SHA256SUMS.txt'}>Verify report checksums</a>
+      <a href="/software/aero/evidence/benchmarks/heat-exchanger-program-v1/">Open HX-S01 results</a>
+    </div>
+  </header>
+
+  <section class="boundary" aria-labelledby="boundary-heading">
+    <h2 id="boundary-heading">Numerical failure is not the same as a failed run</h2>
+    <p>All three OpenFOAM Foundation 10 CHT grids reached the original 250-iteration horizon. Mass and energy balances met their stated bounds, but every grid missed the predeclared residual limit and the medium-to-fine pressure-drop changes exceeded 5%. A solver process ending normally does not establish convergence.</p>
+    <p><strong>Not established:</strong> experimental agreement, PCHE-specific structural performance, design readiness, or autonomous local-model piloting.</p>
+  </section>
+
+  <section aria-labelledby="grid-heading">
+    <h2 id="grid-heading">HX-S01 frozen 250-iteration baseline</h2>
+    <div class="table-wrap"><table><thead><tr><th>Grid</th><th>Cells</th><th>Max residual</th><th>Mass imbalance</th><th>Energy imbalance</th><th>Hot / cold Delta-p</th><th>Disposition</th></tr></thead><tbody>
+      <tr><th>Coarse</th><td>{hx.grid_cells.coarse.toLocaleString()}</td><td>2.1375e-4</td><td>0.0669%</td><td>3.671%</td><td>1,319.4 / 1,340.9 Pa</td><td><strong>FAIL</strong> residual</td></tr>
+      <tr><th>Medium</th><td>{hx.grid_cells.medium.toLocaleString()}</td><td>5.7688e-6</td><td>0.0896%</td><td>2.492%</td><td>1,393.7 / 1,407.9 Pa</td><td><strong>FAIL</strong> residual</td></tr>
+      <tr><th>Fine</th><td>{hx.grid_cells.fine.toLocaleString()}</td><td>6.6989e-6</td><td>0.0624%</td><td>1.496%</td><td>1,800.9 / 1,808.9 Pa</td><td><strong>FAIL</strong> residual</td></tr>
+    </tbody></table></div>
+    <p>Medium-to-fine pressure-drop changes were 22.61% hot-side and 22.17% cold-side. Same-settings 1,000-iteration continuations also miss residual convergence; fine-to-medium pressure-drop differences remain 28.7% and 28.1%. Those continuations are diagnostic and do not replace the frozen baseline.</p>
+  </section>
+
+  <section aria-labelledby="register-heading">
+    <h2 id="register-heading">Study dispositions</h2>
+    <div class="table-wrap"><table><thead><tr><th>Study</th><th>Status</th><th>What was established</th></tr></thead><tbody>
+      {summary.candidate_studies.map((study) => <tr>
+        <th>{study.id}</th>
+        <td>{study.disposition.replaceAll('_', ' ')}</td>
+        <td>{study.id === 'HX-B01' ? 'Two frozen input-only Luna plans stopped before numerical work; not scored.' : study.id === 'HX-B02' ? 'Lawful full-text inputs and independent structural truth not established; no run.' : study.id === 'HX-B03' ? 'Version-matched full methods/input source and independent structural truth not established; no run.' : study.id === 'HX-B04' ? 'Complete lawful inputs and independent structural truth not established; no run.' : study.id === 'HX-B05' ? 'Luna feasibility plan stopped before preregistration; no ranking or solver run.' : study.id === 'HX-D01' ? 'Not started; predecessor disposition gate remains open.' : 'Synthetic CHT study executed; numerical failure, experiment not scored.'}</td>
+      </tr>)}
+    </tbody></table></div>
+  </section>
+
+  <section class="boundary" aria-labelledby="synthetic-heading">
+    <h2 id="synthetic-heading">Why HX-S01 is synthetic</h2>
+    <p>Samarmad and Jaffal (2023) grounds the PCHE configuration context; Seo et al. (2015) informs straight-microchannel methodology; NIST water correlations ground the nominal fluid-property range. The reconstructed solver condition had no verified, matched pointwise experimental target. Conflicting cold-inlet values and incomplete structural data are documented rather than silently filled with purported measurements.</p>
+    <p>The retained first-principles screen gives hydraulic diameter 1.52754 mm, Reynolds number 519.12, straight-duct pressure drop 576.20 Pa per channel, and a limited 27.46-30.90 W idealized heat-duty band per channel pair. These are analytical screening outputs, not experimental targets or uncertainty bounds.</p>
+    <p class="subtle">The full report lists geometry, property and model assumptions; frozen gates; baseline and diagnostic results; custody limitations; and references. No source article PDF, figure, or table is redistributed here.</p>
+    <div class="links">
+      <a href="https://doi.org/10.1016/j.rineng.2023.101303">Samarmad and Jaffal (2023)</a>
+      <a href="https://www.mdpi.com/1099-4300/17/5/3438">Seo et al. (2015)</a>
+      <a href="https://www.nist.gov/publications/reference-correlations-thermophysical-properties-liquid-water-01-mpa">NIST water-property reference</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="next-heading">
+    <h2 id="next-heading">What remains before program closure</h2>
+    <ol>
+      <li>Resolve or formally replace HX-B01 with matched geometry, measurements, and uncertainty; keep both previous stop plans intact.</li>
+      <li>Close the source-access/reproducibility and independent structural-truth gates for HX-B02 through HX-B04.</li>
+      <li>Supply HX-B05's missing requirements and verified material/property/geometry inputs before any new ranking attempt.</li>
+      <li>Only then open HX-D01, with a broad-requirements stage and controlled fidelity escalation.</li>
+    </ol>
+    <p class="subtle">No result here establishes employer-hardware suitability, qualification, or design release. Hashes identify artifacts; they do not establish scientific validity or trusted time.</p>
+  </section>
+</Shell>
