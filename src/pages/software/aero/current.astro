@@ -15,22 +15,22 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   </nav>
   <div class="workspace">
     <section class="conversation" aria-labelledby="conversation-title">
-      <header class="pane-header"><div><small>YOUR ENGINEERING PARTNER</small><h1 id="conversation-title">What are we designing?</h1></div><span class="model-state" data-model-state data-state="checking" role="status" aria-live="polite" title="Checking the Aero conversation service">Checking connection…</span></header>
+      <header class="pane-header"><div><small>START HERE</small><h1 id="conversation-title">What are we working on?</h1></div><span class="model-state" data-model-state data-state="checking" role="status" aria-live="polite" title="Checking the Aero conversation service">Checking connection…</span></header>
       <div class="messages" data-messages role="log" aria-live="polite" aria-label="Conversation">
-        <div class="welcome" data-welcome><h2>Start with the question.<br/>Build the case together.</h2><p>Describe your goal and what you know. Aero will ask for the missing inputs and propose a working document beside the conversation.</p><div class="starters"><button data-prompt="Help me define a pressure-loss study for an air nozzle. I have a STEP file but haven't selected operating conditions or acceptance criteria yet. Ask me the most important first question.">Nozzle pressure loss <span>↗</span></button><button data-prompt="I need a first-cut cooling-channel study for an 8 kW heat load. Help me choose the required coolant data, dimensions and success criteria before any CFD.">Cooling-channel sizing <span>↗</span></button><button data-prompt="Help me scope an internal pipe-flow CFD case. Start by asking about the engineering decision, fluid and available geometry, then develop a first-principles plan.">Internal flow <span>↗</span></button></div></div>
+        <div class="welcome" data-welcome><h2>What question are we solving?</h2><p>Ask Aero about the engineering work you want to do.</p><div class="starters"><button data-prompt="Help me define a pressure-loss study for an air nozzle. I have a STEP file but haven't selected operating conditions or acceptance criteria yet. Ask me the most important first question.">Pressure loss <span>↗</span></button><button data-prompt="I need a first-cut cooling-channel study for an 8 kW heat load. Help me choose the required coolant data, dimensions and success criteria before any CFD.">Cooling channel <span>↗</span></button><button data-prompt="Help me scope an internal pipe-flow CFD case. Start by asking about the engineering decision, fluid and available geometry, then develop a first-principles plan.">Internal flow <span>↗</span></button></div></div>
       </div>
       <div class="chat-notice" data-chat-notice role="status"></div>
-      <form class="composer" data-chat-form><label class="sr-only" for="message">Message Aero</label><textarea id="message" placeholder="I want to estimate pressure loss through…" rows="3" maxlength="4000"></textarea><div><small>Enter to send · Shift + Enter for a new line</small><button type="submit" data-send>Send ↑</button></div></form>
-      <p class="privacy">Model proposals need your review. The channel study runs a bounded OpenFOAM case when you press Start.</p>
+      <form class="composer" data-chat-form><label class="sr-only" for="message">Engineering question</label><textarea id="message" placeholder="Ask an engineering question..." rows="3" maxlength="4000"></textarea><div><small>Enter to send · Shift + Enter for a new line</small><button type="submit" data-send>Send ↑</button></div></form>
+      <p class="privacy">Aero proposes inputs for your review.</p>
     </section>
     <div class="splitter" role="separator" tabindex="0" aria-label="Resize conversation and document" aria-orientation="vertical" aria-valuemin="30" aria-valuemax="65" aria-valuenow="44"></div>
     <section class="document" aria-labelledby="document-title">
-      <header class="pane-header"><div><small>LIVE WORKING DOCUMENT</small><h2 id="document-title">Untitled engineering case</h2></div><span data-revision>Rev 0</span></header>
+      <header class="pane-header"><div><small>CASE INTAKE</small><h2 id="document-title">Untitled case</h2></div><span data-revision>Rev 0</span></header>
       <div class="document-tabs" role="group" aria-label="Document views"><button data-doc="record" aria-pressed="true">Requirements</button><button data-doc="math" aria-pressed="false">Rendered math</button><button data-doc="source" aria-pressed="false">LaTeX source</button><button data-open-channel>Live channel study</button></div>
       <div class="example-strip" data-example-strip hidden><span data-example-status></span><span data-example-summary></span><a data-example-source target="_blank" rel="noopener noreferrer">Source ↗</a></div>
       <div class="document-scroll">
         <AeroChannelStudy />
-        <section data-panel="record"><div class="record-intro"><h3>Define before you solve.</h3><p>Values from the model appear as proposals. Edit or confirm each one to prepare the next step.</p></div><div data-fields></div></section>
+        <section data-panel="record"><div class="record-intro"><h3>What does Aero need to know?</h3><p>Answer each question, then confirm it.</p></div><div data-fields></div></section>
         <section data-panel="math" hidden><div class="record-intro"><h3>First principles, in view.</h3><p>Equations and assumptions grow from the conversation. This is rendered LaTeX—not a solver result.</p></div><div data-equations></div></section>
         <section data-panel="source" hidden><label for="tex">Generated from the current record · export for external compilation</label><textarea id="tex" readonly spellcheck="false"></textarea></section>
         <section class="stage-checklist" data-stage-checklist hidden><small data-stage-name></small><h3 data-stage-title></h3><section class="proof-embed" data-proof-embed hidden><h4>Run proof · original inputs</h4><p data-proof-note>Recorded evidence applies to the original example only.</p><iframe data-proof-frame title="Recorded CFD run proof document" loading="lazy" sandbox="allow-popups"></iframe></section><ul data-stage-needs></ul><div data-stage-evidence></div><p data-stage-caveat>No job has been started. Preparation is not execution or validation.</p><a href="https://aegis.alex-blythe.com/aero-workspaces/">Open authenticated execution workspace ↗</a></section>
@@ -53,7 +53,15 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   import 'katex/dist/katex.min.css';
   const root = document.querySelector<HTMLElement>('[data-workspace]')!;
   const $ = <T extends HTMLElement = HTMLElement>(s: string) => root.querySelector<T>(s)!;
-  const labels = {goal:'Engineering goal',geometry:'Geometry & CAD source',fluid:'Fluid & material properties',conditions:'Operating conditions',success:'Success criteria',reference:'Validation reference'};
+  const labels = {goal:'Engineering goal',geometry:'Design source',fluid:'Fluids & materials',conditions:'Operating conditions',success:'Success criteria',reference:'Reference'};
+  const fieldPrompts:Record<keyof typeof labels,string> = {
+    goal:'What must the analysis decide?',
+    geometry:'What geometry, CAD, drawing, or dimensions are available?',
+    fluid:'What fluids, materials, and properties should be used?',
+    conditions:'What temperatures, pressures, flows, or loads apply?',
+    success:'What result or limit would count as success?',
+    reference:'What experiment, paper, standard, or baseline should we compare against?'
+  };
   type Key = keyof typeof labels;
   type Field = {value: string; confirmed: boolean};
   type Equation = {title:string;latex:string;assumptions:string};
@@ -164,7 +172,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
       const row=document.createElement('div');row.className='requirement';
       const heading=document.createElement('label');heading.htmlFor=`field-${key}`;heading.textContent=label;
       const tag=document.createElement('small');tag.textContent=field.confirmed?'Confirmed':field.value?'Proposed · review':'Missing';tag.className=field.confirmed?'confirmed':'proposed';
-      const area=document.createElement('textarea');area.id=`field-${key}`;area.value=field.value;area.rows=2;area.maxLength=1500;area.placeholder='Not specified yet';
+      const area=document.createElement('textarea');area.id=`field-${key}`;area.value=field.value;area.rows=2;area.maxLength=1500;area.placeholder=fieldPrompts[key];
       const button=document.createElement('button');button.textContent=field.confirmed?'Reopen':'Confirm';button.disabled=!field.value.trim();
       area.addEventListener('change',()=>{field.value=area.value.trim();field.confirmed=false;session.revision++;save();renderRecord();});
       button.addEventListener('click',()=>{field.confirmed=!field.confirmed;session.revision++;save();renderRecord();});
@@ -408,5 +416,9 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   :global([data-stage-evidence] a){margin:0;font-size:11px}
   @media(max-width:700px){.appbar{gap:6px}.app-actions{overflow-x:auto;max-width:76vw}.app-actions button{flex:none}.example-strip span:nth-child(2){display:none}.case-library{max-height:90dvh}}
   @media(max-width:700px) { .app-actions .theme-label { display:none; } [data-theme-toggle] { min-width:31px; } }
+  /* Keep the intake calm: short prompts carry the detail, not explanatory paragraphs. */
+  .welcome{max-width:460px;margin:0 auto}.welcome h2{font-size:clamp(21px,2.2vw,28px)}.welcome p{font-size:12px;line-height:1.5}.starters{margin-top:14px}
+  .record-intro h3{font-size:17px;margin-bottom:4px}.record-intro p{font-size:11px;margin-bottom:14px}.document-scroll{padding:18px}
+  :global(.requirement){padding:10px;margin-bottom:8px}:global(.requirement textarea){min-height:42px;margin:8px 0;padding:7px;line-height:1.35}
 </style>
 </body></html>
