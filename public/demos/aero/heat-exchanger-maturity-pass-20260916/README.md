@@ -8,10 +8,9 @@ This is the public companion to the current Aero heat-exchanger maturity pass. I
 
 Current status: **HX-02 packet ready, solver not run; HX-03 Stage A screen ready; no physical validation or design-readiness claim.**
 
-The source candidate for HX-02 is Kim et al., “Single-Phase Heat Transfer Characteristics of Water in an Industrial Plate and Shell Heat Exchanger under High-Temperature Conditions,” *Energies* 14(20), 6688 (2021), DOI 10.3390/en14206688. See the publisher page for the source publication.
+The source candidate for HX-02 is Kim et al., “Single-Phase Heat Transfer Characteristics of Water in an Industrial Plate and Shell Heat Exchanger under High-Temperature Conditions,” *Energies* 14(20), 6688 (2021), DOI 10.3390/en14206688. See the [publisher page](https://www.mdpi.com/1996-1073/14/20/6688) for the source publication.
 
 * [HX-02 visible pre-run packet](HX-02_PSHE_BLIND/VISIBLE_PRE_RUN_PACKET.md)
 * [HX-02 blind plan](HX-02_PSHE_BLIND/BLIND_PLAN.md)
 * [HX-03 transfer capstone](HX-03_TRANSFER_CAPSTONE/README.md)
 * [HX-03 Stage A/B fidelity decision](HX-03_TRANSFER_CAPSTONE/FIDELITY_DECISION.md)
-
