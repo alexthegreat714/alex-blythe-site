@@ -1,0 +1,71 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import summary from '../../../../../../../public/demos/aero/cep-01/benchmark-summary.json';
+
+const base = '/demos/aero/cep-01/';
+const promptTokenCounts = Object.values(summary.context_measurement.actual_prompt_tokens_reported);
+const minPromptTokens = Math.min(...promptTokenCounts);
+const maxPromptTokens = Math.max(...promptTokenCounts);
+---
+<Shell title="Aero · CEP-01 context efficiency and routing" description="A local-only benchmark of compact context, capability-based model routing, and deterministic report verification." path="/software/aero/evidence/benchmarks/context-efficiency-cep01/">
+  <header>
+    <p class="eyebrow">AERO / CONTEXT EFFICIENCY · CEP-01</p>
+    <span class="status mixed">INFRASTRUCTURE PASS · MODEL QUALIFICATION OPEN</span>
+    <h1>Give each model only the context its task needs.</h1>
+    <p>CEP-01 adds bounded evidence expansion, capability-based model routing, and deterministic checks on model-written reports. This study checks the reporting guardrail—not CFD or FEA ability.</p>
+    <p class="metric">55 targeted software tests passed · one local fabricated report fixture · no solver run</p>
+    <div class="links">
+      <a class="primary" href={base + 'REPORT.md'}>Read the full report</a>
+      <a href={base + 'benchmark-summary.json'}>Inspect the machine-readable results</a>
+      <a href={base + 'SHA256SUMS.txt'}>Verify artifact checksums</a>
+    </div>
+  </header>
+
+  <section class="boundary" aria-labelledby="boundary-heading">
+    <h2 id="boundary-heading">What this result does—and does not—show</h2>
+    <p><strong>Demonstrated:</strong> compact prompt construction, local model calls, a provisional capability route, and a deterministic verifier that rejected drafts with unsupported claims or a wrong gate state.</p>
+    <p><strong>Not demonstrated:</strong> engineering-reasoning competence, CFD/FEA correctness, model reliability, or readiness for consequential decisions. The fixture was fabricated and contains no physical simulation.</p>
+  </section>
+
+  <section aria-labelledby="context-heading">
+    <h2 id="context-heading">Context measurement</h2>
+    <p>The hypothetical full context was estimated locally and never sent to a model. The compact-context estimate was 195 tokens; local inference reported 230–242 input tokens after provider framing. Compared with the hypothetical full-context estimate, that is about 99.53–99.55% fewer tokens. These are approximate measurements, not a guarantee of savings on every task.</p>
+    <div class="cards">
+      <article><h3>Full-context comparator</h3><p class="metric">{summary.context_measurement.hypothetical_full_context_tokens_estimated.toLocaleString()} estimated tokens</p><p>Constructed for measurement only; not transmitted.</p></article>
+      <article><h3>Actual compact prompts</h3><p class="metric">{minPromptTokens}–{maxPromptTokens} reported tokens</p><p>Local service-reported inputs, including provider framing.</p></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="model-heading">
+    <h2 id="model-heading">Draft verification results</h2>
+    <div class="table-wrap"><table><thead><tr><th>Local profile</th><th>Disposition</th><th>Input tokens</th><th>Verifier findings</th><th>Latency</th></tr></thead><tbody>
+      {summary.model_results.map((result) => <tr>
+        <th>{result.model}</th>
+        <td>{result.disposition.replaceAll('_', ' ')}</td>
+        <td>{result.reported_prompt_tokens}</td>
+        <td>{result.findings.length ? result.findings.map((item) => item.replaceAll('_', ' ')).join('; ') : 'None detected on this sample'}</td>
+        <td>{result.latency_seconds.toFixed(2)} s</td>
+      </tr>)}
+    </tbody></table></div>
+    <p class="subtle">The 72B profile is called a single-sample passer only. One case per profile cannot establish a reliable model ranking or qualification.</p>
+  </section>
+
+  <section aria-labelledby="architecture-heading">
+    <h2 id="architecture-heading">Authority stays with evidence</h2>
+    <ol class="timeline">
+      <li><strong>Classify</strong><span>Task, consequence, complexity, and context budget</span></li>
+      <li><strong>Summarize</strong><span>Decision-grade facts and open gates by default</span></li>
+      <li><strong>Expand</strong><span>Typed evidence retrieved only when requested</span></li>
+      <li><strong>Route</strong><span>Choose by declared task capability, not a fixed model name</span></li>
+      <li><strong>Verify</strong><span>Check generated prose against authoritative facts</span></li>
+      <li><strong>Escalate</strong><span>Return uncertainty or high-consequence decisions for human review</span></li>
+    </ol>
+    <p>Deterministic software remains responsible for calculations, thresholds, hashes, gate states, and provenance. Models may explain or draft; they cannot promote numerical acceptability or design readiness.</p>
+  </section>
+
+  <section class="boundary" aria-labelledby="next-heading">
+    <h2 id="next-heading">What remains</h2>
+    <p>The next meaningful test is a repeated, held-out evaluation across several report types and context sizes. Separate evaluations are also needed for extraction, status narration, retrieval synthesis, fidelity selection, and failure diagnosis before routing profiles can be considered qualified.</p>
+    <p class="subtle">Study date: {new Date(summary.run_started_at_utc).toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' })} · Remote model calls: {summary.remote_model_calls} · Physical solver executions: none</p>
+  </section>
+</Shell>

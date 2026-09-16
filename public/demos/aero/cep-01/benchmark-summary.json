@@ -1,0 +1,66 @@
+{
+  "schema": "aero.cep01.public-summary.v1",
+  "study_id": "CEP-01",
+  "run_started_at_utc": "2026-09-16T00:13:36.279104Z",
+  "scope": "Context efficiency, local-model report drafting, routing, and portability; no CFD or FEA solver execution.",
+  "fixture": "Fabricated verifier fixture; not a physical engineering case.",
+  "remote_model_calls": 0,
+  "context_measurement": {
+    "hypothetical_full_context_tokens_estimated": 51542,
+    "compact_context_tokens_estimated": 195,
+    "estimated_reduction_percent": 99.62,
+    "full_context_sent_to_model": false,
+    "actual_prompt_tokens_reported": {
+      "small": 242,
+      "medium": 230,
+      "strong": 230
+    },
+    "actual_prompt_reduction_vs_hypothetical_full_context_percent": {
+      "small": 99.53,
+      "medium": 99.55,
+      "strong": 99.55
+    },
+    "interpretation": "Estimates use approximate serialization/token heuristics. Actual prompt counts include provider framing and are reported by the local inference service; the full-context comparator was never sent."
+  },
+  "model_results": [
+    {
+      "profile": "small-local",
+      "model": "gemma3:4b",
+      "disposition": "DRAFT_REJECTED",
+      "reported_prompt_tokens": 242,
+      "reported_completion_tokens": 82,
+      "latency_seconds": 6.67,
+      "unsupported_claims": 1,
+      "findings": ["unsupported_causal_claim"]
+    },
+    {
+      "profile": "medium-local",
+      "model": "qwen2.5:14b-instruct",
+      "disposition": "DRAFT_REJECTED",
+      "reported_prompt_tokens": 230,
+      "reported_completion_tokens": 109,
+      "latency_seconds": 14.92,
+      "unsupported_claims": 2,
+      "findings": ["wrong_gate_state", "unsupported_causal_claim"]
+    },
+    {
+      "profile": "strong-local",
+      "model": "qwen2.5:72b-instruct",
+      "disposition": "DRAFT_VERIFIED_ON_THIS_SAMPLE",
+      "reported_prompt_tokens": 230,
+      "reported_completion_tokens": 115,
+      "latency_seconds": 148.66,
+      "unsupported_claims": 0,
+      "findings": []
+    }
+  ],
+  "routing_disposition": "PROVISIONAL_SMALLEST_SINGLE_RUN_PASSER",
+  "targeted_regression_tests_passed": 55,
+  "limitations": [
+    "One fabricated narrative task per model; no repeatability or held-out reliability demonstrated.",
+    "No engineering reasoning, CFD, FEA, or physical prediction capability was tested.",
+    "The routing choice is provisional and applies only to this one checked sample.",
+    "Local inference API cost excludes electricity and hardware depreciation.",
+    "RAG/GraphRAG adapters and live chat migration remain incremental follow-on work."
+  ]
+}
