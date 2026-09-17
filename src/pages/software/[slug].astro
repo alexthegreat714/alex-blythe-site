@@ -297,7 +297,7 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
     <div class="page-actions"><a class="button" href="/software/">← All software &amp; tools</a>{project.relatedResearch && <a class="text-link" href={project.relatedResearch.href}>{project.relatedResearch.label} ↗</a>}</div>
   </section>
   </details>
-  {project.slug === 'aero' && <AeroStudyMeta label="Aero public project · Website revision 1.5" />}
+  <AeroStudyMeta label={`${project.name} public project`} />
 </SoftwareLayout>
 
 <style>
