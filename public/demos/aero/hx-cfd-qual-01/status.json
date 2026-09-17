@@ -1,0 +1,63 @@
+{
+  "qualification_id": "HX-CFD-QUAL-01",
+  "title": "Two-fluid manifold-aware conjugate heat-transfer qualification",
+  "updated_at": "2026-09-17",
+  "status": "FAILED_NUMERICAL_GATES",
+  "stage_decision": "HX-03 Stage B remains stopped",
+  "authority_note": "These are retained OpenFOAM fixture results, not physical validation or design release.",
+  "original": {
+    "revision": "fine_structured_v5",
+    "package": "Aero/reports/hx_cfd_qual_01",
+    "mesh_independence": "FAIL",
+    "max_adjacent_grid_change": 0.1309385517,
+    "mesh_threshold": 0.01,
+    "residual_convergence": "PASS_THRESHOLD",
+    "monitor_stability": "NOT_ESTABLISHED",
+    "run_completed": true,
+    "mesh_quality": "PASS",
+    "mass_conservation": "PASS",
+    "energy_conservation": "PASS",
+    "cells": {"coarse": 2880, "medium": 23040, "fine": 77760},
+    "fine_heat_duty_W": 29073.16302536623,
+    "fine_shell_outlet_K": 460.7601,
+    "fine_tube_outlet_K": 439.0728
+  },
+  "remediation_v7": {
+    "revision": "structured_v7",
+    "package": "Aero/reports/hx_cfd_qual_01_remediation_v7_20260917",
+    "mesh_independence": "PASS",
+    "max_adjacent_grid_change": 0.0099543485,
+    "mesh_threshold": 0.01,
+    "residual_convergence": "NOT_ESTABLISHED",
+    "monitor_stability": "NOT_ESTABLISHED",
+    "run_completed": true,
+    "mesh_quality": "PASS",
+    "mass_conservation": "PASS",
+    "energy_conservation": "PASS",
+    "cells": {"coarse": 184320, "medium": 360000, "fine": 622080},
+    "fine_heat_duty_W": 29787.545443056733,
+    "fine_shell_outlet_K": 457.5076,
+    "fine_tube_outlet_K": 442.4882,
+    "fine_residual_max_last_window": 0.04778247,
+    "fine_monitor_drift_K": {"shell_outlet": 0.0608, "tube_outlet": 0.0644}
+  },
+  "next_action": "Run a separately identified solver-control/convergence investigation or predeclared steady-state formulation. Preserve v5 and v7; do not weaken gates or start HX-03 Stage B until residual and monitor gates are established.",
+  "solver_control_diagnostic": {
+    "id": "HX-CFD-QUAL-01-SOLVER-CONTROL-V1",
+    "status": "DIAGNOSTIC_ONLY_NOT_QUALIFIED",
+    "scope": "Isolated coarse v7 copy, nOuterCorrectors 1 versus 2, through 100 s for the control.",
+    "baseline_nOuterCorrectors": 1,
+    "control_nOuterCorrectors": 2,
+    "baseline_max_initial_residual": 0.00144013,
+    "control_max_initial_residual": 0.00220704,
+    "interpretation": "The bounded control does not establish an improvement in the existing initial-residual metric. Final linear residuals are not substituted for the qualification gate.",
+    "open_gates_unchanged": ["RESIDUAL_CONVERGENCE", "MONITOR_STABILITY"],
+    "report": "Aero/reports/hx_cfd_qual_01_solver_control_v1_20260917/SOLVER_CONTROL_REPORT.md"
+  },
+  "artifacts": {
+    "original_report": "ORIGINAL_QUALIFICATION.md",
+    "remediation_report": "REMEDIATION_V7.md",
+    "original_mesh_study": "original-mesh-independence.json",
+    "remediation_mesh_study": "remediation-v7-mesh-independence.json"
+  }
+}

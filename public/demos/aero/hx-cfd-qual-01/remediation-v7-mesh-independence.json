@@ -1,0 +1,11 @@
+{
+  "levels": ["coarse_structured_v7", "medium_structured_v7", "fine_structured_v7"],
+  "status": "PASS",
+  "threshold": 0.01,
+  "max_relative_change": 0.00995434846075586,
+  "records": [
+    {"level": "coarse_structured_v7", "cells": 184320, "Q_abs_W": 29373.1974, "T_shell_out_K": 459.3282, "T_tube_out_K": 440.508},
+    {"level": "medium_structured_v7", "cells": 360000, "Q_abs_W": 29668.528268704467, "T_shell_out_K": 457.9589, "T_tube_out_K": 441.9207},
+    {"level": "fine_structured_v7", "cells": 622080, "Q_abs_W": 29787.545443056733, "T_shell_out_K": 457.5076, "T_tube_out_K": 442.4882}
+  ]
+}

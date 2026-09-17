@@ -1,0 +1,61 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import status from '../../../../../../../public/demos/aero/hx-cfd-qual-01/status.json';
+
+const base = '/demos/aero/hx-cfd-qual-01/';
+const original = status.original;
+const v7 = status.remediation_v7;
+const rows = [
+  ['Mesh quality', 'PASS', 'PASS'],
+  ['Run completion', 'PASS', 'PASS'],
+  ['Hot/cold mass conservation', 'PASS', 'PASS'],
+  ['Energy conservation', 'PASS', 'PASS'],
+  ['Mesh independence', 'FAIL', 'PASS'],
+  ['Residual convergence', 'PASS_THRESHOLD', 'NOT_ESTABLISHED'],
+  ['Monitor stability', 'NOT_ESTABLISHED', 'NOT_ESTABLISHED'],
+  ['HX-03 Stage B', 'STOPPED', 'STOPPED'],
+];
+---
+<Shell title="Aero · HX-CFD-QUAL-01 status" description="Original and remediation status for Aero's two-fluid manifold-aware CHT qualification. Mesh independence improved in v7; residual and monitor gates remain open." path="/software/aero/evidence/benchmarks/hx-cfd-qual-01/">
+  <header>
+    <p class="eyebrow">AERO / TWO-FLUID CHT QUALIFICATION</p>
+    <span class="status failed">{status.status}</span>
+    <h1>HX-CFD-QUAL-01: one failed run, one improved remediation.</h1>
+    <p>The original qualification and its v7 remediation are shown together so the change is inspectable. v7 fixes the mesh-independence result without weakening the 1% gate, but it does not establish full numerical qualification.</p>
+    <p class="metric">Decision: {status.stage_decision}</p>
+    <div class="links"><a class="primary" href={base + 'REMEDIATION_V7.md'}>Read v7 remediation</a><a href={base + 'ORIGINAL_QUALIFICATION.md'}>Read original run</a><a href={base + 'status.json'}>Machine-readable status</a></div>
+  </header>
+
+  <section class="boundary" aria-labelledby="meaning-heading">
+    <h2 id="meaning-heading">What this status means</h2>
+    <p><strong>Real solver evidence, not a marketing pass.</strong> These are retained `chtMultiRegionFoam` fixture results with three regions: shell fluid, tube fluid and solid wall.</p>
+    <p><strong>Not physical validation.</strong> The fixture uses constant/linear reference properties, has no verified CAD-to-solver identity, and has no experimental comparison in this record. A numerical gate pass does not establish design readiness.</p>
+  </section>
+
+  <section aria-labelledby="comparison-heading">
+    <h2 id="comparison-heading">Original versus v7</h2>
+    <div class="table-wrap"><table><thead><tr><th>Gate / quantity</th><th>Original v5</th><th>Remediation v7</th></tr></thead><tbody>{rows.map(([label, oldValue, newValue]) => <tr><th>{label}</th><td class:list={{'pass': oldValue === 'PASS' || oldValue === 'PASS_THRESHOLD', 'fail': oldValue === 'FAIL' || oldValue === 'STOPPED', 'open': oldValue === 'NOT_ESTABLISHED'}}>{oldValue}</td><td class:list={{'pass': newValue === 'PASS', 'fail': newValue === 'FAIL' || newValue === 'STOPPED', 'open': newValue === 'NOT_ESTABLISHED'}}>{newValue}</td></tr>)}</tbody></table></div>
+  </section>
+
+  <section aria-labelledby="mesh-heading">
+    <h2 id="mesh-heading">The mesh result changed; the conclusion did not get inflated</h2>
+    <div class="cards"><article><h3>Original v5</h3><p class="metric">{(original.max_adjacent_grid_change * 100).toFixed(3)}% maximum grid change</p><p>{original.cells.coarse.toLocaleString()} → {original.cells.medium.toLocaleString()} → {original.cells.fine.toLocaleString()} cells. The 1% mesh gate failed.</p><a href={base + 'original-mesh-independence.json'}>Inspect v5 values</a></article><article><h3>Remediation v7</h3><p class="metric">{(v7.max_adjacent_grid_change * 100).toFixed(3)}% maximum grid change</p><p>{v7.cells.coarse.toLocaleString()} → {v7.cells.medium.toLocaleString()} → {v7.cells.fine.toLocaleString()} cells. The same 1% gate passes.</p><a href={base + 'remediation-v7-mesh-independence.json'}>Inspect v7 values</a></article></div>
+  </section>
+
+  <section aria-labelledby="open-heading" class="boundary">
+    <h2 id="open-heading">What remains open</h2>
+    <ul><li><strong>Residual convergence:</strong> v7 fine-grid retained initial-residual window is {v7.fine_residual_max_last_window}, above the 1e-3 criterion.</li><li><strong>Monitor stability:</strong> v7 fine-grid last-window outlet-temperature drift is {v7.fine_monitor_drift_K.shell_outlet.toFixed(4)} K (shell) and {v7.fine_monitor_drift_K.tube_outlet.toFixed(4)} K (tube), above the 0.01 K criterion.</li><li><strong>Next step:</strong> a separately identified solver-control/convergence investigation or predeclared steady-state formulation. The original and v7 packages remain immutable.</li></ul>
+    <p>No HX-03 Stage B work is authorized by this result. The correct public status is still <strong>FAILED_NUMERICAL_GATES</strong>.</p>
+  </section>
+
+  <section aria-labelledby="control-heading">
+    <h2 id="control-heading">Solver-control diagnostic</h2>
+    <p>An isolated coarse-case diagnostic changed only <code>nOuterCorrectors</code> from 1 to 2 and ran to 100 s. The maximum initial residual was 0.00144013 in the retained v7 comparison block and 0.00220704 in the control block. This did not establish an improvement, and final linear residuals were not substituted for the qualification gate.</p>
+    <p><strong>DIAGNOSTIC_ONLY_NOT_QUALIFIED.</strong> The residual and monitor-stability gates remain open.</p>
+  </section>
+
+  <section aria-labelledby="links-heading"><h2 id="links-heading">Retained local evidence</h2><p>The public files are a compact status record. The canonical evidence packages remain in the local Aero reports and retain solver logs, control dictionaries, mesh checks, monitor series and SHA-256 manifests.</p><div class="links"><a href={base + 'status.json'}>Status JSON</a><a href={base + 'REMEDIATION_V7.md'}>v7 report</a><a href={base + 'ORIGINAL_QUALIFICATION.md'}>Original report</a></div></section>
+</Shell>
+<style>
+  .status{display:inline-block;border:1px solid currentColor;padding:5px 9px;font-size:13px;font-weight:750}.failed{color:#c84749}.links{display:flex;flex-wrap:wrap;gap:13px 20px;margin-top:18px;font-size:14px;font-weight:650}.primary{background:var(--accent);color:var(--bg);padding:10px 14px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.cards article{border:1px solid var(--border);background:var(--surface);padding:22px}.boundary{padding:20px;border-left:3px solid var(--accent);background:var(--surface)}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--border)}th{font-weight:700}.pass{color:#26806a;font-weight:750}.fail{color:#c84749;font-weight:750}.open{color:#a66f20;font-weight:750}@media(max-width:740px){.cards{grid-template-columns:1fr}}
+</style>
