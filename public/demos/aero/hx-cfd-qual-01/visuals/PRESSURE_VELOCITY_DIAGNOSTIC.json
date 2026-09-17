@@ -10,7 +10,7 @@
     "outlet_velocity": "pressureInletOutletVelocity on both outlets permits reverse-flow handling; the retained outlet snapshots contain no reverse-flow cells.",
     "pressure_correction": "PIMPLE nOuterCorrectors=1 at the case level; pressure uses GAMG tolerance 1e-7, relTol 0.01, p_rgh field relaxation 0.7.",
     "momentum_relaxation": "U equation relaxation is 0.3 in both fluid regions; enthalpy/turbulence equations are 0.7.",
-    "flux_consistency": "Inlet/outlet phi monitors are retained; continuity residuals remain non-zero in the solver log, so flux consistency is observed but not closed to a qualification gate.",
+    "flux_consistency": "At t=800 s, retained inlet/outlet phi magnitudes match to approximately 1e-6 (shell) and 1e-5 (tube), but the solver's local/global continuity residuals remain non-zero; this is observed balance, not a closed convergence gate.",
     "steady_model_suitability": "NOT_ESTABLISHED: the evidence shows a numerical steady-state failure, but no transient comparison was run; unsteadiness is neither demonstrated nor ruled out."
   },
   "boundary_conditions": {
@@ -1573,6 +1573,14 @@
       }
     },
     "note": "chtMultiRegionFoam writes a combined continuity line; the retained log does not split this scalar by fluid region."
+  },
+  "flux_consistency": {
+    "time_s": 800.0,
+    "values": {
+      "shell": 0.05000005,
+      "tube": 0.05000065
+    },
+    "pairs": []
   },
   "field_stats": {
     "shell": {

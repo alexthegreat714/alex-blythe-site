@@ -11,7 +11,7 @@ The evidence supports `FIELD_SPECIFIC_CONVERGENCE_FAILURE`. `p_rgh` remains high
 - Outlet `p_rgh` is `fixedValue 0` in each fluid region, providing a pressure reference; inlet, walls, and fluid-solid interfaces use `fixedFluxPressure`.
 - Outlet velocity is `pressureInletOutletVelocity`, so backflow is permitted by the boundary condition. The retained shell/tube outlet snapshots show zero reverse-flow cells, so backflow is not demonstrated as the cause.
 - Case-level PIMPLE uses one outer corrector. Fluid-region pressure uses GAMG (`tolerance 1e-7`, `relTol 0.01`) with `p_rgh` relaxation 0.7; U equation relaxation is 0.3.
-- Retained phi/continuity telemetry is present, but non-zero continuity values mean flux consistency is observed rather than qualified closed.
+- At t=800 s, inlet/outlet phi magnitudes match to approximately 1e-6 (shell) and 1e-5 (tube). The solver still reports non-zero local/global continuity values, so flux consistency is observed rather than qualified closed.
 
 ## Where transverse residual contributions originate
 
