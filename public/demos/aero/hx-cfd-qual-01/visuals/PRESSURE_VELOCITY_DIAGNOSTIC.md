@@ -19,7 +19,7 @@ The VTK field audit places the largest transverse-speed q95 in the first 50 mm f
 
 ## Solid telemetry repair
 
-The old function object requested `residuals(region = solid, h)`, but `system/solid/fvSolution` and the solver log show `e`. That mismatch explains the header-only solid residual file. `repair_openfoam_solid_telemetry.py` now detects the solved field and emits a patched-copy plan. A bounded patched-copy probe recorded numeric `e` residuals for 11 time levels (800–811 s) without modifying v7.
+The old function object requested `residuals(region = solid, h)`, but `system/solid/fvSolution` and the solver log show `e`. That mismatch explains the header-only solid residual file. `repair_openfoam_solid_telemetry.py` now detects the solved field and emits a patched-copy plan. A bounded patched-copy probe recorded numeric `e` residuals for 11 time levels (800-811 s) without modifying v7.
 
 ## Steady-model suitability
 
