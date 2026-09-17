@@ -18,6 +18,12 @@ Bundles:
 
 The VTK files are latest-time snapshots exported with `foamToVTK`; they are not a time-resolved 3-D animation. The `hx_cfd_qual_01_outlet_monitors.mp4` file is an inline, browser-playable recording of the retained shell/tube outlet-temperature histories across the five runs, with `hx_cfd_qual_01_outlet_monitors.gif` as a fallback. It is useful for comparing drift, but it is not a substitute for transient field data. For interactive 3-D fields, open one of the `.pvd` collections in ParaView.
 
+## Time-indexed CFD flow lines
+
+The `flowlines/` package is the visual that should be used when a flow-field view is needed. It was generated from the unchanged retained v7 case after exporting shell and tube `U` fields at 0, 200, 400, 600, and 800 seconds. `hx_cfd_qual_01_v7_flowlines.pvd` opens the streamline geometry as a time collection in ParaView; the accompanying MP4/GIF is a rendered five-frame recording of those actual solver fields. This is a post-processing visualization, not a new solver run and not a claim that the open residual/monitor gates passed.
+
+The package has its own `flowlines/FLOWLINE_SHA256SUMS.txt` and JSON manifest so the rendered frames and streamline geometry can be checked independently of the broader visualization bundle.
+
 ## What the visuals show
 
 - `v7_residual_decomposition.png` shows equation/region residual tails. `p_rgh` is visibly dominant in both fluid regions; `Uy`/`Uz` are intermediate and `Ux`/`h` are lower.

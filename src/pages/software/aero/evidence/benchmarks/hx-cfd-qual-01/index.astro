@@ -15,6 +15,13 @@ const rows = [
   ['Monitor stability', 'NOT_ESTABLISHED', 'NOT_ESTABLISHED'],
   ['HX-03 Stage B', 'STOPPED', 'STOPPED'],
 ];
+const visualSlides = [
+  ['v7 flow lines · 800 s', 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_800.png', 'Shell and tube streamlines over the retained v7 solver geometry at 800 s.'],
+  ['v7 flow lines · 400 s', 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_400.png', 'Shell and tube streamlines over the retained v7 solver geometry at 400 s.'],
+  ['v7 flow lines · 0 s', 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_0.png', 'Shell and tube streamlines over the retained v7 solver geometry at 0 s.'],
+  ['Residual decomposition', 'visuals/v7_residual_decomposition.png', 'Residual tails by equation and fluid region.'],
+  ['Transverse velocity localization', 'visuals/v7_transverse_velocity_localization.png', 'Transverse velocity q95 by axial location.'],
+];
 ---
 <Shell title="Aero · HX-CFD-QUAL-01 status" description="Original and remediation status for Aero's two-fluid manifold-aware CHT qualification. Mesh independence improved in v7; residual and monitor gates remain open." path="/software/aero/evidence/benchmarks/hx-cfd-qual-01/">
   <header>
@@ -65,6 +72,20 @@ const rows = [
       </video>
       <figcaption><strong>Recording:</strong> retained shell/tube outlet-temperature telemetry across the five cases. Use the controls to pause or replay it; it is not a time-resolved 3-D field animation. For interactive 3-D fields, open a <code>.pvd</code> collection in ParaView.</figcaption>
     </figure>
+    <figure class="recording flowline-recording">
+      <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_800.png'}>
+        <source src={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.mp4'} type="video/mp4" />
+        <img src={base + 'visuals/flowlines/hx_cfd_qual_01_flowlines.gif'} alt="Animated shell and tube CFD flow lines over the retained HX-CFD-QUAL-01 v7 geometry" />
+      </video>
+      <figcaption><strong>CFD flow-line recording:</strong> actual streamlines generated from the retained v7 shell and tube velocity fields at 0, 200, 400, 600, and 800 s. This is a real time sequence from one unchanged case; it does not mean the open numerical gates have passed.</figcaption>
+    </figure>
+    <div class="visual-gallery" data-evidence-gallery>
+      <div class="gallery-main"><img data-gallery-main src={base + visualSlides[0][1]} alt={visualSlides[0][2]} /><p data-gallery-caption>{visualSlides[0][2]}</p></div>
+      <div class="gallery-thumbs" role="list" aria-label="Evidence figures">
+        {visualSlides.map(([label, src, alt], index) => <button type="button" class:list={{'gallery-thumb': true, 'is-selected': index === 0}} data-gallery-slide data-src={base + src} data-alt={alt} aria-pressed={index === 0 ? 'true' : 'false'}><img src={base + src} alt="" aria-hidden="true" /><span>{label}</span></button>)}
+      </div>
+    </div>
+    <div class="links"><a class="primary" href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.pvd'}>Open flow lines in ParaView</a><a href={base + 'visuals/flowlines/FLOWLINE_REPORT.md'}>Flow-line report</a><a href={base + 'visuals/flowlines/FLOWLINE_MANIFEST.json'}>Flow-line manifest</a><a href={base + 'visuals/flowlines/FLOWLINE_SHA256SUMS.txt'}>Flow-line checksums</a><a href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.mp4'}>Download flow-line MP4</a></div>
     <div class="table-wrap"><table><thead><tr><th>Run</th><th>ParaView bundle</th><th>Additional view</th></tr></thead><tbody>
       <tr><th>Original v5 fine</th><td><a href={base + 'visuals/v5_fine_vtk.zip'}>v5_fine_vtk.zip</a></td><td rowspan="5"><a href={base + 'visuals/v7_residual_decomposition.png'}>Residual decomposition</a><br /><a href={base + 'visuals/v7_transverse_velocity_localization.png'}>Transverse localization</a><br /><a href={base + 'visuals/hx_cfd_qual_01_outlet_monitors.mp4'}>Recording (MP4)</a><br /><a href={base + 'visuals/hx_cfd_qual_01_outlet_monitors.gif'}>GIF fallback</a></td></tr>
       <tr><th>v6 fine</th><td><a href={base + 'visuals/v6_fine_vtk.zip'}>v6_fine_vtk.zip</a></td></tr>
@@ -77,6 +98,25 @@ const rows = [
 
   <section aria-labelledby="links-heading"><h2 id="links-heading">Retained local evidence</h2><p>The public files are a compact status record. The canonical evidence packages remain in the local Aero reports and retain solver logs, control dictionaries, mesh checks, monitor series and SHA-256 manifests.</p><div class="links"><a href={base + 'status.json'}>Status JSON</a><a href={base + 'REMEDIATION_V7.md'}>v7 report</a><a href={base + 'ORIGINAL_QUALIFICATION.md'}>Original report</a></div></section>
 </Shell>
+<script>
+  const gallery = document.querySelector('[data-evidence-gallery]');
+  if (gallery) {
+    const main = gallery.querySelector('[data-gallery-main]');
+    const caption = gallery.querySelector('[data-gallery-caption]');
+    gallery.querySelectorAll('[data-gallery-slide]').forEach((button) => {
+      button.addEventListener('click', () => {
+        main.src = button.dataset.src || '';
+        main.alt = button.dataset.alt || '';
+        caption.textContent = button.dataset.alt || '';
+        gallery.querySelectorAll('[data-gallery-slide]').forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle('is-selected', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
+      });
+    });
+  }
+</script>
 <style>
-  .status{display:inline-block;border:1px solid currentColor;padding:5px 9px;font-size:13px;font-weight:750}.failed{color:#c84749}.links{display:flex;flex-wrap:wrap;gap:13px 20px;margin-top:18px;font-size:14px;font-weight:650}.primary{background:var(--accent);color:var(--bg);padding:10px 14px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.cards article{border:1px solid var(--border);background:var(--surface);padding:22px}.boundary{padding:20px;border-left:3px solid var(--accent);background:var(--surface)}.recording{margin:24px 0 20px;border:1px solid var(--border);background:var(--bg);padding:14px}.recording video{display:block;width:100%;max-height:520px;background:#071116;object-fit:contain}.recording figcaption{margin-top:10px;font-size:13px;line-height:1.5;color:var(--muted)}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--border)}th{font-weight:700}.pass{color:#26806a;font-weight:750}.fail{color:#c84749;font-weight:750}.open{color:#a66f20;font-weight:750}@media(max-width:740px){.cards{grid-template-columns:1fr}.recording{padding:8px}}
+  .status{display:inline-block;border:1px solid currentColor;padding:5px 9px;font-size:13px;font-weight:750}.failed{color:#c84749}.links{display:flex;flex-wrap:wrap;gap:13px 20px;margin-top:18px;font-size:14px;font-weight:650}.primary{background:var(--accent);color:var(--bg);padding:10px 14px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.cards article{border:1px solid var(--border);background:var(--surface);padding:22px}.boundary{padding:20px;border-left:3px solid var(--accent);background:var(--surface)}.recording{margin:24px 0 20px;border:1px solid var(--border);background:var(--bg);padding:14px}.recording video{display:block;width:100%;max-height:520px;background:#071116;object-fit:contain}.recording figcaption{margin-top:10px;font-size:13px;line-height:1.5;color:var(--muted)}.visual-gallery{margin:24px 0}.gallery-main{border:1px solid var(--border);background:var(--bg);padding:14px}.gallery-main img{display:block;width:100%;max-height:520px;object-fit:contain}.gallery-main p{margin:10px 0 0;font-size:13px;color:var(--muted)}.gallery-thumbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.gallery-thumb{display:flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--surface);color:inherit;padding:7px;cursor:pointer;font:inherit;text-align:left}.gallery-thumb img{width:90px;height:54px;object-fit:cover}.gallery-thumb.is-selected{border-color:var(--accent);box-shadow:inset 0 -2px var(--accent)}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--border)}th{font-weight:700}.pass{color:#26806a;font-weight:750}.fail{color:#c84749;font-weight:750}.open{color:#a66f20;font-weight:750}@media(max-width:740px){.cards{grid-template-columns:1fr}.recording{padding:8px}.gallery-thumb img{width:66px;height:42px}}
 </style>

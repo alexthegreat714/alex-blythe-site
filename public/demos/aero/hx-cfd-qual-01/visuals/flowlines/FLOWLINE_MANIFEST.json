@@ -1,0 +1,43 @@
+{
+  "visualization_id": "HX-CFD-QUAL-01-V7-FLOWLINES-V1",
+  "source_case": "retained HX-CFD-QUAL-01 v7 OpenFOAM case (local path withheld)",
+  "source_solver_fields": "retained OpenFOAM v7 U fields, exported at 0, 200, 400, 600, 800 s",
+  "regions": [
+    "shell",
+    "tube"
+  ],
+  "times_s": [
+    0,
+    200,
+    400,
+    600,
+    800
+  ],
+  "artifacts": {
+    "time_collection": "hx_cfd_qual_01_v7_flowlines.pvd",
+    "frames": [
+      "hx_cfd_qual_01_v7_flowlines_0.png",
+      "hx_cfd_qual_01_v7_flowlines_200.png",
+      "hx_cfd_qual_01_v7_flowlines_400.png",
+      "hx_cfd_qual_01_v7_flowlines_600.png",
+      "hx_cfd_qual_01_v7_flowlines_800.png"
+    ],
+    "streamline_files": [
+      "shell_flowlines_0.vtp",
+      "tube_flowlines_0.vtp",
+      "shell_flowlines_200.vtp",
+      "tube_flowlines_200.vtp",
+      "shell_flowlines_400.vtp",
+      "tube_flowlines_400.vtp",
+      "shell_flowlines_600.vtp",
+      "tube_flowlines_600.vtp",
+      "shell_flowlines_800.vtp",
+      "tube_flowlines_800.vtp"
+    ]
+  },
+  "interpretation": "Genuine post-processing of retained solver velocity fields. The MP4/GIF is a time animation over one unchanged v7 case, not a cross-run montage.",
+  "limitations": [
+    "This is a visualization of the retained U field, not evidence that the numerical qualification gates passed.",
+    "The solid is shown as a translucent solver geometry surface; streamlines are generated separately for shell and tube fluids."
+  ]
+}
