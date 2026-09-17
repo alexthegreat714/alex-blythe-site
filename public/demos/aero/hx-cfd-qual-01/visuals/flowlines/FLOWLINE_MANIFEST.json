@@ -73,7 +73,8 @@
     "recording": "hx_cfd_qual_01_v7_flow_entry.mp4",
     "gif_fallback": "hx_cfd_qual_01_flow_entry.gif",
     "poster": "hx_cfd_qual_01_v7_flow_entry_800.png",
-    "frames": 25,
+    "frames": 75,
+    "frame_rate_fps": 15,
     "duration_s": 5.0,
     "interpretation": "The retained t=800 s streamlines are progressively revealed from the inlet to the outlet. This is a presentation aid, not a zero-initialized solver transient."
   },
@@ -89,6 +90,7 @@
     "gif_fallback": "hx_cfd_qual_01_flow_story.gif",
     "poster": "hx_cfd_qual_01_v7_flow_story_poster.png",
     "duration_s": 15.0,
+    "frame_rate_fps": 15,
     "segments": [
       "flow entry reveal from empty view",
       "retained solver-time streamlines",

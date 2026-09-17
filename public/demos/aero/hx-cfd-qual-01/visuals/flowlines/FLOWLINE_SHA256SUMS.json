@@ -6,18 +6,18 @@
     },
     {
         "path":  "FLOW_ENTRY_REPORT.md",
-        "sha256":  "e96b124799b1b763c8c94ad894941154eba057a9b01cc3acb4cf8794042395dd",
-        "size":  1309
+        "sha256":  "0d1139ffe7e6051e25a05171736dc81d2a2299f7880f368a17faac1ffbeea1f8",
+        "size":  1398
     },
     {
         "path":  "FLOW_STORY_REPORT.md",
-        "sha256":  "759a8ed57bd551ac051086731f8623ddae1b3f1262f8e8f53981c3f40797ef7a",
-        "size":  906
+        "sha256":  "c9a234062c20c11e1159554541be29db8bc4a7581e4ac11fa0a426e86d5d71a4",
+        "size":  930
     },
     {
         "path":  "FLOWLINE_MANIFEST.json",
-        "sha256":  "3dd5fd9c08ceaae64c3bb7c1146647bbce837f98b0b23cf8958add8875a4b75f",
-        "size":  4345
+        "sha256":  "8e69030dca7ef1b2ebe967d182bcd2d99a9b98dea31355d5ccb56989044b0a46",
+        "size":  4397
     },
     {
         "path":  "FLOWLINE_REPORT.md",
@@ -25,24 +25,14 @@
         "size":  1265
     },
     {
-        "path":  "FLOWLINE_SHA256SUMS.json",
-        "sha256":  "274be5d322fc43c996eba8f30f63f1f2a9d13645d13eff6a5b1e854b832366e3",
-        "size":  8508
-    },
-    {
-        "path":  "FLOWLINE_SHA256SUMS.txt",
-        "sha256":  "d73652be28abe77da3f2e8e423b9ed868a65d351886d06de6244176c903390a4",
-        "size":  4684
-    },
-    {
         "path":  "hx_cfd_qual_01_flow_entry.gif",
-        "sha256":  "86d4c6ba5aca4bdb6edbd3de4b86d5eeeaecd26f13db8bb369aff5d51f8750dd",
-        "size":  8555404
+        "sha256":  "a6d3e352befcc18906b98872a04572626f8c76d471a502ef36c2578076579a41",
+        "size":  25774152
     },
     {
         "path":  "hx_cfd_qual_01_flow_story.gif",
-        "sha256":  "66a11c7817dfdb9259782a0bed630459e541cb7839b0aa9fdf07ee36904ab2b4",
-        "size":  25994629
+        "sha256":  "4a82634fc0dcd3f5dc912971bece54db22363306f4e258828685eea0a5d54893",
+        "size":  78060382
     },
     {
         "path":  "hx_cfd_qual_01_flowlines.gif",
@@ -61,8 +51,8 @@
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_entry.mp4",
-        "sha256":  "b256aefe374285994676e82e6f8efb6ac8047c5585b073127d04dbe3bb55bc21",
-        "size":  51569
+        "sha256":  "3e98534dce38ed778ba2f518fbd85c0de63f186d60bed9a68d50809f3e06d09c",
+        "size":  51391
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_entry_800.png",
@@ -71,8 +61,8 @@
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_story.mp4",
-        "sha256":  "9c5c7c76c4d19bfe4b624720b552176400d2c60c3d8aa00962c874afb2af8f03",
-        "size":  130849
+        "sha256":  "78e0d292351102c1dddc381c48810860a05946afa1d3cc439d2ce05335e9b5cf",
+        "size":  141442
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_story_poster.png",
