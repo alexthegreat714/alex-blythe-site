@@ -26,13 +26,13 @@
     },
     {
         "path":  "hx_cfd_qual_01_flow_entry.gif",
-        "sha256":  "4a0d7ed172b0ea7eacb1d0c05b2800b104e57791ff60b4920bf1ce9d2938e333",
-        "size":  26069544
+        "sha256":  "1b1ee40929d54205d26c115c5e623cfd15d5bec030e9e07807e2ede623624be6",
+        "size":  26103530
     },
     {
         "path":  "hx_cfd_qual_01_flow_story.gif",
-        "sha256":  "b01074d551f303aebc5222b14bb5cb381a2209efe6e851485e9e4d7c23d9953a",
-        "size":  78481551
+        "sha256":  "150b38b35dd576994d0837c93ca3b90d624c2e2c08d8212c17399aeed375317f",
+        "size":  78574607
     },
     {
         "path":  "hx_cfd_qual_01_flowlines.gif",
@@ -51,18 +51,18 @@
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_entry.mp4",
-        "sha256":  "8e5bbf1ef68713a2da804caefced38a1b61f781a9a238f08c9fdbe54bd25d6aa",
-        "size":  53400
+        "sha256":  "fdb2887ef94112cb34173d3336dc887e44a0056dee9fdc26a629eb2ddb2dbb8e",
+        "size":  53944
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_entry_800.png",
-        "sha256":  "c782a89764dac2119a3c0c877070ec08d31af863e8a46b1b6f3f22b2c3528317",
-        "size":  87932
+        "sha256":  "de24e11de19875121a41cb581f06db651376acb0057c66ae48ec70a345706f2b",
+        "size":  88983
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_story.mp4",
-        "sha256":  "b556c2b4eb6702284094be8b2b8e09034e2034b932bc0bc0144ec9eb92c780ee",
-        "size":  102484
+        "sha256":  "f0b19b6634b037eefb9b0ddead0f8bced4ff0d67e894d439756185639aff6437",
+        "size":  102273
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_story_poster.png",
