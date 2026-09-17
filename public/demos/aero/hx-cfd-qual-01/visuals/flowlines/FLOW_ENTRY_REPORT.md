@@ -6,7 +6,7 @@ This recording answers a visual question: show the flow starting from an empty v
 
 - Source: shell and tube streamlines generated from the retained `t = 800 s` velocity fields.
 - Geometry: translucent shell and tube solver surfaces from the same retained case.
-- Reveal: 75 frames at 15 frames per second over 5 seconds. Each frame clips the streamline geometry at an axial plane that advances smoothly from the inlet toward the outlet, avoiding coarse visible jumps between volume increments.
+- Reveal: 75 frames at 15 frames per second over 5 seconds. Each frame clips the streamline geometry at an axial plane that advances smoothly from the inlet toward the outlet, avoiding coarse visible jumps between volume increments. The visible streamlines carry the retained temperature field on the fixed 435-600 K turbo scale.
 - Inlet convention: shell and tube inlets are shown at the left side of the rendered model.
 - Outputs: `hx_cfd_qual_01_v7_flow_entry.mp4`, `hx_cfd_qual_01_flow_entry.gif`, and `hx_cfd_qual_01_v7_flow_entry_800.png`.
 

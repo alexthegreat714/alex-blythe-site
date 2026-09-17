@@ -76,7 +76,7 @@
     "frames": 75,
     "frame_rate_fps": 15,
     "duration_s": 5.0,
-    "interpretation": "The retained t=800 s streamlines are progressively revealed from the inlet to the outlet. This is a presentation aid, not a zero-initialized solver transient."
+    "interpretation": "The retained t=800 s streamlines are progressively revealed from the inlet to the outlet and colored by the retained T field on the fixed 435-600 K scale. This is a presentation aid, not a zero-initialized solver transient."
   },
   "thermal_gradient_presentation": {
     "source_field": "T",
@@ -92,11 +92,11 @@
     "duration_s": 15.0,
     "frame_rate_fps": 15,
     "segments": [
-      "flow entry reveal from empty view",
-      "retained solver-time streamlines",
+      "thermal-colored flow entry reveal from empty view",
+      "retained solver-time streamlines colored by T",
       "enhanced retained thermal-gradient view"
     ],
-    "interpretation": "One presentation recording composed from the three derived views; it contains no new solver run or field data."
+    "interpretation": "One presentation recording composed from the three derived views; the same fixed 435-600 K streamline gradient is used during the first ten seconds, and it contains no new solver run or field data."
   },
   "interpretation": "Genuine post-processing of retained solver velocity fields. The MP4/GIF is a time animation over one unchanged v7 case, not a cross-run montage.",
   "limitations": [

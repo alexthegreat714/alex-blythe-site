@@ -6,18 +6,18 @@
     },
     {
         "path":  "FLOW_ENTRY_REPORT.md",
-        "sha256":  "0d1139ffe7e6051e25a05171736dc81d2a2299f7880f368a17faac1ffbeea1f8",
-        "size":  1398
+        "sha256":  "a9544cda111c21c5282ef71ba5c20b89eec4fa3a378398dc332bd44c6ce2b03d",
+        "size":  1495
     },
     {
         "path":  "FLOW_STORY_REPORT.md",
-        "sha256":  "c9a234062c20c11e1159554541be29db8bc4a7581e4ac11fa0a426e86d5d71a4",
-        "size":  930
+        "sha256":  "556ece9c51966606f00e258d79bedc7bbfe39288167fb01d5afe0ad1f9d08136",
+        "size":  1026
     },
     {
         "path":  "FLOWLINE_MANIFEST.json",
-        "sha256":  "8e69030dca7ef1b2ebe967d182bcd2d99a9b98dea31355d5ccb56989044b0a46",
-        "size":  4397
+        "sha256":  "f2274c26148e9b326dd9ac12fc41c4fe6303428825334bf046a7ee16e2b8248d",
+        "size":  4578
     },
     {
         "path":  "FLOWLINE_REPORT.md",
@@ -26,13 +26,13 @@
     },
     {
         "path":  "hx_cfd_qual_01_flow_entry.gif",
-        "sha256":  "a6d3e352befcc18906b98872a04572626f8c76d471a502ef36c2578076579a41",
-        "size":  25774152
+        "sha256":  "4a0d7ed172b0ea7eacb1d0c05b2800b104e57791ff60b4920bf1ce9d2938e333",
+        "size":  26069544
     },
     {
         "path":  "hx_cfd_qual_01_flow_story.gif",
-        "sha256":  "4a82634fc0dcd3f5dc912971bece54db22363306f4e258828685eea0a5d54893",
-        "size":  78060382
+        "sha256":  "b01074d551f303aebc5222b14bb5cb381a2209efe6e851485e9e4d7c23d9953a",
+        "size":  78481551
     },
     {
         "path":  "hx_cfd_qual_01_flowlines.gif",
@@ -51,18 +51,18 @@
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_entry.mp4",
-        "sha256":  "3e98534dce38ed778ba2f518fbd85c0de63f186d60bed9a68d50809f3e06d09c",
-        "size":  51391
+        "sha256":  "8e5bbf1ef68713a2da804caefced38a1b61f781a9a238f08c9fdbe54bd25d6aa",
+        "size":  53400
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_entry_800.png",
-        "sha256":  "d7c72b60d2b3f3790417cfc4e54398b9d1c31aa74b1fcddbdf1984506332c8a3",
-        "size":  76185
+        "sha256":  "c782a89764dac2119a3c0c877070ec08d31af863e8a46b1b6f3f22b2c3528317",
+        "size":  87932
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_story.mp4",
-        "sha256":  "78e0d292351102c1dddc381c48810860a05946afa1d3cc439d2ce05335e9b5cf",
-        "size":  141442
+        "sha256":  "b556c2b4eb6702284094be8b2b8e09034e2034b932bc0bc0144ec9eb92c780ee",
+        "size":  102484
     },
     {
         "path":  "hx_cfd_qual_01_v7_flow_story_poster.png",
