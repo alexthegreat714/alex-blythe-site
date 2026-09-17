@@ -77,6 +77,25 @@
     "duration_s": 5.0,
     "interpretation": "The retained t=800 s streamlines are progressively revealed from the inlet to the outlet. This is a presentation aid, not a zero-initialized solver transient."
   },
+  "thermal_gradient_presentation": {
+    "source_field": "T",
+    "times_s": [0, 200, 400, 600, 800],
+    "color_scale_K": [435.0, 600.0],
+    "recording_segment": "combined story recording, seconds 10-15",
+    "interpretation": "Retained streamline temperatures rendered with a fixed, high-contrast Kelvin scale; the display contrast does not alter solver values."
+  },
+  "combined_story": {
+    "recording": "hx_cfd_qual_01_v7_flow_story.mp4",
+    "gif_fallback": "hx_cfd_qual_01_flow_story.gif",
+    "poster": "hx_cfd_qual_01_v7_flow_story_poster.png",
+    "duration_s": 15.0,
+    "segments": [
+      "flow entry reveal from empty view",
+      "retained solver-time streamlines",
+      "enhanced retained thermal-gradient view"
+    ],
+    "interpretation": "One presentation recording composed from the three derived views; it contains no new solver run or field data."
+  },
   "interpretation": "Genuine post-processing of retained solver velocity fields. The MP4/GIF is a time animation over one unchanged v7 case, not a cross-run montage.",
   "limitations": [
     "This is a visualization of the retained U field, not evidence that the numerical qualification gates passed.",
