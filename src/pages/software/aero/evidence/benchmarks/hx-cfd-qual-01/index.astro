@@ -70,7 +70,7 @@ const visualSlides = [
     <p>Download the derived visualization package to inspect temperature, velocity, and <code>p_rgh</code> in ParaView. Each bundle contains a <code>.pvd</code> collection for the shell, tube, and solid latest-time snapshots.</p>
     <div class="links"><a class="primary" href={base + 'visuals/VISUALIZATION_MANIFEST.json'}>Visualization manifest</a><a href={base + 'visuals/VISUALIZATION_REPORT.md'}>ParaView instructions</a><a href={base + 'visuals/PRESSURE_VELOCITY_DIAGNOSTIC.md'}>Pressure / velocity diagnostic</a><a href={base + 'visuals/VISUALIZATION_SHA256SUMS.txt'}>SHA-256 checksums</a></div>
     <figure class="recording flowline-recording">
-      <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flow_story_poster.png'}>
+      <video controls autoplay loop muted playsinline preload="auto" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flow_story_poster.png'}>
         <source src={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flow_story.mp4'} type="video/mp4" />
         <img src={base + 'visuals/flowlines/hx_cfd_qual_01_flow_story.gif'} alt="Combined CFD flow story: entry reveal, retained streamlines, and enhanced thermal gradient" />
       </video>
