@@ -69,19 +69,19 @@ const visualSlides = [
     <h2 id="visual-heading">ParaView fields and retained telemetry</h2>
     <p>Download the derived visualization package to inspect temperature, velocity, and <code>p_rgh</code> in ParaView. Each bundle contains a <code>.pvd</code> collection for the shell, tube, and solid latest-time snapshots.</p>
     <div class="links"><a class="primary" href={base + 'visuals/VISUALIZATION_MANIFEST.json'}>Visualization manifest</a><a href={base + 'visuals/VISUALIZATION_REPORT.md'}>ParaView instructions</a><a href={base + 'visuals/PRESSURE_VELOCITY_DIAGNOSTIC.md'}>Pressure / velocity diagnostic</a><a href={base + 'visuals/VISUALIZATION_SHA256SUMS.txt'}>SHA-256 checksums</a></div>
-    <figure class="recording flowline-recording">
-      <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_800.png'}>
-        <source src={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.mp4'} type="video/mp4" />
-        <img src={base + 'visuals/flowlines/hx_cfd_qual_01_flowlines.gif'} alt="Animated shell and tube CFD flow lines over the retained HX-CFD-QUAL-01 v7 geometry" />
-      </video>
-      <figcaption><strong>CFD flow-line recording:</strong> actual streamlines generated from the retained v7 shell and tube velocity fields at 0, 200, 400, 600, and 800 s. This is a real time sequence from one unchanged case; it does not mean the open numerical gates have passed.</figcaption>
-    </figure>
     <figure class="recording flowline-recording entry-recording">
       <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flow_entry_800.png'}>
         <source src={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flow_entry.mp4'} type="video/mp4" />
         <img src={base + 'visuals/flowlines/hx_cfd_qual_01_flow_entry.gif'} alt="Flow-entry presentation revealing retained shell and tube streamlines from inlet to outlet" />
       </video>
       <figcaption><strong>Flow-entry presentation:</strong> starts with no visible streamlines, then reveals the retained t=800 s paths from the shell and tube inlets toward the outlets. This is a derived presentation of the solved field—not a zero-initialized solver transient and not a new numerical result.</figcaption>
+    </figure>
+    <figure class="recording flowline-recording">
+      <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_800.png'}>
+        <source src={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.mp4'} type="video/mp4" />
+        <img src={base + 'visuals/flowlines/hx_cfd_qual_01_flowlines.gif'} alt="Animated shell and tube CFD flow lines over the retained HX-CFD-QUAL-01 v7 geometry" />
+      </video>
+      <figcaption><strong>CFD flow-line recording:</strong> actual streamlines generated from the retained v7 shell and tube velocity fields at 0, 200, 400, 600, and 800 s. This is a real time sequence from one unchanged case; it does not mean the open numerical gates have passed.</figcaption>
     </figure>
     <figure class="recording flowline-recording amplified-recording">
       <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified_800.png'}>
