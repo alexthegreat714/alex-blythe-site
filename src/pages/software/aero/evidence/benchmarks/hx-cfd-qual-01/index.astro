@@ -16,6 +16,7 @@ const rows = [
   ['HX-03 Stage B', 'STOPPED', 'STOPPED'],
 ];
 const visualSlides = [
+  ['Outlet monitor history', 'visuals/hx_cfd_qual_01_outlet_monitors_poster.png', 'Retained shell and tube outlet-temperature telemetry through 800 s.'],
   ['Amplified ΔU · 800 s', 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified_800.png', 'Amplified baseline-relative speed change at 800 s; fixed ±10% display scale, diagnostic only.'],
   ['Amplified ΔU · 400 s', 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified_400.png', 'Amplified baseline-relative speed change at 400 s; fixed ±10% display scale, diagnostic only.'],
   ['Amplified ΔU · 200 s', 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified_200.png', 'Amplified baseline-relative speed change at 200 s; fixed ±10% display scale, diagnostic only.'],
@@ -68,13 +69,6 @@ const visualSlides = [
     <h2 id="visual-heading">ParaView fields and retained telemetry</h2>
     <p>Download the derived visualization package to inspect temperature, velocity, and <code>p_rgh</code> in ParaView. Each bundle contains a <code>.pvd</code> collection for the shell, tube, and solid latest-time snapshots.</p>
     <div class="links"><a class="primary" href={base + 'visuals/VISUALIZATION_MANIFEST.json'}>Visualization manifest</a><a href={base + 'visuals/VISUALIZATION_REPORT.md'}>ParaView instructions</a><a href={base + 'visuals/PRESSURE_VELOCITY_DIAGNOSTIC.md'}>Pressure / velocity diagnostic</a><a href={base + 'visuals/VISUALIZATION_SHA256SUMS.txt'}>SHA-256 checksums</a></div>
-    <figure class="recording">
-      <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/hx_cfd_qual_01_outlet_monitors_poster.png'}>
-        <source src={base + 'visuals/hx_cfd_qual_01_outlet_monitors.mp4'} type="video/mp4" />
-        <img src={base + 'visuals/hx_cfd_qual_01_outlet_monitors.gif'} alt="Animated shell and tube outlet-temperature monitor telemetry across the retained HX-CFD-QUAL-01 runs" />
-      </video>
-      <figcaption><strong>Recording:</strong> retained shell/tube outlet-temperature telemetry across the five cases. Use the controls to pause or replay it; it is not a time-resolved 3-D field animation. For interactive 3-D fields, open a <code>.pvd</code> collection in ParaView.</figcaption>
-    </figure>
     <figure class="recording flowline-recording">
       <video controls loop muted playsinline preload="metadata" poster={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_800.png'}>
         <source src={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.mp4'} type="video/mp4" />
@@ -89,6 +83,7 @@ const visualSlides = [
       </video>
       <figcaption><strong>Amplified diagnostic:</strong> the same flow lines, colored by change in speed relative to t=0 on a fixed ±10% scale. This five-second recording smoothly interpolates the rendered colors between the five retained snapshots so the transient progression is visible; it does not add solver time steps, magnify the physical geometry, or alter the solver data.</figcaption>
     </figure>
+    <p class="subtle">Charts and diagnostic figures below are click-through slides. Playback is reserved for the actual 3-D flow-line views; opening a chart will never start a recording.</p>
     <div class="visual-gallery" data-evidence-gallery>
       <div class="gallery-main"><img data-gallery-main src={base + visualSlides[0][1]} alt={visualSlides[0][2]} /><p data-gallery-caption>{visualSlides[0][2]}</p></div>
       <div class="gallery-thumbs" role="list" aria-label="Evidence figures">
@@ -97,7 +92,7 @@ const visualSlides = [
     </div>
     <div class="links"><a class="primary" href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.pvd'}>Open flow lines in ParaView</a><a href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd'}>Open amplified ΔU in ParaView</a><a href={base + 'visuals/flowlines/FLOWLINE_REPORT.md'}>Flow-line report</a><a href={base + 'visuals/flowlines/AMPLIFIED_FLOWLINE_REPORT.md'}>Amplified diagnostic report</a><a href={base + 'visuals/flowlines/FLOWLINE_MANIFEST.json'}>Flow-line manifest</a><a href={base + 'visuals/flowlines/FLOWLINE_SHA256SUMS.txt'}>Flow-line checksums</a><a href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines.mp4'}>Download flow-line MP4</a><a href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified_interpolated.mp4'}>Download smooth amplified MP4</a></div>
     <div class="table-wrap"><table><thead><tr><th>Run</th><th>ParaView bundle</th><th>Additional view</th></tr></thead><tbody>
-      <tr><th>Original v5 fine</th><td><a href={base + 'visuals/v5_fine_vtk.zip'}>v5_fine_vtk.zip</a></td><td rowspan="5"><a href={base + 'visuals/v7_residual_decomposition.png'}>Residual decomposition</a><br /><a href={base + 'visuals/v7_transverse_velocity_localization.png'}>Transverse localization</a><br /><a href={base + 'visuals/hx_cfd_qual_01_outlet_monitors.mp4'}>Recording (MP4)</a><br /><a href={base + 'visuals/hx_cfd_qual_01_outlet_monitors.gif'}>GIF fallback</a><br /><a href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified.mp4'}>Amplified flow-line diagnostic</a></td></tr>
+      <tr><th>Original v5 fine</th><td><a href={base + 'visuals/v5_fine_vtk.zip'}>v5_fine_vtk.zip</a></td><td rowspan="5"><a href={base + 'visuals/hx_cfd_qual_01_outlet_monitors_poster.png'}>Outlet monitor chart</a><br /><a href={base + 'visuals/v7_residual_decomposition.png'}>Residual decomposition</a><br /><a href={base + 'visuals/v7_transverse_velocity_localization.png'}>Transverse localization</a><br /><a href={base + 'visuals/flowlines/hx_cfd_qual_01_v7_flowlines_amplified.mp4'}>Amplified flow-line diagnostic</a></td></tr>
       <tr><th>v6 fine</th><td><a href={base + 'visuals/v6_fine_vtk.zip'}>v6_fine_vtk.zip</a></td></tr>
       <tr><th>Retained v7 fine</th><td><a href={base + 'visuals/v7_fine_vtk.zip'}>v7_fine_vtk.zip</a></td></tr>
       <tr><th>Unchanged continuation</th><td><a href={base + 'visuals/continuation_v1_fine_vtk.zip'}>continuation_v1_fine_vtk.zip</a></td></tr>
