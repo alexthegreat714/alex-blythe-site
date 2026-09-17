@@ -16,7 +16,7 @@ Bundles:
 - `continuation_v1_fine_vtk.zip` — unchanged bounded continuation, latest exported field time 800 s (monitor telemetry reached 810 s).
 - `solver_control_v1_coarse_vtk.zip` — isolated `nOuterCorrectors=2` control run, latest field time 100 s.
 
-The VTK files are latest-time snapshots exported with `foamToVTK`; they are not a time-resolved 3-D animation. The `hx_cfd_qual_01_outlet_monitors.gif` file animates the retained shell/tube outlet-temperature histories across the five runs. It is useful for comparing drift, but it is not a substitute for transient field data.
+The VTK files are latest-time snapshots exported with `foamToVTK`; they are not a time-resolved 3-D animation. The `hx_cfd_qual_01_outlet_monitors.mp4` file is an inline, browser-playable recording of the retained shell/tube outlet-temperature histories across the five runs, with `hx_cfd_qual_01_outlet_monitors.gif` as a fallback. It is useful for comparing drift, but it is not a substitute for transient field data. For interactive 3-D fields, open one of the `.pvd` collections in ParaView.
 
 ## What the visuals show
 
