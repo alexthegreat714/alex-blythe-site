@@ -26,7 +26,9 @@ The package has its own `flowlines/FLOWLINE_SHA256SUMS.txt` and JSON manifest so
 
 ### Amplified diagnostic view
 
-The same package now includes `flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd` and a browser-playable amplified recording. Its point scalar is the speed change relative to the fixed `t=0` field, with a fixed `-5%` to `+5%` color scale across every frame. This makes small changes easier to see without per-frame auto-normalization. The color range is a display choice only; the underlying velocity fields, geometry, and qualification disposition are unchanged. The method and integrity records are in `flowlines/AMPLIFIED_FLOWLINE_REPORT.md` and `flowlines/FLOWLINE_SHA256SUMS.txt`.
+The same package now includes `flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd` and a browser-playable amplified recording. Its point scalar is the speed change relative to the fixed `t=0` field, with a fixed `-10%` to `+10%` color scale across every frame. This makes small changes easier to see without per-frame auto-normalization. The color range is a display choice only; the underlying velocity fields, geometry, and qualification disposition are unchanged. The method and integrity records are in `flowlines/AMPLIFIED_FLOWLINE_REPORT.md` and `flowlines/FLOWLINE_SHA256SUMS.txt`.
+
+The page also provides `hx_cfd_qual_01_v7_flowlines_amplified_interpolated.mp4`, a five-second presentation recording with 25 frames. It smoothly interpolates the rendered colors between the five retained solver snapshots so the progression is not perceived as an immediate white-to-red jump. Those in-between frames are explicitly visual interpolation, not additional solver time steps.
 
 ## What the visuals show
 

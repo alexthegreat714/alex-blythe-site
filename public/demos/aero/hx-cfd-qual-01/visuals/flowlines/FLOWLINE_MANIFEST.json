@@ -38,11 +38,12 @@
   "amplified_diagnostic": {
     "reference_time_s": 0,
     "scalar": "delta_speed_pct = 100 * (|U(t)| - |U(0)|) / |U(0)|",
-    "color_scale_pct": [-5.0, 5.0],
+    "color_scale_pct": [
+      -10.0,
+      10.0
+    ],
     "clip_is_visual_only": true,
     "time_collection": "hx_cfd_qual_01_v7_flowlines_amplified.pvd",
-    "recording": "hx_cfd_qual_01_v7_flowlines_amplified.mp4",
-    "gif_fallback": "hx_cfd_qual_01_flowlines_amplified.gif",
     "frames": [
       "hx_cfd_qual_01_v7_flowlines_amplified_0.png",
       "hx_cfd_qual_01_v7_flowlines_amplified_200.png",
@@ -50,7 +51,22 @@
       "hx_cfd_qual_01_v7_flowlines_amplified_600.png",
       "hx_cfd_qual_01_v7_flowlines_amplified_800.png"
     ],
-    "interpretation": "A baseline-relative diagnostic color scale makes small changes easier to see; it does not change the solver field or claim a larger physical transient."
+    "streamline_files": [
+      "shell_flowlines_amplified_0.vtp",
+      "tube_flowlines_amplified_0.vtp",
+      "shell_flowlines_amplified_200.vtp",
+      "tube_flowlines_amplified_200.vtp",
+      "shell_flowlines_amplified_400.vtp",
+      "tube_flowlines_amplified_400.vtp",
+      "shell_flowlines_amplified_600.vtp",
+      "tube_flowlines_amplified_600.vtp",
+      "shell_flowlines_amplified_800.vtp",
+      "tube_flowlines_amplified_800.vtp"
+    ],
+    "interpolated_recording": "hx_cfd_qual_01_v7_flowlines_amplified_interpolated.mp4",
+    "interpolated_gif_fallback": "hx_cfd_qual_01_flowlines_amplified_interpolated.gif",
+    "interpolation_note": "The five-second smooth recording interpolates rendered colors between retained snapshots for readability; intermediate frames are not solver time steps.",
+    "interpretation": "Diagnostic color amplification; underlying U fields and geometry are unchanged."
   },
   "interpretation": "Genuine post-processing of retained solver velocity fields. The MP4/GIF is a time animation over one unchanged v7 case, not a cross-run montage.",
   "limitations": [

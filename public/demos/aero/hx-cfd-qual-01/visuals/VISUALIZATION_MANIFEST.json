@@ -25,7 +25,8 @@
     "The MP4 is the inline recording of retained outlet monitor telemetry; the GIF is the browser fallback. Neither is a time-resolved 3-D field animation.",
     "The .pvd bundles remain the interactive ParaView field views.",
     "The flowlines package is a separate time-indexed post-processing of the unchanged v7 U fields at 0, 200, 400, 600, and 800 s; its .pvd opens in ParaView and its MP4/GIF is a true field-derived animation.",
-    "The amplified flowline recording uses a fixed baseline-relative delta-speed color scale (±5% for display only) to make subtle changes easier to see; it does not alter the solver fields.",
+    "The amplified flowline recording uses a fixed baseline-relative delta-speed color scale (±10% for display only) to make subtle changes easier to see; it does not alter the solver fields.",
+    "The smooth amplified recording interpolates rendered colors between the five retained snapshots for readability; intermediate frames are not additional solver time steps.",
     "These are derived visualization artifacts, not physical validation or design-readiness evidence."
   ]
 }

@@ -12,7 +12,7 @@ per-frame auto-scaled color map as a physical result.
   fixed reference.
 - The displayed scalar is
   `delta_speed_pct = 100 * (|U(t)| - |U(0)|) / |U(0)|`.
-- The color bar is fixed at `-5%` to `+5%` for every frame. Values outside that
+- The color bar is fixed at `-10%` to `+10%` for every frame. Values outside that
   display range are clipped for color only; the VTP files retain the derived
   scalar values.
 - The geometry and solver fields are not modified by this post-processing.
@@ -28,3 +28,10 @@ unchanged.
 The collection `hx_cfd_qual_01_v7_flowlines_amplified.pvd` can be opened in
 ParaView to inspect the time-indexed derived streamline objects and the
 `delta_speed_pct` point field directly.
+
+The browser recording `hx_cfd_qual_01_v7_flowlines_amplified_interpolated.mp4`
+contains 25 frames over five seconds. It smoothly interpolates the rendered
+colors between the five retained snapshots so the progression is visible at
+normal playback speed. Those in-between frames are a presentation aid, not
+additional solver time steps; the discrete VTP/PVD snapshots remain the
+authoritative post-processing record.
