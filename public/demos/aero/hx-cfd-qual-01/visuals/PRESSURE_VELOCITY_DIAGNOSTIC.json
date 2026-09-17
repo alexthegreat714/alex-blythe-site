@@ -1577,10 +1577,25 @@
   "flux_consistency": {
     "time_s": 800.0,
     "values": {
-      "shell": 0.05000005,
-      "tube": 0.05000065
+      "shellInletFlux": -0.05,
+      "shellOutletFlux": 0.05000005,
+      "tubeInletFlux": -0.05,
+      "tubeOutletFlux": 0.05000065
     },
-    "pairs": []
+    "pairs": [
+      {
+        "region": "shell",
+        "inlet_phi": -0.05,
+        "outlet_phi": 0.05000005,
+        "magnitude_imbalance_fraction": 9.999999998899778e-07
+      },
+      {
+        "region": "tube",
+        "inlet_phi": -0.05,
+        "outlet_phi": 0.05000065,
+        "magnitude_imbalance_fraction": 1.299999999995749e-05
+      }
+    ]
   },
   "field_stats": {
     "shell": {
