@@ -41,7 +41,7 @@
     "fine_residual_max_last_window": 0.04778247,
     "fine_monitor_drift_K": {"shell_outlet": 0.0608, "tube_outlet": 0.0644}
   },
-  "next_action": "Run a separately identified solver-control/convergence investigation or predeclared steady-state formulation. Preserve v5 and v7; do not weaken gates or start HX-03 Stage B until residual and monitor gates are established.",
+  "next_action": "Pressure/velocity diagnostics are complete. The next bounded experiment should vary pressure-correction count and p_rgh relaxation one control at a time, using repaired solid-e residual telemetry; preserve v5/v7 and do not weaken gates or start HX-03 Stage B until residual and monitor gates are established.",
   "solver_control_diagnostic": {
     "id": "HX-CFD-QUAL-01-SOLVER-CONTROL-V1",
     "status": "DIAGNOSTIC_ONLY_NOT_QUALIFIED",
@@ -53,6 +53,26 @@
     "interpretation": "The bounded control does not establish an improvement in the existing initial-residual metric. Final linear residuals are not substituted for the qualification gate.",
     "open_gates_unchanged": ["RESIDUAL_CONVERGENCE", "MONITOR_STABILITY"],
     "report": "Aero/reports/hx_cfd_qual_01_solver_control_v1_20260917/SOLVER_CONTROL_REPORT.md"
+  },
+  "pressure_velocity_diagnostic": {
+    "id": "HX-CFD-QUAL-01-PRESSURE-VELOCITY-DIAGNOSTIC-V1",
+    "status": "FIELD_SPECIFIC_CONVERGENCE_FAILURE",
+    "pressure_equation": "p_rgh remains high in both fluid regions; outlet pressure references and pressureInletOutletVelocity BCs were inspected.",
+    "transverse_velocity": "q95 transverse speed is concentrated within the first 50 mm from each inlet and decays through the exchanger core.",
+    "outlet_backflow": "No reverse-flow cells were detected in retained shell/tube outlet snapshots.",
+    "steady_model_suitability": "NOT_ESTABLISHED",
+    "report": "visuals/PRESSURE_VELOCITY_DIAGNOSTIC.md"
+  },
+  "solid_telemetry": {
+    "solved_field": "e",
+    "old_request": "h",
+    "repair_status": "PATCHED_COPY_PROBE_RECORDED_NUMERIC_E_RESIDUALS",
+    "evidence": "visuals/SOLID_TELEMETRY_REPAIR.md"
+  },
+  "visualizations": {
+    "manifest": "visuals/VISUALIZATION_MANIFEST.json",
+    "paraview_bundles": ["v5_fine_vtk.zip", "v6_fine_vtk.zip", "v7_fine_vtk.zip", "continuation_v1_fine_vtk.zip", "solver_control_v1_coarse_vtk.zip"],
+    "monitor_animation": "visuals/hx_cfd_qual_01_outlet_monitors.gif"
   },
   "artifacts": {
     "original_report": "ORIGINAL_QUALIFICATION.md",

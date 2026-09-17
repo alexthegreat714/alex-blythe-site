@@ -44,7 +44,7 @@ const rows = [
 
   <section aria-labelledby="open-heading" class="boundary">
     <h2 id="open-heading">What remains open</h2>
-    <ul><li><strong>Residual convergence:</strong> v7 fine-grid retained initial-residual window is {v7.fine_residual_max_last_window}, above the 1e-3 criterion.</li><li><strong>Monitor stability:</strong> v7 fine-grid last-window outlet-temperature drift is {v7.fine_monitor_drift_K.shell_outlet.toFixed(4)} K (shell) and {v7.fine_monitor_drift_K.tube_outlet.toFixed(4)} K (tube), above the 0.01 K criterion.</li><li><strong>Next step:</strong> a separately identified solver-control/convergence investigation or predeclared steady-state formulation. The original and v7 packages remain immutable.</li></ul>
+    <ul><li><strong>Residual convergence:</strong> v7 fine-grid retained initial-residual window is {v7.fine_residual_max_last_window}, above the 1e-3 criterion.</li><li><strong>Monitor stability:</strong> v7 fine-grid last-window outlet-temperature drift is {v7.fine_monitor_drift_K.shell_outlet.toFixed(4)} K (shell) and {v7.fine_monitor_drift_K.tube_outlet.toFixed(4)} K (tube), above the 0.01 K criterion.</li><li><strong>Next bounded action:</strong> vary pressure-correction count and <code>p_rgh</code> relaxation one control at a time, with repaired solid-<code>e</code> telemetry. The original and v7 packages remain immutable.</li></ul>
     <p>No HX-03 Stage B work is authorized by this result. The correct public status is still <strong>FAILED_NUMERICAL_GATES</strong>.</p>
   </section>
 
