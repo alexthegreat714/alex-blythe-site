@@ -25,6 +25,10 @@ The old function object requested `residuals(region = solid, h)`, but `system/so
 
 `NOT_ESTABLISHED`. The run is not numerically converged, but this does not prove intrinsic unsteadiness. A transient comparison would be a separate, explicitly identified study after pressure/flux controls are remediated.
 
+## Recommended next bounded diagnostic (not run here)
+
+Keep the fixed-value outlet pressure references, then vary one control at a time: explicitly set the pressure-correction count, reduce `p_rgh` relaxation from 0.7, and compare pressure/continuity trajectories on the same mesh and stop window. Only if those controls remain inadequate should a transient formulation be tested. The current outlet snapshots do not justify attributing the failure to backflow.
+
 ## Disposition
 
 This diagnostic clarifies the failure and repairs future observability. It does not convert the v7 result into a passing qualification case and does not establish design readiness.
