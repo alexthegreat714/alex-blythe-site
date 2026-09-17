@@ -68,6 +68,15 @@
     "interpolation_note": "The five-second smooth recording interpolates rendered colors between retained snapshots for readability; intermediate frames are not solver time steps.",
     "interpretation": "Diagnostic color amplification; underlying U fields and geometry are unchanged."
   },
+  "flow_entry_presentation": {
+    "source_time_s": 800,
+    "recording": "hx_cfd_qual_01_v7_flow_entry.mp4",
+    "gif_fallback": "hx_cfd_qual_01_flow_entry.gif",
+    "poster": "hx_cfd_qual_01_v7_flow_entry_800.png",
+    "frames": 25,
+    "duration_s": 5.0,
+    "interpretation": "The retained t=800 s streamlines are progressively revealed from the inlet to the outlet. This is a presentation aid, not a zero-initialized solver transient."
+  },
   "interpretation": "Genuine post-processing of retained solver velocity fields. The MP4/GIF is a time animation over one unchanged v7 case, not a cross-run montage.",
   "limitations": [
     "This is a visualization of the retained U field, not evidence that the numerical qualification gates passed.",

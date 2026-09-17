@@ -18,7 +18,9 @@
     "monitor_recording": "hx_cfd_qual_01_outlet_monitors.mp4",
     "monitor_recording_poster": "hx_cfd_qual_01_outlet_monitors_poster.png",
     "flowline_package": "flowlines/FLOWLINE_MANIFEST.json",
-    "amplified_flowline_package": "flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd"
+    "amplified_flowline_package": "flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd",
+    "flow_entry_recording": "flowlines/hx_cfd_qual_01_v7_flow_entry.mp4",
+    "flow_entry_poster": "flowlines/hx_cfd_qual_01_v7_flow_entry_800.png"
   },
   "notes": [
     "Each zip contains a ParaView .pvd collection and latest-time legacy VTK volume snapshots for shell, tube, and solid.",
@@ -27,6 +29,7 @@
     "The flowlines package is a separate time-indexed post-processing of the unchanged v7 U fields at 0, 200, 400, 600, and 800 s; its .pvd opens in ParaView and its MP4/GIF is a true field-derived animation.",
     "The amplified flowline recording uses a fixed baseline-relative delta-speed color scale (±10% for display only) to make subtle changes easier to see; it does not alter the solver fields.",
     "The smooth amplified recording interpolates rendered colors between the five retained snapshots for readability; intermediate frames are not additional solver time steps.",
+    "The flow-entry recording progressively reveals the retained t=800 s streamlines from the inlet toward the outlet; it is a presentation aid, not a zero-initialized solver transient.",
     "These are derived visualization artifacts, not physical validation or design-readiness evidence."
   ]
 }

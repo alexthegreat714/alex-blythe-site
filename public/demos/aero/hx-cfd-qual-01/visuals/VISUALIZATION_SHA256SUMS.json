@@ -1,23 +1,102 @@
-﻿{
-    "algorithm":  "SHA-256",
-    "files":  {
-                  "continuation_v1_fine_vtk.zip":  "96f5eed63866e49720fb785a8ebe115b4cb9d3295a298be5b93d608265dee71e",
-                  "hx_cfd_qual_01_outlet_monitors.gif":  "789c89d9408d59fb4712cb4b7f611c84bb7faa89312888e7525f1d53fb33e668",
-                  "hx_cfd_qual_01_outlet_monitors.mp4":  "790f81d802ad36677a139815a4b6b30b50df30fbb76d7becaa459219be84cd50",
-                  "hx_cfd_qual_01_outlet_monitors_poster.png":  "51d3147df94158865d0e09f465e8ace3356d23d046412e78af20fa0949d67e25",
-                  "PRESSURE_VELOCITY_DIAGNOSTIC.json":  "1bfb73aefb79b995429a394bc3761f35dd2cb5dc9ef957a6fd01a1c65b54dbe4",
-                  "PRESSURE_VELOCITY_DIAGNOSTIC.md":  "69b91cfa663a7348315724689bd551c1cd0065dfb75451773df406856d2e434a",
-                  "solid_residuals_e_800.dat":  "fbc492f96640f1f30e16d6c1eee86080d2e8e03555aefbd13cff326e3bb42314",
-                  "SOLID_TELEMETRY_AUDIT.json":  "c22b8450749816fa7d3876bf3c12269bb3f77f26e2655e92995ef58d3977421c",
-                  "SOLID_TELEMETRY_PATCH.json":  "5e6c610a74242996d636257eb9c3c3bbe3a2169978e1c1d4aa4f013a3f9450ba",
-                  "SOLID_TELEMETRY_REPAIR.md":  "f54f350ef6c3ab226e84b67cb4c78a2a5df5305df7a6640437e2e5ac59b96e2c",
-                  "solver_control_v1_coarse_vtk.zip":  "f9c7c03ca0955fbd8a4c8d3f37403e3dc73c1dc7ef15a57aa541ba360f458f2e",
-                  "v5_fine_vtk.zip":  "89e91d882a78ec664eab12e0c3cde4d8dd120085430f74fc18689315183d03b8",
-                  "v6_fine_vtk.zip":  "d668d7ee333e6a2478277d5bc6d2975fb694438924331b9e9b02aa7173b33052",
-                  "v7_fine_vtk.zip":  "f268d8525fe297f62615a0ad39361d086cc45b2d6bcc2c0a392e208d68b525ce",
-                  "v7_residual_decomposition.png":  "69fc1dca383bba15a1e8505d443a0c07bf86ae9b975858cbcecce67732031351",
-                  "v7_transverse_velocity_localization.png":  "9f1f44187d607994ba66734d02930fc3e40ead70b001c1bc18e4a730c61b5be2",
-                  "VISUALIZATION_MANIFEST.json":  "0d567a3ded45820945e2cc1ede735757fc65541a8071cfa626073ec1e8630728",
-                  "VISUALIZATION_REPORT.md":  "462dff4a42c80e2b36e144544d9be5899bafa89a22f592da72adc6ed078e4d08"
-              }
-}
+﻿[
+    {
+        "path":  "continuation_v1_fine_vtk.zip",
+        "sha256":  "96f5eed63866e49720fb785a8ebe115b4cb9d3295a298be5b93d608265dee71e",
+        "size":  26265102
+    },
+    {
+        "path":  "hx_cfd_qual_01_outlet_monitors.gif",
+        "sha256":  "789c89d9408d59fb4712cb4b7f611c84bb7faa89312888e7525f1d53fb33e668",
+        "size":  141620
+    },
+    {
+        "path":  "hx_cfd_qual_01_outlet_monitors.mp4",
+        "sha256":  "790f81d802ad36677a139815a4b6b30b50df30fbb76d7becaa459219be84cd50",
+        "size":  59393
+    },
+    {
+        "path":  "hx_cfd_qual_01_outlet_monitors_poster.png",
+        "sha256":  "51d3147df94158865d0e09f465e8ace3356d23d046412e78af20fa0949d67e25",
+        "size":  36326
+    },
+    {
+        "path":  "PRESSURE_VELOCITY_DIAGNOSTIC.json",
+        "sha256":  "1bfb73aefb79b995429a394bc3761f35dd2cb5dc9ef957a6fd01a1c65b54dbe4",
+        "size":  66712
+    },
+    {
+        "path":  "PRESSURE_VELOCITY_DIAGNOSTIC.md",
+        "sha256":  "69b91cfa663a7348315724689bd551c1cd0065dfb75451773df406856d2e434a",
+        "size":  3282
+    },
+    {
+        "path":  "solid_residuals_e_800.dat",
+        "sha256":  "fbc492f96640f1f30e16d6c1eee86080d2e8e03555aefbd13cff326e3bb42314",
+        "size":  372
+    },
+    {
+        "path":  "SOLID_TELEMETRY_AUDIT.json",
+        "sha256":  "c22b8450749816fa7d3876bf3c12269bb3f77f26e2655e92995ef58d3977421c",
+        "size":  119743
+    },
+    {
+        "path":  "SOLID_TELEMETRY_PATCH.json",
+        "sha256":  "5e6c610a74242996d636257eb9c3c3bbe3a2169978e1c1d4aa4f013a3f9450ba",
+        "size":  446
+    },
+    {
+        "path":  "SOLID_TELEMETRY_REPAIR.md",
+        "sha256":  "f54f350ef6c3ab226e84b67cb4c78a2a5df5305df7a6640437e2e5ac59b96e2c",
+        "size":  744
+    },
+    {
+        "path":  "solver_control_v1_coarse_vtk.zip",
+        "sha256":  "f9c7c03ca0955fbd8a4c8d3f37403e3dc73c1dc7ef15a57aa541ba360f458f2e",
+        "size":  7769978
+    },
+    {
+        "path":  "v5_fine_vtk.zip",
+        "sha256":  "89e91d882a78ec664eab12e0c3cde4d8dd120085430f74fc18689315183d03b8",
+        "size":  3403642
+    },
+    {
+        "path":  "v6_fine_vtk.zip",
+        "sha256":  "d668d7ee333e6a2478277d5bc6d2975fb694438924331b9e9b02aa7173b33052",
+        "size":  3238174
+    },
+    {
+        "path":  "v7_fine_vtk.zip",
+        "sha256":  "f268d8525fe297f62615a0ad39361d086cc45b2d6bcc2c0a392e208d68b525ce",
+        "size":  26264229
+    },
+    {
+        "path":  "v7_residual_decomposition.png",
+        "sha256":  "69fc1dca383bba15a1e8505d443a0c07bf86ae9b975858cbcecce67732031351",
+        "size":  55519
+    },
+    {
+        "path":  "v7_transverse_velocity_localization.png",
+        "sha256":  "9f1f44187d607994ba66734d02930fc3e40ead70b001c1bc18e4a730c61b5be2",
+        "size":  97141
+    },
+    {
+        "path":  "VISUALIZATION_MANIFEST.json",
+        "sha256":  "cb8edf6aa28ee8a349936ad541fd5fe9420d57638699d7093e1fce492c33eaf9",
+        "size":  2454
+    },
+    {
+        "path":  "VISUALIZATION_REPORT.md",
+        "sha256":  "fe64a8744b712a14ed2881cdde9cb7e4d0493b588fdfb0eb330526441890181a",
+        "size":  4907
+    },
+    {
+        "path":  "VISUALIZATION_SHA256SUMS.json",
+        "sha256":  "08aef356199e6ee789c92003f05ed89361e241fdb9e0977e928b50ec2be3857f",
+        "size":  2226
+    },
+    {
+        "path":  "VISUALIZATION_SHA256SUMS.txt",
+        "sha256":  "4e5f9da771486b3f8ea277debf1b6d16b3ef29425ed27ea09af186839e0d332a",
+        "size":  1722
+    }
+]

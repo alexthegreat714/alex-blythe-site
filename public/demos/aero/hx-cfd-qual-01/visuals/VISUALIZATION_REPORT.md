@@ -30,6 +30,10 @@ The same package now includes `flowlines/hx_cfd_qual_01_v7_flowlines_amplified.p
 
 The page also provides `hx_cfd_qual_01_v7_flowlines_amplified_interpolated.mp4`, a five-second presentation recording with 25 frames. It smoothly interpolates the rendered colors between the five retained solver snapshots so the progression is not perceived as an immediate white-to-red jump. Those in-between frames are explicitly visual interpolation, not additional solver time steps.
 
+### Flow-entry presentation
+
+`flowlines/hx_cfd_qual_01_v7_flow_entry.mp4` is a separate five-second teaching view. It starts with no visible streamlines and reveals the retained `t=800 s` shell/tube paths from the left-side inlets toward the outlets. The first and last frames are intentionally empty/final states; intermediate frames are an axial geometry reveal of the already-solved field. It is not a zero-initialized transient, not a new solver result, and not a qualification gate. The exact interpretation and file names are retained in `flowlines/FLOW_ENTRY_REPORT.md` and `flowlines/FLOWLINE_MANIFEST.json`.
+
 ## What the visuals show
 
 - `v7_residual_decomposition.png` shows equation/region residual tails. `p_rgh` is visibly dominant in both fluid regions; `Uy`/`Uz` are intermediate and `Ux`/`h` are lower.
