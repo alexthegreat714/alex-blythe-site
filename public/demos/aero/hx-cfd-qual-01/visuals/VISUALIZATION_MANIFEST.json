@@ -1,0 +1,24 @@
+{
+  "visualization_id": "HX-CFD-QUAL-01-VTK-VISUALS-V1",
+  "status": "DERIVED_PARAVIEW_ARTIFACTS",
+  "source": "Retained HX-CFD-QUAL-01 v5/v6/v7 solver cases, unchanged continuation, and nOuterCorrectors=2 control case",
+  "fields": ["T", "U", "p_rgh"],
+  "regions": ["shell", "tube", "solid"],
+  "bundles": {
+    "v5_fine": "v5_fine_vtk.zip",
+    "v6_fine": "v6_fine_vtk.zip",
+    "v7_fine": "v7_fine_vtk.zip",
+    "unchanged_continuation": "continuation_v1_fine_vtk.zip",
+    "solver_control": "solver_control_v1_coarse_vtk.zip"
+  },
+  "figures": {
+    "residual_decomposition": "v7_residual_decomposition.png",
+    "transverse_velocity_localization": "v7_transverse_velocity_localization.png",
+    "outlet_monitor_animation": "hx_cfd_qual_01_outlet_monitors.gif"
+  },
+  "notes": [
+    "Each zip contains a ParaView .pvd collection and latest-time legacy VTK volume snapshots for shell, tube, and solid.",
+    "The GIF animates retained outlet monitor telemetry; it is not a time-resolved 3-D field animation.",
+    "These are derived visualization artifacts, not physical validation or design-readiness evidence."
+  ]
+}

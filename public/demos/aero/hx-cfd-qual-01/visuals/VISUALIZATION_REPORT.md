@@ -1,0 +1,28 @@
+# HX-CFD-QUAL-01 ParaView visualization package
+
+This package contains derived, ParaView-compatible field snapshots for the retained HX-CFD-QUAL-01 runs and an animated plot of the retained outlet-temperature monitors. The frozen v7 solver package is unchanged.
+
+## Open the fields
+
+1. Download and extract the case bundle (`*_vtk.zip`).
+2. Open the matching `*.pvd` file in ParaView.
+3. The collection contains separate `shell`, `tube`, and `solid` datasets at the latest exported time. Select `T`, `U`, or `p_rgh` in the coloring menu; use **Glyph** on `U` for velocity vectors and **Clip/Slice** to inspect the manifolds and exchanger core.
+
+Bundles:
+
+- `v5_fine_vtk.zip` — original fine run, latest field time 800 s.
+- `v6_fine_vtk.zip` — refined fine run, latest field time 1600 s.
+- `v7_fine_vtk.zip` — retained remediation run, latest field time 800 s.
+- `continuation_v1_fine_vtk.zip` — unchanged bounded continuation, latest exported field time 800 s (monitor telemetry reached 810 s).
+- `solver_control_v1_coarse_vtk.zip` — isolated `nOuterCorrectors=2` control run, latest field time 100 s.
+
+The VTK files are latest-time snapshots exported with `foamToVTK`; they are not a time-resolved 3-D animation. The `hx_cfd_qual_01_outlet_monitors.gif` file animates the retained shell/tube outlet-temperature histories across the five runs. It is useful for comparing drift, but it is not a substitute for transient field data.
+
+## What the visuals show
+
+- `v7_residual_decomposition.png` shows equation/region residual tails. `p_rgh` is visibly dominant in both fluid regions; `Uy`/`Uz` are intermediate and `Ux`/`h` are lower.
+- `v7_transverse_velocity_localization.png` shows the 95th-percentile transverse speed concentrated in the first 50 mm from each inlet and decaying through the core.
+
+These plots support the diagnostic classification `FIELD_SPECIFIC_CONVERGENCE_FAILURE`. They do not establish physical validation or design readiness. Outlet backflow was not detected in the retained snapshots, although the configured outlet velocity boundary condition permits reverse flow.
+
+The solid residual observability repair is documented in `solid_telemetry/` and demonstrated by the patched-copy probe in `solid_telemetry_probe/`: the solid equation is `e`, so future function-object telemetry must request `e` rather than `h`.

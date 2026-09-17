@@ -1,0 +1,9 @@
+{
+  "case": "D:\\AeroRuntime\\foamagent\\cases\\hx_cfd_qual_01_structured_fine_v7",
+  "control_dict": "D:\\AeroRuntime\\foamagent\\cases\\hx_cfd_qual_01_structured_fine_v7\\system\\controlDict",
+  "detected_solid_solver_field": "e",
+  "original_residual_include": "#includeFunc residuals(region = solid, h)",
+  "patched_residual_include": "#includeFunc residuals(region = solid, e)",
+  "would_change": true,
+  "source_modified": false
+}

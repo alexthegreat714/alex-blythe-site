@@ -54,6 +54,20 @@ const rows = [
     <p><strong>DIAGNOSTIC_ONLY_NOT_QUALIFIED.</strong> The residual and monitor-stability gates remain open.</p>
   </section>
 
+  <section aria-labelledby="visual-heading" class="boundary">
+    <h2 id="visual-heading">ParaView fields and retained telemetry</h2>
+    <p>Download the derived visualization package to inspect temperature, velocity, and <code>p_rgh</code> in ParaView. Each bundle contains a <code>.pvd</code> collection for the shell, tube, and solid latest-time snapshots.</p>
+    <div class="links"><a class="primary" href={base + 'visuals/VISUALIZATION_MANIFEST.json'}>Visualization manifest</a><a href={base + 'visuals/VISUALIZATION_REPORT.md'}>ParaView instructions</a><a href={base + 'visuals/PRESSURE_VELOCITY_DIAGNOSTIC.md'}>Pressure / velocity diagnostic</a><a href={base + 'visuals/VISUALIZATION_SHA256SUMS.txt'}>SHA-256 checksums</a></div>
+    <div class="table-wrap"><table><thead><tr><th>Run</th><th>ParaView bundle</th><th>Additional view</th></tr></thead><tbody>
+      <tr><th>Original v5 fine</th><td><a href={base + 'visuals/v5_fine_vtk.zip'}>v5_fine_vtk.zip</a></td><td rowspan="5"><a href={base + 'visuals/v7_residual_decomposition.png'}>Residual decomposition</a><br /><a href={base + 'visuals/v7_transverse_velocity_localization.png'}>Transverse localization</a><br /><a href={base + 'visuals/hx_cfd_qual_01_outlet_monitors.gif'}>Outlet monitor animation</a></td></tr>
+      <tr><th>v6 fine</th><td><a href={base + 'visuals/v6_fine_vtk.zip'}>v6_fine_vtk.zip</a></td></tr>
+      <tr><th>Retained v7 fine</th><td><a href={base + 'visuals/v7_fine_vtk.zip'}>v7_fine_vtk.zip</a></td></tr>
+      <tr><th>Unchanged continuation</th><td><a href={base + 'visuals/continuation_v1_fine_vtk.zip'}>continuation_v1_fine_vtk.zip</a></td></tr>
+      <tr><th>Solver-control coarse</th><td><a href={base + 'visuals/solver_control_v1_coarse_vtk.zip'}>solver_control_v1_coarse_vtk.zip</a></td></tr>
+    </tbody></table></div>
+    <p class="subtle">The fields are latest-time snapshots exported from retained OpenFOAM cases. The animated GIF shows outlet-temperature telemetry across runs; it is not a substitute for a time-resolved 3-D animation. The solid-equation observability repair is retained as <a href={base + 'visuals/SOLID_TELEMETRY_REPAIR.md'}>a patched-copy report</a> with <a href={base + 'visuals/solid_residuals_e_800.dat'}>numeric <code>e</code> residuals</a>.</p>
+  </section>
+
   <section aria-labelledby="links-heading"><h2 id="links-heading">Retained local evidence</h2><p>The public files are a compact status record. The canonical evidence packages remain in the local Aero reports and retain solver logs, control dictionaries, mesh checks, monitor series and SHA-256 manifests.</p><div class="links"><a href={base + 'status.json'}>Status JSON</a><a href={base + 'REMEDIATION_V7.md'}>v7 report</a><a href={base + 'ORIGINAL_QUALIFICATION.md'}>Original report</a></div></section>
 </Shell>
 <style>
