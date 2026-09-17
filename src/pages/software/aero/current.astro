@@ -1,5 +1,6 @@
 ---
 import AeroChannelStudy from '../../../components/AeroChannelStudy.astro';
+import AeroStudyMeta from '../../../components/AeroStudyMeta.astro';
 const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 ---
 <!doctype html>
@@ -10,6 +11,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 <body>
 <main class="app" data-workspace data-endpoint={modelEndpoint}>
   <header class="appbar"><a href="/software/aero/" class="brand">AERO <span>Engineering workspace</span></a><div class="app-actions"><a href="/software/aero/cooling/">Cooling study</a><span data-save>Saved on this browser</span><button type="button" data-library aria-haspopup="dialog" aria-label="Open saved cases and examples">▣ Saved cases <span data-case-count></span></button><button type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="true" title="Switch to light mode"><span data-theme-icon aria-hidden="true">☾</span> <span class="theme-label" data-theme-label>Dark</span></button><button data-settings>Connect model</button><button data-export>Export .tex</button><button data-new>New case</button></div></header>
+  <AeroStudyMeta label="Aero public workspace" />
   <nav class="stages" aria-label="Engineering stages">
     {['Requirements','Math & LaTeX','CAD & tolerances','Mesh','Solve','Results'].map((label, i) => <button data-stage={i} aria-current={i === 0 ? 'step' : 'false'}><span class="step-number">0{i + 1}</span><span><b>{label}</b><small data-stage-label>Inputs needed</small></span><span class="track"><i></i></span></button>)}
   </nav>

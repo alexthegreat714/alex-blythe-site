@@ -1,10 +1,12 @@
 ---
 import SoftwareLayout from '../../../layouts/SoftwareLayout.astro';
+import AeroStudyMeta from '../../../components/AeroStudyMeta.astro';
 import data from '../../../../public/demos/aero/verification-bench-v1/summary.json';
 const base='/demos/aero/verification-bench-v1/';
 ---
 <SoftwareLayout title="Aero · Verification Bench" description="Real reference checks, measured failures, wall-treatment diagnostics and downloadable solver decks." canonicalPath="/software/aero/verification/" hideHeader>
   <div class="bench">
+    <AeroStudyMeta label="Aero verification benchmark" />
     <nav class="bench-nav" aria-label="Aero evidence navigation"><a href="/software/aero/#capability-papers">← Aero / See the evidence</a><a href="/software/aero/current/">Open workspace ↗</a></nav>
     <header class="bench-heading"><p class="eyebrow">VERIFICATION BENCH · REV 1.0</p><h1>A finished solve can still be wrong.</h1><p>Inspect the cases that pass, the controls that fail, and the evidence that tells them apart.</p><div class="actions"><a class="primary" href={base+'paper.pdf'}>Read the paper ↗</a><a href={base+'reproducibility.zip'} download>Download complete decks ↓</a></div></header>
     <nav class="case-nav" aria-label="Verification cases"><a href="#pipe">01 · Reference & failures</a><a href="#nozzle">02 · Wall treatment</a><a href="#cad">03 · Imperfect CAD</a><a href="#reproduce">04 · Reproduce</a></nav>

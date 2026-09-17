@@ -1,5 +1,6 @@
 ---
 import SoftwareLayout from '../../../../layouts/SoftwareLayout.astro';
+import AeroStudyMeta from '../../../../components/AeroStudyMeta.astro';
 import {
   evidence, monitors, artifacts, resultFields, demoRoot, telemetry,
   publicCadArtifact, publicPressureField,
@@ -112,6 +113,8 @@ const demoCases = [
         ))}
       </ol>
     </header>
+
+    <AeroStudyMeta label="Aero public guided demo" />
 
     <div class="guided-body">
       <aside class="guided-rail" aria-label="Aero tools">

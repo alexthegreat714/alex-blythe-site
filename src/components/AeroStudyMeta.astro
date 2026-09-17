@@ -1,0 +1,44 @@
+---
+interface Props {
+  date?: string;
+  label?: string;
+}
+
+const { date = '2026-09-17', label = 'Aero engineering record' } = Astro.props;
+const [year, month, day] = date.split('-').map(Number);
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(new Date(Date.UTC(year, month - 1, day)));
+---
+
+<p class="aero-study-meta">
+  <span>Alex Blythe</span>
+  <span aria-hidden="true">·</span>
+  <span>{label}</span>
+  <span aria-hidden="true">·</span>
+  <time datetime={date}>Updated {formattedDate}</time>
+</p>
+
+<style>
+  .aero-study-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 10px;
+    align-items: center;
+    margin: 15px 0 0;
+    color: var(--muted, #8fa5ad);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: .68rem;
+    letter-spacing: .045em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .aero-study-meta span:first-child {
+    color: var(--accent, #63d5d5);
+    font-weight: 750;
+  }
+</style>

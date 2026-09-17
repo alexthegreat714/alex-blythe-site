@@ -1,10 +1,12 @@
 ---
 import SoftwareLayout from '../../../layouts/SoftwareLayout.astro';
+import AeroStudyMeta from '../../../components/AeroStudyMeta.astro';
 import { authoritativeResult as result, evidence } from '../../../lib/aero/nozzle-precursor';
 const parameters = result.geometryManifest.parameters;
 ---
 <SoftwareLayout title="Aero / Sample engineering report" description="The retained wall-refinement-v6 study, its numerical evidence and its unresolved validation gates." canonicalPath="/software/aero/report/" compactHeader>
   <article class="report">
+    <AeroStudyMeta label="Aero retained engineering report" />
     <div class="actions"><a href="/software/aero/">← Back to Aero</a><button onclick="window.print()">Print / save PDF</button></div>
     <p class="eyebrow">Website Rev 1.1 · retained evidence · not a new solver run</p>
     <h2>Axisymmetric nozzle: a first-cut numerical study</h2>

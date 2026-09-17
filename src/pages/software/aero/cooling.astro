@@ -1,9 +1,11 @@
 ---
+import AeroStudyMeta from '../../../components/AeroStudyMeta.astro';
 const endpoint=import.meta.env.PUBLIC_AERO_CHAT_URL||'';
 ---
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Aero · Cooling-channel study</title><meta name="description" content="Compare three cooling-channel layouts against a thermal and pressure budget. Review the equations and download a reproducible LaTeX paper."/></head>
 <body><main data-cooling data-endpoint={endpoint}>
 <header><a href="/software/aero/" class="brand">AERO <small>Cooling-channel study</small></a><nav><a href="/software/aero/#capability-papers">Capability papers</a><a href="/software/aero/current/?study=channel">Flow study</a><button data-example>Load worked example</button></nav></header>
+<AeroStudyMeta label="Aero analytical study" />
 <nav class="stages" aria-label="Study stages">{['Requirements','Math','Layouts','Compare','Report'].map((name,i)=><button data-stage={i}><span>0{i+1}</span><b>{name}</b><small data-progress-label>Inputs needed</small><progress max="100" value="0"></progress></button>)}</nav>
 <div class="workspace"><aside><div class="pane-heading"><small>ENGINEERING PARTNER</small><h1>Which layout keeps the wall cool?</h1><p data-model role="status">Checking model…</p></div><div class="conversation" data-conversation role="log" aria-live="polite"></div><p class="notice" data-missing role="status"></p><form data-chat><label for="question">Discuss the requirements</label><textarea id="question" rows="3" maxlength="4000" placeholder="What geometry do you need before we can compare layouts?"></textarea><button data-send>Ask Aero ↑</button></form><small class="scope">Live chat explains. Only your reviewed numeric inputs start a calculation. Chat cannot change them or run a solver.</small></aside>
 <section class="work"><div class="pane-heading"><small>ANALYTICAL FIRST CUT · NOT THERMAL CFD</small><h2 data-heading>Define heat, flow and limits.</h2><p data-notice role="status">Start with your requirements or load the worked example.</p></div><div class="content">

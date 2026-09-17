@@ -24,7 +24,7 @@ const softwareNotes = (await getCollection('research'))
     <div class="project-list">
       <article class="project-row">
         <span class="project-number">01</span>
-        <div><span class="project-meta">{aero.category}</span><h3><a href="/software/aero/">Aero</a></h3><p class="project-summary">{aero.summary}</p><ul class="idea-list">{aero.keyIdeas.slice(0, 3).map((idea) => <li>{idea}</li>)}</ul></div>
+        <div><span class="project-meta">{aero.category}</span><span class="project-meta">Alex Blythe · Updated 17 September 2026</span><h3><a href="/software/aero/">Aero</a></h3><p class="project-summary">{aero.summary}</p><ul class="idea-list">{aero.keyIdeas.slice(0, 3).map((idea) => <li>{idea}</li>)}</ul></div>
         <div class="project-side"><span>{aero.status}</span><span>{aero.version ?? aero.year}</span><a class="project-link" href="/software/aero/">Try Aero <span aria-hidden="true">→</span></a></div>
       </article>
     </div>
