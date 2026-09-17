@@ -24,6 +24,10 @@ The `flowlines/` package is the visual that should be used when a flow-field vie
 
 The package has its own `flowlines/FLOWLINE_SHA256SUMS.txt` and JSON manifest so the rendered frames and streamline geometry can be checked independently of the broader visualization bundle.
 
+### Amplified diagnostic view
+
+The same package now includes `flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd` and a browser-playable amplified recording. Its point scalar is the speed change relative to the fixed `t=0` field, with a fixed `-5%` to `+5%` color scale across every frame. This makes small changes easier to see without per-frame auto-normalization. The color range is a display choice only; the underlying velocity fields, geometry, and qualification disposition are unchanged. The method and integrity records are in `flowlines/AMPLIFIED_FLOWLINE_REPORT.md` and `flowlines/FLOWLINE_SHA256SUMS.txt`.
+
 ## What the visuals show
 
 - `v7_residual_decomposition.png` shows equation/region residual tails. `p_rgh` is visibly dominant in both fluid regions; `Uy`/`Uz` are intermediate and `Ux`/`h` are lower.

@@ -35,6 +35,23 @@
       "tube_flowlines_800.vtp"
     ]
   },
+  "amplified_diagnostic": {
+    "reference_time_s": 0,
+    "scalar": "delta_speed_pct = 100 * (|U(t)| - |U(0)|) / |U(0)|",
+    "color_scale_pct": [-5.0, 5.0],
+    "clip_is_visual_only": true,
+    "time_collection": "hx_cfd_qual_01_v7_flowlines_amplified.pvd",
+    "recording": "hx_cfd_qual_01_v7_flowlines_amplified.mp4",
+    "gif_fallback": "hx_cfd_qual_01_flowlines_amplified.gif",
+    "frames": [
+      "hx_cfd_qual_01_v7_flowlines_amplified_0.png",
+      "hx_cfd_qual_01_v7_flowlines_amplified_200.png",
+      "hx_cfd_qual_01_v7_flowlines_amplified_400.png",
+      "hx_cfd_qual_01_v7_flowlines_amplified_600.png",
+      "hx_cfd_qual_01_v7_flowlines_amplified_800.png"
+    ],
+    "interpretation": "A baseline-relative diagnostic color scale makes small changes easier to see; it does not change the solver field or claim a larger physical transient."
+  },
   "interpretation": "Genuine post-processing of retained solver velocity fields. The MP4/GIF is a time animation over one unchanged v7 case, not a cross-run montage.",
   "limitations": [
     "This is a visualization of the retained U field, not evidence that the numerical qualification gates passed.",

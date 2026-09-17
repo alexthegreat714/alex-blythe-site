@@ -17,13 +17,15 @@
     "outlet_monitor_animation": "hx_cfd_qual_01_outlet_monitors.gif",
     "monitor_recording": "hx_cfd_qual_01_outlet_monitors.mp4",
     "monitor_recording_poster": "hx_cfd_qual_01_outlet_monitors_poster.png",
-    "flowline_package": "flowlines/FLOWLINE_MANIFEST.json"
+    "flowline_package": "flowlines/FLOWLINE_MANIFEST.json",
+    "amplified_flowline_package": "flowlines/hx_cfd_qual_01_v7_flowlines_amplified.pvd"
   },
   "notes": [
     "Each zip contains a ParaView .pvd collection and latest-time legacy VTK volume snapshots for shell, tube, and solid.",
     "The MP4 is the inline recording of retained outlet monitor telemetry; the GIF is the browser fallback. Neither is a time-resolved 3-D field animation.",
     "The .pvd bundles remain the interactive ParaView field views.",
     "The flowlines package is a separate time-indexed post-processing of the unchanged v7 U fields at 0, 200, 400, 600, and 800 s; its .pvd opens in ParaView and its MP4/GIF is a true field-derived animation.",
+    "The amplified flowline recording uses a fixed baseline-relative delta-speed color scale (±5% for display only) to make subtle changes easier to see; it does not alter the solver fields.",
     "These are derived visualization artifacts, not physical validation or design-readiness evidence."
   ]
 }
