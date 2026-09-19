@@ -1,0 +1,89 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+---
+<Shell title="Aero · Convergence criterion status · 2026-09-19" description="A dated Aero status report covering the recent pressure-residual, outer-corrector telemetry, matched-fixture, and relative convergence studies." path="/software/aero/evidence/reports/relative-convergence-2026-09-19/">
+  <article class="report">
+    <div class="actions"><a href="/software/aero/evidence/">← Back to public evidence</a><button onclick="window.print()">Print / save PDF</button></div>
+    <p class="eyebrow">ALEX BLYTHE · 2026-09-19 · AERO STATUS REPORT</p>
+    <h1>Why Aero has been testing convergence criteria</h1>
+    <p class="lede">This report records the recent sequence of retained-evidence studies, why each was run, what it established, and where the qualification boundary remains.</p>
+
+    <section class="verdict" aria-labelledby="current-state">
+      <h2 id="current-state">Current state</h2>
+      <p><strong>Relative convergence generalization: not established.</strong> Direct outer-corrector velocity updates are a useful qualitative indicator, but the retained evidence does not justify one universal numerical threshold or a frozen V2 convergence contract.</p>
+      <dl class="state-grid">
+        <div><dt>Telemetry</dt><dd>QUALIFIED</dd></div>
+        <div><dt>U outer-update indicator</dt><dd>GENERALIZES QUALITATIVELY</dd></div>
+        <div><dt>Universal absolute threshold</dt><dd>NOT ESTABLISHED</dd></div>
+        <div><dt>Relative criterion</dt><dd>NOT ESTABLISHED</dd></div>
+        <div><dt>V2 contract</dt><dd>PROPOSED · NOT APPROVED</dd></div>
+        <div><dt>HX-CFD-QUAL-01</dt><dd>FAILED NUMERICAL GATES · WITHHELD</dd></div>
+        <div><dt>HX-03</dt><dd>FROZEN · BLOCKED</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Why this sequence was necessary</h2>
+      <p>The generic HX-CFD qualification case still had a persistent pressure residual while global engineering monitors were comparatively stationary. The work therefore moved from solver tuning toward measurement: define what nonlinear change means, test that measurement on known positive and negative cases, and only then decide whether a portable criterion exists.</p>
+    </section>
+
+    <section>
+      <h2>Recent work, in order</h2>
+      <ol class="timeline">
+        <li><strong>Pressure-residual audit and bounded Phase B.</strong> R7/R8 examined pressure formulation, residual semantics, solver termination, and coupling behavior. A bounded continuation changed only the two fluid-region <code>p_rgh</code> <code>relTol</code> values from 0.01 to 0. The historical 1e-3 gate was not relaxed, and HX-CFD remained failed.</li>
+        <li><strong>Direct outer-corrector telemetry.</strong> An instrumentation-only layer captured consecutive PIMPLE outer states for velocity and pressure. Equivalence against the original solver passed: retained final fields and residual-event sequences matched. This answered the measurement question: how much does the solution change from one nonlinear outer corrector to the next?</li>
+        <li><strong>Matched fixture pair 1.</strong> A known settled positive case, a known unsettled negative case, and a clean positive repeat showed positive-low / negative-high outer-update ordering. U separated more strongly than pressure, but sample distributions overlapped, so no absolute threshold was frozen.</li>
+        <li><strong>Independent matched fixture pair 2.</strong> A separate low-Reynolds-number planar contraction repeated the test with the same qualified telemetry. The ordering generalized, but the absolute scale changed substantially between problems. This rejected the idea that one scalar cutoff is solver-wide.</li>
+        <li><strong>Relative nonlinear criterion study — this report.</strong> Using only retained telemetry, the study evaluated predeclared tail-to-early ratios, log reduction, reduction fraction, tail slope, coefficient of variation, plateau behavior, and small composite rules. Both leave-one-pair-out directions were required; no exact criterion survived both.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>What the retained numbers show</h2>
+      <table><thead><tr><th>20% tail / 20% early</th><th>Pair 1 positive</th><th>Pair 1 negative</th><th>Pair 2 positive</th><th>Pair 2 negative</th></tr></thead><tbody>
+        <tr><th>U global mean ratio</th><td>0.0141</td><td>0.0833</td><td>0.0128</td><td>0.0245</td></tr>
+        <tr><th>U global RMS ratio</th><td>0.00502</td><td>0.0471</td><td>0.00364</td><td>0.0134</td></tr>
+        <tr><th>Pressure global mean ratio</th><td>0.0438</td><td>0.0562</td><td>0.000664</td><td>0.00896</td></tr>
+      </tbody></table>
+      <p>Relative normalization reduced cross-fixture scale spread, but not enough to provide a bidirectionally validated rule. Some candidate rules passed when trained on Pair 1 and failed when trained on Pair 2; others showed the opposite behavior. Tail settling was also fixture-dependent.</p>
+    </section>
+
+    <section>
+      <h2>What this does—and does not—mean</h2>
+      <ul>
+        <li>It supports direct outer-corrector field change as useful diagnostic evidence.</li>
+        <li>It does not establish a universal convergence number.</li>
+        <li>It does not turn stable monitors or mass conservation into nonlinear convergence.</li>
+        <li>It does not requalify HX-CFD-QUAL-01, resolve its 1.303% versus 1.000% mesh failure, or unlock HX-03.</li>
+        <li>It is not physical validation, design release, or solver certification.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Decision and next boundary</h2>
+      <p>The authoritative decision is <strong>RELATIVE_GENERALIZATION_NOT_ESTABLISHED</strong>. No third fixture pair or new CFD run was started. The next step, if authorized separately, is to decide whether Aero should leave V2 proposed or define a narrowly scoped, predeclared PIMPLE problem-class profile. It should not tune thresholds against HX-CFD retroactively.</p>
+      <p class="links"><a class="primary" href="/software/aero/evidence/">Review the canonical evidence index →</a> <a href="/software/aero/verification/">Review verification boundaries</a> <a href="/software/aero/evidence/benchmarks/">Review external benchmark records</a></p>
+    </section>
+    <p class="subtle">Prepared by Alex Blythe · Report date: <time datetime="2026-09-19">September 19, 2026</time>. This page is a public status record, not a new solver result.</p>
+  </article>
+</Shell>
+<style>
+  .report { max-width: 960px; margin: 32px auto 64px; padding: 0 24px; }
+  .actions { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  button { padding: 10px 16px; background: var(--surface); border: 1px solid var(--border); color: var(--text); cursor: pointer; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.05; max-width: 780px; }
+  h2 { margin-top: 34px; }
+  .lede { font-size: 1.15rem; color: var(--muted); max-width: 760px; }
+  section { border-bottom: 1px solid var(--border); padding: 8px 0 24px; }
+  .verdict { border-left: 3px solid #dbab54; background: var(--surface); padding: 18px 22px; }
+  .state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin: 20px 0 0; }
+  .state-grid div { border-top: 1px solid var(--border); padding-top: 8px; }
+  dt { color: var(--muted); font-size: .85rem; } dd { margin: 3px 0 0; font-weight: 700; }
+  .timeline { padding-left: 1.4rem; } .timeline li { margin: 18px 0; padding-left: 8px; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin: 16px 0; }
+  th, td { text-align: left; padding: 11px 8px; border-bottom: 1px solid var(--border); }
+  th { font-weight: 700; } p, li, td { color: var(--muted); } strong, th { color: var(--text); }
+  a { text-decoration: underline; } .links { display: flex; flex-wrap: wrap; gap: 18px; }
+  @media (max-width: 700px) { .state-grid { grid-template-columns: 1fr; } .report { padding: 0 16px; } table { font-size: .9rem; } th, td { padding: 8px 4px; } .actions { align-items: flex-start; gap: 14px; } }
+  @media print { :global(.site-header), :global(.site-footer), .actions { display: none; } :global(body) { background: white; color: black; } .report { max-width: none; margin: 0; } section { break-inside: avoid; } }
+</style>
