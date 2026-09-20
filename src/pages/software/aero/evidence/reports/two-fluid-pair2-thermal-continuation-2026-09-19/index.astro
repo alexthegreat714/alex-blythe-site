@@ -1,0 +1,46 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+---
+<Shell title="Aero - Pair 2 thermal-settling continuation - 2026-09-19" description="Bounded unchanged Pair 2 thermal-settling continuation with T1 and T2 checkpoints." path="/software/aero/evidence/reports/two-fluid-pair2-thermal-continuation-2026-09-19/">
+  <header>
+    <p class="eyebrow">AERO / PAIR 2 CONTINUATION - 2026-09-19</p>
+    <h1>Pair 2 thermal-settling continuation</h1>
+    <p class="lede">Alex Blythe - unchanged positive and clean-repeat branches from the retained 100 s state.</p>
+  </header>
+  <section class="boundary">
+    <p class="eyebrow">FINAL DISPOSITION</p>
+    <h2>SLOW_THERMAL_SETTLING_SUPPORTED</h2>
+    <p><strong>TWO_FLUID_CHT_POSITIVE_TRUTH = ESTABLISHED</strong> for this Pair 2 fixture under its predeclared truth contract. This does not qualify HX-CFD or freeze the CHT profile.</p>
+  </section>
+  <section>
+    <h2>Why this continuation ran</h2>
+    <p>The 100 s positive state matched the analytical screen and closed its energy balance, but its outlet and solid-temperature histories were still moving. Retained-history slopes were used to freeze a bounded continuation before execution: T1 = 160 s and T2 = 240 s, with 20 s checkpoints. No T3 was permitted.</p>
+    <p>Pair 1 was excluded. The retained 4 s negative endpoint was not rerun, changed, or relabeled.</p>
+  </section>
+  <section>
+    <h2>Frozen T2 evidence</h2>
+    <div class="table-wrap"><table><thead><tr><th>Check</th><th>Positive</th><th>Repeat</th></tr></thead><tbody>
+      <tr><td>Solver completion</td><td>PASS</td><td>PASS</td></tr>
+      <tr><td>Shell outlet range, 200-240 s</td><td>0.104 K</td><td>0.104 K</td></tr>
+      <tr><td>Tube outlet range, 200-240 s</td><td>0.249 K</td><td>0.249 K</td></tr>
+      <tr><td>Solid mean-temperature range</td><td>0.362 K</td><td>0.362 K</td></tr>
+      <tr><td>Hot/cold duty mismatch</td><td>0.332% PASS</td><td>0.332% PASS</td></tr>
+      <tr><td>Total energy closure</td><td>0.418% PASS</td><td>0.418% PASS</td></tr>
+      <tr><td>Interface consistency</td><td>PASS</td><td>PASS</td></tr>
+      <tr><td>Direct outer-update tail</td><td>0.00209 PASS</td><td>0.00209 PASS</td></tr>
+      <tr><td>Analytical outlet/duty agreement</td><td>PASS</td><td>PASS</td></tr>
+      <tr><td>Positive repeatability</td><td colspan="2">Exact trajectory and telemetry match</td></tr>
+    </tbody></table></div>
+    <p>T2 endpoint: hot outlet 626.768 K, cold outlet 302.961 K, hot duty 7,654.6 W, cold duty 7,680.1 W, solid storage rate +6.56 W, and full signed closure 32.07 W.</p>
+  </section>
+  <section>
+    <h2>Interpretation</h2>
+    <p>T1 still failed the frozen stability window, while T2 passed it. The retained-to-continuation drift magnitude decreased across the declared windows, and the repeat stayed identical. The evidence supports slow thermal settling rather than a persistent unresolved thermal state for Pair 2.</p>
+    <p>The retained negative remains independently unsettled and its final fields remain in custody. Conservation, interface balance, and direct outer telemetry remain separate evidence layers; none was used as a substitute for thermal stationarity.</p>
+  </section>
+  <section class="boundary">
+    <h2>Qualification boundary</h2>
+    <p><strong>CHT_PROFILE = ARCHITECTURE_SUPPORTED_THRESHOLDS_NOT_ESTABLISHED.</strong> HX-CFD-QUAL-01 remains <strong>FAILED_NUMERICAL_GATES</strong> and withheld. HX-03 remains <strong>FROZEN_AND_BLOCKED</strong>. HX-04 Stage B remains blocked.</p>
+    <p class="links"><a class="primary" href="/software/aero/evidence/reports/two-fluid-pair2-truth-2026-09-19/">Pair 2 truth contract</a> <a href="/software/aero/evidence/">Back to public evidence</a></p>
+  </section>
+</Shell>

@@ -1,0 +1,45 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+---
+<Shell title="Aero - Pair 2 truth contract and execution - 2026-09-19" description="Primary Pair 2 two-fluid CHT positive-truth remediation fixture." path="/software/aero/evidence/reports/two-fluid-pair2-truth-2026-09-19/">
+  <header>
+    <p class="eyebrow">AERO / PRIMARY REMEDIATION FIXTURE - 2026-09-19</p>
+    <h1>Pair 2 truth contract and execution</h1>
+    <p class="lede">Alex Blythe - positive, repeat, and mandatory-retained negative runs.</p>
+  </header>
+  <section class="boundary">
+    <p class="eyebrow">FINAL DISPOSITION</p>
+    <h2>TWO_FLUID_CHT_POSITIVE_TRUTH = NOT_ESTABLISHED</h2>
+    <p>Pair 2 is now the primary remediation fixture. Pair 1 was not rerun or used to rescue this decision. The later bounded continuation established the thermal positive truth at T2.</p>
+  </section>
+  <section>
+    <h2>Frozen before execution</h2>
+    <ul>
+      <li>1-D counterflow screening prediction: 8,991 W duty; hot outlet 613.98 K; cold outlet 306.88 K.</li>
+      <li>Full closure: <code>q_hot_signed + q_cold_signed + dE_solid/dt</code>.</li>
+      <li>Positive field snapshots: 60, 80, 100 s. Negative snapshots: 1, 2, 3, 4 s, including the required final field.</li>
+      <li>Predeclared limits: 0.5 K outlet/field stability, 5% duty and total closure, 5% solid storage, 0.1% interface balance, 15 K outlet prediction error, and 20% duty prediction error.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Execution evidence</h2>
+    <div class="table-wrap"><table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody>
+      <tr><td>Analytical/1-D agreement</td><td>PASS</td></tr>
+      <tr><td>Hot/cold duty mismatch</td><td>PASS at final endpoint</td></tr>
+      <tr><td>Full-system energy closure</td><td>PASS at final endpoint</td></tr>
+      <tr><td>Interface consistency</td><td>PASS</td></tr>
+      <tr><td>Positive repeatability</td><td>PASS</td></tr>
+      <tr><td>Direct outer updates</td><td>PASS</td></tr>
+      <tr><td>Outlet stability at 100 s</td><td>FAIL - shell range about 16.7 K</td></tr>
+      <tr><td>Solid field stationarity at 100 s</td><td>FAIL - mean range about 6.6 K</td></tr>
+      <tr><td>Thermal continuation</td><td><a href="/software/aero/evidence/reports/two-fluid-pair2-thermal-continuation-2026-09-19/">T2 PASS; slow settling supported</a></td></tr>
+      <tr><td>Negative independently unsettled</td><td>PASS</td></tr>
+    </tbody></table></div>
+    <p>The new bookkeeping shows that the final hot/cold mismatch can be partly explained by storage, but the positive state is still thermally evolving over the declared late window. That prevents a positive-truth claim.</p>
+  </section>
+  <section class="boundary">
+    <h2>State boundary</h2>
+    <p><strong>TWO_FLUID_CHT_POSITIVE_TRUTH = ESTABLISHED for Pair 2 after the bounded continuation.</strong> The CHT profile remains <strong>ARCHITECTURE_SUPPORTED_THRESHOLDS_NOT_ESTABLISHED</strong>. HX-CFD-QUAL-01 remains <strong>FAILED_NUMERICAL_GATES</strong> and withheld. HX-03 and HX-04 Stage B remain blocked.</p>
+    <p class="links"><a class="primary" href="/software/aero/evidence/reports/two-fluid-cht-profile-2026-09-19/">Back to two-fluid profile status</a> <a href="/software/aero/evidence/">Back to public evidence</a></p>
+  </section>
+</Shell>

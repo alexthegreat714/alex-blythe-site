@@ -1,0 +1,42 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+---
+<Shell title="Aero - Two-fluid CHT profile freeze decision - 2026-09-19" description="Retained-evidence decision freezing the two-fluid solid CHT profile semantics with case-predeclared thresholds." path="/software/aero/evidence/reports/two-fluid-cht-profile-freeze-2026-09-19/">
+  <header>
+    <p class="eyebrow">AERO / PROFILE DECISION - 2026-09-19</p>
+    <h1>Two-fluid CHT profile freeze decision</h1>
+    <p class="lede">Alex Blythe - retained evidence only; no new CFD was run.</p>
+  </header>
+  <section class="boundary">
+    <p class="eyebrow">FINAL DISPOSITION</p>
+    <h2>PROFILE_FROZEN_CASE_THRESHOLDS_PREDECLARED</h2>
+    <p>The evidence categories and accounting semantics are frozen. Numerical limits remain declared by each qualification case; no universal outer-update threshold was invented.</p>
+  </section>
+  <section>
+    <h2>What the profile requires</h2>
+    <ul>
+      <li>Run completion and linear-solver health.</li>
+      <li>Separate flow and thermal nonlinear settling from long-timescale field stationarity.</li>
+      <li>Case-declared monitor stability, hot/cold mass conservation, energy closure, and interface consistency.</li>
+      <li>Property validity, conditional local-field stationarity, and V2 mesh independence.</li>
+    </ul>
+    <p>Energy accounting must include solid storage: <code>Q_hot_signed + Q_cold_signed + dE_solid/dt ≈ 0</code>.</p>
+  </section>
+  <section>
+    <h2>Evidence basis</h2>
+    <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>Disposition</th></tr></thead><tbody>
+      <tr><td>Pair 2 positive truth</td><td>Established at 240 s</td></tr>
+      <tr><td>Pair 2 negative</td><td>Independently unsettled; retained unchanged</td></tr>
+      <tr><td>Positive repeatability</td><td>Exact match</td></tr>
+      <tr><td>Analytical / energy / interface evidence</td><td>Pass at T2</td></tr>
+      <tr><td>Universal PIMPLE threshold</td><td>Not supported</td></tr>
+      <tr><td>Historical HX-CFD mesh result</td><td>Fail: 1.303% &gt; 1.000%</td></tr>
+    </tbody></table></div>
+  </section>
+  <section class="boundary">
+    <h2>What happens next</h2>
+    <p>HX-CFD-QUAL-01 is eligible only for a future clean V2 requalification. The proposed contract requires coarse, medium, and fine cases to reach equivalent profile-defined settled states before mesh comparison, including local inlet-manifold stationarity where it drives engineering quantities.</p>
+    <p>HX-CFD remains <strong>FAILED_NUMERICAL_GATES</strong> and withheld. HX-03 remains <strong>FROZEN_AND_BLOCKED</strong>. HX-04 Stage B remains blocked because its high-pressure cryogenic property/solver class was not established by this evidence.</p>
+    <p class="links"><a class="primary" href="/software/aero/evidence/reports/two-fluid-pair2-thermal-continuation-2026-09-19/">Pair 2 continuation</a> <a href="/software/aero/evidence/">Back to public evidence</a></p>
+  </section>
+</Shell>

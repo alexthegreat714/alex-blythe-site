@@ -1,0 +1,36 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+---
+<Shell title="Aero - Two-fluid positive-truth and interface-energy audit - 2026-09-19" description="Retained two-fluid positive-truth and interface-energy closure audit." path="/software/aero/evidence/reports/two-fluid-positive-truth-interface-audit-2026-09-19/">
+  <header>
+    <p class="eyebrow">AERO / DATED AUDIT - 2026-09-19</p>
+    <h1>Two-fluid positive-truth and interface-energy closure</h1>
+    <p class="lede">Alex Blythe - retained evidence only; no CFD rerun.</p>
+  </header>
+  <section class="boundary">
+    <p class="eyebrow">FINAL DISPOSITION</p>
+    <h2>TWO_FLUID_CHT_POSITIVE_TRUTH = NOT_ESTABLISHED</h2>
+    <p>Both independent operating-point pairs remain short of a defensible positive-truth claim. The audit preserves uncertainty rather than promoting the CHT profile.</p>
+  </section>
+  <section>
+    <h2>What was measured</h2>
+    <ul>
+      <li>Hot and cold duties from signed mass-flux-weighted inlet/outlet states using retained water Cp = 4181 J/(kg K).</li>
+      <li>Solid-side interface transfer from kappa times the integrated solid temperature gradient, using retained aluminum kappa = 200 W/(m K).</li>
+      <li>Positive/repeat repeatability and direct outer-corrector ordering against the frozen negative arms.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Results</h2>
+    <div class="table-wrap"><table><thead><tr><th>Pair</th><th>Hot duty</th><th>Cold duty</th><th>Solid-side magnitude</th><th>Hot/cold closure</th></tr></thead><tbody>
+      <tr><td>1 positive/repeat</td><td>5,774 W</td><td>4,832 W</td><td>about 5,949 W</td><td>16.3%</td></tr>
+      <tr><td>2 positive/repeat</td><td>7,873 W</td><td>8,118 W</td><td>about 7,874 W</td><td>3.02%</td></tr>
+    </tbody></table></div>
+    <p>The solid shell/tube flux sum is internally tight at each positive endpoint, but the endpoint duties do not establish complete fluid-solid energy closure for both pairs. No quantitative frozen 1-D UA/effectiveness expectation was available, and no outlet history was retained. The negative 4 s endpoint field was not written, so its time-zero post-processing fallback is excluded from truth closure.</p>
+  </section>
+  <section>
+    <h2>State boundary</h2>
+    <p><strong>CHT_PROFILE = ARCHITECTURE_SUPPORTED_THRESHOLDS_NOT_ESTABLISHED.</strong> HX-CFD-QUAL-01 remains <strong>FAILED_NUMERICAL_GATES</strong> and withheld. HX-03 and HX-04 Stage B remain blocked.</p>
+    <p class="links"><a class="primary" href="/software/aero/evidence/reports/two-fluid-cht-profile-2026-09-19/">Back to two-fluid profile status</a> <a href="/software/aero/evidence/">Back to public evidence</a></p>
+  </section>
+</Shell>
