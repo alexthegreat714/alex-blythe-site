@@ -1,0 +1,1503 @@
+{
+  "criteria_sha256": "4de11c7bc0ecbddb7f7bf9de9cf908943bc19a089f38876115494b88a54f104f",
+  "date": "2026-09-20",
+  "grids": {
+    "coarse": {
+      "execution": {
+        "copied_returncodes": {
+          "600/shell": 0,
+          "600/solid": 0,
+          "600/tube": 0,
+          "700/shell": 0,
+          "700/solid": 0,
+          "700/tube": 0,
+          "800/shell": 0,
+          "800/solid": 0,
+          "800/tube": 0,
+          "log.blockMesh": 0,
+          "log.decomposePar": 0,
+          "log.reconstructParMesh": 0,
+          "log.snappyHexMesh": 0,
+          "log.splitMeshRegions": 0,
+          "postProcessing": 0,
+          "qualification_exit_code": 0,
+          "qualification_solver.log": 0
+        },
+        "declared_end_time_s": 800,
+        "docker_returncode": 0,
+        "end_marker": true,
+        "exit_code_text": "0",
+        "fatal_error": false,
+        "grid": "coarse",
+        "remote_case": "/tmp/aero_hx_cfd_qual_01_v2_requalification_20260919/coarse",
+        "solver_completion": "PASS",
+        "solver_log_sha256": "c1a7d5a73bcd8f8cb73a7d3a56c4241130551706cdb7160c76bb49789923ed02",
+        "telemetry_path": "C:\\Users\\blyth\\Desktop\\Engineering\\Aero\\reports\\hx_cfd_qual_01_v2_requalification_20260919\\executions\\coarse\\case\\postProcessing\\aeroOuterTelemetry\\outer.csv",
+        "telemetry_records": 8000
+      },
+      "fluxes": {
+        "shell/shellInletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": -0.05,
+          "last": -0.05,
+          "max": -0.05,
+          "min": -0.05,
+          "range": 0.0
+        },
+        "shell/shellOutletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": 0.05,
+          "last": 0.05,
+          "max": 0.05,
+          "min": 0.05,
+          "range": 0.0
+        },
+        "tube/tubeInletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": -0.05,
+          "last": -0.05,
+          "max": -0.05,
+          "min": -0.05,
+          "range": 0.0
+        },
+        "tube/tubeOutletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": 0.05000008,
+          "last": 0.05000003,
+          "max": 0.05000009,
+          "min": 0.05000001,
+          "range": 7.99999999995249e-08
+        }
+      },
+      "gates": {
+        "ANALYTICAL_AGREEMENT": "NOT_ESTABLISHED",
+        "COLD_MASS_CONSERVATION": "PASS",
+        "DIRECT_OUTER_TELEMETRY": "PASS",
+        "ENERGY_CONSERVATION": "NOT_ESTABLISHED",
+        "ENGINEERING_MONITOR_STABILITY": "NOT_ESTABLISHED",
+        "FIELD_STATIONARITY": "NOT_ESTABLISHED",
+        "FLOW_NONLINEAR_SETTLING": "FAIL",
+        "HOT_MASS_CONSERVATION": "PASS",
+        "INTERFACE_CONSISTENCY": "NOT_ESTABLISHED",
+        "LOCAL_FIELD_STATIONARITY_WHERE_REQUIRED": "NOT_ESTABLISHED",
+        "MESH_INDEPENDENCE": "NOT_PERFORMED_UNLESS_ALL_PER_GRID_GATES_PASS",
+        "PROPERTY_VALIDITY": "NOT_ESTABLISHED",
+        "RUN_COMPLETION": "PASS",
+        "THERMAL_NONLINEAR_SETTLING": "FAIL"
+      },
+      "mesh_cell_count": null,
+      "monitors": {
+        "shell/residuals(region=shell,p_rgh,U,h)/0/residuals.dat": {
+          "columns": {
+            "Ux": {
+              "count": 201,
+              "first": 5.712036e-06,
+              "last": 5.106105e-06,
+              "max": 7.065246e-06,
+              "min": 4.168525e-06,
+              "range": 2.8967209999999997e-06
+            },
+            "Uy": {
+              "count": 201,
+              "first": 1.621783e-05,
+              "last": 1.780977e-05,
+              "max": 2.332287e-05,
+              "min": 1.407685e-05,
+              "range": 9.24602e-06
+            },
+            "Uz": {
+              "count": 201,
+              "first": 2.449787e-05,
+              "last": 2.346729e-05,
+              "max": 3.229191e-05,
+              "min": 1.829421e-05,
+              "range": 1.3997700000000003e-05
+            },
+            "h": {
+              "count": 201,
+              "first": 8.137274e-06,
+              "last": 8.311384e-06,
+              "max": 1.20438e-05,
+              "min": 6.401143e-06,
+              "range": 5.642657e-06
+            },
+            "p_rgh": {
+              "count": 201,
+              "first": 0.0002833138,
+              "last": 0.0002504506,
+              "max": 0.0003729509,
+              "min": 0.0002151503,
+              "range": 0.00015780060000000003
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellInletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": -0.05,
+              "last": -0.05,
+              "max": -0.05,
+              "min": -0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellInletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 600.0,
+              "last": 600.0,
+              "max": 600.0,
+              "min": 600.0,
+              "range": 0.0
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 1262035.0,
+              "last": 1262035.0,
+              "max": 1262035.0,
+              "min": 1262035.0,
+              "range": 0.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 75.28786,
+              "last": 75.28565,
+              "max": 75.28941,
+              "min": 75.28257,
+              "range": 0.006839999999996849
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellOutletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": 0.05,
+              "last": 0.05,
+              "max": 0.05,
+              "min": 0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellOutletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 558.7671,
+              "last": 558.7674,
+              "max": 558.7674,
+              "min": 558.7666,
+              "range": 0.0007999999999128704
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 1089640.0,
+              "last": 1089641.0,
+              "max": 1089641.0,
+              "min": 1089638.0,
+              "range": 3.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 0.0,
+              "last": 0.0,
+              "max": 0.0,
+              "min": 0.0,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "solid/residuals(region=solid,h)/0/residuals.dat": {
+          "columns": {},
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/residuals(region=tube,p_rgh,U,h)/0/residuals.dat": {
+          "columns": {
+            "Ux": {
+              "count": 201,
+              "first": 3.055185e-05,
+              "last": 2.775382e-05,
+              "max": 3.055185e-05,
+              "min": 2.640477e-05,
+              "range": 4.147079999999998e-06
+            },
+            "Uy": {
+              "count": 201,
+              "first": 5.953664e-05,
+              "last": 5.612923e-05,
+              "max": 6.045908e-05,
+              "min": 5.070986e-05,
+              "range": 9.74922e-06
+            },
+            "Uz": {
+              "count": 201,
+              "first": 5.095345e-05,
+              "last": 4.731919e-05,
+              "max": 5.39179e-05,
+              "min": 4.482291e-05,
+              "range": 9.09499e-06
+            },
+            "h": {
+              "count": 201,
+              "first": 4.017487e-05,
+              "last": 3.994311e-05,
+              "max": 4.363572e-05,
+              "min": 3.565645e-05,
+              "range": 7.979269999999998e-06
+            },
+            "p_rgh": {
+              "count": 201,
+              "first": 0.002927039,
+              "last": 0.002961139,
+              "max": 0.003122161,
+              "min": 0.002634613,
+              "range": 0.000487548
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeInletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": -0.05,
+              "last": -0.05,
+              "max": -0.05,
+              "min": -0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeInletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 300.0,
+              "last": 300.0,
+              "max": 300.0,
+              "min": 300.0,
+              "range": 0.0
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 7734.93,
+              "last": 7734.93,
+              "max": 7734.93,
+              "min": 7734.93,
+              "range": 0.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 80.00404,
+              "last": 80.02759,
+              "max": 80.03092,
+              "min": 80.0012,
+              "range": 0.029719999999997526
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeOutletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": 0.05000008,
+              "last": 0.05000003,
+              "max": 0.05000009,
+              "min": 0.05000001,
+              "range": 7.99999999995249e-08
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeOutletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 341.2306,
+              "last": 341.2305,
+              "max": 341.2307,
+              "min": 341.2296,
+              "range": 0.0011000000000080945
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 180119.8,
+              "last": 180119.4,
+              "max": 180120.2,
+              "min": 180115.7,
+              "range": 4.5
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 0.0,
+              "last": 0.0,
+              "max": 0.0,
+              "min": 0.0,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        }
+      },
+      "residuals": {
+        "shell": {
+          "count": 1600,
+          "tail_count": 322,
+          "tail_final_max": 2.7489e-06,
+          "tail_final_mean": 1.6873275869565217e-06,
+          "tail_initial_max": 0.000372951,
+          "tail_initial_mean": 0.0002527714596273292,
+          "tail_iterations_mean": 3.012422360248447,
+          "tail_time_start": 640.0
+        },
+        "tube": {
+          "count": 1600,
+          "tail_count": 322,
+          "tail_final_max": 2.98255e-05,
+          "tail_final_mean": 1.693683086956522e-05,
+          "tail_initial_max": 0.00307542,
+          "tail_initial_mean": 0.0025234289751552793,
+          "tail_iterations_mean": 2.4037267080745344,
+          "tail_time_start": 640.0
+        }
+      },
+      "telemetry": {
+        "fields": {
+          "shell:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00046694954375000003,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 2.22884e-06,
+            "tail_max_normalized_rms": 3.42644e-06,
+            "tail_mean_normalized_rms": 2.3311691875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 1.79178e-06,
+            "tail_time_start": 641.0
+          },
+          "shell:U": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00859375125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 4.03322e-06,
+            "tail_max_normalized_rms": 0.000158612,
+            "tail_mean_normalized_rms": 0.00012209979125,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 3.44704e-06,
+            "tail_time_start": 641.0
+          },
+          "shell:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00095806801875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 4.66873e-06,
+            "tail_max_normalized_rms": 7.17734e-06,
+            "tail_mean_normalized_rms": 4.8830825625e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 3.75322e-06,
+            "tail_time_start": 641.0
+          },
+          "shell:p_rgh": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.10720685743250001,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 7.65006e-06,
+            "tail_max_normalized_rms": 2.42294e-05,
+            "tail_mean_normalized_rms": 1.68820075e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 6.1634e-06,
+            "tail_time_start": 641.0
+          },
+          "solid:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.000440539475,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.15564e-05,
+            "tail_max_normalized_rms": 5.75883e-06,
+            "tail_mean_normalized_rms": 3.3476351875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 1.07613e-05,
+            "tail_time_start": 641.0
+          },
+          "solid:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00121293785,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 3.33321e-05,
+            "tail_max_normalized_rms": 1.661e-05,
+            "tail_mean_normalized_rms": 9.6555026875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 3.1039e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.000593557156875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.25059e-06,
+            "tail_max_normalized_rms": 1.52499e-05,
+            "tail_mean_normalized_rms": 1.3948840625e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 1.20126e-06,
+            "tail_time_start": 641.0
+          },
+          "tube:U": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.0098253483125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 4.55629e-05,
+            "tail_max_normalized_rms": 0.000264121,
+            "tail_mean_normalized_rms": 0.00024063513125,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 4.24437e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.009957602981249999,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.32252e-05,
+            "tail_max_normalized_rms": 0.000161272,
+            "tail_mean_normalized_rms": 0.0001475122125,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 1.27036e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:p_rgh": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.07886130629375,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 8.98717e-05,
+            "tail_max_normalized_rms": 5.885e-05,
+            "tail_mean_normalized_rms": 5.066100625e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 5.95055e-05,
+            "tail_time_start": 641.0
+          }
+        },
+        "record_count": 8000
+      }
+    },
+    "fine": {
+      "execution": {
+        "copied_returncodes": {
+          "600/shell": 0,
+          "600/solid": 0,
+          "600/tube": 0,
+          "700/shell": 0,
+          "700/solid": 0,
+          "700/tube": 0,
+          "800/shell": 0,
+          "800/solid": 0,
+          "800/tube": 0,
+          "log.blockMesh": 0,
+          "log.decomposePar": 0,
+          "log.reconstructParMesh": 0,
+          "log.snappyHexMesh": 0,
+          "log.splitMeshRegions": 0,
+          "postProcessing": 0,
+          "qualification_exit_code": 0,
+          "qualification_solver.log": 0
+        },
+        "declared_end_time_s": 800,
+        "docker_returncode": 0,
+        "end_marker": true,
+        "exit_code_text": "0",
+        "fatal_error": false,
+        "grid": "fine",
+        "remote_case": "/tmp/aero_hx_cfd_qual_01_v2_requalification_20260919/fine",
+        "solver_completion": "PASS",
+        "solver_log_sha256": "2e46ed0de5fc0dc8c36b5e5f4c30b089023b21e1c9e47be5290d2fbf17292a49",
+        "telemetry_path": "C:\\Users\\blyth\\Desktop\\Engineering\\Aero\\reports\\hx_cfd_qual_01_v2_requalification_20260919\\executions\\fine\\case\\postProcessing\\aeroOuterTelemetry\\outer.csv",
+        "telemetry_records": 8000
+      },
+      "fluxes": {
+        "shell/shellInletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": -0.05,
+          "last": -0.05,
+          "max": -0.05,
+          "min": -0.05,
+          "range": 0.0
+        },
+        "shell/shellOutletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": 0.05,
+          "last": 0.05,
+          "max": 0.05,
+          "min": 0.04999999,
+          "range": 1.0000000001675335e-08
+        },
+        "tube/tubeInletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": -0.05,
+          "last": -0.05,
+          "max": -0.05,
+          "min": -0.05,
+          "range": 0.0
+        },
+        "tube/tubeOutletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": 0.05000015,
+          "last": 0.05000014,
+          "max": 0.05000017,
+          "min": 0.04999981,
+          "range": 3.5999999999786203e-07
+        }
+      },
+      "gates": {
+        "ANALYTICAL_AGREEMENT": "NOT_ESTABLISHED",
+        "COLD_MASS_CONSERVATION": "PASS",
+        "DIRECT_OUTER_TELEMETRY": "PASS",
+        "ENERGY_CONSERVATION": "NOT_ESTABLISHED",
+        "ENGINEERING_MONITOR_STABILITY": "NOT_ESTABLISHED",
+        "FIELD_STATIONARITY": "NOT_ESTABLISHED",
+        "FLOW_NONLINEAR_SETTLING": "FAIL",
+        "HOT_MASS_CONSERVATION": "PASS",
+        "INTERFACE_CONSISTENCY": "NOT_ESTABLISHED",
+        "LOCAL_FIELD_STATIONARITY_WHERE_REQUIRED": "NOT_ESTABLISHED",
+        "MESH_INDEPENDENCE": "NOT_PERFORMED_UNLESS_ALL_PER_GRID_GATES_PASS",
+        "PROPERTY_VALIDITY": "NOT_ESTABLISHED",
+        "RUN_COMPLETION": "PASS",
+        "THERMAL_NONLINEAR_SETTLING": "FAIL"
+      },
+      "mesh_cell_count": null,
+      "monitors": {
+        "shell/residuals(region=shell,p_rgh,U,h)/0/residuals.dat": {
+          "columns": {
+            "Ux": {
+              "count": 201,
+              "first": 1.016796e-05,
+              "last": 9.84021e-06,
+              "max": 1.172627e-05,
+              "min": 8.978033e-06,
+              "range": 2.7482369999999998e-06
+            },
+            "Uy": {
+              "count": 201,
+              "first": 4.255848e-05,
+              "last": 4.472769e-05,
+              "max": 4.985857e-05,
+              "min": 3.921173e-05,
+              "range": 1.0646840000000004e-05
+            },
+            "Uz": {
+              "count": 201,
+              "first": 3.690184e-05,
+              "last": 3.276886e-05,
+              "max": 4.152016e-05,
+              "min": 2.87126e-05,
+              "range": 1.280756e-05
+            },
+            "h": {
+              "count": 201,
+              "first": 5.344808e-05,
+              "last": 4.213809e-05,
+              "max": 5.622814e-05,
+              "min": 4.124462e-05,
+              "range": 1.4983519999999998e-05
+            },
+            "p_rgh": {
+              "count": 201,
+              "first": 0.0005929335,
+              "last": 0.0007137713,
+              "max": 0.0007694956,
+              "min": 0.0005757394,
+              "range": 0.00019375619999999997
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellInletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": -0.05,
+              "last": -0.05,
+              "max": -0.05,
+              "min": -0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellInletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 600.0,
+              "last": 600.0,
+              "max": 600.0,
+              "min": 600.0,
+              "range": 0.0
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 1262035.0,
+              "last": 1262035.0,
+              "max": 1262035.0,
+              "min": 1262035.0,
+              "range": 0.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 73.37828,
+              "last": 73.38875,
+              "max": 73.39378,
+              "min": 73.37828,
+              "range": 0.015500000000002956
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellOutletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": 0.05,
+              "last": 0.05,
+              "max": 0.05,
+              "min": 0.04999999,
+              "range": 1.0000000001675335e-08
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellOutletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 557.3128,
+              "last": 557.3225,
+              "max": 557.3237,
+              "min": 557.3128,
+              "range": 0.01089999999999236
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 1083560.0,
+              "last": 1083600.0,
+              "max": 1083605.0,
+              "min": 1083560.0,
+              "range": 45.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 0.0,
+              "last": 0.0,
+              "max": 0.0,
+              "min": 0.0,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "solid/residuals(region=solid,h)/0/residuals.dat": {
+          "columns": {},
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/residuals(region=tube,p_rgh,U,h)/0/residuals.dat": {
+          "columns": {
+            "Ux": {
+              "count": 201,
+              "first": 3.359998e-05,
+              "last": 2.573261e-05,
+              "max": 3.497082e-05,
+              "min": 2.456885e-05,
+              "range": 1.0401970000000001e-05
+            },
+            "Uy": {
+              "count": 201,
+              "first": 6.265269e-05,
+              "last": 4.809137e-05,
+              "max": 6.575777e-05,
+              "min": 4.534951e-05,
+              "range": 2.0408260000000003e-05
+            },
+            "Uz": {
+              "count": 201,
+              "first": 4.750915e-05,
+              "last": 3.719296e-05,
+              "max": 5.223884e-05,
+              "min": 3.492486e-05,
+              "range": 1.7313980000000003e-05
+            },
+            "h": {
+              "count": 201,
+              "first": 2.138e-05,
+              "last": 1.943429e-05,
+              "max": 2.437066e-05,
+              "min": 1.487876e-05,
+              "range": 9.491900000000001e-06
+            },
+            "p_rgh": {
+              "count": 201,
+              "first": 0.002583927,
+              "last": 0.002858275,
+              "max": 0.003109642,
+              "min": 0.002477564,
+              "range": 0.0006320780000000003
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeInletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": -0.05,
+              "last": -0.05,
+              "max": -0.05,
+              "min": -0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeInletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 300.0,
+              "last": 300.0,
+              "max": 300.0,
+              "min": 300.0,
+              "range": 0.0
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 7734.929,
+              "last": 7734.929,
+              "max": 7734.929,
+              "min": 7734.929,
+              "range": 0.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 79.05246,
+              "last": 79.1075,
+              "max": 79.1075,
+              "min": 79.05246,
+              "range": 0.05504000000000531
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeOutletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": 0.05000015,
+              "last": 0.05000014,
+              "max": 0.05000017,
+              "min": 0.04999981,
+              "range": 3.5999999999786203e-07
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeOutletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 342.6924,
+              "last": 342.6798,
+              "max": 342.6924,
+              "min": 342.6793,
+              "range": 0.01310000000000855
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 186231.9,
+              "last": 186179.1,
+              "max": 186231.9,
+              "min": 186177.1,
+              "range": 54.79999999998836
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 0.0,
+              "last": 0.0,
+              "max": 0.0,
+              "min": 0.0,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        }
+      },
+      "residuals": {
+        "shell": {
+          "count": 1600,
+          "tail_count": 322,
+          "tail_final_max": 4.75217e-06,
+          "tail_final_mean": 2.707498105590062e-06,
+          "tail_initial_max": 0.000769496,
+          "tail_initial_mean": 0.000583544900621118,
+          "tail_iterations_mean": 2.9968944099378882,
+          "tail_time_start": 640.0
+        },
+        "tube": {
+          "count": 1600,
+          "tail_count": 322,
+          "tail_final_max": 2.8117e-05,
+          "tail_final_mean": 1.5209019068322982e-05,
+          "tail_initial_max": 0.00310964,
+          "tail_initial_mean": 0.0024358150621118014,
+          "tail_iterations_mean": 2.549689440993789,
+          "tail_time_start": 640.0
+        }
+      },
+      "telemetry": {
+        "fields": {
+          "shell:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00041881504375,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.26698e-05,
+            "tail_max_normalized_rms": 1.03679e-05,
+            "tail_mean_normalized_rms": 7.8663406875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 1.14787e-05,
+            "tail_time_start": 641.0
+          },
+          "shell:U": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.008855784875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 2.24983e-05,
+            "tail_max_normalized_rms": 0.000192133,
+            "tail_mean_normalized_rms": 0.0001614462375,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 2.07808e-05,
+            "tail_time_start": 641.0
+          },
+          "shell:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00085600680625,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 2.65141e-05,
+            "tail_max_normalized_rms": 2.16967e-05,
+            "tail_mean_normalized_rms": 1.646108375e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 2.40214e-05,
+            "tail_time_start": 641.0
+          },
+          "shell:p_rgh": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.123843620816875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.08562e-05,
+            "tail_max_normalized_rms": 3.03941e-05,
+            "tail_mean_normalized_rms": 2.149586375e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 7.74054e-06,
+            "tail_time_start": 641.0
+          },
+          "solid:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00041780263125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.02498e-05,
+            "tail_max_normalized_rms": 5.93656e-06,
+            "tail_mean_normalized_rms": 3.5865625e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 9.39577e-06,
+            "tail_time_start": 641.0
+          },
+          "solid:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.0011472266500000001,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 2.95083e-05,
+            "tail_max_normalized_rms": 1.70911e-05,
+            "tail_mean_normalized_rms": 1.03252586875e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 2.70499e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00057850793125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 3.12368e-06,
+            "tail_max_normalized_rms": 8.44862e-06,
+            "tail_mean_normalized_rms": 6.8554155625e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 2.9579e-06,
+            "tail_time_start": 641.0
+          },
+          "tube:U": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.0099476598125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 8.32817e-05,
+            "tail_max_normalized_rms": 0.00023811,
+            "tail_mean_normalized_rms": 0.00022198709375,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 7.97957e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.011519926875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 3.2707e-05,
+            "tail_max_normalized_rms": 8.84712e-05,
+            "tail_mean_normalized_rms": 7.1804236875e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 3.09728e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:p_rgh": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.10951513473124999,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 0.000222228,
+            "tail_max_normalized_rms": 0.000174798,
+            "tail_mean_normalized_rms": 6.2677231875e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 0.000148709,
+            "tail_time_start": 641.0
+          }
+        },
+        "record_count": 8000
+      }
+    },
+    "medium": {
+      "execution": {
+        "copied_returncodes": {
+          "600/shell": 0,
+          "600/solid": 0,
+          "600/tube": 0,
+          "700/shell": 0,
+          "700/solid": 0,
+          "700/tube": 0,
+          "800/shell": 0,
+          "800/solid": 0,
+          "800/tube": 0,
+          "log.blockMesh": 0,
+          "log.decomposePar": 0,
+          "log.reconstructParMesh": 0,
+          "log.snappyHexMesh": 0,
+          "log.splitMeshRegions": 0,
+          "postProcessing": 0,
+          "qualification_exit_code": 0,
+          "qualification_solver.log": 0
+        },
+        "declared_end_time_s": 800,
+        "docker_returncode": 0,
+        "end_marker": true,
+        "exit_code_text": "0",
+        "fatal_error": false,
+        "grid": "medium",
+        "remote_case": "/tmp/aero_hx_cfd_qual_01_v2_requalification_20260919/medium",
+        "solver_completion": "PASS",
+        "solver_log_sha256": "86fe584636954fd77997e0efcf29494a08546e0fc5e1a56ae4c2223207bb031f",
+        "telemetry_path": "C:\\Users\\blyth\\Desktop\\Engineering\\Aero\\reports\\hx_cfd_qual_01_v2_requalification_20260919\\executions\\medium\\case\\postProcessing\\aeroOuterTelemetry\\outer.csv",
+        "telemetry_records": 8000
+      },
+      "fluxes": {
+        "shell/shellInletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": -0.05,
+          "last": -0.05,
+          "max": -0.05,
+          "min": -0.05,
+          "range": 0.0
+        },
+        "shell/shellOutletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": 0.05,
+          "last": 0.05,
+          "max": 0.05,
+          "min": 0.05,
+          "range": 0.0
+        },
+        "tube/tubeInletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": -0.05,
+          "last": -0.05,
+          "max": -0.05,
+          "min": -0.05,
+          "range": 0.0
+        },
+        "tube/tubeOutletFlux/0/surfaceFieldValue.dat": {
+          "count": 21,
+          "first": 0.05000006,
+          "last": 0.04999998,
+          "max": 0.05000007,
+          "min": 0.04999992,
+          "range": 1.4999999999737446e-07
+        }
+      },
+      "gates": {
+        "ANALYTICAL_AGREEMENT": "NOT_ESTABLISHED",
+        "COLD_MASS_CONSERVATION": "PASS",
+        "DIRECT_OUTER_TELEMETRY": "PASS",
+        "ENERGY_CONSERVATION": "NOT_ESTABLISHED",
+        "ENGINEERING_MONITOR_STABILITY": "NOT_ESTABLISHED",
+        "FIELD_STATIONARITY": "NOT_ESTABLISHED",
+        "FLOW_NONLINEAR_SETTLING": "FAIL",
+        "HOT_MASS_CONSERVATION": "PASS",
+        "INTERFACE_CONSISTENCY": "NOT_ESTABLISHED",
+        "LOCAL_FIELD_STATIONARITY_WHERE_REQUIRED": "NOT_ESTABLISHED",
+        "MESH_INDEPENDENCE": "NOT_PERFORMED_UNLESS_ALL_PER_GRID_GATES_PASS",
+        "PROPERTY_VALIDITY": "NOT_ESTABLISHED",
+        "RUN_COMPLETION": "PASS",
+        "THERMAL_NONLINEAR_SETTLING": "FAIL"
+      },
+      "mesh_cell_count": null,
+      "monitors": {
+        "shell/residuals(region=shell,p_rgh,U,h)/0/residuals.dat": {
+          "columns": {
+            "Ux": {
+              "count": 201,
+              "first": 6.969839e-06,
+              "last": 6.568087e-06,
+              "max": 9.851903e-06,
+              "min": 6.248232e-06,
+              "range": 3.6036709999999997e-06
+            },
+            "Uy": {
+              "count": 201,
+              "first": 2.414956e-05,
+              "last": 1.994322e-05,
+              "max": 3.273749e-05,
+              "min": 1.977482e-05,
+              "range": 1.2962670000000002e-05
+            },
+            "Uz": {
+              "count": 201,
+              "first": 2.604291e-05,
+              "last": 2.633578e-05,
+              "max": 3.693841e-05,
+              "min": 2.520895e-05,
+              "range": 1.172946e-05
+            },
+            "h": {
+              "count": 201,
+              "first": 1.058525e-05,
+              "last": 7.957564e-06,
+              "max": 1.226148e-05,
+              "min": 7.957564e-06,
+              "range": 4.303916e-06
+            },
+            "p_rgh": {
+              "count": 201,
+              "first": 0.0003658707,
+              "last": 0.0003067081,
+              "max": 0.0005123576,
+              "min": 0.0002905452,
+              "range": 0.00022181239999999997
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellInletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": -0.05,
+              "last": -0.05,
+              "max": -0.05,
+              "min": -0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellInletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 600.0,
+              "last": 600.0,
+              "max": 600.0,
+              "min": 600.0,
+              "range": 0.0
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 1262035.0,
+              "last": 1262035.0,
+              "max": 1262035.0,
+              "min": 1262035.0,
+              "range": 0.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 73.99591,
+              "last": 73.98922,
+              "max": 73.99725,
+              "min": 73.98281,
+              "range": 0.014439999999993347
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellOutletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": 0.05,
+              "last": 0.05,
+              "max": 0.05,
+              "min": 0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "shell/shellOutletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 558.1806,
+              "last": 558.1725,
+              "max": 558.1806,
+              "min": 558.1717,
+              "range": 0.008900000000039654
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 1087188.0,
+              "last": 1087154.0,
+              "max": 1087188.0,
+              "min": 1087151.0,
+              "range": 37.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 0.0,
+              "last": 0.0,
+              "max": 0.0,
+              "min": 0.0,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "solid/residuals(region=solid,h)/0/residuals.dat": {
+          "columns": {},
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/residuals(region=tube,p_rgh,U,h)/0/residuals.dat": {
+          "columns": {
+            "Ux": {
+              "count": 201,
+              "first": 3.014683e-05,
+              "last": 2.721832e-05,
+              "max": 3.09825e-05,
+              "min": 2.661857e-05,
+              "range": 4.363929999999996e-06
+            },
+            "Uy": {
+              "count": 201,
+              "first": 5.82227e-05,
+              "last": 5.574048e-05,
+              "max": 6.125224e-05,
+              "min": 5.108272e-05,
+              "range": 1.0169520000000006e-05
+            },
+            "Uz": {
+              "count": 201,
+              "first": 4.826144e-05,
+              "last": 4.336926e-05,
+              "max": 4.919869e-05,
+              "min": 4.024257e-05,
+              "range": 8.956120000000002e-06
+            },
+            "h": {
+              "count": 201,
+              "first": 2.089153e-05,
+              "last": 2.196551e-05,
+              "max": 2.469959e-05,
+              "min": 1.847688e-05,
+              "range": 6.222709999999998e-06
+            },
+            "p_rgh": {
+              "count": 201,
+              "first": 0.002722154,
+              "last": 0.002769235,
+              "max": 0.003127233,
+              "min": 0.002579349,
+              "range": 0.0005478840000000002
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeInletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": -0.05,
+              "last": -0.05,
+              "max": -0.05,
+              "min": -0.05,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeInletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 300.0,
+              "last": 300.0,
+              "max": 300.0,
+              "min": 300.0,
+              "range": 0.0
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 7734.929,
+              "last": 7734.929,
+              "max": 7734.929,
+              "min": 7734.929,
+              "range": 0.0
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 79.33495,
+              "last": 79.36189,
+              "max": 79.36189,
+              "min": 79.33495,
+              "range": 0.02693999999999619
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeOutletFlux/0/surfaceFieldValue.dat": {
+          "columns": {
+            "sum(phi)": {
+              "count": 21,
+              "first": 0.05000006,
+              "last": 0.04999998,
+              "max": 0.05000007,
+              "min": 0.04999992,
+              "range": 1.4999999999737446e-07
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        },
+        "tube/tubeOutletState/0/surfaceFieldValue.dat": {
+          "columns": {
+            "average(T)": {
+              "count": 21,
+              "first": 341.8296,
+              "last": 341.8278,
+              "max": 341.8297,
+              "min": 341.8271,
+              "range": 0.0026000000000294676
+            },
+            "average(h)": {
+              "count": 21,
+              "first": 182624.2,
+              "last": 182617.1,
+              "max": 182625.0,
+              "min": 182613.8,
+              "range": 11.200000000011642
+            },
+            "average(p_rgh)": {
+              "count": 21,
+              "first": 0.0,
+              "last": 0.0,
+              "max": 0.0,
+              "min": 0.0,
+              "range": 0.0
+            }
+          },
+          "time_end": 800.0,
+          "time_start": 600.0
+        }
+      },
+      "residuals": {
+        "shell": {
+          "count": 1600,
+          "tail_count": 322,
+          "tail_final_max": 3.49872e-06,
+          "tail_final_mean": 1.852535301242236e-06,
+          "tail_initial_max": 0.000512358,
+          "tail_initial_mean": 0.00033610908695652175,
+          "tail_iterations_mean": 2.9937888198757765,
+          "tail_time_start": 640.0
+        },
+        "tube": {
+          "count": 1600,
+          "tail_count": 322,
+          "tail_final_max": 2.98513e-05,
+          "tail_final_mean": 1.8625223757763974e-05,
+          "tail_initial_max": 0.00312723,
+          "tail_initial_mean": 0.002525100403726708,
+          "tail_iterations_mean": 2.3043478260869565,
+          "tail_time_start": 640.0
+        }
+      },
+      "telemetry": {
+        "fields": {
+          "shell:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.0004492997375,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 2.96937e-06,
+            "tail_max_normalized_rms": 2.61259e-06,
+            "tail_mean_normalized_rms": 1.9778715625e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 2.58405e-06,
+            "tail_time_start": 641.0
+          },
+          "shell:U": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.008555478375,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 5.16287e-06,
+            "tail_max_normalized_rms": 0.000199125,
+            "tail_mean_normalized_rms": 0.00014936216875,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 4.96309e-06,
+            "tail_time_start": 641.0
+          },
+          "shell:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.0009210052375,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 6.23116e-06,
+            "tail_max_normalized_rms": 5.48245e-06,
+            "tail_mean_normalized_rms": 4.150511875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 5.42256e-06,
+            "tail_time_start": 641.0
+          },
+          "shell:p_rgh": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.13536726211875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 4.7041e-06,
+            "tail_max_normalized_rms": 3.0097e-05,
+            "tail_mean_normalized_rms": 1.930826375e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 3.80307e-06,
+            "tail_time_start": 641.0
+          },
+          "solid:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00043216874,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 6.82962e-06,
+            "tail_max_normalized_rms": 3.87067e-06,
+            "tail_mean_normalized_rms": 2.24520838125e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 6.10208e-06,
+            "tail_time_start": 641.0
+          },
+          "solid:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00119285430625,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.98604e-05,
+            "tail_max_normalized_rms": 1.1256e-05,
+            "tail_mean_normalized_rms": 6.5290716875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 1.77447e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:T": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.00055691964125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.03655e-06,
+            "tail_max_normalized_rms": 8.42159e-06,
+            "tail_mean_normalized_rms": 7.7117451875e-06,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 9.31932e-07,
+            "tail_time_start": 641.0
+          },
+          "tube:U": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.0100228676875,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 3.78109e-05,
+            "tail_max_normalized_rms": 0.000257949,
+            "tail_mean_normalized_rms": 0.000235027675,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 3.69173e-05,
+            "tail_time_start": 641.0
+          },
+          "tube:e": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.009724228118749999,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 1.0975e-05,
+            "tail_max_normalized_rms": 8.91725e-05,
+            "tail_mean_normalized_rms": 8.165598e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 9.86735e-06,
+            "tail_time_start": 641.0
+          },
+          "tube:p_rgh": {
+            "count": 800,
+            "early_mean_normalized_rms": 0.12021288158125,
+            "tail_count": 160,
+            "tail_max_normalized_q95": 0.000112903,
+            "tail_max_normalized_rms": 6.63691e-05,
+            "tail_mean_normalized_rms": 5.2292470624999997e-05,
+            "tail_nonincreasing_rms": false,
+            "tail_q95_normalized_q95": 7.67441e-05,
+            "tail_time_start": 641.0
+          }
+        },
+        "record_count": 8000
+      }
+    }
+  },
+  "historical_state": "FAILED_NUMERICAL_GATES",
+  "hx03_state": "FROZEN_AND_BLOCKED",
+  "mesh_comparison": "NOT_PERFORMED_UNLESS_ALL_PER_GRID_GATES_PASS",
+  "qualification_state": "FAILED_NUMERICAL_GATES",
+  "source_unchanged": true,
+  "study": "HX-CFD-QUAL-01 CLEAN V2 REQUALIFICATION"
+}

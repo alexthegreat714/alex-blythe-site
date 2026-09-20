@@ -1,0 +1,184 @@
+{
+  "analytical_expectation": {
+    "expected_Q_W": 1210.313,
+    "expected_cold_outlet_K": 298.793743,
+    "expected_core_dp_Pa": 199.508,
+    "expected_hot_outlet_K": 317.206257,
+    "fidelity_note": "screening expectation is a distinct fixture model; disagreement is reported and cannot silently change gates",
+    "role": "supporting truth, not replacement for numerical gates",
+    "source": "pre-run QUAL01 analytical truth package"
+  },
+  "case_id": "HX-CFD-QUAL-01",
+  "conservation": {
+    "cold_mass": {
+      "metric": "abs(mdot_in + mdot_out)/max(abs(mdot_in),abs(mdot_out))",
+      "threshold": 1e-06
+    },
+    "duty_mismatch": {
+      "metric": "abs(abs(Q_hot)-abs(Q_cold))/max(abs(Q_hot),abs(Q_cold),1 W)",
+      "threshold": 0.01
+    },
+    "energy": {
+      "metric": "abs(Q_hot_signed + Q_cold_signed + dE_solid/dt)/max(abs(Q_hot),abs(Q_cold),1 W)",
+      "threshold": 0.01
+    },
+    "hot_mass": {
+      "metric": "abs(mdot_in + mdot_out)/max(abs(mdot_in),abs(mdot_out))",
+      "threshold": 1e-06
+    }
+  },
+  "controls": {
+    "canonical_solver": "chtMultiRegionFoam",
+    "deltaT_s": 1,
+    "endTime_s": 800,
+    "mesh_generation": "Allmesh.noLayers unchanged per grid",
+    "nOuterCorrectors": 2,
+    "solver": "chtMultiRegionFoamAeroTelemetry",
+    "writeInterval_s": 100
+  },
+  "criteria_id": "HX_CFD_QUAL_01_V2_CASE_ACCEPTANCE_20260919",
+  "date": "2026-09-19",
+  "endpoints": {
+    "declared_end_time_s": 800,
+    "equivalent_state_rule": "No mesh comparison until all grids complete and satisfy every required per-grid evidence category at comparable late-time windows.",
+    "monitor_window_s": 200,
+    "outer_tail_fraction": 0.2,
+    "step_tail_fraction": 0.2,
+    "thermal_stationarity_window_s": 200
+  },
+  "field_stationarity": {
+    "acceptance": {
+      "duty_relative_range": 0.01,
+      "normalized_step_rms": 0.001,
+      "outlet_temperature_range_K": 0.01
+    },
+    "fields": [
+      "shell:U",
+      "tube:U",
+      "shell:p_rgh",
+      "tube:p_rgh",
+      "shell:T",
+      "tube:T",
+      "solid:T"
+    ],
+    "metric": "deterministic late-window step-to-step field differences plus declared monitors"
+  },
+  "flow_outer_settling": {
+    "acceptance": {
+      "tail20_max_normalized_q95": 0.01,
+      "tail20_max_normalized_rms": 0.01,
+      "trend": "non-increasing_or_flat"
+    },
+    "fields": [
+      "shell:U",
+      "tube:U",
+      "shell:p_rgh",
+      "tube:p_rgh"
+    ],
+    "metric": "volume-weighted normalized RMS and q95 direct outer-to-outer update",
+    "normalization": "field RMS with SMALL floor, as qualified telemetry definition",
+    "tail_statistic": "tail20 maximum normalized RMS <= 0.01 and q95 <= 0.01 for each required field; no positive late-tail trend"
+  },
+  "historical_evidence_not_grandfathered": true,
+  "interface": {
+    "acceptance": {
+      "relative_balance": 0.01,
+      "temperature_continuity": "PASS or NOT_ESTABLISHED with explicit evidence"
+    },
+    "cold_solid": "integrated signed heat rate from retained interface fields/post-processing",
+    "hot_solid": "integrated signed heat rate from retained interface fields/post-processing"
+  },
+  "local_field_stationarity": {
+    "acceptance": {
+      "normalized_outer_q95": 0.01,
+      "normalized_step_rms": 0.001
+    },
+    "reason": "historical R2/R6 localized unresolved transverse flow and pressure behavior at the inlet manifold",
+    "region": "inlet-manifold / core-entry region defined by x <= 0.05 m in shell/tube fields",
+    "required": true
+  },
+  "mesh_independence": {
+    "equivalent_state_rule": "compare only after all three grids independently pass the per-grid profile evidence",
+    "historical_result_unchanged": "1.303% > 1.000% FAIL",
+    "quantities": [
+      "abs(Q_hot)",
+      "T_shell_out",
+      "T_tube_out",
+      "hot_core_dp",
+      "cold_core_dp",
+      "hot_total_dp",
+      "cold_total_dp"
+    ],
+    "threshold": 0.01
+  },
+  "monitors": {
+    "acceptance": {
+      "duty_relative_range": 0.01,
+      "pressure_drop_relative_range": 0.01,
+      "temperature_range_K": 0.01
+    },
+    "declared_quantities": [
+      "shell/tube inlet and outlet mass flux",
+      "shell/tube outlet T",
+      "shell/tube outlet h",
+      "shell/tube inlet/outlet p_rgh",
+      "Q_hot",
+      "Q_cold",
+      "pressure drop"
+    ]
+  },
+  "owner": "Alex Blythe",
+  "profile_id": "OPENFOAM_STEADY_TWO_FLUID_SOLID_CHT_PROFILE_V1",
+  "profile_sha256": "903965b1910f14845be8d0b2494fcd9a35df3023771e31346754f931bd8d0ff0",
+  "property_validity": {
+    "extrapolation_policy": "no silent extrapolation; any field outside declared range is FAIL",
+    "source": "OpenFOAM Foundation v10 constant-property water/aluminum qualification fixture",
+    "valid_range": {
+      "pressure_Pa": [
+        0.0,
+        2000000.0
+      ],
+      "temperature_K": [
+        280.0,
+        700.0
+      ]
+    },
+    "version": "Foundation v10 case dictionaries; water rho=1000 kg/m3, Cp=4181 J/kg/K, mu=959e-6 Pa s, Pr=6.62"
+  },
+  "source": {
+    "basis": "clean copies of retained HX-CFD-QUAL-01 Rev A coarse/medium/fine source cases",
+    "geometry_revision": "QUAL-01-REV-A",
+    "observation_only_additions": [
+      "direct outer telemetry executable",
+      "declared surface monitor function objects"
+    ],
+    "physics_controls_identical_across_grids": true,
+    "source_root": "D:\\AeroRuntime\\foamagent\\cases\\hx_cfd_qual_01"
+  },
+  "stop_logic": [
+    "missing required telemetry -> NOT_ESTABLISHED",
+    "solver failure -> FAIL",
+    "required per-grid gate FAIL/NOT_ESTABLISHED -> no mesh comparison disposition PASS",
+    "HX-03 remains frozen and untouched"
+  ],
+  "thermal_outer_settling": {
+    "acceptance": {
+      "tail20_max_normalized_q95": 0.01,
+      "tail20_max_normalized_rms": 0.01,
+      "trend": "non-increasing_or_flat"
+    },
+    "fields": [
+      "shell:T",
+      "tube:T",
+      "shell:e",
+      "tube:e",
+      "solid:T",
+      "solid:e"
+    ],
+    "metric": "volume-weighted normalized RMS and q95 direct outer-to-outer update",
+    "normalization": "field RMS with SMALL floor, same definition for all grids",
+    "tail_statistic": "tail20 maximum normalized RMS <= 0.01 and q95 <= 0.01 for each available required field"
+  },
+  "v2_core_id": "AERO_CFD_NUMERICAL_EVIDENCE_CORE_V2",
+  "v2_core_sha256": "7eeccbc123b59c01237029b37a0b31cccf6baaf9253474dd485f1e26297624bd"
+}

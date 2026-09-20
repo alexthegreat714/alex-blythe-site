@@ -1,0 +1,74 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+---
+<Shell title="Aero · HX-CFD-QUAL-01 clean V2 requalification · 2026-09-20" description="Dated report of the clean HX-CFD-QUAL-01 V2 requalification under the frozen evidence core and two-fluid CHT profile." path="/software/aero/evidence/reports/hx-cfd-qual-01-v2-requalification-2026-09-20/">
+  <article class="report">
+    <div class="actions"><a href="/software/aero/evidence/">← Back to public evidence</a><button onclick="window.print()">Print / save PDF</button></div>
+    <p class="eyebrow">ALEX BLYTHE · 2026-09-20 · AERO QUALIFICATION REPORT</p>
+    <h1>HX-CFD-QUAL-01 clean V2 requalification</h1>
+    <p class="lede">Fresh coarse, medium, and fine runs were executed from clean copies under the frozen V2 numerical-evidence core and the frozen two-fluid solid CHT profile. Historical R1–R8 results were not grandfathered.</p>
+
+    <section class="verdict" aria-labelledby="disposition">
+      <h2 id="disposition">Final disposition</h2>
+      <p class="status"><strong>FAILED_NUMERICAL_GATES</strong></p>
+      <p>All three solver runs reached 800 s and retained direct outer-loop telemetry. The case remains unqualified because frozen trend, field-stationarity, engineering-monitor, energy/interface, and local-manifold evidence requirements were not all established. No mesh comparison was performed after the per-grid gate failure.</p>
+      <dl class="state-grid">
+        <div><dt>V2 Core</dt><dd>FROZEN</dd></div>
+        <div><dt>Two-fluid CHT profile</dt><dd>FROZEN · CASE THRESHOLDS</dd></div>
+        <div><dt>Fresh runs</dt><dd>COARSE · MEDIUM · FINE = 800 s</dd></div>
+        <div><dt>Direct outer telemetry</dt><dd>8,000 records per grid</dd></div>
+        <div><dt>Historical HX-CFD</dt><dd>FAILED · UNCHANGED</dd></div>
+        <div><dt>HX-03</dt><dd>FROZEN · BLOCKED</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2>What was run</h2>
+      <table><thead><tr><th>Grid</th><th>Completion</th><th>Outer telemetry</th><th>Flow / thermal trend gates</th><th>Other required gates</th></tr></thead><tbody>
+        <tr><th>Coarse</th><td>PASS · End at 800 s</td><td>8,000</td><td>FAIL · late tail not non-increasing/flat</td><td>NOT_ESTABLISHED</td></tr>
+        <tr><th>Medium</th><td>PASS · End at 800 s</td><td>8,000</td><td>FAIL · late tail not non-increasing/flat</td><td>NOT_ESTABLISHED</td></tr>
+        <tr><th>Fine</th><td>PASS · End at 800 s</td><td>8,000</td><td>FAIL · late tail not non-increasing/flat</td><td>NOT_ESTABLISHED</td></tr>
+      </tbody></table>
+      <p>The direct outer-update magnitudes themselves were below the declared 0.01 RMS/q95 limits in the retained 20% tails, but the frozen trend condition also requires a non-increasing or flat tail. That condition was not met, and it cannot be waived because monitors appear stable.</p>
+    </section>
+
+    <section>
+      <h2>Why the result remains failed</h2>
+      <ul>
+        <li>Per-grid flow and thermal outer-update trend gates failed under the frozen definition.</li>
+        <li>Field-stationarity and engineering-monitor acceptance were not established from the retained clean package.</li>
+        <li>Solid-storage energy closure, hot/cold duty closure, and integrated interface heat-rate evidence were not retained deterministically for this run, so those gates remain <code>NOT_ESTABLISHED</code>.</li>
+        <li>The required inlet-manifold local stationarity observable was not available; global telemetry cannot substitute for it.</li>
+        <li>Mesh independence was correctly withheld until every grid passed its own profile gates.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Custody and boundaries</h2>
+      <p>The clean source trees, frozen criteria, V2 Core, and CHT profile hashes were verified unchanged after execution. The wrapper timed out while returning the two larger cases, but both solver logs independently contain a terminal <code>End</code>, exit code 0, and no fatal error; the cases were then copied and hashed directly from the container.</p>
+      <p>Historical HX-CFD-QUAL-01 remains <strong>FAILED_NUMERICAL_GATES</strong>, including the historical 1.303% &gt; 1.000% mesh result. This clean run does not rewrite R1–R8. HX-03 remains <strong>FROZEN_AND_BLOCKED</strong>.</p>
+      <p class="links"><a class="primary" href="/demos/aero/hx-cfd-qual-01-v2-requalification-2026-09-20/HX_CFD_QUAL_01_V2_FINAL_REPORT.md">Download full Markdown report</a><a href="/demos/aero/hx-cfd-qual-01-v2-requalification-2026-09-20/HX_CFD_QUAL_01_V2_FINAL_RESULTS.json">Download structured results</a><a href="/software/aero/evidence/reports/two-fluid-cht-profile-freeze-2026-09-19/">Frozen CHT profile</a><a href="/software/aero/evidence/">Public evidence index</a></p>
+    </section>
+    <p class="subtle">Prepared by Alex Blythe · Report date: <time datetime="2026-09-20">September 20, 2026</time>. This is an evidence disposition, not a design release or experimental validation.</p>
+  </article>
+</Shell>
+<style>
+  .report { max-width: 980px; margin: 32px auto 64px; padding: 0 24px; }
+  .actions { display: flex; justify-content: space-between; margin-bottom: 30px; }
+  button { padding: 10px 16px; background: var(--surface); border: 1px solid var(--border); color: var(--text); cursor: pointer; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.05; max-width: 820px; }
+  h2 { margin-top: 34px; }
+  .lede { font-size: 1.15rem; color: var(--muted); max-width: 820px; }
+  section { border-bottom: 1px solid var(--border); padding: 8px 0 24px; }
+  .verdict { border-left: 3px solid #cf5b5b; background: var(--surface); padding: 18px 22px; }
+  .status { font-size: 1.35rem; letter-spacing: .04em; }
+  .state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin: 20px 0 0; }
+  .state-grid div { border-top: 1px solid var(--border); padding-top: 8px; }
+  dt { color: var(--muted); font-size: .85rem; } dd { margin: 3px 0 0; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin: 16px 0; }
+  th, td { text-align: left; padding: 11px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-weight: 700; } p, li, td { color: var(--muted); } strong, th { color: var(--text); }
+  a { text-decoration: underline; } .links { display: flex; flex-wrap: wrap; gap: 18px; }
+  @media (max-width: 700px) { .state-grid { grid-template-columns: 1fr; } .report { padding: 0 16px; } table { font-size: .9rem; } th, td { padding: 8px 4px; } .actions { align-items: flex-start; gap: 14px; } }
+  @media print { :global(.site-header), :global(.site-footer), .actions { display: none; } :global(body) { background: white; color: black; } .report { max-width: none; margin: 0; } section { break-inside: avoid; } }
+</style>
