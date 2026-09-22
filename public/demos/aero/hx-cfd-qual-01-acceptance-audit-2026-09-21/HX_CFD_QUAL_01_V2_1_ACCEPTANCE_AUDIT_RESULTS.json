@@ -1,0 +1,143 @@
+{
+  "acceptance_engine": {
+    "correction": "field stationarity now requires non-empty finite normalized RMS values <= 0.001; the previous >0 predicate was invalid",
+    "field_stationarity_predicate_corrected": true
+  },
+  "artifact_integrity": {
+    "checked": 219,
+    "continuation_manifest_json_parseable": true,
+    "continuation_verification_json_parseable": true,
+    "mismatches": 0,
+    "missing": 0
+  },
+  "audit_id": "HX_CFD_QUAL_01_V2_1_ACCEPTANCE_AUDIT_20260921",
+  "continuation_monitor_history": {
+    "rows_through_1000_s": true,
+    "shell_outlet_flux_span_800_1000": 3.87738999935161e-09,
+    "shell_outlet_temperature_span_800_1000_K": 0.0028039646999786783,
+    "state": "RETAINED_MONITOR_HISTORY_AVAILABLE",
+    "tube_outlet_flux_span_800_1000": 3.491114199949408e-07,
+    "tube_outlet_temperature_span_800_1000_K": 0.0010398645999885048
+  },
+  "continuation_solver_completion": "PASS",
+  "date": "2026-09-21",
+  "disposition": "DIAGNOSTIC_CORRECTION_COMPLETE; NO_REQUALIFICATION; MESH_NOT_EVALUATED",
+  "field_stationarity": {
+    "declared_local_region_cell_fraction": 0.986459788339814,
+    "endpoint_correspondence": "POSITIONAL_TRUNCATION_ONLY; no explicit cell-ID/topology correspondence proof",
+    "local_region_interpretation": "NOT_LOCALIZED; x<=0.05 m contains nearly the entire exported tube volume",
+    "tube_u_900_1000_declared_local_normalized_rms": 0.0007909596089727706,
+    "tube_u_900_1000_global_normalized_rms": 0.0007616374739008798
+  },
+  "historical_qualification_state": "FAILED_NUMERICAL_GATES_UNCHANGED",
+  "next_action": "Use corrected acceptance code and a predeclared geometry-backed local mask in the next clean qualification contract; resolve pressure-reference semantics and full energy/interface evidence before any new three-grid run.",
+  "property_validity": {
+    "endpoint_ranges": {
+      "1000/shell": {
+        "T": [
+          366.2950134277344,
+          602.6729736328125
+        ],
+        "h": [
+          284914.0,
+          1273210.0
+        ],
+        "p": [
+          -54.874900817871094,
+          111.91699981689453
+        ],
+        "p_rgh": [
+          -54.874900817871094,
+          111.91699981689453
+        ]
+      },
+      "1000/solid": {
+        "T": [
+          361.79901123046875,
+          509.2619934082031
+        ],
+        "e": [
+          57283.80078125,
+          190001.0
+        ]
+      },
+      "1000/tube": {
+        "T": [
+          290.3299865722656,
+          440.21099853515625
+        ],
+        "h": [
+          -32695.19921875,
+          593957.0
+        ],
+        "p": [
+          -51.49530029296875,
+          99.80889892578125
+        ],
+        "p_rgh": [
+          -51.49530029296875,
+          99.80889892578125
+        ]
+      },
+      "900/shell": {
+        "T": [
+          366.47198486328125,
+          602.6740112304688
+        ],
+        "h": [
+          285653.0,
+          1273210.0
+        ],
+        "p": [
+          -54.87590026855469,
+          111.91600036621094
+        ],
+        "p_rgh": [
+          -54.87590026855469,
+          111.91600036621094
+        ]
+      },
+      "900/solid": {
+        "T": [
+          362.1600036621094,
+          509.2659912109375
+        ],
+        "e": [
+          57609.30078125,
+          190004.0
+        ]
+      },
+      "900/tube": {
+        "T": [
+          290.2250061035156,
+          440.2449951171875
+        ],
+        "h": [
+          -33135.69921875,
+          594101.0
+        ],
+        "p": [
+          -51.51279830932617,
+          99.79679870605469
+        ],
+        "p_rgh": [
+          -51.51279830932617,
+          99.79679870605469
+        ]
+      }
+    },
+    "gravity": "zero in frozen case; p and p_rgh both retained at 900/1000",
+    "pressure_range_declared_Pa": [
+      0.0,
+      2000000.0
+    ],
+    "reason": "retained p/p_rgh endpoint ranges include negative values while the declared property-pressure interval starts at 0 Pa; pressure-reference semantics must be resolved before this can be a supporting PASS",
+    "state": "NOT_ESTABLISHED_PRESSURE_REFERENCE",
+    "temperature_range_declared_K": [
+      280.0,
+      700.0
+    ]
+  },
+  "scope": "retained-evidence audit; no CFD execution",
+  "source_unchanged": true
+}

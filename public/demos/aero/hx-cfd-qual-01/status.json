@@ -1,9 +1,17 @@
 {
   "qualification_id": "HX-CFD-QUAL-01",
   "title": "Two-fluid manifold-aware conjugate heat-transfer qualification",
-  "updated_at": "2026-09-17",
+  "updated_at": "2026-09-21",
   "status": "FAILED_NUMERICAL_GATES",
   "stage_decision": "HX-03 Stage B remains stopped",
+  "current_status": {
+    "date": "2026-09-21",
+    "state": "DIAGNOSTIC_CORRECTION_COMPLETE",
+    "qualification": "FAILED_NUMERICAL_GATES_UNCHANGED",
+    "mesh_independence": "NOT_EVALUATED",
+    "summary": "A retained-evidence audit corrected the field-stationarity predicate, confirmed continuation monitor rows through 1000 s, and identified local-region, pressure-reference, and energy/interface evidence limitations. No CFD was rerun.",
+    "report": "/software/aero/evidence/reports/hx-cfd-qual-01-acceptance-audit-2026-09-21/"
+  },
   "authority_note": "These are retained OpenFOAM fixture results, not physical validation or design release.",
   "original": {
     "revision": "fine_structured_v5",
