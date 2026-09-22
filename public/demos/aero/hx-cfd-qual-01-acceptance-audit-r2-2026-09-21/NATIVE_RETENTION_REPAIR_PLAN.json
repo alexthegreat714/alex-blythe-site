@@ -1,0 +1,39 @@
+{
+  "activation": "NOT_APPLIED_TO_ANY_CASE; future versioned contract and authorization required",
+  "custody": "dereference property symlinks into output package; retain link target and hash; copy failures fatal",
+  "fields": {
+    "shell": [
+      "T",
+      "U",
+      "p",
+      "p_rgh",
+      "phi",
+      "rho",
+      "h",
+      "alphat"
+    ],
+    "solid": [
+      "T",
+      "e"
+    ],
+    "tube": [
+      "T",
+      "U",
+      "p",
+      "p_rgh",
+      "phi",
+      "rho",
+      "h",
+      "alphat"
+    ]
+  },
+  "functions_include": "shellAuditNativeFields\n{\n    type writeObjects;\n    libs (\"libutilityFunctionObjects.so\");\n    region shell;\n    objects (T U p p_rgh phi rho h alphat);\n    writeControl writeTime;\n}\n\ntubeAuditNativeFields\n{\n    type writeObjects;\n    libs (\"libutilityFunctionObjects.so\");\n    region tube;\n    objects (T U p p_rgh phi rho h alphat);\n    writeControl writeTime;\n}\n\nsolidAuditNativeFields\n{\n    type writeObjects;\n    libs (\"libutilityFunctionObjects.so\");\n    region solid;\n    objects (T e);\n    writeControl writeTime;\n}\n",
+  "required_topology": [
+    "points",
+    "faces",
+    "owner",
+    "neighbour",
+    "boundary"
+  ],
+  "semantics": "thermo.he() telemetry aliases must map to native h/e discovered from actual properties"
+}

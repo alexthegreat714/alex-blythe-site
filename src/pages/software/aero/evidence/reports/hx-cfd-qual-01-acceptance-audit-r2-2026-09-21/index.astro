@@ -1,0 +1,32 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import { Content } from '../../../../../../content/reports/hx-cfd-v21-acceptance-audit-r2.md';
+import verification from '../../../../../../../public/demos/aero/hx-cfd-qual-01-acceptance-audit-r2-2026-09-21/PUBLIC_SHA256_VERIFICATION.json';
+const base='/demos/aero/hx-cfd-qual-01-acceptance-audit-r2-2026-09-21/';
+---
+<Shell title="Aero · Completed HX-CFD acceptance repair · September 21, 2026" description="Alex Blythe's completed retained-evidence audit: tested acceptance repair, native flux and interface recovery, verified field correspondence, and unresolved numerical gates. No new CFD." path="/software/aero/evidence/reports/hx-cfd-qual-01-acceptance-audit-r2-2026-09-21/">
+  <article class="report">
+    <nav class="actions" aria-label="Report navigation"><a href="/software/aero/evidence/benchmarks/hx-cfd-qual-01/">HX-CFD status</a><a href={base+'HX_CFD_V21_ACCEPTANCE_AUDIT_R2_REPORT.md'}>Download report</a><button onclick="window.print()">Print / save PDF</button></nav>
+    <div class="boundary"><strong>Repair complete. Qualification still failed.</strong><p>No new CFD. No historical rescoring. Mesh independence not evaluated. HX-03 and HX-04 remain blocked.</p></div>
+    <Content />
+    <section class="downloads"><h2>Inspect the evidence</h2>
+      <ul>
+        <li><a href={base+'HX_CFD_V21_ACCEPTANCE_AUDIT_R2_RESULTS.json'}>Authoritative structured audit results</a></li>
+        <li><a href={base+'MONITOR_AND_MASS_RECONCILIATION.json'}>Aligned monitor and mass histories</a></li>
+        <li><a href={base+'ORIGINAL_NATIVE_FACE_MASS_AUDIT.json'}>Native face-flux checks: all original grids</a></li>
+        <li><a href={base+'TOPOLOGY_VERIFIED_SPATIAL_DIAGNOSTICS.json'}>Topology-verified field and local-region comparisons</a></li>
+        <li><a href={base+'NATIVE_FLUX_ENERGY_INTERFACE_AUDIT.json'}>Native enthalpy, storage and interface integration</a></li>
+        <li><a href={base+'MATCHED_200S_ENERGY_RECOVERY.json'}>Matched 800–1000 s energy accounting</a></li>
+        <li><a href={base+'CELLWISE_CONTINUITY_LOCALIZATION.json'}>Cellwise continuity localization</a></li>
+        <li><a href={base+'NATIVE_RETENTION_REPAIR_PLAN.json'}>Corrected native-field retention plan</a></li>
+        <li><a href={base+'NEXT_ACCEPTANCE_CONTRACT_REPAIR_DRAFT.json'}>Explicit remaining contract decisions — not execution authorization</a></li>
+        <li><a href={base+'PUBLIC_SHA256_MANIFEST.json'}>Public download hashes</a> · <a href={base+'PUBLIC_SHA256_VERIFICATION.json'}>Verification</a></li>
+      </ul>
+      <p>Published subset: {verification.checked} files checked; {verification.missing} missing; {verification.mismatches} mismatches. The canonical local package retains raw-source hashes, recovered topology, analysis code and test evidence.</p>
+      <p><a href="/software/aero/evidence/reports/hx-cfd-qual-01-acceptance-audit-2026-09-21/">Earlier correction report — retained, superseded interpretation</a></p>
+    </section>
+  </article>
+</Shell>
+<style>
+  .report{max-width:1040px;margin:32px auto 64px;padding:0 24px;font-size:1rem;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-bottom:24px}.boundary{border-left:3px solid #cf5b5b;background:var(--surface);padding:16px 22px}.boundary p{margin-bottom:0}button{font:inherit;padding:8px 14px;background:var(--surface);border:1px solid var(--border);color:var(--text);cursor:pointer}a{text-decoration:underline}.report :global(h1){font-size:clamp(2rem,4vw,3rem);line-height:1.15}.report :global(h2){font-size:1.5rem;margin-top:2.5rem}.report :global(p),.report :global(li){color:var(--muted)}.report :global(strong){color:var(--text)}.report :global(table){display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:20px 0;font-size:.95rem}.report :global(th),.report :global(td){padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);min-width:110px}.report :global(code){overflow-wrap:anywhere}.downloads{margin-top:3rem;border-top:1px solid var(--border)}@media(max-width:650px){.report{padding:0 16px}}@media print{.actions{display:none}.report{max-width:none;margin:0}.report :global(table){display:table;overflow:visible}.report :global(h2){break-after:avoid}.boundary{break-inside:avoid}}
+</style>

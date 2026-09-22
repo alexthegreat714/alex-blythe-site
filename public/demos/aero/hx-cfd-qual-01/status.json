@@ -3,14 +3,14 @@
   "title": "Two-fluid manifold-aware conjugate heat-transfer qualification",
   "updated_at": "2026-09-21",
   "status": "FAILED_NUMERICAL_GATES",
-  "stage_decision": "HX-03 Stage B remains stopped",
+  "stage_decision": "HX-03 and HX-04 Stage B remain blocked",
   "current_status": {
     "date": "2026-09-21",
-    "state": "DIAGNOSTIC_CORRECTION_COMPLETE",
+    "state": "ACCEPTANCE_REPAIR_AND_RETAINED_EVIDENCE_AUDIT_R2_COMPLETE",
     "qualification": "FAILED_NUMERICAL_GATES_UNCHANGED",
     "mesh_independence": "NOT_EVALUATED",
-    "summary": "A retained-evidence audit corrected the field-stationarity predicate, confirmed continuation monitor rows through 1000 s, and identified local-region, pressure-reference, and energy/interface evidence limitations. No CFD was rerun.",
-    "report": "/software/aero/evidence/reports/hx-cfd-qual-01-acceptance-audit-2026-09-21/"
+    "summary": "Fail-closed acceptance checks now have 40 behavioral tests. Native flux, energy/storage and interface heat rates were recovered; 36 field comparisons have exact topology correspondence. Cold-side flux/velocity settling and unresolved contract definitions still block qualification. No new CFD or historical rescoring.",
+    "report": "/software/aero/evidence/reports/hx-cfd-qual-01-acceptance-audit-r2-2026-09-21/"
   },
   "authority_note": "These are retained OpenFOAM fixture results, not physical validation or design release.",
   "original": {
@@ -49,7 +49,7 @@
     "fine_residual_max_last_window": 0.04778247,
     "fine_monitor_drift_K": {"shell_outlet": 0.0608, "tube_outlet": 0.0644}
   },
-  "next_action": "Pressure/velocity diagnostics are complete. The next bounded experiment should vary pressure-correction count and p_rgh relaxation one control at a time, using repaired solid-e residual telemetry; preserve v5/v7 and do not weaken gates or start HX-03 Stage B until residual and monitor gates are established.",
+  "next_action": "Resolve and independently freeze mass time aggregation, absolute-pressure/property coverage, interface-temperature tolerance and geometry-backed local/history definitions before one targeted cold-side continuity experiment. No arbitrary pressure sweep, thermal-only continuation, three-grid campaign, HX-03 or HX-04 execution is authorized by this audit.",
   "solver_control_diagnostic": {
     "id": "HX-CFD-QUAL-01-SOLVER-CONTROL-V1",
     "status": "DIAGNOSTIC_ONLY_NOT_QUALIFIED",

@@ -27,21 +27,22 @@ const visualSlides = [
   ['Transverse velocity localization', 'visuals/v7_transverse_velocity_localization.png', 'Transverse velocity q95 by axial location.'],
 ];
 ---
-<Shell title="Aero · HX-CFD-QUAL-01 status" description="Original and remediation status for Aero's two-fluid manifold-aware CHT qualification. Mesh independence improved in v7; residual and monitor gates remain open." path="/software/aero/evidence/benchmarks/hx-cfd-qual-01/">
+<Shell title="Aero · HX-CFD-QUAL-01 status" description="Current V2.1 acceptance repair and retained-evidence audit, with separately labeled historical results. Qualification remains failed; no mesh comparison or HX-03/HX-04 release." path="/software/aero/evidence/benchmarks/hx-cfd-qual-01/">
   <header>
     <p class="eyebrow">AERO / TWO-FLUID CHT QUALIFICATION</p>
     <span class="status failed">{status.status}</span>
-    <h1>HX-CFD-QUAL-01: one failed run, one improved remediation.</h1>
-    <p>The original qualification and its v7 remediation are shown together so the change is inspectable. v7 fixes the mesh-independence result without weakening the 1% gate, but it does not establish full numerical qualification.</p>
+    <h1>HX-CFD-QUAL-01: acceptance repair complete; qualification still failed.</h1>
+    <p>Alex Blythe · September 21, 2026. The latest audit repairs the evaluator and recovers native flux, energy and interface evidence. Cold-side field/flux settling and unresolved acceptance definitions remain. No new CFD was run.</p>
     <p class="metric">Decision: {status.stage_decision}</p>
-    <div class="links"><a class="primary" href={base + 'REMEDIATION_V7.md'}>Read v7 remediation</a><a href={base + 'ORIGINAL_QUALIFICATION.md'}>Read original run</a><a href={base + 'status.json'}>Machine-readable status</a></div>
+    <div class="links"><a class="primary" href={status.current_status.report}>Read the completed repair audit</a><a href={base + 'status.json'}>Machine-readable status</a><a href="#comparison-heading">Historical v5 / v7 results</a></div>
   </header>
 
   <section class="current-status" aria-labelledby="current-status-heading">
     <p class="eyebrow">CURRENT STATUS · 2026-09-21</p>
-    <h2 id="current-status-heading">Acceptance-path correction complete</h2>
-    <p>The retained continuation evidence was audited without rerunning CFD. The corrected audit fixes a field-stationarity predicate, confirms outlet monitor rows through 1000 s, and keeps the qualification failed. The local-region definition, pressure-reference semantics, and full energy/interface evidence still need resolution before a fresh three-grid campaign.</p>
-    <div class="links"><a class="primary" href="/software/aero/evidence/reports/hx-cfd-qual-01-acceptance-audit-2026-09-21/">Read the dated correction report</a><a href={base + 'status.json'}>Current status JSON</a></div>
+    <h2 id="current-status-heading">What the completed audit established</h2>
+    <p>{status.current_status.summary}</p>
+    <p>Matched 800–1000 s solid-storage energy closure: 0.00766%. The tube U change over that full window remains 0.001853 against the 0.001 comparison limit. A small signed-average mass error hides larger alternating instantaneous errors. Mesh independence remains NOT_EVALUATED.</p>
+    <div class="links"><a class="primary" href={status.current_status.report}>Read the September 21 R2 report and evidence</a><a href={base + 'status.json'}>Current status JSON</a></div>
   </section>
 
   <section class="boundary" aria-labelledby="meaning-heading">
@@ -51,7 +52,7 @@ const visualSlides = [
   </section>
 
   <section aria-labelledby="comparison-heading">
-    <h2 id="comparison-heading">Original versus v7</h2>
+    <h2 id="comparison-heading">Historical record: original versus v7</h2>
     <div class="table-wrap"><table><thead><tr><th>Gate / quantity</th><th>Original v5</th><th>Remediation v7</th></tr></thead><tbody>{rows.map(([label, oldValue, newValue]) => <tr><th>{label}</th><td class:list={{'pass': oldValue === 'PASS' || oldValue === 'PASS_THRESHOLD', 'fail': oldValue === 'FAIL' || oldValue === 'STOPPED', 'open': oldValue === 'NOT_ESTABLISHED'}}>{oldValue}</td><td class:list={{'pass': newValue === 'PASS', 'fail': newValue === 'FAIL' || newValue === 'STOPPED', 'open': newValue === 'NOT_ESTABLISHED'}}>{newValue}</td></tr>)}</tbody></table></div>
   </section>
 
@@ -62,7 +63,7 @@ const visualSlides = [
 
   <section aria-labelledby="open-heading" class="boundary">
     <h2 id="open-heading">What remains open</h2>
-    <ul><li><strong>Historical residual result:</strong> v7 fine-grid retained initial-residual window is {v7.fine_residual_max_last_window}, above the 1e-3 criterion.</li><li><strong>Latest continuation evidence:</strong> shell/tube outlet-temperature spans from 800–1000 s are 0.002804 K and 0.001040 K, respectively; these are supporting evidence, not a qualification pass.</li><li><strong>Acceptance path:</strong> the 2026-09-21 correction audit fixed the stationarity predicate and identified the remaining local-mask, pressure-reference, and energy/interface evidence gaps.</li></ul>
+    <ul><li><strong>Current numerical evidence:</strong> cold-side flux errors persist and the full-window tube U change remains above the stationarity comparison limit.</li><li><strong>Current contract gaps:</strong> mass temporal aggregation, absolute-pressure/property coverage, interface-temperature tolerance, and geometry-backed local/history definitions require independent predeclaration.</li><li><strong>Recovered evidence:</strong> monitors, native energy/storage and integrated interface heat transfer are now quantified. They do not override failed or unestablished hard gates.</li><li><strong>Historical residual result:</strong> v7 remains unchanged at {v7.fine_residual_max_last_window} against its historical 1e-3 criterion.</li></ul>
     <p>No HX-03 Stage B work is authorized by this result. The correct public status is still <strong>FAILED_NUMERICAL_GATES</strong>.</p>
   </section>
 

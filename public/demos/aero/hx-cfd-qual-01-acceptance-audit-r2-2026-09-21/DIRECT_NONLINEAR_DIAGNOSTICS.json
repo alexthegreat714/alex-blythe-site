@@ -1,0 +1,96 @@
+{
+  "fields": {
+    "shell:T": {
+      "native_field": "T",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 6.36046712868e-06,
+      "tail_mean": 5.5569051981285e-06,
+      "tail_ratio": 1.002987747742039,
+      "tail_samples": 40
+    },
+    "shell:U": {
+      "native_field": "U",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 0.000191754920316,
+      "tail_mean": 0.00016210745850605,
+      "tail_ratio": 1.0009123585501327,
+      "tail_samples": 40
+    },
+    "shell:e": {
+      "native_field": "h",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 1.3308891977e-05,
+      "tail_mean": 1.1627476579625e-05,
+      "tail_ratio": 1.0029866628145538,
+      "tail_samples": 40
+    },
+    "shell:p_rgh": {
+      "native_field": "p_rgh",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 2.68405992727e-05,
+      "tail_mean": 2.1536222647405e-05,
+      "tail_ratio": 1.0214797356920433,
+      "tail_samples": 40
+    },
+    "solid:T": {
+      "native_field": "T",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 5.69127266224e-06,
+      "tail_mean": 3.5867730633705e-06,
+      "tail_ratio": 1.0205222670277607,
+      "tail_samples": 40
+    },
+    "solid:e": {
+      "native_field": "e",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 1.63831496291e-05,
+      "tail_mean": 1.0324945650383e-05,
+      "tail_ratio": 1.0205197526913847,
+      "tail_samples": 40
+    },
+    "tube:T": {
+      "native_field": "T",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 8.19783342521e-06,
+      "tail_mean": 6.871254499367e-06,
+      "tail_ratio": 0.9898981225240332,
+      "tail_samples": 40
+    },
+    "tube:U": {
+      "native_field": "U",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 0.000241113224737,
+      "tail_mean": 0.00022241136739142498,
+      "tail_ratio": 1.0065551859943382,
+      "tail_samples": 40
+    },
+    "tube:e": {
+      "native_field": "h",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 8.58927948935e-05,
+      "tail_mean": 7.199367440417251e-05,
+      "tail_ratio": 0.9899073065180403,
+      "tail_samples": 40
+    },
+    "tube:p_rgh": {
+      "native_field": "p_rgh",
+      "records": 200,
+      "role": "supporting only",
+      "tail_max": 0.000212386051807,
+      "tail_mean": 6.40985734312475e-05,
+      "tail_ratio": 0.9436630076958132,
+      "tail_samples": 40
+    }
+  },
+  "records": 2000,
+  "semantics": "e telemetry label maps to thermo.he(); native fluid h, solid e. No nonlinear PASS inferred from final linear residual."
+}

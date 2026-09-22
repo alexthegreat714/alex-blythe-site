@@ -1,0 +1,182 @@
+{
+  "coarse": {
+    "shell": {
+      "600": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": 3.981351776038977e-10,
+        "normalized": 7.962703766229061e-09,
+        "outlet_kg_s": 0.05000000039813518,
+        "signed_imbalance_kg_s": 3.981351914816855e-10
+      },
+      "700": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -9.209138243648773e-10,
+        "normalized": 1.8418276209741794e-08,
+        "outlet_kg_s": 0.04999999907908618,
+        "signed_imbalance_kg_s": -9.209138104870895e-10
+      },
+      "800": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": 1.7950516073561573e-11,
+        "normalized": 3.590105988980991e-10,
+        "outlet_kg_s": 0.05000000001795052,
+        "signed_imbalance_kg_s": 1.795052995134938e-11
+      }
+    },
+    "tube": {
+      "600": {
+        "frozen_limit_comparison": "FAIL",
+        "inlet_kg_s": -0.04999999999999997,
+        "monitor_inlet_difference": 3.469446951953614e-17,
+        "monitor_outlet_difference": -4.011266457881746e-10,
+        "normalized": 1.5919749333804016e-06,
+        "outlet_kg_s": 0.050000079598873357,
+        "signed_imbalance_kg_s": 7.959887338843119e-08
+      },
+      "700": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999997,
+        "monitor_inlet_difference": 3.469446951953614e-17,
+        "monitor_outlet_difference": 1.5984331150353803e-09,
+        "normalized": 8.319679708185662e-07,
+        "outlet_kg_s": 0.05000004159843312,
+        "signed_imbalance_kg_s": 4.15984331494923e-08
+      },
+      "800": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999997,
+        "monitor_inlet_difference": 3.469446951953614e-17,
+        "monitor_outlet_difference": 3.5643923507189257e-09,
+        "normalized": 6.712873970429387e-07,
+        "outlet_kg_s": 0.05000003356439235,
+        "signed_imbalance_kg_s": 3.356439238350051e-08
+      }
+    }
+  },
+  "fine": {
+    "shell": {
+      "600": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -4.914906065467406e-09,
+        "normalized": 9.829812103179239e-08,
+        "outlet_kg_s": 0.04999999508509394,
+        "signed_imbalance_kg_s": -4.914906051589618e-09
+      },
+      "700": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -4.747376491920363e-09,
+        "normalized": 9.494752956085153e-08,
+        "outlet_kg_s": 0.04999999525262351,
+        "signed_imbalance_kg_s": -4.747376478042575e-09
+      },
+      "800": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -1.489432674417479e-09,
+        "normalized": 2.9788653210793832e-08,
+        "outlet_kg_s": 0.04999999851056733,
+        "signed_imbalance_kg_s": -1.4894326605396913e-09
+      }
+    },
+    "tube": {
+      "600": {
+        "frozen_limit_comparison": "FAIL",
+        "inlet_kg_s": -0.05000000000000004,
+        "monitor_inlet_difference": -3.469446951953614e-17,
+        "monitor_outlet_difference": -4.07368596494484e-09,
+        "normalized": 2.9185177621839132e-06,
+        "outlet_kg_s": 0.050000145926314035,
+        "signed_imbalance_kg_s": 1.4592631399773515e-07
+      },
+      "700": {
+        "frozen_limit_comparison": "FAIL",
+        "inlet_kg_s": -0.05000000000000004,
+        "monitor_inlet_difference": -3.469446951953614e-17,
+        "monitor_outlet_difference": -1.3115981772893193e-09,
+        "normalized": 3.3737566533636893e-06,
+        "outlet_kg_s": 0.05000016868840182,
+        "signed_imbalance_kg_s": 1.6868840178180244e-07
+      },
+      "800": {
+        "frozen_limit_comparison": "FAIL",
+        "inlet_kg_s": -0.05000000000000004,
+        "monitor_inlet_difference": -3.469446951953614e-17,
+        "monitor_outlet_difference": -3.1402807645908304e-09,
+        "normalized": 2.7371868917156867e-06,
+        "outlet_kg_s": 0.050000136859719234,
+        "signed_imbalance_kg_s": 1.3685971919641382e-07
+      }
+    }
+  },
+  "medium": {
+    "shell": {
+      "600": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -1.4755024424495389e-09,
+        "normalized": 2.9510048571435028e-08,
+        "outlet_kg_s": 0.04999999852449756,
+        "signed_imbalance_kg_s": -1.475502428571751e-09
+      },
+      "700": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -9.339340412140018e-10,
+        "normalized": 1.8678680546724283e-08,
+        "outlet_kg_s": 0.04999999906606596,
+        "signed_imbalance_kg_s": -9.33934027336214e-10
+      },
+      "800": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.04999999999999999,
+        "monitor_inlet_difference": 1.3877787807814457e-17,
+        "monitor_outlet_difference": -5.574422728971129e-10,
+        "normalized": 1.1148845180386504e-08,
+        "outlet_kg_s": 0.04999999944255773,
+        "signed_imbalance_kg_s": -5.574422590193251e-10
+      }
+    },
+    "tube": {
+      "600": {
+        "frozen_limit_comparison": "FAIL",
+        "inlet_kg_s": -0.05000000000000004,
+        "monitor_inlet_difference": -3.469446951953614e-17,
+        "monitor_outlet_difference": -4.978998664750822e-09,
+        "normalized": 1.1004188150116768e-06,
+        "outlet_kg_s": 0.050000055021001334,
+        "signed_imbalance_kg_s": 5.502100129672893e-08
+      },
+      "700": {
+        "frozen_limit_comparison": "FAIL",
+        "inlet_kg_s": -0.05000000000000004,
+        "monitor_inlet_difference": -3.469446951953614e-17,
+        "monitor_outlet_difference": -1.7300022525645886e-09,
+        "normalized": 1.165398596022832e-06,
+        "outlet_kg_s": 0.050000058269997746,
+        "signed_imbalance_kg_s": 5.8269997708915167e-08
+      },
+      "800": {
+        "frozen_limit_comparison": "PASS",
+        "inlet_kg_s": -0.05000000000000004,
+        "monitor_inlet_difference": -3.469446951953614e-17,
+        "monitor_outlet_difference": -3.8247123801404825e-09,
+        "normalized": 4.764942483637121e-07,
+        "outlet_kg_s": 0.04999997617528762,
+        "signed_imbalance_kg_s": -2.3824712418185623e-08
+      }
+    }
+  }
+}

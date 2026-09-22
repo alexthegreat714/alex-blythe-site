@@ -1,0 +1,553 @@
+{
+  "closure": {
+    "all_region_storage_W": 0.10261000843187502,
+    "caveat": "100 s supporting interval, trapezoidal 10 s monitor integration; not an instantaneous endpoint derivative or replacement for the frozen 200 s proof",
+    "contract_limit_comparison": "PASS",
+    "contract_normalized_closure": 8.477913506574248e-05,
+    "contract_solid_storage_residual_W": 0.7564045109176368,
+    "full_internal_energy_normalized_closure": 9.758711901145543e-05,
+    "full_internal_energy_residual_W": 0.8706781093069731,
+    "interval_s": [
+      900,
+      1000
+    ],
+    "mean_signed_cold_outward_W": 8922.059777220875,
+    "mean_signed_hot_outward_W": -8921.29170912,
+    "qualification_gate": "NOT_ESTABLISHED_MATCHED_200S_STORAGE_CUSTODY_MISSING",
+    "solid_storage_W": -0.011663589957461227
+  },
+  "interface": {
+    "1000": {
+      "shell": {
+        "bijection": true,
+        "face_area_max_difference_m2": 6.352747104407253e-22,
+        "face_centroid_max_distance_m": 1.1210126175528405e-16,
+        "fluid_outward_W": 8922.182001968864,
+        "heat_balance_state": "PASS",
+        "normalized_integrated_imbalance": 4.553615601517885e-06,
+        "solid_outward_W": -8922.1413737817,
+        "sum_W": 0.0406281871637475,
+        "temperature_gate": "NOT_ESTABLISHED_NO_FROZEN_NUMERIC_TOLERANCE",
+        "temperature_jump_max_K": 0.0223914452402596,
+        "temperature_jump_rms_K": 0.002148624029680574
+      },
+      "tube": {
+        "bijection": true,
+        "face_area_max_difference_m2": 6.352747104407253e-22,
+        "face_centroid_max_distance_m": 1.391243901732968e-16,
+        "fluid_outward_W": -8921.246473198036,
+        "heat_balance_state": "PASS",
+        "normalized_integrated_imbalance": 9.401729664548525e-05,
+        "solid_outward_W": 8922.085303538715,
+        "sum_W": 0.8388303406791238,
+        "temperature_gate": "NOT_ESTABLISHED_NO_FROZEN_NUMERIC_TOLERANCE",
+        "temperature_jump_max_K": 0.0214535727340035,
+        "temperature_jump_rms_K": 0.002479930975533666
+      }
+    },
+    "900": {
+      "shell": {
+        "bijection": true,
+        "face_area_max_difference_m2": 6.352747104407253e-22,
+        "face_centroid_max_distance_m": 1.1210126175528405e-16,
+        "fluid_outward_W": 8921.897729510873,
+        "heat_balance_state": "PASS",
+        "normalized_integrated_imbalance": 1.9355771788602896e-05,
+        "solid_outward_W": -8921.725039294499,
+        "sum_W": 0.17269021637366677,
+        "temperature_gate": "NOT_ESTABLISHED_NO_FROZEN_NUMERIC_TOLERANCE",
+        "temperature_jump_max_K": 0.015778192935954394,
+        "temperature_jump_rms_K": 0.0008296780584875431
+      },
+      "tube": {
+        "bijection": true,
+        "face_area_max_difference_m2": 6.352747104407253e-22,
+        "face_centroid_max_distance_m": 1.391243901732968e-16,
+        "fluid_outward_W": -8922.423492521666,
+        "heat_balance_state": "PASS",
+        "normalized_integrated_imbalance": 7.570041860006478e-05,
+        "solid_outward_W": 8921.748061328355,
+        "sum_W": -0.675431193310942,
+        "temperature_gate": "NOT_ESTABLISHED_NO_FROZEN_NUMERIC_TOLERANCE",
+        "temperature_jump_max_K": 0.007273314020039834,
+        "temperature_jump_rms_K": 0.0008487889826816518
+      }
+    }
+  },
+  "native_face_integrals": {
+    "shell": {
+      "1000": {
+        "monitor_crosscheck": {
+          "inlet": {
+            "T_mean_difference": 0.0,
+            "enthalpy_mean_difference": -7.520429790019989e-08,
+            "mass_difference": 2.7755575615628914e-17
+          },
+          "outlet": {
+            "T_mean_difference": -3.6834535421803594e-11,
+            "enthalpy_mean_difference": -4.1909515857696533e-07,
+            "mass_difference": -3.892719480091955e-15
+          }
+        },
+        "outward_enthalpy_W": -8921.141975069506,
+        "ports": {
+          "inlet": {
+            "T_flow_mean": 600.0,
+            "enthalpy_W": -63101.746169046215,
+            "faces": 206,
+            "h_flow_mean": 1262034.9233809249,
+            "mass_kg_s": -0.049999999999999975,
+            "patch": "upper"
+          },
+          "outlet": {
+            "T_flow_mean": 557.3253435686631,
+            "enthalpy_W": 54180.60419397671,
+            "faces": 206,
+            "h_flow_mean": 1083612.111460581,
+            "mass_kg_s": 0.04999999872735611,
+            "patch": "lower"
+          }
+        }
+      },
+      "900": {
+        "monitor_crosscheck": {
+          "inlet": {
+            "T_mean_difference": 0.0,
+            "enthalpy_mean_difference": 3.748573362827301e-07,
+            "mass_difference": 2.7755575615628914e-17
+          },
+          "outlet": {
+            "T_mean_difference": 2.7284841053187847e-12,
+            "enthalpy_mean_difference": -5.657784640789032e-08,
+            "mass_difference": 4.690692279041286e-15
+          }
+        },
+        "outward_enthalpy_W": -8921.45964382121,
+        "ports": {
+          "inlet": {
+            "T_flow_mean": 600.0,
+            "enthalpy_W": -63101.74616911871,
+            "faces": 206,
+            "h_flow_mean": 1262034.923382375,
+            "mass_kg_s": -0.049999999999999975,
+            "patch": "upper"
+          },
+          "outlet": {
+            "T_flow_mean": 557.3238298151027,
+            "enthalpy_W": 54180.2865252975,
+            "faces": 206,
+            "h_flow_mean": 1083605.7824569435,
+            "mass_kg_s": 0.04999999760286469,
+            "patch": "lower"
+          }
+        }
+      }
+    },
+    "tube": {
+      "1000": {
+        "monitor_crosscheck": {
+          "inlet": {
+            "T_mean_difference": 0.0,
+            "enthalpy_mean_difference": -2.2737367544323206e-10,
+            "mass_difference": 1.3877787807814457e-17
+          },
+          "outlet": {
+            "T_mean_difference": -4.18367562815547e-11,
+            "enthalpy_mean_difference": 2.529122866690159e-08,
+            "mass_difference": 3.795574965437254e-15
+          }
+        },
+        "outward_enthalpy_W": 8922.016504165831,
+        "ports": {
+          "inlet": {
+            "T_flow_mean": 300.0,
+            "enthalpy_W": -386.74645762028854,
+            "faces": 206,
+            "h_flow_mean": 7734.929152405773,
+            "mass_kg_s": -0.04999999999999999,
+            "patch": "lower"
+          },
+          "outlet": {
+            "T_flow_mean": 342.67875336625815,
+            "enthalpy_W": 9308.76296178612,
+            "faces": 206,
+            "h_flow_mean": 186174.7178243253,
+            "mass_kg_s": 0.050000145404113794,
+            "patch": "upper"
+          }
+        }
+      },
+      "900": {
+        "monitor_crosscheck": {
+          "inlet": {
+            "T_mean_difference": 0.0,
+            "enthalpy_mean_difference": 4.656612873077393e-10,
+            "mass_difference": 1.3877787807814457e-17
+          },
+          "outlet": {
+            "T_mean_difference": -3.240074875066057e-12,
+            "enthalpy_mean_difference": -3.3527612686157227e-08,
+            "mass_difference": -1.949829186997931e-15
+          }
+        },
+        "outward_enthalpy_W": 8922.140945530515,
+        "ports": {
+          "inlet": {
+            "T_flow_mean": 300.0,
+            "enthalpy_W": -386.7464570173732,
+            "faces": 206,
+            "h_flow_mean": 7734.929140347465,
+            "mass_kg_s": -0.04999999999999999,
+            "patch": "lower"
+          },
+          "outlet": {
+            "T_flow_mean": 342.67933645789674,
+            "enthalpy_W": 9308.887402547887,
+            "faces": 206,
+            "h_flow_mean": 186177.15573046647,
+            "mass_kg_s": 0.05000015907442805,
+            "patch": "upper"
+          }
+        }
+      }
+    }
+  },
+  "native_field_stationarity_900_1000": {
+    "shell:T": {
+      "cell_rms": {
+        "delta_rms": 0.0807677758288318,
+        "normalized_q95": 8.801703065149182e-05,
+        "normalized_rms": 0.00014249249557339222,
+        "q95_absolute": 0.04988992418283232,
+        "reference_rms": 566.8212596306977,
+        "samples": 409778
+      },
+      "volume_weighted": {
+        "delta_rms": 0.07666707406341926,
+        "normalized_q95": 8.761756095319161e-05,
+        "normalized_rms": 0.00013464406179967733,
+        "q95_absolute": 0.04988992418283232,
+        "reference_rms": 569.4055351470612,
+        "samples": 409778
+      }
+    },
+    "shell:U": {
+      "cell_rms": {
+        "delta_rms": 1.82833208301314e-05,
+        "normalized_q95": 0.00016996834989860791,
+        "normalized_rms": 0.0003539298384382858,
+        "q95_absolute": 8.780231375451395e-06,
+        "reference_rms": 0.051658037397486714,
+        "samples": 409778
+      },
+      "volume_weighted": {
+        "delta_rms": 1.6491977152356024e-05,
+        "normalized_q95": 0.00016573399153365539,
+        "normalized_rms": 0.00031129945042038167,
+        "q95_absolute": 8.780231375451395e-06,
+        "reference_rms": 0.052977855020576184,
+        "samples": 409778
+      }
+    },
+    "shell:h": {
+      "cell_rms": {
+        "delta_rms": 337.6900707422784,
+        "normalized_q95": 0.00018495289621771205,
+        "normalized_rms": 0.0002994238676571164,
+        "q95_absolute": 208.58977307470516,
+        "reference_rms": 1127799.4415895473,
+        "samples": 409778
+      },
+      "volume_weighted": {
+        "delta_rms": 320.5450366634689,
+        "normalized_q95": 0.00018333409088379344,
+        "normalized_rms": 0.00028173400842121984,
+        "q95_absolute": 208.58977307470516,
+        "reference_rms": 1137757.6972682078,
+        "samples": 409778
+      }
+    },
+    "shell:p_rgh": {
+      "cell_rms": {
+        "delta_rms": 0.0029093657876957412,
+        "normalized_q95": 8.03302350709643e-06,
+        "normalized_rms": 4.926391507590537e-05,
+        "q95_absolute": 0.00047440410952503866,
+        "reference_rms": 59.056731143130186,
+        "samples": 409778
+      },
+      "volume_weighted": {
+        "delta_rms": 0.00258249702584105,
+        "normalized_q95": 8.03494526566287e-06,
+        "normalized_rms": 4.373954996330993e-05,
+        "q95_absolute": 0.00047440410952503866,
+        "reference_rms": 59.04260624554499,
+        "samples": 409778
+      }
+    },
+    "solid:T": {
+      "cell_rms": {
+        "delta_rms": 0.028158170776881368,
+        "normalized_q95": 8.009066863777862e-05,
+        "normalized_rms": 6.203645477602592e-05,
+        "q95_absolute": 0.03635292721480137,
+        "reference_rms": 453.89716221764394,
+        "samples": 235344
+      },
+      "volume_weighted": {
+        "delta_rms": 0.02809608575563491,
+        "normalized_q95": 8.00921961505064e-05,
+        "normalized_rms": 6.190085321342549e-05,
+        "q95_absolute": 0.03635292721480137,
+        "reference_rms": 453.88850552291314,
+        "samples": 235344
+      }
+    },
+    "solid:e": {
+      "cell_rms": {
+        "delta_rms": 25.342353699193247,
+        "normalized_q95": 0.00023053461061281634,
+        "normalized_rms": 0.00017856699399379424,
+        "q95_absolute": 32.71763449329734,
+        "reference_rms": 141920.70512243698,
+        "samples": 235344
+      },
+      "volume_weighted": {
+        "delta_rms": 25.28647718007143,
+        "normalized_q95": 0.00023055625774725527,
+        "normalized_rms": 0.00017819000794336108,
+        "q95_absolute": 32.71763449329734,
+        "reference_rms": 141907.38005976693,
+        "samples": 235344
+      }
+    },
+    "tube:T": {
+      "cell_rms": {
+        "delta_rms": 0.021540306272284523,
+        "normalized_q95": 0.00012871336982313335,
+        "normalized_rms": 6.64267868292617e-05,
+        "q95_absolute": 0.04173806290607437,
+        "reference_rms": 324.27138659664615,
+        "samples": 230349
+      },
+      "volume_weighted": {
+        "delta_rms": 0.01647107514561506,
+        "normalized_q95": 0.00012947631216232486,
+        "normalized_rms": 5.109518551452456e-05,
+        "q95_absolute": 0.04173806290607437,
+        "reference_rms": 322.36060951247384,
+        "samples": 230349
+      }
+    },
+    "tube:U": {
+      "cell_rms": {
+        "delta_rms": 8.081109351620301e-05,
+        "normalized_q95": 0.001191082067539763,
+        "normalized_rms": 0.0009417561817882755,
+        "q95_absolute": 0.00010220548185057482,
+        "reference_rms": 0.0858089334362032,
+        "samples": 230349
+      },
+      "volume_weighted": {
+        "delta_rms": 6.762453733985783e-05,
+        "normalized_q95": 0.0011409054869433144,
+        "normalized_rms": 0.000754883244089054,
+        "q95_absolute": 0.00010220548185057482,
+        "reference_rms": 0.0895827770312519,
+        "samples": 230349
+      }
+    },
+    "tube:h": {
+      "cell_rms": {
+        "delta_rms": 90.06002091064528,
+        "normalized_q95": 0.0012875077332712677,
+        "normalized_rms": 0.0006644608959134414,
+        "q95_absolute": 174.50684320802068,
+        "reference_rms": 135538.48159392257,
+        "samples": 230349
+      },
+      "volume_weighted": {
+        "delta_rms": 68.86556532812264,
+        "normalized_q95": 0.0013566027031523989,
+        "normalized_rms": 0.0005353555789607876,
+        "q95_absolute": 174.50684320802068,
+        "reference_rms": 128635.18759214562,
+        "samples": 230349
+      }
+    },
+    "tube:p_rgh": {
+      "cell_rms": {
+        "delta_rms": 0.009958049051921788,
+        "normalized_q95": 0.0001957705012168395,
+        "normalized_rms": 0.00016129341045182215,
+        "q95_absolute": 0.012086620579077589,
+        "reference_rms": 61.73872214634724,
+        "samples": 230349
+      },
+      "volume_weighted": {
+        "delta_rms": 0.007856656168364756,
+        "normalized_q95": 0.0001939459283153205,
+        "normalized_rms": 0.00012607051442199574,
+        "q95_absolute": 0.012086620579077589,
+        "reference_rms": 62.31953763642288,
+        "samples": 230349
+      }
+    }
+  },
+  "native_parser_independent_VTK_validation": {
+    "shell": {
+      "T": {
+        "count": 409778,
+        "max_difference": 3.0517479672198533e-05,
+        "relative_max": 5.063685601996789e-08
+      },
+      "U": {
+        "count": 409778,
+        "max_difference": 1.4898187183920442e-08,
+        "relative_max": 4.422399458678273e-08
+      },
+      "h": {
+        "count": 409778,
+        "max_difference": 0.06249985727481544,
+        "relative_max": 4.9088340306359275e-08
+      },
+      "p": {
+        "count": 409778,
+        "max_difference": 3.813749259506949e-06,
+        "relative_max": 3.407661625367552e-08
+      }
+    },
+    "solid": {
+      "T": {
+        "count": 235344,
+        "max_difference": 1.5258759674452449e-05,
+        "relative_max": 2.996251246758745e-08
+      },
+      "e": {
+        "count": 235344,
+        "max_difference": 0.007812493189703673,
+        "relative_max": 4.111827285770571e-08
+      }
+    },
+    "tube": {
+      "T": {
+        "count": 230349,
+        "max_difference": 1.5258782468663412e-05,
+        "relative_max": 3.466242368929621e-08
+      },
+      "U": {
+        "count": 230349,
+        "max_difference": 1.4901052114435487e-08,
+        "relative_max": 4.7406784760509484e-08
+      },
+      "h": {
+        "count": 230349,
+        "max_difference": 0.03112719242926687,
+        "relative_max": 5.240644181379486e-08
+      },
+      "p": {
+        "count": 230349,
+        "max_difference": 3.8146128531479917e-06,
+        "relative_max": 3.821918180252027e-08
+      }
+    }
+  },
+  "property_ranges": {
+    "1000:shell": {
+      "T": [
+        366.29490745554284,
+        602.6732714243637
+      ],
+      "p": [
+        -54.874883658898185,
+        111.91690017331447
+      ],
+      "p_rgh": [
+        -54.874883658898185,
+        111.91690017331447
+      ]
+    },
+    "1000:solid": {
+      "T": [
+        361.79862872781644,
+        509.26168794953094
+      ]
+    },
+    "1000:tube": {
+      "T": [
+        290.3300280485449,
+        440.2110656034517
+      ],
+      "p": [
+        -51.49533364339441,
+        99.80885705136802
+      ],
+      "p_rgh": [
+        -51.49533364339441,
+        99.80885705136802
+      ]
+    },
+    "900:shell": {
+      "T": [
+        366.4717166314477,
+        602.6736054566923
+      ],
+      "p": [
+        -54.87591355713917,
+        111.91593124640508
+      ],
+      "p_rgh": [
+        -54.87591355713917,
+        111.91593124640508
+      ]
+    },
+    "900:solid": {
+      "T": [
+        362.16038168408585,
+        509.2661101037065
+      ]
+    },
+    "900:tube": {
+      "T": [
+        290.2246873996828,
+        440.2453340719408
+      ],
+      "p": [
+        -51.512775269128895,
+        99.79677502387611
+      ],
+      "p_rgh": [
+        -51.512775269128895,
+        99.79677502387611
+      ]
+    }
+  },
+  "property_reason": "zero-g p=p_rgh; outlet p=0, negative internal p retained. rhoConst::H=p/rho: pressure is not absent from enthalpy. No predeclared absolute offset/physical coverage evidence. No invented offset or property PASS.",
+  "property_state": "NOT_ESTABLISHED_PRESSURE_REFERENCE_AND_PHYSICAL_COVERAGE",
+  "storage": {
+    "shell": {
+      "energy_J": [
+        602118.099299477,
+        602132.8058680693
+      ],
+      "mean_storage_W_900_1000": 0.1470656859234441,
+      "volume_m3": 0.0005324820161000385
+    },
+    "solid": {
+      "energy_J": [
+        88141.15043754264,
+        88139.9840785469
+      ],
+      "mean_storage_W_900_1000": -0.011663589957461227,
+      "volume_m3": 0.00023443265353600658
+    },
+    "tube": {
+      "energy_J": [
+        40487.30744383046,
+        40484.02823507705
+      ],
+      "mean_storage_W_900_1000": -0.03279208753410785,
+      "volume_m3": 0.0004101834207498482
+    }
+  }
+}

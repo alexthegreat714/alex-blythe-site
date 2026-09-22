@@ -1,0 +1,40 @@
+{
+  "geometry_mask_revision": {
+    "shell": {
+      "basis": "geometry and inlet identity, not results",
+      "cutoff_z_m": 0.11999521810283136,
+      "historical_mask": "x<=0.05 retained separately",
+      "inlet_centroid_z_m": 0.16999521810283136,
+      "inlet_patch": "upper",
+      "predicate": ">="
+    },
+    "tube": {
+      "basis": "geometry and inlet identity, not results",
+      "cutoff_z_m": 0.049999998762768734,
+      "historical_mask": "x<=0.05 retained separately",
+      "inlet_centroid_z_m": -1.2372312684777099e-09,
+      "inlet_patch": "lower",
+      "predicate": "<="
+    }
+  },
+  "missing_independent_decisions": [
+    "Explicit time aggregation for mass gate (ratio of means and max instantaneous disagree on continuation).",
+    "Absolute pressure datum and independently justified physical property coverage.",
+    "Numeric interface-temperature continuity tolerance, absent from frozen case.",
+    "Geometry-backed inlet region replacing x<=0.05 only in a new versioned contract.",
+    "Cadence and aggregation of native field-stationarity checkpoints; endpoint comparisons do not establish an unobserved time history."
+  ],
+  "no_new_CFD": true,
+  "note": "No unsupported tolerance/reference pressure invented. This is an explicit blocked contract checklist, not a frozen acceptance contract.",
+  "numeric_limits_unchanged": {
+    "energy": 0.01,
+    "local_q95": 0.01,
+    "mass": 1e-06,
+    "mesh": 0.01,
+    "stationarity_rms": 0.001,
+    "temperature_span_K": 0.01
+  },
+  "preserve_contract": "69c313e870b569cd0b360e689b52e1e8349c33a11111c3cad5f89bac8ff4404f",
+  "retention_plan_sha256": "56334b76c755031dc3e07bbd31cf220a015eacbf75feace2c8f0ef86f9a63114",
+  "state": "DRAFT_NOT_AUTHORIZED_FOR_EXECUTION"
+}

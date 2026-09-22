@@ -1,0 +1,201 @@
+{
+  "definition": "sum outward native face mass flux per cell [kg/s]; no normalization claimed as a pressure residual",
+  "metrics": {
+    "coarse_tube": {
+      "600": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": 1.552479043419124e-18,
+          "cells": 158018,
+          "integrated_abs_kg_s": 5.753061563333078e-06,
+          "integrated_signed_kg_s": 7.959887337993982e-08,
+          "max_abs_kg_s": 4.066330618808533e-09,
+          "q95_abs_kg_s": 1.611209986123821e-10,
+          "rms_kg_s": 1.1776825043533338e-10
+        },
+        "inlet_50mm": {
+          "cells": 60499,
+          "integrated_abs_kg_s": 4.7016621471658205e-06,
+          "integrated_signed_kg_s": -1.7064365770963534e-07,
+          "max_abs_kg_s": 4.066330618808533e-09,
+          "q95_abs_kg_s": 3.406449297124583e-10,
+          "rms_kg_s": 1.8807819508694897e-10
+        },
+        "rest_of_domain": {
+          "cells": 97519,
+          "integrated_abs_kg_s": 1.0513994161672575e-06,
+          "integrated_signed_kg_s": 2.502425310895752e-07,
+          "max_abs_kg_s": 5.044430184436739e-10,
+          "q95_abs_kg_s": 4.000073814728837e-11,
+          "rms_kg_s": 2.2992269373889696e-11
+        }
+      },
+      "700": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": -7.26259283865638e-18,
+          "cells": 158018,
+          "integrated_abs_kg_s": 5.421069176206474e-06,
+          "integrated_signed_kg_s": 4.159843315675489e-08,
+          "max_abs_kg_s": 5.749449175737229e-09,
+          "q95_abs_kg_s": 1.4414810340027783e-10,
+          "rms_kg_s": 1.203517231651611e-10
+        },
+        "inlet_50mm": {
+          "cells": 60499,
+          "integrated_abs_kg_s": 4.494314759900103e-06,
+          "integrated_signed_kg_s": 7.313646298602918e-09,
+          "max_abs_kg_s": 5.749449175737229e-09,
+          "q95_abs_kg_s": 3.238464304177162e-10,
+          "rms_kg_s": 1.9287786099080983e-10
+        },
+        "rest_of_domain": {
+          "cells": 97519,
+          "integrated_abs_kg_s": 9.267544163063711e-07,
+          "integrated_signed_kg_s": 3.428478685815193e-08,
+          "max_abs_kg_s": 4.83210059584651e-10,
+          "q95_abs_kg_s": 3.571438704882387e-11,
+          "rms_kg_s": 1.9776777488396504e-11
+        }
+      },
+      "800": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": -1.9262720360644866e-19,
+          "cells": 158018,
+          "integrated_abs_kg_s": 5.484192585180387e-06,
+          "integrated_signed_kg_s": 3.356439238022369e-08,
+          "max_abs_kg_s": 3.4510734619073113e-09,
+          "q95_abs_kg_s": 1.4510153680211834e-10,
+          "rms_kg_s": 1.1455348209659801e-10
+        },
+        "inlet_50mm": {
+          "cells": 60499,
+          "integrated_abs_kg_s": 4.4362472772262165e-06,
+          "integrated_signed_kg_s": -3.8827294142887856e-08,
+          "max_abs_kg_s": 3.4510734619073113e-09,
+          "q95_abs_kg_s": 3.168226571365192e-10,
+          "rms_kg_s": 1.8235323503330036e-10
+        },
+        "rest_of_domain": {
+          "cells": 97519,
+          "integrated_abs_kg_s": 1.0479453079541708e-06,
+          "integrated_signed_kg_s": 7.239168652311146e-08,
+          "max_abs_kg_s": 8.100622708967324e-10,
+          "q95_abs_kg_s": 4.4395035561704646e-11,
+          "rms_kg_s": 2.5181181480341743e-11
+        }
+      }
+    },
+    "fine_shell": {
+      "1000": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": -1.0648418448125783e-17,
+          "cells": 409778,
+          "integrated_abs_kg_s": 7.390622862374679e-07,
+          "integrated_signed_kg_s": -1.2726438546426048e-09,
+          "max_abs_kg_s": 3.63944068173974e-10,
+          "q95_abs_kg_s": 8.206896224210261e-12,
+          "rms_kg_s": 8.086760765377498e-12
+        },
+        "inlet_50mm": {
+          "cells": 157487,
+          "integrated_abs_kg_s": 6.906962455791444e-07,
+          "integrated_signed_kg_s": -9.380333513536835e-09,
+          "max_abs_kg_s": 3.63944068173974e-10,
+          "q95_abs_kg_s": 2.1957283165069003e-11,
+          "rms_kg_s": 1.3030633369444232e-11
+        },
+        "rest_of_domain": {
+          "cells": 252291,
+          "integrated_abs_kg_s": 4.836604065832363e-08,
+          "integrated_signed_kg_s": 8.10768965889423e-09,
+          "max_abs_kg_s": 1.8972508880241677e-11,
+          "q95_abs_kg_s": 7.165502480111952e-13,
+          "rms_kg_s": 4.746317986925433e-13
+        }
+      },
+      "900": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": -2.1497431503518126e-19,
+          "cells": 409778,
+          "integrated_abs_kg_s": 7.621272484977891e-07,
+          "integrated_signed_kg_s": -2.3971352747857648e-09,
+          "max_abs_kg_s": 4.4181670750046125e-10,
+          "q95_abs_kg_s": 6.50359359634811e-12,
+          "rms_kg_s": 8.727005479503161e-12
+        },
+        "inlet_50mm": {
+          "cells": 157487,
+          "integrated_abs_kg_s": 6.771086047106072e-07,
+          "integrated_signed_kg_s": 6.613168211942182e-08,
+          "max_abs_kg_s": 4.4181670750046125e-10,
+          "q95_abs_kg_s": 2.048175156309017e-11,
+          "rms_kg_s": 1.40564335706534e-11
+        },
+        "rest_of_domain": {
+          "cells": 252291,
+          "integrated_abs_kg_s": 8.501864378718193e-08,
+          "integrated_signed_kg_s": -6.852881739420757e-08,
+          "max_abs_kg_s": 1.606824536792194e-11,
+          "q95_abs_kg_s": 1.1973929523495828e-12,
+          "rms_kg_s": 6.043397989761881e-13
+        }
+      }
+    },
+    "fine_tube": {
+      "1000": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": 3.888913549301705e-18,
+          "cells": 230349,
+          "integrated_abs_kg_s": 4.54078413166822e-06,
+          "integrated_signed_kg_s": 1.4540411380797555e-07,
+          "max_abs_kg_s": 3.625638678552475e-09,
+          "q95_abs_kg_s": 7.878187665763787e-11,
+          "rms_kg_s": 7.211137469177875e-11
+        },
+        "inlet_50mm": {
+          "cells": 85762,
+          "integrated_abs_kg_s": 3.4274409170624014e-06,
+          "integrated_signed_kg_s": 1.3562925828099782e-07,
+          "max_abs_kg_s": 3.625638678552475e-09,
+          "q95_abs_kg_s": 1.7231271160986294e-10,
+          "rms_kg_s": 1.1216366667353003e-10
+        },
+        "rest_of_domain": {
+          "cells": 144587,
+          "integrated_abs_kg_s": 1.1133432146058183e-06,
+          "integrated_signed_kg_s": 9.774855526977707e-09,
+          "max_abs_kg_s": 1.436545981406683e-09,
+          "q95_abs_kg_s": 2.6277259186540963e-11,
+          "rms_kg_s": 2.8674270572911088e-11
+        }
+      },
+      "900": {
+        "global": {
+          "boundary_minus_cell_sum_kg_s": 6.80617442898432e-18,
+          "cells": 230349,
+          "integrated_abs_kg_s": 5.5572545839207555e-06,
+          "integrated_signed_kg_s": 1.5907442805717602e-07,
+          "max_abs_kg_s": 5.721921614912893e-09,
+          "q95_abs_kg_s": 9.260005431714605e-11,
+          "rms_kg_s": 1.0283583039544009e-10
+        },
+        "inlet_50mm": {
+          "cells": 85762,
+          "integrated_abs_kg_s": 4.421953877626369e-06,
+          "integrated_signed_kg_s": 1.6325851678706935e-07,
+          "max_abs_kg_s": 5.721921614912893e-09,
+          "q95_abs_kg_s": 2.2190910267159094e-10,
+          "rms_kg_s": 1.6524368236599664e-10
+        },
+        "rest_of_domain": {
+          "cells": 144587,
+          "integrated_abs_kg_s": 1.135300706294387e-06,
+          "integrated_signed_kg_s": -4.184088729893434e-09,
+          "max_abs_kg_s": 1.3688569365501396e-09,
+          "q95_abs_kg_s": 2.7511617792664663e-11,
+          "rms_kg_s": 2.5526943480198942e-11
+        }
+      }
+    }
+  },
+  "regions": "predeclared inlet-downstream 50 mm and remaining domain; no region chosen from peaks"
+}

@@ -1,0 +1,46 @@
+{
+  "all_region_internal_storage_closure_W": 0.9449993017821556,
+  "all_region_internal_storage_normalized_closure": 0.00010591660147346882,
+  "derived_storage_method": "solid energy difference: exact constant-Cv model from native T on verified identical meshes. Fluid terms: thermodynamic model reconstruction only; native solved h at 800 remains missing. Small h/T/p mismatch is reported, not ignored.",
+  "duty_mismatch": 7.335758000164575e-05,
+  "frozen_1percent_limit_comparison": "PASS",
+  "historical_qualification": "UNCHANGED",
+  "interval_s": [
+    800,
+    1000
+  ],
+  "limits": "10 s trapezoidal boundary integration; thermal/internal-energy accounting, not a claim of full mechanical-energy closure or retroactive custody PASS",
+  "mean_cold_outward_W": 8922.107475463794,
+  "mean_hot_outward_W": -8921.45297125088,
+  "native_energy_field_custody_at_800": "NOT_ESTABLISHED; no native e/h invented",
+  "solid_storage_closure_W": 0.6834644454597041,
+  "solid_storage_normalized_closure": 7.660347595444941e-05,
+  "storage_W": {
+    "shell": 0.3057531435988842,
+    "solid": 0.0289602325450873,
+    "tube": -0.04421828727643277
+  },
+  "thermo_mapping_verification": {
+    "shell": {
+      "inferred_reference_T_max_K": 298.150000039352,
+      "inferred_reference_T_min_K": 298.1499999443662,
+      "max_T_mapping_discrepancy_K": 5.563379090745002e-08,
+      "model": "h=Cp*(T-Tref)+p/rho; internal e=h-p/rho",
+      "reconstruction_state": "MODEL_RECONSTRUCTION_NOT_NATIVE_SOLVED_ENERGY_CUSTODY"
+    },
+    "solid": {
+      "inferred_reference_T_max_K": 298.15000000000003,
+      "inferred_reference_T_min_K": 298.1499999999999,
+      "max_T_mapping_discrepancy_K": 5.684341886080802e-14,
+      "model": "e=Cv*(T-Tref)",
+      "reconstruction_state": "EXACT_CONSTANT_CV_MODEL"
+    },
+    "tube": {
+      "inferred_reference_T_max_K": 298.15000007321277,
+      "inferred_reference_T_min_K": 298.14999994904315,
+      "max_T_mapping_discrepancy_K": 7.321278872041148e-08,
+      "model": "h=Cp*(T-Tref)+p/rho; internal e=h-p/rho",
+      "reconstruction_state": "MODEL_RECONSTRUCTION_NOT_NATIVE_SOLVED_ENERGY_CUSTODY"
+    }
+  }
+}

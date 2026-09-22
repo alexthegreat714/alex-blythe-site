@@ -1,0 +1,1778 @@
+{
+  "comparisons": {
+    "coarse:shell:600-700": {
+      "mask": {
+        "cells": 281789,
+        "historical_fraction": 0.9925971672806221,
+        "new_geometry_fraction": 0.38332172531436876
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.00959317569626175,
+            "normalized_q95": 1.0234472156877256e-05,
+            "normalized_rms": 1.6414275217771203e-05,
+            "q95_absolute": 0.0059814453125,
+            "reference_rms": 584.4410166752615,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 0.04232201276588038,
+            "normalized_q95": 7.38583472346875e-05,
+            "normalized_rms": 7.443846345307137e-05,
+            "q95_absolute": 0.0419921875,
+            "reference_rms": 568.5503273796304,
+            "samples": 735124
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 2.2136119844661457e-05,
+            "normalized_q95": 6.905596392202713e-05,
+            "normalized_rms": 0.00033940176495586143,
+            "q95_absolute": 4.503898480213872e-06,
+            "reference_rms": 0.06522099214050998,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 1.3767847025562291e-05,
+            "normalized_q95": 6.605898692813412e-05,
+            "normalized_rms": 0.0002601900302319171,
+            "q95_absolute": 3.495483765767301e-06,
+            "reference_rms": 0.05291458328856987,
+            "samples": 735124
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.0035628549791619215,
+            "normalized_q95": 1.6344717376941604e-05,
+            "normalized_rms": 5.804432087504997e-05,
+            "q95_absolute": 0.001003265380859375,
+            "reference_rms": 61.381629166297905,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 0.002206113676564672,
+            "normalized_q95": 3.338331822722551e-06,
+            "normalized_rms": 3.6426835266674734e-05,
+            "q95_absolute": 0.000202178955078125,
+            "reference_rms": 60.562869665017146,
+            "samples": 735124
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:shell:600-800": {
+      "mask": {
+        "cells": 281789,
+        "historical_fraction": 0.9925971672806221,
+        "new_geometry_fraction": 0.38332172531436876
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.008736749147392357,
+            "normalized_q95": 1.5351691097037486e-05,
+            "normalized_rms": 1.4948881314998299e-05,
+            "q95_absolute": 0.00897216796875,
+            "reference_rms": 584.4416691319053,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 0.031396788456895995,
+            "normalized_q95": 5.79700419972287e-05,
+            "normalized_rms": 5.522236743450521e-05,
+            "q95_absolute": 0.032958984375,
+            "reference_rms": 568.5520182403116,
+            "samples": 735124
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 1.6969854598390274e-05,
+            "normalized_q95": 7.854137681722165e-05,
+            "normalized_rms": 0.0002601904840379,
+            "q95_absolute": 5.1225383951839215e-06,
+            "reference_rms": 0.06522088869291008,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 1.0582952085455298e-05,
+            "normalized_q95": 6.66625606247574e-05,
+            "normalized_rms": 0.00020000081755670835,
+            "q95_absolute": 3.527419005602477e-06,
+            "reference_rms": 0.0529145441240739,
+            "samples": 735124
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.001982907119927351,
+            "normalized_q95": 1.6282585894373972e-05,
+            "normalized_rms": 3.2304600948080944e-05,
+            "q95_absolute": 0.00099945068359375,
+            "reference_rms": 61.38156986103076,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 0.0012282931970373705,
+            "normalized_q95": 4.976005406820747e-06,
+            "normalized_rms": 2.028129680452036e-05,
+            "q95_absolute": 0.000301361083984375,
+            "reference_rms": 60.56285300078073,
+            "samples": 735124
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:shell:700-800": {
+      "mask": {
+        "cells": 281789,
+        "historical_fraction": 0.9925971672806221,
+        "new_geometry_fraction": 0.38332172531436876
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.005263372832629889,
+            "normalized_q95": 6.892596002751525e-06,
+            "normalized_rms": 9.005813771711022e-06,
+            "q95_absolute": 0.0040283203125,
+            "reference_rms": 584.4416691319053,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 0.01386511916252844,
+            "normalized_q95": 2.4690943813634447e-05,
+            "normalized_rms": 2.4386720507019695e-05,
+            "q95_absolute": 0.0140380859375,
+            "reference_rms": 568.5520182403116,
+            "samples": 735124
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 1.954814097314644e-05,
+            "normalized_q95": 4.678950228480536e-05,
+            "normalized_rms": 0.0002997220885043145,
+            "q95_absolute": 3.0516529205139523e-06,
+            "reference_rms": 0.06522088869291008,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 1.2113710965306371e-05,
+            "normalized_q95": 3.677142768105241e-05,
+            "normalized_rms": 0.0002289297047878211,
+            "q95_absolute": 1.94574333253424e-06,
+            "reference_rms": 0.0529145441240739,
+            "samples": 735124
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.0029541737176284845,
+            "normalized_q95": 1.6282585894373972e-05,
+            "normalized_rms": 4.8128024817820715e-05,
+            "q95_absolute": 0.00099945068359375,
+            "reference_rms": 61.38156986103076,
+            "samples": 281789
+          },
+          "global": {
+            "delta_rms": 0.0018291920542748948,
+            "normalized_q95": 4.976005406820747e-06,
+            "normalized_rms": 3.020320152769742e-05,
+            "q95_absolute": 0.000301361083984375,
+            "reference_rms": 60.56285300078073,
+            "samples": 735124
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:solid:600-700": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.02601448579603489,
+            "normalized_q95": 5.2858079550736584e-05,
+            "normalized_rms": 5.732631360450276e-05,
+            "q95_absolute": 0.02398681640625,
+            "reference_rms": 453.7965928789734,
+            "samples": 256096
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:solid:600-800": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.022480894250539105,
+            "normalized_q95": 9.919209291011086e-05,
+            "normalized_rms": 4.953915005897104e-05,
+            "q95_absolute": 0.045013427734375,
+            "reference_rms": 453.80056427649674,
+            "samples": 256096
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:solid:700-800": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.01751670057838856,
+            "normalized_q95": 5.7296042819942004e-05,
+            "normalized_rms": 3.859999734975161e-05,
+            "q95_absolute": 0.0260009765625,
+            "reference_rms": 453.80056427649674,
+            "samples": 256096
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:tube:600-700": {
+      "mask": {
+        "cells": 150191,
+        "historical_fraction": 0.9863754487689835,
+        "new_geometry_fraction": 0.37601708451628085
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.016739137457608945,
+            "normalized_q95": 3.3113127852385986e-05,
+            "normalized_rms": 5.537444327248855e-05,
+            "q95_absolute": 0.010009765625,
+            "reference_rms": 302.2899458372592,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.01537801146675111,
+            "normalized_q95": 7.456140004065968e-05,
+            "normalized_rms": 4.774077195862916e-05,
+            "q95_absolute": 0.024017333984375,
+            "reference_rms": 322.11484724372013,
+            "samples": 399426
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.00021285309127597348,
+            "normalized_q95": 0.004285521793299757,
+            "normalized_rms": 0.0020360015385357693,
+            "q95_absolute": 0.0004480284244236985,
+            "reference_rms": 0.10454466131152876,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.00013408750542201185,
+            "normalized_q95": 0.0031869734773455984,
+            "normalized_rms": 0.0015028267185982446,
+            "q95_absolute": 0.0002843530249595105,
+            "reference_rms": 0.08922353040614119,
+            "samples": 399426
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.016389495859175145,
+            "normalized_q95": 0.00035865907129712033,
+            "normalized_rms": 0.00023144273116444802,
+            "q95_absolute": 0.02539825439453125,
+            "reference_rms": 70.81447655199784,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.010322670597655924,
+            "normalized_q95": 0.0002327166717605293,
+            "normalized_rms": 0.00016450820321844183,
+            "q95_absolute": 0.0146026611328125,
+            "reference_rms": 62.748667821439824,
+            "samples": 399426
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:tube:600-800": {
+      "mask": {
+        "cells": 150191,
+        "historical_fraction": 0.9863754487689835,
+        "new_geometry_fraction": 0.37601708451628085
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.018797859404457638,
+            "normalized_q95": 5.300133104934624e-05,
+            "normalized_rms": 6.218502381581892e-05,
+            "q95_absolute": 0.016021728515625,
+            "reference_rms": 302.2891727135714,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.025426118326146926,
+            "normalized_q95": 0.0001459017250963343,
+            "normalized_rms": 7.893501662169927e-05,
+            "q95_absolute": 0.0469970703125,
+            "reference_rms": 322.11456226079105,
+            "samples": 399426
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.00028655895230906273,
+            "normalized_q95": 0.005750706165044408,
+            "normalized_rms": 0.0027401809868554707,
+            "q95_absolute": 0.0006013895949199622,
+            "reference_rms": 0.10457665157289742,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.00018316540134685045,
+            "normalized_q95": 0.004425164389690118,
+            "normalized_rms": 0.002052518278757993,
+            "q95_absolute": 0.00039489880302252323,
+            "reference_rms": 0.08923935208883321,
+            "samples": 399426
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.022828108498891976,
+            "normalized_q95": 0.000496944528076785,
+            "normalized_rms": 0.0003223326603288956,
+            "q95_absolute": 0.03519439697265625,
+            "reference_rms": 70.82158064776641,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.014233604430940494,
+            "normalized_q95": 0.00041750256819922686,
+            "normalized_rms": 0.00022682121834310598,
+            "q95_absolute": 0.0261993408203125,
+            "reference_rms": 62.75252613011595,
+            "samples": 399426
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "coarse:tube:700-800": {
+      "mask": {
+        "cells": 150191,
+        "historical_fraction": 0.9863754487689835,
+        "new_geometry_fraction": 0.37601708451628085
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.020674972751074,
+            "normalized_q95": 2.9781700303918362e-05,
+            "normalized_rms": 6.839468501461743e-05,
+            "q95_absolute": 0.009002685546875,
+            "reference_rms": 302.2891727135714,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.01772538956842017,
+            "normalized_q95": 8.384612124042588e-05,
+            "normalized_rms": 5.50282155640927e-05,
+            "q95_absolute": 0.027008056640625,
+            "reference_rms": 322.11456226079105,
+            "samples": 399426
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.00011583937843838495,
+            "normalized_q95": 0.0017588403930534674,
+            "normalized_rms": 0.0011076982930328058,
+            "q95_absolute": 0.0001839336389566904,
+            "reference_rms": 0.10457665157289742,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 7.572267370232258e-05,
+            "normalized_q95": 0.0015371294102715608,
+            "normalized_rms": 0.0008485345526370982,
+            "q95_absolute": 0.00013717243264932437,
+            "reference_rms": 0.08923935208883321,
+            "samples": 399426
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.014213130519594698,
+            "normalized_q95": 0.0002358143446694304,
+            "normalized_rms": 0.00020068925869198254,
+            "q95_absolute": 0.01670074462890625,
+            "reference_rms": 70.82158064776641,
+            "samples": 150191
+          },
+          "global": {
+            "delta_rms": 0.009045604358189178,
+            "normalized_q95": 0.00021835603159167484,
+            "normalized_rms": 0.0001441472545572639,
+            "q95_absolute": 0.013702392578125,
+            "reference_rms": 62.75252613011595,
+            "samples": 399426
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:shell:800-1000": {
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.013973616148764084,
+            "normalized_q95": 2.9026443351404677e-05,
+            "normalized_rms": 2.386147979132365e-05,
+            "q95_absolute": 0.016998291015625,
+            "reference_rms": 585.6139799781016,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.31557574722480486,
+            "normalized_q95": 0.0003944013593024014,
+            "normalized_rms": 0.000553231156837218,
+            "q95_absolute": 0.2249755859375,
+            "reference_rms": 570.422947667894,
+            "samples": 672466
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 2.773678135420891e-05,
+            "normalized_q95": 8.943715017911653e-05,
+            "normalized_rms": 0.00042270689043065826,
+            "q95_absolute": 5.868602418414186e-06,
+            "reference_rms": 0.06561705517965506,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 2.61329008110742e-05,
+            "normalized_q95": 0.0006734740305835419,
+            "normalized_rms": 0.0004816055573782431,
+            "q95_absolute": 3.654407589456346e-05,
+            "reference_rms": 0.05426204164531673,
+            "samples": 672466
+          }
+        },
+        "h": {
+          "state": "NOT_ESTABLISHED"
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.005195875455690882,
+            "normalized_q95": 2.8424726051936493e-05,
+            "normalized_rms": 8.680806658426023e-05,
+            "q95_absolute": 0.00170135498046875,
+            "reference_rms": 59.85475382806167,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.0032359667646658977,
+            "normalized_q95": 1.4904675419606688e-05,
+            "normalized_rms": 5.4822661266061254e-05,
+            "q95_absolute": 0.0008797645568847656,
+            "reference_rms": 59.02607954329953,
+            "samples": 672466
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:shell:800-900": {
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.011631387657614376,
+            "normalized_q95": 1.8864629358235392e-05,
+            "normalized_rms": 1.9861917409311586e-05,
+            "q95_absolute": 0.01104736328125,
+            "reference_rms": 585.6125276284452,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.2424557415878364,
+            "normalized_q95": 0.0003278507288791399,
+            "normalized_rms": 0.00042504978902828546,
+            "q95_absolute": 0.18701171875,
+            "reference_rms": 570.4172730966862,
+            "samples": 672466
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 2.2626226021760766e-05,
+            "normalized_q95": 7.524425210771472e-05,
+            "normalized_rms": 0.000344822259555359,
+            "q95_absolute": 4.9373072875945765e-06,
+            "reference_rms": 0.06561706906896558,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 2.0875610386212524e-05,
+            "normalized_q95": 0.0005453457619790064,
+            "normalized_rms": 0.00038471830034333835,
+            "q95_absolute": 2.9591588553718404e-05,
+            "reference_rms": 0.05426206751168914,
+            "samples": 672466
+          }
+        },
+        "h": {
+          "state": "NOT_ESTABLISHED"
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.004182572583494974,
+            "normalized_q95": 2.8424875359763524e-05,
+            "normalized_rms": 6.987907034912428e-05,
+            "q95_absolute": 0.00170135498046875,
+            "reference_rms": 59.85443942797659,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.002606238986904142,
+            "normalized_q95": 1.01465174556666e-05,
+            "normalized_rms": 4.4154148458385116e-05,
+            "q95_absolute": 0.000598907470703125,
+            "reference_rms": 59.02591439081876,
+            "samples": 672466
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:shell:900-1000": {
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.009109449442451194,
+            "normalized_q95": 1.0318197097985865e-05,
+            "normalized_rms": 1.555538247702323e-05,
+            "q95_absolute": 0.00604248046875,
+            "reference_rms": 585.6139799781016,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.07629209782913578,
+            "normalized_q95": 7.543487745745877e-05,
+            "normalized_rms": 0.00013374654393033606,
+            "q95_absolute": 0.04302978515625,
+            "reference_rms": 570.422947667894,
+            "samples": 672466
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 2.252445108574648e-05,
+            "normalized_q95": 3.8144792381481365e-05,
+            "normalized_rms": 0.0003432712886013561,
+            "q95_absolute": 2.502948946512149e-06,
+            "reference_rms": 0.06561705517965506,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 1.4623988625570884e-05,
+            "normalized_q95": 0.00014876741130519493,
+            "normalized_rms": 0.00026950678931619333,
+            "q95_absolute": 8.07242346770845e-06,
+            "reference_rms": 0.05426204164531673,
+            "samples": 672466
+          }
+        },
+        "h": {
+          "exploratory_local": {
+            "delta_rms": 38.261841197726035,
+            "normalized_q95": 2.495137175974107e-05,
+            "normalized_rms": 3.182284746455463e-05,
+            "q95_absolute": 30.0,
+            "reference_rms": 1202338.7046160272,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 318.99524073960305,
+            "normalized_q95": 0.00015765373156131132,
+            "normalized_rms": 0.0002793932780716514,
+            "q95_absolute": 180.0,
+            "reference_rms": 1141742.7181544274,
+            "samples": 672466
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.003931337394069874,
+            "normalized_q95": 3.677369267257255e-05,
+            "normalized_rms": 6.56812891648173e-05,
+            "q95_absolute": 0.002201080322265625,
+            "reference_rms": 59.85475382806167,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.0024320094340851603,
+            "normalized_q95": 6.785868483723369e-06,
+            "normalized_rms": 4.120228639445926e-05,
+            "q95_absolute": 0.000400543212890625,
+            "reference_rms": 59.02607954329953,
+            "samples": 672466
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:solid:800-1000": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.04653959375362638,
+            "normalized_q95": 0.00021367144657049285,
+            "normalized_rms": 0.00010253334369614895,
+            "q95_absolute": 0.09698486328125,
+            "reference_rms": 453.89716238596014,
+            "samples": 235344
+          }
+        },
+        "e": {
+          "state": "NOT_ESTABLISHED"
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:solid:800-900": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.03701483802133334,
+            "normalized_q95": 0.00014979820495221677,
+            "normalized_rms": 8.154873167979066e-05,
+            "q95_absolute": 0.0679931640625,
+            "reference_rms": 453.8983900654132,
+            "samples": 235344
+          }
+        },
+        "e": {
+          "state": "NOT_ESTABLISHED"
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:solid:900-1000": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.028161687418104688,
+            "normalized_q95": 7.933678632888029e-05,
+            "normalized_rms": 6.204420241375754e-05,
+            "q95_absolute": 0.0360107421875,
+            "reference_rms": 453.89716238596014,
+            "samples": 235344
+          }
+        },
+        "e": {
+          "global": {
+            "delta_rms": 25.345328237187804,
+            "normalized_q95": 0.00023252421289337097,
+            "normalized_rms": 0.0001785879545114007,
+            "q95_absolute": 33.0,
+            "reference_rms": 141920.70403925146,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:tube:800-1000": {
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.016039095088625364,
+            "normalized_q95": 5.9524657431350964e-05,
+            "normalized_rms": 5.3114293244691964e-05,
+            "q95_absolute": 0.017974853515625,
+            "reference_rms": 301.97323750002545,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.04511221507684939,
+            "normalized_q95": 0.00025775584823907135,
+            "normalized_rms": 0.00014008244420459507,
+            "q95_absolute": 0.0830078125,
+            "reference_rms": 322.04046219354586,
+            "samples": 397335
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.00022836563036526618,
+            "normalized_q95": 0.003629630606597447,
+            "normalized_rms": 0.0021465318271127144,
+            "q95_absolute": 0.00038614982130668625,
+            "reference_rms": 0.1063881874383569,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.00016847117827076562,
+            "normalized_q95": 0.003536642319583393,
+            "normalized_rms": 0.0018532635488699846,
+            "q95_absolute": 0.0003214989573748249,
+            "reference_rms": 0.09090513778976003,
+            "samples": 397335
+          }
+        },
+        "h": {
+          "state": "NOT_ESTABLISHED"
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.028900443533026593,
+            "normalized_q95": 0.0006489730074231456,
+            "normalized_rms": 0.00041219567735206655,
+            "q95_absolute": 0.045501708984375,
+            "reference_rms": 70.11340759001217,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.018858712997752727,
+            "normalized_q95": 0.0006550101662580331,
+            "normalized_rms": 0.00030427377073268745,
+            "q95_absolute": 0.04059715270996089,
+            "reference_rms": 61.97942383380986,
+            "samples": 397335
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:tube:800-900": {
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.011515235496409572,
+            "normalized_q95": 3.9716734577053425e-05,
+            "normalized_rms": 3.813324319971004e-05,
+            "q95_absolute": 0.011993408203125,
+            "reference_rms": 301.97367258017886,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.02884764308562498,
+            "normalized_q95": 0.00016460293262849239,
+            "normalized_rms": 8.957731096733138e-05,
+            "q95_absolute": 0.053009033203125,
+            "reference_rms": 322.04185160398083,
+            "samples": 397335
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.000172364205696102,
+            "normalized_q95": 0.002679807128042732,
+            "normalized_rms": 0.0016205355042401735,
+            "q95_absolute": 0.0002850309825580846,
+            "reference_rms": 0.10636249884381214,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.00012223396695199544,
+            "normalized_q95": 0.002570569184493951,
+            "normalized_rms": 0.0013448369709968013,
+            "q95_absolute": 0.00023364234886579335,
+            "reference_rms": 0.09089128986496771,
+            "samples": 397335
+          }
+        },
+        "h": {
+          "state": "NOT_ESTABLISHED"
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.021915090693557484,
+            "normalized_q95": 0.0004735996112878412,
+            "normalized_rms": 0.00031259040930052854,
+            "q95_absolute": 0.033203125,
+            "reference_rms": 70.10800728850266,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.014158280372521547,
+            "normalized_q95": 0.0004824389394610347,
+            "normalized_rms": 0.00022844808674642465,
+            "q95_absolute": 0.02989959716796875,
+            "reference_rms": 61.97592010580991,
+            "samples": 397335
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "continuation:tube:900-1000": {
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.010775641168456106,
+            "normalized_q95": 2.314286341558467e-05,
+            "normalized_rms": 3.568409325828153e-05,
+            "q95_absolute": 0.006988525390625,
+            "reference_rms": 301.97323750002545,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.017539851763795567,
+            "normalized_q95": 9.618462719215346e-05,
+            "normalized_rms": 5.446474534387589e-05,
+            "q95_absolute": 0.030975341796875,
+            "reference_rms": 322.04046219354586,
+            "samples": 397335
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 9.585179456901382e-05,
+            "normalized_q95": 0.0010765241892997572,
+            "normalized_rms": 0.0009009627560818437,
+            "q95_absolute": 0.00011452945723314779,
+            "reference_rms": 0.1063881874383569,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 6.923675951080424e-05,
+            "normalized_q95": 0.0010635637361361625,
+            "normalized_rms": 0.0007616374739008798,
+            "q95_absolute": 9.668340798164983e-05,
+            "reference_rms": 0.09090513778976003,
+            "samples": 397335
+          }
+        },
+        "h": {
+          "exploratory_local": {
+            "delta_rms": 45.013855930546924,
+            "normalized_q95": 0.0013140724050037939,
+            "normalized_rms": 0.002120094543341114,
+            "q95_absolute": 27.900390625,
+            "reference_rms": 21232.004049974286,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 73.31790300387647,
+            "normalized_q95": 0.0010120305958648105,
+            "normalized_rms": 0.0005796871958169647,
+            "q95_absolute": 128.0,
+            "reference_rms": 126478.38960898228,
+            "samples": 397335
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.012636338614764105,
+            "normalized_q95": 0.0002025048234095362,
+            "normalized_rms": 0.0001802271355666385,
+            "q95_absolute": 0.01419830322265625,
+            "reference_rms": 70.11340759001217,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.008323882204640089,
+            "normalized_q95": 0.0001936293830325939,
+            "normalized_rms": 0.00013430073546600799,
+            "q95_absolute": 0.01200103759765625,
+            "reference_rms": 61.97942383380986,
+            "samples": 397335
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:shell:600-700": {
+      "mask": {
+        "cells": 257108,
+        "historical_fraction": 0.9919995955185839,
+        "new_geometry_fraction": 0.38233605862601233
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.1362718539959169,
+            "normalized_q95": 0.00020157256097221195,
+            "normalized_rms": 0.00023270249924922147,
+            "q95_absolute": 0.1180419921875,
+            "reference_rms": 585.605459484006,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.8218401748634713,
+            "normalized_q95": 0.0016428310798485347,
+            "normalized_rms": 0.001440904691923166,
+            "q95_absolute": 0.93701171875,
+            "reference_rms": 570.3640077447222,
+            "samples": 672466
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 5.436700991816022e-05,
+            "normalized_q95": 0.0016216283004332809,
+            "normalized_rms": 0.0008285453046179643,
+            "q95_absolute": 0.00010640707442531074,
+            "reference_rms": 0.0656174256436447,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 9.876415028302594e-05,
+            "normalized_q95": 0.0032212815848362874,
+            "normalized_rms": 0.0018201151586187021,
+            "q95_absolute": 0.0001747950601049656,
+            "reference_rms": 0.054262583230161504,
+            "samples": 672466
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.00509103709540326,
+            "normalized_q95": 7.017163858493717e-05,
+            "normalized_rms": 8.50590410854059e-05,
+            "q95_absolute": 0.004199981689453125,
+            "reference_rms": 59.85298012343523,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.003850246443943753,
+            "normalized_q95": 6.101012617966636e-05,
+            "normalized_rms": 6.523165230661634e-05,
+            "q95_absolute": 0.00360107421875,
+            "reference_rms": 59.0242053941232,
+            "samples": 672466
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:shell:600-800": {
+      "mask": {
+        "cells": 257108,
+        "historical_fraction": 0.9919995955185839,
+        "new_geometry_fraction": 0.38233605862601233
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.16147439798249777,
+            "normalized_q95": 0.00023742446902863765,
+            "normalized_rms": 0.0002757372049838706,
+            "q95_absolute": 0.1390380859375,
+            "reference_rms": 585.609758363741,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.8743486151080196,
+            "normalized_q95": 0.001835548736672391,
+            "normalized_rms": 0.0015328691372495993,
+            "q95_absolute": 1.0469970703125,
+            "reference_rms": 570.4000386339882,
+            "samples": 672466
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 5.902343553503539e-05,
+            "normalized_q95": 0.0017897725159060252,
+            "normalized_rms": 0.0008995113195040821,
+            "q95_absolute": 0.00011743990367258294,
+            "reference_rms": 0.06561722376943088,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.00011925769307648713,
+            "normalized_q95": 0.003906816872124678,
+            "normalized_rms": 0.0021978034259018146,
+            "q95_absolute": 0.00021199255672772838,
+            "reference_rms": 0.05426222002886935,
+            "samples": 672466
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.006109017976877404,
+            "normalized_q95": 9.190302616516955e-05,
+            "normalized_rms": 0.00010206477362912295,
+            "q95_absolute": 0.00550079345703125,
+            "reference_rms": 59.85432348163529,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.0050677743406698705,
+            "normalized_q95": 8.808769258920856e-05,
+            "normalized_rms": 8.585716982233016e-05,
+            "q95_absolute": 0.005199432373046875,
+            "reference_rms": 59.02563933981223,
+            "samples": 672466
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:shell:700-800": {
+      "mask": {
+        "cells": 257108,
+        "historical_fraction": 0.9919995955185839,
+        "new_geometry_fraction": 0.38233605862601233
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.030426044291666822,
+            "normalized_q95": 4.773503372041969e-05,
+            "normalized_rms": 5.19561770566812e-05,
+            "q95_absolute": 0.0279541015625,
+            "reference_rms": 585.609758363741,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.5064325417322884,
+            "normalized_q95": 0.000769680661238458,
+            "normalized_rms": 0.0008878550270527835,
+            "q95_absolute": 0.43902587890625,
+            "reference_rms": 570.4000386339882,
+            "samples": 672466
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 3.108764099567094e-05,
+            "normalized_q95": 0.0002503522750876974,
+            "normalized_rms": 0.0004737725738734126,
+            "q95_absolute": 1.6427421255615555e-05,
+            "reference_rms": 0.06561722376943088,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 4.290748666478947e-05,
+            "normalized_q95": 0.0013638701601890824,
+            "normalized_rms": 0.0007907432950948417,
+            "q95_absolute": 7.400662272298927e-05,
+            "reference_rms": 0.05426222002886935,
+            "samples": 672466
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.005487565335364841,
+            "normalized_q95": 3.6710224043784785e-05,
+            "normalized_rms": 9.168202088272795e-05,
+            "q95_absolute": 0.002197265625,
+            "reference_rms": 59.85432348163529,
+            "samples": 257108
+          },
+          "global": {
+            "delta_rms": 0.003602954775948129,
+            "normalized_q95": 3.2184644834501736e-05,
+            "normalized_rms": 6.104050402920364e-05,
+            "q95_absolute": 0.00189971923828125,
+            "reference_rms": 59.02563933981223,
+            "samples": 672466
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:solid:600-700": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.10278989248660016,
+            "normalized_q95": 0.0005178052682317818,
+            "normalized_rms": 0.0002264746974115693,
+            "q95_absolute": 0.235015869140625,
+            "reference_rms": 453.86921215221463,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:solid:600-800": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.1184844272569749,
+            "normalized_q95": 0.0005794406571772087,
+            "normalized_rms": 0.0002610439807306673,
+            "q95_absolute": 0.26300048828125,
+            "reference_rms": 453.8868390120877,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:solid:700-800": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.06535591066059186,
+            "normalized_q95": 0.00029079610609090593,
+            "normalized_rms": 0.00014399164074209108,
+            "q95_absolute": 0.131988525390625,
+            "reference_rms": 453.8868390120877,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:tube:600-700": {
+      "mask": {
+        "cells": 156051,
+        "historical_fraction": 0.986459788339814,
+        "new_geometry_fraction": 0.39274415795235756
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.02434082207481467,
+            "normalized_q95": 0.00014239346110004044,
+            "normalized_rms": 8.060541717264905e-05,
+            "q95_absolute": 0.042999267578125,
+            "reference_rms": 301.9750151863735,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.07224606242216808,
+            "normalized_q95": 0.0004875441019044099,
+            "normalized_rms": 0.0002243327316998703,
+            "q95_absolute": 0.157012939453125,
+            "reference_rms": 322.04869024117465,
+            "samples": 397335
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.000720800951051964,
+            "normalized_q95": 0.013918526863072342,
+            "normalized_rms": 0.006785304688183554,
+            "q95_absolute": 0.001478561075911033,
+            "reference_rms": 0.10622971026005974,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.00048012208028026056,
+            "normalized_q95": 0.011809197306858542,
+            "normalized_rms": 0.005286461536691318,
+            "q95_absolute": 0.0010725239062190574,
+            "reference_rms": 0.09082106754166579,
+            "samples": 397335
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.03952535269470283,
+            "normalized_q95": 0.001060243765323621,
+            "normalized_rms": 0.0005640552389688689,
+            "q95_absolute": 0.0742950439453125,
+            "reference_rms": 70.07354947532771,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.02568379420008174,
+            "normalized_q95": 0.0007617260683951865,
+            "normalized_rms": 0.00041453195114354933,
+            "q95_absolute": 0.0471954345703125,
+            "reference_rms": 61.95853933388993,
+            "samples": 397335
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:tube:600-800": {
+      "mask": {
+        "cells": 156051,
+        "historical_fraction": 0.986459788339814,
+        "new_geometry_fraction": 0.39274415795235756
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.029527993424268616,
+            "normalized_q95": 0.0001787755568020658,
+            "normalized_rms": 9.778318451278637e-05,
+            "q95_absolute": 0.053985595703125,
+            "reference_rms": 301.9741438305015,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.10398845163353244,
+            "normalized_q95": 0.0006955539758979285,
+            "normalized_rms": 0.00032290132283257144,
+            "q95_absolute": 0.2239990234375,
+            "reference_rms": 322.0440558165561,
+            "samples": 397335
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.0009822998183217715,
+            "normalized_q95": 0.018961729031097115,
+            "normalized_rms": 0.009240324205275376,
+            "q95_absolute": 0.00201574128445402,
+            "reference_rms": 0.10630577418062546,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.0006565482215539419,
+            "normalized_q95": 0.0159991707921438,
+            "normalized_rms": 0.007225815764672532,
+            "q95_absolute": 0.001453708130959498,
+            "reference_rms": 0.09086146712511652,
+            "samples": 397335
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.06062152463201484,
+            "normalized_q95": 0.001543686615240926,
+            "normalized_rms": 0.0008648851462463897,
+            "q95_absolute": 0.1082000732421875,
+            "reference_rms": 70.09199417415465,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.03910577382792981,
+            "normalized_q95": 0.0012038768367267476,
+            "normalized_rms": 0.0006310777028040948,
+            "q95_absolute": 0.0746002197265625,
+            "reference_rms": 61.966654271208505,
+            "samples": 397335
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "fine:tube:700-800": {
+      "mask": {
+        "cells": 156051,
+        "historical_fraction": 0.986459788339814,
+        "new_geometry_fraction": 0.39274415795235756
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.016360961393387743,
+            "normalized_q95": 6.285946655222437e-05,
+            "normalized_rms": 5.418000755247169e-05,
+            "q95_absolute": 0.01898193359375,
+            "reference_rms": 301.9741438305015,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.041321675227529775,
+            "normalized_q95": 0.0002546258219669937,
+            "normalized_rms": 0.00012831062856526553,
+            "q95_absolute": 0.082000732421875,
+            "reference_rms": 322.0440558165561,
+            "samples": 397335
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.000316958222399035,
+            "normalized_q95": 0.005874577195824704,
+            "normalized_rms": 0.0029815710843748462,
+            "q95_absolute": 0.000624501476785993,
+            "reference_rms": 0.10630577418062546,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.0002172057018499213,
+            "normalized_q95": 0.005012641730925526,
+            "normalized_rms": 0.0023905150194287353,
+            "q95_absolute": 0.0004554559818444768,
+            "reference_rms": 0.09086146712511652,
+            "samples": 397335
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.027888221988936694,
+            "normalized_q95": 0.0006049788610569079,
+            "normalized_rms": 0.0003978802760218805,
+            "q95_absolute": 0.0424041748046875,
+            "reference_rms": 70.09199417415465,
+            "samples": 156051
+          },
+          "global": {
+            "delta_rms": 0.017767903342558806,
+            "normalized_q95": 0.0005728818696348493,
+            "normalized_rms": 0.0002867333011847678,
+            "q95_absolute": 0.03549957275390625,
+            "reference_rms": 61.966654271208505,
+            "samples": 397335
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:shell:600-700": {
+      "mask": {
+        "cells": 278231,
+        "historical_fraction": 0.9925078886068142,
+        "new_geometry_fraction": 0.3830462412784775
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.01759654057782417,
+            "normalized_q95": 1.7133449329555026e-05,
+            "normalized_rms": 3.0119530033013072e-05,
+            "q95_absolute": 0.010009765625,
+            "reference_rms": 584.223610346415,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 0.11222844125776779,
+            "normalized_q95": 0.00026260553682912034,
+            "normalized_rms": 0.0001977338804620954,
+            "q95_absolute": 0.1490478515625,
+            "reference_rms": 567.5731493029665,
+            "samples": 726364
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 2.9818127540193384e-05,
+            "normalized_q95": 0.00011233171724347125,
+            "normalized_rms": 0.00045710438653926257,
+            "q95_absolute": 7.3276948771679794e-06,
+            "reference_rms": 0.06523264361111569,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 1.9126886757271758e-05,
+            "normalized_q95": 0.0002159741212539689,
+            "normalized_rms": 0.0003603677908149981,
+            "q95_absolute": 1.1463045990829485e-05,
+            "reference_rms": 0.05307601634989327,
+            "samples": 726364
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.0050718437062428155,
+            "normalized_q95": 3.311453942660478e-05,
+            "normalized_rms": 8.402203887241671e-05,
+            "q95_absolute": 0.0019989013671875,
+            "reference_rms": 60.36325438310487,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 0.003139668818214058,
+            "normalized_q95": 3.3947913141279246e-06,
+            "normalized_rms": 5.271824868811275e-05,
+            "q95_absolute": 0.000202178955078125,
+            "reference_rms": 59.555635787309654,
+            "samples": 726364
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:shell:600-800": {
+      "mask": {
+        "cells": 278231,
+        "historical_fraction": 0.9925078886068142,
+        "new_geometry_fraction": 0.3830462412784775
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.020046028794948458,
+            "normalized_q95": 1.8804965753185164e-05,
+            "normalized_rms": 3.4312181530293536e-05,
+            "q95_absolute": 0.010986328125,
+            "reference_rms": 584.2248408848683,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 0.13875224375315484,
+            "normalized_q95": 0.0003224495226365717,
+            "normalized_rms": 0.000244465534299251,
+            "q95_absolute": 0.183013916015625,
+            "reference_rms": 567.5738469673512,
+            "samples": 726364
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 2.37571852848328e-05,
+            "normalized_q95": 0.00012267394898038807,
+            "normalized_rms": 0.00036419138197717524,
+            "q95_absolute": 8.002352278978026e-06,
+            "reference_rms": 0.06523269484263008,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 1.5854521967334173e-05,
+            "normalized_q95": 0.0002387228370749722,
+            "normalized_rms": 0.000298713367813406,
+            "q95_absolute": 1.2670462297066384e-05,
+            "reference_rms": 0.05307603768585892,
+            "samples": 726364
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.0033854359986423845,
+            "normalized_q95": 2.4835880511849334e-05,
+            "normalized_rms": 5.60843306715018e-05,
+            "q95_absolute": 0.001499176025390625,
+            "reference_rms": 60.36331285598511,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 0.0020971878302793886,
+            "normalized_q95": 5.0601569135437004e-06,
+            "normalized_rms": 3.5213901403865995e-05,
+            "q95_absolute": 0.000301361083984375,
+            "reference_rms": 59.55567962285334,
+            "samples": 726364
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:shell:700-800": {
+      "mask": {
+        "cells": 278231,
+        "historical_fraction": 0.9925078886068142,
+        "new_geometry_fraction": 0.3830462412784775
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.00519318175384882,
+            "normalized_q95": 1.02382591322897e-05,
+            "normalized_rms": 8.889012226839267e-06,
+            "q95_absolute": 0.0059814453125,
+            "reference_rms": 584.2248408848683,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 0.06593642806595201,
+            "normalized_q95": 0.00014625024204960397,
+            "normalized_rms": 0.00011617242129506525,
+            "q95_absolute": 0.0830078125,
+            "reference_rms": 567.5738469673512,
+            "samples": 726364
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 1.6033967161218355e-05,
+            "normalized_q95": 0.00010610252204061594,
+            "normalized_rms": 0.0002457964859477188,
+            "q95_absolute": 6.921353442308932e-06,
+            "reference_rms": 0.06523269484263008,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 1.0248752419187754e-05,
+            "normalized_q95": 0.0001291406665185617,
+            "normalized_rms": 0.0001930956579661623,
+            "q95_absolute": 6.854274882916119e-06,
+            "reference_rms": 0.05307603768585892,
+            "samples": 726364
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.00230729449583566,
+            "normalized_q95": 1.1564799322311522e-05,
+            "normalized_rms": 3.822345704153791e-05,
+            "q95_absolute": 0.000698089599609375,
+            "reference_rms": 60.36331285598511,
+            "samples": 278231
+          },
+          "global": {
+            "delta_rms": 0.0014288571460397675,
+            "normalized_q95": 3.330736196256613e-06,
+            "normalized_rms": 2.3991954337323544e-05,
+            "q95_absolute": 0.0001983642578125,
+            "reference_rms": 59.55567962285334,
+            "samples": 726364
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:solid:600-700": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.015494462287072843,
+            "normalized_q95": 5.977147634980689e-05,
+            "normalized_rms": 3.4329554078270525e-05,
+            "q95_absolute": 0.0269775390625,
+            "reference_rms": 451.3447000140421,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:solid:600-800": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.022471965493618722,
+            "normalized_q95": 9.749963898161675e-05,
+            "normalized_rms": 4.9788465517519415e-05,
+            "q95_absolute": 0.04400634765625,
+            "reference_rms": 451.3488266817815,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:solid:700-800": {
+      "metrics": {
+        "T": {
+          "global": {
+            "delta_rms": 0.017041453412931677,
+            "normalized_q95": 5.7607276291496164e-05,
+            "normalized_rms": 3.7756724744842565e-05,
+            "q95_absolute": 0.0260009765625,
+            "reference_rms": 451.3488266817815,
+            "samples": 235344
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:tube:600-700": {
+      "mask": {
+        "cells": 151762,
+        "historical_fraction": 0.9864528463461022,
+        "new_geometry_fraction": 0.377791828890637
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.014080646910450271,
+            "normalized_q95": 3.969055352295978e-05,
+            "normalized_rms": 4.6597986191406886e-05,
+            "q95_absolute": 0.011993408203125,
+            "reference_rms": 302.172863278089,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.018875770303404822,
+            "normalized_q95": 0.00011193997217540714,
+            "normalized_rms": 5.867563605189892e-05,
+            "q95_absolute": 0.0360107421875,
+            "reference_rms": 321.696901363099,
+            "samples": 401708
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.00022000955623507643,
+            "normalized_q95": 0.004347961218437105,
+            "normalized_rms": 0.0020950002119808956,
+            "q95_absolute": 0.0004566075997153135,
+            "reference_rms": 0.10501648399693943,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.00014320867055430753,
+            "normalized_q95": 0.0032054552807486737,
+            "normalized_rms": 0.001586012990359129,
+            "q95_absolute": 0.00028943583190535997,
+            "reference_rms": 0.09029476519097114,
+            "samples": 401708
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.01660177792864326,
+            "normalized_q95": 0.0003632959005337097,
+            "normalized_rms": 0.00023654761754198444,
+            "q95_absolute": 0.0254974365234375,
+            "reference_rms": 70.1836615441567,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.010931449145643955,
+            "normalized_q95": 0.0002546031904061696,
+            "normalized_rms": 0.00017614544113547296,
+            "q95_absolute": 0.01580047607421875,
+            "reference_rms": 62.059222624084875,
+            "samples": 401708
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:tube:600-800": {
+      "mask": {
+        "cells": 151762,
+        "historical_fraction": 0.9864528463461022,
+        "new_geometry_fraction": 0.377791828890637
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.01237876149838519,
+            "normalized_q95": 5.292088482365751e-05,
+            "normalized_rms": 4.096594148347739e-05,
+            "q95_absolute": 0.0159912109375,
+            "reference_rms": 302.1720251047534,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.027630827935713358,
+            "normalized_q95": 0.00017094603449554048,
+            "normalized_rms": 8.589108273668067e-05,
+            "q95_absolute": 0.05499267578125,
+            "reference_rms": 321.6961185647428,
+            "samples": 401708
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.0003265801265477398,
+            "normalized_q95": 0.006428617125248279,
+            "normalized_rms": 0.0031088629677093107,
+            "q95_absolute": 0.0006753139704441475,
+            "reference_rms": 0.10504809312594834,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.00021161088480720476,
+            "normalized_q95": 0.005012004361522554,
+            "normalized_rms": 0.002343148159340224,
+            "q95_absolute": 0.0004526366262293869,
+            "reference_rms": 0.09031050126458476,
+            "samples": 401708
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.024928413521894233,
+            "normalized_q95": 0.0005556340759662801,
+            "normalized_rms": 0.0003551459296581628,
+            "q95_absolute": 0.039001083374023304,
+            "reference_rms": 70.19202936068697,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.015624474957785996,
+            "normalized_q95": 0.00047045086374949204,
+            "normalized_rms": 0.00025175097813293003,
+            "q95_absolute": 0.02919769287109375,
+            "reference_rms": 62.0632145053114,
+            "samples": 401708
+          }
+        }
+      },
+      "topology_correspondence": true
+    },
+    "medium:tube:700-800": {
+      "mask": {
+        "cells": 151762,
+        "historical_fraction": 0.9864528463461022,
+        "new_geometry_fraction": 0.377791828890637
+      },
+      "metrics": {
+        "T": {
+          "exploratory_local": {
+            "delta_rms": 0.012342417204556594,
+            "normalized_q95": 2.9793246227059095e-05,
+            "normalized_rms": 4.0845664651709144e-05,
+            "q95_absolute": 0.009002685546875,
+            "reference_rms": 302.1720251047534,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.014302655529230917,
+            "normalized_q95": 7.769411889669681e-05,
+            "normalized_rms": 4.446014329623453e-05,
+            "q95_absolute": 0.024993896484375,
+            "reference_rms": 321.6961185647428,
+            "samples": 401708
+          }
+        },
+        "U": {
+          "exploratory_local": {
+            "delta_rms": 0.00014062585702153687,
+            "normalized_q95": 0.002426952406532256,
+            "normalized_rms": 0.001338680720771697,
+            "q95_absolute": 0.00025494672241364484,
+            "reference_rms": 0.10504809312594834,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 9.182237202252055e-05,
+            "normalized_q95": 0.002048591526593595,
+            "normalized_rms": 0.0010167408079543975,
+            "q95_absolute": 0.00018500932765304847,
+            "reference_rms": 0.09031050126458476,
+            "samples": 401708
+          }
+        },
+        "p_rgh": {
+          "exploratory_local": {
+            "delta_rms": 0.01514775221305847,
+            "normalized_q95": 0.0002707546989371978,
+            "normalized_rms": 0.00021580444889576588,
+            "q95_absolute": 0.01900482177734375,
+            "reference_rms": 70.19202936068697,
+            "samples": 151762
+          },
+          "global": {
+            "delta_rms": 0.010092871432774549,
+            "normalized_q95": 0.0002657733910181348,
+            "normalized_rms": 0.00016262244089710815,
+            "q95_absolute": 0.0164947509765625,
+            "reference_rms": 62.0632145053114,
+            "samples": 401708
+          }
+        }
+      },
+      "topology_correspondence": true
+    }
+  },
+  "limits": {
+    "global_rms": 0.001,
+    "local_q95": 0.01,
+    "local_rms": 0.001
+  },
+  "mask_revision": {
+    "shell": {
+      "basis": "geometry and inlet identity, not results",
+      "cutoff_z_m": 0.11999521810283136,
+      "historical_mask": "x<=0.05 retained separately",
+      "inlet_centroid_z_m": 0.16999521810283136,
+      "inlet_patch": "upper",
+      "predicate": ">="
+    },
+    "tube": {
+      "basis": "geometry and inlet identity, not results",
+      "cutoff_z_m": 0.049999998762768734,
+      "historical_mask": "x<=0.05 retained separately",
+      "inlet_centroid_z_m": -1.2372312684777099e-09,
+      "inlet_patch": "lower",
+      "predicate": "<="
+    }
+  },
+  "status": "diagnostic; revised masks cannot retroactively replace the frozen mask"
+}
