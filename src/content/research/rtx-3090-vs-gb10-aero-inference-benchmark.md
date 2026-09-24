@@ -34,15 +34,17 @@ The headline comparison uses the same Gemma 3 12B Q4_K_M model digest, matching 
 
 “Overnight” describes the supplied campaign history, not an overnight simulation execution. A completed response is not automatically a correct or accepted engineering decision. Generated token counts can differ and are retained in the downloads.
 
-![Median response and mocked-loop wall time, in seconds, for the same 12B model on both endpoints.](/demos/aero/hardware-benchmark-2026-09-24/charts/task_wall_time.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Model response and mocked-loop time chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/task_wall_time.svg" alt="Median model response and mocked-loop time in seconds, n=5 for each endpoint." /></figure>
+
+Charts can be scrolled horizontally on small screens. Download any SVG for full-size inspection.
 
 ## Time to first token matters too
 
 GB10 was not slower on every metric. On the short interactive task its median TTFT was **2.37 s**, versus **3.06 s** on the workstation. On the large-context task, TTFT was **18.75 s versus 15.63 s**. That is why decode tokens per second alone is not a sufficient user-experience metric.
 
-![Time to first token versus configured context length.](/demos/aero/hardware-benchmark-2026-09-24/charts/ttft_vs_context.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Time to first token chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/ttft_vs_context.svg" alt="Time to first token versus configured context length; five-repeat medians." /></figure>
 
-![Measured prefill throughput versus configured context length.](/demos/aero/hardware-benchmark-2026-09-24/charts/prefill_vs_context.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Fresh-prompt prefill chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/prefill_vs_context.svg" alt="Measured fresh-prompt prefill throughput versus configured context length." /></figure>
 
 ## Context capacity: report the stop, not an invented OOM
 
@@ -59,9 +61,9 @@ The context ladder uses short outputs, approximately 70 tokens. It is distinct f
 
 The 3090's 64k warm-up succeeded. The predeclared **10,000 MiB free-VRAM reserve** then stopped measured repeats at approximately **9,547 MiB free**. This was a preventive safety stop, **not an out-of-memory failure** and not proof that a 3090 cannot run 64k. Background allocations and the conservative reserve limit the capacity conclusion.
 
-![GPU-memory counters versus configured context. Dedicated framebuffer counters are not equivalent to unified memory.](/demos/aero/hardware-benchmark-2026-09-24/charts/gpu_memory_vs_context.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Dedicated GPU memory chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/gpu_memory_vs_context.svg" alt="3090 dedicated GPU-memory counters versus context; an equivalent GB10 counter is unavailable." /></figure>
 
-![Host and unified-memory counters versus context; these include other system allocations.](/demos/aero/hardware-benchmark-2026-09-24/charts/host_memory_vs_context.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Host and unified memory chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/host_memory_vs_context.svg" alt="Host and unified-memory counters versus context, including other system allocations." /></figure>
 
 ## What ran, and what was held constant
 
@@ -101,11 +103,11 @@ The GB10 executed one Qwen2.5 72B Q4 warm-up with full reported GPU residency: *
 
 ## Decode speed and energy are supporting measurements
 
-![Measured decode throughput for the same model. This is not the total workflow speed.](/demos/aero/hardware-benchmark-2026-09-24/charts/decode_tokens_per_second.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Decode throughput chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/decode_tokens_per_second.svg" alt="Measured decode throughput for the same model; not total workflow speed." /></figure>
 
 At 55 tokens/s, generating 500 tokens takes about 9.1 seconds and 1,000 tokens about 18.2 seconds, before prefill and tools. That rate was **not reproduced on GB10 for the tested 12B large-context workload**, which decoded around 20 tokens/s. Whether 55 tokens/s is “enough” depends on the full workload; actual retrieval, simulations and human review were not timed here.
 
-![Observed GPU or SoC energy per task, not whole-system wall energy.](/demos/aero/hardware-benchmark-2026-09-24/charts/gpu_energy_per_task.svg)
+<figure class="benchmark-chart" tabindex="0" aria-label="Observed device energy chart"><img src="/demos/aero/hardware-benchmark-2026-09-24/charts/gpu_energy_per_task.svg" alt="Observed GPU or SoC energy per task; not whole-system wall energy." /></figure>
 
 Energy estimates integrate available sampled NVIDIA device power. They are not wall-meter measurements; GPU and SoC domains differ, short samples can be weak, and background work can contribute. Missing telemetry is unavailable, not zero. Do not use this chart alone for electricity-cost comparisons.
 

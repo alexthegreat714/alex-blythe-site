@@ -15,7 +15,7 @@ One warm-up precedes measured repetitions; medians are the primary reported stat
 Agent loops contain four sequential model calls and mocked deterministic tools.
 No CFD/FEA execution or production end-to-end engineering decision was measured.
 
-Charts are retained primary-suite SVGs. Device power is not whole-system wall power.
+Charts are rendered from the public primary-suite aggregates. Device power is not whole-system wall power.
 GPU-memory and host/unified-memory counters are not interchangeable or isolated model memory.
 Model labels and selected statistical fields are preserved; all other source keys are excluded.
 The export script is versioned with the public website source.

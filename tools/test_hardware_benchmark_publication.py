@@ -55,4 +55,13 @@ class PublicationTests(unittest.TestCase):
         for file in (BASE/'charts').glob('*.svg'):
             self.assertFalse(re.search(r'<script|foreignObject',file.read_text(),re.I))
 
+    def test_chart_claim_and_mobile_inspection(self):
+        chart=(BASE/'charts/task_wall_time.svg').read_text()
+        self.assertIn('Model response and mocked-loop time',chart)
+        self.assertNotIn('end-to-end',chart)
+        for value in ['5.125','7.436','15.250','27.932','15.440','30.596','33.882','70.298']:
+            self.assertIn(value,chart)
+        report=(ROOT/f'src/content/research/{SLUG}.md').read_text(encoding='utf-8')
+        self.assertEqual(report.count('class="benchmark-chart" tabindex="0"'),7)
+
 if __name__=='__main__': unittest.main()
