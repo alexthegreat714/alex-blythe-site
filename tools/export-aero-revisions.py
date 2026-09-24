@@ -1,6 +1,7 @@
 """Explicit source-only release allowlist. Never walk the private runtime tree."""
 from pathlib import Path
 import hashlib
+import io
 import json
 import re
 import zipfile
@@ -102,11 +103,16 @@ def archive(revision, paths, extra=None):
         'files': records, 'generated_files': {p:sha(d) for p,d in payload.items() if not p.startswith('Aero/')},
         'private_runtime_published': False})
     path = DEST / ('aero-rev-'+revision+'.zip')
-    with zipfile.ZipFile(path, 'w', compression=zipfile.ZIP_DEFLATED) as z:
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, 'w', compression=zipfile.ZIP_DEFLATED) as z:
         for name,data in sorted(payload.items()):
             info = zipfile.ZipInfo(name, (2026,9,24,0,0,0))
             info.compress_type = zipfile.ZIP_DEFLATED
             z.writestr(info,data)
+    data = buffer.getvalue()
+    if path.exists() and path.read_bytes()!=data:
+        raise RuntimeError('Frozen release would change; create a new version instead: '+path.name)
+    path.write_bytes(data)
     return {'revision': revision, 'file': path.name, 'sha256': sha(path.read_bytes()),
             'bytes': path.stat().st_size, 'entries': len(payload)}
 

@@ -1,5 +1,6 @@
 """Verify public custody and execute tests outside the Engineering repository."""
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -42,3 +43,16 @@ def test_public_page_labels_scope_and_navigation():
     assert 'Partial snapshot' in article and 'not complete one-click' in article
     assert 'No stable release yet' in article
     assert '/software/notes/aero-source-revisions/' in (SITE/'src/pages/software/[slug].astro').read_text(encoding='utf8')
+
+def test_export_cannot_rewrite_a_published_revision(tmp_path,monkeypatch):
+    spec=importlib.util.spec_from_file_location('export_revisions',SITE/'tools/export-aero-revisions.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    destination=tmp_path/'release';destination.mkdir()
+    monkeypatch.setattr(module,'ROOT',tmp_path);monkeypatch.setattr(module,'DEST',destination)
+    source=tmp_path/'example.py';source.write_text('original = True\n')
+    module.archive('test',['example.py'])
+    before=(destination/'aero-rev-test.zip').read_bytes()
+    source.write_text('original = False\n')
+    with pytest.raises(RuntimeError,match='Frozen release would change'):
+        module.archive('test',['example.py'])
+    assert (destination/'aero-rev-test.zip').read_bytes()==before
