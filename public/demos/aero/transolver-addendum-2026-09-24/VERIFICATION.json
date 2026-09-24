@@ -1,0 +1,7 @@
+{
+  "checked": 9,
+  "missing": 0,
+  "mismatch": 0,
+  "manifest_sha256": "cec651f1d241c13d93ef79892769b8e5648b2526582b2f691f6ee58883b53b4c",
+  "scope": "All public payloads; manifest and verification envelopes excluded from self-hashing"
+}

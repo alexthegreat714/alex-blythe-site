@@ -1,0 +1,9 @@
+{
+  "revision": "2.3-transolver-addendum-20260924",
+  "file": "aero-rev-2.3-transolver-addendum.zip",
+  "sha256": "3149290016f6d1ec3e7ffb26ba3c033ffda6c2f00a8b243324de47679d90a58f",
+  "bytes": 192202,
+  "runtime_deployed": false,
+  "model_validation": "NOT_ESTABLISHED",
+  "base_archive_sha256": "9125c185e78d56bbad3f565cc87480a7a5762d4e3ec1e2f6d956b53fc971507d"
+}

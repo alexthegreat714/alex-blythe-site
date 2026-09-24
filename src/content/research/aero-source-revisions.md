@@ -23,13 +23,19 @@ private engineering corpus, conversations, machine credentials or employer data.
 | 2.2 | Cumulative Routing Lab and Engineering Validity Gate modules, deterministic checks, engineering contracts, hypotheses, approval controls and synthetic regression tests. | [Rev 2.2 cumulative source](/demos/aero/source-revisions-2026-09-24/aero-rev-2.2.zip) |
 | 2.3 | Cumulative modules plus controlled Physics-AI witnesses, isolated DoMINO reference adapter, provenance, applicability checks and tests. **Research-only model; not validated engineering inference.** | [Rev 2.3 cumulative source](/demos/aero/source-rev-2-3-2026-09-24/aero-rev-2.3.zip) |
 
-**Latest source: [Rev 2.3 workflow addendum](/demos/aero/physics-ai-workflow-addendum-2026-09-24/aero-rev-2.3-workflow-addendum.zip)**
+**Latest source: [Rev 2.3 Transolver addendum](/demos/aero/transolver-addendum-2026-09-24/aero-rev-2.3-transolver-addendum.zip)**
 (cumulative; preserves the original Rev 2.3 archive). These are source module
 packages, not complete one-click installations of the private Aero application.
 The application shell, personal integrations, solver installations and model
 weights are excluded. Public availability is not evidence of engineering qualification.
 
 ## Pull and verify
+
+**Latest research update:** [Transolver reference execution and checkpoint audit](/software/notes/aero-transolver-reference-audit/).
+The NVIDIA adapter executed; checkpoint-specific accuracy remains unestablished.
+[New archive identity](/demos/aero/transolver-addendum-2026-09-24/release.json) ·
+[Manifest](/demos/aero/transolver-addendum-2026-09-24/SHA256_MANIFEST.json) ·
+[Verification](/demos/aero/transolver-addendum-2026-09-24/VERIFICATION.json).
 
 **Rev 2.3:** [Release and archive hash](/demos/aero/source-rev-2-3-2026-09-24/release.json) ·
 [SHA-256 manifest](/demos/aero/source-rev-2-3-2026-09-24/SHA256_MANIFEST.json) ·
@@ -119,7 +125,7 @@ No neural result can satisfy a required engineering qualification gate.
 
 The software tests and actual model execution are separate evidence. See the
 [Rev 2.3 test record](/demos/aero/source-rev-2-3-2026-09-24/TEST_RECORD.json).
-Transolver remains a stub; PDEBench/RealPDEBench execution, PFEM warm starts,
+At the original release, Transolver remained a stub; PDEBench/RealPDEBench execution, PFEM warm starts,
 autonomous surrogate screening and training are not implemented. This is a
 bounded source release, not a claim that every planned Physics-AI feature is done.
 
@@ -145,12 +151,28 @@ limits. Native-field correspondence and model validation remain unestablished.
 [SHA-256 manifest](/demos/aero/physics-ai-workflow-addendum-2026-09-24/SHA256_MANIFEST.json) ·
 [Verification](/demos/aero/physics-ai-workflow-addendum-2026-09-24/VERIFICATION.json).
 
-**The original multi-model milestone is not fully complete.** Transolver remains
-blocked pending approved weights, matching reference data and verified usage terms.
+**The original multi-model milestone is not fully complete.** At the workflow-addendum
+milestone, Transolver was blocked pending weights, reference data and usage review.
 PDEBench/RealPDEBench dataset reproduction and PFEM execution are still future work.
 No private service was restarted, no additional model downloaded and no CFD run
 launched. This addendum does not silently promote the private application or
 rewrite any historical release.
+
+### September 24 Transolver addendum
+
+The NVIDIA Transolver adapter now executes a pinned 200,000-cell automotive
+reference, retaining exact native sample IDs. **125 extracted-package tests pass.**
+The 2.404-second inference phase is one execution, not a performance benchmark.
+Pressure discrepancy is 56.2% after dimensional conversion; shear discrepancy is
+82.8% with a conditional units caveat. Checkpoint training/preprocessing compatibility
+and held-out status remain **NOT_ESTABLISHED**. Authority stays **RESEARCH_ONLY**.
+
+The source audit found eight-versus-twenty-layer documentation disagreement and
+different legacy/modern coordinate conventions. No inputs were tuned to improve
+the answer. The checkpoint-recipe inquiry is prepared but requires GitHub sign-in
+before it can be posted. Earlier archives and historical results remain unchanged.
+
+[Full report, results, source download and next-step status](/software/notes/aero-transolver-reference-audit/).
 
 These are Aero **source revisions**, not the public presentation's revision
 numbers, the V2/V2.1 convergence contracts, or the benchmark report's release

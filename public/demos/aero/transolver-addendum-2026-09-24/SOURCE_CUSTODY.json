@@ -1,0 +1,32 @@
+{
+  "source-revisions-2026-09-24": {
+    "checked": 6,
+    "missing": 0,
+    "mismatch": 0,
+    "manifest_sha256": "e719fa616bd244605f0315056278580616736786aa110be2a761b7560b5d5700"
+  },
+  "source-rev-2-3-2026-09-24": {
+    "checked": 8,
+    "missing": 0,
+    "mismatch": 0,
+    "manifest_sha256": "2945110f73deedb6cb2467fdb1df843035471db7a26439854b61c2cee88c5587"
+  },
+  "physics-ai-workflow-addendum-2026-09-24": {
+    "checked": 10,
+    "missing": 0,
+    "mismatch": 0,
+    "manifest_sha256": "880680c46a2b7da823f6961cb4ce8cff04bc6959ba3e9df3bb5e04f36752218c"
+  },
+  "reference": {
+    "checked": 91,
+    "missing": 0,
+    "mismatch": 0,
+    "manifest_sha256": "e178fae452f72dadf5a0c1b4d9468cfbceb7dd4fb959f19217e7a0f963150f09"
+  },
+  "audit": {
+    "checked": 36,
+    "missing": 0,
+    "mismatch": 0,
+    "manifest_sha256": "5e9eea972b79cbd6780b3a034604db481489eed14f16726273f19c22f7948ac6"
+  }
+}

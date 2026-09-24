@@ -8,7 +8,7 @@ import zipfile
 import argparse
 
 SITE = Path(__file__).resolve().parents[1]
-ROOT = SITE.parents[1]
+ROOT = SITE.parent.parent
 DEST = SITE / 'public/demos/aero/source-revisions-2026-09-24'
 BASELINE = 'Aero/revisions/private_2_0_before_anyjev_20260923'
 ROUTING = ['Aero/private/routing_lab/' + x for x in

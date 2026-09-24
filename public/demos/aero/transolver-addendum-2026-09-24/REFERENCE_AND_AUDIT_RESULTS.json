@@ -1,0 +1,97 @@
+{
+  "date": "2026-09-24",
+  "model_id": "nvidia-transolver-drivaerml-surface-1.0",
+  "state": "REFERENCE_INFERENCE_COMPLETED_NOT_VALIDATED",
+  "authority": "RESEARCH_ONLY",
+  "applicability": "NOT_ESTABLISHED",
+  "held_out_status": "NOT_ESTABLISHED",
+  "engineering_validation": "NOT_ESTABLISHED",
+  "sample_count": 200000,
+  "hardware": "NVIDIA GeForce RTX 3090",
+  "software_versions": {
+    "torch": "2.10.0+cu130",
+    "physicsnemo": "2.2.0",
+    "numpy": "2.2.6"
+  },
+  "forward_seconds": 2.4036163199925795,
+  "adapter_wall_seconds": 73.958,
+  "adapter_wall_precision": "Rounded retained observation, not repeated benchmark",
+  "gpu_peak_allocated_bytes": 10726960640,
+  "parameters": 9763236,
+  "model_arguments": {
+    "functional_dim": 2,
+    "out_dim": 4,
+    "embedding_dim": 6,
+    "n_layers": 20,
+    "n_hidden": 256,
+    "dropout": 0.0,
+    "n_head": 8,
+    "act": "gelu",
+    "mlp_ratio": 2,
+    "slice_num": 512,
+    "unified_pos": false,
+    "ref": 8,
+    "structured_shape": null,
+    "use_te": false,
+    "time_input": false,
+    "plus": false
+  },
+  "checkpoint_sha256": "eb98f399a050a8f8a24919335c61642e4a835bd4044f7e21abec231aa31fd82c",
+  "units_and_discrepancies": {
+    "evaluation_design": "RETROSPECTIVE_DESCRIPTIVE",
+    "prediction_modified": false,
+    "thresholds_added": false,
+    "reference_cell_correspondence": "EXACT_NATIVE_CELL_IDS_AND_COORDINATES",
+    "native_pressure_interpretation": "Kinematic pressure, p_static/rho, supported by p/Cp = 0.5 U^2",
+    "cp_identity_max_abs_error": 2.5741716980220986e-07,
+    "cp_identity_relative_L2": 3.5756889175598594e-08,
+    "original_raw_comparison": "EXECUTION_RESULT.json comparison mixes Pa outputs with native units; retained but not a physical error score",
+    "dimensional_comparison": {
+      "pressure": {
+        "reference_conversion": "rho * native field",
+        "rho_kg_m3": 1.205,
+        "relative_L2": 0.5620025988971383,
+        "RMSE_Pa": 242.29820964625497,
+        "MAE_Pa": 164.65138758107034,
+        "correlation": 0.736470021647518,
+        "conversion_status": "SUPPORTED_BY_RETAINED_CP_IDENTITY",
+        "acceptance": "NOT_EVALUATED_NO_LIMITS"
+      },
+      "shear": {
+        "reference_conversion": "rho * native field",
+        "rho_kg_m3": 1.205,
+        "relative_L2": 0.8277008729820426,
+        "RMSE_Pa": 1.7312538987695885,
+        "MAE_Pa": 0.9257795045133905,
+        "correlation": 0.5758469108812427,
+        "conversion_status": "CONDITIONAL_ON_STANDARD_INCOMPRESSIBLE_OPENFOAM_WALLSHEARSTRESS_UNITS",
+        "acceptance": "NOT_EVALUATED_NO_LIMITS"
+      }
+    },
+    "sources": [
+      "https://doc.openfoam.com/2312/tools/processing/solvers/algorithm-kinematic-pressure/",
+      "https://api.openfoam.com/2212/wallShearStress_8H.html"
+    ],
+    "pressure_reference_offset_fitted": false,
+    "shear_sign_fitted": false,
+    "engineering_validation": "NOT_ESTABLISHED",
+    "conservation": "NOT_ESTABLISHED_SAMPLE_ONLY",
+    "held_out_status": "NOT_ESTABLISHED",
+    "cause_of_discrepancy": "NOT_ESTABLISHED"
+  },
+  "checkpoint_conventions_state": "CHECKPOINT_TRAINING_PREPROCESSING_NOT_ESTABLISHED",
+  "conventions_findings": [
+    "CARD_CHECKPOINT_LAYER_DISAGREEMENT",
+    "LEGACY_MODERN_COORDINATE_CONVENTIONS_DIFFER",
+    "VERSION_LABEL_DOES_NOT_IDENTIFY_TRAINING_COMMIT",
+    "HELD_OUT_MEMBERSHIP_NOT_ESTABLISHED",
+    "NATIVE_TO_TRAINING_TARGET_PIPELINE_NOT_ESTABLISHED"
+  ],
+  "repeatability": "NOT_MEASURED",
+  "source_independence": "LOW_RELATIVE_TO_OPENFOAM",
+  "full_mesh_inference": false,
+  "conservation": "NOT_ESTABLISHED_SAMPLE_ONLY",
+  "new_inference_during_publication": false,
+  "runtime_deployed": false,
+  "qualification_override": false
+}

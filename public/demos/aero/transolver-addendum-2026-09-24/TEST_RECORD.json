@@ -1,0 +1,63 @@
+{
+  "extracted_archive": {
+    "tests": 125,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "receipt_sha256": "633955ceac48b56e2e17b8918c56bff3ae43b75ef651184b1c94aba02c4fa6b3",
+  "retained_execution_suite": {
+    "tests": 109,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "audit_static_checks": {
+    "kind": "STATIC_SOURCE_AND_METADATA_NOT_INFERENCE",
+    "checks": [
+      {
+        "name": "checkpoint_layers_are_20",
+        "pass": true
+      },
+      {
+        "name": "card_describes_8_layers",
+        "pass": true
+      },
+      {
+        "name": "checkpoint_plus_argument_exists",
+        "pass": true
+      },
+      {
+        "name": "public_v1_3_constructor_lacks_plus",
+        "pass": true
+      },
+      {
+        "name": "legacy_area_weighted_origin",
+        "pass": true
+      },
+      {
+        "name": "modern_arithmetic_STL_origin",
+        "pass": true
+      },
+      {
+        "name": "modern_coordinate_scale",
+        "pass": true
+      },
+      {
+        "name": "modern_example_sample_count",
+        "pass": true
+      },
+      {
+        "name": "model_config_is_name_only",
+        "pass": true
+      },
+      {
+        "name": "tree_has_no_training_yaml",
+        "pass": true
+      }
+    ],
+    "passed": 10,
+    "failed": 0
+  },
+  "meaning": "Software and static-source checks; not neural accuracy validation"
+}

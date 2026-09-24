@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-24",
+  "state": "BLOCKED_HUMAN_ACTION",
+  "submitted": false,
+  "destination": "https://github.com/NVIDIA/physicsnemo/issues/new",
+  "attempts": [
+    {"method": "GitHub connector", "state": "FORBIDDEN", "detail": "Resource not accessible by integration; no issue created"},
+    {"method": "Existing browser session", "state": "LOGIN_REQUIRED", "detail": "Stopped at GitHub sign-in; no issue created"}
+  ],
+  "required_action": "Sign in to GitHub, then submit the retained checkpoint-specific documentation inquiry.",
+  "checkpoint_recipe": "NOT_ESTABLISHED",
+  "new_inference_authorized_by_this_record": false
+}
