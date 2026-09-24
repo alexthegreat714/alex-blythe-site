@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-24",
+  "publication_tests": {"passed": 7, "failed": 0},
+  "extracted_archive_tests": {
+    "2.1": {"passed": 16, "failed": 0},
+    "2.2": {"passed": 54, "failed": 0}
+  },
+  "runtime": "Existing Python 3.12 with Flask, jsonschema and pytest; no package installation",
+  "isolation": "Archives extracted outside the Engineering repository; PYTHONPATH removed",
+  "initial_attempt": "Bundled document-runtime Python lacked Flask; 2 collection failures and 5 publication checks passed. Retried using existing Aero Python, without changing tests or installing dependencies.",
+  "real_solver_runs": 0,
+  "pretrained_inference_runs": 0,
+  "meaning": "Software and custody regression tests only; not engineering validation"
+}

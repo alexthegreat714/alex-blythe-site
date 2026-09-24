@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-24",
+  "excluded": [
+    "private app shell",
+    "personal runtime/service configuration",
+    "private corpus",
+    "credentials",
+    "conversation logs",
+    "runtime databases",
+    "model weights",
+    "raw CFD cases"
+  ],
+  "live_private_authentication": "UNCHANGED",
+  "releases": [
+    {
+      "bytes": 4714,
+      "entries": 5,
+      "file": "aero-rev-2.0.zip",
+      "revision": "2.0",
+      "sha256": "7cef505b46bbd2ac02ab9ad70df2dc7c04299897f5b6d2e64213db0367ca1247"
+    },
+    {
+      "bytes": 21007,
+      "entries": 15,
+      "file": "aero-rev-2.1.zip",
+      "revision": "2.1",
+      "sha256": "382c4a7311085f642287eadc45b435791513d5939f9ecf8a1d2c6d2515c495aa"
+    },
+    {
+      "bytes": 130257,
+      "entries": 34,
+      "file": "aero-rev-2.2.zip",
+      "revision": "2.2",
+      "sha256": "6ec33711d1e5e5f683c6f1966c9571cb5f8ea0fd95b2f6d8fb1a369463ba9071"
+    }
+  ],
+  "rev_2_3": "IN_DEVELOPMENT_NOT_A_RELEASE"
+}
