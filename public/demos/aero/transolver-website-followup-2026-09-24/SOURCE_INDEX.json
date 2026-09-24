@@ -1,0 +1,107 @@
+{
+  "schema": "aero.transolver.checkpoint-provenance-public-sources.v1",
+  "retrieved": "2026-09-24",
+  "checkpoint_revision": "96477aeb86d24c26ccf0797bca1b3851268017d0",
+  "sources": [
+    {
+      "id": "huggingface_tree",
+      "url": "https://huggingface.co/nvidia/transolver_drivaerml/tree/96477aeb86d24c26ccf0797bca1b3851268017d0",
+      "bytes": 2598,
+      "sha256": "59a8ffa19fdcaa4fbc3673748206ef8c9b593ee91d48475bbe5cce5092149a0d",
+      "supports": "Checkpoint file identity, sizes and LFS hashes."
+    },
+    {
+      "id": "huggingface_model_card",
+      "url": "https://huggingface.co/nvidia/transolver_drivaerml/blob/96477aeb86d24c26ccf0797bca1b3851268017d0/README.md",
+      "bytes": 8345,
+      "sha256": "2a3790156ce46ccff741ef1b82ff29ad44f73df736150a54e4a3f0f566046f5d",
+      "supports": "Published model-card architecture, counts and broad training claims."
+    },
+    {
+      "id": "huggingface_history",
+      "url": "https://huggingface.co/api/models/nvidia/transolver_drivaerml/commits/96477aeb86d24c26ccf0797bca1b3851268017d0",
+      "bytes": 2225,
+      "sha256": "391c3336b13ca4bf18c903283fe643271c6f66f4c7820154b2de4c586d5cadea",
+      "supports": "Checkpoint upload dated April 29, 2026 and model-card addition dated April 30, 2026."
+    },
+    {
+      "id": "surface_checkpoint",
+      "url": "https://huggingface.co/nvidia/transolver_drivaerml/tree/96477aeb86d24c26ccf0797bca1b3851268017d0/transolver_drivaerml_surface_checkpoint",
+      "path": "Transolver.0.501.mdlus",
+      "bytes": 39188235,
+      "sha256": "eb98f399a050a8f8a24919335c61642e4a835bd4044f7e21abec231aa31fd82c",
+      "supports": "Release identity matches the retained checkpoint."
+    },
+    {
+      "id": "companion_checkpoint",
+      "url": "https://huggingface.co/nvidia/transolver_drivaerml/tree/96477aeb86d24c26ccf0797bca1b3851268017d0/transolver_drivaerml_surface_checkpoint",
+      "path": "checkpoint.0.501.pt",
+      "bytes": 39538011,
+      "sha256": "209dc8c3db2b89663b4d1d25ffd2e37bed66eeb62fc35afeddc24e9b48141295",
+      "supports": "Companion file identity; only bounded range and static opcode inspection was performed."
+    },
+    {
+      "id": "huggingface_global_stats",
+      "url": "https://huggingface.co/nvidia/transolver_drivaerml/blob/96477aeb86d24c26ccf0797bca1b3851268017d0/transolver_drivaerml_surface_checkpoint/global_stats.json",
+      "bytes": 1375,
+      "sha256": "c4b19eaca6158219570232ce094e6ef48b8705eb727b335441a310c7479b6b25",
+      "supports": "Published normalization values, not generation provenance."
+    },
+    {
+      "id": "benchmark_readme",
+      "url": "https://github.com/NVIDIA/physicsnemo-cfd/blob/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/README.md",
+      "bytes": 1029,
+      "sha256": "241bf4c6eb438418cf2436af005d6dae416d8132b72057ec30952263521e55b4",
+      "git_blob_sha": "3cd309b800ae90ce13397e7577289c061cc0b452",
+      "supports": "Proposed benchmark split method and usable-case count."
+    },
+    {
+      "id": "benchmark_train_csv",
+      "url": "https://github.com/NVIDIA/physicsnemo-cfd/blob/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/train.csv",
+      "raw_url": "https://raw.githubusercontent.com/NVIDIA/physicsnemo-cfd/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/train.csv",
+      "bytes": 10062,
+      "sha256": "00086d73a232153610e409d63b9cf76e018f768033725df31ae00c24cc35a1db",
+      "git_blob_sha": "979f31304892c276429c0fa6171c9fc5099264c2",
+      "supports": "436 published training IDs including run 1."
+    },
+    {
+      "id": "benchmark_validation_csv",
+      "url": "https://github.com/NVIDIA/physicsnemo-cfd/blob/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/validation.csv",
+      "raw_url": "https://raw.githubusercontent.com/NVIDIA/physicsnemo-cfd/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/validation.csv",
+      "bytes": 1124,
+      "sha256": "dff5297ade2bb179759bdb3d76bb943225769c8219b5bd644fca04eb43a82115",
+      "git_blob_sha": "ef58895342e5185101dd8c7a273c0dc9908182ef",
+      "supports": "48 published validation IDs excluding run 1."
+    },
+    {
+      "id": "benchmark_split_history",
+      "url": "https://github.com/NVIDIA/physicsnemo-cfd/commit/bb4e2c753b25063e277a5869387ab36ec1d44dd2",
+      "supports": "First introduction of these split files, dated May 6, 2026."
+    },
+    {
+      "id": "github_discussion_1157",
+      "url": "https://github.com/NVIDIA/physicsnemo/discussions/1157",
+      "bytes": 3836,
+      "sha256": "b8d5bb47051a6424656ab711d1f5036d4c52672c3c3c577c4ada44b52a4d504c",
+      "supports": "Maintainer response to a DoMINO split question points to the cited paper."
+    },
+    {
+      "id": "arxiv_2507_10747_v1",
+      "url": "https://arxiv.org/html/2507.10747v1",
+      "bytes": 188033,
+      "sha256": "1722e8a903d3bf0e74c624ca3352e02d559885f0d85a5a3f34823a3dad0a0150",
+      "supports": "The paper evaluates DoMINO, X-MeshGraphNet and FIGConvNet; no Transolver checkpoint recipe."
+    }
+  ],
+  "revision_correction": {
+    "invalid_39_character_text": "96477aeb86d24c26cc0797bca1b3851268017d0",
+    "verified_40_character_revision": "96477aeb86d24c26ccf0797bca1b3851268017d0",
+    "reason": "The earlier text omitted the f immediately after cc. The verified revision's published LFS SHA-256 matches the retained checkpoint."
+  },
+  "prior_source_audit": {
+    "reference_manifest_sha256": "e178fae452f72dadf5a0c1b4d9468cfbceb7dd4fb959f19217e7a0f963150f09",
+    "reference_manifest_entries": 91,
+    "conventions_manifest_sha256": "5e9eea972b79cbd6780b3a034604db481489eed14f16726273f19c22f7948ac6",
+    "conventions_manifest_entries": 36
+  }
+}

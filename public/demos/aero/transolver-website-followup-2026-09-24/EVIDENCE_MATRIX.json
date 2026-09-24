@@ -1,0 +1,67 @@
+{
+  "schema": "aero.transolver.checkpoint-provenance-public-matrix.v1",
+  "date": "2026-09-24",
+  "decision": "CHECKPOINT_TRAINING_PREPROCESSING_NOT_ESTABLISHED",
+  "authority": "RESEARCH_ONLY",
+  "statuses": ["CONFIRMED", "SUPPORTED_BUT_NOT_CHECKPOINT_LINKED", "NOT_ESTABLISHED"],
+  "findings": [
+    {
+      "question": "Does the retained surface checkpoint match the pinned Hugging Face release?",
+      "status": "CONFIRMED",
+      "evidence": "Retained SHA-256 eb98f399a050a8f8a24919335c61642e4a835bd4044f7e21abec231aa31fd82c matches the LFS SHA-256 at full revision 96477aeb86d24c26ccf0797bca1b3851268017d0.",
+      "sources": ["huggingface_tree", "retained_checkpoint_receipt"]
+    },
+    {
+      "question": "What does the saved architecture metadata say?",
+      "status": "CONFIRMED",
+      "evidence": "Saved arguments say 20 layers, 512 slices, MLP ratio 2 and TransformerEngine disabled; the model card describes eight layers.",
+      "sources": ["huggingface_model_card", "prior_conventions_audit"]
+    },
+    {
+      "question": "What is run 1's membership in the later pinned public benchmark split?",
+      "status": "CONFIRMED",
+      "evidence": "At physicsnemo-cfd commit 0612ec4ed54484a47bfa134eda7b3b012a607624, train.csv has 436 data rows and includes run 1; validation.csv has 48 data rows and excludes it.",
+      "sources": ["benchmark_readme", "benchmark_train_csv", "benchmark_validation_csv"]
+    },
+    {
+      "question": "Could the later benchmark split be a lead related to the model-card dataset counts?",
+      "status": "SUPPORTED_BUT_NOT_CHECKPOINT_LINKED",
+      "evidence": "Its 436/48 row counts match the model card's training/test counts, but the split files first appear May 6, 2026, after the April 29 checkpoint upload and April 30 model-card addition.",
+      "sources": ["huggingface_history", "benchmark_split_history", "huggingface_model_card"]
+    },
+    {
+      "question": "Did this checkpoint train on run 1 or hold it out?",
+      "status": "NOT_ESTABLISHED",
+      "evidence": "No checkpoint-linked run-ID manifest was found. Run 1's membership in the later benchmark files does not identify its membership for these weights.",
+      "sources": ["huggingface_model_card", "benchmark_readme", "benchmark_train_csv", "benchmark_validation_csv", "safe_companion_checkpoint_inspection"]
+    },
+    {
+      "question": "Is the exact training commit and resolved training configuration known?",
+      "status": "NOT_ESTABLISHED",
+      "evidence": "Public checkpoint history identifies weight and card upload commits, but not a checkpoint-specific training source commit or resolved recipe. Bounded companion-pickle inspection found no explicit source-revision or run-list terms among decoded string operands.",
+      "sources": ["huggingface_history", "safe_companion_checkpoint_inspection", "prior_conventions_audit"]
+    },
+    {
+      "question": "Are geometry preprocessing, field units, normalization inputs and context settings linked to these weights?",
+      "status": "NOT_ESTABLISHED",
+      "evidence": "Prior source comparisons show materially different public conventions, but no checkpoint-linked recipe resolves them. Published global statistics lack input-case hashes and generation provenance.",
+      "sources": ["huggingface_model_card", "huggingface_global_stats", "prior_conventions_audit"]
+    },
+    {
+      "question": "Does the discussion-linked paper establish this Transolver recipe?",
+      "status": "SUPPORTED_BUT_NOT_CHECKPOINT_LINKED",
+      "evidence": "The paper evaluates DoMINO, X-MeshGraphNet and FIGConvNet; it gives benchmark-split context but no Transolver checkpoint training run IDs or checksum-linked recipe.",
+      "sources": ["github_discussion_1157", "arxiv_2507_10747_v1"]
+    },
+    {
+      "question": "Did the audit change engineering authority or qualification?",
+      "status": "CONFIRMED",
+      "evidence": "No. Authority remains RESEARCH_ONLY. No new inference, training, CFD, production restart, acceptance-gate change or HX use occurred.",
+      "sources": ["prior_conventions_audit", "prior_reference_report"]
+    }
+  ],
+  "new_inference_count": 0,
+  "new_training_count": 0,
+  "new_cfd_count": 0,
+  "external_contact_or_submission": false
+}

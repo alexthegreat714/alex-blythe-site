@@ -57,3 +57,48 @@ def test_public_text_has_no_local_machine_identifiers():
     for p in RELEASE.iterdir():
         if p.suffix in ('.md','.json'):
             assert not re.search(r'C:[/\\]Users|192\.168\.\d+\.\d+|-----BEGIN .*PRIVATE KEY|AEGIS_LOCAL_TOKEN',p.read_text())
+
+def test_website_only_followup_supersedes_submission_request():
+    page=(SITE/'src/content/research/aero-transolver-reference-audit.md').read_text(encoding='utf8')
+    assert 'No GitHub issue or external inquiry will be submitted' in page
+    assert 'requires GitHub sign-in' not in page
+    status=json.loads((SITE/'public/demos/aero/transolver-website-followup-2026-09-24/CURRENT_STATUS.json').read_text())
+    assert status['external_submission_authorized'] is False
+    assert status['github_issue_submitted'] is False
+    assert status['human_sign_in_required'] is False
+    assert status['historical_artifacts_modified'] is False
+
+def test_primary_source_split_findings_are_checkpoint_qualified():
+    followup=SITE/'public/demos/aero/transolver-website-followup-2026-09-24'
+    matrix=json.loads((followup/'EVIDENCE_MATRIX.json').read_text(encoding='utf8'))
+    statuses={'CONFIRMED','SUPPORTED_BUT_NOT_CHECKPOINT_LINKED','NOT_ESTABLISHED'}
+    assert set(matrix['statuses'])==statuses
+    run1=next(x for x in matrix['findings'] if x['question'].startswith('What is run 1'))
+    assert run1['status']=='CONFIRMED'
+    linkage=next(x for x in matrix['findings'] if x['question'].startswith('Could the later benchmark split'))
+    assert linkage['status']=='SUPPORTED_BUT_NOT_CHECKPOINT_LINKED'
+    held_out=next(x for x in matrix['findings'] if x['question'].startswith('Did this checkpoint train on run 1'))
+    assert held_out['status']=='NOT_ESTABLISHED'
+    assert matrix['new_inference_count']==matrix['new_training_count']==matrix['new_cfd_count']==0
+    status=json.loads((followup/'CURRENT_STATUS.json').read_text(encoding='utf8'))
+    assert status['checkpoint_recipe']=='NOT_ESTABLISHED'
+    assert status['checkpoint_run_1_membership']=='NOT_ESTABLISHED'
+    assert status['checkpoint_revision']=='96477aeb86d24c26ccf0797bca1b3851268017d0'
+    custody=json.loads((followup/'CUSTODY_SUMMARY.json').read_text(encoding='utf8'))
+    assert custody['frozen_evidence_modified'] is False
+    assert custody['new_research_package']['manifest_files']==23
+    for phase in ('before','after'):
+        assert all(x['checked']==x['manifest_files'] and x['missing']==x['mismatches']==0
+                   for x in custody[phase]['packages'])
+    page=(SITE/'src/content/research/aero-transolver-reference-audit.md').read_text(encoding='utf8')
+    for name in ['FINDINGS_UPDATE.md','EVIDENCE_MATRIX.json','SOURCE_INDEX.json','CUSTODY_SUMMARY.json']:
+        assert (followup/name).is_file()
+        assert f'](/demos/aero/transolver-website-followup-2026-09-24/{name})' in page
+
+def test_public_followup_contains_no_local_machine_paths():
+    followup=SITE/'public/demos/aero/transolver-website-followup-2026-09-24'
+    for p in followup.iterdir():
+        if p.is_file() and p.suffix in ('.md','.json'):
+            body=p.read_text(encoding='utf8')
+            assert not re.search(r'[CD]:[/\\](?:Users|AeroRuntime|alex-blythe-site)',body)
+            assert '-----BEGIN ' not in body

@@ -1,0 +1,61 @@
+{
+  "schema": "aero.transolver.prior-source-custody.v1",
+  "date": "2026-09-24",
+  "verification_scope": "Original frozen execution-reference and conventions-audit packages; all manifest entries re-hashed before and after this follow-up.",
+  "before": {
+    "verified_at": "2026-09-24T22:53:56.110Z",
+    "packages": [
+      {
+        "directory": "transolver_reference_20260924",
+        "manifest_sha256": "e178fae452f72dadf5a0c1b4d9468cfbceb7dd4fb959f19217e7a0f963150f09",
+        "manifest_files": 91,
+        "checked": 91,
+        "missing": 0,
+        "mismatches": 0,
+        "changed_since_before": null
+      },
+      {
+        "directory": "transolver_conventions_audit_20260924",
+        "manifest_sha256": "5e9eea972b79cbd6780b3a034604db481489eed14f16726273f19c22f7948ac6",
+        "manifest_files": 36,
+        "checked": 36,
+        "missing": 0,
+        "mismatches": 0,
+        "changed_since_before": null
+      }
+    ]
+  },
+  "after": {
+    "verified_at": "2026-09-24T23:00:22.737Z",
+    "packages": [
+      {
+        "directory": "transolver_reference_20260924",
+        "manifest_sha256": "e178fae452f72dadf5a0c1b4d9468cfbceb7dd4fb959f19217e7a0f963150f09",
+        "manifest_files": 91,
+        "checked": 91,
+        "missing": 0,
+        "mismatches": 0,
+        "changed_since_before": 0
+      },
+      {
+        "directory": "transolver_conventions_audit_20260924",
+        "manifest_sha256": "5e9eea972b79cbd6780b3a034604db481489eed14f16726273f19c22f7948ac6",
+        "manifest_files": 36,
+        "checked": 36,
+        "missing": 0,
+        "mismatches": 0,
+        "changed_since_before": 0
+      }
+    ]
+  },
+  "new_research_package": {
+    "sha256_manifest_sha256": "1d6760fb484c25389f4e7f60547109a37060cf0ffcc5400074ec93c1aeb12ca9",
+    "manifest_files": 23,
+    "verified_files": 23,
+    "missing": 0,
+    "mismatches": 0,
+    "public_source_snapshots": 15
+  },
+  "frozen_evidence_modified": false,
+  "verification_boundary": "This verifies byte custody only; it does not validate model accuracy, applicability, or training provenance."
+}

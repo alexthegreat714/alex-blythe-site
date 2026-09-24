@@ -169,8 +169,15 @@ and held-out status remain **NOT_ESTABLISHED**. Authority stays **RESEARCH_ONLY*
 
 The source audit found eight-versus-twenty-layer documentation disagreement and
 different legacy/modern coordinate conventions. No inputs were tuned to improve
-the answer. The checkpoint-recipe inquiry is prepared but requires GitHub sign-in
-before it can be posted. Earlier archives and historical results remain unchanged.
+the answer. A later NVIDIA benchmark split lists run 1 in its 436-row training
+file and not in its 48-row validation file, but that split was committed after
+the checkpoint release and is not linked to these weights. The checkpoint recipe
+and run 1's held-out status remain **NOT_ESTABLISHED**. The questions and evidence
+matrix are published as an on-site research update; no GitHub issue or external
+inquiry will be submitted. No sign-in is required to read the report or download
+the source. Earlier archives and historical results remain unchanged; the
+current website-only direction supersedes the historical inquiry-submission
+instructions.
 
 [Full report, results, source download and next-step status](/software/notes/aero-transolver-reference-audit/).
 

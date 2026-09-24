@@ -102,6 +102,43 @@ checkpoint or the cause of the error. Strict weight loading is not cross-version
 numerical equivalence. A wrapper's 30 m/s default is not a reason to replace the
 frozen reference's approximately 38.889 m/s input merely to improve agreement.
 
+### New primary-source check: run 1 is in a later benchmark list
+
+The checkpoint's public training recipe remains **NOT_ESTABLISHED**, but a
+separate NVIDIA DrivAerML benchmark split now provides one artifact-level fact.
+At [physicsnemo-cfd commit 0612ec4](https://github.com/NVIDIA/physicsnemo-cfd/tree/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files),
+the README proposes a 90/10 split over 484 usable cases. Its [train.csv](https://github.com/NVIDIA/physicsnemo-cfd/blob/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/train.csv)
+lists 436 runs and contains `1,510.20091805275615`; its [validation.csv](https://github.com/NVIDIA/physicsnemo-cfd/blob/0612ec4ed54484a47bfa134eda7b3b012a607624/workflows/benchmarking/drivaer_ml_files/validation.csv)
+lists 48 runs and excludes run 1.
+
+That does **not** identify the split used to train these weights. Git history
+dates the checkpoint upload to April 29, 2026 and the model card to April 30;
+the benchmark split files first appear in a May 6 commit. The matching 436/48
+counts cannot establish checkpoint linkage. The card itself gives no run IDs.
+Therefore run 1's training or held-out status for this checkpoint remains
+**NOT_ESTABLISHED**.
+
+The checkpoint revision is the full 40-character
+`96477aeb86d24c26ccf0797bca1b3851268017d0`. Earlier retained URL text omitted
+the `f` after `cc` and Hugging Face rejects that 39-character text. The full
+revision's published LFS digest matches the retained checkpoint; earlier frozen
+receipts and packages were left unchanged.
+
+A bounded range check of the companion `checkpoint.0.501.pt` inspected its ZIP
+index and serialized opcode metadata without downloading the full file or
+deserializing the pickle. The inspected stream exposes optimizer/scheduler
+state and an epoch field, but no source commit or run-list identifiers.
+
+The maintainer reply in [discussion #1157](https://github.com/NVIDIA/physicsnemo/discussions/1157)
+points to [arXiv:2507.10747v1](https://arxiv.org/html/2507.10747v1), whose
+evaluation lists DoMINO, X-MeshGraphNet and FIGConvNet. That paper provides
+benchmark context, not direct evidence of this Transolver checkpoint's recipe.
+
+[Download the bounded findings report](/demos/aero/transolver-website-followup-2026-09-24/FINDINGS_UPDATE.md) ·
+[Evidence matrix](/demos/aero/transolver-website-followup-2026-09-24/EVIDENCE_MATRIX.json) ·
+[Source index and hashes](/demos/aero/transolver-website-followup-2026-09-24/SOURCE_INDEX.json) ·
+[Custody summary](/demos/aero/transolver-website-followup-2026-09-24/CUSTODY_SUMMARY.json)
+
 ## What is released
 
 This is an additive, cumulative **Rev 2.3 source-module package**. It includes
@@ -126,15 +163,34 @@ artifacts**, with zero missing or mismatched entries. The public derivative has
 its own manifest. Software tests and custody checks establish reproducibility
 boundaries, not engineering truth.
 
-## Next step: recover the recipe, not tune the answer
+## On-site follow-up: recover the recipe, not tune the answer
 
-The checkpoint-specific inquiry requests the training commit/configuration,
-coordinate and unit conventions, sampling/context behavior, and split IDs.
-**Submission is currently blocked by GitHub authentication/connection permissions;
-no inquiry has been posted.** The draft is available for review and submission.
+**Website publication only. No GitHub issue or external inquiry will be submitted.**
+The report, results, source download and open research questions are published
+here. No GitHub sign-in or outside submission is required. Earlier downloadable
+inquiry records are historical snapshots; the owner's website-only direction
+supersedes those submission instructions without changing the frozen evidence.
 
-[Checkpoint-recipe inquiry](/demos/aero/transolver-addendum-2026-09-24/INQUIRY.md) ·
-[Submission status](/demos/aero/transolver-addendum-2026-09-24/INQUIRY_STATUS.json)
+The checkpoint-recipe questions are now Aero's on-site research checklist:
+
+1. **Exact training identity:** establish the training source commit, resolved
+   model/data/training configuration, and compatible inference runtime.
+2. **Architecture:** resolve the saved twenty-layer model versus the card's
+   eight-layer description.
+3. **Geometry preprocessing:** establish the origin formula and whether
+   `[12, 4.5, 3.25]` coordinate scaling was used for these weights.
+4. **Physical units and operating inputs:** establish native-to-training pressure
+   and wall-shear conversion, sign conventions, pressure reference, density,
+   and the meaning of the velocity input.
+5. **Normalization:** establish the generation recipe for `global_stats.json`,
+   ideally with checksum-linked reference inputs and expected outputs.
+6. **Inference context:** establish normal orientation, point-context size,
+   sampling/chunking, precision and deterministic-execution settings.
+7. **Dataset split:** establish exact training/validation/test run IDs and
+   whether native run 1 is held out.
+
+[Download the research checklist](/demos/aero/transolver-website-followup-2026-09-24/CHECKPOINT_RECIPE_CHECKLIST.md) ·
+[Current website-only status](/demos/aero/transolver-website-followup-2026-09-24/CURRENT_STATUS.json)
 
 Once the recipe is independently established, freeze a new reproduction contract
 before another inference. Until then: keep the anomalous prediction, preserve
