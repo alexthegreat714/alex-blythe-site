@@ -1,0 +1,11 @@
+{
+  "checked": 4,
+  "missing": 0,
+  "mismatch": 0,
+  "upstream_archives_checked": 5,
+  "archive_crc": "PASS",
+  "upstream_code_executed": false,
+  "cad_conversion_tested": false,
+  "manifest_sha256": "748c856d5c2f9d03e1605a22aa6e0a20eb95d4c4595321588d96860e5732daff",
+  "scope": "Payload hashes and ZIP integrity only; manifest and verification are excluded from recursive self-hashing."
+}

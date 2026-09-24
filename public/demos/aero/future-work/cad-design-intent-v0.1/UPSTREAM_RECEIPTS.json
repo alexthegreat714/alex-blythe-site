@@ -1,0 +1,66 @@
+{
+  "retrieved_at": "2026-09-24T22:48:37.168Z",
+  "status": "DOWNLOADED_NOT_EXECUTED",
+  "repositories": [
+    {
+      "repo": "CodeReclaimers/morphe",
+      "sha": "b1868427f35a13779c8fd3d5be50684c7675a688",
+      "date": "2026-04-26T18:07:11Z",
+      "url": "https://github.com/CodeReclaimers/morphe",
+      "archive": "https://codeload.github.com/CodeReclaimers/morphe/zip/b1868427f35a13779c8fd3d5be50684c7675a688",
+      "file": "morphe-b1868427f35a.zip",
+      "bytes": 500062,
+      "sha256": "28bae79fbb2867e4f0f93d71049065d99397f429ebe56a20e38cff1ccc04ef29",
+      "retained_license_path": "morphe-b1868427f35a13779c8fd3d5be50684c7675a688/LICENSE",
+      "license_sha256": "0677138c2b677d5d67ad1cddf5bd4fcc4bfd5d545663577788a2b3a6a0f7f575"
+    },
+    {
+      "repo": "CodeReclaimers/sketch_bridge",
+      "sha": "4aff4209ce7ff706b3c33eaff2785bb0761b0708",
+      "date": "2026-03-15T12:49:23Z",
+      "url": "https://github.com/CodeReclaimers/sketch_bridge",
+      "archive": "https://codeload.github.com/CodeReclaimers/sketch_bridge/zip/4aff4209ce7ff706b3c33eaff2785bb0761b0708",
+      "file": "sketch_bridge-4aff4209ce7f.zip",
+      "bytes": 151418,
+      "sha256": "b1d464a135c02a6fd15f0aa3cbde58ece9f1eedd1ed2458b0ba352cf91a6517f",
+      "retained_license_path": "sketch_bridge-4aff4209ce7ff706b3c33eaff2785bb0761b0708/LICENSE",
+      "license_sha256": "0677138c2b677d5d67ad1cddf5bd4fcc4bfd5d545663577788a2b3a6a0f7f575"
+    },
+    {
+      "repo": "PhySpace/SimpleCADAPI",
+      "sha": "aead7f84817ff6320512aad8f6b85cad590f23df",
+      "date": "2026-09-22T15:03:51Z",
+      "url": "https://github.com/PhySpace/SimpleCADAPI",
+      "archive": "https://codeload.github.com/PhySpace/SimpleCADAPI/zip/aead7f84817ff6320512aad8f6b85cad590f23df",
+      "file": "SimpleCADAPI-aead7f84817f.zip",
+      "bytes": 37170461,
+      "sha256": "56c5c95ff2363d210f57ce86297283f342199f33869689172f95e34f816edcbf",
+      "retained_license_path": "SimpleCADAPI-aead7f84817ff6320512aad8f6b85cad590f23df/LICENSE",
+      "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "repo": "jmplonka/InventorLoader",
+      "sha": "e94bdf5e29052a0dc7ce6fdf755e956ae507caec",
+      "date": "2024-12-17T15:15:05Z",
+      "url": "https://github.com/jmplonka/InventorLoader",
+      "archive": "https://codeload.github.com/jmplonka/InventorLoader/zip/e94bdf5e29052a0dc7ce6fdf755e956ae507caec",
+      "file": "InventorLoader-e94bdf5e2905.zip",
+      "bytes": 4403313,
+      "sha256": "4ec53d930187235ef0cc4e88f52ec986c5fcd35e45f4165bf620d164a54d820c",
+      "retained_license_path": "InventorLoader-e94bdf5e29052a0dc7ce6fdf755e956ae507caec/LICENSE",
+      "license_sha256": "db296f2f7f35bca3a174efb0eb392b3b17bd94b341851429a3dff411b1c2fc73"
+    },
+    {
+      "repo": "Zepmanbc/creopyson",
+      "sha": "2e45d232bcafee4af1cc4b728536d5cdde39049a",
+      "date": "2025-09-10T06:54:14Z",
+      "url": "https://github.com/Zepmanbc/creopyson",
+      "archive": "https://codeload.github.com/Zepmanbc/creopyson/zip/2e45d232bcafee4af1cc4b728536d5cdde39049a",
+      "file": "creopyson-2e45d232bcaf.zip",
+      "bytes": 247023,
+      "sha256": "80b039e98d1d6e42fd831d7697f5c93e4614451a03546bc88d8fef377cd7a8e7",
+      "retained_license_path": "creopyson-2e45d232bcafee4af1cc4b728536d5cdde39049a/LICENSE",
+      "license_sha256": "12d7c6444fbde293a3a0c91512636bb59bd43365b7948254cae5b4adb71e7fe9"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "CAD_TRANSLATION_RESEARCH_STARTER.zip",
+      "bytes": 41913419,
+      "sha256": "87fd6bf807b5dad35ddd9187044f9e3c43b7ec7f6c5b3a53ac4594c801606ba4"
+    },
+    {
+      "path": "IMPLEMENTATION_BRIEF.md",
+      "bytes": 6375,
+      "sha256": "35938cad5e0e8e3786538d9fa40a200485bcc4f4b67e58bb7ad3839d6d9d3935"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 526,
+      "sha256": "b0135eb3f91417c1f75724f86933e4c18dd2b350fa4fe794e1d3eee385be0259"
+    },
+    {
+      "path": "UPSTREAM_RECEIPTS.json",
+      "bytes": 3487,
+      "sha256": "956d85b253f205a22efc22fae0fd9574d78095e16ec905a5f8b75b7b4a6c15af"
+    }
+  ]
+}
