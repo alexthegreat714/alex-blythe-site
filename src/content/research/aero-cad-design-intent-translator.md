@@ -4,13 +4,17 @@ summary: "A research starter for native Creo-to-NX feature reconstruction: pinne
 date: 2026-09-24
 author: Alex Blythe
 tags: [Aero, CAD, Future work, Open source]
-readingTime: 5 min
+readingTime: 8 min
 draft: false
 relatedSoftware: [Aero]
 type: Architecture
 ---
 
 **Future work · Research starter v0.1 · September 24, 2026**
+
+Page update: **staged implementation roadmap added September 24, 2026**.
+The original v0.1 source download remains unchanged; the expanded roadmap below
+is the current planning supplement.
 
 Status: **RESEARCH_ONLY / NOT_IMPLEMENTED**. This is not a new operational Aero
 revision or a demonstrated Creo-to-NX converter. Only public-source research is
@@ -92,21 +96,125 @@ AI may propose unsupported mappings or diagnose failures. Native CAD regeneratio
 and independent tests determine acceptance. Ambiguous references require review;
 nearest-face matching alone is insufficient when several faces are plausible.
 
-## The first bounded experiment
+## The intended finished experience
 
-1. Inventory approved CAD versions, API access, licenses, and existing adapters.
-2. Audit the pinned libraries and run their relevant tests in an approved sandbox.
-3. Create a synthetic fully constrained sketch, extrusion, and dependent hole
-   pattern; freeze expected relationships and admissible edits before translation.
-4. Extract the source relationships, reconstruct native destination features,
-   and keep all intermediate representations and mapping decisions.
-5. Change thickness, hole diameter, and pattern spacing separately. Compare both
-   regenerated models, then save, close, reopen, and regenerate the destination.
-6. Deliberately exercise unsupported constraints, ambiguous references, units,
-   and corrupted inputs. Require honest failures rather than flattened success.
+Select a source Creo part and an NX target version. Before reconstruction, the
+tool reports supported features, known gaps, and required review. It creates a
+native editable destination model, runs independent tests, and presents the
+result alongside preserved relationships, unresolved features, and manual work
+still required. The user can open the destination model and change supported
+driving dimensions, not merely inspect an imported solid.
 
-No assemblies, drawings, PLM writes, production migration, or autonomous geometry
-redesign in the first milestone. Expand only after explicit evidence supports it.
+This is a target experience, not a capability of the current research bundle.
+
+## Implementation roadmap and exit criteria
+
+The goal is to turn selected upstream projects into components of one translator,
+not stitch five applications together. Each stage has an evidence requirement
+before the scope grows. No stage below has been executed.
+
+### Step 0 — Establish the approved execution boundary
+
+Inventory exact Creo/NX versions, licensed APIs, SDKs, approved runtimes, existing
+adapters, and evidence/review infrastructure. Review the pinned libraries and
+their dependencies, then run relevant upstream tests in an approved sandbox.
+Keep all implementation and organizational data within that environment.
+
+**Exit evidence:** a capability and license inventory, recorded test outcomes,
+and an explicit choice of components to reuse, extend, or reject. Missing API
+access or approval is a blocker, not a reason to bypass controls.
+
+### Step 1 — Prove we can read engineering relationships
+
+Start with a small synthetic Creo part. Extract its sketch entities, constraints,
+driving dimensions, expressions, datums, feature dependencies, and references.
+Produce a human-readable account before creating anything in NX: for example,
+“this hole stays centered because of these relationships,” rather than “the hole
+happens to be centered at the current coordinates.” Preserve source identifiers
+and distinguish explicit relationships from inferred intent.
+
+**Exit evidence:** the extraction agrees with the deliberately authored synthetic
+model and identifies missing or unsupported information. A screenshot or current
+shape alone cannot establish this.
+
+### Step 2 — Define the common design representation
+
+Evaluate Morphe for sketch interchange and SimpleCADAPI/CADIR for modeling graphs
+and expressions. Reuse only what passes the required tests; do not force either
+library to express unsupported semantics. Specify a typed, versioned intermediate
+format with explicit units, coordinate frames, dependencies, source provenance,
+constraints, expressions, and reference-selection intent.
+
+**Exit evidence:** the representation can serialize and recover the declared
+relationships without silent loss. Invalid units, dangling references, unsupported
+expressions, and unknown feature types receive deterministic diagnostics. It is
+neither a STEP file nor an unstructured AI description.
+
+### Step 3 — Translate one small part end to end
+
+Implement source extraction and destination reconstruction for a constrained
+sketch, extrusion, and simple hole. The NX result must contain native editable
+features and persistent driving dimensions. Freeze expected relationships,
+comparison tolerances, and admissible dimensional edits before reviewing results.
+Change dimensions independently in both CAD systems and compare regeneration.
+Save, close, reopen, and regenerate the destination model.
+
+**Exit evidence:** baseline geometry and the declared edit suite pass, with the
+underlying constraints and expressions preserved. A single imported body or
+nominal-value substitution must not count as a feature-preserving translation.
+
+### Step 4 — Preserve references and dependent behavior
+
+Add a datum-positioned hole, a face-attached pocket, and an expression-driven
+pattern. Exercise changes that split, remove, or reshape referenced entities.
+Determine whether the destination remains attached to the intended engineering
+reference. Do not accept matching entity numbers or nearest-face selection as
+proof when multiple candidates are plausible.
+
+**Exit evidence:** supported reference changes regenerate consistently; ambiguous
+or unsupported cases stop or enter review. For later simulation use, protect
+semantic selections such as inlets, interfaces, loaded surfaces, and contacts
+through a separate downstream selection-validity check.
+
+### Step 5 — Expand one feature family at a time
+
+Add revolutions, patterns, and mirrors, then consider more difficult operations.
+Each addition needs a mapping specification, positive and negative fixtures,
+admissible edit tests, and an explicit support boundary. Keep synthetic variants
+held out from mapping development so the translator is not merely reproducing
+its demonstrations. Retain failures rather than deleting difficult cases.
+
+**Exit evidence:** per-family test results, known failure modes, and a scoped
+support matrix. Passing finite edits does not establish arbitrary-edit equivalence.
+Do not expand simply to increase the count of advertised feature names.
+
+### Step 6 — Make the translator practical to use
+
+After the core proof, add batch processing, resumable jobs, side-by-side inspection,
+per-feature mapping explanations, and a human-review queue. Preserve originals
+and write destination artifacts separately. Assemblies and associated drawings
+are separate later milestones, not assumed consequences of part translation.
+
+**Exit evidence:** users can identify supported results, inspect failures, resume
+interrupted work without corrupting evidence, and distinguish verified models
+from incomplete reconstructions. No production migration or PLM writes are
+authorized by this research roadmap.
+
+### Proposed policy for unsupported features
+
+Allow an explicitly marked partial model for inspection, but never label it a
+successful full translation. Stop dependent reconstruction where missing
+semantics would make subsequent results misleading. Geometry-only fallback must
+be separately approved and remain `GEOMETRY_ONLY`. Whether partial output is
+enabled by default is an open product decision to freeze in the implementation
+contract—not a decision already made by this page.
+
+### AI's role throughout
+
+AI can help implement adapters, propose alternate mappings, and diagnose failed
+tests. Deterministic mappings handle established cases. Independent native
+regeneration and relationship/edit tests determine acceptance. More generated
+code cannot substitute for API coverage, reference integrity, or verified behavior.
 
 ## Fit with the Aero methodology
 
