@@ -1,0 +1,72 @@
+{
+  "schema": "aero.physics_ai_benchmark_result.v1",
+  "contract": {
+    "path": "benchmark-contract-0a750d1d3fb07ed9f7a797145eff9e1b0461f16e1b35b4a1452ce4a92370f7c9.json",
+    "sha256": "dee3e729add92c9fac29e691adef7ffb225d99f86f2e22feed1a4f9bb4894669",
+    "bytes": 1032
+  },
+  "reference": {
+    "path": "reference-coefficients.json",
+    "sha256": "ce3314960bb973ccd1f8840ed39126e46f4ade017d07ae67e846628d57121660",
+    "bytes": 241
+  },
+  "prediction": {
+    "path": "prediction-coefficients.json",
+    "sha256": "b9cc4daf9ec2e4e0c0fde9294e8305f129cb15f14f11342aa794af88301e07be",
+    "bytes": 869
+  },
+  "metrics": {
+    "samples": 1,
+    "field_units": "1",
+    "components": {
+      "Cd": {
+        "mean_absolute_error": 0.00335153740154992,
+        "rms_error": 0.00335153740154992,
+        "maximum_absolute_error": 0.00335153740154992,
+        "relative_l2_error": 0.011042531149705003,
+        "relative_l2_state": "CALCULATED",
+        "correlation": null,
+        "reference_integral": 0.3035117,
+        "prediction_integral": 0.3068632374015499,
+        "signed_integral_error": 0.00335153740154992
+      },
+      "Cs": {
+        "mean_absolute_error": 0.012196761491142093,
+        "rms_error": 0.012196761491142093,
+        "maximum_absolute_error": 0.012196761491142093,
+        "relative_l2_error": 0.25587121249163675,
+        "relative_l2_state": "CALCULATED",
+        "correlation": null,
+        "reference_integral": 0.04766758,
+        "prediction_integral": 0.03547081850885791,
+        "signed_integral_error": -0.012196761491142093
+      },
+      "Cl": {
+        "mean_absolute_error": 0.3653608003933332,
+        "rms_error": 0.3653608003933332,
+        "maximum_absolute_error": 0.3653608003933332,
+        "relative_l2_error": 5.394529478247455,
+        "relative_l2_state": "CALCULATED",
+        "correlation": null,
+        "reference_integral": 0.06772802,
+        "prediction_integral": 0.4330888203933332,
+        "signed_integral_error": 0.3653608003933332
+      }
+    },
+    "weight_units": "1",
+    "engineering_validation": "NOT_ESTABLISHED"
+  },
+  "checks": [],
+  "balances": {},
+  "status": "NOT_ESTABLISHED",
+  "engineering_validation": "NOT_ESTABLISHED",
+  "evaluation_design": "RETROSPECTIVE_DESCRIPTIVE",
+  "model_identity": {
+    "model_id": "nvidia-domino-drivaerml",
+    "checkpoint_sha256": "ad45e9477a7c0336c07a039ba70db7ddc9a2254d4ff94104d9c297ae7d7b662b",
+    "retained_audit_sha256": "7bcd0d008f196f36ec6fade0b6a1219dd66b2c580aa1502a470cb88a6a1a027d",
+    "source_independence": "LOW",
+    "authority": "RESEARCH_ONLY"
+  },
+  "qualification_override": false
+}

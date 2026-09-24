@@ -23,7 +23,8 @@ private engineering corpus, conversations, machine credentials or employer data.
 | 2.2 | Cumulative Routing Lab and Engineering Validity Gate modules, deterministic checks, engineering contracts, hypotheses, approval controls and synthetic regression tests. | [Rev 2.2 cumulative source](/demos/aero/source-revisions-2026-09-24/aero-rev-2.2.zip) |
 | 2.3 | Cumulative modules plus controlled Physics-AI witnesses, isolated DoMINO reference adapter, provenance, applicability checks and tests. **Research-only model; not validated engineering inference.** | [Rev 2.3 cumulative source](/demos/aero/source-rev-2-3-2026-09-24/aero-rev-2.3.zip) |
 
-**For the latest published modules, download Rev 2.3.** These are source module
+**Latest source: [Rev 2.3 workflow addendum](/demos/aero/physics-ai-workflow-addendum-2026-09-24/aero-rev-2.3-workflow-addendum.zip)**
+(cumulative; preserves the original Rev 2.3 archive). These are source module
 packages, not complete one-click installations of the private Aero application.
 The application shell, personal integrations, solver installations and model
 weights are excluded. Public availability is not evidence of engineering qualification.
@@ -123,6 +124,33 @@ autonomous surrogate screening and training are not implemented. This is a
 bounded source release, not a claim that every planned Physics-AI feature is done.
 
 ## Version boundaries
+
+### September 24 workflow addendum
+
+The development follow-up adds identity-aligned field benchmarking, review-only
+candidate ranking and an optional-experiment hook in the existing campaign loop.
+A frozen contract can allow a traceable, applicable surrogate witness to defer a
+specifically optional numerical experiment. It cannot eliminate a physical
+hypothesis, waive a required solver run or override an engineering gate.
+
+**113 local tests and 110 extracted-package tests pass.** These test software
+contracts, not neural accuracy or demonstrated CFD savings. The new harness also
+scores retained DoMINO coefficients descriptively, with no post-hoc acceptance
+limits. Native-field correspondence and model validation remain unestablished.
+
+[Implementation and limitations](/demos/aero/physics-ai-workflow-addendum-2026-09-24/IMPLEMENTATION_REPORT.md) ·
+[Test evidence](/demos/aero/physics-ai-workflow-addendum-2026-09-24/TEST_RECORD.json) ·
+[Retained-model comparison](/demos/aero/physics-ai-workflow-addendum-2026-09-24/RETAINED_MODEL_EVALUATION.json) ·
+[Archive identity](/demos/aero/physics-ai-workflow-addendum-2026-09-24/release.json) ·
+[SHA-256 manifest](/demos/aero/physics-ai-workflow-addendum-2026-09-24/SHA256_MANIFEST.json) ·
+[Verification](/demos/aero/physics-ai-workflow-addendum-2026-09-24/VERIFICATION.json).
+
+**The original multi-model milestone is not fully complete.** Transolver remains
+blocked pending approved weights, matching reference data and verified usage terms.
+PDEBench/RealPDEBench dataset reproduction and PFEM execution are still future work.
+No private service was restarted, no additional model downloaded and no CFD run
+launched. This addendum does not silently promote the private application or
+rewrite any historical release.
 
 These are Aero **source revisions**, not the public presentation's revision
 numbers, the V2/V2.1 convergence contracts, or the benchmark report's release

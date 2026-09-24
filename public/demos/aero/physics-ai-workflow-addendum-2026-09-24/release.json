@@ -1,0 +1,9 @@
+{
+  "revision": "2.3-workflow-addendum-20260924",
+  "file": "aero-rev-2.3-workflow-addendum.zip",
+  "sha256": "9125c185e78d56bbad3f565cc87480a7a5762d4e3ec1e2f6d956b53fc971507d",
+  "bytes": 178268,
+  "runtime_deployed": false,
+  "full_multi_model_milestone": "BLOCKED_HUMAN_ACTION",
+  "model_validation": "NOT_ESTABLISHED"
+}

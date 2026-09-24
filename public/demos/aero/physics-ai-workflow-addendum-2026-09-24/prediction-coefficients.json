@@ -1,0 +1,33 @@
+{
+  "benchmark_contract_sha256": "0a750d1d3fb07ed9f7a797145eff9e1b0461f16e1b35b4a1452ce4a92370f7c9",
+  "geometry_identity": "411e6651284a26fc94924106b833fd79febc6deba63922c929dd8acfc99720d2",
+  "model_identity": {
+    "model_id": "nvidia-domino-drivaerml",
+    "checkpoint_sha256": "ad45e9477a7c0336c07a039ba70db7ddc9a2254d4ff94104d9c297ae7d7b662b",
+    "retained_audit_sha256": "7bcd0d008f196f36ec6fade0b6a1219dd66b2c580aa1502a470cb88a6a1a027d",
+    "source_independence": "LOW",
+    "authority": "RESEARCH_ONLY"
+  },
+  "field": {
+    "ids": [
+      "DrivAerML-run-1"
+    ],
+    "components": [
+      "Cd",
+      "Cs",
+      "Cl"
+    ],
+    "units": "1",
+    "weights": [
+      1.0
+    ],
+    "values": [
+      [
+        0.3068632374015499,
+        0.03547081850885791,
+        0.4330888203933332
+      ]
+    ]
+  },
+  "balances": {}
+}

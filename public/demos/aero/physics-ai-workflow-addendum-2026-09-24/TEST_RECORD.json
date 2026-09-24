@@ -1,0 +1,19 @@
+{
+  "local_suite": {
+    "tests": 113,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "extracted_archive": {
+    "tests": 110,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "local_receipt_sha256": "a002cf2c342c62306161a68eae05cd381a1b32d8d6453803c4d01476ea466309",
+  "extracted_receipt_sha256": "f16f67ce93357ea0ce6a3877f11b8f507d8c4690f5768231cfa911177c3b181a",
+  "new_model_inference": false,
+  "warning": "Local disabled cache plugin emits known cache_dir warning",
+  "prior_failed_test": "tests-02.xml retained locally: 1 assertion failure,107 passed; witness rejection happened earlier in event chain"
+}

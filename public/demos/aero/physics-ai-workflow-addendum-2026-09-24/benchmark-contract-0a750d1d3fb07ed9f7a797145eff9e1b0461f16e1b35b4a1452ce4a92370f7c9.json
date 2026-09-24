@@ -1,0 +1,25 @@
+{
+  "payload": {
+    "schema": "aero.physics_ai_benchmark_contract.v1",
+    "specification": {
+      "benchmark_id": "retained-domino-coefficients",
+      "dataset": "DrivAerML",
+      "dataset_revision": "5d448b209bf654503c64ce7261c34fa125f46392",
+      "reference_origin": "OpenFOAM-derived published reference",
+      "reference_path": "reference-coefficients.json",
+      "reference_sha256": "ce3314960bb973ccd1f8840ed39126e46f4ade017d07ae67e846628d57121660",
+      "geometry_identity": "411e6651284a26fc94924106b833fd79febc6deba63922c929dd8acfc99720d2",
+      "weight_units": "1",
+      "limits": [],
+      "balance_limits": {},
+      "evaluation_design": "RETROSPECTIVE_DESCRIPTIVE"
+    },
+    "reference": {
+      "path": "reference-coefficients.json",
+      "sha256": "ce3314960bb973ccd1f8840ed39126e46f4ade017d07ae67e846628d57121660",
+      "bytes": 241
+    },
+    "created_at": "2026-09-24T18:22:25.535457+00:00"
+  },
+  "sha256": "0a750d1d3fb07ed9f7a797145eff9e1b0461f16e1b35b4a1452ce4a92370f7c9"
+}
