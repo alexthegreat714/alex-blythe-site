@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="100%" height="100%" fill="white"/>
+<text x="88" y="30" font-family="Arial" font-size="20" font-weight="bold">Prefill throughput vs configured context</text>
+<line x1="88" y1="420.0" x2="860" y2="420.0" stroke="#dddddd"/>
+<text x="78" y="424.0" text-anchor="end" font-family="Arial" font-size="11">0</text>
+<line x1="88" y1="348.4" x2="860" y2="348.4" stroke="#dddddd"/>
+<text x="78" y="352.4" text-anchor="end" font-family="Arial" font-size="11">616</text>
+<line x1="88" y1="276.8" x2="860" y2="276.8" stroke="#dddddd"/>
+<text x="78" y="280.8" text-anchor="end" font-family="Arial" font-size="11">1.23e+03</text>
+<line x1="88" y1="205.2" x2="860" y2="205.2" stroke="#dddddd"/>
+<text x="78" y="209.2" text-anchor="end" font-family="Arial" font-size="11">1.85e+03</text>
+<line x1="88" y1="133.6" x2="860" y2="133.6" stroke="#dddddd"/>
+<text x="78" y="137.6" text-anchor="end" font-family="Arial" font-size="11">2.46e+03</text>
+<line x1="88" y1="62.0" x2="860" y2="62.0" stroke="#dddddd"/>
+<text x="78" y="66.0" text-anchor="end" font-family="Arial" font-size="11">3.08e+03</text>
+<line x1="88" y1="62" x2="88" y2="420" stroke="#222"/>
+<line x1="88" y1="420" x2="860" y2="420" stroke="#222"/>
+<text x="20" y="241" transform="rotate(-90 20 241)" font-family="Arial" font-size="13">tokens / s</text>
+<polyline fill="none" stroke="#177E89" stroke-width="2.5" points="88.0,132.3 112.9,85.0 162.7,79.0 262.3,108.4"/>
+<circle cx="88.0" cy="132.3" r="4" fill="#177E89"/>
+<circle cx="112.9" cy="85.0" r="4" fill="#177E89"/>
+<circle cx="162.7" cy="79.0" r="4" fill="#177E89"/>
+<circle cx="262.3" cy="108.4" r="4" fill="#177E89"/>
+<line x1="640" y1="80" x2="665" y2="80" stroke="#177E89" stroke-width="3"/>
+<text x="672" y="84" font-family="Arial" font-size="12">3090</text>
+<polyline fill="none" stroke="#E07A5F" stroke-width="2.5" points="88.0,195.6 112.9,197.3 162.7,200.2 262.3,210.6 461.5,228.4 860.0,255.0"/>
+<circle cx="88.0" cy="195.6" r="4" fill="#E07A5F"/>
+<circle cx="112.9" cy="197.3" r="4" fill="#E07A5F"/>
+<circle cx="162.7" cy="200.2" r="4" fill="#E07A5F"/>
+<circle cx="262.3" cy="210.6" r="4" fill="#E07A5F"/>
+<circle cx="461.5" cy="228.4" r="4" fill="#E07A5F"/>
+<circle cx="860.0" cy="255.0" r="4" fill="#E07A5F"/>
+<line x1="640" y1="99" x2="665" y2="99" stroke="#E07A5F" stroke-width="3"/>
+<text x="672" y="103" font-family="Arial" font-size="12">spark</text>
+<text x="88.0" y="443" text-anchor="middle" font-family="Arial" font-size="11">4096</text>
+<text x="112.9" y="443" text-anchor="middle" font-family="Arial" font-size="11">8192</text>
+<text x="162.7" y="443" text-anchor="middle" font-family="Arial" font-size="11">16384</text>
+<text x="262.3" y="443" text-anchor="middle" font-family="Arial" font-size="11">32768</text>
+<text x="461.5" y="443" text-anchor="middle" font-family="Arial" font-size="11">65536</text>
+<text x="860.0" y="443" text-anchor="middle" font-family="Arial" font-size="11">131072</text>
+</svg>

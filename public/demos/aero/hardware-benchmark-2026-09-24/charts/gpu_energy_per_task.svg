@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="100%" height="100%" fill="white"/>
+<text x="88" y="30" font-family="Arial" font-size="20" font-weight="bold">Observed GPU/SoC energy per task (system energy unavailable)</text>
+<line x1="88" y1="420.0" x2="860" y2="420.0" stroke="#dddddd"/>
+<text x="78" y="424.0" text-anchor="end" font-family="Arial" font-size="11">0</text>
+<line x1="88" y1="348.4" x2="860" y2="348.4" stroke="#dddddd"/>
+<text x="78" y="352.4" text-anchor="end" font-family="Arial" font-size="11">2.69e+03</text>
+<line x1="88" y1="276.8" x2="860" y2="276.8" stroke="#dddddd"/>
+<text x="78" y="280.8" text-anchor="end" font-family="Arial" font-size="11">5.37e+03</text>
+<line x1="88" y1="205.2" x2="860" y2="205.2" stroke="#dddddd"/>
+<text x="78" y="209.2" text-anchor="end" font-family="Arial" font-size="11">8.06e+03</text>
+<line x1="88" y1="133.6" x2="860" y2="133.6" stroke="#dddddd"/>
+<text x="78" y="137.6" text-anchor="end" font-family="Arial" font-size="11">1.07e+04</text>
+<line x1="88" y1="62.0" x2="860" y2="62.0" stroke="#dddddd"/>
+<text x="78" y="66.0" text-anchor="end" font-family="Arial" font-size="11">1.34e+04</text>
+<line x1="88" y1="62" x2="88" y2="420" stroke="#222"/>
+<line x1="88" y1="420" x2="860" y2="420" stroke="#222"/>
+<text x="20" y="241" transform="rotate(-90 20 241)" font-family="Arial" font-size="13">joules</text>
+<polyline fill="none" stroke="#177E89" stroke-width="2.5" points="88.0,287.0 242.4,263.9 396.8,268.2 551.2,375.2 705.6,82.0 860.0,79.0"/>
+<circle cx="88.0" cy="287.0" r="4" fill="#177E89"/>
+<circle cx="242.4" cy="263.9" r="4" fill="#177E89"/>
+<circle cx="396.8" cy="268.2" r="4" fill="#177E89"/>
+<circle cx="551.2" cy="375.2" r="4" fill="#177E89"/>
+<circle cx="705.6" cy="82.0" r="4" fill="#177E89"/>
+<circle cx="860.0" cy="79.0" r="4" fill="#177E89"/>
+<line x1="640" y1="80" x2="665" y2="80" stroke="#177E89" stroke-width="3"/>
+<text x="672" y="84" font-family="Arial" font-size="12">3090 · gemma3:12b</text>
+<polyline fill="none" stroke="#E07A5F" stroke-width="2.5" points="88.0,387.6 242.4,199.1 396.8,372.9 551.2,408.7 705.6,312.2 860.0,313.5"/>
+<circle cx="88.0" cy="387.6" r="4" fill="#E07A5F"/>
+<circle cx="242.4" cy="199.1" r="4" fill="#E07A5F"/>
+<circle cx="396.8" cy="372.9" r="4" fill="#E07A5F"/>
+<circle cx="551.2" cy="408.7" r="4" fill="#E07A5F"/>
+<circle cx="705.6" cy="312.2" r="4" fill="#E07A5F"/>
+<circle cx="860.0" cy="313.5" r="4" fill="#E07A5F"/>
+<line x1="640" y1="99" x2="665" y2="99" stroke="#E07A5F" stroke-width="3"/>
+<text x="672" y="103" font-family="Arial" font-size="12">spark · gemma3:12b</text>
+<text x="88.0" y="443" text-anchor="middle" font-family="Arial" font-size="11">agent_loop</text>
+<text x="242.4" y="443" text-anchor="middle" font-family="Arial" font-size="11">context_scaling</text>
+<text x="396.8" y="443" text-anchor="middle" font-family="Arial" font-size="11">engineering_validity</text>
+<text x="551.2" y="443" text-anchor="middle" font-family="Arial" font-size="11">interactive</text>
+<text x="705.6" y="443" text-anchor="middle" font-family="Arial" font-size="11">large_context</text>
+<text x="860.0" y="443" text-anchor="middle" font-family="Arial" font-size="11">overnight</text>
+</svg>

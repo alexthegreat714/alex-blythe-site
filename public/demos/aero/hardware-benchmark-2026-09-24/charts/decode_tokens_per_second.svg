@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="100%" height="100%" fill="white"/>
+<text x="88" y="30" font-family="Arial" font-size="20" font-weight="bold">Decode throughput by system/model</text>
+<line x1="88" y1="420.0" x2="860" y2="420.0" stroke="#dddddd"/>
+<text x="78" y="424.0" text-anchor="end" font-family="Arial" font-size="11">0</text>
+<line x1="88" y1="348.4" x2="860" y2="348.4" stroke="#dddddd"/>
+<text x="78" y="352.4" text-anchor="end" font-family="Arial" font-size="11">13.7</text>
+<line x1="88" y1="276.8" x2="860" y2="276.8" stroke="#dddddd"/>
+<text x="78" y="280.8" text-anchor="end" font-family="Arial" font-size="11">27.3</text>
+<line x1="88" y1="205.2" x2="860" y2="205.2" stroke="#dddddd"/>
+<text x="78" y="209.2" text-anchor="end" font-family="Arial" font-size="11">41</text>
+<line x1="88" y1="133.6" x2="860" y2="133.6" stroke="#dddddd"/>
+<text x="78" y="137.6" text-anchor="end" font-family="Arial" font-size="11">54.7</text>
+<line x1="88" y1="62.0" x2="860" y2="62.0" stroke="#dddddd"/>
+<text x="78" y="66.0" text-anchor="end" font-family="Arial" font-size="11">68.3</text>
+<line x1="88" y1="62" x2="88" y2="420" stroke="#222"/>
+<line x1="88" y1="420" x2="860" y2="420" stroke="#222"/>
+<text x="20" y="241" transform="rotate(-90 20 241)" font-family="Arial" font-size="13">tokens / s</text>
+<polyline fill="none" stroke="#177E89" stroke-width="2.5" points="88.0,89.9 184.5,79.0 281.0,83.4 377.5,100.2 474.0,131.0 570.5,106.8 667.0,90.4 763.5,133.4 860.0,133.2"/>
+<circle cx="88.0" cy="89.9" r="4" fill="#177E89"/>
+<circle cx="184.5" cy="79.0" r="4" fill="#177E89"/>
+<circle cx="281.0" cy="83.4" r="4" fill="#177E89"/>
+<circle cx="377.5" cy="100.2" r="4" fill="#177E89"/>
+<circle cx="474.0" cy="131.0" r="4" fill="#177E89"/>
+<circle cx="570.5" cy="106.8" r="4" fill="#177E89"/>
+<circle cx="667.0" cy="90.4" r="4" fill="#177E89"/>
+<circle cx="763.5" cy="133.4" r="4" fill="#177E89"/>
+<circle cx="860.0" cy="133.2" r="4" fill="#177E89"/>
+<line x1="640" y1="80" x2="665" y2="80" stroke="#177E89" stroke-width="3"/>
+<text x="672" y="84" font-family="Arial" font-size="12">3090 · gemma3:12b</text>
+<polyline fill="none" stroke="#E07A5F" stroke-width="2.5" points="88.0,294.5 165.2,292.0 242.4,296.4 319.6,302.8 396.8,314.9 474.0,331.2 551.2,352.0 628.4,305.2 705.6,294.3 782.8,317.5 860.0,317.6"/>
+<circle cx="88.0" cy="294.5" r="4" fill="#E07A5F"/>
+<circle cx="165.2" cy="292.0" r="4" fill="#E07A5F"/>
+<circle cx="242.4" cy="296.4" r="4" fill="#E07A5F"/>
+<circle cx="319.6" cy="302.8" r="4" fill="#E07A5F"/>
+<circle cx="396.8" cy="314.9" r="4" fill="#E07A5F"/>
+<circle cx="474.0" cy="331.2" r="4" fill="#E07A5F"/>
+<circle cx="551.2" cy="352.0" r="4" fill="#E07A5F"/>
+<circle cx="628.4" cy="305.2" r="4" fill="#E07A5F"/>
+<circle cx="705.6" cy="294.3" r="4" fill="#E07A5F"/>
+<circle cx="782.8" cy="317.5" r="4" fill="#E07A5F"/>
+<circle cx="860.0" cy="317.6" r="4" fill="#E07A5F"/>
+<line x1="640" y1="99" x2="665" y2="99" stroke="#E07A5F" stroke-width="3"/>
+<text x="672" y="103" font-family="Arial" font-size="12">spark · gemma3:12b</text>
+</svg>

@@ -126,6 +126,10 @@ const canonical = new URL(canonicalPath, Astro.site);
   :global(.article-body strong) { color: var(--text); }
   :global(.article-body a) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
   :global(.article-body li + li) { margin-top: .55rem; }
+  :global(.article-body img) { display: block; max-width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; margin: 1.6rem 0; }
+  :global(.article-body table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; font-size: .85rem; font-variant-numeric: tabular-nums; }
+  :global(.article-body th), :global(.article-body td) { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); min-width: 100px; }
+  :global(.article-body th) { background: var(--surface); }
   .article-footer { margin-top: 54px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--accent); font-weight: 700; }
   .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px max(24px, calc((100vw - 1060px) / 2)); background: #1a252a; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
   :global(html[data-theme='dark']) .site-footer { background: #0e1416; }

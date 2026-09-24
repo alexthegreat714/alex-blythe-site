@@ -1,0 +1,18 @@
+{
+  "algorithm": "SHA-256",
+  "files": {
+    "cache-neutral-results.csv": "de4e44eda5d641f4a369ca8eeb1df78f9c4f7defae0c22b27d8e4c5aab99e3d9",
+    "cache-neutral-results.json": "c5e4345f949b96a52e34411d583b459b71a3a77106f23d187bfa4f9808913359",
+    "charts/decode_tokens_per_second.svg": "2c9e1ec888a192cc4710a26f85327e06c81f1cb4744ef0c471550e13ad213475",
+    "charts/gpu_energy_per_task.svg": "45251f9ac780fce2aa66ba763c404400367cd2b92c525f48ee374fa21333af35",
+    "charts/gpu_memory_vs_context.svg": "60940dd09d274ed710cb17ad13fba044d965cffe0fb39ba8d93cdd5c15b14b35",
+    "charts/host_memory_vs_context.svg": "8c46fd44266e538d8d11d0f994e082d59ec4038918b489d42c3b910f3e2d14ae",
+    "charts/prefill_vs_context.svg": "842a14c116b57578ca0b7e433f1f46a280b6249dfe7fd3d787898c4d2a53f3e6",
+    "charts/task_wall_time.svg": "fbdfb56af9c8788d70e420cad76e46a7cc852f1334d8360f31fbecc584c2fe01",
+    "charts/ttft_vs_context.svg": "3c9b29f24acf6dbb3104d23d0ce57e93950528f08b2c5a819480795513f654a7",
+    "README.md": "c4bb35655c708d4dd528154bc27ebd2b9c1b6cc05c6620e507d34d0d23a39aa4",
+    "REPORT.md": "09904850690175224ec47afb2d971b111723b615546de33155c507f2e320ca8c",
+    "warm-cache-results.csv": "d8affe9a8358151e735452696d47a58db80fb3c59cf6c6913ca1f3b364498bae",
+    "warm-cache-results.json": "4b62b9257d11eb161b936ed2a3054afdfb48178fe60971342388683c17cb310d"
+  }
+}
