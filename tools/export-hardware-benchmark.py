@@ -62,12 +62,8 @@ def main():
         writer.writeheader()
         writer.writerows(exported)
         write(dest / f'{label}-results.csv', stream.getvalue())
-    for name in CHARTS:
-        source = args.source / 'runs/20260924_cache_neutral/charts' / name
-        text = source.read_text(encoding='utf-8-sig')
-        if re.search(r'<script|foreignObject|(?:href|src)=', text, re.I):
-            raise ValueError('Unexpected active SVG content')
-        write(dest / 'charts' / name, text)
+    from render_hardware_benchmark_charts import render
+    render(dest)
     report = args.site / 'src/content/research/rtx-3090-vs-gb10-aero-inference-benchmark.md'
     write(dest / 'REPORT.md', report.read_text(encoding='utf-8'))
     write(dest / 'README.md', '''# Aero public local-inference benchmark — September 24, 2026
@@ -87,7 +83,7 @@ One warm-up precedes measured repetitions; medians are the primary reported stat
 Agent loops contain four sequential model calls and mocked deterministic tools.
 No CFD/FEA execution or production end-to-end engineering decision was measured.
 
-Charts are retained primary-suite SVGs. Device power is not whole-system wall power.
+Charts are rendered from the public primary-suite aggregates. Device power is not whole-system wall power.
 GPU-memory and host/unified-memory counters are not interchangeable or isolated model memory.
 Model labels and selected statistical fields are preserved; all other source keys are excluded.
 The export script is versioned with the public website source.

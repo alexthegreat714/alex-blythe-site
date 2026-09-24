@@ -128,6 +128,8 @@ const canonical = new URL(canonicalPath, Astro.site);
   :global(.article-body li + li) { margin-top: .55rem; }
   :global(.article-body img) { display: block; max-width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; margin: 1.6rem 0; }
   :global(.article-body table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5rem 0; font-size: .85rem; font-variant-numeric: tabular-nums; }
+  :global(.article-body .benchmark-chart) { margin: 1.6rem 0; overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: white; }
+  :global(.article-body .benchmark-chart img) { width: 100%; min-width: 700px; max-width: none; margin: 0; border: 0; border-radius: 0; }
   :global(.article-body th), :global(.article-body td) { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); min-width: 100px; }
   :global(.article-body th) { background: var(--surface); }
   .article-footer { margin-top: 54px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--accent); font-weight: 700; }
