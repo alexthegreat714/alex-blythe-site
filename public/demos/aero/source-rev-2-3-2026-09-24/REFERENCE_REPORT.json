@@ -1,0 +1,177 @@
+{
+  "adapter_status": "REFERENCE_INFERENCE_COMPLETED_NOT_VALIDATED",
+  "audit": {
+    "area_m2": 36.09737749563886,
+    "area_weighted_pressure_Pa": -303.73755844747626,
+    "authority": "RESEARCH_ONLY",
+    "coefficient_comparisons": {
+      "Cd": {
+        "prediction": 0.3068632374015499,
+        "reference": 0.3035117,
+        "relative_error": 0.011042531149705003
+      },
+      "Cl": {
+        "prediction": 0.4330888203933332,
+        "reference": 0.06772802,
+        "relative_error": 5.394529478247454
+      },
+      "Cs": {
+        "prediction": 0.03547081850885791,
+        "reference": 0.04766758,
+        "relative_error": 0.2558712124916367
+      }
+    },
+    "conclusions": [
+      "Published varying reference area and constant reference area do not remove the discrepancy.",
+      "Independent pressure/shear integration agrees with the upstream force calculation to roundoff.",
+      "Surface fields are exactly aligned to the inference STL cell order; native CFD field correspondence is not established.",
+      "Pinned design-sensitivity preprocessing and PhysicsNeMo v2.2 datapipe use different center-of-mass offset scaling. Checkpoint training-path compatibility needs independent confirmation.",
+      "Checkpoint uses min-max normalization and disables parameter encoding; the different global reference velocity alone is not established as causal.",
+      "No physics acceptance threshold, preprocessing correction, or engineering validation is inferred from this audit."
+    ],
+    "exact_two_execution_array_repeatability": false,
+    "gauge_policy": "Diagnostic sensitivity only. No reference-fitted pressure offset applied.",
+    "integrated_force_N": [
+      621.5769884555757,
+      71.84909060298806,
+      877.2573964655242
+    ],
+    "integration_error_N": [
+      8.41587007016642e-05,
+      7.656210712525535e-06,
+      1.12116179025179e-05
+    ],
+    "native_field_mapping": "NOT_ESTABLISHED_DIFFERENT_TOPOLOGY",
+    "native_reference_topology_header": "<Piece NumberOfPoints='8846052' NumberOfPolys='8828095'>",
+    "net_outward_area_m2": [
+      -1.2489852318178947e-09,
+      1.5166119898451553e-09,
+      -1.1486142253220222e-08
+    ],
+    "physical_validation": "NOT_ESTABLISHED",
+    "pressure_force_N": [
+      532.9841829069974,
+      72.76642337116334,
+      873.2478271194559
+    ],
+    "repeat_comparison": {
+      "aerodynamic_force": {
+        "exact_array_equal": true,
+        "max_absolute_difference": 0.0,
+        "shape": [
+          3
+        ]
+      },
+      "geometry_coordinates": {
+        "exact_array_equal": true,
+        "max_absolute_difference": 0.0,
+        "shape": [
+          753234,
+          3
+        ]
+      },
+      "geometry_sensitivity": {
+        "exact_array_equal": false,
+        "max_absolute_difference": 0.0007534027099609375,
+        "shape": [
+          753234,
+          3
+        ]
+      },
+      "pred_surf_pressure": {
+        "exact_array_equal": true,
+        "max_absolute_difference": 0.0,
+        "shape": [
+          753234
+        ]
+      },
+      "pred_surf_wall_shear_stress": {
+        "exact_array_equal": true,
+        "max_absolute_difference": 0.0,
+        "shape": [
+          753234,
+          3
+        ]
+      }
+    },
+    "shear_force_N": [
+      88.59280554857827,
+      -0.9173327681752874,
+      4.009569346068267
+    ],
+    "state": "DISCREPANCY_RETAINED_CAUSE_NOT_ESTABLISHED",
+    "strict_determinism_claim": false,
+    "subtracting_mean_pressure_would_change_force_N": [
+      3.7936372484932246e-07,
+      -4.606520229077361e-07,
+      3.488772803973504e-06
+    ],
+    "surface_cells": 753234,
+    "surface_points": 376531,
+    "upstream_force_N": [
+      621.576904296875,
+      71.84908294677734,
+      877.2573852539062
+    ]
+  },
+  "date": "2026-09-24",
+  "hardware": "NVIDIA GeForce RTX 3090",
+  "live_private_runtime_changed": false,
+  "original_runtime_source_immutability": {
+    "checked": 230,
+    "mismatch": 0,
+    "mismatched_files": [],
+    "missing": 0,
+    "missing_files": [],
+    "original_manifest_sha256": "fe54097134ee75af2e84b528f8d32c393c9443c02a92366b86dd1599ea920e79",
+    "source_unchanged": true
+  },
+  "peak_torch_allocated_bytes": 3127602176,
+  "pretrained_scientific_validation": "NOT_ESTABLISHED",
+  "revision": "2.3",
+  "software_versions": {
+    "numpy": "2.2.6",
+    "nvidia-physicsnemo": "2.2.0",
+    "pyvista": "0.47.0",
+    "torch": "2.10.0+cu130"
+  },
+  "source_audit": {
+    "action": "Retain upstream workflow unchanged. Obtain checkpoint-compatible preprocessing/reference expectation before claiming field accuracy.",
+    "checkpoint_revision": "35b1bf1edafdaa2600d16182825890cd51c07427",
+    "comparison": {
+      "center_of_mass_offsets": "Design workflow uses physical-coordinate offsets; v2.2 datapipe normalizes coordinates and COM before subtraction when normalize_coordinates=true.",
+      "checkpoint_training_preprocessing_identity": "NOT_ESTABLISHED",
+      "global_reference_velocity": "Workflow supplies actual velocity as reference; checkpoint config lists 30. Parameter encoding is false, so this difference is not established as causal.",
+      "normalization": "Checkpoint config uses min_max_scaling; no mean/std correction justified."
+    },
+    "design_workflow_commit": "0612ec4ed54484a47bfa134eda7b3b012a607624",
+    "finding": "PREPROCESSING_PATH_DIFFERENCE_OBSERVED_CAUSAL_EFFECT_NOT_ESTABLISHED",
+    "qualification_effect": "NONE",
+    "sources": [
+      {
+        "bytes": 53068,
+        "sha256": "738d7217e1ef47655e788761d80cdd9e94ef4b4c9cb5fe24d86bf81754cafd5a",
+        "source": "https://raw.githubusercontent.com/NVIDIA/physicsnemo/a078229716ce39d9d9273b23d54b073d3adb925e/physicsnemo/datapipes/cae/domino_datapipe.py"
+      },
+      {
+        "bytes": 24407,
+        "sha256": "656b453834c641dfb74b2402fd8746a253727585e69cbee1a47b14991a7dda9b",
+        "source": "https://raw.githubusercontent.com/NVIDIA/physicsnemo/a078229716ce39d9d9273b23d54b073d3adb925e/examples/cfd/external_aerodynamics/domino/src/inference_on_stl.py"
+      }
+    ]
+  },
+  "witness_verification": {
+    "applicability": "NOT_ESTABLISHED",
+    "authority": "RESEARCH_ONLY",
+    "can_satisfy_qualification_gate": false,
+    "eligible_for_supporting_interpretation": false,
+    "independence": {
+      "level": "LOW",
+      "reason": "Training labels and comparison share the same solver family"
+    },
+    "result_sha256": "8c15f94d6e97f3401cd618d0cf1ba7154e38f59a9c6479f5025db998795867d3",
+    "source_type": "PHYSICS_AI_RESULT",
+    "validity": "NOT_ESTABLISHED"
+  },
+  "worker_wall_seconds": 119.47805202100426
+}

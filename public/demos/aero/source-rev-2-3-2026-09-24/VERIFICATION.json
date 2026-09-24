@@ -1,0 +1,7 @@
+{
+  "checked": 8,
+  "missing": 0,
+  "mismatch": 0,
+  "scope": "All public release artifacts; ZIP interior additionally verified by SOURCE_MANIFEST.json",
+  "manifest_sha256": "2945110f73deedb6cb2467fdb1df843035471db7a26439854b61c2cee88c5587"
+}

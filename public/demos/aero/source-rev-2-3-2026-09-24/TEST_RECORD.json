@@ -1,0 +1,31 @@
+{
+  "local_focused_suite": {
+    "tests": 87,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "publication_and_old_release_custody": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "rev_2_3_extracted_archive": {
+    "tests": 84,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual_pretrained_inference": "COMPLETED_NOT_VALIDATED",
+  "website_build": "PASS_45_ROUTES",
+  "warnings": [
+    "Local pytest cache_dir warning while cache plugin disabled",
+    "Existing Astro bundle-size warning; build succeeded"
+  ],
+  "test_receipt_sha256": {
+    "tests-final.xml": "c92f443b3a81cf67f393aefbe4befa53e62fc0f4a1c6df6d9d53adf92974920d",
+    "public-tests-01.xml": "316039542f7ecc7879bf695295d77763f66ef46952e1238b4740e9214d9e0b93",
+    "standalone-final.xml": "0a8f6ca9297522c0ff2e96045823250504894a94846ed2b2c67b27b5ba48e2eb"
+  }
+}

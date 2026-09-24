@@ -1,0 +1,9 @@
+{
+  "bytes": 165155,
+  "engineering_validation": "NOT_ESTABLISHED",
+  "file": "aero-rev-2.3.zip",
+  "revision": "2.3",
+  "runtime_deployed": false,
+  "scope": "SOURCE_MODULE_RELEASE_RESEARCH_ADAPTER",
+  "sha256": "4961428170d5c259fad772d1995f16556fd5fb01f342f33dbc141d88c7fc267b"
+}

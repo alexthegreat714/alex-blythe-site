@@ -41,7 +41,7 @@ def test_extracted_archive_standalone_software_suite(tmp_path,revision):
 def test_public_page_labels_scope_and_navigation():
     article=(SITE/'src/content/research/aero-source-revisions.md').read_text(encoding='utf8')
     assert 'Partial snapshot' in article and 'not complete one-click' in article
-    assert 'No stable release yet' in article
+    assert 'Rev 2.3 cumulative source' in article and 'RESEARCH_ONLY' in article
     assert '/software/notes/aero-source-revisions/' in (SITE/'src/pages/software/[slug].astro').read_text(encoding='utf8')
 
 def test_export_cannot_rewrite_a_published_revision(tmp_path,monkeypatch):
