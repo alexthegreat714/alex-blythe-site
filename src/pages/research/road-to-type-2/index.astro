@@ -1,0 +1,76 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import archive from '../../../../public/research/road-to-type-2-working-draft-2024-11-23.md?raw';
+
+const entries = [...archive.matchAll(/^# (\d+)\.  (You|ChatGPT)\n([\s\S]*?)(?=\n---\n# \d+\.  |(?![\s\S]))/gm)].map(match => {
+  const raw = match[3].trim();
+  const timestamp = raw.match(/^\*([^\n]+)\*\n/);
+  const text = timestamp ? raw.slice(timestamp[0].length).trim() : raw;
+  const preview = text.replace(/^>\s?/gm, '').replace(/[#*]/g, '').split('\n').find(line => line.trim()) ?? '';
+  return { number: Number(match[1]), author: match[2] === 'You' ? 'Alex' : 'ChatGPT', date: timestamp?.[1] ?? 'October 31, 2024', text, preview: preview.length > 110 ? preview.slice(0, 107) + '…' : preview };
+});
+if (entries.length !== 160) throw new Error('Road to Type 2 archive is incomplete');
+const jumps = [
+  { number: 1, label: 'Opening chapter draft' },
+  { number: 23, label: 'Why expand into the solar system?' },
+  { number: 28, label: 'Understanding the Kardashev Scale' },
+  { number: 114, label: 'Revised book outline' },
+  { number: 144, label: 'Humanity’s current status' },
+  { number: 154, label: 'Returning to the Moon' },
+];
+---
+<ArticleLayout
+  title="Road to Type 2 — Working draft"
+  description="An archived work in progress by Alex Blythe on energy, space infrastructure, and humanity’s long-horizon future."
+  date="Drafting record: October–November 2024"
+  category="Personal writing / speculative book draft"
+  canonicalPath="/research/road-to-type-2/"
+  backHref="/#road-to-type-2"
+  backLabel="Personal writing"
+>
+  <p>This is the work as it stood in November 2024: chapter drafts, outlines, revisions, and editorial exchanges with ChatGPT. It is a working record, not a completed or newly revised book. The original text, including inconsistencies and unfinished sections, is preserved.</p>
+  <p>Only export metadata and private account links have been removed. The cover image mentioned in the record was not included in the source export. Some document edits remain in their original JSON form; they have not been silently combined into a new manuscript.</p>
+  <p><a class="download" href="/research/road-to-type-2-working-draft-2024-11-23.md" download>Download the complete working draft (Markdown, 703 KiB) ↓</a></p>
+  <nav class="draft-jumps" id="reading-shortcuts" aria-label="Draft reading shortcuts">
+    <h2>Read the draft</h2>
+    <ul>{jumps.map(jump => <li><a href={`#entry-${jump.number}`}>{jump.label}</a></li>)}</ul>
+  </nav>
+  <p class="reading-note">Open an entry to read it. Author drafts and AI editorial responses are labeled separately; the full chronological record follows.</p>
+  <div class="draft-record">
+    {entries.map(entry => <details id={`entry-${entry.number}`}>
+      <summary><span class="entry-meta">{entry.number} / {entry.author} · {entry.date}</span><span class="entry-preview">{entry.preview}</span></summary>
+      <pre>{entry.text}</pre>
+      <a class="back-to-index" href="#reading-shortcuts">Back to reading shortcuts ↑</a>
+    </details>)}
+  </div>
+  <p class="related">Related theoretical paper: <a href="/research/bifrost-drive.pdf">Bifrost Drive (PDF) ↗</a></p>
+</ArticleLayout>
+
+<script>
+  function openLinkedEntry() {
+    const id = window.location.hash.slice(1);
+    const entry = document.getElementById(id);
+    if (entry instanceof HTMLDetailsElement) {
+      entry.open = true;
+      requestAnimationFrame(() => entry.scrollIntoView({ block: 'start' }));
+    }
+  }
+  window.addEventListener('hashchange', openLinkedEntry);
+  openLinkedEntry();
+</script>
+
+<style>
+  .download { display: inline-block; padding: 12px 16px; border: 1px solid var(--border); font-weight: 650; }
+  .draft-jumps, details { scroll-margin-top: 100px; }
+  .draft-jumps ul { padding-left: 1.25rem; }
+  .reading-note { color: var(--muted); font-size: .9rem; }
+  details { border-top: 1px solid var(--border); padding: 14px 0; }
+  details:last-child { border-bottom: 1px solid var(--border); }
+  summary { cursor: pointer; overflow-wrap: anywhere; }
+  .entry-meta { color: var(--muted); font-size: .75rem; }
+  .entry-preview { display: block; margin-top: 5px; font-size: .92rem; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; margin: 25px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 1.04rem; line-height: 1.8; tab-size: 2; }
+  .back-to-index { display: inline-block; font-size: .85rem; }
+  .related { margin-top: 2rem !important; }
+  @media (prefers-reduced-motion: reduce) { :global(html) { scroll-behavior: auto; } }
+</style>
