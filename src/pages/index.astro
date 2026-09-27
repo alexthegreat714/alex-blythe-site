@@ -1,6 +1,7 @@
 ---
 import { resume } from '../data/resume';
 import { softwareProjects } from '../data/software';
+import { selectedEngineering } from '../data/selected-engineering';
 
 // Keep the small hero rail data-driven so a role or employer update stays local.
 const currentFocus = {
@@ -15,20 +16,6 @@ const evidenceFigures = [
   { src: '/demos/aero/verification-bench-v1/pipe-reference.png', alt: 'Laminar pipe-flow reference comparison plot', label: 'Reference comparison', title: 'Computed checks against known behavior' },
   { src: '/demos/aero/verification-bench-v1/nozzle-yplus.png', alt: 'Nozzle wall y-plus distribution plot', label: 'Numerical evidence', title: 'Wall-readiness is measured, not assumed' },
   { src: '/demos/aero/verification-bench-v1/conservation.png', alt: 'OpenFOAM conservation history plot', label: 'Solver evidence', title: 'Conservation remains visible with the result' },
-] as const;
-const aerospaceResearch = [
-  {
-    type: 'Technical article',
-    title: 'Mastering Computational Fluid Dynamics (CFD) for Aerospace Engineering',
-    summary: 'A practical treatment of the Navier-Stokes foundation, modeling workflow, and aerospace applications of CFD.',
-    href: '/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/',
-  },
-  {
-    type: 'Research note',
-    title: 'Deciphering the Thunderous Echoes of Rocketry',
-    summary: 'An examination of rocket-launch acoustics and what measured acoustic environments mean for vehicle, facility, and payload design.',
-    href: '/2023/12/18/deciphering-the-thunderous-echoes-of-rocketry-a-study-in-acoustic-dynamics/',
-  },
 ] as const;
 ---
 
@@ -93,7 +80,7 @@ const aerospaceResearch = [
             <h1>Aerospace hardware, space systems, and the research behind them.</h1>
             <p class="hero-lede">I work across propulsion hardware, thermal and fluid analysis, test, verification, and technical software.</p>
             <div class="hero-actions">
-              <a class="button button-dark" href="#engineering">Explore the work <span aria-hidden="true">↓</span></a>
+              <a class="button button-dark" href="#selected-engineering">Selected Engineering Work <span aria-hidden="true">↓</span></a>
               <a class="text-link" href="/software/aero/evidence/">Inspect public engineering evidence <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -125,6 +112,16 @@ const aerospaceResearch = [
         <div><span class="signal-index">01</span><strong>Design & analysis</strong><small>Thermal, fluid, structural</small></div>
         <div><span class="signal-index">02</span><strong>Test & verification</strong><small>Instrumentation, readiness, evidence</small></div>
         <div><span class="signal-index">03</span><strong>Research & writing</strong><small>Independent technical work</small></div>
+      </section>
+
+      <section class="section selected-engineering" id="selected-engineering" aria-labelledby="selected-engineering-heading">
+        <div class="section-intro">
+          <div><p class="eyebrow">Start here / Three retained cases</p><h2 id="selected-engineering-heading">Selected Engineering Work</h2></div>
+          <p>Requirements, methods, acceptance criteria, and dispositions—with the evidence behind each decision.</p>
+        </div>
+        <div class="selected-case-grid">
+          {selectedEngineering.map(entry => <article class="selected-case"><p class="eyebrow">{entry.discipline}</p><h3><a href={entry.href}>{entry.title}</a></h3><p>{entry.summary}</p><a class="text-link" href={entry.href}>Inspect the evidence →</a></article>)}
+        </div>
       </section>
 
       <section class="section" id="engineering">
@@ -191,11 +188,7 @@ const aerospaceResearch = [
           ))}
         </div>
         <div class="research-actions"><a class="button button-light" href="/software/aero/verification/">Open the verification bench <span aria-hidden="true">→</span></a><a class="text-link" href="/software/aero/evidence/">Review all Aero evidence ↗</a></div>
-        <div class="research-list research-primary-list">
-          {aerospaceResearch.map((entry) => (
-            <article class="research-row"><div><span class="research-type">{entry.type}</span><h3><a href={entry.href}>{entry.title}</a></h3><p class="research-summary">{entry.summary}</p></div><div class="research-meta"><span>Independent technical writing</span><span aria-hidden="true">↗</span></div></article>
-          ))}
-        </div>
+        <p class="earlier-writing-link"><a class="text-link" href="/writing/">Earlier technical writing / archive ↗</a></p>
       </section>
 
       <section class="section type-section" id="road-to-type-2">
@@ -271,6 +264,14 @@ const aerospaceResearch = [
 </html>
 
 <style>
+  #selected-engineering { scroll-margin-top: 100px; }
+  .selected-case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .selected-case { border-top: 1px solid var(--theme-border); padding-top: 24px; display: flex; flex-direction: column; align-items: start; }
+  .selected-case h3 { font-family: Georgia, serif; font-size: 1.65rem; font-weight: 400; line-height: 1.15; margin: 8px 0 16px; }
+  .selected-case > p:not(.eyebrow) { color: var(--theme-muted); font-size: .92rem; line-height: 1.75; }
+  .selected-case > .text-link { margin-top: auto; padding-top: 18px; font-size: .82rem; }
+  .earlier-writing-link { padding-top: 26px; font-size: .85rem; }
+  @media (max-width: 860px) { .selected-case-grid { grid-template-columns: 1fr; } }
   :global(*) { box-sizing: border-box; }
   :global(html) { overflow-x: hidden; scroll-behavior: smooth; background: var(--theme-page); }
   :global(body) { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--theme-page); color: var(--theme-text); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }

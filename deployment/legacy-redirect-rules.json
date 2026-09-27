@@ -1,0 +1,35 @@
+{
+  "name": "Portfolio legacy paths",
+  "kind": "zone",
+  "phase": "http_request_dynamic_redirect",
+  "rules": [
+    {
+      "ref": "portfolio_old_projects",
+      "description": "Retired project index to current software portfolio",
+      "expression": "(http.host in {\"alex-blythe.com\" \"www.alex-blythe.com\"} and http.request.uri.path in {\"/my-projects\" \"/my-projects/\" \"/my-projects/index.html\"})",
+      "action": "redirect",
+      "action_parameters": {
+        "from_value": {
+          "status_code": 301,
+          "target_url": { "value": "https://alex-blythe.com/software/" },
+          "preserve_query_string": true
+        }
+      },
+      "enabled": true
+    },
+    {
+      "ref": "portfolio_old_resume",
+      "description": "Retired resume to current professional experience",
+      "expression": "(http.host in {\"alex-blythe.com\" \"www.alex-blythe.com\"} and http.request.uri.path in {\"/resume\" \"/resume/\" \"/resume/index.html\"})",
+      "action": "redirect",
+      "action_parameters": {
+        "from_value": {
+          "status_code": 301,
+          "target_url": { "value": "https://alex-blythe.com/#experience" },
+          "preserve_query_string": true
+        }
+      },
+      "enabled": true
+    }
+  ]
+}

@@ -79,7 +79,8 @@ export const softwareProjects: SoftwareProject[] = [
     category: 'Bounded agent execution',
     status: 'Alpha / experimental',
     year: '2026',
-    version: 'v0.1.0-alpha.6',
+    // Public tag and pyproject.toml (0.1.0a5), verified 2026-09-27; not the private development version.
+    version: 'v0.1.0-alpha.5',
     summary: 'A framework for supervised agent execution with explicit authority boundaries, observable tool handoffs, evidence capture, verification, and controlled escalation.',
     purpose: 'ForgeClaw explores how an agent can act on a declared surface, preserve what happened, and require separate evidence before a result is accepted.',
     keyIdeas: [

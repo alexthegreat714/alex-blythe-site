@@ -57,6 +57,17 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
         <div>
           <h1 id="aero-proof-heading">Aero's engineering method.</h1>
           <p>Trace a requirement through analytical models, geometry, numerical simulation, and reviewable evidence.</p>
+          <section class="aero-executive-summary" id="executive-summary" aria-label="Aero executive summary">
+            <div>
+              <h2>What Aero demonstrates</h2>
+              <p>Converting engineering requirements into bounded analyses: first-principles screening, CAD/model preparation, and CFD or FEA at an appropriate fidelity. Numerical qualification is assessed separately from solver completion, with analytical or independent reference comparisons where available. Retained artifacts support explicit engineering dispositions; failures and unestablished gates remain visible. Human engineering authority stays separate from software and AI execution.</p>
+            </div>
+            <div>
+              <h2>What Aero does not demonstrate</h2>
+              <p>Aero is not an autonomous engineering authority. Solver completion is not numerical qualification, and numerical qualification is not automatically physical validation. A PASS applies only to the documented problem, assumptions, and acceptance criteria; failed and NOT_ESTABLISHED results remain so. Hashes establish artifact identity and integrity, not scientific correctness. LLM confidence or reasoning is not independent computational evidence.</p>
+            </div>
+            <a class="text-link" href="/software/aero/verification/">Inspect the Verification Bench and retained evidence →</a>
+          </section>
           <div class="aero-private-access">
             <a class="button private-login" href="https://aegis.alex-blythe.com/aero/">Private Aero login <span aria-hidden="true">↗</span></a>
             <span>Owner access · Use your Aegis username and password.</span>
@@ -129,12 +140,11 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
       </details>
 
       <section class="engineering-authority" aria-labelledby="authority-heading">
-        <h2 id="authority-heading">Engineering authority and limitations</h2>
-        <p>Aero helps define, execute, and explain a study. Engineering conclusions must come from the stated physical model, solver or analytical calculations, and supporting checks—not the language model’s confidence. A responsible engineer reviews the inputs and intended use.</p>
+        <h2 id="authority-heading">Scope-specific limitations</h2>
+        <p><a href="#executive-summary">The executive summary defines the authority and evidence boundary.</a> These studies are preliminary; each report records its reference comparisons, assumptions, uncertainty, and open gates.</p>
         <ul>
-          <li>Convergence and mesh sensitivity establish numerical behavior, not physical validation or design approval. These studies are preliminary; each report records its reference comparisons, assumptions, uncertainty, and open gates.</li>
           <li>The nozzle meshes are wall-refined. Wall-resolution suitability is not established without y+ and near-wall-model evidence. Channel results cover the stated idealized passages, not unmodeled sidewalls, fittings, or hardware.</li>
-          <li>Artifact hashes establish file identity, not scientific validity. The papers are reproducible technical reports, not peer-reviewed publications.</li>
+          <li>The papers are reproducible technical reports, not peer-reviewed publications.</li>
         </ul>
       </section>
 
@@ -305,6 +315,11 @@ const comparisons = authoritativeResult.readiness.gates.find(gate => gate.id ===
 </SoftwareLayout>
 
 <style>
+  .aero-executive-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 28px 0; padding-block: 24px; border-block: 1px solid var(--border); scroll-margin-top: 100px; }
+  .aero-executive-summary h2 { font-size: 1.15rem; margin: 0 0 12px; }
+  .aero-executive-summary p { font-size: .9rem; line-height: 1.75; margin: 0; color: var(--muted); }
+  .aero-executive-summary > a { grid-column: 1 / -1; font-size: .82rem; }
+  @media (max-width: 700px) { .aero-executive-summary { grid-template-columns: 1fr; } }
   .aero-route-guide{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:22px 0 0}.aero-route-guide a{font-size:.85rem}.alternate-routes{margin-top:20px}.alternate-routes summary,.example-library summary{cursor:pointer;color:var(--muted);font-size:.85rem}.alternate-routes a{display:inline-block;margin:14px 20px 0 0;font-size:.85rem}.engineering-authority{margin:32px 0;padding:26px;border:1px solid var(--border);border-radius:8px}.engineering-authority h2{font-size:clamp(1.3rem,2.5vw,1.8rem);margin:0 0 14px}.engineering-authority p,.engineering-authority li{font-size:.9rem;line-height:1.75;color:var(--muted)}.engineering-authority ul{padding-left:22px;margin-bottom:0}.engineering-authority li+li{margin-top:12px}#try-aero,#technical-details{scroll-margin-top:90px}.example-library{margin:24px 0}
   .aero-live-study{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;padding:28px 0;margin:20px 0;border-top:1px solid var(--border,#344449);border-bottom:1px solid var(--border,#344449)}.aero-live-study h2{font-size:clamp(25px,3vw,36px);line-height:1.2;margin:10px 0}.aero-live-study p{line-height:1.7}.aero-live-study .button{margin:8px 15px 8px 0}.channel-result-preview{border:1px solid #41606a;padding:20px;background:#12232b;color:#dcebee}.channel-result-preview small{color:#a8c2c9;font-size:11px;line-height:1.6;display:block}.channel-result-preview table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}.channel-result-preview th,.channel-result-preview td{text-align:left;padding:10px 6px;border-bottom:1px solid #39515b}.channel-result-preview tbody tr:nth-child(2){background:#24463f}.channel-result-preview p{font-size:12px;color:#8cdbc6}@media(max-width:760px){.aero-live-study{grid-template-columns:1fr;gap:18px}}
   .aero-proof { --accent:#17818a; }

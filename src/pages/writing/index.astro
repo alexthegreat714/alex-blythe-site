@@ -1,0 +1,11 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+const articles = [
+  { title: 'Mastering Computational Fluid Dynamics (CFD) for Aerospace Engineering', date: 'December 28, 2023', href: '/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/' },
+  { title: 'Deciphering the Thunderous Echoes of Rocketry', date: 'December 18, 2023', href: '/2023/12/18/deciphering-the-thunderous-echoes-of-rocketry-a-study-in-acoustic-dynamics/' },
+];
+---
+<ArticleLayout title="Earlier Technical Writing" description="Earlier explanatory articles on CFD and launch acoustics, retained at their original URLs." date="2023 archive" category="Writing / Archive" canonicalPath="/writing/" backHref="/#selected-engineering" backLabel="Selected Engineering Work">
+  <p>For current engineering methods, acceptance criteria, and retained results, <a href="/#selected-engineering">start with the selected engineering work</a>.</p>
+  {articles.map(article => <section><h2><a href={article.href}>{article.title}</a></h2><p>{article.date} · Explanatory technical writing</p><p><a href={article.href}>Read article ↗</a></p></section>)}
+</ArticleLayout>
