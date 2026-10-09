@@ -86,7 +86,6 @@ const evidenceFigures = [
           </div>
           <aside class="hero-rail" aria-label="Current focus">
             <div class="rail-profile">
-              <img src="/alex-blythe-headshot.jpg" alt="Alex Blythe" width="78" height="78" loading="eager" decoding="async" />
               <div>
                 <div class="rail-label">Current role</div>
                 <p class="rail-title">{currentFocus.role}</p>
@@ -213,7 +212,14 @@ const evidenceFigures = [
 
       <section class="contact-section" id="contact">
         <div><p class="eyebrow">07 — Contact</p><h2>Interested in the public work? Get in touch.</h2></div>
-        <div class="contact-side"><p>General, non-sensitive inquiries are welcome. Do not send proprietary, classified, employer-owned, export-controlled, or ITAR-controlled technical data or attachments.</p><a class="button button-light" href="mailto:blythe.ar@gmail.com?subject=Alex%20Blythe%20general%20inquiry">General contact <span aria-hidden="true">↗</span></a></div>
+        <div class="contact-side">
+          <div class="contact-profile">
+            <img class="contact-portrait" src="/alex-blythe-contact.webp" alt="Alex Blythe" width="144" height="144" loading="lazy" decoding="async" />
+            <span class="contact-name">Alex Blythe</span>
+          </div>
+          <p>General, non-sensitive inquiries are welcome. Do not send proprietary, classified, employer-owned, export-controlled, or ITAR-controlled technical data or attachments.</p>
+          <a class="button button-light" href="mailto:blythe.ar@gmail.com?subject=Alex%20Blythe%20general%20inquiry">General contact <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
     </main>
 
@@ -303,8 +309,7 @@ const evidenceFigures = [
   .text-link { color: #c45932; font-size: .78rem; font-weight: 750; }
   .text-link:hover { color: #8d3d20; }
   .hero-rail { align-self: start; margin-top: clamp(24px, 4vw, 56px); border-top: 1px solid #aeb4b0; }
-  .rail-profile { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 14px; align-items: center; padding: 16px 0 18px; }
-  .rail-profile img { display: block; width: 78px; height: 78px; border: 1px solid #aeb4b0; border-radius: 4px; object-fit: cover; }
+  .rail-profile { padding: 16px 0 18px; }
   .rail-label { margin-top: 0; color: #6c7475; }
   .rail-title { font-family: Georgia, serif; font-size: 1.28rem; line-height: 1.15; }
   .rail-org { margin-top: 7px; color: #6c7475; font-size: .82rem; }
@@ -411,6 +416,9 @@ const evidenceFigures = [
   .contact-section .eyebrow { color: #f9c9b1; }
   .contact-section h2 { max-width: 740px; font-size: clamp(2.5rem, 5vw, 5.3rem); }
   .contact-side { display: flex; flex-direction: column; justify-content: space-between; align-items: start; gap: 35px; color: #ffe3d5; font-size: .9rem; }
+  .contact-profile { display: flex; align-items: center; gap: 20px; }
+  .contact-portrait { display: block; width: 144px; height: 144px; flex-shrink: 0; object-fit: cover; border: 1px solid #fff3e966; border-radius: 4px; }
+  .contact-name { color: var(--theme-on-accent); font-family: Georgia, serif; font-size: 1.35rem; line-height: 1.2; }
   .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px max(24px, calc((100vw - 1180px) / 2)); background: #1a252a; color: #9daaa6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
   @media (max-width: 1100px) {
     .brand-context { display: none; }
@@ -440,8 +448,7 @@ const evidenceFigures = [
     h1 { font-size: clamp(2.375rem, 12vw, 3.25rem); line-height: 1; }
     .hero-lede { margin-top: 22px; }
     .hero-actions { margin-top: 28px; }
-    .rail-profile { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
-    .rail-profile img { width: 72px; height: 72px; }
+    .contact-portrait { width: 112px; height: 112px; }
     .hero-foot { grid-template-columns: 1fr auto; margin-top: 40px; }
     .hero-foot span:nth-child(2) { display: none; }
     .signal-strip { grid-template-columns: 1fr; }
@@ -570,8 +577,7 @@ const evidenceFigures = [
   :global(html[data-theme='dark']) .hero-foot,
   :global(html[data-theme='dark']) .work-list,
   :global(html[data-theme='dark']) .software-list,
-  :global(html[data-theme='dark']) .resume-grid,
-  :global(html[data-theme='dark']) .rail-profile img { border-color: var(--theme-border); }
+  :global(html[data-theme='dark']) .resume-grid { border-color: var(--theme-border); }
   :global(html[data-theme='dark']) .rail-rule,
   :global(html[data-theme='dark']) .rail-list div,
   :global(html[data-theme='dark']) .work-row,
