@@ -1,0 +1,50 @@
+[
+  {
+    "structure": "cantilever",
+    "case_id": "pipeline_fresh_001",
+    "image": "cantilever.png",
+    "deck": "solver/pipeline_fresh_001/model.inp",
+    "data": "solver/pipeline_fresh_001/model.dat",
+    "source_deck_sha256": "b4d849b7a65f5e24b9fa010fd469255de90988dec5a7835934a12a6e26941242",
+    "source_data_sha256": "9134b2d128f664ecb6d8b13b94acf5fa3f7589d2af6e3f06d4f9772fe5c52d67",
+    "accepted_value": 6.206820724137931,
+    "units": "mm",
+    "field_render_not_independent_validation": true
+  },
+  {
+    "structure": "simply_supported",
+    "case_id": "pipeline_fresh_004",
+    "image": "simply_supported.png",
+    "deck": "solver/pipeline_fresh_004/model.inp",
+    "data": "solver/pipeline_fresh_004/model.dat",
+    "source_deck_sha256": "6cd9e8febb8c31408a2413d1e84e3cf78025dfb1edde86b648d5ac6b6320a55b",
+    "source_data_sha256": "ff9f87a4dc327e7b30b185963345070d8a30f1703fb9f4b801d920bfae1df878",
+    "accepted_value": 0.3900204142857143,
+    "units": "mm",
+    "field_render_not_independent_validation": true
+  },
+  {
+    "structure": "restrained_thermal_bar",
+    "case_id": "pipeline_fresh_007",
+    "image": "restrained_thermal_bar.png",
+    "deck": "solver/pipeline_fresh_007/model.inp",
+    "data": "solver/pipeline_fresh_007/model.dat",
+    "source_deck_sha256": "c2bd13780317a701ca0e5009f352bfcf855715d837e6f62e35ab79ad83204e8b",
+    "source_data_sha256": "23137e0de6bc44779bfc4a4c9877614b5e9106bf08d3e90a49b9cdda0c178135",
+    "accepted_value": 60.9336,
+    "units": "MPa",
+    "field_render_not_independent_validation": true
+  },
+  {
+    "structure": "thick_cylinder",
+    "case_id": "pipeline_fresh_010",
+    "image": "thick_cylinder.png",
+    "deck": "solver/pipeline_fresh_010/model.inp",
+    "data": "solver/pipeline_fresh_010/model.dat",
+    "source_deck_sha256": "821092f812868714ee4fc72aabdaab6365686c09b59b868c79ae96dd465293ef",
+    "source_data_sha256": "218a303090b9c61164034824a0cf8819183bef32e24296df1682bce728207210",
+    "accepted_value": 11.32851,
+    "units": "MPa",
+    "field_render_not_independent_validation": true
+  }
+]

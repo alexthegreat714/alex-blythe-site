@@ -1,0 +1,3355 @@
+[
+  {
+    "id": "pipeline_fresh_001",
+    "original_request": "Steel rectangular cantilever: 487 mm long with a 24 by14 mm rectangular section; fixed at one end and free at the other. E=204 GPa, \u03bd=0.26. Apply 181 N load spread over the free end face along -z. Find tip deflection magnitude along that load axis using linear small-displacement elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 6.228323803590484,
+      "units": "mm",
+      "formula": "independent rectangular Timoshenko closed form",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel rectangular cantilever: 487 mm long with a 24 by14 mm rectangular section; fixed at one end and free at the other. E=204 GPa, \u03bd=0.26. Apply 181 N load spread over the free end face along -z. Find tip deflection magnitude along that load axis using linear small-displacement elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              121,
+              130
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              132,
+              138
+            ],
+            "source": "\u03bd=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              30,
+              41
+            ],
+            "source": "487 mm long",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              49,
+              79
+            ],
+            "source": "24 by14 mm rectangular section",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              49,
+              79
+            ],
+            "source": "24 by14 mm rectangular section",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              146,
+              156
+            ],
+            "source": "181 N load",
+            "ambiguous": false
+          },
+          {
+            "value": 181.0,
+            "span": [
+              140,
+              151
+            ],
+            "source": "Apply 181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.009748599986778572,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.003452466527215076,
+      "actual_value": 6.206820724137931,
+      "reference": {
+        "value": 6.228323803590484,
+        "units": "mm",
+        "formula": "independent rectangular Timoshenko closed form",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "tip deflection",
+      "value": 6.206820724137931,
+      "units": "mm",
+      "mesh_series": [
+        6.200603571428571,
+        6.206820724137931
+      ],
+      "last_change_pct": 0.1,
+      "hand_calc": {
+        "value": 6.228323803590484,
+        "formula": "PL^3/(3EI) + PL/(kGA), rectangular section, k = 5/6"
+      },
+      "fe_vs_hand_pct": -0.35,
+      "method": "C3D20R hex mesh refined until the change is below 0.5%",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_002",
+    "original_request": "Steel rectangular cantilever: length51.9 cm, width2.7 cm, depth1.6 cm; fixed at one end and free at the other. E=205.5 GPa, \u03bd=0.26. Apply 204 N load spread over the free end face along -z. Find tip deflection magnitude along that load axis using linear small-displacement elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 205500,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 519,
+        "y": 27,
+        "z": 16
+      },
+      "load_total_N": 204,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 5.023062971259124,
+      "units": "mm",
+      "formula": "independent rectangular Timoshenko closed form",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 204.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 205500.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 519.0,
+        "y": 27.0,
+        "z": 16.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel rectangular cantilever: length51.9 cm, width2.7 cm, depth1.6 cm; fixed at one end and free at the other. E=205.5 GPa, \u03bd=0.26. Apply 204 N load spread over the free end face along -z. Find tip deflection magnitude along that load axis using linear small-displacement elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 205500.0,
+            "span": [
+              111,
+              122
+            ],
+            "source": "E=205.5 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              124,
+              130
+            ],
+            "source": "\u03bd=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 519.0,
+            "span": [
+              30,
+              43
+            ],
+            "source": "length51.9 cm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 27.0,
+            "span": [
+              45,
+              56
+            ],
+            "source": "width2.7 cm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 16.0,
+            "span": [
+              58,
+              69
+            ],
+            "source": "depth1.6 cm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 204.0,
+            "span": [
+              138,
+              148
+            ],
+            "source": "204 N load",
+            "ambiguous": false
+          },
+          {
+            "value": 204.0,
+            "span": [
+              132,
+              143
+            ],
+            "source": "Apply 204 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [
+        {
+          "field": "dims_mm.x",
+          "before": null,
+          "after": 519.0
+        },
+        {
+          "field": "dims_mm.y",
+          "before": null,
+          "after": 27.0
+        },
+        {
+          "field": "dims_mm.z",
+          "before": null,
+          "after": 16.0
+        }
+      ],
+      "seconds": 0.0005959999980404973,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":205500.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":519.0,\"y\":27.0,\"z\":16.0},\"load_total_N\":204.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.003594002782147404,
+      "actual_value": 5.005010068965517,
+      "reference": {
+        "value": 5.023062971259124,
+        "units": "mm",
+        "formula": "independent rectangular Timoshenko closed form",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "tip deflection",
+      "value": 5.005010068965517,
+      "units": "mm",
+      "mesh_series": [
+        5.000044238095238,
+        5.005010068965517
+      ],
+      "last_change_pct": 0.099,
+      "hand_calc": {
+        "value": 5.023062971259124,
+        "formula": "PL^3/(3EI) + PL/(kGA), rectangular section, k = 5/6"
+      },
+      "fe_vs_hand_pct": -0.36,
+      "method": "C3D20R hex mesh refined until the change is below 0.5%",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_003",
+    "original_request": "Steel rectangular cantilever: length x=551 mm, width y=30 mm, depth z=18 mm; fixed at one end and free at the other. E=207 GPa, \u03bd=0.26. Apply 227 N load spread over the free end face along -y. Find tip deflection magnitude along that load axis using linear small-displacement elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 207000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 551,
+        "y": 30,
+        "z": 18
+      },
+      "load_total_N": 227,
+      "load_axis": 2,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 1.5132345149321087,
+      "units": "mm",
+      "formula": "independent rectangular Timoshenko closed form",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 2,
+      "load_sign": -1,
+      "load_total_N": 227.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 207000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 551.0,
+        "y": 30.0,
+        "z": 18.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel rectangular cantilever: length x=551 mm, width y=30 mm, depth z=18 mm; fixed at one end and free at the other. E=207 GPa, \u03bd=0.26. Apply 227 N load spread over the free end face along -y. Find tip deflection magnitude along that load axis using linear small-displacement elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 207000.0,
+            "span": [
+              117,
+              126
+            ],
+            "source": "E=207 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              128,
+              134
+            ],
+            "source": "\u03bd=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 551.0,
+            "span": [
+              30,
+              45
+            ],
+            "source": "length x=551 mm",
+            "ambiguous": false
+          },
+          {
+            "value": 551.0,
+            "span": [
+              37,
+              45
+            ],
+            "source": "x=551 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 30.0,
+            "span": [
+              47,
+              60
+            ],
+            "source": "width y=30 mm",
+            "ambiguous": false
+          },
+          {
+            "value": 30.0,
+            "span": [
+              53,
+              60
+            ],
+            "source": "y=30 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 18.0,
+            "span": [
+              62,
+              75
+            ],
+            "source": "depth z=18 mm",
+            "ambiguous": false
+          },
+          {
+            "value": 18.0,
+            "span": [
+              68,
+              75
+            ],
+            "source": "z=18 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 227.0,
+            "span": [
+              142,
+              152
+            ],
+            "source": "227 N load",
+            "ambiguous": false
+          },
+          {
+            "value": 227.0,
+            "span": [
+              136,
+              147
+            ],
+            "source": "Apply 227 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.0005997999978717417,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":207000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":551.0,\"y\":30.0,\"z\":18.0},\"load_total_N\":227.0,\"load_axis\":2,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.002648903024798264,
+      "actual_value": 1.509226103448276,
+      "reference": {
+        "value": 1.5132345149321087,
+        "units": "mm",
+        "formula": "independent rectangular Timoshenko closed form",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "tip deflection",
+      "value": 1.509226103448276,
+      "units": "mm",
+      "mesh_series": [
+        1.507879761904762,
+        1.509226103448276
+      ],
+      "last_change_pct": 0.089,
+      "hand_calc": {
+        "value": 1.5132345149321087,
+        "formula": "PL^3/(3EI) + PL/(kGA), rectangular section, k = 5/6"
+      },
+      "fe_vs_hand_pct": -0.26,
+      "method": "C3D20R hex mesh refined until the change is below 0.5%",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_004",
+    "original_request": "Steel rectangular simply supported: 487 mm long with a 24 by14 mm rectangular section; supported by a pin and roller at the ends. E=204 GPa, \u03bd=0.26. Apply a total181 N line load across the mid-span section along -z. Find midspan deflection magnitude along that load axis using linear small-displacement elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "line",
+      "quantity": "midspan_deflection",
+      "symmetry": null,
+      "structure": "simply_supported",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 0.3899993948935229,
+      "units": "mm",
+      "formula": "independent rectangular Timoshenko closed form",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "simply_supported",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "midspan_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "line",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel rectangular simply supported: 487 mm long with a 24 by14 mm rectangular section; supported by a pin and roller at the ends. E=204 GPa, \u03bd=0.26. Apply a total181 N line load across the mid-span section along -z. Find midspan deflection magnitude along that load axis using linear small-displacement elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              130,
+              139
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              141,
+              147
+            ],
+            "source": "\u03bd=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              36,
+              47
+            ],
+            "source": "487 mm long",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              55,
+              85
+            ],
+            "source": "24 by14 mm rectangular section",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              55,
+              85
+            ],
+            "source": "24 by14 mm rectangular section",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              157,
+              167
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.0005755999882239848,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"simply_supported\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"line\",\"quantity\":\"midspan_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 5.3895961036401505e-05,
+      "actual_value": 0.3900204142857143,
+      "reference": {
+        "value": 0.3899993948935229,
+        "units": "mm",
+        "formula": "independent rectangular Timoshenko closed form",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "mid-span deflection (neutral axis)",
+      "value": 0.3900204142857143,
+      "units": "mm",
+      "mesh_series": [
+        0.3900515,
+        0.3900204142857143
+      ],
+      "last_change_pct": 0.008,
+      "hand_calc": {
+        "value": 0.3899993948935229,
+        "formula": "PL^3/(48EI) + PL/(4kGA), central load"
+      },
+      "fe_vs_hand_pct": 0.01,
+      "method": "C3D20R hex mesh refined until the change is below 0.5%",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_005",
+    "original_request": "Steel rectangular simply supported: length51.9 cm, width2.7 cm, depth1.6 cm; supported by a pin and roller at the ends. E=205.5 GPa, \u03bd=0.26. Apply a total204 N line load across the mid-span section along -z. Find midspan deflection magnitude along that load axis using linear small-displacement elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 205500,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 519,
+        "y": 27,
+        "z": 16
+      },
+      "load_total_N": 204,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "line",
+      "quantity": "midspan_deflection",
+      "symmetry": null,
+      "structure": "simply_supported",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 0.31461765103216244,
+      "units": "mm",
+      "formula": "independent rectangular Timoshenko closed form",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "simply_supported",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 204.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 205500.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 519.0,
+        "y": 27.0,
+        "z": 16.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "midspan_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "line",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel rectangular simply supported: length51.9 cm, width2.7 cm, depth1.6 cm; supported by a pin and roller at the ends. E=205.5 GPa, \u03bd=0.26. Apply a total204 N line load across the mid-span section along -z. Find midspan deflection magnitude along that load axis using linear small-displacement elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 205500.0,
+            "span": [
+              120,
+              131
+            ],
+            "source": "E=205.5 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              133,
+              139
+            ],
+            "source": "\u03bd=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 519.0,
+            "span": [
+              36,
+              49
+            ],
+            "source": "length51.9 cm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 27.0,
+            "span": [
+              51,
+              62
+            ],
+            "source": "width2.7 cm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 16.0,
+            "span": [
+              64,
+              75
+            ],
+            "source": "depth1.6 cm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 204.0,
+            "span": [
+              149,
+              159
+            ],
+            "source": "total204 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [
+        {
+          "field": "dims_mm.x",
+          "before": null,
+          "after": 519.0
+        },
+        {
+          "field": "dims_mm.y",
+          "before": null,
+          "after": 27.0
+        },
+        {
+          "field": "dims_mm.z",
+          "before": null,
+          "after": 16.0
+        }
+      ],
+      "seconds": 0.0006027000199537724,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"simply_supported\",\"material\":\"steel\",\"E_MPa\":205500.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":519.0,\"y\":27.0,\"z\":16.0},\"load_total_N\":204.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"line\",\"quantity\":\"midspan_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 7.32602502178163e-05,
+      "actual_value": 0.3146407,
+      "reference": {
+        "value": 0.31461765103216244,
+        "units": "mm",
+        "formula": "independent rectangular Timoshenko closed form",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "mid-span deflection (neutral axis)",
+      "value": 0.3146407,
+      "units": "mm",
+      "mesh_series": [
+        0.31466748,
+        0.3146407
+      ],
+      "last_change_pct": 0.009,
+      "hand_calc": {
+        "value": 0.31461765103216244,
+        "formula": "PL^3/(48EI) + PL/(4kGA), central load"
+      },
+      "fe_vs_hand_pct": 0.01,
+      "method": "C3D20R hex mesh refined until the change is below 0.5%",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_006",
+    "original_request": "Steel rectangular simply supported: length x=551 mm, width y=30 mm, depth z=18 mm; supported by a pin and roller at the ends. E=207 GPa, \u03bd=0.26. Apply a total227 N line load across the mid-span section along -y. Find midspan deflection magnitude along that load axis using linear small-displacement elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 207000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 551,
+        "y": 30,
+        "z": 18
+      },
+      "load_total_N": 227,
+      "load_axis": 2,
+      "load_sign": -1,
+      "load_distribution": "line",
+      "quantity": "midspan_deflection",
+      "symmetry": null,
+      "structure": "simply_supported",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 0.09521160573398144,
+      "units": "mm",
+      "formula": "independent rectangular Timoshenko closed form",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "simply_supported",
+      "load_axis": 2,
+      "load_sign": -1,
+      "load_total_N": 227.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 207000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 551.0,
+        "y": 30.0,
+        "z": 18.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "midspan_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "line",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel rectangular simply supported: length x=551 mm, width y=30 mm, depth z=18 mm; supported by a pin and roller at the ends. E=207 GPa, \u03bd=0.26. Apply a total227 N line load across the mid-span section along -y. Find midspan deflection magnitude along that load axis using linear small-displacement elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 207000.0,
+            "span": [
+              126,
+              135
+            ],
+            "source": "E=207 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              137,
+              143
+            ],
+            "source": "\u03bd=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 551.0,
+            "span": [
+              36,
+              51
+            ],
+            "source": "length x=551 mm",
+            "ambiguous": false
+          },
+          {
+            "value": 551.0,
+            "span": [
+              43,
+              51
+            ],
+            "source": "x=551 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 30.0,
+            "span": [
+              53,
+              66
+            ],
+            "source": "width y=30 mm",
+            "ambiguous": false
+          },
+          {
+            "value": 30.0,
+            "span": [
+              59,
+              66
+            ],
+            "source": "y=30 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 18.0,
+            "span": [
+              68,
+              81
+            ],
+            "source": "depth z=18 mm",
+            "ambiguous": false
+          },
+          {
+            "value": 18.0,
+            "span": [
+              74,
+              81
+            ],
+            "source": "z=18 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 227.0,
+            "span": [
+              153,
+              163
+            ],
+            "source": "total227 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.000668499997118488,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"simply_supported\",\"material\":\"steel\",\"E_MPa\":207000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":551.0,\"y\":30.0,\"z\":18.0},\"load_total_N\":227.0,\"load_axis\":2,\"load_sign\":-1,\"load_distribution\":\"line\",\"quantity\":\"midspan_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.0008339767553172743,
+      "actual_value": 0.09529101000000001,
+      "reference": {
+        "value": 0.09521160573398144,
+        "units": "mm",
+        "formula": "independent rectangular Timoshenko closed form",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "mid-span deflection (neutral axis)",
+      "value": 0.09529101000000001,
+      "units": "mm",
+      "mesh_series": [
+        0.09524021,
+        0.09529101000000001
+      ],
+      "last_change_pct": 0.053,
+      "hand_calc": {
+        "value": 0.09521160573398144,
+        "formula": "PL^3/(48EI) + PL/(4kGA), central load"
+      },
+      "fe_vs_hand_pct": 0.08,
+      "method": "C3D20R hex mesh refined until the change is below 0.5%",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_007",
+    "original_request": "Steel bar restrained axially between rigid walls and free laterally; length321 mm, width18 mm, thickness12 mm. E=182 GPa; nu=0.25; alpha=1.24e-05 /K. It is cooled uniformly by48.6 degree F. Find signed axial stress, compression negative.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 182000,
+      "nu": 0.25,
+      "alpha_per_K": 1.24e-05,
+      "dims_mm": {
+        "x": 321,
+        "y": 18,
+        "z": 12
+      },
+      "load_total_N": null,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "thermal",
+      "quantity": "axial_stress",
+      "symmetry": null,
+      "structure": "restrained_thermal_bar",
+      "delta_T_K": -27,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 60.933600000000006,
+      "units": "MPa",
+      "formula": "independent signed -E alpha deltaT",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": null
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": -27.0,
+      "structure": "restrained_thermal_bar",
+      "load_axis": null,
+      "load_sign": null,
+      "load_total_N": null,
+      "pressure_MPa": null,
+      "alpha_per_K": 1.24e-05,
+      "outer_radius_mm": null,
+      "E_MPa": 182000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 321.0,
+        "y": 18.0,
+        "z": 12.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "axial_stress",
+      "nu": 0.25,
+      "hole_diameter_mm": null,
+      "load_distribution": "thermal",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel bar restrained axially between rigid walls and free laterally; length321 mm, width18 mm, thickness12 mm. E=182 GPa; nu=0.25; alpha=1.24e-05 /K. It is cooled uniformly by48.6 degree F. Find signed axial stress, compression negative."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 182000.0,
+            "span": [
+              111,
+              120
+            ],
+            "source": "E=182 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.25,
+            "span": [
+              122,
+              129
+            ],
+            "source": "nu=0.25",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 321.0,
+            "span": [
+              69,
+              81
+            ],
+            "source": "length321 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 18.0,
+            "span": [
+              83,
+              93
+            ],
+            "source": "width18 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 12.0,
+            "span": [
+              95,
+              109
+            ],
+            "source": "thickness12 mm",
+            "ambiguous": false
+          }
+        ],
+        "alpha_per_K": [
+          {
+            "value": 1.24e-05,
+            "span": [
+              131,
+              148
+            ],
+            "source": "alpha=1.24e-05 /K",
+            "ambiguous": false
+          }
+        ],
+        "delta_T_K": [
+          {
+            "value": -27.0,
+            "span": [
+              156,
+              188
+            ],
+            "source": "cooled uniformly by48.6 degree F",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "alpha_per_K",
+        "delta_T_K"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.0011276000004727393,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"restrained_thermal_bar\",\"material\":\"steel\",\"E_MPa\":182000.0,\"nu\":0.25,\"alpha_per_K\":1.24e-05,\"dims_mm\":{\"x\":321.0,\"y\":18.0,\"z\":12.0},\"load_total_N\":null,\"load_axis\":null,\"load_sign\":null,\"load_distribution\":\"thermal\",\"quantity\":\"axial_stress\",\"symmetry\":null,\"delta_T_K\":-27.0,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 1.1660934784094492e-16,
+      "actual_value": 60.9336,
+      "reference": {
+        "value": 60.933600000000006,
+        "units": "MPa",
+        "formula": "independent signed -E alpha deltaT",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": null
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "axial stress (compression negative)",
+      "value": 60.9336,
+      "units": "MPa",
+      "mesh_series": [
+        60.9336
+      ],
+      "last_change_pct": null,
+      "hand_calc": {
+        "value": 60.933600000000006,
+        "formula": "-E*alpha*dT (axially restrained, laterally free)"
+      },
+      "fe_vs_hand_pct": -0.0,
+      "method": "C3D20R; uniform field, one mesh is exact",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_008",
+    "original_request": "Steel bar restrained axially between rigid walls and free laterally; length352 mm, width19 mm, thickness13 mm. E=183.7 GPa; nu=0.25; alpha=7.44444444444e-06 per degree F. It is initial temperature18C, final temperature41C. Find signed axial stress, compression negative.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 183700,
+      "nu": 0.25,
+      "alpha_per_K": 1.34e-05,
+      "dims_mm": {
+        "x": 352,
+        "y": 19,
+        "z": 13
+      },
+      "load_total_N": null,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "thermal",
+      "quantity": "axial_stress",
+      "symmetry": null,
+      "structure": "restrained_thermal_bar",
+      "delta_T_K": 23,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": -56.61634,
+      "units": "MPa",
+      "formula": "independent signed -E alpha deltaT",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": null
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": 23.0,
+      "structure": "restrained_thermal_bar",
+      "load_axis": null,
+      "load_sign": null,
+      "load_total_N": null,
+      "pressure_MPa": null,
+      "alpha_per_K": 1.3399999999992e-05,
+      "outer_radius_mm": null,
+      "E_MPa": 183700.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 352.0,
+        "y": 19.0,
+        "z": 13.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "axial_stress",
+      "nu": 0.25,
+      "hole_diameter_mm": null,
+      "load_distribution": "thermal",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel bar restrained axially between rigid walls and free laterally; length352 mm, width19 mm, thickness13 mm. E=183.7 GPa; nu=0.25; alpha=7.44444444444e-06 per degree F. It is initial temperature18C, final temperature41C. Find signed axial stress, compression negative."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 183700.0,
+            "span": [
+              111,
+              122
+            ],
+            "source": "E=183.7 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.25,
+            "span": [
+              124,
+              131
+            ],
+            "source": "nu=0.25",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 352.0,
+            "span": [
+              69,
+              81
+            ],
+            "source": "length352 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 19.0,
+            "span": [
+              83,
+              93
+            ],
+            "source": "width19 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 13.0,
+            "span": [
+              95,
+              109
+            ],
+            "source": "thickness13 mm",
+            "ambiguous": false
+          }
+        ],
+        "alpha_per_K": [
+          {
+            "value": 1.3399999999992e-05,
+            "span": [
+              133,
+              169
+            ],
+            "source": "alpha=7.44444444444e-06 per degree F",
+            "ambiguous": false
+          }
+        ],
+        "delta_T_K": [
+          {
+            "value": 23.0,
+            "span": [
+              177,
+              221
+            ],
+            "source": "initial temperature18C -> final temperature41C",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "alpha_per_K",
+        "delta_T_K"
+      ],
+      "conflicts": [],
+      "changes": [
+        {
+          "field": "delta_T_K",
+          "before": 13.0,
+          "after": 23.0
+        }
+      ],
+      "seconds": 0.0011044999992009252,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"restrained_thermal_bar\",\"material\":\"steel\",\"E_MPa\":183700.0,\"nu\":0.25,\"alpha_per_K\":1.34e-05,\"dims_mm\":{\"x\":352.0,\"y\":19.0,\"z\":13.0},\"load_total_N\":null,\"load_axis\":null,\"load_sign\":null,\"load_distribution\":\"thermal\",\"quantity\":\"axial_stress\",\"symmetry\":null,\"delta_T_K\":13.0,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.0,
+      "actual_value": -56.61634,
+      "reference": {
+        "value": -56.61634,
+        "units": "MPa",
+        "formula": "independent signed -E alpha deltaT",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": null
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "axial stress (compression negative)",
+      "value": -56.61634,
+      "units": "MPa",
+      "mesh_series": [
+        -56.61634
+      ],
+      "last_change_pct": null,
+      "hand_calc": {
+        "value": -56.61633999996619,
+        "formula": "-E*alpha*dT (axially restrained, laterally free)"
+      },
+      "fe_vs_hand_pct": 0.0,
+      "method": "C3D20R; uniform field, one mesh is exact",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_009",
+    "original_request": "Steel bar restrained axially between rigid walls and free laterally; length383 mm, width20 mm, thickness14 mm. E=185.4 GPa; nu=0.25; alpha=1.44e-05 /K. It is initial temperature68F, final temperature129.2F. Find signed axial stress, compression negative.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 185400,
+      "nu": 0.25,
+      "alpha_per_K": 1.44e-05,
+      "dims_mm": {
+        "x": 383,
+        "y": 20,
+        "z": 14
+      },
+      "load_total_N": null,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "thermal",
+      "quantity": "axial_stress",
+      "symmetry": null,
+      "structure": "restrained_thermal_bar",
+      "delta_T_K": 34,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": -90.77183999999998,
+      "units": "MPa",
+      "formula": "independent signed -E alpha deltaT",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": null
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": 33.99999999999999,
+      "structure": "restrained_thermal_bar",
+      "load_axis": null,
+      "load_sign": null,
+      "load_total_N": null,
+      "pressure_MPa": null,
+      "alpha_per_K": 1.44e-05,
+      "outer_radius_mm": null,
+      "E_MPa": 185400.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 383.0,
+        "y": 20.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "axial_stress",
+      "nu": 0.25,
+      "hole_diameter_mm": null,
+      "load_distribution": "thermal",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel bar restrained axially between rigid walls and free laterally; length383 mm, width20 mm, thickness14 mm. E=185.4 GPa; nu=0.25; alpha=1.44e-05 /K. It is initial temperature68F, final temperature129.2F. Find signed axial stress, compression negative."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 185400.0,
+            "span": [
+              111,
+              122
+            ],
+            "source": "E=185.4 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.25,
+            "span": [
+              124,
+              131
+            ],
+            "source": "nu=0.25",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 383.0,
+            "span": [
+              69,
+              81
+            ],
+            "source": "length383 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 20.0,
+            "span": [
+              83,
+              93
+            ],
+            "source": "width20 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              95,
+              109
+            ],
+            "source": "thickness14 mm",
+            "ambiguous": false
+          }
+        ],
+        "alpha_per_K": [
+          {
+            "value": 1.44e-05,
+            "span": [
+              133,
+              150
+            ],
+            "source": "alpha=1.44e-05 /K",
+            "ambiguous": false
+          }
+        ],
+        "delta_T_K": [
+          {
+            "value": 33.99999999999999,
+            "span": [
+              158,
+              205
+            ],
+            "source": "initial temperature68F -> final temperature129.2F",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "alpha_per_K",
+        "delta_T_K"
+      ],
+      "conflicts": [],
+      "changes": [
+        {
+          "field": "delta_T_K",
+          "before": null,
+          "after": 33.99999999999999
+        }
+      ],
+      "seconds": 0.000575200014282018,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"restrained_thermal_bar\",\"material\":\"steel\",\"E_MPa\":185400.0,\"nu\":0.25,\"alpha_per_K\":1.44e-05,\"dims_mm\":{\"x\":383.0,\"y\":20.0,\"z\":14.0},\"load_total_N\":null,\"load_axis\":null,\"load_sign\":null,\"load_distribution\":\"thermal\",\"quantity\":\"axial_stress\",\"symmetry\":null,\"delta_T_K\":33.0,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 1.5655576349671887e-16,
+      "actual_value": -90.77184,
+      "reference": {
+        "value": -90.77183999999998,
+        "units": "MPa",
+        "formula": "independent signed -E alpha deltaT",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": null
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "axial stress (compression negative)",
+      "value": -90.77184,
+      "units": "MPa",
+      "mesh_series": [
+        -90.77184
+      ],
+      "last_change_pct": null,
+      "hand_calc": {
+        "value": -90.77183999999997,
+        "formula": "-E*alpha*dT (axially restrained, laterally free)"
+      },
+      "fe_vs_hand_pct": 0.0,
+      "method": "C3D20R; uniform field, one mesh is exact",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_010",
+    "original_request": "Open-ended steel thick cylinder, inner diameter48 mm, outer diameter70 mm; E=199 GPa, nu=0.24. Internal pressure=4.1 MPa, external pressure=0 MPa. Find bore hoop stress in linear elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 199000,
+      "nu": 0.24,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "load_total_N": null,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "pressure",
+      "quantity": "hoop_stress",
+      "symmetry": null,
+      "structure": "thick_cylinder",
+      "delta_T_K": null,
+      "pressure_MPa": 4.1,
+      "inner_radius_mm": 24,
+      "outer_radius_mm": 35,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 11.377657935285052,
+      "units": "MPa",
+      "formula": "independent Lame open-ended cylinder bore hoop stress",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "thick_cylinder",
+      "load_axis": null,
+      "load_sign": null,
+      "load_total_N": null,
+      "pressure_MPa": 4.1,
+      "alpha_per_K": null,
+      "outer_radius_mm": 35.0,
+      "E_MPa": 199000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "material": "steel",
+      "inner_radius_mm": 24.0,
+      "quantity": "hoop_stress",
+      "nu": 0.24,
+      "hole_diameter_mm": null,
+      "load_distribution": "pressure",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Open-ended steel thick cylinder, inner diameter48 mm, outer diameter70 mm; E=199 GPa, nu=0.24. Internal pressure=4.1 MPa, external pressure=0 MPa. Find bore hoop stress in linear elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 199000.0,
+            "span": [
+              75,
+              84
+            ],
+            "source": "E=199 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.24,
+            "span": [
+              86,
+              93
+            ],
+            "source": "nu=0.24",
+            "ambiguous": false
+          }
+        ],
+        "pressure_MPa": [
+          {
+            "value": 4.1,
+            "span": [
+              95,
+              120
+            ],
+            "source": "Internal pressure=4.1 MPa",
+            "ambiguous": false
+          }
+        ],
+        "inner_radius_mm": [
+          {
+            "value": 24.0,
+            "span": [
+              33,
+              52
+            ],
+            "source": "inner diameter48 mm",
+            "ambiguous": false
+          }
+        ],
+        "outer_radius_mm": [
+          {
+            "value": 35.0,
+            "span": [
+              54,
+              73
+            ],
+            "source": "outer diameter70 mm",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "pressure_MPa",
+        "inner_radius_mm",
+        "outer_radius_mm"
+      ],
+      "conflicts": [],
+      "changes": [
+        {
+          "field": "inner_radius_mm",
+          "before": null,
+          "after": 24.0
+        },
+        {
+          "field": "outer_radius_mm",
+          "before": null,
+          "after": 35.0
+        }
+      ],
+      "seconds": 0.0005541999998968095,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"thick_cylinder\",\"material\":\"steel\",\"E_MPa\":199000.0,\"nu\":0.24,\"alpha_per_K\":null,\"dims_mm\":{\"x\":null,\"y\":null,\"z\":null},\"load_total_N\":null,\"load_axis\":null,\"load_sign\":null,\"load_distribution\":\"pressure\",\"quantity\":\"hoop_stress\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":4.1,\"inner_radius_mm\":24.0,\"outer_radius_mm\":35.0,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.004319688249075598,
+      "actual_value": 11.32851,
+      "reference": {
+        "value": 11.377657935285052,
+        "units": "MPa",
+        "formula": "independent Lame open-ended cylinder bore hoop stress",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "maximum hoop stress (at the bore, from integration points)",
+      "value": 11.32851,
+      "units": "MPa",
+      "mesh_series": [
+        11.28093,
+        11.32851
+      ],
+      "last_change_pct": 0.42,
+      "hand_calc": {
+        "value": 11.377657935285052,
+        "formula": "Lame: p(ro^2+ri^2)/(ro^2-ri^2) at the bore"
+      },
+      "fe_vs_hand_pct": -0.43,
+      "method": "axisymmetric CAX8 strip, open ends, pressure on the bore",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_011",
+    "original_request": "Open-ended steel thick cylinder, inner radius2.7 cm, outer radius3.9 cm; E=199 GPa, nu=0.24. Internal pressure=4.4 MPa, external pressure=0 MPa. Find bore hoop stress in linear elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 199000,
+      "nu": 0.24,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "load_total_N": null,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "pressure",
+      "quantity": "hoop_stress",
+      "symmetry": null,
+      "structure": "thick_cylinder",
+      "delta_T_K": null,
+      "pressure_MPa": 4.3999999999999995,
+      "inner_radius_mm": 27,
+      "outer_radius_mm": 39,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 12.499999999999998,
+      "units": "MPa",
+      "formula": "independent Lame open-ended cylinder bore hoop stress",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "load_axis": null,
+      "load_distribution": "pressure",
+      "load_sign": null,
+      "load_total_N": null,
+      "pressure_MPa": 4.4,
+      "alpha_per_K": null,
+      "outer_radius_mm": 39.0,
+      "E_MPa": 199000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "material": "steel",
+      "inner_radius_mm": 27.0,
+      "quantity": "hoop_stress",
+      "nu": 0.24,
+      "hole_diameter_mm": null,
+      "structure": "thick_cylinder",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Open-ended steel thick cylinder, inner radius2.7 cm, outer radius3.9 cm; E=199 GPa, nu=0.24. Internal pressure=4.4 MPa, external pressure=0 MPa. Find bore hoop stress in linear elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 199000.0,
+            "span": [
+              73,
+              82
+            ],
+            "source": "E=199 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.24,
+            "span": [
+              84,
+              91
+            ],
+            "source": "nu=0.24",
+            "ambiguous": false
+          }
+        ],
+        "pressure_MPa": [
+          {
+            "value": 4.4,
+            "span": [
+              93,
+              118
+            ],
+            "source": "Internal pressure=4.4 MPa",
+            "ambiguous": false
+          }
+        ],
+        "inner_radius_mm": [
+          {
+            "value": 27.0,
+            "span": [
+              33,
+              51
+            ],
+            "source": "inner radius2.7 cm",
+            "ambiguous": false
+          }
+        ],
+        "outer_radius_mm": [
+          {
+            "value": 39.0,
+            "span": [
+              53,
+              71
+            ],
+            "source": "outer radius3.9 cm",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "pressure_MPa",
+        "inner_radius_mm",
+        "outer_radius_mm"
+      ],
+      "conflicts": [],
+      "changes": [
+        {
+          "field": "inner_radius_mm",
+          "before": null,
+          "after": 27.0
+        },
+        {
+          "field": "outer_radius_mm",
+          "before": null,
+          "after": 39.0
+        }
+      ],
+      "seconds": 0.0005055999790783972,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"thick_cylinder\",\"material\":\"steel\",\"E_MPa\":199000.0,\"nu\":0.24,\"alpha_per_K\":null,\"dims_mm\":{\"x\":null,\"y\":null,\"z\":null},\"load_total_N\":null,\"load_axis\":null,\"load_sign\":null,\"load_distribution\":\"pressure\",\"quantity\":\"hoop_stress\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":4.4,\"inner_radius_mm\":27.0,\"outer_radius_mm\":39.0,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.0041647999999999295,
+      "actual_value": 12.44794,
+      "reference": {
+        "value": 12.499999999999998,
+        "units": "MPa",
+        "formula": "independent Lame open-ended cylinder bore hoop stress",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "maximum hoop stress (at the bore, from integration points)",
+      "value": 12.44794,
+      "units": "MPa",
+      "mesh_series": [
+        12.39748,
+        12.44794
+      ],
+      "last_change_pct": 0.405,
+      "hand_calc": {
+        "value": 12.5,
+        "formula": "Lame: p(ro^2+ri^2)/(ro^2-ri^2) at the bore"
+      },
+      "fe_vs_hand_pct": -0.42,
+      "method": "axisymmetric CAX8 strip, open ends, pressure on the bore",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_012",
+    "original_request": "Open-ended steel thick cylinder, inner radius30 mm, outer radius43 mm; E=199 GPa, nu=0.24. Internal pressure=4.7 MPa, external pressure=0 MPa. Find bore hoop stress in linear elasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 199000,
+      "nu": 0.24,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "load_total_N": null,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "pressure",
+      "quantity": "hoop_stress",
+      "symmetry": null,
+      "structure": "thick_cylinder",
+      "delta_T_K": null,
+      "pressure_MPa": 4.699999999999999,
+      "inner_radius_mm": 30,
+      "outer_radius_mm": 43,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "solve",
+    "reference": {
+      "value": 13.614646996838776,
+      "units": "MPa",
+      "formula": "independent Lame open-ended cylinder bore hoop stress",
+      "relative_tolerance": 0.03,
+      "max_mesh_change_pct": 1.0
+    },
+    "decision": "solve",
+    "reason": "All hard gates and explicit unit provenance satisfied.",
+    "intent": {
+      "delta_T_K": null,
+      "load_axis": null,
+      "load_distribution": "pressure",
+      "load_sign": null,
+      "load_total_N": null,
+      "pressure_MPa": 4.7,
+      "alpha_per_K": null,
+      "outer_radius_mm": 43.0,
+      "E_MPa": 199000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "material": "steel",
+      "inner_radius_mm": 30.0,
+      "quantity": "hoop_stress",
+      "nu": 0.24,
+      "hole_diameter_mm": null,
+      "structure": "thick_cylinder",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Open-ended steel thick cylinder, inner radius30 mm, outer radius43 mm; E=199 GPa, nu=0.24. Internal pressure=4.7 MPa, external pressure=0 MPa. Find bore hoop stress in linear elasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 199000.0,
+            "span": [
+              71,
+              80
+            ],
+            "source": "E=199 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.24,
+            "span": [
+              82,
+              89
+            ],
+            "source": "nu=0.24",
+            "ambiguous": false
+          }
+        ],
+        "pressure_MPa": [
+          {
+            "value": 4.7,
+            "span": [
+              91,
+              116
+            ],
+            "source": "Internal pressure=4.7 MPa",
+            "ambiguous": false
+          }
+        ],
+        "inner_radius_mm": [
+          {
+            "value": 30.0,
+            "span": [
+              33,
+              50
+            ],
+            "source": "inner radius30 mm",
+            "ambiguous": false
+          }
+        ],
+        "outer_radius_mm": [
+          {
+            "value": 43.0,
+            "span": [
+              52,
+              69
+            ],
+            "source": "outer radius43 mm",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "pressure_MPa",
+        "inner_radius_mm",
+        "outer_radius_mm"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.0006304999988060445,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"thick_cylinder\",\"material\":\"steel\",\"E_MPa\":199000.0,\"nu\":0.24,\"alpha_per_K\":null,\"dims_mm\":{\"x\":null,\"y\":null,\"z\":null},\"load_total_N\":null,\"load_axis\":null,\"load_sign\":null,\"load_distribution\":\"pressure\",\"quantity\":\"hoop_stress\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":4.7,\"inner_radius_mm\":30.0,\"outer_radius_mm\":43.0,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": {
+      "relative_error": 0.0040424843076398145,
+      "actual_value": 13.55961,
+      "reference": {
+        "value": 13.614646996838776,
+        "units": "MPa",
+        "formula": "independent Lame open-ended cylinder bore hoop stress",
+        "relative_tolerance": 0.03,
+        "max_mesh_change_pct": 1.0
+      },
+      "numeric_pass": true,
+      "mesh_pass": true
+    },
+    "result": {
+      "supported": true,
+      "quantity": "maximum hoop stress (at the bore, from integration points)",
+      "value": 13.55961,
+      "units": "MPa",
+      "mesh_series": [
+        13.50624,
+        13.55961
+      ],
+      "last_change_pct": 0.394,
+      "hand_calc": {
+        "value": 13.614646996838779,
+        "formula": "Lame: p(ro^2+ri^2)/(ro^2-ri^2) at the bore"
+      },
+      "fe_vs_hand_pct": -0.4,
+      "method": "axisymmetric CAX8 strip, open ends, pressure on the bore",
+      "files": [
+        "model.inp",
+        "model.dat"
+      ]
+    }
+  },
+  {
+    "id": "pipeline_fresh_013",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; nu=0.26. A total181 N spread over the free end face along -z. Find tip deflection magnitude.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": null,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "needs_input",
+    "reference": null,
+    "decision": "needs_input",
+    "reason": "Explicit field-bound numeric evidence required: E_MPa",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": null,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; nu=0.26. A total181 N spread over the free end face along -z. Find tip deflection magnitude."
+    },
+    "unit_trace": {
+      "sources": {
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              92,
+              99
+            ],
+            "source": "nu=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              80,
+              90
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              103,
+              113
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.0004487000114750117,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":null,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_014",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; A total181 N spread over the free end face along -z. Find tip deflection magnitude.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": null,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "needs_input",
+    "reference": null,
+    "decision": "needs_input",
+    "reason": "Explicit field-bound numeric evidence required: nu",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": null,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; A total181 N spread over the free end face along -z. Find tip deflection magnitude."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              92,
+              101
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              80,
+              90
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              105,
+              115
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.0004154999915044755,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":null,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_015",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm or31 mm (unresolved drawing conflict), depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z. Find tip deflection magnitude.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": null,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "needs_input",
+    "reference": null,
+    "decision": "needs_input",
+    "reason": "Resolve missing or contradictory specifications.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": null,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm or31 mm (unresolved drawing conflict), depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z. Find tip deflection magnitude."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              130,
+              139
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              141,
+              148
+            ],
+            "source": "nu=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": true
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              118,
+              128
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              152,
+              162
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [
+        "dims_mm.y"
+      ],
+      "changes": [
+        {
+          "field": "dims_mm.y",
+          "before": 24.0,
+          "after": null
+        }
+      ],
+      "seconds": 0.0006951000250410289,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_016",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N or239 N (neither approved) spread over the free end face along -z. Find tip deflection magnitude.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": null,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "needs_input",
+    "reference": null,
+    "decision": "needs_input",
+    "reason": "Resolve missing or contradictory specifications.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": null,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N or239 N (neither approved) spread over the free end face along -z. Find tip deflection magnitude."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              92,
+              101
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              103,
+              110
+            ],
+            "source": "nu=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              80,
+              90
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              114,
+              124
+            ],
+            "source": "total181 N",
+            "ambiguous": true
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z"
+      ],
+      "conflicts": [
+        "load_total_N"
+      ],
+      "changes": [
+        {
+          "field": "load_total_N",
+          "before": 181.0,
+          "after": null
+        }
+      ],
+      "seconds": 0.0004737999988719821,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_017",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z. Find reaction force.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "reaction_force",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "unsupported",
+    "reference": null,
+    "decision": "unsupported",
+    "reason": "Requested observable or load distribution does not match the template.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "reaction_force",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z. Find reaction force."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              92,
+              101
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              103,
+              110
+            ],
+            "source": "nu=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              80,
+              90
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              114,
+              124
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.00041259999852627516,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"reaction_force\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_018",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N uniformly distributed along the entire beam length along -z. Find tip deflection magnitude.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": null,
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "unsupported",
+    "reference": null,
+    "decision": "model_error",
+    "reason": "'uniform' is not one of ['face', 'point', 'line', 'pressure', 'thermal', None]\n\nFailed validating 'enum' in schema['properties']['load_distribution']:\n    {'type': ['string', 'null'],\n     'enum': ['face', 'point', 'line', 'pressure', 'thermal', None]}\n\nOn instance['load_distribution']:\n    'uniform'",
+    "intent": null,
+    "unit_trace": null,
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"uniform\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [
+      {
+        "field": "model_output",
+        "want": "schema-valid JSON",
+        "got": "'uniform' is not one of ['face', 'point', 'line', 'pressure', 'thermal', None]\n\nFailed validating 'enum' in schema['properties']['load_distribution']:\n    {'type': ['string', 'null'],\n     'enum': ['face', 'point', 'line', 'pressure', 'thermal', None]}\n\nOn instance['load_distribution']:\n    'uniform'"
+      }
+    ],
+    "end_to_end_pass": false,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_019",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z. Find tip deflection magnitude. Include material yielding and plasticity.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "unsupported",
+    "reference": null,
+    "decision": "unsupported",
+    "reason": "Physics exceed the four verified linear-elastic static templates.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": 3,
+      "load_sign": -1,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z. Find tip deflection magnitude. Include material yielding and plasticity."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              92,
+              101
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              103,
+              110
+            ],
+            "source": "nu=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              80,
+              90
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              114,
+              124
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [],
+      "changes": [],
+      "seconds": 0.00046290000318549573,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  },
+  {
+    "id": "pipeline_fresh_020",
+    "original_request": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z or+y (not decided). Find tip deflection magnitude.",
+    "expected": {
+      "material": "steel",
+      "E_MPa": 204000,
+      "nu": 0.26,
+      "alpha_per_K": null,
+      "dims_mm": {
+        "x": 487,
+        "y": 24,
+        "z": 14
+      },
+      "load_total_N": 181,
+      "load_axis": null,
+      "load_sign": null,
+      "load_distribution": "face",
+      "quantity": "tip_deflection",
+      "symmetry": null,
+      "structure": "cantilever",
+      "delta_T_K": null,
+      "pressure_MPa": null,
+      "inner_radius_mm": null,
+      "outer_radius_mm": null,
+      "hole_diameter_mm": null
+    },
+    "expected_decision": "needs_input",
+    "reference": null,
+    "decision": "needs_input",
+    "reason": "Resolve missing or contradictory specifications.",
+    "intent": {
+      "delta_T_K": null,
+      "structure": "cantilever",
+      "load_axis": null,
+      "load_sign": null,
+      "load_total_N": 181.0,
+      "pressure_MPa": null,
+      "alpha_per_K": null,
+      "outer_radius_mm": null,
+      "E_MPa": 204000.0,
+      "symmetry": null,
+      "dims_mm": {
+        "x": 487.0,
+        "y": 24.0,
+        "z": 14.0
+      },
+      "material": "steel",
+      "inner_radius_mm": null,
+      "quantity": "tip_deflection",
+      "nu": 0.26,
+      "hole_diameter_mm": null,
+      "load_distribution": "face",
+      "_source": "specialist-pipeline-v1",
+      "_text": "Steel cantilever fixed at one end, free at the other, length487 mm, width24 mm, depth14 mm; E=204 GPa; nu=0.26. A total181 N spread over the free end face along -z or+y (not decided). Find tip deflection magnitude."
+    },
+    "unit_trace": {
+      "sources": {
+        "E_MPa": [
+          {
+            "value": 204000.0,
+            "span": [
+              92,
+              101
+            ],
+            "source": "E=204 GPa",
+            "ambiguous": false
+          }
+        ],
+        "nu": [
+          {
+            "value": 0.26,
+            "span": [
+              103,
+              110
+            ],
+            "source": "nu=0.26",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.x": [
+          {
+            "value": 487.0,
+            "span": [
+              54,
+              66
+            ],
+            "source": "length487 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.y": [
+          {
+            "value": 24.0,
+            "span": [
+              68,
+              78
+            ],
+            "source": "width24 mm",
+            "ambiguous": false
+          }
+        ],
+        "dims_mm.z": [
+          {
+            "value": 14.0,
+            "span": [
+              80,
+              90
+            ],
+            "source": "depth14 mm",
+            "ambiguous": false
+          }
+        ],
+        "load_total_N": [
+          {
+            "value": 181.0,
+            "span": [
+              114,
+              124
+            ],
+            "source": "total181 N",
+            "ambiguous": false
+          }
+        ]
+      },
+      "verified_numeric_fields": [
+        "E_MPa",
+        "nu",
+        "dims_mm.x",
+        "dims_mm.y",
+        "dims_mm.z",
+        "load_total_N"
+      ],
+      "conflicts": [
+        "load_direction"
+      ],
+      "changes": [],
+      "seconds": 0.000668799999402836,
+      "unrecognized_numeric_wording": "Retained reader values are not solver-authorizing evidence."
+    },
+    "raw_response": "{\"structure\":\"cantilever\",\"material\":\"steel\",\"E_MPa\":204000.0,\"nu\":0.26,\"alpha_per_K\":null,\"dims_mm\":{\"x\":487.0,\"y\":24.0,\"z\":14.0},\"load_total_N\":181.0,\"load_axis\":3,\"load_sign\":-1,\"load_distribution\":\"face\",\"quantity\":\"tip_deflection\",\"symmetry\":null,\"delta_T_K\":null,\"pressure_MPa\":null,\"inner_radius_mm\":null,\"outer_radius_mm\":null,\"hole_diameter_mm\":null}",
+    "strict_field_misses": [],
+    "end_to_end_pass": true,
+    "numeric": null,
+    "result": null
+  }
+]

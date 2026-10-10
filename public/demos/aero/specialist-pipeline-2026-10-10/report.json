@@ -1,0 +1,589 @@
+{
+  "date": "2026-10-10",
+  "title": "Aero specialist pipeline - bounded FEA acceptance and reviewer diagnostics",
+  "state": "scoped_measurement_complete",
+  "architecture": "Specialist pipeline, not architectural MoE",
+  "fresh": {
+    "n": 20,
+    "raw_strict": 14,
+    "baseline_grounded_strict": 10,
+    "candidate_grounded_strict": 19,
+    "baseline_end_to_end": 7,
+    "candidate_pipeline_pass": 20,
+    "candidate_end_to_end": 19,
+    "baseline_unsafe_dispatches": 6,
+    "candidate_unsafe_admissions": 0,
+    "candidate_solver_runs": 12,
+    "model_errors": 1,
+    "inference_median_seconds": 38.043087149984785,
+    "inference_mean_seconds": 39.037184775003695,
+    "guard_overhead_median_seconds": 0.007754399994155392,
+    "max_solver_relative_error": 0.004319688249075598,
+    "max_mesh_change_pct": 0.42
+  },
+  "development": {
+    "legacy": {
+      "n": 618,
+      "before": 615,
+      "after": 615,
+      "regressed": 0,
+      "improved": 0
+    },
+    "previous40": {
+      "n": 40,
+      "field_strict": 39,
+      "decision_correct": 40,
+      "unsafe_admissions": 0,
+      "overhead_median_seconds": 0.007511100004194304
+    }
+  },
+  "reviewers": [
+    {
+      "model": "qwen2.5:1.5b",
+      "model_digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+      "summary": {
+        "n": 12,
+        "correct": 4,
+        "false_accepts": 8,
+        "false_vetoes": 0,
+        "errors": 0,
+        "median_seconds": 3.2811725000065053,
+        "mean_seconds": 3.591466683334147,
+        "cold_first_seconds": 8.079306800005725,
+        "all_cpu_only": true
+      },
+      "backend": "isolated Ollama GGUF on CPU only; four threads; num_gpu=0",
+      "rows": [
+        {
+          "id": "reviewer_01",
+          "category": "consistent",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 8.079306800005725
+        },
+        {
+          "id": "reviewer_02",
+          "category": "equivalent_units",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 3.281236400012858
+        },
+        {
+          "id": "reviewer_03",
+          "category": "equivalent_units",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 3.505165299982764
+        },
+        {
+          "id": "reviewer_04",
+          "category": "greek_symbol",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 4.594045800011372
+        },
+        {
+          "id": "reviewer_05",
+          "category": "modulus_units",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 3.4240012999798637
+        },
+        {
+          "id": "reviewer_06",
+          "category": "force_units",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 2.6869451999955345
+        },
+        {
+          "id": "reviewer_07",
+          "category": "wrong_observable",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 2.2236414000217337
+        },
+        {
+          "id": "reviewer_08",
+          "category": "wrong_loading",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 2.115988200006541
+        },
+        {
+          "id": "reviewer_09",
+          "category": "wrong_axis",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 2.461819899996044
+        },
+        {
+          "id": "reviewer_10",
+          "category": "length_units",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 4.481577500002459
+        },
+        {
+          "id": "reviewer_11",
+          "category": "invented_property",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 3.2811086000001524
+        },
+        {
+          "id": "reviewer_12",
+          "category": "conflict",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 2.9627637999947183
+        }
+      ]
+    },
+    {
+      "model": "qwen2.5:7b",
+      "model_digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+      "summary": {
+        "n": 12,
+        "correct": 6,
+        "false_accepts": 6,
+        "false_vetoes": 0,
+        "errors": 0,
+        "median_seconds": 16.494652300010785,
+        "mean_seconds": 18.266263333336003,
+        "cold_first_seconds": 31.108033600001363,
+        "all_cpu_only": true
+      },
+      "backend": "isolated Ollama GGUF on CPU only; four threads; num_gpu=0",
+      "rows": [
+        {
+          "id": "reviewer_01",
+          "category": "consistent",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 31.108033600001363
+        },
+        {
+          "id": "reviewer_02",
+          "category": "equivalent_units",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 16.689199300017208
+        },
+        {
+          "id": "reviewer_03",
+          "category": "equivalent_units",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 18.37923600000795
+        },
+        {
+          "id": "reviewer_04",
+          "category": "greek_symbol",
+          "expected": "accept",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 15.387289799982682
+        },
+        {
+          "id": "reviewer_05",
+          "category": "modulus_units",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 16.30010530000436
+        },
+        {
+          "id": "reviewer_06",
+          "category": "force_units",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 13.915527000004658
+        },
+        {
+          "id": "reviewer_07",
+          "category": "wrong_observable",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "revise",
+            "issues": [
+              "Requested observable is tip deflection, but interpretation provides reaction force.",
+              "Load distribution is specified as 'face', but the request asks for tip deflection."
+            ]
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 27.44416490002186
+        },
+        {
+          "id": "reviewer_08",
+          "category": "wrong_loading",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 8.951811600010842
+        },
+        {
+          "id": "reviewer_09",
+          "category": "wrong_axis",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 11.90046189998975
+        },
+        {
+          "id": "reviewer_10",
+          "category": "length_units",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 11.058022400015034
+        },
+        {
+          "id": "reviewer_11",
+          "category": "invented_property",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "accept",
+            "issues": []
+          },
+          "correct": false,
+          "error": null,
+          "seconds": 17.441480399982538
+        },
+        {
+          "id": "reviewer_12",
+          "category": "conflict",
+          "expected": "veto",
+          "feedback": {
+            "verdict": "revise",
+            "issues": [
+              "Load conflict not resolved",
+              "Missing signed direction for load",
+              "Units mismatch for load (N vs. MPa)"
+            ]
+          },
+          "correct": true,
+          "error": null,
+          "seconds": 30.6198277999938
+        }
+      ]
+    }
+  ],
+  "renders": [
+    {
+      "structure": "cantilever",
+      "case_id": "pipeline_fresh_001",
+      "image": "cantilever.png",
+      "deck": "solver/pipeline_fresh_001/model.inp",
+      "data": "solver/pipeline_fresh_001/model.dat",
+      "source_deck_sha256": "b4d849b7a65f5e24b9fa010fd469255de90988dec5a7835934a12a6e26941242",
+      "source_data_sha256": "9134b2d128f664ecb6d8b13b94acf5fa3f7589d2af6e3f06d4f9772fe5c52d67",
+      "accepted_value": 6.206820724137931,
+      "units": "mm",
+      "field_render_not_independent_validation": true
+    },
+    {
+      "structure": "simply_supported",
+      "case_id": "pipeline_fresh_004",
+      "image": "simply_supported.png",
+      "deck": "solver/pipeline_fresh_004/model.inp",
+      "data": "solver/pipeline_fresh_004/model.dat",
+      "source_deck_sha256": "6cd9e8febb8c31408a2413d1e84e3cf78025dfb1edde86b648d5ac6b6320a55b",
+      "source_data_sha256": "ff9f87a4dc327e7b30b185963345070d8a30f1703fb9f4b801d920bfae1df878",
+      "accepted_value": 0.3900204142857143,
+      "units": "mm",
+      "field_render_not_independent_validation": true
+    },
+    {
+      "structure": "restrained_thermal_bar",
+      "case_id": "pipeline_fresh_007",
+      "image": "restrained_thermal_bar.png",
+      "deck": "solver/pipeline_fresh_007/model.inp",
+      "data": "solver/pipeline_fresh_007/model.dat",
+      "source_deck_sha256": "c2bd13780317a701ca0e5009f352bfcf855715d837e6f62e35ab79ad83204e8b",
+      "source_data_sha256": "23137e0de6bc44779bfc4a4c9877614b5e9106bf08d3e90a49b9cdda0c178135",
+      "accepted_value": 60.9336,
+      "units": "MPa",
+      "field_render_not_independent_validation": true
+    },
+    {
+      "structure": "thick_cylinder",
+      "case_id": "pipeline_fresh_010",
+      "image": "thick_cylinder.png",
+      "deck": "solver/pipeline_fresh_010/model.inp",
+      "data": "solver/pipeline_fresh_010/model.dat",
+      "source_deck_sha256": "821092f812868714ee4fc72aabdaab6365686c09b59b868c79ae96dd465293ef",
+      "source_data_sha256": "218a303090b9c61164034824a0cf8819183bef32e24296df1682bce728207210",
+      "accepted_value": 11.32851,
+      "units": "MPa",
+      "field_render_not_independent_validation": true
+    }
+  ],
+  "audit": {
+    "solver_artifacts_hash_verified": 203,
+    "raw_dat_observables_verified": [
+      {
+        "id": "pipeline_fresh_001",
+        "value_from_dat": 6.206820724137931,
+        "relative_error": 0.003452466527215076,
+        "nodes": 1341,
+        "elements": 192,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_002",
+        "value_from_dat": 5.005010068965517,
+        "relative_error": 0.003594002782147404,
+        "nodes": 1341,
+        "elements": 192,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_003",
+        "value_from_dat": 1.509226103448276,
+        "relative_error": 0.002648903024798264,
+        "nodes": 1341,
+        "elements": 192,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_004",
+        "value_from_dat": 0.39002041428571427,
+        "relative_error": 5.389596103625917e-05,
+        "nodes": 1341,
+        "elements": 192,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_005",
+        "value_from_dat": 0.3146407,
+        "relative_error": 7.32602502178163e-05,
+        "nodes": 1341,
+        "elements": 192,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_006",
+        "value_from_dat": 0.09529101000000001,
+        "relative_error": 0.0008339767553172743,
+        "nodes": 1341,
+        "elements": 192,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_007",
+        "value_from_dat": 60.9336,
+        "relative_error": 1.1660934784094492e-16,
+        "nodes": 321,
+        "elements": 40,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_008",
+        "value_from_dat": -56.61634,
+        "relative_error": 0.0,
+        "nodes": 321,
+        "elements": 40,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_009",
+        "value_from_dat": -90.77184,
+        "relative_error": 1.5655576349671887e-16,
+        "nodes": 321,
+        "elements": 40,
+        "type": "C3D20R"
+      },
+      {
+        "id": "pipeline_fresh_010",
+        "value_from_dat": 11.32851,
+        "relative_error": 0.004319688249075598,
+        "nodes": 133,
+        "elements": 32,
+        "type": "CAX8"
+      },
+      {
+        "id": "pipeline_fresh_011",
+        "value_from_dat": 12.44794,
+        "relative_error": 0.0041647999999999295,
+        "nodes": 133,
+        "elements": 32,
+        "type": "CAX8"
+      },
+      {
+        "id": "pipeline_fresh_012",
+        "value_from_dat": 13.55961,
+        "relative_error": 0.0040424843076398145,
+        "nodes": 133,
+        "elements": 32,
+        "type": "CAX8"
+      }
+    ],
+    "source_and_packet_hashes_verified": true,
+    "native_terminal_clean": true,
+    "owned_workers_gone": true,
+    "services_restored": true,
+    "previous_reports_and_adapter_unchanged": true,
+    "recount": {
+      "n": 20,
+      "candidate_grounded_strict": 19,
+      "candidate_pipeline_pass": 20,
+      "candidate_end_to_end": 19,
+      "candidate_unsafe_admissions": 0,
+      "baseline_unsafe_dispatches": 6,
+      "candidate_solver_runs": 12
+    }
+  },
+  "cpu_unit_tests": 36,
+  "unit_test_breakdown": {
+    "frozen_core": 32,
+    "additive_opt_in_mcp_interface": 4
+  },
+  "new_checker_finetune": false,
+  "deployment": "Explicit opt-in local API/CLI. No public runtime or existing private reader reroute. Stock reviewer disabled by default.",
+  "inference": {
+    "model": "Qwen2.5-14B-Instruct + frozen final QLoRA adapter",
+    "hardware": "RTX 3090",
+    "backend": "NF4 double quantization / BF16 / SDPA",
+    "same_output_journal_for_both_pipelines": true,
+    "concurrent_cpu_review_diagnostic": true,
+    "maximum_output_tokens": 512,
+    "retries": 0
+  },
+  "scope": {
+    "personal_constructed_cases": true,
+    "same_author_holdout": true,
+    "external_independent_validation": false,
+    "employer_data": false,
+    "cloud_assisted_implementation_and_reporting": true,
+    "cloud_model_inference": false,
+    "whole_platform_certification": false,
+    "autonomous_design_authority": false,
+    "reserved_answers_in_training_or_rag": false
+  },
+  "hashes": {
+    "pipeline": "c6a9df78a330eb6c42e44d034e056f24b7d0e78430f0abf465b61396e6c90320",
+    "freeze": "522f51022fe3d8ee2dee4aa7c27435e9607403be8b5a75fb6a201ee58c2cf929",
+    "packet": "a904c796ed4e38c9c5760277bf8af3862d28354f32a0a7b1532f56031717b61a",
+    "journal": "c17becceefd056229b87ca72f8e93264800609d23c2b5c3e0cd9514f07643a5d",
+    "scorer": "ec1a5cc97e36649fa3b3c6748ee8325b26c6133af24e3ff172d6d3edc36a1ccd",
+    "solver": "b9f1eccfe5b664cc6fd96f60b55e992447336eb0d121a7a15ec9e896913a8779",
+    "ccx": "2e9c75bb1b97f8fa202ce8d00a83fd87ae3a6f250f23412a283f3872598bb8ee"
+  },
+  "protocol": {
+    "state": "frozen_before_fresh_inference",
+    "n": 20,
+    "solvable": 12,
+    "must_not_solve": 8,
+    "freeze_sha256": "522f51022fe3d8ee2dee4aa7c27435e9607403be8b5a75fb6a201ee58c2cf929",
+    "personal_constructed": true,
+    "answers_never_sent_to_inference": true,
+    "solver_relative_tolerance": 0.03,
+    "mesh_change_limit_pct": 1.0,
+    "single_gpu_serial": true,
+    "no_retries": true,
+    "scope": "Small author-constructed same-author holdout; not independent external certification."
+  },
+  "pdf_pages": 6
+}

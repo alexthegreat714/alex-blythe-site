@@ -1,0 +1,11 @@
+{
+  "scope": "600 serial CPU inspection replays; no new model inference or solver execution",
+  "pipeline_sha256": "c6a9df78a330eb6c42e44d034e056f24b7d0e78430f0abf465b61396e6c90320",
+  "n": 600,
+  "rounds": 30,
+  "median_seconds": 0.008515699999406934,
+  "p95_seconds": 0.01598039999953471,
+  "mean_seconds": 0.009957103333484459,
+  "min_seconds": 0.006577299995115027,
+  "max_seconds": 0.043761400011135265
+}

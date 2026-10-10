@@ -68,6 +68,7 @@ export const softwareProjects: SoftwareProject[] = [
       'Validation coverage depends on the problem class; completed execution alone does not establish physical accuracy.',
     ],
     artifacts: [
+      { label: 'Specialist pipeline · October 10, 2026', description: 'Dated local FEA acceptance study, deterministic unit checks, reviewer failures, charts, PDF and actual solver-field renders.', href: '/software/aero/evidence/reports/specialist-pipeline-2026-10-10/' },
       { label: 'CFD technical article', description: 'Background on CFD foundations, workflow, and aerospace applications.', href: '/2023/12/28/mastering-computational-fluid-dynamics-cfd-for-aerospace-engineering-a-journey-to-proficiency/' },
       { label: 'Case specifications', description: 'Typed inputs that keep setup intent and solver configuration inspectable.', href: '/software/aero/current/' },
       { label: 'Run evidence', description: 'Preflight results, telemetry, manifests, and validation status retained with each workflow.', href: '/software/aero/evidence/' },

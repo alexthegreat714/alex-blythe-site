@@ -1,0 +1,71 @@
+---
+import Shell from '../../../../../../components/AeroEvidenceShell.astro';
+import report from '../../../../../../../public/demos/aero/specialist-pipeline-2026-10-10/report.json';
+const base='/demos/aero/specialist-pipeline-2026-10-10/';
+const s=report.fresh;
+const r=report.reviewers;
+---
+<Shell title="Aero specialist pipeline · October 10, 2026" description="A dated, bounded FEA acceptance study: unit and format checks, fresh local-model predictions, actual CalculiX fields, and retained reviewer failures." path="/software/aero/evidence/reports/specialist-pipeline-2026-10-10/">
+  <header>
+    <p class="eyebrow">ALEX BLYTHE / DATED EVIDENCE ADDITION / <time datetime="2026-10-10">OCTOBER 10, 2026</time></p>
+    <h1>A specialist pipeline.<br/>Not another authority.</h1>
+    <p>The existing fine-tuned intent reader is followed by deterministic JSON, field-bound unit and solver-admission checks. A separate model reviewer can veto, but cannot overrule those checks. This is an orchestration pipeline, <strong>not a true mixture-of-experts architecture</strong>.</p>
+    <p class="links"><a class="primary" href={base+'proof.pdf'}>Read the PDF evidence report</a><a href={base+'reproducibility.zip'}>Download solver evidence</a><a href={base+'report.json'}>Audited measurements</a><a href={base+'manifest.json'}>SHA-256 manifest</a></p>
+  </header>
+  <section class="boundary">
+    <span class="status mixed">BOUNDED ACCEPTANCE / REVIEWER FAILURES RETAINED</span>
+    <h2>What the fresh gate established</h2>
+    <div class="metrics">
+      <div><strong>{s.candidate_end_to_end} / {s.n}</strong><span>Strict end-to-end cases</span></div>
+      <div><strong>{s.candidate_solver_runs}</strong><span>Actual CalculiX solves</span></div>
+      <div><strong>{s.candidate_unsafe_admissions}</strong><span>Unsafe specialist admissions</span></div>
+      <div><strong>{(s.guard_overhead_median_seconds*1000).toFixed(2)} ms</strong><span>Median check overhead</span></div>
+    </div>
+    <p>The new 20-case packet contains 12 solvable requests and eight that must not be solved. The existing pipeline attempted {s.baseline_unsafe_dispatches} inappropriate dispatches; test assertions intercepted them before knowingly incorrect physics ran. The specialist’s outcome is measured separately from raw model correctness.</p>
+    <p><strong>Scope:</strong> personal synthetic fixtures, four known linear-elastic static templates, same-author holdout. Analytical agreement is not experimental validation, broad aerospace knowledge, design certification, or autonomous engineering authority.</p>
+  </section>
+  <section>
+    <h2>Accuracy, rejection, and regression are different questions</h2>
+    <img class="chart" src={base+'acceptance.png'} width="1700" height="714" alt="Fresh-case extraction and end-to-end accuracy beside inappropriate solver-dispatch attempts, comparing the old and specialist pipelines." loading="lazy" />
+    <div class="table-wrap"><table><thead><tr><th>Measurement</th><th>Result</th><th>Meaning</th></tr></thead><tbody>
+      <tr><td>Raw adapted reader</td><td>{s.raw_strict} / {s.n}</td><td>All extracted fields correct before downstream checks.</td></tr>
+      <tr><td>Existing grounding</td><td>{s.baseline_grounded_strict} / {s.n}</td><td>Same new model outputs, old interpretation checks.</td></tr>
+      <tr><td>Existing end-to-end</td><td>{s.baseline_end_to_end} / {s.n}</td><td>Old dispatch behavior, strict fields and numerical acceptance on those same outputs.</td></tr>
+      <tr><td>Specialist grounding</td><td>{s.candidate_grounded_strict} / {s.n}</td><td>Explicit source-bound conversions and conflict handling.</td></tr>
+      <tr><td>Specialist end-to-end</td><td>{s.candidate_end_to_end} / {s.n}</td><td>Correct fields plus appropriate refusal or numerically adequate solve.</td></tr>
+      <tr><td>Legacy language replay</td><td>{report.development.legacy.before} → {report.development.legacy.after} / 618</td><td>{report.development.legacy.regressed} previously correct interpretations newly broken; cached predictions, not new inference.</td></tr>
+      <tr><td>Unit tests</td><td>{report.cpu_unit_tests} passed</td><td>32 frozen core tests plus four additive opt-in MCP interface tests.</td></tr>
+    </tbody></table></div>
+    <p>The previous 40 cases are explicitly <em>development replay</em>, not a reused fresh holdout. The implementation and scoring code were frozen before the new packet was constructed and before fresh inference. Model inference received original request text and IDs, never expected answers.</p>
+    <p><strong>One strict failure remains:</strong> case <code>pipeline_fresh_018</code> emitted the invalid load-type enum <code>uniform</code>. The new schema check blocked dispatch, but safe rejection does not erase the model's incorrect output or turn 19/20 into 20/20.</p>
+  </section>
+  <section>
+    <h2>Actual numerical proofs</h2>
+    <img class="chart" src={base+'numerical.png'} width="1700" height="714" alt="Relative error of each actual CalculiX result against its closed-form reference, with the frozen three-percent tolerance marked." loading="lazy" />
+    <p>Rectangular Timoshenko beam displacement, signed restrained thermal stress <code>-E α ΔT</code>, and Lamé open-ended cylinder bore hoop stress are checked against independently calculated references. Relative numerical tolerance: <strong>3%</strong>. Final mesh change: <strong>≤1%</strong> where applicable. The uniform thermal bar is exact on one mesh; it has no mesh-convergence claim.</p>
+    <p>The publication audit verified {report.audit.solver_artifacts_hash_verified} retained solver-artifact hashes and independently recovered {report.audit.raw_dat_observables_verified.length} reported observables from the actual DAT outputs. The decks, results and refinement outputs are retained in the evidence download.</p>
+  </section>
+  <section>
+    <h2>FEA renders drawn from solver output</h2>
+    <div class="field-grid">{report.renders.map(field=><figure><a href={base+field.image}><img src={base+field.image} alt={`Actual CalculiX ${field.structure.replaceAll('_',' ')} field, with physical units and rendering assumptions annotated.`} loading="lazy" /></a><figcaption><strong>{field.structure.replaceAll('_',' ')}</strong> · {field.accepted_value.toPrecision(6)} {field.units}<br/><a href={base+field.deck}>Original deck</a> · <a href={base+field.data}>Raw results</a></figcaption></figure>)}</div>
+    <p>Beam deformation is magnified by the annotated factor. Colour is a corner-node displacement average or an element integration-point mean stress, as labeled. Quadratic-element corner faces are a visualization approximation. The pressure render is the actual axisymmetric strip, not a decorative 3D cylinder. A field image does not itself establish validation.</p>
+    <p class="links"><a href={base+'render_provenance.json'}>Render source hashes and case IDs</a><a href={base+'cases.json'}>Every request, original response, decision, unit trace and failure</a></p>
+  </section>
+  <section class="boundary">
+    <h2>The model checker experiment did not earn trust</h2>
+    <img class="chart" src={base+'reviewers.png'} width="1700" height="714" alt="False approvals and observed CPU latency for the stock 1.5B and 7B interpretation reviewers." loading="lazy" />
+    <div class="table-wrap"><table><thead><tr><th>Stock reviewer</th><th>Correct decisions / 12</th><th>Wrong interpretations approved / 8</th><th>Median CPU time</th></tr></thead><tbody>{r.map(item=><tr><td>{item.model}</td><td>{item.summary.correct} / 12</td><td>{item.summary.false_accepts} / 8</td><td>{item.summary.median_seconds.toFixed(2)} s</td></tr>)}</tbody></table></div>
+    <p>Both reviewers used the same frozen prompt and diagnostic mutations: four correct interpretations and eight deliberately wrong ones. Execution was CPU-only, four threads, <code>num_gpu=0</code>, with no retries. Verdict correctness does not establish the accuracy of every explanation; the original feedback is retained.</p>
+    <p><strong>No new checker fine-tune is claimed.</strong> These stock models are not enabled as a default check or treated as a safety boundary. An independently authored training set and a fresh acceptance gate are required before any future checker fine-tune is promoted.</p>
+  </section>
+  <section>
+    <h2>Timing and implementation boundary</h2>
+    <p>The adapted Qwen2.5-14B reader took {s.inference_median_seconds.toFixed(2)} seconds median in native NF4/BF16/SDPA execution on an RTX 3090. The deterministic checks added {(s.guard_overhead_median_seconds*1000).toFixed(2)} milliseconds median, excluding inference and solver time. This is not deployed GGUF performance, a GB10 comparison, or an isolated peak-throughput test: a separate CPU reviewer diagnostic ran alongside part of inference.</p>
+    <p>The implementation is available as an explicit opt-in local API, CLI and separate guarded MCP server. Existing private model routing and the public conversation gateway were not silently replaced. New solve folders preserve existing files, and the guarded MCP path writes a hash-identified trace.</p>
+    <p>Cloud assistance was used to author code and reporting. Model inference and numerical solves were local. No employer data, private corpus, credentials, model weights or host execution logs are published. Reserved answers were not ingested into training or RAG.</p>
+    <p class="links"><a href={base+'proof.pdf'}>Complete PDF report</a><a href={base+'source_hashes.json'}>Implementation and scoring hashes</a><a href="/software/aero/">Return to Aero</a></p>
+  </section>
+</Shell>
+<style>
+  .chart{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--border);margin:18px 0}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:25px 0}.metrics strong{display:block;font-size:clamp(23px,3vw,35px);color:var(--text)}.metrics span{display:block;font-size:13px;color:var(--muted);margin-top:6px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field-grid figure{margin:0;border:1px solid var(--border);min-width:0}.field-grid img{display:block;width:100%;height:auto;background:white}.field-grid figcaption{padding:13px;font-size:13px;line-height:1.6}.field-grid figcaption strong{text-transform:capitalize}:global(.evidence-nav::after){content:'Alex Blythe · Aero specialist-pipeline evidence · October 10, 2026'}@media(max-width:740px){.metrics{grid-template-columns:1fr 1fr}.field-grid{grid-template-columns:1fr}}
+</style>
