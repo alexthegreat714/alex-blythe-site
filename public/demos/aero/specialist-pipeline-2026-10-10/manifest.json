@@ -3,6 +3,11 @@
   "scope": "Reviewed allowlist only; SHA256 identity not scientific certification",
   "files": [
     {
+      "path": "aerofea-linkedin-infographic-v2.png",
+      "bytes": 1739895,
+      "sha256": "02d97e867f9ffafcc8fbfcde86b3e1fef0568e652ee34ac1b8efdc316155f90a"
+    },
+    {
       "path": "acceptance.png",
       "bytes": 68269,
       "sha256": "51e113f383aabb876e47a6c806fc44e959c8d94615e66f09289ed56e38bf380a"
