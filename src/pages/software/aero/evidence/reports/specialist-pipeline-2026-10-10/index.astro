@@ -15,8 +15,8 @@ const r=report.reviewers;
   <section class="overview-graphic">
     <h2>AeroFEA at a glance</h2>
     <figure>
-      <a href={base+'aerofea-linkedin-infographic-v2.png'}><img src={base+'aerofea-linkedin-infographic-v2.png'} width="1122" height="1402" alt="AeroFEA overview: Qwen2.5-14B-Instruct with QLoRA, 3,240 synthetic setup examples, grounded extraction 227 to 240 of 240, and pipeline correctness 7 to 19 of 20. Training and charted results used RTX 3090. The top-right cantilever is an illustrative setup, not a solver result." loading="eager" /></a>
-      <figcaption>Model, training data and two separate bounded studies. The cantilever sketch illustrates a setup; actual solver-field renders appear below. <a href={base+'aerofea-linkedin-infographic-v2.png'}>Download the graphic</a>.</figcaption>
+      <a href={base+'aerofea-linkedin-infographic-v3.png'}><img src={base+'aerofea-linkedin-infographic-v3.png'} width="1122" height="1402" alt="Qwen fine-tuned for FEA vs. the base model: Qwen2.5-14B-Instruct and the AeroFEA fine-tune, trained on 3,240 synthetic FEA request-to-setup examples. Grounded extraction: base 227/240 (94.6%), tuned 240/240 (100%). Separate check comparison using the same tuned model outputs: legacy checks 7/20 (35%), source-bound checks 19/20 (95%). Training and charted results used RTX 3090. Cantilever sketch illustrates a setup, not a solver result." loading="eager" /></a>
+      <figcaption>Qwen2.5-14B-Instruct versus its AeroFEA FEA-setup fine-tune on 240 fresh synthetic requests. The second chart compares the <em>same tuned model outputs</em> with legacy versus source-bound checks on 20 additional cases—not base versus tuned models. The cantilever sketch illustrates a setup; actual solver-field renders appear below. <a href={base+'aerofea-linkedin-infographic-v3.png'}>Download the graphic</a>.</figcaption>
     </figure>
   </section>
   <section class="boundary">
