@@ -1,0 +1,56 @@
+{
+  "schema": "aero.public.proof_manifest.v1",
+  "date": "2026-10-12",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2643,
+      "sha256": "7e5a0184a0d654826bb165edf53e81e8a46acf694743cf876d6ca378f633b0d7"
+    },
+    {
+      "path": "inputs.json",
+      "bytes": 1062,
+      "sha256": "608140a6c682979503d65134eda73243ac0867f04fedb312c441acea1e8ba59f"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 11718,
+      "sha256": "d461ca1e27845fd27f85059bcb46b0f3742ba7676b3ee5d602e600bae13bafd8"
+    },
+    {
+      "path": "proof.tex",
+      "bytes": 7714,
+      "sha256": "9ed511d9d66368529a55ff17fd35344796f5ba14ab5e22f2b854b1a6020583cd"
+    },
+    {
+      "path": "proof.pdf",
+      "bytes": 63809,
+      "sha256": "7895f29c934f40d98e8c1d3b31e1178dd616bd5203da50f6bf909d3811ca9a0c"
+    },
+    {
+      "path": "results.json",
+      "bytes": 5853,
+      "sha256": "df7ce525b720a8256402fffc32fac2502e63b973c785ad1b96992adceced42b9"
+    },
+    {
+      "path": "pressure-convergence.csv",
+      "bytes": 688,
+      "sha256": "35272f02d0bb840face317db48497e63f07f591f0ba9304cca7250360f706208"
+    },
+    {
+      "path": "pressure-convergence.svg",
+      "bytes": 1621,
+      "sha256": "ffe12f531e0fe128d8571c6cd5afae5722cec7cd0cfca084229eea8a8f868fa6"
+    },
+    {
+      "path": "runtime-verification.json",
+      "bytes": 1508,
+      "sha256": "ba0ae448a946c8264ebbe7850869efd17e3510aa401534bff55ef292082768ba"
+    },
+    {
+      "path": "sources.zip",
+      "bytes": 74910,
+      "sha256": "75e5298fcc15f72620ce5c105c3520511aede5d18e6a3655757485a5e03d2e23"
+    }
+  ]
+}

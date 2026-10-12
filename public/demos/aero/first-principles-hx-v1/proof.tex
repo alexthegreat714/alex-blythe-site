@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\title{Aero First-Principles Notebook\\Heat-Exchanger Tube: Pressure and Thermal FEA Verification}
+\author{Alex Blythe}
+\date{October 12, 2026 --- Notebook Rev 1.0}
+\begin{document}
+\maketitle
+\noindent\textbf{Scope.} Synthetic educational example. These derivations and the companion small finite-element calculations verify an idealized model, not a manufactured exchanger. No new HX-03, HX-04, or HX-CFD qualification is claimed. This is not experimental validation. The public notebook does not expose the private Aero corpus, local GPU, or arbitrary compilation.
+\section{Frozen assumed inputs}
+\begin{center}\begin{tabular}{lll}\toprule
+Quantity & Symbol & Value\\\midrule
+Inner / outer radius & $a,b$ & $10,11\ \mathrm{mm}$\\
+Length & $L$ & $1\ \mathrm{m}$\\
+Internal / external gauge pressure & $p_i,p_o$ & $2,0\ \mathrm{MPa}$\\
+Elastic modulus / Poisson ratio & $E,\nu$ & $190\ \mathrm{GPa},0.30$\\
+Expansion coefficient & $\alpha$ & $16\times10^{-6}\ \mathrm{K^{-1}}$\\
+Uniform temperature rise & $\Delta T$ & $80\ \mathrm{K}$\\\bottomrule
+\end{tabular}\end{center}
+\noindent These are assumed elastic properties, not a certified material specification. Pressure-only and thermal-only tests are separate. Do not add the answers without re-closing the combined load and restraint problem.
+\section{Pressure-only closed-end tube}
+Take tensile stress as positive. For a straight long tube away from the end caps, rotational symmetry and radial equilibrium give
+\begin{equation}
+\frac{d\sigma_r}{dr}+\frac{\sigma_r-\sigma_\theta}{r}=0.
+\end{equation}
+For constant axial strain, kinematics give $\epsilon_r=u_r'$ and $\epsilon_\theta=u_r/r$. Isotropic Hooke's law and equilibrium then reduce to
+\begin{equation}
+u_r''+\frac{u_r'}{r}-\frac{u_r}{r^2}=0,\qquad u_r=C_1r+\frac{C_2}{r}.
+\end{equation}
+Substitution into the constitutive law yields the Lam\'e form
+\begin{equation}
+\sigma_r=A-\frac{B}{r^2},\qquad\sigma_\theta=A+\frac{B}{r^2}.
+\end{equation}
+Apply $\sigma_r(a)=-p_i$ and $\sigma_r(b)=-p_o$:
+\begin{equation}
+A=\frac{p_i a^2-p_o b^2}{b^2-a^2},\qquad
+B=\frac{a^2b^2(p_i-p_o)}{b^2-a^2}.
+\end{equation}
+The closed-end axial force balance is
+\begin{equation}
+\sigma_z\pi(b^2-a^2)=\pi(p_i a^2-p_o b^2),\qquad\sigma_z=A.
+\end{equation}
+This is \emph{not} the open-ended condition $\sigma_z=0$, and not plane strain $\epsilon_z=0$. Hooke's law gives
+\begin{equation}
+u_r(r)=\frac{(1-2\nu)Ar+(1+\nu)B/r}{E},\qquad
+\epsilon_z=\frac{(1-2\nu)A}{E}.
+\end{equation}
+At the bore, $\sigma_r=-2.000\ \mathrm{MPa}$, $\sigma_\theta=21.047619\ \mathrm{MPa}$ and $\sigma_z=9.523810\ \mathrm{MPa}$. The outer displacement is approximately $0.937343\ \mathrm{\mu m}$. The thin-wall estimate $p_i a/(b-a)=20\ \mathrm{MPa}$ is lower; it is not substituted for the thick-wall reference.
+\paragraph{Equation checks.} Substitute the two stress expressions into equilibrium: $2B/r^3-2B/r^3=0$. Boundary tractions and end force balance are separately checked by executable tests. Units are $[A]=\mathrm{Pa}$, $[B]=\mathrm{Pa\,m^2}$ and $[u]=\mathrm{m}$.
+\section{Independent radial finite-element calculation}
+The companion script assembles linear radial elements and one constant axial strain degree of freedom. For each element,
+\begin{equation}
+\boldsymbol\epsilon=\mathbf B\mathbf q,
+\quad\mathbf B=\begin{bmatrix}N'_1&N'_2&0\\N_1/r&N_2/r&0\\0&0&1\end{bmatrix},
+\quad\mathbf D=2\mu\mathbf I+\lambda\mathbf 1\mathbf 1^T.
+\end{equation}
+Here $\mu=E/[2(1+\nu)]$ and $\lambda=E\nu/[(1+\nu)(1-2\nu)]$. The weak form is
+\begin{equation}
+\mathbf K=\sum_e\int_e\mathbf B^T\mathbf D\mathbf B\,2\pi rL\,dr,
+\qquad\mathbf K\mathbf q=\mathbf f.
+\end{equation}
+The inner radial load is $2\pi aLp_i$, outer load $-2\pi bLp_o$ and the generalized axial load is $L\pi(p_i a^2-p_o b^2)$. Three-point Gauss integration is used. Refine through 4, 8, 16, 32 and 64 radial elements; compare displacement and volume-weighted Gauss-point stress error with the independently derived Lam\'e reference. Exact numerical values are retained in \texttt{results.json} and \texttt{pressure-convergence.csv}.
+\noindent The declared finest-mesh checks are: outer-displacement error below $0.1\%$, stress relative $L_2$ error below $2\%$, and normalized equilibrium residual below $10^{-9}$. These are educational verification checks, not Aero's production mesh-independence criteria.
+\section{Thermal-only tube: two different restraint problems}
+Treat the tube as a uniform axial bar with area $S=\pi(b^2-a^2)$ and traction-free transverse surfaces. Its constitutive equation is
+\begin{equation}
+\sigma_z=E\left(\frac{du}{dx}-\alpha\Delta T\right).
+\end{equation}
+With one axial datum and the other end free, $\sigma_z=0$, so
+\begin{equation}
+u(L)=\alpha\Delta T L=1.280\ \mathrm{mm}.
+\end{equation}
+With \emph{axial} displacement fixed at both ends, $\int_0^L u'\,dx=0$. Uniform temperature and uniform area therefore give
+\begin{equation}
+\sigma_z=-E\alpha\Delta T=-243.200\ \mathrm{MPa},
+\qquad |R|=S E\alpha\Delta T\approx16.045\ \mathrm{kN}.
+\end{equation}
+This is not fully triaxial restraint and does not include local tube-sheet stress. The compressed member may buckle and the assumed material may yield; neither is assessed here. A converged linear answer does not establish structural safety.
+\section{Thermal FE load and proof}
+For a linear element of length $\ell$, the actual assembled matrices are
+\begin{equation}
+\mathbf k_e=\frac{ES}{\ell}\begin{bmatrix}1&-1\\-1&1\end{bmatrix},
+\qquad \mathbf f_{th,e}=ES\alpha\Delta T\begin{bmatrix}-1\\1\end{bmatrix}.
+\end{equation}
+The script solves the free displacement degrees of freedom and recovers reactions from $\mathbf R=\mathbf K\mathbf u-\mathbf f_{th}$. Meshes of 2, 4, 8 and 16 elements reproduce the uniform analytical solution to floating-point precision. This problem lies exactly in the linear-element approximation space; lack of mesh error here does not prove mesh independence for a real exchanger.
+\section{What is and is not proved}
+Equation consistency, dimensions, pressure boundary tractions, end force balance, thermal boundary conditions, reactions, and idealized FE refinement are tested. There is no experiment, material certificate, exchanger assembly model, weld/contact model, fatigue assessment or hardware-release disposition. An LLM explanation is not an independent calculation. The October 12 local 3090 smoke test executed, but its thrust arithmetic failed; this notebook uses deterministic calculations instead.
+\section{Reproduction and references}
+Run \texttt{python verify.py} with Python and NumPy beside \texttt{inputs.json}. Compile this source using an existing TeX runtime. The website retains sources, calculated results and an SHA-256 manifest; hashes establish custody, not correctness.
+\begin{itemize}
+\item NPTEL, \emph{Boundary Value Problem: Formulation}, Chapter 7, thick-cylinder elasticity: \href{https://archive.nptel.ac.in/content/storage2/courses/105106049/lecnotes/mainch7.html}{primary course reference}. Indexed source; full page retrieval timed out during this publication.
+\item COMSOL, \emph{How to Provide Structural Stability in Thermal Expansion Simulations} (2018), restraint and rigid-motion cautions: \href{https://www.comsol.com/blogs/how-to-provide-structural-stability-in-thermal-expansion-simulations}{primary software-developer explanation}.
+\end{itemize}
+\noindent\textbf{Revision history.} Notebook Rev 1.0, October 12, 2026: new synthetic public proof example. This does not supersede or rescore any historical Aero qualification or software revision.
+\end{document}

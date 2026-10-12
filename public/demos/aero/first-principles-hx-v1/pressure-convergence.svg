@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="375" viewBox="0 0 680 375" role="img" aria-labelledby="title desc">
+<title id="title">Computed pressure FE stress error under refinement</title><desc id="desc">Volume-weighted Gauss-point stress error against the independent Lame solution. Actual computed errors, not a solver screenshot.</desc>
+<rect width="680" height="375" rx="14" fill="#142127"/><g fill="#c6d6db" font-family="sans-serif" font-size="14">
+<text x="32" y="34" font-size="20" fill="#edf6f8">Pressure FE verification · actual computed error</text>
+<text x="32" y="58">Relative stress L2 error · logarithmic vertical axis</text>
+<path d="M75 90V295H585" fill="none" stroke="#57717d"/>
+<text x="28" y="286">10%</text><text x="28" y="216">1%</text><text x="21" y="146">0.1%</text><text x="12" y="76">0.01%</text>
+<polyline points="75.00,218.74 200.00,197.68 325.00,176.61 450.00,155.54 575.00,134.46" fill="none" stroke="#6cddd4" stroke-width="3"/><circle cx="75.00" cy="218.74" r="5" fill="#6cddd4"/><circle cx="200.00" cy="197.68" r="5" fill="#6cddd4"/><circle cx="325.00" cy="176.61" r="5" fill="#6cddd4"/><circle cx="450.00" cy="155.54" r="5" fill="#6cddd4"/><circle cx="575.00" cy="134.46" r="5" fill="#6cddd4"/><text x="75.00" y="318" text-anchor="middle">4</text><text x="200.00" y="318" text-anchor="middle">8</text><text x="325.00" y="318" text-anchor="middle">16</text><text x="450.00" y="318" text-anchor="middle">32</text><text x="575.00" y="318" text-anchor="middle">64</text>
+<text x="330" y="350" text-anchor="middle">Radial elements (uniform refinement)</text></g></svg>

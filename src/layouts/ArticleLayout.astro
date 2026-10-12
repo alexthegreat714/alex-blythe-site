@@ -7,9 +7,10 @@ interface Props {
   canonicalPath: string;
   backHref?: string;
   backLabel?: string;
+  initialTheme?: 'dark' | 'light';
 }
 
-const { title, description, date, category, canonicalPath, backHref = '/#research', backLabel = 'Back to research' } = Astro.props;
+const { title, description, date, category, canonicalPath, backHref = '/#research', backLabel = 'Back to research', initialTheme = null } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site);
 ---
 
@@ -19,13 +20,13 @@ const canonical = new URL(canonicalPath, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#f2f0eb" />
-    <script is:inline>
+    <script is:inline define:vars={{ initialTheme }}>
       (() => {
         const root = document.documentElement;
         const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         let saved = null;
         try { saved = localStorage.getItem('alex-theme'); } catch {}
-        root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : system;
+        root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : (initialTheme || system);
       })();
     </script>
     <title>{title} — Alex Blythe</title>

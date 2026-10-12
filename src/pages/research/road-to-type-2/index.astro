@@ -2,7 +2,9 @@
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import archive from '../../../../public/research/road-to-type-2-working-draft-2024-11-23.md?raw';
 
-const entries = [...archive.matchAll(/^# (\d+)\.  (You|ChatGPT)\n([\s\S]*?)(?=\n---\n# \d+\.  |(?![\s\S]))/gm)].map(match => {
+// Parse the same archived text on Windows and Linux without changing its source.
+const normalizedArchive = archive.replace(/\r\n/g, '\n');
+const entries = [...normalizedArchive.matchAll(/^# (\d+)\.  (You|ChatGPT)\n([\s\S]*?)(?=\n---\n# \d+\.  |(?![\s\S]))/gm)].map(match => {
   const raw = match[3].trim();
   const timestamp = raw.match(/^\*([^\n]+)\*\n/);
   const text = timestamp ? raw.slice(timestamp[0].length).trim() : raw;

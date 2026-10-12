@@ -1,0 +1,35 @@
+{
+  "schema": "aero.public.sanitized_latex_runtime_receipt.v1",
+  "date": "2026-10-12",
+  "scope": "Single synthetic owner-side inference check, separate from this public notebook; not a campaign benchmark or page-end-to-end proof.",
+  "desktop_model": {
+    "model": "qwen2.5:14b-instruct",
+    "quantization": "Q4_K_M",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "reported_model_size_bytes": 9065348463,
+    "reported_model_size_vram_bytes": 9065348463,
+    "context_length": 2048,
+    "wall_seconds": 10.204,
+    "maximum_sampled_gpu_utilization_percent": 85,
+    "execution": "PASS",
+    "calculation": "FAIL"
+  },
+  "synthetic_arithmetic": {
+    "formula": "F = mdot * ve + (pe-pa) * Ae; Isp = F/(mdot*g0)",
+    "inputs": {"mdot_kg_s": 2, "ve_m_s": 2500, "pe_Pa": 120000, "pa_Pa": 100000, "Ae_m2": 0.005, "g0_m_s2": 9.80665},
+    "expected_thrust_N": 5100,
+    "returned_thrust_N": 5500,
+    "expected_Isp_s": 260.0276343093717,
+    "returned_Isp_s": 2549.5
+  },
+  "private_page": {
+    "assistant_target": "GX10/GB10",
+    "page_3090_execution": "NOT_ESTABLISHED",
+    "fresh_page_compile": "FAIL_COMPILER_DISCOVERY",
+    "retained_old_pdf_present": true,
+    "separate_existing_compiler": "PASS_EIGHT_PAGE_PDF",
+    "repaired_this_publication": false
+  },
+  "public_notebook": {"static": true, "GPU_required": false, "private_backend_exposed": false},
+  "redacted": ["private source paths", "host addresses", "process identifiers", "GPU UUID", "private corpus metadata", "private notebook contents"]
+}

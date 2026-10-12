@@ -1,0 +1,150 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import ProofEquation from '../../../components/ProofEquation.astro';
+import results from '../../../../public/demos/aero/first-principles-hx-v1/results.json';
+const assets = '/demos/aero/first-principles-hx-v1';
+const inner = results.analytical_inner;
+const outer = results.analytical_outer;
+const finest = results.pressure_fe.at(-1)!;
+---
+<ArticleLayout title="First principles before FEA" description="A public Aero LaTeX notebook: a synthetic heat-exchanger tube, three physical cases, explicit assumptions, and executable finite-element verification." date="October 12, 2026" category="Aero / Proof notebook · Rev 1.0" canonicalPath="/software/aero/first-principles/" backHref="/software/aero/" backLabel="Back to Aero" initialTheme="dark">
+  <div class="scope-notice">
+    <strong>Equations → calculation → independent comparison → bounded conclusion.</strong>
+    <p>This is a public, reproducible proof notebook—not a model's assertion that a heat exchanger is safe. All inputs are synthetic. No employer information, private RAG, local-machine controls, or blocked HX qualification cases are published here.</p>
+  </div>
+  <nav class="jump-links" aria-label="Notebook sections"><a href="#case">The case</a><a href="#pressure">Pressure proof</a><a href="#thermal">Thermal proof</a><a href="#verification">FE verification</a><a href="#explore">Try the equations</a><a href="#downloads">Download sources</a></nav>
+  <div class="hero-metrics">
+    <div><span>Pressure-only bore hoop stress</span><strong>{(inner.hoop_Pa/1e6).toFixed(3)} MPa</strong><small>Closed-end Lamé solution</small></div>
+    <div><span>Thermal-only free expansion</span><strong>1.280 mm</strong><small>80 K uniform temperature rise</small></div>
+    <div><span>Thermal-only axial restraint</span><strong>−243.2 MPa</strong><small>Compression, not a safety disposition</small></div>
+  </div>
+  <h2 id="case">One exchanger tube. Three different questions.</h2>
+  <p>A straight tube stands in for one member of a tube-bundle heat exchanger. First ask what pressure does to it. Then ask how it expands when heated. Finally ask what happens if the tube sheets prevent that axial expansion. These are separate verification cases, not a combined pressure-and-temperature design analysis.</p>
+  <svg class="tube-diagram" viewBox="0 0 680 240" role="img" aria-labelledby="tube-title tube-desc">
+    <title id="tube-title">Idealized heat exchanger tube and separate axial thermal restraints</title><desc id="tube-desc">Schematic, not a CAD model or computed field. A 1 metre straight tube has a 10 millimetre bore radius and 1 millimetre wall. Thermal cases compare a sliding end with axial restraint at both ends.</desc>
+    <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto-start-reverse"><path d="M0 0L7 3.5L0 7" fill="#76ddd7"/></marker></defs>
+    <rect width="680" height="240" rx="14" fill="#142127"/>
+    <g fill="#d8e8ec" font-family="system-ui,sans-serif"><text x="28" y="30" font-size="15">Synthetic tube · schematic, not a solver field</text>
+    <path d="M98 73H560V117H98Z" fill="#32474f" stroke="#a9bec5"/><path d="M98 84H560V106H98Z" fill="#142127" stroke="#a9bec5"/>
+    <path d="M124 95H530" stroke="#76ddd7" stroke-width="2" marker-end="url(#arrow)"/><text x="257" y="69" font-size="14">Pressure-only: 2 MPa gauge inside</text>
+    <path d="M98 139H560" stroke="#76ddd7" marker-start="url(#arrow)" marker-end="url(#arrow)"/><text x="298" y="162" font-size="14">L = 1 m</text>
+    <text x="28" y="196" font-size="14">Thermal-only:</text><text x="163" y="196" font-size="14">free end → 1.280 mm</text><text x="421" y="196" font-size="14">axially fixed → compression</text>
+    <text x="28" y="221" font-size="12" fill="#a9bec5">No tube-sheet contact, welds, plasticity, buckling, fatigue, or mapped CFD temperature.</text></g>
+  </svg>
+  <table><thead><tr><th>Input</th><th>Assumed value</th><th>Meaning</th></tr></thead><tbody>
+    <tr><td>Inner / outer radius</td><td>10 / 11 mm</td><td>Uniform circular wall</td></tr>
+    <tr><td>Length</td><td>1 m</td><td>Pressure reference away from end effects</td></tr>
+    <tr><td>Pressure</td><td>2 MPa inside; 0 outside</td><td>Gauge pressures; pressure case only</td></tr>
+    <tr><td>E / ν</td><td>190 GPa / 0.30</td><td>Assumed constant isotropic elasticity</td></tr>
+    <tr><td>α / ΔT</td><td>16 × 10⁻⁶ K⁻¹ / 80 K</td><td>Uniform thermal-only cases</td></tr>
+  </tbody></table>
+  <p>No actual alloy strength, temperature-dependent properties, fatigue limit, or allowable stress has been supplied. Consequently <strong>hardware safety is NOT_ESTABLISHED</strong>, even when the equation checks pass.</p>
+  <h2 id="pressure">1. Pressure proof: equilibrium before a contour plot.</h2>
+  <p>Tension is positive. A long, rotationally symmetric elastic cylinder must satisfy radial equilibrium. The Lamé solution simultaneously satisfies that equation and the inner/outer pressure tractions.</p>
+  <ProofEquation label="Compatibility: radial displacement defines strain; isotropic elasticity and equilibrium fix its shape" latex={String.raw`\epsilon_r=u_r',\quad \epsilon_\theta=\frac{u_r}{r},\quad \epsilon_z=\mathrm{const},\qquad u_r''+\frac{u_r'}{r}-\frac{u_r}{r^2}=0\Rightarrow u_r=C_1r+\frac{C_2}{r}`} />
+  <ProofEquation label="Radial equilibrium and Lamé stress field" latex={String.raw`\frac{d\sigma_r}{dr}+\frac{\sigma_r-\sigma_\theta}{r}=0,\qquad \sigma_r=A-\frac{B}{r^2},\quad\sigma_\theta=A+\frac{B}{r^2}`} />
+  <ProofEquation label="Constants from the two pressure boundary conditions" latex={String.raw`A=\frac{p_i a^2-p_o b^2}{b^2-a^2},\qquad B=\frac{a^2b^2(p_i-p_o)}{b^2-a^2}`} />
+  <p>The check is explicit: differentiation gives 2B/r³; the hoop-minus-radial term supplies −2B/r³. Their sum is zero. At r = a, radial stress is −pᵢ; at r = b, it is −pₒ. The script tests both tractions rather than accepting a plausible-looking stress contour.</p>
+  <ProofEquation label="Closed-end force balance—not open ends, and not plane strain" latex={String.raw`\sigma_z\pi(b^2-a^2)=\pi(p_i a^2-p_o b^2),\qquad \sigma_z=A`} />
+  <ProofEquation label="Radial displacement from isotropic Hooke's law" latex={String.raw`u_r(r)=\frac{(1-2\nu)Ar+(1+\nu)B/r}{E},\qquad \epsilon_z=\frac{(1-2\nu)A}{E}`} />
+  <table><thead><tr><th>Calculated reference</th><th>Value</th></tr></thead><tbody>
+    <tr><td>Bore radial stress</td><td>{(inner.radial_Pa/1e6).toFixed(3)} MPa</td></tr>
+    <tr><td>Bore hoop stress</td><td>{(inner.hoop_Pa/1e6).toFixed(6)} MPa</td></tr>
+    <tr><td>Closed-end axial stress</td><td>{(inner.axial_Pa/1e6).toFixed(6)} MPa</td></tr>
+    <tr><td>Bore von Mises stress</td><td>{(inner.von_mises_Pa/1e6).toFixed(6)} MPa</td></tr>
+    <tr><td>Outer radial displacement</td><td>{(outer.radial_displacement_m*1e6).toFixed(6)} μm</td></tr>
+  </tbody></table>
+  <p>The thin-wall estimate pᵢa/t gives 20 MPa, versus 21.048 MPa at the bore in the thick-wall calculation. Geometry determines whether that approximation is adequate. These stresses are not applicable at ports, tube-sheet joints, welds, or end-cap transitions.</p>
+  <h2 id="thermal">2. Thermal proof: the boundary condition is the physics.</h2>
+  <p>For the thermal-only axial model, the transverse surfaces are traction-free. Axial elastic strain is total axial strain minus thermal strain. A sliding end and two axially fixed ends solve different engineering problems.</p>
+  <ProofEquation label="Axial thermoelastic constitutive equation" latex={String.raw`\sigma_z=E\left(\frac{du}{dx}-\alpha\Delta T\right)`} />
+  <ProofEquation label="Case A: one datum, other end free; uniform heating creates no axial stress" latex={String.raw`\sigma_z=0\quad\Rightarrow\quad u(L)=\alpha\Delta T L=1.280\ \mathrm{mm}`} />
+  <ProofEquation label="Case B: both ends axially fixed; transverse contraction remains free" latex={String.raw`u(0)=u(L)=0\quad\Rightarrow\quad \sigma_z=-E\alpha\Delta T=-243.200\ \mathrm{MPa}`} />
+  <ProofEquation label="Reaction force independently closes the constrained bar" latex={String.raw`S=\pi(b^2-a^2),\qquad |R|=S E\alpha\Delta T=16.045\ \mathrm{kN}`} />
+  <p>Negative stress means compression. It does not mean the real tube can sustain it: yielding, buckling, support compliance, gradients, and tube-sheet behavior are omitted. Nor is −EαΔT the formula for fully triaxial restraint. As <a href="https://www.comsol.com/blogs/how-to-provide-structural-stability-in-thermal-expansion-simulations">COMSOL's constraint example explains</a>, adding restraints can produce a converged but physically irrelevant result.</p>
+  <h2 id="verification">3. Actual small FE calculations, compared with the derivations.</h2>
+  <p>The downloadable Python implementation assembles and solves stiffness matrices. This is an educational radial FE / axial-bar calculation, <strong>not an ANSYS or CalculiX run</strong>. It does not replace Aero's existing conventional-solver qualification infrastructure.</p>
+  <ProofEquation label="Radial FE: displacement interpolation plus a constant axial-strain degree of freedom" latex={String.raw`\mathbf K=\sum_e\int_e\mathbf B^T\mathbf D\mathbf B\,2\pi rL\,dr,\qquad\mathbf K\mathbf q=\mathbf f`} />
+  <p>The pressure model uses the full isotropic radial/hoop/axial constitutive matrix, three-point Gauss integration, and the closed-end pressure force. Linear radial elements are refined through five meshes. Stress error is evaluated at quadrature points against the independent analytical field—not against the next mesh alone.</p>
+  <img src={`${assets}/pressure-convergence.svg`} width="680" height="375" alt="Actual pressure finite-element stress error decreases as radial meshes refine from 4 to 64 elements." loading="lazy" />
+  <table><thead><tr><th>Radial elements</th><th>Outer displacement error</th><th>Stress relative L₂ error</th><th>Equilibrium residual</th></tr></thead><tbody>
+    {results.pressure_fe.map(row => <tr><td>{row.elements}</td><td>{(row.outer_u_relative_error*100).toFixed(6)}%</td><td>{(row.gauss_stress_relative_L2_error*100).toFixed(4)}%</td><td>{row.normalized_equilibrium_residual.toExponential(2)}</td></tr>)}
+  </tbody></table>
+  <ProofEquation label="Thermal bar: element stiffness and equivalent thermal load" latex={String.raw`\mathbf k_e=\frac{ES}{\ell}\begin{bmatrix}1&-1\\-1&1\end{bmatrix},\qquad\mathbf f_{th,e}=ES\alpha\Delta T\begin{bmatrix}-1\\1\end{bmatrix}`} />
+  <p>Both thermal cases were solved with 2, 4, 8, and 16 elements. The linear free-expansion field and zero-displacement restrained field are represented exactly by these elements; stresses and reactions agree to floating-point precision. That exactness is specific to this simple problem, not proof that a real exchanger is mesh-independent.</p>
+  <div class="scope-notice"><strong>{results.tests.run} executable tests passed · {results.tests.failures} failures · {results.tests.errors} errors</strong><p>Boundary tractions, end-force balance, differential equilibrium, zero-load limit, pressure refinement, free expansion, fixed-end reactions, units/known values, and rejection of invalid geometry. Finest pressure stress error: {(finest.gauss_stress_relative_L2_error*100).toFixed(4)}%. Physical validation and hardware qualification remain NOT_ESTABLISHED.</p></div>
+  <h2 id="explore">Try the first-principles equations.</h2>
+  <p>Change synthetic inputs locally in your browser. This recalculates the <strong>closed-form equations only</strong>; it does not run FEA or change the frozen verification record above. No prompt, geometry, or input is sent to a server.</p>
+  <form id="hx-proof-form" class="input-grid">
+    <label>Inside gauge pressure (MPa)<input name="pressure" type="number" min="0" max="10" step="0.1" value="2" required /></label>
+    <label>Bore radius (mm)<input name="radius" type="number" min="1" max="100" step="0.1" value="10" required /></label>
+    <label>Wall thickness (mm)<input name="thickness" type="number" min="0.1" max="20" step="0.1" value="1" required /></label>
+    <label>Length (m)<input name="length" type="number" min="0.05" max="5" step="0.05" value="1" required /></label>
+    <label>Elastic modulus (GPa)<input name="modulus" type="number" min="1" max="500" step="1" value="190" required /></label>
+    <label>Expansion coefficient (10⁻⁶/K)<input name="alpha" type="number" min="0" max="50" step="0.5" value="16" required /></label>
+    <label>Temperature rise (K)<input name="temperature" type="number" min="0" max="200" step="1" value="80" required /></label>
+    <button type="submit">Recalculate analytical predictions</button>
+  </form>
+  <output id="hx-proof-output" aria-live="polite" class="calc-output">Bore hoop stress: 21.048 MPa · free extension: 1.280 mm · axial restrained stress: −243.200 MPa · reaction magnitude: 16.045 kN.</output>
+  <p class="small-note">ν = 0.30; outside gauge pressure = 0; uniform constant properties. No allowable stress, buckling check, material certification, combined-load model, or engineering PASS is inferred from these numbers.</p>
+  <h2>What would make this an exchanger FEA qualification?</h2>
+  <ol>
+    <li>Freeze the real question, geometry, material data, pressure loads, temperatures, restraints, outputs, and acceptance criteria before solving.</li>
+    <li>Use the relevant conventional solver. Retain native fields, mesh, element formulation, reactions, warnings, and input decks.</li>
+    <li>Check pressure and reaction equilibrium, thermoelastic assumptions, mesh sensitivity, and relevant local stresses away from artificial singularities.</li>
+    <li>Investigate tube-sheet contact, joints, thermal gradients, yielding, buckling, fatigue, and mapped-fluid loads where physically applicable.</li>
+    <li>Separate numerical verification, physical validation, code compliance, and the engineer's release authority. Never promote an LLM explanation into observed solver evidence.</li>
+  </ol>
+  <p>Existing retained conventional examples remain available in <a href="/software/aero/current/?case=fea-tube-20260912">Aero's pressure-tube case</a>, <a href="/software/aero/current/?case=fea-thermal-free-20260912">free thermal case</a>, and <a href="/software/aero/current/?case=fea-thermal-fixed-20260912">restrained thermal case</a>. They have their own inputs and dispositions; these new numbers do not rescore them.</p>
+  <h2>The local LaTeX / 3090 verification: what actually worked?</h2>
+  <table><thead><tr><th>October 12 check</th><th>Observed state</th></tr></thead><tbody>
+    <tr><td>Separate desktop 14B inference</td><td>Executed on RTX 3090; 10.204 s wall time; 9,065,348,463 bytes reported model VRAM residency</td></tr>
+    <tr><td>Engineering arithmetic in that model response</td><td>FAIL: returned 5,500 N instead of 5,100 N; Isp also incorrect</td></tr>
+    <tr><td>Private LaTeX Studio assistant routing</td><td>Configured for GX10, not proven page-to-3090 inference</td></tr>
+    <tr><td>Private page compilation</td><td>FAIL: service compiler discovery; old PDF remained</td></tr>
+    <tr><td>Independent existing compiler</td><td>Successfully compiled the prior eight-page notebook outside the page</td></tr>
+  </tbody></table>
+  <p>This new public page is a static proof-and-calculation notebook, not a public GPU endpoint or a repair of the private LaTeX app. Its math rendering and deterministic examples need no GPU. The failed model calculation is why numerical checks—not model confidence—provide the evidence here. <a href={`${assets}/runtime-verification.json`}>Read the sanitized runtime receipt.</a></p>
+  <h2 id="downloads">Equations and proof you can keep.</h2>
+  <div class="downloads"><a href={`${assets}/proof.pdf`}>Read compiled LaTeX PDF ↗</a><a href={`${assets}/sources.zip`}>Complete reproducibility bundle</a><a href={`${assets}/proof.tex`}>LaTeX source</a><a href={`${assets}/verify.py`}>Calculation + FE test code</a><a href={`${assets}/inputs.json`}>Assumed inputs</a><a href={`${assets}/results.json`}>Calculated results</a><a href={`${assets}/pressure-convergence.csv`}>Refinement CSV</a><a href={`${assets}/manifest.json`}>SHA-256 manifest</a><a href={`${assets}/verification.json`}>Custody verification</a></div>
+  <p>Reproduce with Python 3 and NumPy: download <code>verify.py</code> and <code>inputs.json</code> into the same folder, then run <code>python verify.py</code>. The public record pins NumPy {results.numpy_version}, input and implementation hashes. The PDF retains the derivations and scope limitations.</p>
+  <h3>Primary-source context</h3>
+  <ul><li><a href="https://archive.nptel.ac.in/content/storage2/courses/105106049/lecnotes/mainch7.html">NPTEL: thick-cylinder elasticity, boundary-value formulation</a> (indexed reference; full page retrieval timed out during this publication).</li><li><a href="https://www.comsol.com/blogs/how-to-provide-structural-stability-in-thermal-expansion-simulations">COMSOL: thermal expansion constraints and physically irrelevant converged solutions</a>. The derivations and new numerical results above are our own synthetic calculations.</li></ul>
+  <p class="small-note">Notebook Rev 1.0 · October 12, 2026. This is a new public educational artifact, not a new Aero software release, training result, or revision of historical qualification evidence.</p>
+</ArticleLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#hx-proof-form');
+  const output = document.querySelector<HTMLOutputElement>('#hx-proof-output');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity() || !output) return;
+    const data = new FormData(form);
+    const v = (name: string) => Number(data.get(name));
+    const p = v('pressure')*1e6, a = v('radius')/1000, b = a+v('thickness')/1000;
+    const E = v('modulus')*1e9, strain = v('alpha')*1e-6*v('temperature');
+    const hoop = p*(a*a+b*b)/(b*b-a*a)/1e6;
+    const extension = strain*v('length')*1000;
+    const stress = -E*strain/1e6;
+    const reaction = Math.PI*(b*b-a*a)*E*strain/1000;
+    if (![hoop, extension, stress, reaction].every(Number.isFinite)) { output.textContent = 'Invalid calculation; no result established.'; return; }
+    output.textContent = `Analytical recalculation only · bore hoop stress: ${hoop.toFixed(3)} MPa · free extension: ${extension.toFixed(3)} mm · axial restrained stress: ${stress.toFixed(3)} MPa · reaction magnitude: ${reaction.toFixed(3)} kN. Hardware safety: NOT_ESTABLISHED.`;
+  });
+</script>
+<style>
+  .scope-notice { border-left: 3px solid #76cfc8; padding: 1.2rem; background: var(--surface); border-radius: 0 10px 10px 0; }
+  .scope-notice p { margin: .7rem 0 0; color: var(--muted); }
+  .jump-links, .downloads { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; margin: 1.6rem 0; font-size: .9rem; }
+  .hero-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2rem 0; }
+  .hero-metrics div { border: 1px solid var(--border); padding: 1rem; border-radius: 10px; min-width: 0; }
+  .hero-metrics span, .hero-metrics small { display: block; font-size: .76rem; color: var(--muted); }
+  .hero-metrics strong { display: block; font-size: 1.35rem; padding: .6rem 0; }
+  .tube-diagram { width: 100%; height: auto; margin: 1rem 0; }
+  .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  label { display: grid; gap: .5rem; font-size: .85rem; }
+  input, button { font: inherit; padding: .7rem; border-radius: 6px; border: 1px solid var(--border); color: var(--text); background: var(--page); min-width: 0; width: 100%; }
+  button { cursor: pointer; background: #76cfc8; color: #102526; font-weight: 700; align-self: end; }
+  .calc-output { display: block; padding: 1.2rem; margin: 1rem 0; border: 1px solid #76cfc8; border-radius: 10px; line-height: 1.7; }
+  .small-note { font-size: .82rem; color: var(--muted); }
+  code { overflow-wrap: anywhere; }
+  @media (max-width: 600px) { .hero-metrics, .input-grid { grid-template-columns: 1fr; } }
+</style>

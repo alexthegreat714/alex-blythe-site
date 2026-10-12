@@ -1,0 +1,25 @@
+{
+  "case_id": "SYNTHETIC_HX_TUBE_V1",
+  "version": "1.0",
+  "evidence_type": "SYNTHETIC_ASSUMED_INPUTS",
+  "units": "SI",
+  "inner_radius_m": 0.01,
+  "outer_radius_m": 0.011,
+  "length_m": 1.0,
+  "internal_gauge_pressure_Pa": 2000000.0,
+  "external_gauge_pressure_Pa": 0.0,
+  "youngs_modulus_Pa": 190000000000.0,
+  "poisson_ratio": 0.3,
+  "thermal_expansion_per_K": 0.000016,
+  "uniform_temperature_rise_K": 80.0,
+  "radial_meshes": [4, 8, 16, 32, 64],
+  "thermal_meshes": [2, 4, 8, 16],
+  "verification_limits": {
+    "finest_outer_displacement_relative_error": 0.001,
+    "finest_gauss_stress_relative_L2_error": 0.02,
+    "thermal_relative_error": 0.000000001,
+    "normalized_equilibrium_residual": 0.000000001
+  },
+  "scope": "Straight, uniform, isotropic elastic exchanger tube. Pressure and thermal cases are separate verification problems; no combined hardware qualification.",
+  "excluded": ["HX-03", "HX-04", "HX-CFD-QUAL-01", "employer data", "welds", "tube-sheet contacts", "buckling", "plasticity", "creep", "fatigue", "CFD-mapped temperatures"]
+}

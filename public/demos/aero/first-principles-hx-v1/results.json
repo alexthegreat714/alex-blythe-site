@@ -1,0 +1,169 @@
+{
+  "schema": "aero.public.first_principles_hx.v1",
+  "date": "2026-10-12",
+  "case_id": "SYNTHETIC_HX_TUBE_V1",
+  "type": "CALCULATED_SYNTHETIC_VERIFICATION",
+  "inputs_sha256": "608140a6c682979503d65134eda73243ac0867f04fedb312c441acea1e8ba59f",
+  "implementation_sha256": "d461ca1e27845fd27f85059bcb46b0f3742ba7676b3ee5d602e600bae13bafd8",
+  "numpy_version": "2.3.5",
+  "tests": {
+    "run": 9,
+    "failures": 0,
+    "errors": 0
+  },
+  "analytical_inner": {
+    "A_Pa": 9523809.523809532,
+    "B_Pa_m2": 1152.3809523809534,
+    "radial_Pa": -2000000.0000000019,
+    "hoop_Pa": 21047619.047619067,
+    "axial_Pa": 9523809.523809532,
+    "von_mises_Pa": 19959823.591984224,
+    "radial_displacement_m": 9.889724310776952e-07
+  },
+  "analytical_outer": {
+    "A_Pa": 9523809.523809532,
+    "B_Pa_m2": 1152.3809523809534,
+    "radial_Pa": -1.862645149230957e-09,
+    "hoop_Pa": 19047619.047619067,
+    "axial_Pa": 9523809.523809532,
+    "von_mises_Pa": 16495721.976846468,
+    "radial_displacement_m": 9.373433583959909e-07
+  },
+  "pressure_fe": [
+    {
+      "elements": 4,
+      "outer_u_m": 9.372240927266439e-07,
+      "axial_strain": 2.005012531328628e-05,
+      "outer_u_relative_error": 0.00012723797344778342,
+      "gauss_stress_relative_L2_error": 0.013332345161700192,
+      "normalized_equilibrium_residual": 1.2587373574571714e-13
+    },
+    {
+      "elements": 8,
+      "outer_u_m": 9.373135305774406e-07,
+      "axial_strain": 2.0050125313282696e-05,
+      "outer_u_relative_error": 3.182165668867677e-05,
+      "gauss_stress_relative_L2_error": 0.00666768913020177,
+      "normalized_equilibrium_residual": 2.5175211478840124e-13
+    },
+    {
+      "elements": 16,
+      "outer_u_m": 9.373359007293533e-07,
+      "axial_strain": 2.0050125313251166e-05,
+      "outer_u_relative_error": 7.95617376582306e-06,
+      "gauss_stress_relative_L2_error": 0.0033340342572767,
+      "normalized_equilibrium_residual": 1.8073758623935475e-12
+    },
+    {
+      "elements": 32,
+      "outer_u_m": 9.373414939303626e-07,
+      "axial_strain": 2.0050125313392143e-05,
+      "outer_u_relative_error": 1.9890956836571593e-06,
+      "gauss_stress_relative_L2_error": 0.0016670408440204864,
+      "normalized_equilibrium_residual": 2.52243999479037e-12
+    },
+    {
+      "elements": 64,
+      "outer_u_m": 9.373428922929617e-07,
+      "axial_strain": 2.0050125312841663e-05,
+      "outer_u_relative_error": 4.972596488761717e-07,
+      "gauss_stress_relative_L2_error": 0.0008335233865619618,
+      "normalized_equilibrium_residual": 7.865500914448176e-12
+    }
+  ],
+  "thermal_fe": [
+    {
+      "elements": 2,
+      "restrained": false,
+      "end_u_m": 0.0012799999999999999,
+      "mean_stress_Pa": 0.0,
+      "max_stress_error_Pa": 0.0,
+      "end_u_error_m": 0.0,
+      "left_reaction_N": 0.0,
+      "right_reaction_N": 0.0,
+      "normalized_equilibrium_residual": 1.7636788756537565e-17
+    },
+    {
+      "elements": 4,
+      "restrained": false,
+      "end_u_m": 0.0012800000000000005,
+      "mean_stress_Pa": 1.235990476633475e-07,
+      "max_stress_error_Pa": 1.6479873021779667e-07,
+      "end_u_error_m": 6.505213034913027e-19,
+      "left_reaction_N": -7.275957614183426e-12,
+      "right_reaction_N": 7.275957614183426e-12,
+      "normalized_equilibrium_residual": 3.785021013608071e-16
+    },
+    {
+      "elements": 8,
+      "restrained": false,
+      "end_u_m": 0.0012799999999999982,
+      "mean_stress_Pa": -3.2959746043559335e-07,
+      "max_stress_error_Pa": 4.9439619065339e-07,
+      "end_u_error_m": 1.734723475976807e-18,
+      "left_reaction_N": 2.000888343900442e-11,
+      "right_reaction_N": -2.546585164964199e-11,
+      "normalized_equilibrium_residual": 1.1230604589163844e-15
+    },
+    {
+      "elements": 16,
+      "restrained": false,
+      "end_u_m": 0.0012799999999999997,
+      "mean_stress_Pa": -4.119968255444917e-08,
+      "max_stress_error_Pa": 3.2959746043559335e-07,
+      "end_u_error_m": 2.168404344971009e-19,
+      "left_reaction_N": 3.637978807091713e-12,
+      "right_reaction_N": 1.8189894035458565e-12,
+      "normalized_equilibrium_residual": 5.31333654549468e-15
+    },
+    {
+      "elements": 2,
+      "restrained": true,
+      "end_u_m": 0.0,
+      "mean_stress_Pa": -243199999.99999997,
+      "max_stress_error_Pa": 0.0,
+      "end_u_error_m": 0.0,
+      "left_reaction_N": 16044.742000413777,
+      "right_reaction_N": -16044.742000413777,
+      "normalized_equilibrium_residual": 0.0
+    },
+    {
+      "elements": 4,
+      "restrained": true,
+      "end_u_m": 0.0,
+      "mean_stress_Pa": -243199999.99999997,
+      "max_stress_error_Pa": 0.0,
+      "end_u_error_m": 0.0,
+      "left_reaction_N": 16044.742000413777,
+      "right_reaction_N": -16044.742000413777,
+      "normalized_equilibrium_residual": 0.0
+    },
+    {
+      "elements": 8,
+      "restrained": true,
+      "end_u_m": 0.0,
+      "mean_stress_Pa": -243199999.99999997,
+      "max_stress_error_Pa": 0.0,
+      "end_u_error_m": 0.0,
+      "left_reaction_N": 16044.742000413777,
+      "right_reaction_N": -16044.742000413777,
+      "normalized_equilibrium_residual": 0.0
+    },
+    {
+      "elements": 16,
+      "restrained": true,
+      "end_u_m": 0.0,
+      "mean_stress_Pa": -243199999.99999997,
+      "max_stress_error_Pa": 0.0,
+      "end_u_error_m": 0.0,
+      "left_reaction_N": 16044.742000413777,
+      "right_reaction_N": -16044.742000413777,
+      "normalized_equilibrium_residual": 0.0
+    }
+  ],
+  "proof_scope": "Equation consistency and idealized FE discretization verification only",
+  "physical_validation": "NOT_ESTABLISHED",
+  "hardware_design_qualification": "NOT_ESTABLISHED",
+  "production_solver_used": false,
+  "GPU_required": false
+}

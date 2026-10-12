@@ -1,0 +1,20 @@
+---
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+interface Props { latex: string; label: string; }
+const { latex, label } = Astro.props;
+const rendered = katex.renderToString(latex, { displayMode: true, throwOnError: true, output: 'htmlAndMathml', trust: false });
+---
+<div class="proof-equation">
+  <p class="equation-label">{label}</p>
+  <div class="rendered" set:html={rendered} />
+  <details><summary>View LaTeX source</summary><pre><code>{latex}</code></pre></details>
+</div>
+<style>
+  .proof-equation { margin: 1.4rem 0; padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); min-width: 0; }
+  .equation-label { color: var(--muted); font-size: .8rem; margin: 0; }
+  .rendered { overflow-x: auto; padding: .2rem 0; }
+  details { font-size: .8rem; color: var(--muted); }
+  summary { cursor: pointer; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); }
+</style>
