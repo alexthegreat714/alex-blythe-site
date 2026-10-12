@@ -11,6 +11,8 @@ const base=process.env.AERO_TEST_URL||'http://127.0.0.1:4322';
 try{
   await page.goto(base+'/software/aero/demo/?mode=current');
   await page.waitForURL('**/software/aero/current/');
+  assert.equal(await page.locator('[data-hx-walkthrough]').isVisible(),true,'Fresh visitors start in the guided notebook');
+  await page.locator('[data-new]').click(); // Preserve the legacy ordinary-intake regression below.
   assert.equal(await page.locator('[data-theme-toggle]').getAttribute('aria-pressed'),'true','Dark must be the default');
   assert.equal(await page.locator('.document').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(21, 36, 44)');
   await page.locator('[data-theme-toggle]').click();

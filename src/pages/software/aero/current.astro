@@ -1,6 +1,7 @@
 ---
 import AeroChannelStudy from '../../../components/AeroChannelStudy.astro';
 import AeroStudyMeta from '../../../components/AeroStudyMeta.astro';
+import AeroHxWalkthrough from '../../../components/AeroHxWalkthrough.astro';
 const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 ---
 <!doctype html>
@@ -11,7 +12,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
 <body>
 <main class="app" data-workspace data-endpoint={modelEndpoint}>
   <header class="appbar"><a href="/software/aero/" class="brand">AERO <span>Engineering workspace</span></a><div class="app-actions"><a href="/software/aero/cooling/">Cooling study</a><span data-save>Saved on this browser</span><button type="button" data-library aria-haspopup="dialog" aria-label="Open saved cases and examples">▣ Saved cases <span data-case-count></span></button><button type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="true" title="Switch to light mode"><span data-theme-icon aria-hidden="true">☾</span> <span class="theme-label" data-theme-label>Dark</span></button><button data-settings>Connect model</button><button data-export>Export .tex</button><button data-new>New case</button></div></header>
-  <AeroStudyMeta label="Aero public workspace" />
+  <AeroStudyMeta label="Aero public workspace" date="2026-10-12" />
   <nav class="stages" aria-label="Engineering stages">
     {['Requirements','Math & LaTeX','CAD & tolerances','Mesh','Solve','Results'].map((label, i) => <button data-stage={i} aria-current={i === 0 ? 'step' : 'false'}><span class="step-number">0{i + 1}</span><span><b>{label}</b><small data-stage-label>Inputs needed</small></span><span class="track"><i></i></span></button>)}
   </nav>
@@ -26,11 +27,12 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     </section>
     <div class="splitter" role="separator" tabindex="0" aria-label="Resize conversation and document" aria-orientation="vertical" aria-valuemin="30" aria-valuemax="65" aria-valuenow="44"></div>
     <section class="document" aria-labelledby="document-title">
-      <header class="pane-header"><div><small>CASE INTAKE</small><h2 id="document-title">Untitled case</h2></div><span data-revision>Rev 0</span></header>
-      <div class="document-tabs" role="group" aria-label="Document views"><button data-doc="record" aria-pressed="true">Requirements</button><button data-doc="math" aria-pressed="false">Rendered math</button><button data-doc="source" aria-pressed="false">LaTeX source</button><button data-open-channel>Live channel study</button></div>
+      <header class="pane-header"><div><small data-document-kicker>CASE INTAKE</small><h2 id="document-title">Untitled case</h2></div><span data-revision>Rev 0</span></header>
+      <div class="document-tabs" role="group" aria-label="Document views"><button data-open-hx>Guided HX proof</button><button data-doc="record" aria-pressed="true">Requirements</button><button data-doc="math" aria-pressed="false">Rendered math</button><button data-doc="source" aria-pressed="false">LaTeX source</button><button data-open-channel>Live channel study</button></div>
       <div class="example-strip" data-example-strip hidden><span data-example-status></span><span data-example-summary></span><a data-example-source target="_blank" rel="noopener noreferrer">Source ↗</a></div>
       <div class="document-scroll">
         <AeroChannelStudy />
+        <AeroHxWalkthrough />
         <section data-panel="record"><div class="record-intro"><h3>What does Aero need to know?</h3><p>Answer each question, then confirm it.</p></div><div data-fields></div></section>
         <section data-panel="math" hidden><div class="record-intro"><h3>First principles, in view.</h3><p>Equations and assumptions grow from the conversation. This is rendered LaTeX—not a solver result.</p></div><div data-equations></div></section>
         <section data-panel="source" hidden><label for="tex">Generated from the current record · export for external compilation</label><textarea id="tex" readonly spellcheck="false"></textarea></section>
@@ -50,6 +52,8 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   let disposeStructural:(()=>void)|undefined;
   let structuralTicket=0;
   import {setupChannelStudy, channelFields, channelEquations, type ChannelState} from '../../../lib/aero/channel-study';
+  import {setupHxWalkthrough} from '../../../lib/aero/hx-walkthrough';
+  import {newHx,restoreHx,hxFields,hxLatex,hxContext,hxSteps,referenceMatches,type HxState} from '../../../lib/aero/hx-proof';
   import katex from 'katex';
   import 'katex/dist/katex.min.css';
   const root = document.querySelector<HTMLElement>('[data-workspace]')!;
@@ -67,7 +71,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   type Field = {value: string; confirmed: boolean};
   type Equation = {title:string;latex:string;assumptions:string};
   type Session = {revision:number;messages:{role:'user'|'assistant'|'guide';content:string}[];fields:Record<Key,Field>;equations:Equation[]};
-  type SavedCase = {id:string;title:string;folder:string;session:Session;seedId?:string;baselineInputs?:string;updatedAt:string;study?:ChannelState};
+  type SavedCase = {id:string;title:string;folder:string;session:Session;seedId?:string;baselineInputs?:string;updatedAt:string;study?:ChannelState;walkthrough?:HxState};
   const blank = ():Session => ({revision:0,messages:[],fields:Object.fromEntries(Object.keys(labels).map(key=>[key,{value:'',confirmed:false}])) as Record<Key,Field>,equations:[]});
   const storageKey = 'aero.current.workspace.v1';
   const libraryKey = 'aero.current.caseLibrary.v1';
@@ -94,6 +98,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   let connected = false, busy = false, stage = 0;
   let serial = 0;
   let channel:ReturnType<typeof setupChannelStudy>|undefined;
+  let hx:ReturnType<typeof setupHxWalkthrough>|undefined;
   let channelActive=false;
   const setModelState = (label:string, state:'checking'|'ready'|'offline') => {
     const indicator = $('[data-model-state]');
@@ -105,6 +110,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   const seedFor = (saved?:SavedCase) => aeroCaseSeeds.find(seed=>seed.id===saved?.seedId);
   const newId = () => `case-${crypto.randomUUID()}`;
   let savedCases:SavedCase[] = [], customFolders:string[] = [], activeCaseId = '';
+  let firstVisit=false;
   try {
     const library = JSON.parse(localStorage.getItem(libraryKey) || 'null');
     if(library && Array.isArray(library.cases)) {
@@ -114,6 +120,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     }
   } catch {}
   if(!savedCases.length){
+    firstVisit=true;
     try {
       const previous = JSON.parse(localStorage.getItem(storageKey) || 'null');
       if(previous && Array.isArray(previous.messages) && Array.isArray(previous.equations) && Object.keys(labels).every(k=>typeof previous.fields?.[k]?.value==='string')) session=previous;
@@ -122,6 +129,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     savedCases.push(first);activeCaseId=first.id;
   }
   let activeCase = savedCases.find(entry=>entry.id===activeCaseId)||savedCases[0];
+  for(const entry of savedCases)entry.walkthrough=restoreHx(entry.walkthrough);
   activeCaseId=activeCase.id;session=activeCase.session;session.messages=session.messages.slice(-100);
   const save = () => {
     activeCase.session=session;activeCase.updatedAt=new Date().toISOString();
@@ -135,7 +143,8 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     if(busy){notice('Wait for the current model response before switching cases.');return;}
     serial++;activeCase=entry;activeCaseId=entry.id;session=entry.session;
     channelActive=Boolean(entry.study);channel?.load(entry.study);
-    save();renderMessages();renderRecord();selectStage(0);const dialog=$<HTMLDialogElement>('[data-case-library]');if(dialog.open)dialog.close();
+    hx?.load(entry.walkthrough);
+    save();renderMessages();renderRecord();selectStage(entry.walkthrough?.step??0);const dialog=$<HTMLDialogElement>('[data-case-library]');if(dialog.open)dialog.close();
     notice(`Opened ${entry.title}. ${seedFor(entry)?.status==='recorded'?'Recorded results describe the original inputs; edits require a rerun.':'Review the setup before any solver run.'}`);
   }
   function openSeed(seed:AeroSeed){
@@ -163,6 +172,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   }
   const escapeTex=(s:string)=>s.replace(/[\\{}$&#%_^~]/g,c=>({'\\':'\\textbackslash{}','{':'\\{','}':'\\}','$':'\\$','&':'\\&','#':'\\#','%':'\\%','_':'\\_','^':'\\textasciicircum{}','~':'\\textasciitilde{}'}[c]!));
   function latex() {
+    if(activeCase.walkthrough)return hxLatex(activeCase.walkthrough,session.revision);
     const runNote=evidenceCurrent()?'Linked recorded example evidence applies to the original inputs only. It is not design validation.':'Current record has no applicable solver result; any linked example evidence is historical.';
     return ['\\documentclass{article}','\\usepackage{amsmath}','\\usepackage[margin=1in]{geometry}','\\begin{document}','\\section*{Aero engineering working record}',`Revision ${session.revision}. ${runNote}`,...Object.entries(labels).map(([k,label])=>`\\subsection*{${label}}\n${escapeTex(session.fields[k as Key].value || 'Not specified')}\n\nStatus: ${session.fields[k as Key].confirmed?'User confirmed':'Needs review'}.`),'\\section*{First-principles proposals}',...session.equations.map(e=>`\\subsection*{${escapeTex(e.title)}}\n\\[${e.latex}\\]\n${escapeTex(e.assumptions)}`),'\\end{document}'].join('\n\n');
   }
@@ -174,7 +184,9 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
       const heading=document.createElement('label');heading.htmlFor=`field-${key}`;heading.textContent=label;
       const tag=document.createElement('small');tag.textContent=field.confirmed?'Confirmed':field.value?'Proposed · review':'Missing';tag.className=field.confirmed?'confirmed':'proposed';
       const area=document.createElement('textarea');area.id=`field-${key}`;area.value=field.value;area.rows=2;area.maxLength=1500;area.placeholder=fieldPrompts[key];
+      area.readOnly=Boolean(activeCase.walkthrough);
       const button=document.createElement('button');button.textContent=field.confirmed?'Reopen':'Confirm';button.disabled=!field.value.trim();
+      if(activeCase.walkthrough)button.disabled=true;
       area.addEventListener('change',()=>{field.value=area.value.trim();field.confirmed=false;session.revision++;save();renderRecord();});
       button.addEventListener('click',()=>{field.confirmed=!field.confirmed;session.revision++;save();renderRecord();});
       const top=document.createElement('div');top.append(heading,tag);row.append(top,area,button);$('[data-fields]').append(row);
@@ -194,6 +206,10 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $<HTMLTextAreaElement>('#tex').value=latex();
     $('[data-revision]').textContent=`Rev ${session.revision}`;
     $('#document-title').textContent=activeCase.title;
+    $('[data-doc="math"]').hidden=Boolean(activeCase.walkthrough);
+    $('[data-panel="record"] .record-intro h3').textContent=activeCase.walkthrough?'Controlled walkthrough record':'What does Aero need to know?';
+    $('[data-panel="record"] .record-intro p').textContent=activeCase.walkthrough?'Change inputs and review assumptions in the guided notebook. Model replies cannot rewrite this engineering question.':'Answer each question, then confirm it.';
+    $('[data-document-kicker]').textContent=activeCase.walkthrough?'FIRST-PRINCIPLES WORKING NOTEBOOK':'CASE INTAKE';
     const seed=seedFor(activeCase),strip=$('[data-example-strip]');strip.hidden=!seed;
     if(seed){
       const status=seed.status==='recorded'?(evidenceCurrent()?'Recorded run · original inputs':'Recorded run · inputs changed'):'Study setup · not run';
@@ -204,6 +220,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     $('[data-readiness]').textContent=`${confirmed} / 6 confirmed`;
     $('[data-readiness-note]').textContent=confirmed===6?'Requirements reviewed · math still needs review':'Requirements still needed';
     root.querySelectorAll<HTMLElement>('[data-stage]').forEach((button,i)=>{
+      button.querySelector('b')!.textContent=activeCase.walkthrough?hxSteps[i]:['Requirements','Math & LaTeX','CAD & tolerances','Mesh','Solve','Results'][i];
       if(!channelActive)button.querySelector<HTMLElement>('i')!.style.removeProperty('background');
       const recorded=i>1&&evidenceCurrent();
       const qualityWarning=recorded&&i===3&&seed?.recordedGates?.mesh==='warning';
@@ -215,12 +232,19 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
       button.classList.toggle('historical-run',recorded&&!qualityWarning&&!solverWarning&&!validationOpen);
       button.classList.toggle('gate-warning',Boolean(qualityWarning||solverWarning||validationOpen));
     });
+    if(activeCase.walkthrough){
+      $('[data-readiness]').textContent=activeCase.walkthrough.reviewed?'Synthetic assumptions reviewed':'Synthetic assumptions need review';
+      $('[data-readiness-note]').textContent='Equation checks ≠ physical validation · no design-release claim';
+      $('[data-open-hx]').setAttribute('aria-pressed',String(!$('[data-hx-walkthrough]').hidden));
+      root.querySelectorAll<HTMLElement>('[data-stage]').forEach((button,i)=>{button.querySelector<HTMLElement>('i')!.style.width=i===0?'100%':i===1?(activeCase.walkthrough!.reviewed?'100%':'30%'):i===2?'100%':i===3?'100%':'0%';button.querySelector<HTMLElement>('[data-stage-label]')!.textContent=['Scoped teaching case',activeCase.walkthrough!.reviewed?'User reviewed':'Assumed · review','Checked-source equations','Identity checks only',referenceMatches(activeCase.walkthrough!.inputs)?'Retained input match':'New evidence needed','Validation open'][i];});
+    }else $('[data-open-hx]').setAttribute('aria-pressed','false');
   }
-  function panel(name:string){structuralTicket++;disposeStructural?.();disposeStructural=undefined;channel?.hide();root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-stage-checklist]').hidden=true;}
+  function panel(name:string){structuralTicket++;disposeStructural?.();disposeStructural=undefined;channel?.hide();root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=el.dataset.panel!==name);root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.doc===name)));$('[data-open-hx]').setAttribute('aria-pressed',String(name==='guide'));$('[data-stage-checklist]').hidden=true;}
   const needs=[[],[],['A dimensioned geometry or CAD artifact','Units, topology, interfaces and tolerance plan','User-reviewed geometry revision'],['Verified geometry revision','Boundary patches, wall treatment and target resolution','Mesh generation and quality-check artifacts'],['Accepted mesh and reviewed boundary conditions','Solver, convergence limits and monitors','Explicit approval on an authenticated execution route'],['Completed solver run and field artifacts','Conservation and convergence evidence','Independent reference and fidelity assessment']];
   function selectStage(index:number){
     const viewTicket=++structuralTicket;disposeStructural?.();disposeStructural=undefined;
     stage=index;root.querySelectorAll('[data-stage]').forEach((el,i)=>el.setAttribute('aria-current',i===index?'step':'false'));
+    if(activeCase.walkthrough&&hx){panel('guide');hx.show(index);activeCase.walkthrough.step=index;save();$('.document-scroll').scrollTop=0;if(window.matchMedia('(max-width:700px)').matches)$('.document').scrollIntoView({behavior:'smooth',block:'start'});return;}
     if(channelActive&&channel){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(el=>el.hidden=true);$('[data-stage-checklist]').hidden=true;root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));channel.show(index);$('.document-scroll').scrollTop=0;return;}
     if(index<2){panel(index===0?'record':'math');$('[data-proof-embed]').hidden=true;$<HTMLIFrameElement>('[data-proof-frame]').removeAttribute('src');$('.document-scroll').scrollTop=0;return;}
     root.querySelectorAll('[data-doc]').forEach(el=>el.setAttribute('aria-pressed','false'));
@@ -271,20 +295,21 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     const pending=[...session.messages,{role:'user' as const,content}];
     turn('user',content);$('[data-welcome]').hidden=true;
     let context=pending.filter(m=>m.role!=='guide').slice(-20);while(context.length>1&&context.reduce((n,m)=>n+m.content.length,0)>20000)context.shift();
+    if(activeCase.walkthrough){context.unshift({role:'user',content:hxContext(activeCase.walkthrough)});while(context.length>2&&(context.length>20||context.reduce((n,m)=>n+m.content.length,0)>20000))context.splice(1,1);}
     try{
       const response=await fetch(endpoint.replace(/\/$/,'')+'/chat',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({messages:context,requirements:Object.fromEntries(Object.entries(session.fields).map(([k,f])=>[k,f.value])),...(seedFor(activeCase)?.discipline==='FEA'?{discipline:'FEA'}:{}),...(activeCase.study?{study_inputs:activeCase.study.inputs}:{}),...(activeCase.study?.result?{study_run_id:activeCase.study.runId}:{})})});
       const data=await response.json();if(ticket!==serial)return;if(!response.ok||!data.ok)throw Error(data.error||'Model request failed');
       if(typeof data.reply!=='string'||!data.requirements||typeof data.requirements!=='object'||!Array.isArray(data.equations)||data.equations.some(e=>!e||!['title','latex','assumptions'].every(k=>typeof e[k]==='string')))throw Error('Invalid model response. Record unchanged.');
       session.messages=[...pending,{role:'assistant',content:data.reply.slice(0,4000)}].slice(-100);
       const changedDuringRequest=session.revision!==documentRevision;
-      if(!changedDuringRequest){
+      if(!changedDuringRequest&&!activeCase.walkthrough){
         for(const key of Object.keys(labels) as Key[]){const value=data.requirements[key];if(typeof value==='string'&&value.trim()&&value!==session.fields[key].value)session.fields[key]={value:value.slice(0,1500),confirmed:false};}
         if(data.equations.length)session.equations=data.equations.slice(0,6).map(e=>({title:e.title.slice(0,160),latex:e.latex.slice(0,1500),assumptions:e.assumptions.slice(0,1200)})).filter(e=>{
           if(/\\(?:input|include|write|openout|read|catcode|def|newcommand|renewcommand|usepackage|documentclass|href|url|html|includegraphics|end\{document)/i.test(e.latex))return false;
           try{katex.renderToString(e.latex,{throwOnError:true,trust:false,strict:'error',maxExpand:200,maxSize:20});return true;}catch{return false;}
         });
       }
-      session.revision++;input.value='';save();renderMessages();renderRecord();channel?.refresh();notice(changedDuringRequest?'Reply received. Your document was edited during the request, so its newer values were preserved. Ask Aero to review the updated record.':activeCase.study?'Working document updated. Edit the numerical study controls to apply any proposed changes to the next solver run.':'Working document updated. Review the proposed values and assumptions.');
+      session.revision++;input.value='';save();renderMessages();renderRecord();channel?.refresh();notice(changedDuringRequest?'Reply received. Your document was edited during the request, so its newer values were preserved. Ask Aero to review the updated record.':activeCase.walkthrough?'Explanation received. Model proposals have not changed the controlled inputs or checked equations.':activeCase.study?'Working document updated. Edit the numerical study controls to apply any proposed changes to the next solver run.':'Working document updated. Review the proposed values and assumptions.');
     }catch(error){renderMessages();notice(error instanceof Error?error.message:'Request failed. Your message is still in the composer.');}
     finally{busy=false;$<HTMLButtonElement>('[data-send]').disabled=false;}
   }
@@ -293,7 +318,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   root.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach(b=>b.addEventListener('click',()=>{$<HTMLTextAreaElement>('#message').value=b.dataset.prompt!;$('#message').focus();}));
   root.querySelectorAll<HTMLElement>('[data-stage]').forEach(el=>el.addEventListener('click',()=>selectStage(Number(el.dataset.stage))));
   root.querySelectorAll<HTMLElement>('[data-doc]').forEach(el=>el.addEventListener('click',()=>panel(el.dataset.doc!)));
-  $('[data-math]').addEventListener('click',()=>selectStage(1));
+  $('[data-math]').addEventListener('click',()=>selectStage(activeCase.walkthrough?2:1));
   $('[data-settings]').addEventListener('click',()=>{$<HTMLInputElement>('#endpoint').value=endpoint;$<HTMLDialogElement>('[data-connection]').showModal();});
   $('[data-connect]').addEventListener('click',()=>{if(busy)return;endpoint=$<HTMLInputElement>('#endpoint').value.trim().replace(/\/$/,'');void connect();});
   function makeBlankCase(){const entry:SavedCase={id:newId(),title:'Untitled case',folder:'My cases',session:blank(),updatedAt:new Date().toISOString()};savedCases.unshift(entry);openCase(entry);}
@@ -355,11 +380,38 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
     if(!session.messages.length){session.messages=[{role:'guide',content:'Define the study using the controls beside this conversation. Ask Aero about the assumptions, equations or mesh plan. Prepare the study, review the stages, then press Start to run OpenFOAM.'}];renderMessages();save();}
     selectStage(0);
   });
-  save();renderMessages();renderRecord();void connect();
+  const updateHx=(value:HxState,kind:'inputs'|'review'|'step')=>{
+    activeCase.walkthrough=value;
+    if(kind!=='step'){
+      const fields=hxFields(value);for(const key of Object.keys(labels) as Key[])session.fields[key]={value:fields[key],confirmed:value.reviewed};
+      session.revision++;renderRecord();
+    }
+    save();if(kind==='step')selectStage(value.step);else renderRecord();
+  };
+  hx=setupHxWalkthrough($('[data-hx-walkthrough]'),updateHx,(question)=>{
+    $<HTMLTextAreaElement>('#message').value=question;$('#message').focus();
+    notice('Question drafted. Press Send to share the case record with the connected conversation service; no calculation or solver is started by this button.');
+    if(window.matchMedia('(max-width:700px)').matches)$('.conversation').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  const openHx=()=>{
+    if(busy){notice('Wait for the current response before switching cases.');return;}
+    if(activeCase.walkthrough){hx!.load(activeCase.walkthrough);renderRecord();selectStage(activeCase.walkthrough.step);return;}
+    const value=newHx(),draft=blank(),fields=hxFields(value);
+    for(const key of Object.keys(labels) as Key[])draft.fields[key].value=fields[key];
+    draft.messages=[{role:'guide',content:'This guided synthetic tube case works without a model. Follow the six steps beside this chat: question → assumptions → derivation → equation checks → FE comparison → disposition. Ask Aero for an explanation at any step; only your applied numeric inputs change the checked notebook. Physical validation and hardware safety remain NOT_ESTABLISHED.'}];
+    const entry:SavedCase={id:newId(),title:'Heat-exchanger tube · first-principles walkthrough',folder:'My cases',session:draft,walkthrough:value,updatedAt:new Date().toISOString()};
+    savedCases.unshift(entry);openCase(entry);
+  };
+  $('[data-open-hx]').addEventListener('click',openHx);
+  save();renderMessages();renderRecord();
   if(activeCase.study){channelActive=true;channel.load(activeCase.study);selectStage(0);}
   if(new URLSearchParams(location.search).get('study')==='channel'&&!activeCase.study)$('[data-open-channel]').click();
   const requestedSeed=aeroCaseSeeds.find(seed=>seed.id===new URLSearchParams(location.search).get('case'));
   if(requestedSeed)openSeed(requestedSeed);
+  const requestedGuide=new URLSearchParams(location.search).get('walkthrough')==='hx';
+  if(!requestedSeed&&(requestedGuide||(!activeCase.study&&firstVisit&&!session.messages.length&&!Object.values(session.fields).some(f=>f.value))))openHx();
+  else if(activeCase.walkthrough){hx.load(activeCase.walkthrough);selectStage(activeCase.walkthrough.step);}
+  void connect();
   window.setInterval(()=>{if(!busy)void connect(false);},60000);
 </script>
 <style>
@@ -417,6 +469,7 @@ const modelEndpoint = import.meta.env.PUBLIC_AERO_CHAT_URL || '';
   :global([data-stage-evidence] a){margin:0;font-size:11px}
   @media(max-width:700px){.appbar{gap:6px}.app-actions{overflow-x:auto;max-width:76vw}.app-actions button{flex:none}.example-strip span:nth-child(2){display:none}.case-library{max-height:90dvh}}
   @media(max-width:700px) { .app-actions .theme-label { display:none; } [data-theme-toggle] { min-width:31px; } }
+  .document-tabs{overflow-x:auto;flex-shrink:0}.document-tabs button{white-space:nowrap;flex:none}.document-tabs [data-open-hx]{color:var(--doc-accent);border:1px solid var(--doc-rule)}.document-tabs [data-open-hx][aria-pressed=true]{background:var(--doc-selected)}
   /* Keep the intake calm: short prompts carry the detail, not explanatory paragraphs. */
   .welcome{max-width:460px;margin:0 auto}.welcome h2{font-size:clamp(21px,2.2vw,28px)}.welcome p{font-size:12px;line-height:1.5}.starters{margin-top:14px}
   .record-intro h3{font-size:17px;margin-bottom:4px}.record-intro p{font-size:11px;margin-bottom:14px}.document-scroll{padding:18px}
