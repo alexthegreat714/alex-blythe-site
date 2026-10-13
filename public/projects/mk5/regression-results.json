@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "stl_files_independently_checked": 1018,
+  "triangles": 3979416,
+  "checks": [
+    "SHA-256",
+    "binary header and length",
+    "finite float32 coordinates",
+    "absolute canonical path/existence",
+    "local bed origin",
+    "bounds agreement with manifest",
+    "section bounds <=340.01mm",
+    "retained STL readback topology"
+  ],
+  "segmentation_volume_conservation": [
+    {
+      "name": "chest | Hemmed_Under_foundation_abdomen_00",
+      "sections": 2,
+      "relative_volume_error": 3.119639969468061e-09
+    },
+    {
+      "name": "chest | Under_foundation_chest_00",
+      "sections": 2,
+      "relative_volume_error": 8.13232937941083e-09
+    }
+  ],
+  "wall_fit_motion_not_certified": true
+}

@@ -1,0 +1,91 @@
+MK V PROTOTYPE FILE GUIDE — READ BEFORE SLICING
+
+Release status
+--------------
+These are unfitted appearance prototypes, not a full wearable manufacturing release.
+Do not print an entire suit from this package expecting a working, fitted assembly.
+The purchased motorized arm, paid instructions and firmware are excluded from public distribution.
+Helmet and purchased arms are not assembled into the current torso/leg Blender file.
+
+1. Choose current versus historical files
+---------------------------------------
+Start with mk5-current-cad.zip and mk5-current-prototype-stl.zip.
+History archives contain older and rejected iterations. Do not use a historical STL
+as a replacement for a held current component without a new review.
+
+2. Inspect the manifest
+-----------------------
+STL_MANIFEST.json maps every exported file to its source object, assembly,
+red/silver material color, source bounds, checks and SHA-256 checksum.
+The held list identifies components for which no current STL is released.
+A decorative mesh is not necessarily an independently printable production part:
+small ribs, inserts and fasteners may need consolidation onto a carrier.
+
+3. Open the source CAD
+---------------------
+Open MK5_REVIEW_PR002.blend in Blender. Do not enable automatic execution of
+untrusted embedded scripts. Keep an untouched copy. The file deliberately retains
+hidden earlier geometry and non-printing proxy flags for traceability.
+Visible components are a static design study, not an animated functional suit.
+
+4. Confirm units and fit before buying or printing
+------------------------------------------------
+STL coordinates are millimetres. Import as mm with no automatic rescaling.
+The current model uses a provisional design scale, NOT measured body dimensions.
+Confirm stature, chest, waist, hips, limb lengths/circumferences and shoe envelope.
+Account for cooling garment, harness, padding, wiring and actual hardware.
+Do not uniformly scale the purchased motorized mechanism to solve shell fit.
+
+5. Understand bed placement and assembly coordinates
+---------------------------------------------------
+Each STL is translated to a local positive bed origin. To reconstruct the saved
+assembly position, add its assembly_translation_mm vector from the manifest.
+STL sections s01/s02/etc belong to the same source object. They are not duplicates.
+K2 Plus nominal volume: 350 x 350 x 350 mm. The export target is at most 340 mm per
+axis. That margin does not guarantee space for your chosen brim or supports.
+
+6. Review segmentation
+----------------------
+Oversized components are cut and capped as prototype sections. These are plain
+butt seams. No automatic alignment keys, overlap tabs or structural joints are
+provided. Decide the joining and load path before printing a wearable part.
+Avoid putting structural loads through a cosmetic shell or an untested adhesive seam.
+
+7. Run slicer inspection on ONE representative part
+--------------------------------------------------
+Use your actual 0.4 mm K2 Plus nozzle profile. Check the displayed dimensions first.
+Inspect every layer for missing walls, disconnected islands, trapped support,
+unreachable cavities, unsupported surfaces and tiny features that disappear.
+Do not automatically accept slicer repairs: retain the original and inspect the
+repaired mesh against the source CAD. A repair can change the intended shape.
+Select orientation, layer height, wall count, material and supports for that part;
+this package does not prescribe untested universal print settings.
+
+8. Print a small, low-cost fit/sample section first
+-------------------------------------------------
+Only proceed after the slicer preview makes physical sense. Check actual thickness,
+dimensions and joining clearances after printing. Wear tests require an established
+quick-removal plan and verified clearance; hard static knee ribs are not flexures.
+No load-bearing, electrical, thermal or movement certification is claimed.
+
+9. Finish only after fit and joint checks
+--------------------------------------
+STL has no color. Follow the source Blender material assignments for Mk V red and
+silver. Plan sanding and primer without erasing panel separation or reducing walls.
+Do not modify actuator travel, hinge axes or purchased mechanism interfaces merely
+to achieve a cosmetic color or silhouette change.
+
+Checks that were run
+--------------------
+Closed edge topology; consistent winding; positive enclosed volume; degenerate
+triangle screening; nonadjacent self-contact candidate screening with separating
+axis rejection; current-orientation component bounds; binary STL read-back topology.
+Adjacent triangles sharing vertices are excluded from the self-contact screen.
+It is not a mathematically complete self-intersection certification.
+
+Checks still required
+---------------------
+Measured local minimum wall thickness (currently UNKNOWN_ESTIMATE_ONLY), wearer
+fit, complete inter-part clearance and motion, physical attachments, hardware
+dimensions, thermal/electrical planning, material strength, slicer support strategy,
+physical prototype tests and assisted dressing/quick removal.

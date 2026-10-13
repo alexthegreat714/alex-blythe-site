@@ -1,0 +1,66 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import release from '../../data/mk5-release.json';
+const base = '/projects/mk5/';
+---
+<ArticleLayout title="Mk V armor — from references to reviewable parts"
+  description="A red-and-silver armor modeling project, with saved CAD, reference comparisons and individually checked prototype STL exports. Work in progress, not a wearable production release."
+  date="October 13, 2026" category="Personal build / project update"
+  canonicalPath="/projects/iron-man-mk-v/" backHref="/" backLabel="Back to portfolio">
+  <aside class="notice"><strong>Prototype release — fit and manufacturing approval pending.</strong>
+    These files are visual studies at provisional scale. They are not a complete, fitted or functionally validated suit. A closed mesh that fits on a build plate is not proof that its walls, joints or wearer clearances are adequate.</aside>
+
+  <figure><img src={base + 'overview.webp'} width="1600" height="1300" alt="Front and rear renders of the saved red-and-silver torso and leg prototype; helmet and arms are not installed." /><figcaption>Actual Blender geometry, not an AI-generated concept. Helmet and purchased arms are not registered into this assembly.</figcaption></figure>
+
+  <h2>What is here</h2>
+  <p>The current study brings the earlier chest together with back armor, shoulder shells, a collar, pelvis, thighs, knee covers, shins, ankles and boots. The latest pass refines the central pelvis shield and checks the previously modeled rear-knee courses.</p>
+  <p>The design target is a clean, intact Mk V: red armor, formed silver panels and layered transitions. Missing panels from battle damage are not treated as intended openings. The separate purchased motorized arm retains its creator’s mechanism and shell geometry; its Mk V treatment is cosmetic.</p>
+
+  <h2>Reference comparison, with limits</h2>
+  <figure><img src={base + 'reference-comparison.webp'} width="1800" height="1050" loading="lazy" alt="Closed Threezero Mk V reference beside the earlier and proposed pelvis geometry, showing a narrower tapered shield." /><figcaption>Reference excerpt: Threezero / Marvel, via <a href="https://www.sideshow.com/collectibles/marvel-dlx-iron-man-mark-5-threezero-912709">Sideshow’s Mk V gallery</a>. Used here for shape commentary. A neutral, closed product pose—not a verified movie frame and not a dimensional drawing.</figcaption></figure>
+  <p>The reference supports a more tapered central shield. An initial deformation kept a preview bevel that produced unresolved self-contact candidates. The next revision removes that bevel on the new part. The comparison does not establish wearer clearance or exact movie-suit proportions.</p>
+  <figure><img src={base + 'oblique-comparison.webp'} width="1600" height="950" loading="lazy" alt="Before and proposed pelvis shields rendered from the same oblique camera to check curvature and depth." /><figcaption>Second visual check: identical oblique cameras. The surrounding waist and thigh geometry remains unchanged.</figcaption></figure>
+  <figure><img src={base + 'rear-knee-review.webp'} width="1600" height="950" loading="lazy" alt="Reference excerpt and rear-knee CAD detail, comparing wrapped silver courses." /><figcaption>Rear knee reference: the Mk V figure on the right of <a href="https://www.xenom0rph.com/2018/04/hot-toys-iron-man-mark-v-16-mms400-d18.html">Xenom0rph’s Hot Toys review</a>. Two suspect mesh pairs were separated by 0.439 and 0.441 mm in the separating-axis check; no geometry change was needed for those warnings.</figcaption></figure>
+  <p>Review covered outline, oblique depth and mesh validity. The silver knee courses are static appearance geometry, not a working flexure. Heel underside detail, hidden groin clearances and hardware interfaces were deliberately not guessed from occluded photographs.</p>
+  <p>The comparisons still show a simplified collar and upper-back relief, broad provisional proportions and a less detailed rear-knee treatment. This is evidence of the current state, not a claim of a finished visual match.</p>
+
+  <h2>Checks and unresolved work</h2>
+  <dl class="facts">
+    <div><dt>Visible mesh components</dt><dd>{release.visibleComponents}</dd></div>
+    <div><dt>Exported prototype STL sections</dt><dd>{release.stlFiles}</dd></div>
+    <div><dt>Components withheld by mesh checks</dt><dd>{release.heldComponents}</dd></div>
+    <div><dt>Section envelope target</dt><dd>340 × 340 × 340 mm, inside a nominal 350 mm K2 Plus volume</dd></div>
+    <div><dt>Original master</dt><dd>SHA-256 unchanged; retained separately</dd></div>
+    <div><dt>Local physical wall thickness</dt><dd>UNKNOWN_ESTIMATE_ONLY</dd></div>
+    <div><dt>Fit / motion / attachment release</dt><dd>Not approved</dd></div>
+  </dl>
+  <p>Exported files are checked for closed edge topology, winding, positive volume, degenerate triangles and unresolved nonadjacent self-contact candidates. Each binary STL is read back and checked again for topology. Those checks are bounded: they do not certify minimum wall thickness, all inter-part clearances, slicer support, hardware strength or safe movement.</p>
+  <p>Oversized components are divided into capped prototype sections. These have plain butt seams, not engineered fastening joints. Tiny detail meshes remain separate in the catalog; a production plan must decide which details should be combined with a carrier.</p>
+  <ul>
+    <li>Actual body, shoe, cooling-garment and harness dimensions are still needed.</li>
+    <li>Helmet and purchased-arm registration, working interfaces and motion checks remain open.</li>
+    <li>Reservoir, pump, electronics, padding and harness reservations need real hardware dimensions.</li>
+    <li>Held components need repair or consolidation before a manufacturing release.</li>
+    <li>STL does not preserve red/silver colors; use the Blender material assignments as the finishing guide.</li>
+  </ul>
+
+  <h2>Public downloads</h2>
+  <p>Download the current CAD, prototype sections, validation evidence and earlier project files below. The archive index identifies historical files; earlier revisions are not promoted to current print approval.</p>
+  <ul class="downloads">{release.downloads.map(item => <li><a href={item.url}>{item.label}</a><span>{item.size}</span></li>)}</ul>
+  <p><a href={base + 'release-manifest.json'}>File index, checksums and release scope →</a><br /><a href={base + 'stl-manifest.json'}>Per-component export and hold report →</a><br /><a href={base + 'regression-results.json'}>Independent STL and segmentation checks →</a><br /><a href={base + 'prototype-print-guide.txt'}>Read the prototype print guide →</a></p>
+  <aside class="notice">Purchased motorized-arm source files, paid manuals and firmware are not publicly redistributed here: redistribution permission has not been established. They remain in the private project. Third-party reference galleries are linked, not included as downloadable source collections. This fan project is not affiliated with or endorsed by Marvel, Threezero, Hot Toys or the arm creator.</aside>
+  <h2>Next engineering gate</h2>
+  <p>Fit the shell to measured body and equipment envelopes, finish the attachment and movement architecture, then verify local walls and slice representative sections. Until then, these downloads support CAD inspection and controlled prototype tests—not a full-suit print order.</p>
+</ArticleLayout>
+<style>
+  .notice {padding:1.2rem 1.4rem;border-left:3px solid #b4483e;background:var(--surface);margin-bottom:2rem;font-size:.95rem;}
+  .notice strong {display:block;margin-bottom:.4rem;}
+  figure {margin:2rem 0;} img {display:block;width:100%;height:auto;border-radius:4px;background:#252a2d;}
+  figcaption {margin-top:.7rem;font-size:.8rem;color:var(--muted);line-height:1.6;}
+  a {text-decoration:underline;text-underline-offset:3px;} .facts {border-top:1px solid var(--border);}
+  .facts div {display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--subtle);}
+  dt {font-weight:650;} dd {margin:0;} .downloads {list-style:none;padding:0;}
+  .downloads li {padding:.9rem 0;border-bottom:1px solid var(--subtle);display:flex;justify-content:space-between;gap:1rem;}
+  .downloads span {color:var(--muted);white-space:nowrap;font-size:.8rem;}
+  @media(max-width:520px){.facts div{grid-template-columns:1fr;gap:.25rem}.downloads li{display:block}.downloads span{display:block}}
+</style>
