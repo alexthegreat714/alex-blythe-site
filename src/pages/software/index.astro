@@ -43,7 +43,7 @@ const softwareNotes = (await getCollection('research'))
       <div><h2 id="local-ai-heading">Supporting tools for bounded automation.</h2><p>ForgeClaw and OCR97 remain useful companion experiments. They are deliberately secondary to Aero on this index.</p></div>
     </div>
     <div class="project-list">
-      <article class="supporting-project-row"><div><span class="project-meta">Offline Android chat · Qwen3 0.6B</span><h3><a href="/downloads/pocket-local/">Pocket Local</a></h3><p class="project-summary">A complete chat app with the model bundled inside the APK. Streaming replies and saved chats run entirely on your phone.</p></div><a class="project-link" href="/downloads/pocket-local/">Download Android app <span aria-hidden="true">→</span></a></article>
+      <article class="supporting-project-row"><div><span class="project-meta">Offline Android chat · Qwen3 0.6B · Rev 3</span><h3><a href="/downloads/pocket-local/">Pocket Local</a></h3><p class="project-summary">A complete chat app with the model bundled inside the APK. Streaming replies, saved chats, and searchable chat memory run entirely on your phone. <a href="/updates/pocket-local-rev-3/">Read the Rev 3 update →</a></p></div><a class="project-link" href="/downloads/pocket-local/">Download Android app <span aria-hidden="true">→</span></a></article>
       {automationProjects.map((project, index) => (
         <article class="supporting-project-row"><div><span class="project-meta">{project.category}</span><h3><a href={`/software/${project.slug}/`}>{project.name}</a></h3><p class="project-summary">{project.purpose}</p></div><a class="project-link" href={`/software/${project.slug}/`}>Boundaries &amp; evidence <span aria-hidden="true">→</span></a></article>
       ))}

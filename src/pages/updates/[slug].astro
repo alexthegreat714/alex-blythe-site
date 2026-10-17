@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('updates', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const date = entry.data.date.toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+---
+
+<ArticleLayout
+  title={entry.data.title}
+  description={entry.data.summary}
+  date={`${date} · ${entry.data.author} · ${entry.data.readingTime}`}
+  category={`${entry.data.product} / ${entry.data.version ?? 'Update'}`}
+  canonicalPath={`/updates/${entry.id}/`}
+  backHref="/software/"
+  backLabel="Software & tools"
+>
+  <Content />
+</ArticleLayout>
