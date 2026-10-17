@@ -1,18 +1,18 @@
 {
   "schema": "aero.public.fea.progress.v1",
-  "published_at": "2026-10-17T16:48:31.973962+00:00",
-  "observed_at": "2026-10-17T16:48:24.108872+00:00",
+  "published_at": "2026-10-17T16:49:49.762375+00:00",
+  "observed_at": "2026-10-17T16:49:44.474477+00:00",
   "run_label": "Source-copy development diagnostic \u00b7 17 October 2026",
   "state": "RUNNING",
-  "saved_outputs": 18,
+  "saved_outputs": 21,
   "total_outputs": 192,
-  "percent": 9.4,
+  "percent": 10.9,
   "active_phase": "base_native",
   "phases": [
     {
       "id": "base_native",
       "label": "Stock \u00b7 original prompt",
-      "saved": 18,
+      "saved": 21,
       "total": 48,
       "state": "running"
     },
@@ -40,7 +40,7 @@
   ],
   "gate_breach_count": 0,
   "startup_passed": true,
-  "recent_output_change_at": "2026-10-17T16:48:07.588529+00:00",
+  "recent_output_change_at": "2026-10-17T16:49:27.247439+00:00",
   "activity_at_observation": "recent_output_progress",
   "snapshot_source_fresh": true,
   "collection_complete": false,
