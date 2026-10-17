@@ -1,0 +1,57 @@
+{
+  "schema": "aero.public.fea.progress.v1",
+  "published_at": "2026-10-17T16:48:31.973962+00:00",
+  "observed_at": "2026-10-17T16:48:24.108872+00:00",
+  "run_label": "Source-copy development diagnostic \u00b7 17 October 2026",
+  "state": "RUNNING",
+  "saved_outputs": 18,
+  "total_outputs": 192,
+  "percent": 9.4,
+  "active_phase": "base_native",
+  "phases": [
+    {
+      "id": "base_native",
+      "label": "Stock \u00b7 original prompt",
+      "saved": 18,
+      "total": 48,
+      "state": "running"
+    },
+    {
+      "id": "base_source_copy",
+      "label": "Stock \u00b7 source-copy prompt",
+      "saved": 0,
+      "total": 48,
+      "state": "queued"
+    },
+    {
+      "id": "candidate_native",
+      "label": "AeroFEA \u00b7 original prompt",
+      "saved": 0,
+      "total": 48,
+      "state": "queued"
+    },
+    {
+      "id": "candidate_source_copy",
+      "label": "AeroFEA \u00b7 source-copy prompt",
+      "saved": 0,
+      "total": 48,
+      "state": "queued"
+    }
+  ],
+  "gate_breach_count": 0,
+  "startup_passed": true,
+  "recent_output_change_at": "2026-10-17T16:48:07.588529+00:00",
+  "activity_at_observation": "recent_output_progress",
+  "snapshot_source_fresh": true,
+  "collection_complete": false,
+  "evaluation_status": "NOT_ESTABLISHED",
+  "promotion_status": "NOT_AUTHORIZED",
+  "training_status": "PRIOR_14B_CANDIDATE_TRAINED_858_STEPS_NOT_RETRAINING",
+  "expected_public_update_minutes": 15,
+  "limitations": [
+    "192 is the output-collection target, not a model-quality score.",
+    "48 synthetic development cases, four model/prompt cells, one repeat per cell.",
+    "Prompt or guard gains are not learned improvements.",
+    "No fresh heldout confirmation, broad FEA/CFD superiority, physical validation or promotion is established."
+  ]
+}
