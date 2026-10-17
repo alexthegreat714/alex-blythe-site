@@ -1,15 +1,17 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-const release = 'https://github.com/alexthegreat714/alex-blythe-site/releases/download/pocket-local-v1.0.0/';
+const release = 'https://github.com/alexthegreat714/alex-blythe-site/releases/download/pocket-local-v1.0.1/';
 ---
-<ArticleLayout title="Pocket Local" description="A small language model, a complete chat interface, and your conversations — all on your Android phone." date="17 October 2026 · Version 1.0.0" category="Android / Offline AI" canonicalPath="/downloads/pocket-local/" backHref="/software/" backLabel="Software & tools" initialTheme="dark">
+<ArticleLayout title="Pocket Local" description="A small language model, a complete chat interface, and your conversations — all on your Android phone." date="17 October 2026 · Version 1.0.1" category="Android / Offline AI" canonicalPath="/downloads/pocket-local/" backHref="/software/" backLabel="Software & tools" initialTheme="dark">
   <div class="download-panel">
     <span class="badge">FULL MODEL INCLUDED</span>
     <h2>Your own offline chat assistant.</h2>
     <p>Pocket Local bundles Qwen3 0.6B with a complete Android chat app. Download once, install, and chat on your phone. No sign-in, API key, desktop connection, or internet connection is needed to generate replies.</p>
-    <div class="buttons"><a class="download" href={`${release}Pocket-Local-1.0.0-arm64-v8a.apk`}>Download Android APK <span aria-hidden="true">↓</span></a><a href={`${release}Pocket-Local-1.0.0-offline.zip`}>Prefer a ZIP? Download the offline package →</a></div>
+    <div class="buttons"><a class="download" href={`${release}Pocket-Local-1.0.1-arm64-v8a.apk`}>Download Android APK <span aria-hidden="true">↓</span></a><a href={`${release}Pocket-Local-1.0.1-offline.zip`}>Prefer a ZIP? Download the offline package →</a></div>
     <p class="details">About 645 MB · ARM64 · Android 11+ · Designed for devices such as Galaxy S26</p>
   </div>
+  <h2>Keyboard layout update · 1.0.1</h2>
+  <p>The chat viewport now resizes above the on-screen keyboard. Install this update over Pocket Local 1.0.0 to keep your saved chats and prepared model; do not uninstall the old app first. It uses the same package and signing key.</p>
   <h2>Install it on your Galaxy</h2>
   <ol><li>Open this page on your phone and download the APK.</li><li>Tap the downloaded file and allow installation from your browser or file manager when Android asks. Samsung Auto Blocker may need to be adjusted explicitly to permit sideloading.</li><li>Install <strong>Pocket Local</strong>, then open it. First launch prepares and verifies the bundled model; wait for <strong>Ready · fully offline</strong>.</li><li>Start chatting. You can switch to airplane mode to try it offline.</li></ol>
   <p><strong>An APK installs directly.</strong> If you choose the ZIP instead, extract it and install the APK inside. Allow about 1.5 GB of storage overall, including the extracted model.</p>
@@ -21,7 +23,7 @@ const release = 'https://github.com/alexthegreat714/alex-blythe-site/releases/do
   <p>This small model can make mistakes, lose track of longer conversations, or give limited answers. It is separate from the Aero fine-tune and is not a validated engineering solver. Voice, image input, and web search are not included.</p>
   <h2>Verification and downloads</h2>
   <p>This initial device-test release has passed compilation, Android release lint, APK signature verification, and 16 KB package and native-library alignment checks. The bundled model produced a real reply on a Windows CPU using the app's prompt format; the interface was checked at phone size in a browser. The Android emulator did not finish booting on this workstation, so APK installation, Android chat integration, and physical Galaxy S26 compatibility and speed remain unverified. See the validation record for the precise test coverage.</p>
-  <ul><li><a href={`${release}VALIDATION.json`}>Validation record</a></li><li><a href={`${release}SHA256SUMS.txt`}>Download checksums</a></li><li><a href={`${release}Pocket-Local-1.0.0-source.zip`}>App source and build instructions</a></li><li><a href="https://github.com/alexthegreat714/alex-blythe-site/releases/tag/pocket-local-v1.0.0">Release and all files</a></li></ul>
+  <ul><li><a href={`${release}VALIDATION.json`}>Validation record</a></li><li><a href={`${release}SHA256SUMS.txt`}>Download checksums</a></li><li><a href={`${release}Pocket-Local-1.0.1-source.zip`}>App source and build instructions</a></li><li><a href="https://github.com/alexthegreat714/alex-blythe-site/releases/tag/pocket-local-v1.0.1">Release and all files</a></li></ul>
   <p>App code and llama.cpp: MIT license. Qwen model: Apache 2.0. Full third-party license texts are bundled in the app and the offline package.</p>
 </ArticleLayout>
 <style>.download-panel{padding:30px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}.badge{font:700 10px/1.4 ui-monospace,monospace;letter-spacing:2px;color:#83ebc7}.download-panel h2{margin-top:15px}.buttons{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin:25px 0}.buttons a.download{background:#83ebc7;color:#102c2b;padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:750}.download span{margin-left:25px}.details{font-size:12px;color:var(--muted)}ol{padding-left:24px}li{padding:5px 0}@media(max-width:500px){.download-panel{padding:20px}}</style>
