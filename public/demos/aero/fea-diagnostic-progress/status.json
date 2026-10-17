@@ -1,13 +1,13 @@
 {
   "schema": "aero.public.fea.progress.v1",
-  "published_at": "2026-10-17T17:24:07.157185+00:00",
-  "observed_at": "2026-10-17T17:24:00.510436+00:00",
+  "published_at": "2026-10-17T17:39:06.499731+00:00",
+  "observed_at": "2026-10-17T17:39:04.654899+00:00",
   "run_label": "Source-copy development diagnostic \u00b7 17 October 2026",
   "state": "RUNNING",
-  "saved_outputs": 85,
+  "saved_outputs": 114,
   "total_outputs": 192,
-  "percent": 44.3,
-  "active_phase": "base_source_copy",
+  "percent": 59.4,
+  "active_phase": "candidate_native",
   "phases": [
     {
       "id": "base_native",
@@ -19,16 +19,16 @@
     {
       "id": "base_source_copy",
       "label": "Stock \u00b7 source-copy prompt",
-      "saved": 37,
+      "saved": 48,
       "total": 48,
-      "state": "running"
+      "state": "outputs_saved"
     },
     {
       "id": "candidate_native",
       "label": "AeroFEA \u00b7 original prompt",
-      "saved": 0,
+      "saved": 18,
       "total": 48,
-      "state": "queued"
+      "state": "running"
     },
     {
       "id": "candidate_source_copy",
@@ -40,7 +40,7 @@
   ],
   "gate_breach_count": 0,
   "startup_passed": true,
-  "recent_output_change_at": "2026-10-17T17:23:40.087561+00:00",
+  "recent_output_change_at": "2026-10-17T17:38:39.555355+00:00",
   "activity_at_observation": "recent_output_progress",
   "snapshot_source_fresh": true,
   "collection_complete": false,
