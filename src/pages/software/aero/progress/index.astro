@@ -1,67 +1,61 @@
 ---
 import SoftwareLayout from '../../../../layouts/SoftwareLayout.astro';
 import initial from '../../../../../public/demos/aero/fea-candidate002-validation/status.json';
-const states = {INCOMPLETE_STOPPED:'Stopped · incomplete', COLLECTED_REVIEW_PENDING:'Collected · review pending', UNKNOWN:'Status unknown'};
-const closureLabels = {controller_exited:'Controller exit',owned_workers_cleared:'Owned workers and GPU contexts cleared',logs_closed:'Log closure',reservation_released:'Exact reservation release',custody_verified:'Artifact custody rechecked'};
+import {closureLabels, view} from '../../../../lib/candidate002-tracker';
+const display = view(initial, Date.now());
 ---
 <SoftwareLayout title="AeroFEA candidate002 progress" description="Candidate002 training and validation status. Output collection is not proof of model quality or approval for engineering use." canonicalPath="/software/aero/progress/" hideHeader>
   <div class="tracker">
     <nav aria-label="Aero progress navigation"><a href="/software/aero/">← Aero</a><span>PUBLIC STATUS / 14B SPECIALIST</span></nav>
     <header><p class="eyebrow">CANDIDATE002</p><h1>Trained. Not yet validated.</h1><p>The fine-tuned adapter exists. Its benefit over the base model is still unproven.</p></header>
     <section class="status-card" aria-labelledby="progress-title">
-      <div class="card-top"><h2 id="progress-title">Validation collection</h2><span id="state-pill">{states[initial.state] || states.UNKNOWN}</span></div>
+      <div class="card-top"><h2 id="progress-title">Validation collection</h2><span id="state-pill">{display.pill}</span></div>
       <div class="progress-numbers"><strong id="percent">{initial.percent === null ? 'Unknown' : `${initial.percent}%`}</strong><span><b id="saved">{initial.saved_outputs ?? 'Unknown'}</b> / 864 outputs saved</span></div>
       <div class="bar" id="progress-bar" role="progressbar" aria-label="Saved validation outputs" aria-valuemin="0" aria-valuemax="864" aria-valuenow={initial.saved_outputs ?? undefined}><span id="bar-fill" style={`width:${initial.percent ?? 0}%`}></span></div>
-      <p id="activity-text" role="status" aria-live="polite">Stopped after the heartbeat / authority check became unavailable. Saved evidence is retained.</p>
-      <p id="phase-text" class="small">Last cell: Heldout · Base · repeat 1. Candidate002 cells have not started.</p>
-      <p id="freshness" class="small">Execution observation: {initial.observed_at}</p>
+      <p id="activity-text" role="status" aria-live="polite">{display.activity}</p>
+      <p id="phase-text" class="small">Last observed cell: {initial.phases.find(p=>p.id===initial.last_phase)?.label ?? 'Not established'}.</p>
+      <p id="freshness" class="small">Execution observation: {initial.observed_at ?? 'Not available'}. JavaScript is required to refresh and recheck snapshot age.</p>
       <div class="card-bottom"><span id="gate-text">{initial.gate_breach_count} gate failure recorded</span><button id="refresh" type="button">Refresh snapshot ↻</button></div>
     </section>
-    <p class="snapshot-note">Terminal snapshot · validation attempt 2 · 20 October 2026. This is <strong>not a live-running claim</strong>. The page checks for a newer published snapshot every 30 seconds; refreshing does not restart validation. No unattended publishing schedule is currently enabled for this stopped attempt.</p>
+    <p id="snapshot-note" class="snapshot-note">{display.note}</p>
+    <noscript><p class="snapshot-note">Static build-time snapshot only. Without JavaScript, its age and execution state cannot be refreshed.</p></noscript>
     <section class="milestones" aria-label="Model readiness">
       <article><span>01 / Training</span><h2 id="training-count">{initial.training_steps === 858 ? '858 / 858 steps' : 'Receipt unknown'}</h2><p>Training complete. Recovery-smoke steps are excluded. Validation is inference, not retraining.</p></article>
-      <article><span>02 / Validation</span><h2 id="validation-status">Incomplete</h2><p>Matched base-model and candidate002 comparisons are required before judging the fine-tune.</p></article>
+      <article><span>02 / Validation</span><h2 id="validation-status">{display.validation}</h2><p>Matched base-model and candidate002 comparisons are required before judging the fine-tune.</p></article>
       <article><span>03 / Readiness</span><h2>Not established</h2><p>No efficacy result or promotion approval. Not validated for engineering decisions.</p></article>
     </section>
     <section aria-labelledby="cells-title"><h2 id="cells-title">The matched comparison cells</h2><p class="small">Ten cells · 864 outputs planned. Repeats check consistency; they are not independent trials.</p><div class="cells">{initial.phases.map(p => <article data-phase={p.id}><div><h3>{p.label}</h3><span data-phase-state>{p.state.replaceAll('_', ' ')}</span></div><strong data-phase-count>{p.saved ?? 'Unknown'} / {p.total}</strong><progress value={p.saved ?? undefined} max={p.total} aria-label={`${p.label} saved outputs`}></progress></article>)}</div></section>
-    <section class="closure" aria-labelledby="closure-title"><h2 id="closure-title">Run closure evidence</h2><ul>{Object.entries(initial.closure).map(([key, value]) => <li data-closure={key}><span>{closureLabels[key]}</span><strong>{value ? 'Verified' : 'Not established'}</strong></li>)}</ul><p class="small">Terminal receipts for this attempt—not a claim about current machine health or future admission.</p></section>
-    <section class="meaning"><h2>What comes next?</h2><p>Resolve the heartbeat / authority failure, obtain fresh execution admission, and run the remaining controlled comparisons. Then score the heldout and named regressions and review errors before deciding whether the adapter helps.</p><p><strong>100% means responses were saved.</strong> It does not mean the model passed evaluation. The fine-tune targets evidence discipline, refusal and verification behavior; aerospace knowledge comes from retrieval, not this training alone.</p></section>
+    <section class="closure" aria-labelledby="closure-title"><h2 id="closure-title">Run closure evidence</h2><ul>{Object.entries(initial.closure).map(([key, value]) => <li data-closure={key}><span>{closureLabels[key]}</span><strong>{value ? 'Verified' : 'Not established'}</strong></li>)}</ul><p class="small">These stay unverified during execution. A completion label does not prove restoration, release or custody.</p></section>
+    <section class="meaning"><h2>What comes next?</h2><p id="next-text">{display.next}</p><p><strong>100% means responses were saved.</strong> It does not mean the model passed evaluation. The fine-tune targets evidence discipline, refusal and verification behavior; aerospace knowledge comes from retrieval, not this training alone.</p></section>
     <details><summary>Method, limitations and privacy</summary><p>Heldout: 48 synthetic cases × two models × two repeats (192 outputs). Named regressions: 240 cases × two models (480). Historical regressions: 48 cases × two models × two repeats (192). Named and historical suites are exposed regression checks, not fresh heldout evidence.</p><p>No physical solver validation, broad FEA/CFD superiority, or efficacy is established. Loading a model, passing a model-free startup probe, or keeping a process alive does not count as a saved response. Missing or corrupt observations mean unknown, not zero.</p><p>Only allowlisted aggregate status is public. Prompts, responses, case identifiers, private logs, machine addresses, process identities, filesystem paths and credentials are excluded.</p><a href="/demos/aero/fea-candidate002-validation/status.json">Sanitized candidate002 snapshot →</a></details>
-    <footer><a href="/demos/aero/fea-diagnostic-progress/status.json">Historical 17 October diagnostic snapshot →</a><p>The older diagnostic is preserved separately. It is not candidate002 live progress. Personal project · no employer data.</p></footer>
+    <footer><a href="/demos/aero/fea-candidate002-validation/attempt-2-terminal.json">Earlier attempt 2 · stopped at 36 / 864 →</a><p>Earlier attempt counts are not added to the current fresh run.</p><a href="/demos/aero/fea-diagnostic-progress/status.json">Historical 17 October diagnostic snapshot →</a><p>The older diagnostic is preserved separately. It is not candidate002 live progress. Personal project · no employer data.</p></footer>
   </div>
 </SoftwareLayout>
 <script>
   import initial from '../../../../../public/demos/aero/fea-candidate002-validation/status.json';
+  import {valid, view, closureLabels} from '../../../../lib/candidate002-tracker';
   const endpoint = '/demos/aero/fea-candidate002-validation/status.json';
   const el = (id:string) => document.getElementById(id)!;
-  let snapshot = initial;
+  let snapshot:any = initial;
   let failed = false;
-  function valid(s:any) {
-    if (!s || s.schema !== initial.schema || s.total_outputs !== 864 || !['UNKNOWN','INCOMPLETE_STOPPED','COLLECTED_REVIEW_PENDING'].includes(s.state)) return false;
-    if (!Array.isArray(s.phases) || s.phases.length !== 10 || !s.closure || Object.keys(initial.closure).some(k => typeof s.closure[k] !== 'boolean')) return false;
-    if (s.training_steps !== null && s.training_steps !== 858) return false;
-    if (s.evaluation_status !== 'NOT_ESTABLISHED' || s.promotion_status !== 'NOT_AUTHORIZED') return false;
-    if (s.phases.some((p:any,i:number) => !p || p.id !== initial.phases[i].id || p.total !== initial.phases[i].total || !['unknown','not_started','stopped','outputs_saved'].includes(p.state) || (p.saved !== null && (!Number.isInteger(p.saved) || p.saved < 0 || p.saved > p.total)))) return false;
-    if (s.state === 'UNKNOWN') return s.saved_outputs === null && s.percent === null && s.collection_complete === false && s.phases.every((p:any) => p.saved === null);
-    const sum = s.phases.reduce((n:number,p:any) => n + p.saved, 0);
-    return s.phases.every((p:any) => Number.isInteger(p.saved)) && Number.isInteger(s.saved_outputs) && s.saved_outputs === sum && s.percent === Math.round(sum / 864 * 1000) / 10 && Number.isFinite(Date.parse(s.observed_at)) && Number.isInteger(s.gate_breach_count) && s.gate_breach_count >= 0 && s.collection_complete === (s.state === 'COLLECTED_REVIEW_PENDING') && (s.state !== 'COLLECTED_REVIEW_PENDING' || sum === 864);
-  }
   function render() {
     const s = snapshot;
+    const display = view(s, Date.now(), failed);
     el('percent').textContent = s.percent === null ? 'Unknown' : `${s.percent}%`;
     el('saved').textContent = String(s.saved_outputs ?? 'Unknown');
     el('bar-fill').style.width = `${s.percent ?? 0}%`;
     if (s.saved_outputs === null) el('progress-bar').removeAttribute('aria-valuenow');
     else el('progress-bar').setAttribute('aria-valuenow', String(s.saved_outputs));
-    const state = s.state === 'INCOMPLETE_STOPPED' ? 'Stopped · incomplete' : s.state === 'COLLECTED_REVIEW_PENDING' ? 'Collected · review pending' : 'Status unknown';
-    el('state-pill').textContent = failed ? 'Refresh unavailable' : state;
-    el('activity-text').textContent = failed ? 'Could not refresh; showing the last published snapshot. No live execution is asserted.' : s.state === 'UNKNOWN' ? 'Execution status is unknown. Missing or unverified data is not zero progress.' : s.collection_complete ? 'Response collection finished. Scoring and review are separate.' : s.stop_reason === 'HEARTBEAT_AUTHORITY_UNAVAILABLE' ? 'Stopped after the heartbeat / authority check became unavailable. Saved evidence is retained.' : 'Validation stopped incomplete. Saved evidence is retained.';
+    el('state-pill').textContent = display.pill;
+    el('activity-text').textContent = display.activity;
     const phase = initial.phases.find(p => p.id === s.last_phase);
-    el('phase-text').textContent = phase ? `Last cell: ${phase.label}.` : 'Last cell not established.';
-    el('freshness').textContent = s.observed_at ? `Execution observation: ${new Date(s.observed_at).toLocaleString()} · terminal snapshot, not live telemetry` : 'Execution observation not available';
+    el('phase-text').textContent = phase ? `Last observed cell: ${phase.label}.` : 'Last cell not established.';
+    el('freshness').textContent = s.observed_at ? `Execution observation: ${new Date(s.observed_at).toLocaleString()} · published: ${new Date(s.published_at).toLocaleString()}` : `Execution observation not available · publication: ${new Date(s.published_at).toLocaleString()}`;
+    el('snapshot-note').textContent = display.note;
+    el('next-text').textContent = display.next;
     el('gate-text').textContent = s.gate_breach_count === null ? 'Gate status unknown' : `${s.gate_breach_count} gate failure(s) recorded`;
     el('training-count').textContent = s.training_steps === 858 ? '858 / 858 steps' : 'Training receipt unknown';
-    el('validation-status').textContent = s.collection_complete ? 'Review pending' : s.state === 'UNKNOWN' ? 'Unknown' : 'Incomplete';
+    el('validation-status').textContent = display.validation;
     for (const p of s.phases) {
       const card = document.querySelector(`[data-phase="${p.id}"]`)!;
       card.querySelector('[data-phase-state]')!.textContent = p.state.replaceAll('_', ' ');
@@ -69,7 +63,7 @@ const closureLabels = {controller_exited:'Controller exit',owned_workers_cleared
       const progress = card.querySelector('progress')!;
       if (p.saved === null) progress.removeAttribute('value'); else progress.value = p.saved;
     }
-    for (const key of Object.keys(initial.closure)) document.querySelector(`[data-closure="${key}"] strong`)!.textContent = s.closure[key] ? 'Verified' : 'Not established';
+    for (const key of Object.keys(closureLabels)) document.querySelector(`[data-closure="${key}"] strong`)!.textContent = s.closure[key] ? 'Verified' : 'Not established';
   }
   async function refresh() {
     const button = el('refresh') as HTMLButtonElement;
@@ -80,12 +74,13 @@ const closureLabels = {controller_exited:'Controller exit',owned_workers_cleared
       if (!response.ok) throw new Error('Unavailable');
       const next = await response.json();
       if (!valid(next)) throw new Error('Invalid');
+      if (next.observed_at && snapshot.observed_at && Date.parse(next.observed_at) < Date.parse(snapshot.observed_at)) throw new Error('Older snapshot');
       snapshot = next; failed = false;
     } catch { failed = true; }
     finally { button.disabled = false; render(); }
   }
   el('refresh').addEventListener('click', refresh);
-  render(); refresh(); setInterval(refresh, 30000);
+  render(); refresh(); setInterval(refresh, 30000); setInterval(render, 10000);
 </script>
 <style>
   :global(body){background:#090f19;color:#e5edf8}.tracker{--dim:#a4b4c9;--line:#293b52;--aqua:#81e2ca;max-width:980px;margin:auto;padding:22px 22px 50px;color:#e5edf8;font-family:system-ui,sans-serif}.tracker a{color:var(--aqua);text-decoration:underline;text-underline-offset:3px}.tracker nav{display:flex;justify-content:space-between;gap:16px;font-size:12px}.tracker nav span{font-size:10px;letter-spacing:.1em;color:var(--dim)}header{padding:24px 0 20px}.eyebrow{font-size:11px;color:var(--aqua);letter-spacing:.15em;margin:0 0 8px}h1{font-size:clamp(29px,5vw,46px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}header>p:last-child{font-size:14px;color:var(--dim);margin:0}.status-card{padding:24px;border:1px solid #a68c5b;border-radius:16px;background:linear-gradient(135deg,#1d2939,#25241d)}.card-top,.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:14px}.card-top h2{font-size:16px;margin:0}#state-pill{font-size:11px;border:1px solid #a68c5b;border-radius:30px;padding:6px 10px;color:#f6d59a}.progress-numbers{display:flex;align-items:baseline;gap:18px;margin:20px 0 12px}.progress-numbers>strong{font-size:clamp(46px,9vw,78px);line-height:1;letter-spacing:-.06em}.progress-numbers>span{font-size:14px;color:var(--dim)}.bar{height:13px;background:#334153;border-radius:20px;overflow:hidden}.bar>span{display:block;height:100%;background:var(--aqua)}#activity-text{font-size:14px;margin:20px 0 8px;max-width:700px}.small,.snapshot-note{font-size:12px;color:var(--dim);line-height:1.65}.small{margin:8px 0}.card-bottom{border-top:1px solid #46505b;padding-top:14px;margin-top:18px;font-size:11px;color:var(--dim)}button{font:inherit;cursor:pointer;border:1px solid #728581;background:transparent;border-radius:7px;color:var(--aqua);padding:9px 12px;min-height:40px}button:disabled{opacity:.5}.snapshot-note{max-width:800px;margin:16px 0 28px}.snapshot-note strong{color:#e5edf8}section+section{margin-top:30px}section>h2{font-size:21px;margin:0 0 12px}.milestones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.milestones article,.cells article{padding:18px;background:#111c2b;border:1px solid var(--line);border-radius:10px}.milestones article>span{font-size:11px;color:var(--aqua);text-transform:uppercase}.milestones h2{font-size:20px;margin:12px 0 8px}.milestones p,.meaning p,details p,footer p{font-size:13px;color:var(--dim);line-height:1.7}.milestones p{margin:0}.cells{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.cells article>div{display:flex;justify-content:space-between;align-items:start;gap:10px}.cells h3{font-size:13px;margin:0}.cells article span{font-size:10px;text-transform:uppercase;color:var(--dim)}.cells article>strong{display:block;font-size:23px;margin:14px 0 6px}.cells progress{width:100%;height:8px;accent-color:var(--aqua)}.closure ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}.closure li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}.closure li strong{color:var(--aqua);white-space:nowrap;font-size:12px}.meaning strong{color:#e5edf8}details,footer{border-top:1px solid var(--line);padding-top:20px;margin-top:30px;font-size:13px}summary{cursor:pointer;font-size:14px}.tracker :is(a,button,summary):focus-visible{outline:2px solid var(--aqua);outline-offset:4px}@media(max-width:600px){.tracker{padding:16px 16px 32px}.tracker nav span{font-size:8px}header{padding:20px 0}.status-card{padding:17px}.card-top h2{font-size:14px}.card-top{align-items:start}#state-pill{max-width:140px}.progress-numbers{gap:14px}.progress-numbers>span{font-size:12px}#activity-text{font-size:12px}.card-bottom{align-items:start;flex-direction:column;gap:10px}.milestones,.cells{grid-template-columns:1fr}.closure li{font-size:12px}.snapshot-note{font-size:11px}}

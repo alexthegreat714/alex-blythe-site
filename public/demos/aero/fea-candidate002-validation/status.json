@@ -1,28 +1,30 @@
 {
-  "schema": "aero.public.candidate002.validation.v1",
-  "published_at": "2026-10-20T12:29:14.656176+00:00",
-  "observed_at": "2026-10-20T12:13:17.193677+00:00",
+  "schema": "aero.public.candidate002.validation.v2",
+  "published_at": "2026-10-20T22:57:47.380135+00:00",
+  "observed_at": "2026-10-20T22:57:47.360288+00:00",
   "candidate": "candidate002 \u00b7 14B",
-  "run_label": "Validation attempt 2 \u00b7 20 October 2026",
-  "state": "INCOMPLETE_STOPPED",
+  "run_label": "Validation attempt 4 \u00b7 20 October 2026",
+  "state": "RUNNING",
   "saved_outputs": 36,
   "total_outputs": 864,
   "percent": 4.2,
   "collection_complete": false,
   "last_phase": "heldout_base_r0",
-  "gate_breach_count": 1,
-  "stop_reason": "HEARTBEAT_AUTHORITY_UNAVAILABLE",
+  "gate_breach_count": 0,
+  "stop_reason": "NONE",
   "training_steps": 858,
   "training_total_steps": 858,
   "evaluation_status": "NOT_ESTABLISHED",
   "promotion_status": "NOT_AUTHORIZED",
-  "publication_mode": "TERMINAL_SNAPSHOT_NOT_LIVE_TELEMETRY",
+  "publication_mode": "IDENTITY_VERIFIED_PERIODIC_SNAPSHOT",
+  "refresh_interval_seconds": 900,
+  "stale_after_seconds": 1200,
   "closure": {
-    "controller_exited": true,
-    "owned_workers_cleared": true,
-    "logs_closed": true,
-    "reservation_released": true,
-    "custody_verified": true
+    "controller_exited": false,
+    "owned_workers_cleared": false,
+    "logs_closed": false,
+    "reservation_released": false,
+    "custody_verified": false
   },
   "phases": [
     {
@@ -30,7 +32,7 @@
       "label": "Heldout \u00b7 Base \u00b7 repeat 1",
       "saved": 36,
       "total": 48,
-      "state": "stopped"
+      "state": "running"
     },
     {
       "id": "heldout_candidate002_r0",

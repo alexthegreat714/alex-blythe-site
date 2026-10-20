@@ -1,0 +1,99 @@
+{
+  "schema": "aero.public.candidate002.validation.v1",
+  "published_at": "2026-10-20T12:29:14.656176+00:00",
+  "observed_at": "2026-10-20T12:13:17.193677+00:00",
+  "candidate": "candidate002 \u00b7 14B",
+  "run_label": "Validation attempt 2 \u00b7 20 October 2026",
+  "state": "INCOMPLETE_STOPPED",
+  "saved_outputs": 36,
+  "total_outputs": 864,
+  "percent": 4.2,
+  "collection_complete": false,
+  "last_phase": "heldout_base_r0",
+  "gate_breach_count": 1,
+  "stop_reason": "HEARTBEAT_AUTHORITY_UNAVAILABLE",
+  "training_steps": 858,
+  "training_total_steps": 858,
+  "evaluation_status": "NOT_ESTABLISHED",
+  "promotion_status": "NOT_AUTHORIZED",
+  "publication_mode": "TERMINAL_SNAPSHOT_NOT_LIVE_TELEMETRY",
+  "closure": {
+    "controller_exited": true,
+    "owned_workers_cleared": true,
+    "logs_closed": true,
+    "reservation_released": true,
+    "custody_verified": true
+  },
+  "phases": [
+    {
+      "id": "heldout_base_r0",
+      "label": "Heldout \u00b7 Base \u00b7 repeat 1",
+      "saved": 36,
+      "total": 48,
+      "state": "stopped"
+    },
+    {
+      "id": "heldout_candidate002_r0",
+      "label": "Heldout \u00b7 Candidate002 \u00b7 repeat 1",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    },
+    {
+      "id": "heldout_base_r1",
+      "label": "Heldout \u00b7 Base \u00b7 repeat 2",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    },
+    {
+      "id": "heldout_candidate002_r1",
+      "label": "Heldout \u00b7 Candidate002 \u00b7 repeat 2",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    },
+    {
+      "id": "named_base_r0",
+      "label": "Named \u00b7 Base \u00b7 repeat 1",
+      "saved": 0,
+      "total": 240,
+      "state": "not_started"
+    },
+    {
+      "id": "named_candidate002_r0",
+      "label": "Named \u00b7 Candidate002 \u00b7 repeat 1",
+      "saved": 0,
+      "total": 240,
+      "state": "not_started"
+    },
+    {
+      "id": "historical_base_r0",
+      "label": "Historical \u00b7 Base \u00b7 repeat 1",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    },
+    {
+      "id": "historical_candidate002_r0",
+      "label": "Historical \u00b7 Candidate002 \u00b7 repeat 1",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    },
+    {
+      "id": "historical_base_r1",
+      "label": "Historical \u00b7 Base \u00b7 repeat 2",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    },
+    {
+      "id": "historical_candidate002_r1",
+      "label": "Historical \u00b7 Candidate002 \u00b7 repeat 2",
+      "saved": 0,
+      "total": 48,
+      "state": "not_started"
+    }
+  ]
+}
