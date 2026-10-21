@@ -14,6 +14,10 @@ const endpoint=/^https?:\/\/[^/]+\/demos\/aero\/fea-candidate002-validation\/sta
       const page=await browser.newPage({viewport,colorScheme:'dark'});
       const errors=[];page.on('pageerror',e=>errors.push(e.message));
       let current=structuredClone(initial);
+      current.state='RUNNING';current.collection_complete=false;current.saved_outputs=24;current.percent=2.8;
+      current.last_phase=current.phases[0].id;current.gate_breach_count=0;
+      Object.keys(current.closure).forEach(k=>current.closure[k]=false);
+      current.phases.forEach((p,i)=>{p.saved=i===0?24:0;p.state=i===0?'running':'not_started';});
       current.observed_at=new Date().toISOString();current.published_at=current.observed_at;
       await page.route(endpoint,route=>route.fulfill({json:current}));
       await page.goto(base+'/software/aero/progress/',{waitUntil:'networkidle'});
@@ -40,6 +44,9 @@ const endpoint=/^https?:\/\/[^/]+\/demos\/aero\/fea-candidate002-validation\/sta
       await page.waitForFunction(()=>document.getElementById('state-pill').textContent==='Refresh unavailable');
       assert.equal(await page.locator('#saved').textContent(),String(saved));
       current=structuredClone(initial);current.observed_at=new Date().toISOString();
+      current.state='INITIALIZING';current.collection_complete=false;
+      Object.keys(current.closure).forEach(k=>current.closure[k]=false);
+      current.phases.forEach((p,i)=>{p.saved=i===0?null:0;p.state=i===0?'initializing':'not_started';});
       current.state='INITIALIZING';current.saved_outputs=null;current.percent=null;
       current.phases[0].saved=null;current.phases[0].state='initializing';
       await page.locator('#refresh').click();
@@ -51,6 +58,7 @@ const endpoint=/^https?:\/\/[^/]+\/demos\/aero\/fea-candidate002-validation\/sta
       await page.locator('#refresh').click();
       await page.waitForFunction(()=>document.getElementById('state-pill').textContent==='Status unknown');
       current=structuredClone(initial);current.observed_at=new Date().toISOString();
+      Object.keys(current.closure).forEach(k=>current.closure[k]=false);
       current.state='COLLECTED_REVIEW_PENDING';current.collection_complete=true;
       current.saved_outputs=864;current.percent=100;current.gate_breach_count=0;
       current.phases.forEach(p=>{p.saved=p.total;p.state='outputs_saved';});
@@ -59,6 +67,12 @@ const endpoint=/^https?:\/\/[^/]+\/demos\/aero\/fea-candidate002-validation\/sta
       assert.match(await page.locator('#activity-text').textContent(),/Scoring and review are separate/);
       assert.match(await page.locator('.meaning').textContent(),/does not mean the model passed/);
       assert.equal(await page.locator('[data-closure] strong').filter({hasText:'Verified'}).count(),0);
+      Object.keys(current.closure).forEach(k=>current.closure[k]=true);
+      await page.locator('#refresh').click();
+      await page.waitForFunction(()=>document.querySelectorAll('[data-closure] strong').length===5 && [...document.querySelectorAll('[data-closure] strong')].every(p=>p.textContent==='Verified'));
+      assert.match(await page.locator('#next-text').textContent(),/Run closure is independently verified/);
+      assert.match(await page.locator('#next-text').textContent(),/does not establish efficacy or authorize promotion/);
+      await page.screenshot({path:`${out}/${viewport.width}-closure-verified.png`,fullPage:true});
       current.state='INCOMPLETE_STOPPED';current.collection_complete=false;
       await page.locator('#refresh').click();
       await page.waitForFunction(()=>document.getElementById('state-pill').textContent==='Stopped · incomplete');
