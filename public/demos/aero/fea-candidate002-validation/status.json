@@ -1,7 +1,7 @@
 {
   "schema": "aero.public.candidate002.validation.v2",
-  "published_at": "2026-10-21T07:21:21.059211+00:00",
-  "observed_at": "2026-10-21T07:21:21.046974+00:00",
+  "published_at": "2026-10-21T07:36:24.953298+00:00",
+  "observed_at": "2026-10-21T07:36:24.829563+00:00",
   "candidate": "candidate002 \u00b7 14B",
   "run_label": "Validation attempt 4 \u00b7 20 October 2026",
   "state": "COLLECTED_REVIEW_PENDING",
