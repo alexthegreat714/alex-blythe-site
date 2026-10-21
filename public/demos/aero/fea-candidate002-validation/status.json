@@ -1,7 +1,7 @@
 {
   "schema": "aero.public.candidate002.validation.v2",
-  "published_at": "2026-10-21T12:52:07.821564+00:00",
-  "observed_at": "2026-10-21T12:52:07.811110+00:00",
+  "published_at": "2026-10-21T13:21:50.828306+00:00",
+  "observed_at": "2026-10-21T13:21:49.703961+00:00",
   "candidate": "candidate002 \u00b7 14B",
   "run_label": "Validation attempt 4 \u00b7 20 October 2026",
   "state": "COLLECTED_REVIEW_PENDING",
@@ -20,11 +20,11 @@
   "refresh_interval_seconds": 900,
   "stale_after_seconds": 1200,
   "closure": {
-    "controller_exited": false,
-    "owned_workers_cleared": false,
-    "logs_closed": false,
-    "reservation_released": false,
-    "custody_verified": false
+    "controller_exited": true,
+    "owned_workers_cleared": true,
+    "logs_closed": true,
+    "reservation_released": true,
+    "custody_verified": true
   },
   "phases": [
     {
