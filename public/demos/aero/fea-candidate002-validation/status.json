@@ -1,14 +1,14 @@
 {
   "schema": "aero.public.candidate002.validation.v2",
-  "published_at": "2026-10-21T05:30:53.936078+00:00",
-  "observed_at": "2026-10-21T05:30:53.916144+00:00",
+  "published_at": "2026-10-21T05:46:00.902788+00:00",
+  "observed_at": "2026-10-21T05:46:00.890270+00:00",
   "candidate": "candidate002 \u00b7 14B",
   "run_label": "Validation attempt 4 \u00b7 20 October 2026",
-  "state": "RUNNING",
-  "saved_outputs": 843,
+  "state": "COLLECTED_REVIEW_PENDING",
+  "saved_outputs": 864,
   "total_outputs": 864,
-  "percent": 97.6,
-  "collection_complete": false,
+  "percent": 100.0,
+  "collection_complete": true,
   "last_phase": "historical_candidate002_r1",
   "gate_breach_count": 0,
   "stop_reason": "NONE",
@@ -93,9 +93,9 @@
     {
       "id": "historical_candidate002_r1",
       "label": "Historical \u00b7 Candidate002 \u00b7 repeat 2",
-      "saved": 27,
+      "saved": 48,
       "total": 48,
-      "state": "running"
+      "state": "outputs_saved"
     }
   ]
 }
