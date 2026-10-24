@@ -1,0 +1,66 @@
+{
+  "engine": "Microsoft Excel 16.0 build 20326",
+  "checks": [
+    {
+      "case": "baseline",
+      "max_abs_difference_from_independent_solver": 1.888822431794779e-12,
+      "native_max_normalized_residual": 9.32698362987594e-13,
+      "passed": true
+    },
+    {
+      "case": "faster",
+      "max_abs_difference_from_independent_solver": 1.3253258490664166e-09,
+      "native_max_normalized_residual": 9.227818509316421e-11,
+      "passed": true
+    },
+    {
+      "case": "uniform",
+      "max_abs_difference_from_independent_solver": 4.097319594720261e-09,
+      "native_max_normalized_residual": 9.707157300198332e-11,
+      "passed": true
+    },
+    {
+      "case": "diffusion",
+      "max_abs_difference_from_independent_solver": 1.156090304321733e-07,
+      "native_max_normalized_residual": 9.994485794528885e-11,
+      "passed": true
+    },
+    {
+      "case": "restored",
+      "max_abs_difference_from_independent_solver": 3.855905483796107e-09,
+      "native_max_normalized_residual": 9.581213600284855e-11,
+      "passed": true
+    },
+    {
+      "case": "restored",
+      "max_abs_difference_from_independent_solver": 3.5822983468491998e-09,
+      "native_max_normalized_residual": 8.895395531283157e-11,
+      "passed": true
+    },
+    {
+      "case": "final_layout",
+      "max_abs_difference_from_independent_solver": 1.888822431794779e-12,
+      "native_max_normalized_residual": 9.32698362987594e-13,
+      "passed": true
+    },
+    {
+      "case": "reopened",
+      "max_abs_difference_from_independent_solver": 4.551248267148367e-12,
+      "native_max_normalized_residual": 8.654188476953095e-13,
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "layout": {
+    "square_display_is_blank": true,
+    "square_display_is_white": true
+  },
+  "saved_iteration": {
+    "calcId": "191029",
+    "iterate": "1",
+    "iterateCount": "10000",
+    "iterateDelta": "1E-10",
+    "forceFullCalc": "1"
+  },
+  "native_field_formula_count": 2501
+}

@@ -1,0 +1,45 @@
+{
+  "engine": "v24.19.0",
+  "cases": {
+    "baseline": {
+      "iterations": 1108,
+      "residual": 9.561240688071848e-13,
+      "min": 0,
+      "max": 1,
+      "symmetry": 1.4686141192044033e-11,
+      "outletCenter": 0.3381256506593319,
+      "max_difference_from_workbook_reference": 0
+    },
+    "faster": {
+      "iterations": 452,
+      "residual": 9.301448500309561e-13,
+      "min": 0,
+      "max": 1,
+      "symmetry": 9.438783088455693e-12,
+      "outletCenter": 0.290217088655219,
+      "max_difference_from_workbook_reference": 0
+    },
+    "diffusion": {
+      "iterations": 24253,
+      "residual": 9.990619442845627e-13,
+      "min": 0,
+      "max": 1,
+      "symmetry": 1.981965980224487e-11,
+      "outletCenter": 0.07751618011323133,
+      "max_difference_from_workbook_reference": 0
+    },
+    "uniform": {
+      "iterations": 1,
+      "residual": 2.220446049250313e-16,
+      "min": 1,
+      "max": 1.0000000000000002,
+      "symmetry": 2.220446049250313e-16,
+      "outletCenter": 1.0000000000000002,
+      "max_difference_from_workbook_reference": 0
+    }
+  },
+  "invalid_input_checks": 5,
+  "worker_message_checks": 2,
+  "all_passed": true,
+  "browser_ui_checked": false
+}

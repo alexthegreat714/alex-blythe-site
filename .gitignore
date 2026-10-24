@@ -5,3 +5,4 @@ dist/
 *.log
 qa/
 __pycache__/
+/public/demos/aero/square-body-transport-v1/paper-sources/main.pdf

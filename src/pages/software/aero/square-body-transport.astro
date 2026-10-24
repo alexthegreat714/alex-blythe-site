@@ -1,0 +1,134 @@
+---
+import SoftwareLayout from '../../../layouts/SoftwareLayout.astro';
+import AeroStudyMeta from '../../../components/AeroStudyMeta.astro';
+import results from '../../../../public/demos/aero/square-body-transport-v1/accuracy-results.json';
+const base='/demos/aero/square-body-transport-v1/';
+const examples=[['baseline','Baseline'],['faster','Stronger transport'],['diffusion','Pure diffusion'],['uniform','Uniform control']] as const;
+---
+<SoftwareLayout title="Square-body scalar transport" description="An editable transport model, downloadable Excel workbook, and LaTeX accuracy study with analytical checks and worked examples." canonicalPath="/software/aero/square-body-transport/" compactHeader>
+  <div class="transport-page">
+    <AeroStudyMeta date="2026-10-24" label="Scalar transport study · version 1.0" />
+    <nav class="crumbs" aria-label="Aero navigation"><a href="/software/aero/">Aero overview</a><a href="/software/aero/verification/">Verification Bench</a><a href="#accuracy">Accuracy evidence</a><a href="#downloads">Downloads</a></nav>
+    <p class="scope"><strong>What this calculates:</strong> steady scalar convection and diffusion through a prescribed horizontal velocity field. The square holds a scalar value. Velocity and pressure are not solved, so the downstream scalar deficit is not evidence of an aerodynamic wake.</p>
+    <section aria-labelledby="experiment-title" class="experiment">
+      <div class="section-top"><div><p class="kicker">Try the calculation</p><h2 id="experiment-title">Change an input. Follow the scalar.</h2></div><a class="paper-link" href={base+'paper.pdf'}>Read the accuracy paper (PDF)</a></div>
+      <div class="preset-buttons" role="group" aria-label="Worked example presets">{examples.map(([id,label])=><button type="button" data-preset={id}>{label}</button>)}</div>
+      <div class="lab-grid">
+        <form id="transport-form">
+          <label for="velocity">Horizontal velocity <span>m/s</span><input id="velocity" name="u" type="number" min="0" max="100" step="0.1" value="1" required /></label>
+          <label for="diffusion">Transport coefficient Γ <span>kg/(m s)</span><input id="diffusion" name="gamma" type="number" min="0.000001" step="any" value="0.1" required /></label>
+          <div class="input-pair"><label for="inlet">Inlet scalar<input id="inlet" name="inlet" type="number" step="any" value="1" required /></label><label for="square-scalar">Square scalar<input id="square-scalar" name="solid" type="number" step="any" value="0" required /></label></div>
+          <label class="checkbox"><input name="enabled" id="square-enabled" type="checkbox" checked />Enable the square</label>
+          <details><summary>Geometry and density</summary><div class="advanced">
+            <label>Length (m)<input name="L" type="number" min="0.01" step="any" value="3" required /></label>
+            <label>Height (m)<input name="H" type="number" min="0.01" step="any" value="2" required /></label>
+            <label>Density (kg/m³)<input name="rho" type="number" min="0.000001" step="any" value="1" required /></label>
+            <label>Square left x (m)<input name="x0" type="number" min="0.000001" step="any" value="0.8" required /></label>
+            <label>Square bottom y (m)<input name="y0" type="number" min="0.000001" step="any" value="0.75" required /></label>
+            <label>Square side (m)<input name="side" type="number" min="0.000001" step="any" value="0.5" required /></label>
+          </div></details>
+          <div class="run-actions"><button class="run" type="submit">Run model</button><button type="button" id="stop-model" disabled>Stop</button></div>
+          <p class="small">61 × 41 nodes. Geometry snaps to grid nodes. Calculations run locally in your browser.</p>
+        </form>
+        <div class="result-panel">
+          <div class="canvas-wrap"><img id="fallback-field" src={base+'examples.png'} width="1872" height="1296" alt="Four recorded scalar fields: baseline, faster transport, diffusion only, and the uniform control" /><canvas id="scalar-field" width="1000" height="700" role="img" aria-label="Calculated scalar field; numerical diagnostics and CSV download are provided below" hidden></canvas></div>
+          <p id="model-status" role="status" aria-live="polite">Recorded examples are shown. Enable JavaScript to run an editable calculation.</p>
+          <dl class="metrics"><div><dt>Normalized residual</dt><dd id="residual">—</dd></div><div><dt>Cell Péclet number</dt><dd id="peclet">—</dd></div><div><dt>Iterations</dt><dd id="iterations">—</dd></div><div><dt>Outlet center scalar</dt><dd id="outlet-value">—</dd></div></dl>
+          <p id="field-readout" class="small">Use a pointer over the completed field to inspect a node, or download its numerical values.</p>
+          <div class="result-actions"><button type="button" id="export-csv" disabled>Download calculated field (CSV)</button><a href={base+'Square_Body_Transport.xlsx'} download>Download Excel workbook</a></div>
+          <p class="small" id="result-inputs">The display switches to your calculated field after a successful solve.</p>
+        </div>
+      </div>
+      <noscript><p>The PDF, workbook, numerical evidence, and recorded examples below work without JavaScript.</p></noscript>
+    </section>
+    <section id="accuracy" aria-labelledby="accuracy-title">
+      <p class="kicker">Measured accuracy</p><h2 id="accuracy-title">Agreement, discretization error, and physical limits.</h2>
+      <div class="evidence-grid"><article><h3>Solving the equations</h3><p>A separately assembled sparse LU solve agrees with the Gauss–Seidel reference within {Math.max(...Object.values(results.cases).map(r=>r.max_difference_from_workbook_reference)).toExponential(2)} scalar units across four examples. Desktop Excel was also recalculated, edited, saved, and reopened.</p></article><article><h3>Approximating the continuum</h3><p>The 1D analytical test has maximum error 0.07643 at h = 0.05, falling to 0.01120 at h = 0.00625. This is a different boundary-value problem used to check the scheme. It is not a square-case error bound.</p></article><article><h3>Representing fluid motion</h3><p>The model transports a scalar in a prescribed velocity. It does not establish pressure, no-slip flow around a solid, drag, recirculation, or vortex shedding. No experimental validation is claimed.</p></article></div>
+      <p>First-order upwind adds leading streamwise numerical diffusion Γ<sub>num</sub> ≈ ρuΔx/2. For the baseline, this is 0.025 kg/(m s), or 25% of the specified Γ. <strong>That coefficient ratio is not a percentage solution error.</strong></p>
+      <div class="table-scroll"><table><caption>Square-case refinement: the finest grid is a comparison, not an exact solution.</caption><thead><tr><th>Grid</th><th>Δx (m)</th><th>φ at (2,1)</th><th>φ at (3,1)</th><th>Max common-node change</th></tr></thead><tbody>{results.mesh.map(r=><tr><th scope="row">{r.nx} × {r.ny}</th><td>{r.dx.toFixed(4)}</td><td>{r.downstream_center.toFixed(6)}</td><td>{r.outlet_center.toFixed(6)}</td><td>{r.max_difference_on_common_fluid_nodes===null?'—':r.max_difference_on_common_fluid_nodes.toFixed(5)}</td></tr>)}</tbody></table></div>
+      <p class="small">The maximum common-node changes of 0.04701 and 0.02721 show remaining mesh dependence. Tight solver residuals do not remove that error. Corner gradients and first-order boundary copying also affect convergence.</p>
+    </section>
+    <section aria-labelledby="examples-title"><p class="kicker">Worked examples</p><h2 id="examples-title">Four cases with inspectable inputs.</h2><figure><img src={base+'examples.png'} width="1872" height="1296" loading="lazy" alt="Computed scalar transport fields for the four documented cases, with fixed color limits from zero to one" /><figcaption>Independent sparse solutions on the workbook grid. Fixed 0–1 color limits allow comparisons. The white region is clamped scalar, not a solved no-slip body.</figcaption></figure>
+      <div class="table-scroll"><table><caption>Recorded values at the outlet center (3 m, 1 m).</caption><thead><tr><th>Example</th><th>Velocity</th><th>Square</th><th>Outlet φ</th><th>Field data</th></tr></thead><tbody>{examples.map(([id,label])=><tr><th scope="row">{label}</th><td>{results.cases[id].parameters.u} m/s</td><td>{id==='uniform'?'Disabled':'Enabled'}</td><td>{results.cases[id].outlet_center.toFixed(6)}</td><td><a href={base+id+'.csv'} download>CSV</a></td></tr>)}</tbody></table></div>
+      <p>The baseline uses a 3 m × 2 m domain, ρ = 1 kg/m³ and Γ = 0.1 kg/(m s). A 0.5 m square starts at (0.8 m, 0.75 m). Inlet scalar is 1; square scalar is 0. Visible screenshot parameters were reproduced; domain dimensions and square geometry are reconstruction assumptions.</p>
+    </section>
+    <section id="downloads" aria-labelledby="downloads-title"><p class="kicker">Read and reproduce</p><h2 id="downloads-title">Workbook, LaTeX paper, and evidence.</h2><div class="download-grid">
+      <a href={base+'Square_Body_Transport.xlsx'} download><strong>Functional Excel workbook</strong><span>Editable inputs, iterative cell formulas, and scalar map.</span></a>
+      <a href={base+'paper.pdf'}><strong>Accuracy and examples · PDF</strong><span>Governing equations, truncation error, measured checks, and limits.</span></a>
+      <a href={base+'paper-sources.zip'} download><strong>LaTeX source and figures</strong><span>Complete source used to compile the paper.</span></a>
+      <a href={base+'reproducibility.zip'} download><strong>Reproduction package</strong><span>Browser solver, independent numerical checks, CSVs, and evidence.</span></a>
+      <a href={base+'accuracy-results.json'}><strong>Machine-readable accuracy results</strong><span>Analytical, sparse-solver, and mesh-refinement measurements.</span></a>
+      <a href={base+'manifest.json'}><strong>Download SHA-256 manifest</strong><span>Check file identity and package integrity.</span></a>
+    </div><p class="small">The workbook has no macros or external workbook links. Use desktop Excel with iterative calculation enabled: 10,000 iterations and maximum change 1E-10. Other spreadsheet engines have not been checked.</p>
+    <p class="small">Teaching inspiration: the user-supplied screenshots from <a href="https://www.instagram.com/cfdbyhand/">@cfdbyhand</a>. This is an independently authored reconstruction, not the creator’s original workbook or an affiliated release. Numerical background: <a href="https://pages.nist.gov/fipy/en/3.4.5/numerical/scheme.html">NIST FiPy numerical schemes</a>.</p></section>
+  </div>
+</SoftwareLayout>
+<script>
+  const base='/demos/aero/square-body-transport-v1/';
+  const form=document.querySelector<HTMLFormElement>('#transport-form')!;
+  const canvas=document.querySelector<HTMLCanvasElement>('#scalar-field')!;
+  const context=canvas.getContext('2d')!;
+  const status=document.querySelector<HTMLElement>('#model-status')!;
+  const stop=document.querySelector<HTMLButtonElement>('#stop-model')!;
+  const exportButton=document.querySelector<HTMLButtonElement>('#export-csv')!;
+  let worker:Worker|null=null, result:any=null;
+  let plotBounds={x:65,y:42,w:900,h:600};
+  const defaults={L:3,H:2,u:1,rho:1,gamma:.1,inlet:1,solid:0,x0:.8,y0:.75,side:.5,enabled:1};
+  function inputs(){const p:any={};for(const k of Object.keys(defaults)){const input=form.elements.namedItem(k) as HTMLInputElement;p[k]=k==='enabled'?Number(input.checked):Number(input.value);}return p;}
+  const number=(value:number)=>Number.isFinite(value)?value.toExponential(3):'unavailable';
+  function color(t:number){const low=[33,102,172],mid=[247,247,247],high=[178,24,43];const a=t<.5?low:mid,b=t<.5?mid:high,z=t<.5?t*2:(t-.5)*2;return `rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*z)).join(',')})`;}
+  function draw(r:any){
+    const {nx,ny,p,values,mask}=r,c=context;let lo=Math.min(p.inlet,p.solid),hi=Math.max(p.inlet,p.solid);if(lo===hi)hi=lo+1;
+    c.fillStyle='#FFFFFF';c.fillRect(0,0,1000,700);c.font='16px Arial';c.textAlign='left';c.fillStyle='#243746';c.fillText('Prescribed horizontal transport',65,23);
+    const w=Math.min(900,600*p.L/p.H),h=w*p.H/p.L,x=65+(900-w)/2,y=42+(600-h)/2;
+    plotBounds={x,y,w,h};
+    for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){const k=j*nx+i;c.fillStyle=mask[k]?'#FFFFFF':color(Math.max(0,Math.min(1,(values[k]-lo)/(hi-lo))));c.fillRect(x+i*w/nx,y+j*h/ny,w/nx+1,h/ny+1);}
+    c.strokeStyle='#243746';c.lineWidth=1;c.strokeRect(x,y,w,h);
+    c.fillStyle='#243746';for(let n=0;n<=4;n++){c.textAlign='center';c.fillText((p.L*n/4).toFixed(2),x+w*n/4,y+h+24);c.textAlign='right';c.fillText((p.H*(1-n/4)).toFixed(2),x-9,y+h*n/4+5);}
+    c.textAlign='center';c.fillText('x (m)',x+w/2,688);c.save();c.translate(18,y+h/2);c.rotate(-Math.PI/2);c.fillText('y (m)',0,0);c.restore();
+    c.font='14px Arial';c.textAlign='left';c.fillText(`Blue: ${lo.toFixed(3)}    Red: ${hi.toFixed(3)}    White: clamped square`,65,668);
+    canvas.hidden=false;document.querySelector<HTMLImageElement>('#fallback-field')!.hidden=true;
+  }
+  function finish(){worker?.terminate();worker=null;stop.disabled=true;}
+  async function run(){
+    if(!form.reportValidity())return;
+    finish();const p=inputs();status.textContent='Solving locally…';stop.disabled=false;
+    try{
+      worker=new Worker(base+'worker.mjs',{type:'module'});
+      worker.onerror=()=>{status.textContent='The calculation could not start. The recorded examples and downloads remain available.';finish();};
+      worker.onmessage=({data})=>{
+        if(data.type==='progress'){status.textContent=`Solving: ${data.iterations.toLocaleString()} sweeps; latest maximum change ${number(data.change)}.`;return;}
+        if(data.type==='error'){status.textContent=data.message+' Any displayed field is the previous completed result.';finish();return;}
+        result=data;draw(data);exportButton.disabled=false;
+        document.querySelector('#residual')!.textContent=number(data.metrics.residual);
+        document.querySelector('#peclet')!.textContent=data.c.Pe.toFixed(3);
+        document.querySelector('#iterations')!.textContent=data.iterations.toLocaleString();
+        document.querySelector('#outlet-value')!.textContent=data.metrics.outletCenter.toFixed(6);
+        document.querySelector('#result-inputs')!.textContent=`Completed inputs: u = ${data.p.u} m/s, Γ = ${data.p.gamma} kg/(m s), ρ = ${data.p.rho} kg/m³, L × H = ${data.p.L} × ${data.p.H} m. Square ${data.p.enabled?'enabled':'disabled'}.`;
+        status.textContent='Converged discrete scalar solution. Residual is a numerical check, not physical validation.';finish();
+      };worker.postMessage({parameters:p});
+    }catch(e){status.textContent='Your browser could not run the local worker. Use the workbook or recorded examples.';finish();}
+  }
+  form.addEventListener('submit',e=>{e.preventDefault();run();});
+  form.addEventListener('input',()=>{finish();status.textContent='Inputs changed. Run the model to update the field. Any displayed values belong to the previous completed run.';});
+  stop.addEventListener('click',()=>{finish();status.textContent='Calculation stopped. Any displayed field is the previous completed result.';});
+  document.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach(button=>button.addEventListener('click',()=>{
+    const p={...defaults};if(button.dataset.preset==='faster')p.u=2;if(button.dataset.preset==='diffusion')p.u=0;if(button.dataset.preset==='uniform')p.enabled=0;
+    for(const [key,value] of Object.entries(p)){const el=form.elements.namedItem(key) as HTMLInputElement;if(key==='enabled')el.checked=Boolean(value);else el.value=String(value);}run();
+  }));
+  exportButton.addEventListener('click',()=>{
+    if(!result)return;const r=result,rows=['x_m,y_m,phi,clamped_square'];
+    for(let j=0;j<r.ny;j++)for(let i=0;i<r.nx;i++){const k=j*r.nx+i;rows.push([i*r.c.dx,r.p.H-j*r.c.dy,r.values[k],r.mask[k]].join(','));}
+    const url=URL.createObjectURL(new Blob([rows.join('\n')],{type:'text/csv'}));const a=document.createElement('a');a.href=url;a.download='scalar-field.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  canvas.addEventListener('pointermove',e=>{
+    if(!result)return;const box=canvas.getBoundingClientRect(),px=(e.clientX-box.left)*1000/box.width,py=(e.clientY-box.top)*700/box.height;
+    const {x,y,w,h}=plotBounds;if(px<x||px>=x+w||py<y||py>=y+h)return;
+    const i=Math.floor((px-x)/w*result.nx),j=Math.floor((py-y)/h*result.ny),k=j*result.nx+i;
+    document.querySelector('#field-readout')!.textContent=`Node: x = ${(i*result.c.dx).toFixed(3)} m, y = ${(result.p.H-j*result.c.dy).toFixed(3)} m, φ = ${result.values[k].toFixed(6)}${result.mask[k]?' (clamped square)':''}.`;
+  });
+  window.addEventListener('pagehide',finish);run();
+</script>
+<style>
+  .transport-page{width:min(1180px,calc(100% - 48px));margin:0 auto;padding-bottom:70px}.crumbs,.preset-buttons,.run-actions,.result-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}.crumbs{padding:20px 0;font-size:.8rem;color:var(--accent)}.scope{padding:20px 24px;background:var(--surface);border-left:3px solid var(--accent)}section{padding:36px 0;border-bottom:1px solid var(--border);scroll-margin-top:130px}h2{font-family:Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;letter-spacing:-.03em;line-height:1.12;margin:10px 0 20px}.kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:750}.section-top{display:flex;justify-content:space-between;align-items:center;gap:24px}.paper-link,.result-actions a{color:var(--accent);font-size:.85rem;font-weight:700}.preset-buttons{margin:10px 0 24px;gap:8px}.lab-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:26px}form{padding:20px;background:var(--surface);border:1px solid var(--border)}label{display:block;margin-bottom:14px;font-size:.8rem;font-weight:650}label>span{display:block;color:var(--muted);font-size:.7rem;font-weight:400}input[type=number]{display:block;width:100%;margin-top:5px;padding:9px 10px;background:var(--page);border:1px solid var(--border);color:var(--text);font:inherit;font-size:.95rem}.input-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.checkbox{display:flex;align-items:center;gap:8px}.checkbox input{accent-color:var(--accent)}.advanced{margin-top:15px}summary{cursor:pointer;font-size:.8rem;font-weight:700}button{font:inherit;font-size:.8rem;font-weight:650;border:1px solid var(--border);padding:9px 12px;color:var(--text);background:var(--page);cursor:pointer}button:hover{border-color:var(--accent)}button:disabled{opacity:.5;cursor:default}.run{background:var(--accent);color:var(--page);border-color:var(--accent)}.run-actions{margin-top:22px;gap:10px}.small,figcaption{font-size:.77rem;color:var(--muted);line-height:1.6}.canvas-wrap{background:#fff;border:1px solid var(--border)}canvas,img{display:block;width:100%;height:auto}[hidden]{display:none!important}.result-panel{min-width:0}#model-status{font-size:.85rem;min-height:2.8em}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;padding:18px 0;border-block:1px solid var(--border)}.metrics div{min-width:0}dt{font-size:.66rem;text-transform:uppercase;color:var(--muted)}dd{font-size:1.1rem;margin:5px 0 0;font-family:Consolas,monospace}.evidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:24px 0}h3{font-size:1rem;margin:0 0 10px}.evidence-grid p{font-size:.85rem;color:var(--muted)}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.85rem}caption{text-align:left;color:var(--muted);font-size:.8rem;margin:20px 0 10px}th,td{border-bottom:1px solid var(--subtle);padding:12px 14px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}td a{color:var(--accent)}figure{margin:24px 0}figcaption{margin-top:12px}.download-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.download-grid a{padding:20px;border:1px solid var(--border);background:var(--surface)}.download-grid strong,.download-grid span{display:block}.download-grid strong{font-size:.9rem}.download-grid span{font-size:.8rem;color:var(--muted);margin-top:9px}.download-grid a:hover strong{color:var(--accent)}.small a{color:var(--accent);text-decoration:underline}@media(max-width:850px){.lab-grid{grid-template-columns:1fr}form{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.input-pair,form details,.run-actions,form>.small{grid-column:1/-1}.evidence-grid{grid-template-columns:1fr}.download-grid{grid-template-columns:1fr 1fr}.section-top{display:block}}@media(max-width:500px){.transport-page{width:calc(100% - 32px)}form{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.download-grid{grid-template-columns:1fr}.scope{padding:15px}.preset-buttons button{flex:1 0 40%}th,td{padding:10px}.result-actions{align-items:flex-start;flex-direction:column}}
+</style>

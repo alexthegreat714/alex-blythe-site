@@ -1,0 +1,10 @@
+{
+  "paper-sources.zip": {
+    "bytes": 243692,
+    "sha256": "5168e9526aafcc1ffa92140a6ea1d5de51fa1da1761daf93b34397422c016cd2"
+  },
+  "reproducibility.zip": {
+    "bytes": 1039368,
+    "sha256": "673ed93de176ee5cffa3479150c4bc961a87c52fc755b9fd29dad44aabd95714"
+  }
+}

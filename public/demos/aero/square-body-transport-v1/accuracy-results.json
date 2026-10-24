@@ -1,0 +1,254 @@
+{
+  "generated_at": "2026-10-24T20:56:27.111324+00:00",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "model": "steady prescribed-velocity scalar convection-diffusion",
+  "cases": {
+    "baseline": {
+      "nx": 61,
+      "ny": 41,
+      "dx": 0.05,
+      "dy": 0.05,
+      "normalized_residual": 4.934324553889584e-16,
+      "outlet_center": 0.3381256506332988,
+      "downstream_center": 0.19427510734359654,
+      "min": 0.0,
+      "max": 1.0,
+      "max_difference_from_workbook_reference": 3.8783420919230593e-11,
+      "parameters": {
+        "L": 3.0,
+        "H": 2.0,
+        "u": 1.0,
+        "rho": 1.0,
+        "gamma": 0.1,
+        "inlet": 1.0,
+        "solid": 0.0,
+        "x0": 0.8,
+        "y0": 0.75,
+        "side": 0.5,
+        "enabled": 1
+      },
+      "passed": true
+    },
+    "faster": {
+      "nx": 61,
+      "ny": 41,
+      "dx": 0.05,
+      "dy": 0.05,
+      "normalized_residual": 7.771561172376094e-16,
+      "outlet_center": 0.2902170886505896,
+      "downstream_center": 0.1320190145608622,
+      "min": 0.0,
+      "max": 1.0,
+      "max_difference_from_workbook_reference": 1.3778311824808043e-11,
+      "parameters": {
+        "L": 3.0,
+        "H": 2.0,
+        "u": 2.0,
+        "rho": 1.0,
+        "gamma": 0.1,
+        "inlet": 1.0,
+        "solid": 0.0,
+        "x0": 0.8,
+        "y0": 0.75,
+        "side": 0.5,
+        "enabled": 1
+      },
+      "passed": true
+    },
+    "diffusion": {
+      "nx": 61,
+      "ny": 41,
+      "dx": 0.05,
+      "dy": 0.05,
+      "normalized_residual": 4.510281037539697e-16,
+      "outlet_center": 0.07751617896409538,
+      "downstream_center": 0.06934038101740145,
+      "min": 0.0,
+      "max": 1.0,
+      "max_difference_from_workbook_reference": 1.1683205791701567e-09,
+      "parameters": {
+        "L": 3.0,
+        "H": 2.0,
+        "u": 0.0,
+        "rho": 1.0,
+        "gamma": 0.1,
+        "inlet": 1.0,
+        "solid": 0.0,
+        "x0": 0.8,
+        "y0": 0.75,
+        "side": 0.5,
+        "enabled": 1
+      },
+      "passed": true
+    },
+    "uniform": {
+      "nx": 61,
+      "ny": 41,
+      "dx": 0.05,
+      "dy": 0.05,
+      "normalized_residual": 6.784696261598177e-16,
+      "outlet_center": 1.0000000000000198,
+      "downstream_center": 1.0000000000000138,
+      "min": 0.9999999999999994,
+      "max": 1.0000000000000202,
+      "max_difference_from_workbook_reference": 1.9984014443252818e-14,
+      "parameters": {
+        "L": 3.0,
+        "H": 2.0,
+        "u": 1.0,
+        "rho": 1.0,
+        "gamma": 0.1,
+        "inlet": 1.0,
+        "solid": 0.0,
+        "x0": 0.8,
+        "y0": 0.75,
+        "side": 0.5,
+        "enabled": 0
+      },
+      "passed": true
+    }
+  },
+  "mesh": [
+    {
+      "nx": 61,
+      "ny": 41,
+      "dx": 0.05,
+      "dy": 0.05,
+      "normalized_residual": 4.934324553889584e-16,
+      "outlet_center": 0.3381256506332988,
+      "downstream_center": 0.19427510734359654,
+      "min": 0.0,
+      "max": 1.0,
+      "max_difference_on_common_fluid_nodes": null
+    },
+    {
+      "nx": 121,
+      "ny": 81,
+      "dx": 0.025,
+      "dy": 0.025,
+      "normalized_residual": 7.836868409118751e-16,
+      "outlet_center": 0.3484389210252289,
+      "downstream_center": 0.19970091975562412,
+      "min": 0.0,
+      "max": 1.0,
+      "max_difference_on_common_fluid_nodes": 0.047008030566206116
+    },
+    {
+      "nx": 241,
+      "ny": 161,
+      "dx": 0.0125,
+      "dy": 0.0125,
+      "normalized_residual": 8.747211709167898e-16,
+      "outlet_center": 0.3532811876300971,
+      "downstream_center": 0.2021454705054672,
+      "min": 0.0,
+      "max": 1.0,
+      "max_difference_on_common_fluid_nodes": 0.027211383955144552
+    }
+  ],
+  "analytical": [
+    {
+      "nodes": 21,
+      "dx": 0.05,
+      "max_abs_error": 0.07642658106895678,
+      "observed_order": null
+    },
+    {
+      "nodes": 41,
+      "dx": 0.025,
+      "max_abs_error": 0.041670770306763694,
+      "observed_order": 0.8750387237761599
+    },
+    {
+      "nodes": 81,
+      "dx": 0.0125,
+      "max_abs_error": 0.021844244900035337,
+      "observed_order": 0.9317825329389982
+    },
+    {
+      "nodes": 161,
+      "dx": 0.00625,
+      "max_abs_error": 0.011196533822497745,
+      "observed_order": 0.9642010586226837
+    }
+  ],
+  "all_passed": true,
+  "analytical_passed": true,
+  "excel": {
+    "engine": "Microsoft Excel 16.0 build 20326",
+    "checks": [
+      {
+        "case": "baseline",
+        "max_abs_difference_from_independent_solver": 1.888822431794779e-12,
+        "native_max_normalized_residual": 9.32698362987594e-13,
+        "passed": true
+      },
+      {
+        "case": "faster",
+        "max_abs_difference_from_independent_solver": 1.3253258490664166e-09,
+        "native_max_normalized_residual": 9.227818509316421e-11,
+        "passed": true
+      },
+      {
+        "case": "uniform",
+        "max_abs_difference_from_independent_solver": 4.097319594720261e-09,
+        "native_max_normalized_residual": 9.707157300198332e-11,
+        "passed": true
+      },
+      {
+        "case": "diffusion",
+        "max_abs_difference_from_independent_solver": 1.156090304321733e-07,
+        "native_max_normalized_residual": 9.994485794528885e-11,
+        "passed": true
+      },
+      {
+        "case": "restored",
+        "max_abs_difference_from_independent_solver": 3.855905483796107e-09,
+        "native_max_normalized_residual": 9.581213600284855e-11,
+        "passed": true
+      },
+      {
+        "case": "restored",
+        "max_abs_difference_from_independent_solver": 3.5822983468491998e-09,
+        "native_max_normalized_residual": 8.895395531283157e-11,
+        "passed": true
+      },
+      {
+        "case": "final_layout",
+        "max_abs_difference_from_independent_solver": 1.888822431794779e-12,
+        "native_max_normalized_residual": 9.32698362987594e-13,
+        "passed": true
+      },
+      {
+        "case": "reopened",
+        "max_abs_difference_from_independent_solver": 4.551248267148367e-12,
+        "native_max_normalized_residual": 8.654188476953095e-13,
+        "passed": true
+      }
+    ],
+    "all_passed": true,
+    "layout": {
+      "square_display_is_blank": true,
+      "square_display_is_white": true
+    },
+    "saved_iteration": {
+      "calcId": "191029",
+      "iterate": "1",
+      "iterateCount": "10000",
+      "iterateDelta": "1E-10",
+      "forceFullCalc": "1"
+    },
+    "native_field_formula_count": 2501
+  },
+  "leading_artificial_diffusion": {
+    "formula": "rho*u*dx/2",
+    "baseline_gamma_numerical": 0.025,
+    "ratio_to_physical_gamma": 0.25,
+    "interpretation": "leading truncation-error coefficient, not a percentage solution error"
+  }
+}
