@@ -1,0 +1,112 @@
+---
+import SoftwareLayout from '../../../layouts/SoftwareLayout.astro';
+
+const solvers = [
+  {
+    name: 'rhoSimpleFoam',
+    role: 'Aero Blue nozzle pipeline',
+    physics: 'Steady compressible gas flow',
+    example: 'Converging–diverging nozzle',
+    href: '/software/aero/demo/',
+    link: 'View the recorded nozzle run',
+  },
+  {
+    name: 'simpleFoam',
+    role: 'Aero verification and studies',
+    physics: 'Steady incompressible flow',
+    example: 'Pipe pressure drop and airfoil aerodynamics',
+    href: '/software/aero/verification/?case=pipe-fine#pipe',
+    link: 'Inspect the pipe case',
+  },
+  {
+    name: 'pimpleFoam',
+    role: 'Aero transient studies',
+    physics: 'Time-dependent incompressible flow',
+    example: 'Laminar flow and convergence tests. The transient workflow requires a reviewed starting case.',
+    href: '/software/aero/evidence/reports/relative-convergence-2026-09-19/',
+    link: 'Read the convergence study',
+  },
+  {
+    name: 'chtMultiRegionFoam',
+    role: 'Aero thermal studies',
+    physics: 'Conjugate heat transfer through fluids and solids',
+    example: 'Heat exchanger with shell fluid, tube fluid, and a solid wall',
+    href: '/software/aero/evidence/benchmarks/hx-cfd-qual-01/',
+    link: 'Inspect the heat exchanger runs',
+  },
+];
+---
+
+<SoftwareLayout
+  title="CFD solvers in Aero"
+  description="See which CFD solver Aero uses for each case, where it runs, and how the browser wake and Excel workbook work."
+  canonicalPath="/software/aero/cfd-solvers/"
+  eyebrow="Software & Tools / Aero"
+  compactHeader
+>
+  <div class="solver-guide">
+    <nav class="guide-nav" aria-label="Aero guide navigation">
+      <a href="/software/aero/">← Aero overview</a>
+      <a href="#openfoam">OpenFOAM cases</a>
+      <a href="#interactive">Browser and Excel</a>
+    </nav>
+
+    <section id="openfoam" aria-labelledby="openfoam-title">
+      <h2 id="openfoam-title">OpenFOAM in the pipeline</h2>
+      <p class="lede">Aero Blue’s nozzle workflow runs <code>rhoSimpleFoam</code> in its Linux worker. The guided page shows the recorded result. The wider Aero studies use the solver appropriate to each case.</p>
+      <div class="solver-list">
+        {solvers.map(({ name, role, physics, example, href, link }) => (
+          <article class="solver-row">
+            <div><h3><code>{name}</code></h3><p class="solver-role">{role}</p></div>
+            <div><p class="solver-physics">{physics}</p><p>{example}</p></div>
+            <a href={href}>{link} <span aria-hidden="true">→</span></a>
+          </article>
+        ))}
+      </div>
+      <p class="other-solvers">The documented workflow has no dedicated case for <code>rhoPimpleFoam</code> (transient compressible flow), <code>interFoam</code> (free-surface flow), or <code>buoyantFoam</code> (buoyancy-driven flow). The thermal cases above model heat transfer across fluid and solid regions.</p>
+    </section>
+
+    <section id="interactive" aria-labelledby="interactive-title">
+      <h2 id="interactive-title">Browser and Excel examples</h2>
+      <div class="interactive-cases">
+        <article>
+          <h3>Live square wake</h3>
+          <p>A D2Q9 lattice Boltzmann solver runs in the browser. It advances the flow around a square obstacle and computes the velocity, pressure, and vorticity fields each frame.</p>
+          <a href="/software/aero/square-body-transport/#experiment">Run the live wake <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <h3>Excel scalar transport</h3>
+          <p>Workbook formulas solve how a scalar spreads and moves under a prescribed velocity. The page also has a browser version of this steady calculation.</p>
+          <a href="/software/aero/square-body-transport/#workbook-title">Explore the Excel workbook <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+  </div>
+</SoftwareLayout>
+
+<style>
+  .solver-guide { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding-bottom: 72px; }
+  .guide-nav { display: flex; flex-wrap: wrap; gap: 10px 22px; border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .guide-nav a, .solver-row > a, .interactive-cases a { color: var(--accent); font-weight: 700; font-size: .875rem; text-underline-offset: .2em; }
+  .guide-nav a:hover, .solver-row > a:hover, .interactive-cases a:hover { text-decoration: underline; }
+  section { padding-top: 36px; scroll-margin-top: 100px; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 0 0 12px; line-height: 1.15; letter-spacing: -.035em; }
+  h3 { margin: 0; font-size: 1.08rem; line-height: 1.4; }
+  p { color: var(--muted); line-height: 1.65; }
+  code { overflow-wrap: anywhere; }
+  .lede { max-width: 72ch; }
+  .solver-list { border-top: 1px solid var(--border); margin-top: 24px; }
+  .solver-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr) minmax(0, .85fr); align-items: start; gap: 12px 24px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .solver-row p { margin: 4px 0 0; font-size: .9rem; }
+  .solver-row .solver-role { font-size: .8rem; }
+  .solver-row .solver-physics { margin: 0; color: var(--text); font-weight: 650; }
+  .other-solvers { font-size: .88rem; max-width: 88ch; margin: 18px 0 0; }
+  .interactive-cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .interactive-cases article { background: var(--surface); border: 1px solid var(--border); padding: 18px; }
+  .interactive-cases p { margin: 8px 0 12px; font-size: .9rem; }
+  @media (max-width: 700px) {
+    .solver-guide { width: calc(100% - 32px); }
+    .solver-row, .interactive-cases { grid-template-columns: 1fr; }
+    .solver-row { gap: 8px; }
+  }
+</style>
