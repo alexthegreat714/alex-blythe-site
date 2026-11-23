@@ -1,0 +1,606 @@
+{
+  "difference_definition": "CFD minus experiment; fixed measured Uref=44.2m/s for all normalization",
+  "assessment": "Experimental comparison completed; general accuracy and design validation not established",
+  "mesh_independence_established": false,
+  "experiment": {
+    "paper_doi": "10.2514/3.8890",
+    "reattachment_x_H": 6.26,
+    "reattachment_reported_plus_minus_H": 0.1,
+    "Re_H": 36000,
+    "H_m": 0.0127,
+    "Uref_m_s": 44.2
+  },
+  "runs": {
+    "coarse": {
+      "run_id": "run_1795392208_7e18b6b5",
+      "status": "completed",
+      "cells": 6800,
+      "iterations": 1500,
+      "inlet_speed_m_s": 41.62491363497,
+      "reference_speed_target_m_s": 44.2,
+      "reference_speed_actual_m_s": 44.1354710384,
+      "reference_speed_delta_percent": -0.14599312579186563,
+      "actual_Re_H": 35947.442474714924,
+      "reattachment_x_H": 6.146050685716548,
+      "reattachment_delta_H": -0.11394931428345156,
+      "reattachment_delta_mm": -1.4471562913998348,
+      "reattachment_delta_percent": -1.8202765859976267,
+      "reattachment_in_reported_experimental_interval": false,
+      "tail_iterations": [
+        1300,
+        1400,
+        1500
+      ],
+      "tail_reattachment_range_H": 1.3442580382161395e-10,
+      "lower_wall_yplus": {
+        "min": 0.138026370004,
+        "mean": 9.160422997402405,
+        "max": 23.1382462449
+      },
+      "tail_max_range_Cp": 2.826486544815765e-10,
+      "tail_max_range_Cf": 1.064678943965558e-12,
+      "tail_max_range_u_over_Uref": 1.2669687521338346e-10,
+      "upstream_boundary_layer_diagnostic": {
+        "delta99_over_H": 1.4935858535315067,
+        "theta_over_H": 0.16151084177684538,
+        "Re_theta": 5805.901693815934,
+        "definition": "Lower-half profile, y/H=1..5, normalized by computed center speed; trapezoidal quadrature",
+        "limitation": "Diagnostic, not an exact experimental Re_theta comparison; original full-paper uncertainty and integral definition were not audited"
+      },
+      "initialization_fields_mapped": [],
+      "initialization_primary_U_p_mapped": false,
+      "equivalent_iterations_on_same_grid": 1500,
+      "velocity": {
+        "-4": {
+          "u_over_Uref": {
+            "n": 17,
+            "bias": -0.005758092288652069,
+            "mae": 0.007976842646416685,
+            "rmse": 0.017117264258182482,
+            "max_abs": 0.06547533130323724
+          },
+          "v_over_Uref": {
+            "n": 17,
+            "bias": -0.0031415217215826612,
+            "mae": 0.003442735878827117,
+            "rmse": 0.004747502957315505,
+            "max_abs": 0.009528180012791359
+          }
+        },
+        "1": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.012928708670509574,
+            "mae": 0.025359597782884765,
+            "rmse": 0.04075424875036115,
+            "max_abs": 0.11522327760367557
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.008724306303007266,
+            "mae": 0.009039285976659681,
+            "rmse": 0.011885945654967717,
+            "max_abs": 0.028798442736507623
+          }
+        },
+        "4": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.01756168026288731,
+            "mae": 0.030405002635814252,
+            "rmse": 0.040334492442483785,
+            "max_abs": 0.08142355641177407
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.016425203008575417,
+            "mae": 0.016425203008575417,
+            "rmse": 0.021497498166868332,
+            "max_abs": 0.04861975291061433
+          }
+        },
+        "6": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.039630709286761566,
+            "mae": 0.039630709286761566,
+            "rmse": 0.05651238932627332,
+            "max_abs": 0.11097304070751315
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.02615306370118395,
+            "mae": 0.02615306370118395,
+            "rmse": 0.031132216015621106,
+            "max_abs": 0.0579922010531264
+          }
+        },
+        "10": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.03696243814819886,
+            "mae": 0.03696243814819886,
+            "rmse": 0.053351061215242225,
+            "max_abs": 0.11918529676818534
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.017279390248557625,
+            "mae": 0.017279390248557625,
+            "rmse": 0.01868349254279953,
+            "max_abs": 0.026688429516054796
+          }
+        }
+      },
+      "u_over_Uref_all_stations": {
+        "n": 129,
+        "bias": -0.02400175649008597,
+        "mae": 0.029780025309236808,
+        "rmse": 0.045422944306465055,
+        "max_abs": 0.11918529676818534
+      },
+      "v_over_Uref_all_stations": {
+        "n": 129,
+        "bias": 0.014472008543024606,
+        "mae": 0.015408069086196963,
+        "rmse": 0.020495967557806572,
+        "max_abs": 0.0579922010531264
+      },
+      "u_over_Uref_downstream_only": {
+        "n": 112,
+        "bias": -0.02677088409208933,
+        "mae": 0.03308943696341486,
+        "rmse": 0.04829018003682505,
+        "max_abs": 0.11918529676818534
+      },
+      "u_dimensional_rmse_m_s": 2.0076941383457556,
+      "Cp": {
+        "n": 33,
+        "bias": -0.00787340700803311,
+        "mae": 0.013193324546012103,
+        "rmse": 0.015995661654761968,
+        "max_abs": 0.03288958352521765,
+        "max_tail_range_at_experimental_positions": 1.8038784355134396e-10,
+        "alternative_zero_reference_x_H": 37.5,
+        "alternative_zero_reference_constant_shift": -0.000758018067901081,
+        "rmse_with_zero_at_37_5": 0.016382068022717494
+      },
+      "Cf": {
+        "n": 20,
+        "bias": -0.00015011065428121944,
+        "mae": 0.00022148884808242765,
+        "rmse": 0.0002913681662765435,
+        "max_abs": 0.0007457862416734229,
+        "max_tail_range_at_experimental_positions": 9.78244395211103e-13,
+        "within_reported_error_count": 7
+      },
+      "inlet_volume_flux_m3_s": -0.005370945856147,
+      "outlet_volume_flux_m3_s": 0.005370945856147,
+      "mass_imbalance_fraction": 0.0,
+      "last_initial_residuals": {
+        "Ux": 9.36038254756e-11,
+        "Uy": 3.90751730133e-10,
+        "p": 7.39111122675e-09,
+        "omega": 8.52780093875e-11,
+        "k": 9.58192965872e-11
+      },
+      "all_last_initial_residuals_below_1e_6": true,
+      "mesh_quality": {
+        "cell_count": 6800.0,
+        "max_aspect_ratio": 548.5897022,
+        "max_non_orthogonality": 0.0,
+        "max_skewness": 2.18547839493e-13
+      },
+      "pipeline_design_use_allowed": false
+    },
+    "medium": {
+      "run_id": "run_1795392358_617b6628",
+      "status": "completed",
+      "cells": 27200,
+      "iterations": 1800,
+      "inlet_speed_m_s": 41.62491363497,
+      "reference_speed_target_m_s": 44.2,
+      "reference_speed_actual_m_s": 44.4503504876,
+      "reference_speed_delta_percent": 0.5664038180995368,
+      "actual_Re_H": 36203.90537451583,
+      "reattachment_x_H": 6.278954147455563,
+      "reattachment_delta_H": 0.01895414745556323,
+      "reattachment_delta_mm": 0.24071767268565303,
+      "reattachment_delta_percent": 0.3027819082358274,
+      "reattachment_in_reported_experimental_interval": true,
+      "tail_iterations": [
+        1600,
+        1700,
+        1800
+      ],
+      "tail_reattachment_range_H": 2.505955695397688e-06,
+      "lower_wall_yplus": {
+        "min": 0.100321843491,
+        "mean": 4.7523201776246555,
+        "max": 13.2872953354
+      },
+      "tail_max_range_Cp": 1.6128998372148644e-05,
+      "tail_max_range_Cf": 7.090492111136177e-05,
+      "tail_max_range_u_over_Uref": 2.3372794117626494e-06,
+      "upstream_boundary_layer_diagnostic": {
+        "delta99_over_H": 1.5197933694986658,
+        "theta_over_H": 0.17678899095152928,
+        "Re_theta": 6400.451899665301,
+        "definition": "Lower-half profile, y/H=1..5, normalized by computed center speed; trapezoidal quadrature",
+        "limitation": "Diagnostic, not an exact experimental Re_theta comparison; original full-paper uncertainty and integral definition were not audited"
+      },
+      "initialization_fields_mapped": [
+        "p",
+        "nut",
+        "k",
+        "omega",
+        "yPlus",
+        "wallShearStress",
+        "U"
+      ],
+      "initialization_primary_U_p_mapped": true,
+      "equivalent_iterations_on_same_grid": 1800,
+      "velocity": {
+        "-4": {
+          "u_over_Uref": {
+            "n": 17,
+            "bias": -0.009532167820657925,
+            "mae": 0.013432251378348548,
+            "rmse": 0.021727991041287475,
+            "max_abs": 0.07607766791243165
+          },
+          "v_over_Uref": {
+            "n": 17,
+            "bias": -0.0031427750929735776,
+            "mae": 0.003434555206389105,
+            "rmse": 0.004721976062815101,
+            "max_abs": 0.009442391721108426
+          }
+        },
+        "1": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.020582593119575703,
+            "mae": 0.027422861406360976,
+            "rmse": 0.042868757454849304,
+            "max_abs": 0.140589505683538
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.011633714065430624,
+            "mae": 0.011633714065430624,
+            "rmse": 0.014029606378903874,
+            "max_abs": 0.029599094648875248
+          }
+        },
+        "4": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.023255927920410657,
+            "mae": 0.0350885189918105,
+            "rmse": 0.046798797173760655,
+            "max_abs": 0.10411012176723869
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.01783335942418467,
+            "mae": 0.01783335942418467,
+            "rmse": 0.023034157365491185,
+            "max_abs": 0.05170396242313971
+          }
+        },
+        "6": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.045695062065313374,
+            "mae": 0.048525909951728674,
+            "rmse": 0.06595626259777947,
+            "max_abs": 0.12871884411069373
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.026171857525447203,
+            "mae": 0.026171857525447203,
+            "rmse": 0.031334013290694775,
+            "max_abs": 0.05859356150878081
+          }
+        },
+        "10": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.04273990635629783,
+            "mae": 0.04369755466620049,
+            "rmse": 0.06148737453576723,
+            "max_abs": 0.13116879795890352
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.016698253651582194,
+            "mae": 0.016698253651582194,
+            "rmse": 0.018256615486984824,
+            "max_abs": 0.026546614715045064
+          }
+        }
+      },
+      "u_over_Uref_all_stations": {
+        "n": 129,
+        "bias": -0.029966701999038118,
+        "mae": 0.03535599948746313,
+        "rmse": 0.051974332925400143,
+        "max_abs": 0.140589505683538
+      },
+      "v_over_Uref_all_stations": {
+        "n": 129,
+        "bias": 0.015286930186709305,
+        "mae": 0.01615371014864082,
+        "rmse": 0.021125280866254044,
+        "max_abs": 0.05859356150878081
+      },
+      "u_over_Uref_downstream_only": {
+        "n": 112,
+        "bias": -0.0330683723653994,
+        "mae": 0.03868371125402516,
+        "rmse": 0.05513343719060704,
+        "max_abs": 0.140589505683538
+      },
+      "u_dimensional_rmse_m_s": 2.2972655153026866,
+      "Cp": {
+        "n": 33,
+        "bias": -0.010034985945701212,
+        "mae": 0.013615472235900627,
+        "rmse": 0.016072856867351378,
+        "max_abs": 0.026599907125546968,
+        "max_tail_range_at_experimental_positions": 3.5204632272411995e-06,
+        "alternative_zero_reference_x_H": 37.5,
+        "alternative_zero_reference_constant_shift": -0.0006588033340579062,
+        "rmse_with_zero_at_37_5": 0.01649220767841087
+      },
+      "Cf": {
+        "n": 20,
+        "bias": -0.00015191619351627574,
+        "mae": 0.00031574019290110265,
+        "rmse": 0.00037341451212407565,
+        "max_abs": 0.0006656502890115403,
+        "max_tail_range_at_experimental_positions": 2.9538330130387397e-08,
+        "within_reported_error_count": 4
+      },
+      "inlet_volume_flux_m3_s": -0.005370945856151,
+      "outlet_volume_flux_m3_s": 0.005370945858983,
+      "mass_imbalance_fraction": 5.272814761402668e-10,
+      "last_initial_residuals": {
+        "Ux": 6.4641175984e-06,
+        "Uy": 2.03621894171e-06,
+        "p": 0.000573540517188,
+        "omega": 2.08852605022e-05,
+        "k": 0.0001742549031
+      },
+      "all_last_initial_residuals_below_1e_6": false,
+      "mesh_quality": {
+        "cell_count": 27200.0,
+        "max_aspect_ratio": 548.5897022,
+        "max_non_orthogonality": 0.0,
+        "max_skewness": 2.55558811962e-13
+      },
+      "pipeline_design_use_allowed": false
+    },
+    "fine": {
+      "run_id": "run_1795394200_d00ca837",
+      "status": "completed",
+      "cells": 108800,
+      "iterations": 1500,
+      "inlet_speed_m_s": 41.62491363497,
+      "reference_speed_target_m_s": 44.2,
+      "reference_speed_actual_m_s": 44.0869419249,
+      "reference_speed_delta_percent": -0.2557875002262455,
+      "actual_Re_H": 35907.916499918545,
+      "reattachment_x_H": 6.440530466773053,
+      "reattachment_delta_H": 0.18053046677305318,
+      "reattachment_delta_mm": 2.292736928017775,
+      "reattachment_delta_percent": 2.88387327113504,
+      "reattachment_in_reported_experimental_interval": false,
+      "tail_iterations": [
+        1300,
+        1400,
+        1500
+      ],
+      "tail_reattachment_range_H": 0.0012875852178071412,
+      "lower_wall_yplus": {
+        "min": 0.00477745222252,
+        "mean": 2.2276665819533807,
+        "max": 7.64249456422
+      },
+      "tail_max_range_Cp": 0.0007120934002761113,
+      "tail_max_range_Cf": 0.0004172375503470431,
+      "tail_max_range_u_over_Uref": 0.0017540198144796355,
+      "upstream_boundary_layer_diagnostic": {
+        "delta99_over_H": 1.3801869692469895,
+        "theta_over_H": 0.15531390414054358,
+        "Re_theta": 5576.998701154993,
+        "definition": "Lower-half profile, y/H=1..5, normalized by computed center speed; trapezoidal quadrature",
+        "limitation": "Diagnostic, not an exact experimental Re_theta comparison; original full-paper uncertainty and integral definition were not audited"
+      },
+      "initialization_fields_mapped": [
+        "p",
+        "nut",
+        "k",
+        "omega",
+        "yPlus",
+        "wallShearStress",
+        "U"
+      ],
+      "initialization_primary_U_p_mapped": true,
+      "equivalent_iterations_on_same_grid": 3500.0,
+      "same_grid_parent_run_id": "run_1795392589_f3e46b5a",
+      "same_grid_parent_source_iteration": 2000.0,
+      "velocity": {
+        "-4": {
+          "u_over_Uref": {
+            "n": 17,
+            "bias": -0.002799014210125386,
+            "mae": 0.008321917041720923,
+            "rmse": 0.016268858909718586,
+            "max_abs": 0.06268132789151704
+          },
+          "v_over_Uref": {
+            "n": 17,
+            "bias": -0.00302111407369805,
+            "mae": 0.0033325248724896117,
+            "rmse": 0.0046311046770063655,
+            "max_abs": 0.009348211370182168
+          }
+        },
+        "1": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.017634502602720006,
+            "mae": 0.021731251775417383,
+            "rmse": 0.03981512468645949,
+            "max_abs": 0.12986699010462557
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.013004850250363811,
+            "mae": 0.013004850250363811,
+            "rmse": 0.015633972177932037,
+            "max_abs": 0.03151896004476194
+          }
+        },
+        "4": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.020825997081073112,
+            "mae": 0.02850655827431064,
+            "rmse": 0.04441720751735948,
+            "max_abs": 0.11659082255756073
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.018337714262541417,
+            "mae": 0.018337714262541417,
+            "rmse": 0.0238641414753826,
+            "max_abs": 0.05400991707505942
+          }
+        },
+        "6": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.04230089742948101,
+            "mae": 0.04300343955289986,
+            "rmse": 0.06818805300496643,
+            "max_abs": 0.13992910612156403
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.024192835442862746,
+            "mae": 0.024192835442862746,
+            "rmse": 0.029694745975638488,
+            "max_abs": 0.057594603108125676
+          }
+        },
+        "10": {
+          "u_over_Uref": {
+            "n": 28,
+            "bias": -0.03657623972056307,
+            "mae": 0.03668124733831384,
+            "rmse": 0.0576743048281396,
+            "max_abs": 0.1324987157296666
+          },
+          "v_over_Uref": {
+            "n": 28,
+            "bias": 0.01605636817692332,
+            "mae": 0.01605636817692332,
+            "rmse": 0.017635582611818506,
+            "max_abs": 0.025797064860498403
+          }
+        }
+      },
+      "u_over_Uref_all_stations": {
+        "n": 129,
+        "bias": -0.02583749668929902,
+        "mae": 0.02929691863609011,
+        "rmse": 0.050382521712678194,
+        "max_abs": 0.13992910612156403
+      },
+      "v_over_Uref_all_stations": {
+        "n": 129,
+        "bias": 0.015141167197383643,
+        "mae": 0.015978468453857985,
+        "rmse": 0.020937796863277364,
+        "max_abs": 0.057594603108125676
+      },
+      "u_over_Uref_downstream_only": {
+        "n": 112,
+        "bias": -0.029334409208459304,
+        "mae": 0.032480624235235435,
+        "rmse": 0.053698390309802974,
+        "max_abs": 0.13992910612156403
+      },
+      "u_dimensional_rmse_m_s": 2.226907459700376,
+      "Cp": {
+        "n": 33,
+        "bias": -0.011155059751037458,
+        "mae": 0.012715326221143453,
+        "rmse": 0.01540905783305079,
+        "max_abs": 0.02852510439016616,
+        "max_tail_range_at_experimental_positions": 0.0007109238858785429,
+        "alternative_zero_reference_x_H": 37.5,
+        "alternative_zero_reference_constant_shift": -0.0008696034509906028,
+        "rmse_with_zero_at_37_5": 0.016049804683400223
+      },
+      "Cf": {
+        "n": 20,
+        "bias": -0.00021428156971113138,
+        "mae": 0.00022884239694941468,
+        "rmse": 0.00027648510858991146,
+        "max_abs": 0.0006262575056040889,
+        "max_tail_range_at_experimental_positions": 1.3595725613083868e-05,
+        "within_reported_error_count": 5
+      },
+      "inlet_volume_flux_m3_s": -0.005370945856151,
+      "outlet_volume_flux_m3_s": 0.005370945942886,
+      "mass_imbalance_fraction": 1.6148924711105924e-08,
+      "last_initial_residuals": {
+        "Ux": 4.7629751029e-06,
+        "Uy": 6.35041338919e-06,
+        "p": 0.00102216930654,
+        "omega": 5.23177841973e-06,
+        "k": 8.94123261737e-05
+      },
+      "all_last_initial_residuals_below_1e_6": false,
+      "mesh_quality": {
+        "cell_count": 108800.0,
+        "max_aspect_ratio": 548.5897022,
+        "max_non_orthogonality": 0.0,
+        "max_skewness": 4.58951892123e-13
+      },
+      "pipeline_design_use_allowed": false
+    }
+  },
+  "mesh_sensitivity": {
+    "reattachment_coarse_to_medium_H": 0.1329034617390148,
+    "reattachment_medium_to_fine_H": 0.16157631931748995,
+    "reattachment_medium_to_fine_percent_of_fine": 2.508742411064872,
+    "note": "Observed differences, not a certified uncertainty interval or automatic mesh-independence pass.",
+    "Cp_fine_minus_medium_at_experimental_stations": {
+      "n": 33,
+      "bias": -0.0011200738053362461,
+      "mae": 0.0028260226218300745,
+      "rmse": 0.00420917173454401,
+      "max_abs": 0.011204591625385785
+    },
+    "Cf_fine_minus_medium_at_experimental_stations": {
+      "n": 20,
+      "bias": -6.236537619485565e-05,
+      "mae": 0.00012951285615356845,
+      "rmse": 0.00020578911486165296,
+      "max_abs": 0.0005079106740227268
+    },
+    "u_over_Uref_fine_minus_medium_at_experimental_points": {
+      "n": 129,
+      "bias": 0.004129205309739091,
+      "mae": 0.012923586844244016,
+      "rmse": 0.014642403428764108,
+      "max_abs": 0.03911916088247734
+    }
+  }
+}

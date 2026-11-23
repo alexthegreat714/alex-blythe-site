@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "All downloaded source SHA256 digests match",
+    "coarse: all signed deltas and RMSEs recompute; 129 velocity locations, 33 Cp, 20 Cf; independent raw-stress root agrees",
+    "medium: all signed deltas and RMSEs recompute; 129 velocity locations, 33 Cp, 20 Cf; independent raw-stress root agrees",
+    "fine: all signed deltas and RMSEs recompute; 129 velocity locations, 33 Cp, 20 Cf; independent raw-stress root agrees"
+  ]
+}

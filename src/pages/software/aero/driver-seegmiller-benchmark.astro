@@ -1,0 +1,109 @@
+---
+import SoftwareLayout from '../../../layouts/SoftwareLayout.astro';
+import data from '../../../../public/demos/aero/driver-seegmiller-2026-11-22/comparison.json';
+import followup from '../../../../public/demos/aero/driver-seegmiller-2026-11-22/cf-bias-followup.json';
+import metadata from '../../../../public/demos/aero/driver-seegmiller-2026-11-22/benchmark-metadata.json';
+const base = '/demos/aero/driver-seegmiller-2026-11-22/';
+const fine = data.runs.fine;
+const signed = (v: number, places = 4) => `${v >= 0 ? '+' : ''}${v.toFixed(places)}`;
+const meshes = Object.entries(data.runs);
+const examples = followup.points.filter(p => [1.804, 20.196, 35.994].includes(p.x_H));
+---
+
+<SoftwareLayout title="Aero CFD vs experiment · Driver–Seegmiller benchmark"
+  description="Three real OpenFOAM meshes compared with peer-reviewed experimental data. Inspect the measured deltas, the skin-friction misses, AI attribution and reproducible solver evidence."
+  canonicalPath="/software/aero/driver-seegmiller-benchmark/" hideHeader>
+  <article class="benchmark">
+    <nav class="bench-nav" aria-label="Benchmark navigation"><a href="/software/aero/">Aero overview</a><a href="/software/aero/cfd-solvers/">CFD solver guide</a><a href="#evidence">Data and reproducibility</a></nav>
+    <header class="hero">
+      <div><p class="eyebrow">EXPERIMENTAL CFD COMPARISON · RUN 22 NOV 2026</p>
+        <h1>A real experiment.<br/>A result we can question.</h1>
+        <p class="lede">Aero’s OpenFOAM pipeline meets the Driver–Seegmiller backward-facing step: three meshes, measured velocity profiles, wall pressure and skin friction.</p>
+        <p class="attribution">AI workflow assistance: <strong>{metadata.ai_workflow_model}</strong> <span>(owner-reported model label)</span></p>
+        <div class="actions"><a class="primary" href="#results">Inspect the deltas</a><a href={base+'reproducibility.zip'} download>Download cases and evidence</a></div>
+      </div>
+      <aside class="headline-result" aria-label="Finest-mesh reattachment result"><p>REATTACHMENT DELTA</p><strong>{signed(fine.reattachment_delta_percent, 2)}<span>%</span></strong><p>{fine.reattachment_x_H.toFixed(4)}H predicted<br/>6.26 ± 0.10H measured</p><div class="result-status">Comparison complete<br/><b>Validation not established</b></div></aside>
+    </header>
+    <div class="disposition"><strong>Numerical qualification remains open.</strong> Refined runs missed the 10⁻⁶ initial-residual target, and mesh independence is unproven. The finest result lies outside the reported reattachment interval. These are provisional comparison results.</div>
+    <p class="publication">Published <time datetime="2026-11-23">23 November 2026</time> by Alex Blythe. The reference experiment is peer-reviewed; this Aero execution report is not. This is a retained OpenFOAM run, separate from Aero’s Excel and browser demonstrations.</p>
+
+    <section id="results" aria-labelledby="results-title">
+      <p class="eyebrow">MEASURED DIFFERENCES</p><h2 id="results-title">The finest mesh, against the experiment.</h2>
+      <div class="metrics">
+        <div><span>Streamwise velocity RMSE</span><strong>{(fine.u_over_Uref_all_stations.rmse*100).toFixed(2)}%</strong><small>of Uref · {fine.u_dimensional_rmse_m_s.toFixed(2)} m/s · 129 locations</small></div>
+        <div><span>Pressure coefficient RMSE</span><strong>{fine.Cp.rmse.toFixed(5)}</strong><small>33 lower-wall measurements</small></div>
+        <div><span>Skin-friction coefficient RMSE</span><strong>{fine.Cf.rmse.toFixed(7)}</strong><small>20 lower-wall measurements</small></div>
+      </div>
+      <div class="table-wrap"><table><caption>Same inputs and schemes; independently generated nested orthogonal meshes.</caption><thead><tr><th scope="col">Mesh / cells</th><th scope="col">Reattachment x/H</th><th scope="col">CFD − experiment</th><th scope="col">Velocity RMSE / Uref</th><th scope="col">Initial-residual target</th></tr></thead><tbody>{meshes.map(([name, r]) => <tr><th scope="row">{name} / {r.cells.toLocaleString('en-US')}</th><td>{r.reattachment_x_H.toFixed(4)}</td><td>{signed(r.reattachment_delta_H)}H · {signed(r.reattachment_delta_percent, 2)}%</td><td>{(r.u_over_Uref_all_stations.rmse*100).toFixed(2)}%</td><td>{r.all_last_initial_residuals_below_1e_6 ? 'Met' : 'Not met'}</td></tr>)}</tbody></table></div>
+      <p>Fine-grid reattachment is {fine.reattachment_delta_mm.toFixed(2)} mm longer than measured. Medium-to-fine reattachment changes by {data.mesh_sensitivity.reattachment_medium_to_fine_percent_of_fine.toFixed(2)}% of the fine result. The grid increments do not establish an asymptotic trend or a defensible extrapolated uncertainty bound.</p>
+      <figure><img src={base+'velocity_comparison.png'} width="2520" height="900" alt="Measured and calculated velocity profiles on three meshes at five streamwise positions"/><figcaption>The plot enlarges the lower-wall region. Statistics use all published points; downstream-only velocity RMSE is {(fine.u_over_Uref_downstream_only.rmse*100).toFixed(2)}% of Uref across 112 measurements.</figcaption></figure>
+    </section>
+
+    <section id="skin-friction" aria-labelledby="skin-title">
+      <p class="eyebrow">THE FAILURE PATTERN</p><h2 id="skin-title">Why did only 5 of 20 friction points agree?</h2>
+      <p class="lede">Every upstream point falls inside its reported error bar. Downstream, only 2 of 17 do—and all 17 predictions fall below the measured coefficient.</p>
+      <figure><img src={base+'wall_comparison.png'} width="2160" height="864" loading="lazy" alt="Experimental wall pressure and skin friction compared with coarse, medium and fine CFD predictions; most downstream friction predictions are low"/><figcaption>Bars show the experimental Cf file’s listed errors. Their confidence level is unspecified. Agreement means |Cf CFD − Cf experiment| ≤ listed error; no missing experimental uncertainty was invented.</figcaption></figure>
+      <div class="table-wrap"><table><caption>Selected fine-grid misses. Coefficients are dimensionless.</caption><thead><tr><th scope="col">x/H</th><th scope="col">Measured Cf</th><th scope="col">Aero Cf</th><th scope="col">Reported error ±</th><th scope="col">NASA CFL3D SSTm Cf</th></tr></thead><tbody>{examples.map(p => <tr><th scope="row">{p.x_H.toFixed(3)}</th><td>{p.experiment.toFixed(6)}</td><td>{p.our_Cf.toFixed(6)}</td><td>{p.experimental_error.toFixed(6)}</td><td>{p.NASA_SST_Cf.toFixed(6)}</td></tr>)}</tbody></table></div>
+      <div class="findings">
+        <div><h3>Persistent downstream bias</h3><p>The calculation gives more-negative wall shear in the separation region and too little positive friction after reattachment. Near x/H = 36, friction is about 21% low against a listed experimental error of ±8%.</p></div>
+        <div><h3>A model contribution is plausible</h3><p>Interpolating NASA’s independent CFL3D SSTm reference onto these same 20 measurements gives {followup.NASA_related_SST_reference_pass_count}/20 inside the listed errors. It shows a related bias. That reference uses another implementation and a low-Mach, quasi-steady compressible setup; it is supporting evidence, not an identical controlled test of our OpenFOAM model.</p></div>
+        <div><h3>Numerical error is still present</h3><p>Mesh and near-wall treatment have not been isolated. At the measured locations, the largest final three-snapshot Cf range is {fine.Cf.max_tail_range_at_experimental_positions.toExponential(3)}, much smaller than several observed misses. This supports persistent bias, while the unmet residual target prevents a complete numerical qualification.</p></div>
+      </div>
+      <p>Controlled mesh, near-wall and inflow comparisons are needed to separate these effects. This benchmark does not establish that SST alone caused all the error.</p>
+    </section>
+
+    <section id="method" aria-labelledby="method-title"><p class="eyebrow">REPRODUCIBLE SETUP</p><h2 id="method-title">What actually ran.</h2>
+      <div class="table-wrap"><table><tbody>
+        <tr><th scope="row">Reference</th><td>Driver &amp; Seegmiller (1985), AIAA Journal 23(2), 163–171; zero upper-wall divergence case; NASA-curated experimental data.</td></tr>
+        <tr><th scope="row">Operating point</th><td>H = 0.0127 m; Uref = 44.2 m/s; corrected ReH = 36,000; ν = 1.55927778 × 10⁻⁵ m²/s.</td></tr>
+        <tr><th scope="row">Domain</th><td>x/H = −130…50; upstream height 8H, downstream height 9H; viscous walls begin at −110H; one empty spanwise cell.</td></tr>
+        <tr><th scope="row">Execution</th><td>OpenFOAM Foundation 10, build 10-c4cf895ad8fa; CPU; simpleFoam; kOmegaSST; incompressible steady RANS.</td></tr>
+        <tr><th scope="row">Wall treatment</th><td>Spalding nut wall function and omegaWallFunction. Fine lower-wall sampled y+ mean {fine.lower_wall_yplus.mean.toFixed(2)}, maximum {fine.lower_wall_yplus.max.toFixed(2)}; wall-resolution suitability is not automatically established by these values.</td></tr>
+        <tr><th scope="row">Inlet turbulence</th><td>0.061% intensity; νt/ν = 0.009, following NASA’s SST comparison convention.</td></tr>
+        <tr><th scope="row">Numerics</th><td>Limited linear gradients; linearUpwind velocity; upwind k and ω; fixed schemes and relaxation across the three meshes.</td></tr>
+        <tr><th scope="row">Iterations</th><td>Coarse 1,500; medium 1,800; fine 2,000 followed by a 1,500-iteration continuation, for 3,500 total. SIMPLE iterations are not physical seconds.</td></tr>
+      </tbody></table></div>
+      <p>The inlet amplitude was conditioned once using an upstream-only run, then fixed at 41.62491363497 m/s for all meshes. No downstream measurement was fitted. The fine run’s actual upstream reference speed is {fine.reference_speed_actual_m_s.toFixed(5)} m/s, {(fine.reference_speed_delta_percent).toFixed(3)}% from the target. Remaining profile-shape differences contribute uncertainty.</p>
+      <p>All differences are CFD minus experiment. Velocity normalization uses the fixed measured Uref, not a per-mesh fitted denominator. Cp = 2(p − p at 40H)/Uref² with kinematic pressure; Cf = −2τx/Uref² using OpenFOAM’s inward-normal wall-stress convention. Linear interpolation maps CFD samples onto measurement coordinates. Reattachment is the Cf zero crossing after the main reverse-flow minimum.</p>
+      <p>RMSE is unweighted over published points. The report compares mean u/v, lower-wall Cp/Cf and reattachment; it does not compare the published Reynolds stresses or triple moments. Compressibility, three-dimensional effects and full experimental uncertainty are not separately quantified. The original article’s full text was unavailable from NTRS; the primary metadata, NASA case instructions and numerical tables were reviewed.</p>
+    </section>
+
+    <section aria-labelledby="convergence-title"><p class="eyebrow">SETTLING AND OPEN GATES</p><h2 id="convergence-title">A completed run is a separate claim from validation.</h2>
+      <figure><img src={base+'fine_convergence.png'} width="1620" height="720" loading="lazy" alt="Fine-grid reattachment history approaching a plateau above the experimental interval, with the checkpoint continuation marked"/><figcaption>Over the final three snapshots, reattachment ranges by {fine.tail_reattachment_range_H.toFixed(6)}H. The continuation retained the same physics and numerical settings.</figcaption></figure>
+      <p>The initial fine warm start transferred only wall diagnostics because the medium run’s latest retained time had no complete U/p fields. Its primary fields therefore started uniformly. The continuation used the complete fine-grid checkpoint at iteration 2,000. A guard now requires complete solved fields for future mapped starts. The medium comparison retains valid sampled data, although its final complete volume fields were not collected.</p>
+      <p>A necessary imported-case fix preserved the supplied polyMesh and still ran checkMesh. All three meshes passed checkMesh; maximum non-orthogonality was zero. All 37 existing pipeline tests passed, and an independent arithmetic audit recomputed the pointwise differences, RMSEs and raw-stress reattachment root. Those checks establish execution and arithmetic evidence, not physical accuracy.</p>
+      <p>Fine final initial residuals include p = {fine.last_initial_residuals.p.toExponential(3)} and k = {fine.last_initial_residuals.k.toExponential(3)}, above the selected 10⁻⁶ criterion. Fine inlet/outlet flux imbalance is {fine.mass_imbalance_fraction.toExponential(3)} as a fraction of inlet flow. Small imbalance does not establish solution accuracy.</p>
+    </section>
+
+    <section id="attribution" aria-labelledby="attribution-title"><p class="eyebrow">AI AND NUMERICAL PROVENANCE</p><h2 id="attribution-title">OpenAI 6.1 High assisted the workflow.</h2>
+      <p><strong>Model attribution: OpenAI 6.1 High</strong>, as supplied by project owner Alex Blythe. The retained runtime artifacts do not independently capture the model identity.</p>
+      <p>The model assisted case preparation, Aero pipeline orchestration, postprocessing, diagnosis and documentation. <strong>OpenFOAM produced the numerical CFD predictions.</strong> This is one AI-assisted engineering workflow execution, not a controlled comparison of language models or evidence that an LLM itself solved the flow equations.</p>
+    </section>
+
+    <section id="evidence" aria-labelledby="evidence-title"><p class="eyebrow">OPEN EVIDENCE</p><h2 id="evidence-title">Read the values. Replay the cases.</h2>
+      <div class="downloads">
+        <a class="primary" href={base+'reproducibility.zip'} download>Complete public reproducibility bundle</a>
+        <a href={base+'pointwise_deltas.csv'} download>933 pointwise deltas · CSV</a>
+        <a href={base+'comparison.json'}>Full comparison · JSON</a>
+        <a href={base+'cf-bias-followup.json'}>Skin-friction follow-up</a>
+        <a href={base+'residual_history.csv'} download>Equation residual histories</a>
+        <a href={base+'fine_convergence.csv'} download>Fine-grid convergence samples</a>
+        <a href={base+'arithmetic_audit.json'}>Arithmetic audit</a>
+        <a href={base+'benchmark-metadata.json'}>Model attribution and scope</a>
+        <a href={base+'manifest.json'}>Public asset SHA-256 manifest</a>
+      </div>
+      <p>The bundle contains retained case inputs, mesh files, solver logs, sampled results, complete retained fine-grid fields, public reference data and comparison scripts. Run checkMesh and simpleFoam on a writable copy of each case_input. The fine checkpoint is already mapped into its starting fields. The README records the 2,000 + 1,500 continuation and the medium-field retention limitation.</p>
+      <p>The package is restricted to this public experiment. Private Aero toolkit modules, credentials, employer information and live-service configuration are excluded. Hashes establish artifact identity, not scientific correctness.</p>
+      <h3>Primary sources</h3><ul>
+        <li><a href="https://doi.org/10.2514/3.8890">Driver &amp; Seegmiller, “Features of a Reattaching Turbulent Shear Layer in Divergent Channel Flow,” AIAA Journal (1985)</a>; <a href="https://ntrs.nasa.gov/citations/19850039701">NASA publication record</a>.</li>
+        <li><a href="https://tmbwg.github.io/turbmodels/backstep_val.html">NASA experimental case and measurements</a>; <a href="https://tmbwg.github.io/turbmodels/backstep_grids.html">boundary geometry and grids</a>.</li>
+        <li><a href="https://tmbwg.github.io/turbmodels/backstep_val_sst.html">NASA SSTm reference and steady-convergence qualification</a>; <a href="https://www.grc.nasa.gov/WWW/wind/valid/backstep/backstep01/backstep01.html">NASA dimensional operating point</a>.</li>
+      </ul>
+    </section>
+    <footer>Public experiment comparison · Aero · Alex Blythe · Published 23 November 2026</footer>
+  </article>
+</SoftwareLayout>
+
+<style>
+  .benchmark{max-width:1200px;margin:0 auto;padding:22px 28px 70px}.bench-nav{display:flex;flex-wrap:wrap;gap:22px;padding:14px 0 22px;border-bottom:1px solid var(--border);font-size:14px}.benchmark a{color:var(--accent);text-underline-offset:.2em}.hero{display:grid;grid-template-columns:1fr 300px;gap:55px;padding:55px 0 35px;align-items:center}.eyebrow{font-size:14px;font-weight:750;letter-spacing:.09em;color:var(--accent)}h1{font-size:clamp(36px,5.2vw,65px);line-height:1.05;letter-spacing:-.045em;margin:15px 0 24px}h2{font-size:clamp(26px,3.2vw,40px);line-height:1.15;letter-spacing:-.03em;margin:8px 0 24px}h3{font-size:20px;line-height:1.3}p,li{line-height:1.7;color:var(--muted);font-size:16px}.lede{font-size:20px;line-height:1.6;max-width:850px}.attribution{font-size:14px}.attribution strong{color:var(--text)}.attribution span{display:inline-block}.actions{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:26px}.actions a,.downloads a{font-size:15px;font-weight:700}.benchmark .primary{background:var(--accent);color:var(--page);padding:13px 18px;display:inline-block;text-decoration:none}.headline-result{background:#123c42;color:#edfaf6;padding:28px;border-top:5px solid #69d9b0}.headline-result p{color:#cfebe2;font-size:15px;line-height:1.6}.headline-result>strong{font-size:70px;line-height:1.1;letter-spacing:-.06em}.headline-result>strong span{font-size:36px;margin-left:4px}.result-status{font-size:14px;line-height:1.65;border-top:1px solid #487075;padding-top:16px}.result-status b{color:#ffe2a2}.disposition{border-left:4px solid var(--accent);padding:18px 22px;background:var(--surface);font-size:16px;line-height:1.7}.publication{font-size:14px;margin:20px 0 0}section{padding:44px 0;border-bottom:1px solid var(--border);scroll-margin-top:25px}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:30px 0}.metrics>div{padding:24px 0;border-top:2px solid var(--accent)}.metrics span,.metrics small{display:block;font-size:14px;line-height:1.5;color:var(--muted)}.metrics strong{display:block;font-size:clamp(28px,3.1vw,42px);letter-spacing:-.04em;margin:10px 0;color:var(--text)}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}caption{text-align:left;font-size:14px;color:var(--muted);margin:0 0 12px}th,td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--border);vertical-align:top}thead{background:var(--surface)}tbody th{font-weight:650}figure{margin:28px 0}img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--border)}figcaption{font-size:14px;color:var(--muted);line-height:1.6;margin-top:12px}.findings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.findings h3{color:var(--text);margin-bottom:8px}.downloads{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin:28px 0}footer{padding-top:26px;font-size:14px;color:var(--muted)}strong{color:var(--text)}.headline-result strong{color:#edfaf6}li{margin-bottom:12px}@media(max-width:850px){.hero{grid-template-columns:1fr;gap:20px;padding-top:32px}.headline-result{max-width:430px}.findings{grid-template-columns:1fr;gap:8px}}@media(max-width:600px){.benchmark{padding:15px 18px 45px}.metrics{grid-template-columns:1fr;gap:0}.metrics>div{padding:18px 0}.hero{gap:16px}section{padding:32px 0}th,td{padding:11px 9px}table{min-width:600px}#method table{min-width:0}.bench-nav{gap:14px}.lede{font-size:18px}.headline-result>strong{font-size:64px}}
+</style>

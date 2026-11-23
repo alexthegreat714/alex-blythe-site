@@ -54,6 +54,7 @@ const solvers = [
     <section id="openfoam" aria-labelledby="openfoam-title">
       <h2 id="openfoam-title">OpenFOAM in the pipeline</h2>
       <p class="lede">Aero Blue’s nozzle workflow runs <code>rhoSimpleFoam</code> in its Linux worker. The guided page shows the recorded result. The wider Aero studies use the solver appropriate to each case.</p>
+      <p><a href="/software/aero/driver-seegmiller-benchmark/">Read the simpleFoam + SST experimental benchmark: measured deltas, convergence limits and retained cases.</a></p>
       <div class="solver-list">
         {solvers.map(({ name, role, physics, example, href, link }) => (
           <article class="solver-row">

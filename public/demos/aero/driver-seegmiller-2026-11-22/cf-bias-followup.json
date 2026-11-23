@@ -1,0 +1,173 @@
+{
+  "source_url": "https://tmbwg.github.io/turbmodels/Backstep_validation/backstep_cfl3d_cf_sst.dat",
+  "source_sha256": "04709a5572afd5d8141af11082ed0e36abef00b4aed574ea4cef4244cb4c7a5c",
+  "criterion": "abs(Cf_CFD - Cf_experiment) <= experimental error column; linear interpolation in x/H",
+  "our_upstream_pass": 3,
+  "our_downstream_pass": 2,
+  "our_downstream_below_measured_count": 17,
+  "NASA_related_SST_reference_pass_count": 7,
+  "NASA_related_SST_reference_RMSE": 0.00023065660470070052,
+  "caveat": "NASA CFL3D SSTm is a separate compressible, quasi-steady implementation at low Mach; it is supporting evidence for model bias, not an identical controlled rerun of our OpenFOAM setup. Experimental error confidence level is not specified in the data file.",
+  "points": [
+    {
+      "x_H": -3.956,
+      "experiment": 0.00288,
+      "experimental_error": 0.000202,
+      "our_Cf": 0.0028901127459170363,
+      "NASA_SST_Cf": 0.002933848974098203,
+      "our_last_three_snapshot_range": 3.994484945027063e-08
+    },
+    {
+      "x_H": -1.804,
+      "experiment": 0.00285,
+      "experimental_error": 0.000171,
+      "our_Cf": 0.002985495526465797,
+      "NASA_SST_Cf": 0.0030260848636080515,
+      "our_last_three_snapshot_range": 8.407047836838863e-08
+    },
+    {
+      "x_H": -0.804,
+      "experiment": 0.00311,
+      "experimental_error": 0.000311,
+      "our_Cf": 0.003096869761203947,
+      "NASA_SST_Cf": 0.0031390044467298787,
+      "our_last_three_snapshot_range": 1.0967080796850728e-07
+    },
+    {
+      "x_H": 0.484,
+      "experiment": 9e-05,
+      "experimental_error": 1.4e-05,
+      "our_Cf": 2.8000384141123716e-05,
+      "NASA_SST_Cf": 2.8418944272288895e-05,
+      "our_last_three_snapshot_range": 4.814390443352107e-07
+    },
+    {
+      "x_H": 1.804,
+      "experiment": -0.00011,
+      "experimental_error": 1.9e-05,
+      "our_Cf": -0.0005185860387838929,
+      "NASA_SST_Cf": -0.0003656161475737414,
+      "our_last_three_snapshot_range": 4.0245888052194666e-08
+    },
+    {
+      "x_H": 2.804,
+      "experiment": -0.00052,
+      "experimental_error": 0.000109,
+      "our_Cf": -0.001146257505604089,
+      "NASA_SST_Cf": -0.0010539025126009083,
+      "our_last_three_snapshot_range": 3.121785069101334e-07
+    },
+    {
+      "x_H": 3.804,
+      "experiment": -0.00102,
+      "experimental_error": 0.000163,
+      "our_Cf": -0.0013260329868341359,
+      "NASA_SST_Cf": -0.0014287626394455832,
+      "our_last_three_snapshot_range": 2.2477804795164452e-07
+    },
+    {
+      "x_H": 4.804,
+      "experiment": -0.00082,
+      "experimental_error": 0.000123,
+      "our_Cf": -0.0010104969601148974,
+      "NASA_SST_Cf": -0.0012032537569810688,
+      "our_last_three_snapshot_range": 3.5980565721012263e-07
+    },
+    {
+      "x_H": 5.882,
+      "experiment": -0.00022,
+      "experimental_error": 6.2e-05,
+      "our_Cf": -0.00035334716270864284,
+      "NASA_SST_Cf": -0.0004824673435669796,
+      "our_last_three_snapshot_range": 2.890534702614184e-07
+    },
+    {
+      "x_H": 7.09,
+      "experiment": 0.00045,
+      "experimental_error": 0.000167,
+      "our_Cf": 0.000365337757205595,
+      "NASA_SST_Cf": 0.00035473309413382544,
+      "our_last_three_snapshot_range": 1.3060064211817463e-06
+    },
+    {
+      "x_H": 7.978,
+      "experiment": 0.00102,
+      "experimental_error": 0.000122,
+      "our_Cf": 0.0007568698880683538,
+      "NASA_SST_Cf": 0.0007959483668055476,
+      "our_last_three_snapshot_range": 1.842583160805507e-06
+    },
+    {
+      "x_H": 9.196,
+      "experiment": 0.00118,
+      "experimental_error": 0.000106,
+      "our_Cf": 0.0011089842708264792,
+      "NASA_SST_Cf": 0.00120655662688569,
+      "our_last_three_snapshot_range": 2.279850571918667e-06
+    },
+    {
+      "x_H": 11.196,
+      "experiment": 0.00154,
+      "experimental_error": 0.000123,
+      "our_Cf": 0.0014025915507864081,
+      "NASA_SST_Cf": 0.0015212495853100876,
+      "our_last_three_snapshot_range": 2.785824247817075e-06
+    },
+    {
+      "x_H": 13.196,
+      "experiment": 0.00173,
+      "experimental_error": 0.000121,
+      "our_Cf": 0.001536185344812358,
+      "NASA_SST_Cf": 0.0016617355754491919,
+      "our_last_three_snapshot_range": 3.592787657181193e-06
+    },
+    {
+      "x_H": 16.196,
+      "experiment": 0.00191,
+      "experimental_error": 0.000134,
+      "our_Cf": 0.0016346222062642176,
+      "NASA_SST_Cf": 0.0017653206677071722,
+      "our_last_three_snapshot_range": 5.119001347767211e-06
+    },
+    {
+      "x_H": 20.196,
+      "experiment": 0.00202,
+      "experimental_error": 0.000141,
+      "our_Cf": 0.0017064414503907628,
+      "NASA_SST_Cf": 0.0018375721249510124,
+      "our_last_three_snapshot_range": 7.349778928217527e-06
+    },
+    {
+      "x_H": 24.136,
+      "experiment": 0.00204,
+      "experimental_error": 0.000143,
+      "our_Cf": 0.0017543769749646455,
+      "NASA_SST_Cf": 0.0018833099257712003,
+      "our_last_three_snapshot_range": 4.501338088710094e-06
+    },
+    {
+      "x_H": 28.13,
+      "experiment": 0.00205,
+      "experimental_error": 0.000205,
+      "our_Cf": 0.0017847704261089044,
+      "NASA_SST_Cf": 0.001920742751032835,
+      "our_last_three_snapshot_range": 2.095601601083104e-06
+    },
+    {
+      "x_H": 32.196,
+      "experiment": 0.00212,
+      "experimental_error": 0.000148,
+      "our_Cf": 0.0018037900412721122,
+      "NASA_SST_Cf": 0.0019541634493636666,
+      "our_last_three_snapshot_range": 8.51773125846219e-06
+    },
+    {
+      "x_H": 35.994,
+      "experiment": 0.0023,
+      "experimental_error": 0.000184,
+      "our_Cf": 0.0018146409313952898,
+      "NASA_SST_Cf": 0.0019770533164495427,
+      "our_last_three_snapshot_range": 1.3595725613083868e-05
+    }
+  ]
+}

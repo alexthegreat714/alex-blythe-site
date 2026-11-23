@@ -1,0 +1,69 @@
+{
+  "files": [
+    {
+      "path": "arithmetic_audit.json",
+      "bytes": 475,
+      "sha256": "0b819c478979656fba12c77097f1740e8b99bf5065e4c6a88e3cd4b7fa34805b"
+    },
+    {
+      "path": "benchmark-metadata.json",
+      "bytes": 919,
+      "sha256": "9424435d282ebd6850b3ae233523e798724704c3360f8c469e0cf4d33c6ee7f4"
+    },
+    {
+      "path": "cf-bias-followup.json",
+      "bytes": 5857,
+      "sha256": "73effc3e298223bbf891f78c88c893d25e1a6a11b5cfc73363bbfdcd45e7b2ff"
+    },
+    {
+      "path": "comparison.json",
+      "bytes": 21087,
+      "sha256": "445cf095032f848099a0a78877a264cfce609560b3d4a1936a6a55e20d925e72"
+    },
+    {
+      "path": "fine_convergence.csv",
+      "bytes": 1787,
+      "sha256": "8ad86150994dee9ecf9e8f96f4e4bd3668d8bfbd79b3e15d44a0215527a3fc63"
+    },
+    {
+      "path": "fine_convergence.png",
+      "bytes": 56457,
+      "sha256": "99dca307770ba71a72611f6c42b00b99e41039d82d0d9370d19acf08f1b8b6eb"
+    },
+    {
+      "path": "mesh_summary.csv",
+      "bytes": 1867,
+      "sha256": "3b505f87dd4a35ca233edfa3793a256f451860dac98c0d1cbd21fb49f394eaf8"
+    },
+    {
+      "path": "pointwise_deltas.csv",
+      "bytes": 86149,
+      "sha256": "dcbdf1c59f7ecb8784c5a316ce3c81259d65f05fc9f6d70548e80cdb895a1148"
+    },
+    {
+      "path": "reattachment.png",
+      "bytes": 28174,
+      "sha256": "60b22d53d303a5921d2f275843feee58cd55fd4e7ed3d289d0ca33202b193611"
+    },
+    {
+      "path": "reproducibility.zip",
+      "bytes": 38567243,
+      "sha256": "e4c041328acc571d7be889b17ff0608ab1ca22e7888bef64f61e412b99795c3e"
+    },
+    {
+      "path": "residual_history.csv",
+      "bytes": 1259408,
+      "sha256": "1fcbbea96b9064d34e0f7963a8119a9d390d5d7758352664f16ab0f5cf91b364"
+    },
+    {
+      "path": "velocity_comparison.png",
+      "bytes": 123092,
+      "sha256": "6196102e8a129a1c0d55aedf06a028251b4a963d1ebe050970c7fb473610874f"
+    },
+    {
+      "path": "wall_comparison.png",
+      "bytes": 129743,
+      "sha256": "924608356c0d9d8927ed9ce167a376f8fb33d5ce3ba0e7bd2e6852471a1303c8"
+    }
+  ]
+}

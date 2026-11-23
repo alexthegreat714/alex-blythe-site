@@ -1,0 +1,13 @@
+{
+  "title": "Aero vs Driver\u2013Seegmiller experimental backward-facing step",
+  "executed_date": "2026-11-22",
+  "published_date": "2026-11-23",
+  "ai_workflow_model": "OpenAI 6.1 High",
+  "model_attribution_basis": "Model label supplied by project owner Alex Blythe; not independently captured in the retained runtime metadata",
+  "ai_role": "Case preparation, Aero workflow orchestration, postprocessing, diagnosis and documentation",
+  "numerical_solver": "OpenFOAM Foundation 10, build 10-c4cf895ad8fa; simpleFoam; kOmegaSST; CPU",
+  "model_is_not_the_numerical_solver": true,
+  "paper_doi": "10.2514/3.8890",
+  "disposition": "Comparison completed; strict residual target not met on refined meshes; mesh independence and design validation not established",
+  "public_scope": "Public NASA experiment only. No private Aero toolkit, credentials, employer data or live-service configuration included."
+}
