@@ -19,7 +19,7 @@ def main(report, destination):
     shutil.copy2(report / 'diagnostics/cf_bias_followup.json', destination / 'cf-bias-followup.json')
     attribution = {
         'title': 'Aero vs Driver–Seegmiller experimental backward-facing step',
-        'executed_date': '2026-11-22', 'published_date': '2026-11-23',
+        'executed_date': '2026-11-22', 'published_date': '2026-11-25',
         'ai_workflow_model': 'OpenAI 6.1 High',
         'model_attribution_basis': 'Model label supplied by project owner Alex Blythe; not independently captured in the retained runtime metadata',
         'ai_role': 'Case preparation, Aero workflow orchestration, postprocessing, diagnosis and documentation',
