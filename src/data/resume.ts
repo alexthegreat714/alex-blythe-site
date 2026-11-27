@@ -3,8 +3,14 @@ export const resume = {
     'Aerospace engineer with experience spanning 2015–present across government, defense, and private-sector programs, including analysis, test, instrumentation, hardware verification, software tools, and workflow design.',
   experience: [
     {
-      period: 'Sep 2025 – Present',
-      role: 'Nozzle Mechanical Design Engineer',
+      period: 'Sep 2026 – Present',
+      role: 'Mechanical Engineer III',
+      organization: 'Blue Origin',
+      detail: 'As a Responsible Engineer III, I work on thermal-structural analysis, digital twin development, and AI-enabled computational engineering.',
+    },
+    {
+      period: 'Jun 2025 – Sep 2026',
+      role: 'Specialist, Mechanical Engineer - Nozzle',
       organization: 'Aerojet Rocketdyne / L3Harris',
       detail: 'Mechanical and structural analysis, design investigations, test readiness, configuration control, and cross-functional propulsion hardware work.',
     },

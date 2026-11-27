@@ -8,8 +8,8 @@ const currentFocus = {
   role: resume.experience[0].role,
   organization: resume.experience[0].organization,
 };
-const selectedExperience = resume.experience.slice(1, 4);
-const workLabels = ['Propulsion test', 'Thermal / CFD', 'Environmental test'];
+const selectedExperience = resume.experience.slice(1, 5);
+const workLabels = ['Nozzle design', 'Propulsion test', 'Thermal / CFD', 'Environmental test'];
 const aero = softwareProjects[0];
 const supportingSoftware = softwareProjects.slice(1);
 const evidenceFigures = [
@@ -147,7 +147,7 @@ const evidenceFigures = [
       <section class="section resume-section" id="experience">
         <div class="section-intro">
           <div><p class="eyebrow">03 — Experience</p><h2>Engineering work from 2015 to the present.</h2></div>
-          <p>Propulsion hardware and hot-fire support, aeroheating and thermal analysis, environmental testing, instrumentation, CFD, and verification.</p>
+          <p>{resume.experience[0].role} at {resume.experience[0].organization} · {resume.experience[0].period}. {resume.experience[0].detail}</p>
         </div>
         <div class="resume-grid">
           <div><span class="resume-label">Education</span>{resume.education.map((item) => <p><strong>{item.degree}</strong><br /><span>{item.school} · {item.date}</span></p>)}</div>
