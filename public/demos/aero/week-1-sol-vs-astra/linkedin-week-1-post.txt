@@ -1,0 +1,29 @@
+Week 1 of AI Engineering Analysis Against Test Data
+Sol vs Astra on OpenFOAM
+
+In a 1985 paper in AIAA Journal, Driver and Seegmiller reported what happened when air flowed over a backward-facing step in a wind tunnel. They measured friction along the lower wall and how far downstream the airflow met the wall again.
+
+I gave GPT-6.2 Sol and GPT-6.2 Astra that same geometry and the upstream flow conditions, then let each set up its own OpenFOAM simulation. I kept the 20 wall-friction measurements out of both runs until their predictions were locked in.
+
+The models made different choices. When Sol’s initial run became unstable, it switched to a simpler numerical method and kept it. Astra used the simpler method to get started, then returned to its higher-order method.
+
+At two hours, Astra was within the experimental error bars at 6 of 20 locations and Sol at 5. About 12 minutes later, Astra met its checks for a stable numerical solution. Its count stayed at 6. Sol reached 10 of 20 after two additional hours, when its time ran out. Some of its solver residuals were still above their thresholds, so further iterations could change that score. Only three locations were within the error bars for both final runs.
+
+After the air flowed over the step, it met the lower wall again about 79.5 mm downstream in the wind tunnel. Sol predicted 79.3 mm, about 0.2 mm before the measured point. Astra predicted 81.7 mm, about 2.2 mm beyond it.
+
+What did that accuracy cost? I priced the tokens each model actually used at OpenAI’s standard API rates, including cached input. Sol came to $6.32 versus $9.04 for Astra, about 30% less.
+
+Sol took about 16.0 allocated CPU core-hours to Astra’s 8.8. At roughly $0.38 per core-hour, Sol’s extra solver time would use up its $2.72 token savings. Below that rate, Sol’s run was cheaper overall. Above it, Astra’s was.
+
+In this case, Sol predicted reattachment more closely and put more wall-friction predictions inside the experimental error bars, at about 30% lower estimated token cost.
+
+Each week, I’ll pick a peer-reviewed paper with experimental data and test how closely frontier AI models can reproduce the measurements. I’ll cover both computational fluid dynamics (CFD) and finite element analysis (FEA).
+
+Paper · Driver & Seegmiller, AIAA Journal (1985)
+https://doi.org/10.2514/3.8890
+
+Wind-tunnel data · Turbulence Modeling Resource
+https://tmbwg.github.io/turbmodels/backstep_val.html
+
+OpenAI standard API pricing
+https://developers.openai.com/api/docs/pricing

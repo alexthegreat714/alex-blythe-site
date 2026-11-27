@@ -1,0 +1,85 @@
+{
+  "runs": {
+    "sol": {
+      "changed_stations": [
+        "-0.804",
+        "5.882",
+        "7.09",
+        "7.978",
+        "11.196",
+        "13.196",
+        "16.196",
+        "35.994"
+      ],
+      "max_abs_Cf_change": 0.0015522718841990695,
+      "original": {
+        "within": 5,
+        "rmse": 0.0008140478485798385,
+        "bias": 8.663089824051001e-05,
+        "wape_pct": 39.06233082067727,
+        "downstream_under": 1,
+        "downstream_n": 11,
+        "xr_H": 5.317631912490864,
+        "xr_delta_H": -0.942368087509136,
+        "xr_error_pct": -15.05380331484243
+      },
+      "continued": {
+        "within": 10,
+        "rmse": 0.0003173588439212219,
+        "bias": -0.00010041501864571016,
+        "wape_pct": 15.493349245178187,
+        "downstream_under": 7,
+        "downstream_n": 11,
+        "xr_H": 6.2437507835975055,
+        "xr_delta_H": -0.016249216402494326,
+        "xr_error_pct": -0.2595721470047052
+      }
+    },
+    "astra": {
+      "changed_stations": [],
+      "max_abs_Cf_change": 3.5277407316924555e-05,
+      "original": {
+        "within": 6,
+        "rmse": 0.000321755302647577,
+        "bias": -0.00026405106902483805,
+        "wape_pct": 17.655114748039466,
+        "downstream_under": 11,
+        "downstream_n": 11,
+        "xr_H": 6.417588222433047,
+        "xr_delta_H": 0.1575882224330476,
+        "xr_error_pct": 2.517383744936863
+      },
+      "continued": {
+        "within": 6,
+        "rmse": 0.00031018159197807206,
+        "bias": -0.00025641288089109935,
+        "wape_pct": 17.145994569585472,
+        "downstream_under": 11,
+        "downstream_n": 11,
+        "xr_H": 6.430300967959683,
+        "xr_delta_H": 0.1703009679596832,
+        "xr_error_pct": 2.7204627469598064
+      }
+    }
+  },
+  "original_pair": {
+    "both_within": 0,
+    "both_miss": 9,
+    "same_side_miss": 5,
+    "opposite_side_miss": 4,
+    "sol_only_miss": 6,
+    "astra_only_miss": 5,
+    "max_abs_difference": 0.0018467942179913942,
+    "max_difference_x_H": 3.804
+  },
+  "continued_pair": {
+    "both_within": 3,
+    "both_miss": 7,
+    "same_side_miss": 7,
+    "opposite_side_miss": 0,
+    "sol_only_miss": 3,
+    "astra_only_miss": 7,
+    "max_abs_difference": 0.00041603289999935,
+    "max_difference_x_H": -0.804
+  }
+}
